@@ -2,7 +2,25 @@
 <html lang="en">
 
 <head>
-    {{> head title="403 Access Denied | XivigApp" }}
+    <meta charset="UTF-8">
+    <title>403 Access Denied | XivigApp</title>
+    
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./docs/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./docs/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./docs/assets/favicon-16x16.png" />
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Theme Detection (Prevents flashing) -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {   
+        const savedTheme = localStorage.getItem('xivig-global-theme') || 'dark';
+        document.body.setAttribute('data-bs-theme', savedTheme);   
+      });
+    </script>
+
     <style>
         .error-page-403 {
             background-color: #f8fafc;
@@ -95,6 +113,10 @@
             background: #f43f5e;
         }
     </style>
+  <script type="module" crossorigin src="./docs/assets/vendor-jquery.js"></script>
+  <script type="module" crossorigin src="./docs/assets/vendor-core.js"></script>
+  <script type="module" crossorigin src="./docs/assets/main.js"></script>
+  <link rel="stylesheet" crossorigin href="./docs/assets/main.css">     
 </head>
 
 <body class="error-page-403">
@@ -110,8 +132,6 @@
             Back To Home
         </a>
     </div>
-
-    {{> scripts }}
 </body>
 
 </html>
