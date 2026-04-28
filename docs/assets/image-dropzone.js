@@ -1,1 +1,1 @@
-import"./main.js";import{n as e}from"./FormPlugins.js";document.addEventListener(`DOMContentLoaded`,()=>{e()});
+import"./main.js";import{a as o}from"./FormPlugins.js";import"./vendor-jquery.js";import"./vendor-core.js";import"./vendor-fullcalendar.js";import"./vendor-echarts.js";import"./vendor-chartjs.js";import"./vendor-highcharts.js";import"./vendor-apexcharts.js";document.addEventListener("DOMContentLoaded",()=>{o()});

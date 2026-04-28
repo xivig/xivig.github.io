@@ -103,17 +103,7 @@
         }
 
         &--badge {
-            &::after {
-                content: '';
-                position: absolute;
-                top: 8px;
-                right: 8px;
-                width: 8px;
-                height: 8px;
-                background: #ff3b30;
-                border: 2px solid var(--header-bg);
-                border-radius: 50%;
-            }
+            position: relative;
         }
     }
 

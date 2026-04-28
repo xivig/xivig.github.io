@@ -13,14 +13,14 @@
     "production": "gulp production"
   },
   "devDependencies": {
-    "del": "^8.0.1",
-    "gulp": "^5.0.1",
-    "gulp-copy": "^5.0.0",
+    "del": "^7.1.0",
+    "gulp": "^5.0.0",
     "gulp-sharp-optimize-images": "^4.0.3",
     "gulp-tap": "^2.0.0",
-    "sass": "^1.99.0",
-    "vite": "^8.0.9",
-    "vite-plugin-handlebars": "^2.0.3"
+    "gulp-plumber": "^1.2.1",
+    "sass": "^1.77.4",
+    "vite": "^5.2.11",
+    "vite-plugin-handlebars": "^2.0.0"
   },
   "dependencies": {
     "@fancyapps/ui": "^6.1.13",

@@ -25,7 +25,7 @@ export const viteBuild = (cb) => {
 // 3. Image Optimization
 // Note: We use base: 'src' to keep the folder structure consistent
 export const optimizeImages = () => {
-    return gulp.src('src/images/**/*.{jpg,png,jpeg,webp}', {
+    return gulp.src(['src/images/**/*.{jpg,png,jpeg,webp}'], {
             base: 'src/images',
             allowEmpty: true
         })
