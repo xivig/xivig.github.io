@@ -1,7 +1,9 @@
 // 0. BOOTSTRAP GLOBALS (Must be absolute first)
 import $ from 'jquery';
-globalThis.jQuery = globalThis.$ = $;
-window.jQuery = window.$ = $;
+if (!window.jQuery) {
+    window.jQuery = window.$ = $;
+}
+globalThis.jQuery = globalThis.$ = window.jQuery;
 
 // 1. TOP-LEVEL VENDOR JS (Must be first for globals)
 import './scripts/jquery-setup.js';
@@ -18,12 +20,12 @@ import Plyr from 'plyr';
 import 'summernote/dist/summernote-lite.js';
 import AirDatepicker from 'air-datepicker';
 import 'timedropper';
-import Cropper from 'cropperjs';
+// Modular cropper removed to use v1.6.2 CDN for compatibility
 
 // 4. EXPOSE GLOBALS
 window.Popper = Popper;
 window.bootstrap = bootstrap;
-window.Cropper = Cropper;
+// window.Cropper = Cropper; // Relying on CDN
 window.AirDatepicker = AirDatepicker;
 
 // 5. CORE & UTILITIES
@@ -49,10 +51,15 @@ import { initIconFilter, initIconCopy } from './scripts/bs-icon.js';
 import { initHelpSupport } from './scripts/help-support.js';
 import { initAccountOnboarding } from './scripts/account-onboarding.js';
 import { initAccountSettings } from './scripts/account-settings.js';
+import { initFormPickers } from './scripts/FormPickers.js';
 import { initFormAdv } from './scripts/form-adv.js';
 import { initVectorMap } from './scripts/vector-map.js';
 import { initStoreSettings } from './scripts/store-settings.js';
 import { initTaskManager } from './scripts/task-manager.js';
+import { NotificationBadge } from './scripts/notification-badge.js';
+import { initLandingPage } from './scripts/landing.js';
+import { initDataTables } from './scripts/DataTable.js';
+import { initDashboard } from './scripts/dashboard.js';
 
 // 7. CHARTS
 import { EChartModule } from './scripts/Echart.js';
@@ -68,9 +75,11 @@ const App = {
         console.log("🚀 Elite Architect Engine Starting...");
         
         try {
+            // Start preloader logic immediately
+            initPreloader();
+
             initXivig();
             UiController.init();
-            initPreloader();
             initSidebar();
             initSettings();
             
@@ -93,10 +102,16 @@ const App = {
             initHelpSupport();
             initAccountOnboarding();
             initAccountSettings();
+            initFormPickers();
             initFormAdv();
             initVectorMap();
             initStoreSettings();
             initTaskManager();
+            initLandingPage();
+            initDataTables();
+            
+            // Initialize Modular Notification Badge
+            window.headerBadge = new NotificationBadge('header-notification-badge');
             
             if (window.AOS) {
                 AOS.init({ duration: 1000, once: true, offset: 50 });
@@ -136,26 +151,40 @@ const initNotifications = () => {
 const Dashboard = {
     state: { chartjs: {}, echarts: {}, highcharts: {}, apexcharts: {} },
     init() {
-        if (!document.getElementById('accordion-menu')) return;
+        console.log("📊 Dashboard & Charts Initializing...");
         
-        console.log("📊 Dashboard Initializing...");
+        // 1. Initialize the specialized modular dashboard (index.html)
+        try {
+            initDashboard();
+        } catch (e) {
+            console.warn("⚠️ Modular Dashboard init skipped or failed:", e);
+        }
+
+        // 2. Initialize generic chart managers for dedicated chart pages
         try {
             const safeInit = (name, initFn) => {
-                try { return initFn(); } catch (e) { console.warn(`⚠️ ${name} init failed:`, e); return {}; }
+                try { 
+                    return initFn(); 
+                } catch (e) { 
+                    // Only warn if we are actually on a page that likely contains these charts
+                    return {}; 
+                }
             };
+            
             this.state.chartjs = safeInit('Chart.js', () => ChartManager.initAll());
             this.state.echarts = safeInit('ECharts', () => EChartModule.initAll());
             this.state.highcharts = safeInit('Highcharts', () => HighchartManager.initAll());
             this.state.apexcharts = safeInit('ApexCharts', () => ApexchartManager.initAll());
+            
         } catch (error) {
-            console.error('❌ Dashboard failure:', error);
+            console.error('❌ Charts initialization failure:', error);
         }
     }
 };
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
     App.init();
 });
 
-window.Dashboard = Dashboard;
 window.App = App;
+window.Dashboard = Dashboard;

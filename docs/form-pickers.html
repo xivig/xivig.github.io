@@ -13,6 +13,28 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
+    <!-- Critical Preloader Style (Prevents FOUC/Flash) -->
+    <style>
+        .preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s;
+        }
+        .preloader--hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        body:not(.is-loaded) {
+            overflow: hidden;
+        }
+    </style>
+    
     <!-- Theme Detection (Prevents flashing) -->
     <script>
       document.addEventListener("DOMContentLoaded", function() {
@@ -50,16 +72,91 @@
     <script>
         window.jQuery = window.$ = jQuery;
     </script>
-  <script type="module" crossorigin src="./assets/form-pickers.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-jquery.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-core.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-fullcalendar.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-echarts.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-chartjs.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-highcharts.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-apexcharts.js">
-  <link rel="modulepreload" crossorigin href="./assets/main2.js">
+    
+    <!-- DataTables (Bootstrap 5) - Loaded AFTER jQuery -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.bootstrap5.min.css">
+    
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.bootstrap5.min.js"></script>
+    
+    <style>
+        /* DataTables Elite Tweaks */
+        .dataTables_wrapper .dataTables_filter .form-control {
+            border-radius: 50px;
+            padding: 0.4rem 1rem;
+            background: #f8f9fa;
+            border: 1px solid rgba(0,0,0,0.1);
+            width: 250px;
+        }
+        .dataTables_wrapper .dataTables_length select {
+            border-radius: 50px;
+            padding-right: 1.5rem;
+        }
+        .dataTables_wrapper .pagination {
+            margin-bottom: 0;
+        }
+        .dataTables_wrapper .pagination .page-item.active .page-link {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            color: #fff !important;
+        }
+        .dataTables_wrapper .pagination .page-link {
+            border-radius: 50px !important;
+            margin: 0 3px;
+            min-width: 36px;
+            height: 36px;
+            padding: 0 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            border: 1px solid #eee;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        /* Keep single digits/icons as circles */
+        .dataTables_wrapper .pagination .page-item:not(.previous):not(.next):not(.first):not(.last) .page-link {
+            padding: 0;
+            width: 36px;
+        }
+        /* Ensure Bootstrap badges can expand */
+        .badge {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            width: auto !important;
+            height: auto !important;
+        }
+        .dataTables_info {
+            font-size: 0.875rem;
+            color: #6c757d;
+            font-weight: 500;
+        }
+    </style>
+  <script type="module" crossorigin src="./assets/modulepreload-polyfill.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-jquery.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-core.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-fullcalendar.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-apexcharts.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-echarts.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-chartjs.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-highcharts.js"></script>
+  <script type="module" crossorigin src="./assets/main2.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/main2.css">
 </head>
 
@@ -104,9 +201,9 @@
                         </button>
                         <button class="header__action-btn header__action-btn--badge" data-bs-toggle="dropdown">
                             <i class="bi bi-bell"></i>
-                            <span
-                                class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                                <span class="visually-hidden">New alerts</span>
+                            <span id="header-notification-badge" class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
+                                5
+                                <span class="visually-hidden">notifications</span>
                             </span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end header__dropdown-menu shadow">
@@ -277,9 +374,15 @@
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="chat.html" class="sidebar__sub-link">Chat</a></li>
                             <li class="sidebar__sub-item"><a href="calendar.html" class="sidebar__sub-link">Calendar</a>
                             </li>
+                            <li class="sidebar__sub-item"><a href="chat.html" class="sidebar__sub-link">Chat
+                                    <span id="sidebar-chat-badge" class="badge rounded-pill bg-info ms-auto">
+                                        3
+                                        <span class="visually-hidden">notifications</span>
+                                    </span>
+                                </a></li>
+    
                             <li class="sidebar__sub-item"><a href="video-player.html" class="sidebar__sub-link">Video
                                     Player</a></li>
                             <li class="sidebar__sub-item"><a href="kanban.html" class="sidebar__sub-link">Kanban</a></li>
@@ -287,7 +390,12 @@
                             </li>
                             <li class="sidebar__sub-item"><a href="file-manager.html" class="sidebar__sub-link">File
                                     Manager</a></li>
-                            <li class="sidebar__sub-item"><a href="inbox.html" class="sidebar__sub-link">Mailbox</a></li>
+                            <li class="sidebar__sub-item"><a href="inbox.html" class="sidebar__sub-link">Mailbox
+                                    <span id="sidebar-inbox-badge" class="badge rounded-pill bg-primary ms-auto">
+                                        12
+                                        <span class="visually-hidden">notifications</span>
+                                    </span>
+                                </a></li>
                         </ul>
                     </div>
                 </li>
@@ -457,8 +565,10 @@
                         <ul class="sidebar__submenu">
                             <li class="sidebar__sub-item"><a href="maintenance.html"
                                     class="sidebar__sub-link">Maintenance</a></li>
-                            <li class="sidebar__sub-item"><a href="multi-step-account-onboarding.html" class="sidebar__sub-link">Account Onboarding</a></li>
-                            <li class="sidebar__sub-item"><a href="help-support.html" class="sidebar__sub-link">Help & Support</a></li>
+                            <li class="sidebar__sub-item"><a href="multi-step-account-onboarding.html"
+                                    class="sidebar__sub-link">Account Onboarding</a></li>
+                            <li class="sidebar__sub-item"><a href="help-support.html" class="sidebar__sub-link">Help &
+                                    Support</a></li>
                             <li class="sidebar__sub-item"><a href="profile.html" class="sidebar__sub-link">Profile</a></li>
                             <li class="sidebar__sub-item"><a href="account-settings.html" class="sidebar__sub-link">Account
                                     Settings</a></li>
@@ -480,9 +590,15 @@
     
     
                 <li class="sidebar__item">
+                    <a href="documentation.html" class="sidebar__link">
+                        <span class="sidebar__icon bi bi-file-earmark-medical"></span>
+                        <span class="sidebar__text">Documentation</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
                     <a href="https://docs.xivig.com" target="_blank" class="sidebar__link">
                         <span class="sidebar__icon bi bi-book"></span>
-                        <span class="sidebar__text">Documentation</span>
+                        <span class="sidebar__text">Online Docs</span>
                     </a>
                 </li>
                 <li class="sidebar__item">
@@ -573,7 +689,7 @@
         <div class="main__container container-fluid">
             
             <!-- Standardized Page Header -->
-            <div class="page-header p-4 my-4 bg-white rounded shadow-sm border-bottom border-primary border-5 text-center">
+            <div class="page-header p-4 my-4 rounded shadow-sm border-bottom border-primary border-5 text-center">
                 <h2 class="page-header__title h4 text-primary fw-bold mb-1">Form Pickers</h2>
                 <nav class="page-header__nav" aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 small justify-content-center">
@@ -595,7 +711,7 @@
                 <div class="col-12">
                     <div class="glass-card p-5 text-center shadow-sm border-0 position-relative overflow-hidden">
                         <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10"
-                             style="background: radial-gradient(circle at 20% 20%, var(--bs-primary) 0%, transparent 40%);"></div>
+                            style="background: radial-gradient(circle at 20% 20%, var(--bs-primary) 0%, transparent 40%);"></div>
                         <h2 class="display-5 fw-bold text-dark mb-2">Elite Form Pickers</h2>
                         <p class="text-muted lead mb-0">Premium precision tools for modern application interfaces.</p>
                     </div>
@@ -609,8 +725,8 @@
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <label class="apple-label">Standard Entry</label>
-                                    <input id="air-datepicker" class="form-control modern-input"
-                                           placeholder="Select Date" type="text"/>
+                                    <input id="air-datepicker" class="form-control modern-input" placeholder="Select Date"
+                                        type="text" />
                                 </div>
                                 <div class="mb-4">
                                     <label class="apple-label">Precision Timestamp</label>
@@ -619,17 +735,18 @@
                                             <i class="bi bi-clock-history text-primary"></i>
                                         </span>
                                         <input class="form-control modern-input border-start-0 rounded-end-3" id="clock-input"
-                                               placeholder="Choose Date and Time" type="text" readonly/>
+                                            placeholder="Choose Date and Time" type="text" readonly />
                                     </div>
                                 </div>
                                 <div class="mb-0">
                                     <label class="apple-label">Range Selection</label>
                                     <input type="text" id="range-picker" class="form-control modern-input"
-                                           placeholder="Start Date - End Date">
+                                        placeholder="Start Date - End Date">
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="bg-light p-4 rounded-4 text-center border h-100 d-flex flex-column justify-content-center">
+                                <div
+                                    class="bg-light p-4 rounded-4 text-center border h-100 d-flex flex-column justify-content-center">
                                     <label class="apple-label mb-3">Live Interactive Calendar</label>
                                     <div id="inline-datepicker" class="apple-style-inline mx-auto mb-3"></div>
                                     <div class="p-3 bg-white rounded-3 border shadow-sm mt-auto">
@@ -644,14 +761,16 @@
             
                 <!-- Right Column: Secondary Date Tools -->
                 <div class="col-lg-4">
-                    <div class="card-box mb-4 bg-primary text-white">
+                    <div class="card-box mb-4 bg-danger-light text-success">
                         <h4 class="fw-bold mb-1">Monthly Analytics</h4>
                         <p class="small opacity-75 mb-4 text-white">Select period for report generation</p>
                         <div class="mb-3">
-                            <input id="month-picker" class="form-control modern-input border-0 shadow-none bg-white bg-opacity-25 text-white placeholder-white"
-                                   placeholder="Select Month" type="text"/>
+                            <input id="month-picker"
+                                class="form-control modern-input border-0 shadow-none bg-white bg-opacity-25 text-white placeholder-white"
+                                placeholder="Select Month" type="text" />
                         </div>
-                        <div class="mt-4 pt-4 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                        <div
+                            class="mt-4 pt-4 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
                             <span class="small fw-medium">Active Target:</span>
                             <span id="month-output" class="badge bg-white text-primary rounded-pill px-3 py-2">January 2026</span>
                         </div>
@@ -667,7 +786,8 @@
                                 <div id="live-clock1" class="text-muted small"></div>
                             </div>
                         </div>
-                        <div id="live-clock" class="display-6 fw-black text-dark text-center py-3 border rounded-4 bg-white shadow-sm mb-0"></div>
+                        <div id="live-clock"
+                            class="display-6 fw-black text-dark text-center py-3 border rounded-4 bg-white shadow-sm mb-0"></div>
                     </div>
                 </div>
             
@@ -680,28 +800,30 @@
                                 <div class="p-4 rounded-4 bg-light hover-shadow transition-all">
                                     <label class="apple-label">Delivery</label>
                                     <input id="time-delivery" class="form-control modern-input text-center td-input"
-                                           value="09:00 AM" type="text" readonly/>
+                                        value="09:00 AM" type="text" readonly />
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="p-4 rounded-4 bg-light hover-shadow transition-all">
                                     <label class="apple-label">Departure</label>
                                     <input id="train-departure" class="form-control modern-input text-center td-input"
-                                           value="12:00 PM" type="text" readonly/>
+                                        value="12:00 PM" type="text" readonly />
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="p-4 rounded-4 bg-light hover-shadow transition-all border border-primary border-opacity-25 shadow-sm">
+                                <div
+                                    class="p-4 rounded-4 bg-light hover-shadow transition-all border border-primary border-opacity-25 shadow-sm">
                                     <label class="apple-label text-primary">Wake Up</label>
-                                    <input id="alarm-clock" class="form-control modern-input text-center border-primary border-opacity-50 td-input"
-                                           value="07:30 AM" type="text" readonly/>
+                                    <input id="alarm-clock"
+                                        class="form-control modern-input text-center border-primary border-opacity-50 td-input"
+                                        value="07:30 AM" type="text" readonly />
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="p-4 rounded-4 bg-light hover-shadow transition-all">
                                     <label class="apple-label">Reminder</label>
-                                    <input id="quick-entry" class="form-control modern-input text-center td-input"
-                                           value="06:00 PM" type="text" readonly/>
+                                    <input id="quick-entry" class="form-control modern-input text-center td-input" value="06:00 PM"
+                                        type="text" readonly />
                                 </div>
                             </div>
                         </div>
@@ -719,13 +841,16 @@
                                     <div class="d-flex flex-column gap-3">
                                         <div class="color-preview-wrapper d-flex align-items-center p-2">
                                             <input type="color" class="apple-color-trigger" id="simple-picker" value="#0071e3">
-                                            <input type="text" id="simple-input" class="form-control border-0 bg-transparent fw-bold" value="#0071E3">
+                                            <input type="text" id="simple-input"
+                                                class="form-control border-0 bg-transparent fw-bold" value="#0071E3">
                                         </div>
                                         <div class="p-3 bg-light rounded-4 d-flex align-items-center border border-dashed">
-                                            <input type="color" id="appleColorPicker" value="#0071e3" class="apple-color-trigger border-white border-2 shadow-sm">
+                                            <input type="color" id="appleColorPicker" value="#0071e3"
+                                                class="apple-color-trigger border-white border-2 shadow-sm">
                                             <div class="ms-3">
                                                 <span class="small text-muted d-block">Global Accent</span>
-                                                <input type="text" id="colorValue" class="fw-black border-0 bg-transparent p-0 fs-5" value="#0071E3" readonly>
+                                                <input type="text" id="colorValue" class="fw-black border-0 bg-transparent p-0 fs-5"
+                                                    value="#0071E3" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -733,20 +858,23 @@
                             </div>
             
                             <div class="col-lg-4">
-                                <div class="p-4 rounded-4 border bg-dark text-white h-100">
-                                    <label class="apple-label text-white opacity-50">RGBA Studio</label>
+                                <div class="p-4 rounded-4 border h-100 bg-body-tertiary">
+                                    <label class="apple-label">RGBA Studio</label>
                                     <div class="mb-4">
-                                        <div class="d-flex align-items-center gap-3 p-3 bg-white bg-opacity-10 rounded-4 mb-3">
-                                            <input type="color" id="rgba-picker" value="#0d6efd" class="apple-color-trigger border-0">
+                                        <div class="d-flex align-items-center gap-3 p-3 bg-body rounded-4 mb-3 border">
+                                            <input type="color" id="rgba-picker" value="#0d6efd"
+                                                class="apple-color-trigger border-0">
                                             <div class="flex-grow-1">
                                                 <div class="d-flex justify-content-between mb-1">
-                                                    <span class="small opacity-50">Alpha</span>
+                                                    <span class="small text-muted">Alpha</span>
                                                     <span id="opacity-val" class="small fw-bold">100%</span>
                                                 </div>
-                                                <input type="range" id="rgba-opacity" class="form-range" min="0" max="1" step="0.1" value="1">
+                                                <input type="range" id="rgba-opacity" class="form-range" min="0" max="1" step="0.1"
+                                                    value="1">
                                             </div>
                                         </div>
-                                        <input type="text" id="rgba-output" class="form-control modern-input border-0 bg-white bg-opacity-10 text-white text-center fw-mono" readonly>
+                                        <input type="text" id="rgba-output" class="form-control modern-input text-center fw-mono"
+                                            readonly>
                                     </div>
                                 </div>
                             </div>
@@ -757,20 +885,26 @@
                                     <div class="row g-2 mb-4">
                                         <div class="col-6">
                                             <div class="color-preview-wrapper p-2 d-flex align-items-center">
-                                                <input type="color" id="grad-start-picker" value="#f56767" class="apple-color-trigger me-2">
-                                                <input type="text" id="grad-start-input" class="form-control border-0 bg-transparent p-0 small fw-bold" value="#F56767">
+                                                <input type="color" id="grad-start-picker" value="#f56767"
+                                                    class="apple-color-trigger me-2">
+                                                <input type="text" id="grad-start-input"
+                                                    class="form-control border-0 bg-transparent p-0 small fw-bold" value="#F56767">
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="color-preview-wrapper p-2 d-flex align-items-center">
-                                                <input type="color" id="grad-end-picker" value="#fab27a" class="apple-color-trigger me-2">
-                                                <input type="text" id="grad-end-input" class="form-control border-0 bg-transparent p-0 small fw-bold" value="#FAB27A">
+                                                <input type="color" id="grad-end-picker" value="#fab27a"
+                                                    class="apple-color-trigger me-2">
+                                                <input type="text" id="grad-end-input"
+                                                    class="form-control border-0 bg-transparent p-0 small fw-bold" value="#FAB27A">
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="gradient-result-preview" class="rounded-4 shadow-lg w-100 position-relative d-flex align-items-center justify-content-center"
-                                         style="height: 100px; background: linear-gradient(90deg, #f56767, #fab27a);">
-                                         <span class="text-white fw-black small text-uppercase tracking-widest opacity-75">Live Preview</span>
+                                    <div id="gradient-result-preview"
+                                        class="rounded-4 shadow-lg w-100 position-relative d-flex align-items-center justify-content-center"
+                                        style="height: 100px; background: linear-gradient(90deg, #f56767, #fab27a);">
+                                        <span class="text-white fw-black small text-uppercase tracking-widest opacity-75">Live
+                                            Preview</span>
                                     </div>
                                 </div>
                             </div>
@@ -778,7 +912,6 @@
                     </div>
                 </div>
             </div>
-            
             
 
         </div>

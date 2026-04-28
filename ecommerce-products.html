@@ -43,6 +43,7 @@
                         <span class="input-group-text bg-transparent border-0"><i class="bi bi-search text-muted"></i></span>
                         <input type="text" class="form-control border-0 bg-transparent shadow-none small" placeholder="Search inventory...">
                     </div>
+                    <button id="exportProductsBtn" class="btn btn-white border rounded-pill px-3 shadow-sm fw-bold text-muted me-2"><i class="bi bi-download me-2"></i>Export</button>
                     <button class="btn btn-dark btn-sm rounded-3 px-4 fw-bold" onclick="location.href='ecommerce-add-product.html'">
                         <i class="bi bi-plus-lg me-2"></i> Add Product
                     </button>
@@ -51,7 +52,7 @@
         </div>
     </div>
     <div class="table-responsive pb-5">
-        <table class="table table-hover align-middle mb-0">
+        <table class="table table-hover align-middle mb-0" id="productsTable">
             <thead class="bg-light-subtle text-muted small text-uppercase fw-bold">
                 <tr>
                     <th class="ps-4" style="width: 40px;"><input type="checkbox" class="form-check-input"></th>
@@ -145,5 +146,36 @@
         </table>
     </div>
 </div>
+
+<script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+        const exportBtn = document.getElementById('exportProductsBtn');
+        if (exportBtn) {
+            exportBtn.addEventListener('click', () => {
+                let csv = [];
+                const table = document.getElementById('productsTable');
+                const rows = table.querySelectorAll('tr');
+                
+                for (let i = 0; i < rows.length; i++) {
+                    let row = [], cols = rows[i].querySelectorAll('td, th');
+                    for (let j = 1; j < cols.length - 1; j++) {
+                        let text = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, " ").replace(/"/g, '""');
+                        row.push('"' + text + '"');
+                    }
+                    csv.push(row.join(","));
+                }
+
+                const csvFile = new Blob([csv.join("\n")], {type: "text/csv"});
+                const downloadLink = document.createElement("a");
+                downloadLink.download = `products-export-${new Date().toISOString().slice(0,10)}.csv`;
+                downloadLink.href = window.URL.createObjectURL(csvFile);
+                downloadLink.style.display = "none";
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            });
+        }
+    });
+</script>
 
 {{/admin-layout}}

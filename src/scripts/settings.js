@@ -1,5 +1,6 @@
 export function initSettings() {
     const body = document.body;
+    const html = document.documentElement;
 
     // --- 1. THEME TOGGLING (SIDEBAR & HEADER) ---
     const sidebarRadios = document.querySelectorAll('input[name="sidebar-bg"]');
@@ -11,7 +12,7 @@ export function initSettings() {
     };
 
     const setGlobalTheme = (theme) => {
-        body.setAttribute('data-bs-theme', theme);
+        html.setAttribute('data-bs-theme', theme);
         localStorage.setItem('xivig-global-theme', theme);
     };
 
@@ -89,7 +90,7 @@ export function initSettings() {
     // Load Global Theme
     const savedTheme = localStorage.getItem('xivig-global-theme');
     if (savedTheme) {
-        body.setAttribute('data-bs-theme', savedTheme);
+        html.setAttribute('data-bs-theme', savedTheme);
         const radio = document.getElementById(`header-${savedTheme === 'dark' ? 'dark' : 'white'}`);
         if (radio) radio.checked = true;
     }

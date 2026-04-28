@@ -83,7 +83,7 @@
                         <input type="text" class="form-control border-0 bg-transparent shadow-none small" placeholder="Search orders...">
                     </div>
                     <button class="btn btn-white border rounded-pill px-3 shadow-sm fw-bold text-muted"><i class="bi bi-sliders me-2"></i>Filters</button>
-                    <button class="btn btn-white border rounded-pill px-3 shadow-sm fw-bold text-muted"><i class="bi bi-download me-2"></i>Export</button>
+                    <button id="exportOrdersBtn" class="btn btn-white border rounded-pill px-3 shadow-sm fw-bold text-muted"><i class="bi bi-download me-2"></i>Export</button>
                 </div>
             </div>
         </div>
@@ -241,6 +241,37 @@
                 });
             });
         });
+
+        // CSV Export Logic
+        const exportBtn = document.getElementById('exportOrdersBtn');
+        if (exportBtn) {
+            exportBtn.addEventListener('click', () => {
+                let csv = [];
+                const table = document.getElementById('ordersTable');
+                const rows = table.querySelectorAll('tr');
+                
+                for (let i = 0; i < rows.length; i++) {
+                    if (rows[i].style.display === 'none') continue;
+                    
+                    let row = [], cols = rows[i].querySelectorAll('td, th');
+                    
+                    for (let j = 1; j < cols.length - 1; j++) { // Skip checkbox and action columns
+                        let text = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, " ").replace(/"/g, '""');
+                        row.push('"' + text + '"');
+                    }
+                    csv.push(row.join(","));
+                }
+
+                const csvFile = new Blob([csv.join("\n")], {type: "text/csv"});
+                const downloadLink = document.createElement("a");
+                downloadLink.download = `orders-export-${new Date().toISOString().slice(0,10)}.csv`;
+                downloadLink.href = window.URL.createObjectURL(csvFile);
+                downloadLink.style.display = "none";
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            });
+        }
     });
 </script>
 

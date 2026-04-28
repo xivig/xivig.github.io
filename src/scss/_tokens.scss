@@ -47,17 +47,17 @@
 /* --- Dark Theme Tokens --- */
 [data-bs-theme="dark"] {
     --bg-body: #0b0f12;
-    --text-main: #eee;
+    --text-main: #e2e8f0;
     --text-muted: #94a3b8;
-    --card-bg: rgba(20, 25, 28, 0.95);
-    --card-border: rgba(255, 255, 255, 0.05);
-    --header-bg: rgba(20, 33, 39, 0.9);
+    --card-bg: #15191c;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --header-bg: rgba(21, 25, 28, 0.9);
     
-    // Sidebar stays dark usually, but can be adjusted
     --sidebar-bg: #090e11;
     --sidebar-text: rgba(255, 255, 255, 0.5);
     --sidebar-active: var(--elite-primary);
 
     /* Shadows in dark mode */
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --xivig-primary-glow: rgba(99, 102, 241, 0.25);
 }

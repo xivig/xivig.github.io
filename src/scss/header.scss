@@ -104,6 +104,14 @@
 
         &--badge {
             position: relative;
+
+            .badge {
+                font-size: 0.6rem;
+                padding: 0.25em 0.5em;
+                min-width: 18px;
+                border: 2px solid var(--header-bg);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
         }
     }
 

@@ -90,9 +90,12 @@
                 </a>
                 <div class="sidebar__submenu-wrapper">
                     <ul class="sidebar__submenu">
-                        <li class="sidebar__sub-item"><a href="chat.html" class="sidebar__sub-link">Chat</a></li>
                         <li class="sidebar__sub-item"><a href="calendar.html" class="sidebar__sub-link">Calendar</a>
                         </li>
+                        <li class="sidebar__sub-item"><a href="chat.html" class="sidebar__sub-link">Chat
+                                {{> notification-badge id="sidebar-chat-badge" count="3" color="info" class="ms-auto" }}
+                            </a></li>
+
                         <li class="sidebar__sub-item"><a href="video-player.html" class="sidebar__sub-link">Video
                                 Player</a></li>
                         <li class="sidebar__sub-item"><a href="kanban.html" class="sidebar__sub-link">Kanban</a></li>
@@ -100,7 +103,10 @@
                         </li>
                         <li class="sidebar__sub-item"><a href="file-manager.html" class="sidebar__sub-link">File
                                 Manager</a></li>
-                        <li class="sidebar__sub-item"><a href="inbox.html" class="sidebar__sub-link">Mailbox</a></li>
+                        <li class="sidebar__sub-item"><a href="inbox.html" class="sidebar__sub-link">Mailbox
+                                {{> notification-badge id="sidebar-inbox-badge" count="12" color="primary"
+                                class="ms-auto" }}
+                            </a></li>
                     </ul>
                 </div>
             </li>
@@ -270,8 +276,10 @@
                     <ul class="sidebar__submenu">
                         <li class="sidebar__sub-item"><a href="maintenance.html"
                                 class="sidebar__sub-link">Maintenance</a></li>
-                        <li class="sidebar__sub-item"><a href="multi-step-account-onboarding.html" class="sidebar__sub-link">Account Onboarding</a></li>
-                        <li class="sidebar__sub-item"><a href="help-support.html" class="sidebar__sub-link">Help & Support</a></li>
+                        <li class="sidebar__sub-item"><a href="multi-step-account-onboarding.html"
+                                class="sidebar__sub-link">Account Onboarding</a></li>
+                        <li class="sidebar__sub-item"><a href="help-support.html" class="sidebar__sub-link">Help &
+                                Support</a></li>
                         <li class="sidebar__sub-item"><a href="profile.html" class="sidebar__sub-link">Profile</a></li>
                         <li class="sidebar__sub-item"><a href="account-settings.html" class="sidebar__sub-link">Account
                                 Settings</a></li>
@@ -293,9 +301,15 @@
 
 
             <li class="sidebar__item">
+                <a href="documentation.html" class="sidebar__link">
+                    <span class="sidebar__icon bi bi-file-earmark-medical"></span>
+                    <span class="sidebar__text">Documentation</span>
+                </a>
+            </li>
+            <li class="sidebar__item">
                 <a href="https://docs.xivig.com" target="_blank" class="sidebar__link">
                     <span class="sidebar__icon bi bi-book"></span>
-                    <span class="sidebar__text">Documentation</span>
+                    <span class="sidebar__text">Online Docs</span>
                 </a>
             </li>
             <li class="sidebar__item">

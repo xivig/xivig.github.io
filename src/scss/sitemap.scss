@@ -27,7 +27,7 @@
     font-size: 0.75rem;
     text-transform: uppercase;
     font-weight: 800;
-    color: #94a3b8;
+    color: var(--text-muted);
     margin-bottom: 12px;
     letter-spacing: 0.05em;
 }
@@ -38,11 +38,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 0;
-    color: #64748b;
+    color: var(--text-main);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--card-border);
     transition: all 0.2s ease;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .sitemap-link:hover {
-    color: var(--bs-primary);
+    color: var(--elite-primary);
     padding-left: 8px;
 }
 
@@ -64,8 +64,8 @@
 
 /* Pill Modifier for UI Kit */
 .sitemap-link--pill {
-    background: #f8fafc;
-    border: none;
+    background: var(--bg-body);
+    border: 1px solid var(--card-border);
     padding: 8px 16px;
     border-radius: 100px;
     margin-bottom: 8px;
@@ -74,9 +74,15 @@
 }
 
 .sitemap-link--pill:hover {
-    background: var(--bs-primary);
+    background: var(--elite-primary);
     color: #fff;
     padding-left: 16px;
+}
+
+[data-bs-theme="dark"] {
+    .sitemap-card:hover {
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4) !important;
+    }
 }
 
 /* Footer Accent */

@@ -16,63 +16,116 @@ export const initSummernote = () => {
  * Modular implementation as per elite architecture standards
  */
 export const initImageCropper = function () {
-    console.log("Initializing Image Cropper...");
-    const image = document.getElementById('image');
-    if (!image) return;
+    // Small delay to ensure global Cropper (from CDN) is populated if this runs very early
+    setTimeout(() => {
+        const image = document.getElementById('image');
+        if (!image) return;
 
-    const dataX = document.getElementById('dataX');
-    const dataY = document.getElementById('dataY');
-    const dataWidth = document.getElementById('dataWidth');
-    const dataHeight = document.getElementById('dataHeight');
-    const resultContainer = document.getElementById('croppedResult');
-    const downloadBtn = document.getElementById('download');
+        console.log("Initializing Image Cropper Logic...");
+        
+        const dataX = document.getElementById('dataX');
+        const dataY = document.getElementById('dataY');
+        const dataWidth = document.getElementById('dataWidth');
+        const dataHeight = document.getElementById('dataHeight');
+        const dataRotate = document.getElementById('dataRotate');
+        const resultContainer = document.getElementById('croppedResult');
+        const downloadBtn = document.getElementById('download');
 
-    const CropperClass = globalThis.Cropper;
+        const CropperClass = window.Cropper;
 
-    if (CropperClass) {
+        if (!CropperClass) {
+            console.error("Cropper.js library not found. Ensure CDN is loaded.");
+            return;
+        }
+
+        let cropper;
         const options = {
             aspectRatio: 16 / 9,
             preview: '.img-preview',
             viewMode: 2,
+            dragMode: 'crop',
+            autoCropArea: 0.8,
+            restore: false,
+            guides: true,
+            center: true,
+            highlight: false,
+            cropBoxMovable: true,
+            cropBoxResizable: true,
+            toggleDragModeOnDblclick: true,
             crop(event) {
                 if (dataX) dataX.value = Math.round(event.detail.x);
                 if (dataY) dataY.value = Math.round(event.detail.y);
                 if (dataWidth) dataWidth.value = Math.round(event.detail.width);
                 if (dataHeight) dataHeight.value = Math.round(event.detail.height);
+                if (dataRotate) dataRotate.value = Math.round(event.detail.rotate || 0);
             },
         };
 
-        let cropper = new CropperClass(image, options);
+        const startCropper = () => {
+            if (cropper) cropper.destroy();
+            cropper = new CropperClass(image, options);
+            console.log("Cropper instance created.");
+        };
 
-        // Remove old listeners if any (though typically this script runs on page load)
+        // Initialize when image is ready
+        if (image.complete) {
+            startCropper();
+        } else {
+            image.addEventListener('load', startCropper);
+        }
+
+        // Actions Toolbar Logic
         const actions = document.getElementById('actions');
         if (actions) {
             actions.addEventListener('click', (e) => {
                 const btn = e.target.closest('[data-method]');
-                if (!btn) return;
+                if (!btn || !cropper) return;
 
                 const method = btn.getAttribute('data-method');
                 let option = btn.getAttribute('data-option');
+                let secondOption = btn.getAttribute('data-second-option');
 
-                if (!method) return;
-
+                // Parse options
                 if (option && !isNaN(option)) {
                     option = parseFloat(option);
                 } else if (option === 'NaN') {
                     option = NaN;
                 }
 
-                if (method === 'getCroppedCanvas') {
-                    const canvas = cropper.getCroppedCanvas();
-                    if (canvas && resultContainer) {
-                        resultContainer.innerHTML = '';
-                        resultContainer.appendChild(canvas);
-                        if (downloadBtn) {
-                            downloadBtn.href = canvas.toDataURL('image/jpeg');
+                if (secondOption && !isNaN(secondOption)) {
+                    secondOption = parseFloat(secondOption);
+                }
+
+                // Execute Methods
+                switch (method) {
+                    case 'getCroppedCanvas':
+                        const canvas = cropper.getCroppedCanvas({
+                            imageSmoothingEnabled: true,
+                            imageSmoothingQuality: 'high',
+                        });
+                        if (canvas && resultContainer) {
+                            resultContainer.innerHTML = '';
+                            resultContainer.appendChild(canvas);
+                            if (downloadBtn) {
+                                downloadBtn.href = canvas.toDataURL('image/jpeg', 0.9);
+                            }
                         }
-                    }
-                } else if (typeof cropper[method] === 'function') {
-                    cropper[method](option);
+                        break;
+                    case 'scaleX':
+                        cropper.scaleX(option);
+                        btn.setAttribute('data-option', -option);
+                        break;
+                    case 'scaleY':
+                        cropper.scaleY(option);
+                        btn.setAttribute('data-option', -option);
+                        break;
+                    case 'move':
+                        cropper.move(option, secondOption || 0);
+                        break;
+                    default:
+                        if (typeof cropper[method] === 'function') {
+                            cropper[method](option);
+                        }
                 }
             });
         }
@@ -80,21 +133,22 @@ export const initImageCropper = function () {
         // Handle File Upload
         const inputImage = document.getElementById('inputImage');
         if (inputImage) {
+            const URL = window.URL || window.webkitURL;
             inputImage.addEventListener('change', function () {
                 const files = this.files;
-                if (files && files.length) {
+                if (files && files.length && cropper) {
                     const file = files[0];
                     if (/^image\/\w+$/.test(file.type)) {
                         const uploadedImageURL = URL.createObjectURL(file);
-                        cropper.destroy();
-                        image.src = uploadedImageURL;
-                        cropper = new CropperClass(image, options);
+                        cropper.replace(uploadedImageURL);
                         inputImage.value = null;
+                    } else {
+                        window.alert('Please choose an image file.');
                     }
                 }
             });
         }
-    }
+    }, 200);
 };
 
 export const initImageDropzone = () => {

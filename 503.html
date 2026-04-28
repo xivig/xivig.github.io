@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>503 Service Unavailable | XivigApp</title>
-    
+
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="./docs/assets/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="./docs/assets/favicon-32x32.png" />
@@ -15,10 +15,10 @@
 
     <!-- Theme Detection (Prevents flashing) -->
     <script>
-      document.addEventListener("DOMContentLoaded", function() {   
-        const savedTheme = localStorage.getItem('xivig-global-theme') || 'dark';
-        document.body.setAttribute('data-bs-theme', savedTheme);   
-      });
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedTheme = localStorage.getItem('xivig-global-theme') || 'dark';
+            document.body.setAttribute('data-bs-theme', savedTheme);
+        });
     </script>
 
     <style>
@@ -59,12 +59,27 @@
             animation: blink 1.4s infinite both;
         }
 
-        .dot:nth-child(2) { animation-delay: 0.2s; }
-        .dot:nth-child(3) { animation-delay: 0.4s; }
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes blink {
-            0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
-            40% { opacity: 1; transform: scale(1.2); }
+
+            0%,
+            80%,
+            100% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+
+            40% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
         }
 
         .error-code {
@@ -111,28 +126,33 @@
         [data-bs-theme="dark"] .error-page-503 {
             background-color: #0f172a;
         }
+
         [data-bs-theme="dark"] .status-card {
             background: #1e293b;
             border-color: #334155;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
+
         [data-bs-theme="dark"] .error-code {
             color: #f1f5f9;
         }
+
         [data-bs-theme="dark"] .status-title {
             color: #f1f5f9;
         }
+
         [data-bs-theme="dark"] .status-message {
             color: #94a3b8;
         }
+
         [data-bs-theme="dark"] .btn-refresh {
             background: #0d9488;
         }
     </style>
-  <script type="module" crossorigin src="./docs/assets/vendor-jquery.js"></script>
-  <script type="module" crossorigin src="./docs/assets/vendor-core.js"></script>
-  <script type="module" crossorigin src="./docs/assets/main.js"></script>
-  <link rel="stylesheet" crossorigin href="./docs/assets/main.css">     
+    <script type="module" crossorigin src="./docs/assets/vendor-jquery.js"></script>
+    <script type="module" crossorigin src="./docs/assets/vendor-core.js"></script>
+    <script type="module" crossorigin src="./docs/assets/main.js"></script>
+    <link rel="stylesheet" crossorigin href="./docs/assets/main.css">
 </head>
 
 <body class="error-page-503">
@@ -144,7 +164,7 @@
         </div>
 
         <h1 class="error-code">503</h1>
-        <h3 class="status-title">Under Maintenance</h3>
+        <h3 class="status-title">Service Unavailable</h3>
 
         <p class="status-message">
             We’re fine-tuning things to make your experience even better.<br>

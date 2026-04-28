@@ -13,6 +13,28 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
+    <!-- Critical Preloader Style (Prevents FOUC/Flash) -->
+    <style>
+        .preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s;
+        }
+        .preloader--hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        body:not(.is-loaded) {
+            overflow: hidden;
+        }
+    </style>
+    
     <!-- Theme Detection (Prevents flashing) -->
     <script>
       document.addEventListener("DOMContentLoaded", function() {
@@ -50,14 +72,90 @@
     <script>
         window.jQuery = window.$ = jQuery;
     </script>
+    
+    <!-- DataTables (Bootstrap 5) - Loaded AFTER jQuery -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.bootstrap5.min.css">
+    
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.bootstrap5.min.js"></script>
+    
+    <style>
+        /* DataTables Elite Tweaks */
+        .dataTables_wrapper .dataTables_filter .form-control {
+            border-radius: 50px;
+            padding: 0.4rem 1rem;
+            background: #f8f9fa;
+            border: 1px solid rgba(0,0,0,0.1);
+            width: 250px;
+        }
+        .dataTables_wrapper .dataTables_length select {
+            border-radius: 50px;
+            padding-right: 1.5rem;
+        }
+        .dataTables_wrapper .pagination {
+            margin-bottom: 0;
+        }
+        .dataTables_wrapper .pagination .page-item.active .page-link {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            color: #fff !important;
+        }
+        .dataTables_wrapper .pagination .page-link {
+            border-radius: 50px !important;
+            margin: 0 3px;
+            min-width: 36px;
+            height: 36px;
+            padding: 0 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            border: 1px solid #eee;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        /* Keep single digits/icons as circles */
+        .dataTables_wrapper .pagination .page-item:not(.previous):not(.next):not(.first):not(.last) .page-link {
+            padding: 0;
+            width: 36px;
+        }
+        /* Ensure Bootstrap badges can expand */
+        .badge {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            width: auto !important;
+            height: auto !important;
+        }
+        .dataTables_info {
+            font-size: 0.875rem;
+            color: #6c757d;
+            font-weight: 500;
+        }
+    </style>
   <script type="module" crossorigin src="./assets/modulepreload-polyfill.js"></script>
   <script type="module" crossorigin src="./assets/vendor-jquery.js"></script>
   <script type="module" crossorigin src="./assets/vendor-core.js"></script>
   <script type="module" crossorigin src="./assets/vendor-fullcalendar.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-apexcharts.js"></script>
   <script type="module" crossorigin src="./assets/vendor-echarts.js"></script>
   <script type="module" crossorigin src="./assets/vendor-chartjs.js"></script>
   <script type="module" crossorigin src="./assets/vendor-highcharts.js"></script>
-  <script type="module" crossorigin src="./assets/vendor-apexcharts.js"></script>
   <script type="module" crossorigin src="./assets/main2.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/main2.css">
 </head>
@@ -103,9 +201,9 @@
                         </button>
                         <button class="header__action-btn header__action-btn--badge" data-bs-toggle="dropdown">
                             <i class="bi bi-bell"></i>
-                            <span
-                                class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                                <span class="visually-hidden">New alerts</span>
+                            <span id="header-notification-badge" class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
+                                5
+                                <span class="visually-hidden">notifications</span>
                             </span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end header__dropdown-menu shadow">
@@ -276,9 +374,15 @@
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="chat.html" class="sidebar__sub-link">Chat</a></li>
                             <li class="sidebar__sub-item"><a href="calendar.html" class="sidebar__sub-link">Calendar</a>
                             </li>
+                            <li class="sidebar__sub-item"><a href="chat.html" class="sidebar__sub-link">Chat
+                                    <span id="sidebar-chat-badge" class="badge rounded-pill bg-info ms-auto">
+                                        3
+                                        <span class="visually-hidden">notifications</span>
+                                    </span>
+                                </a></li>
+    
                             <li class="sidebar__sub-item"><a href="video-player.html" class="sidebar__sub-link">Video
                                     Player</a></li>
                             <li class="sidebar__sub-item"><a href="kanban.html" class="sidebar__sub-link">Kanban</a></li>
@@ -286,7 +390,12 @@
                             </li>
                             <li class="sidebar__sub-item"><a href="file-manager.html" class="sidebar__sub-link">File
                                     Manager</a></li>
-                            <li class="sidebar__sub-item"><a href="inbox.html" class="sidebar__sub-link">Mailbox</a></li>
+                            <li class="sidebar__sub-item"><a href="inbox.html" class="sidebar__sub-link">Mailbox
+                                    <span id="sidebar-inbox-badge" class="badge rounded-pill bg-primary ms-auto">
+                                        12
+                                        <span class="visually-hidden">notifications</span>
+                                    </span>
+                                </a></li>
                         </ul>
                     </div>
                 </li>
@@ -456,8 +565,10 @@
                         <ul class="sidebar__submenu">
                             <li class="sidebar__sub-item"><a href="maintenance.html"
                                     class="sidebar__sub-link">Maintenance</a></li>
-                            <li class="sidebar__sub-item"><a href="multi-step-account-onboarding.html" class="sidebar__sub-link">Account Onboarding</a></li>
-                            <li class="sidebar__sub-item"><a href="help-support.html" class="sidebar__sub-link">Help & Support</a></li>
+                            <li class="sidebar__sub-item"><a href="multi-step-account-onboarding.html"
+                                    class="sidebar__sub-link">Account Onboarding</a></li>
+                            <li class="sidebar__sub-item"><a href="help-support.html" class="sidebar__sub-link">Help &
+                                    Support</a></li>
                             <li class="sidebar__sub-item"><a href="profile.html" class="sidebar__sub-link">Profile</a></li>
                             <li class="sidebar__sub-item"><a href="account-settings.html" class="sidebar__sub-link">Account
                                     Settings</a></li>
@@ -479,9 +590,15 @@
     
     
                 <li class="sidebar__item">
+                    <a href="documentation.html" class="sidebar__link">
+                        <span class="sidebar__icon bi bi-file-earmark-medical"></span>
+                        <span class="sidebar__text">Documentation</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
                     <a href="https://docs.xivig.com" target="_blank" class="sidebar__link">
                         <span class="sidebar__icon bi bi-book"></span>
-                        <span class="sidebar__text">Documentation</span>
+                        <span class="sidebar__text">Online Docs</span>
                     </a>
                 </li>
                 <li class="sidebar__item">
@@ -572,7 +689,7 @@
         <div class="main__container container-fluid">
             
             <!-- Standardized Page Header -->
-            <div class="page-header p-4 my-4 bg-white rounded shadow-sm border-bottom border-primary border-5 text-center">
+            <div class="page-header p-4 my-4 rounded shadow-sm border-bottom border-primary border-5 text-center">
                 <h2 class="page-header__title h4 text-primary fw-bold mb-1">Sitemap</h2>
                 <nav class="page-header__nav" aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 small justify-content-center">
@@ -587,126 +704,247 @@
             <!-- Main Content Area -->
             
             <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-body p-4">
+                    <div class="sitemap-header text-center py-5 mb-5 bg-white rounded-4 shadow-sm border-bottom border-primary border-5">
+                        <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill mb-3 text-uppercase fw-bold tracking-wider">Navigation Map</span>
+                        <h1 class="display-5 fw-800 mb-2">System <span class="text-primary text-gradient">Architecture</span></h1>
+                        <p class="text-muted mx-auto" style="max-width: 500px;">A comprehensive overview of the Xivig ecosystem modules and enterprise access points.</p>
+                    </div>
             
-                                    <div class="card-body p-4">
-                                        <!--content goes here-->
-                                        <div
-                                            class="sitemap-header text-center py-5 mb-5 bg-white rounded-4 shadow-sm border-bottom border-primary border-5">
-                                            <span
-                                                class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill mb-3 text-uppercase fw-bold tracking-wider">Navigation
-                                                Map</span>
-                                            <h1 class="display-5 fw-800 mb-2">System <span
-                                                    class="text-primary text-gradient">Architecture</span></h1>
-                                            <p class="text-muted mx-auto" style="max-width: 500px;">A comprehensive overview of the
-                                                Xivig ecosystem modules and
-                                                enterprise access points.</p>
-                                        </div>
-            
-                                        <div class="row g-4">
-                                            <div class="col-xl-4 col-lg-6">
-                                                <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                                                    <div
-                                                        class="sitemap-card__header p-4 bg-primary text-white d-flex align-items-center">
-                                                        <i class="bi bi-speedometer2 fs-3 me-3"></i>
-                                                        <h5 class="mb-0 fw-bold">Core Engine</h5>
-                                                    </div>
-                                                    <div class="sitemap-card__body p-4">
-                                                        <div class="sitemap-group">
-                                                            <h6 class="sitemap-group__title">Dashboards</h6>
-                                                            <div class="sitemap-group__links">
-                                                                <a href="index.html" class="sitemap-link">Main Overview <i
-                                                                        class="bi bi-arrow-right"></i></a>
-                                                                <a href="index2.html" class="sitemap-link">Analytics Pro <i
-                                                                        class="bi bi-arrow-right"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sitemap-group mt-4">
-                                                            <h6 class="sitemap-group__title">Forms & Logic</h6>
-                                                            <div class="sitemap-group__links">
-                                                                <a href="form-basic.html" class="sitemap-link">Standard Inputs</a>
-                                                                <a href="form-wizard.html" class="sitemap-link">Wizard Flow</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-            
-                                            <div class="col-xl-4 col-lg-6">
-                                                <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                                                    <div
-                                                        class="sitemap-card__header p-4 bg-success text-white d-flex align-items-center">
-                                                        <i class="bi bi-bar-chart-line fs-3 me-3"></i>
-                                                        <h5 class="mb-0 fw-bold">Analytics Hub</h5>
-                                                    </div>
-                                                    <div class="sitemap-card__body p-4">
-                                                        <div class="sitemap-group">
-                                                            <h6 class="sitemap-group__title text-success">Data Presentation</h6>
-                                                            <div class="sitemap-group__links">
-                                                                <a href="datatable.html" class="sitemap-link">Interactive Tables</a>
-                                                                <a href="apexcharts.html" class="sitemap-link">Apex
-                                                                    Visualization</a>
-                                                                <a href="highchart.html" class="sitemap-link">Highcharts Engine</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-            
-                                            <div class="col-xl-4 col-lg-12">
-                                                <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                                                    <div
-                                                        class="sitemap-card__header p-4 bg-dark text-white d-flex align-items-center">
-                                                        <i class="bi bi-layers fs-3 me-3 text-info"></i>
-                                                        <h5 class="mb-0 fw-bold">UI Component Kit</h5>
-                                                    </div>
-                                                    <div class="sitemap-card__body p-4">
-                                                        <div class="row">
-                                                            <div class="col-6">
-                                                                <a href="ui-buttons.html"
-                                                                    class="sitemap-link sitemap-link--pill">Buttons</a>
-                                                                <a href="ui-cards.html"
-                                                                    class="sitemap-link sitemap-link--pill">Cards</a>
-                                                                <a href="ui-modals.html"
-                                                                    class="sitemap-link sitemap-link--pill">Modals</a>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <a href="ui-tabs.html"
-                                                                    class="sitemap-link sitemap-link--pill">Tabs</a>
-                                                                <a href="ui-timeline.html"
-                                                                    class="sitemap-link sitemap-link--pill">Timeline</a>
-                                                                <a href="ui-typography.html"
-                                                                    class="sitemap-link sitemap-link--pill">Fonts</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-            
-                                        <div class="row mt-5">
-                                            <div class="col-12">
-                                                <div
-                                                    class="sitemap-footer bg-white p-4 rounded-4 shadow-sm border-start border-primary border-5 d-flex justify-content-between align-items-center">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="bg-warning-subtle text-warning p-2 rounded-3 me-3">
-                                                            <i class="bi bi-shield-lock fs-4"></i>
-                                                        </div>
-                                                        <div>
-                                                            <h6 class="mb-0 fw-bold">Access Control</h6>
-                                                            <small class="text-muted">Manage your security credentials</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex gap-2">
-                                                        <a href="login.html" class="btn btn-primary rounded-pill px-4">Login</a>
-                                                        <a href="404.html" class="btn btn-outline-danger rounded-pill px-4">System
-                                                            Errors</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-            
+                    <div class="row g-4">
+                        <!-- Core & Dashboards -->
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                <div class="sitemap-card__header p-3 bg-primary text-white d-flex align-items-center">
+                                    <i class="bi bi-speedometer2 fs-4 me-2"></i>
+                                    <h6 class="mb-0 fw-bold">Core & Dashboards</h6>
+                                </div>
+                                <div class="sitemap-card__body p-3">
+                                    <div class="sitemap-group__links">
+                                        <a href="index.html" class="sitemap-link">Dashboard v1 <i class="bi bi-arrow-right"></i></a>
+                                        <a href="index2.html" class="sitemap-link">Dashboard v2 <i class="bi bi-arrow-right"></i></a>
+                                        <a href="xivig.html" class="sitemap-link">Landing Page <i class="bi bi-arrow-right"></i></a>
                                     </div>
-                                
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Apps -->
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                <div class="sitemap-card__header p-3 bg-info text-white d-flex align-items-center">
+                                    <i class="bi bi-grid fs-4 me-2"></i>
+                                    <h6 class="mb-0 fw-bold">Applications</h6>
+                                </div>
+                                <div class="sitemap-card__body p-3">
+                                    <div class="sitemap-group__links">
+                                        <a href="chat.html" class="sitemap-link">Chat App <i class="bi bi-arrow-right"></i></a>
+                                        <a href="calendar.html" class="sitemap-link">Calendar <i class="bi bi-arrow-right"></i></a>
+                                        <a href="kanban.html" class="sitemap-link">Kanban Board <i class="bi bi-arrow-right"></i></a>
+                                        <a href="task-manager.html" class="sitemap-link">Task Manager <i class="bi bi-arrow-right"></i></a>
+                                        <a href="file-manager.html" class="sitemap-link">File Manager <i class="bi bi-arrow-right"></i></a>
+                                        <a href="contact-directory.html" class="sitemap-link">Contacts <i class="bi bi-arrow-right"></i></a>
+                                        <div class="mt-2 pt-2 border-top">
+                                            <small class="text-muted d-block mb-1">Mailbox</small>
+                                            <a href="inbox.html" class="sitemap-link">Inbox <i class="bi bi-arrow-right"></i></a>
+                                            <a href="compose.html" class="sitemap-link">Compose <i class="bi bi-arrow-right"></i></a>
+                                            <a href="read.html" class="sitemap-link">Read Mail <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Ecommerce -->
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                <div class="sitemap-card__header p-3 bg-success text-white d-flex align-items-center">
+                                    <i class="bi bi-shop fs-4 me-2"></i>
+                                    <h6 class="mb-0 fw-bold">Ecommerce</h6>
+                                </div>
+                                <div class="sitemap-card__body p-3">
+                                    <div class="sitemap-group__links">
+                                        <a href="ecommerce-products.html" class="sitemap-link">Product List <i class="bi bi-arrow-right"></i></a>
+                                        <a href="ecommerce-add-product.html" class="sitemap-link">Add Product <i class="bi bi-arrow-right"></i></a>
+                                        <a href="ecommerce-edit-product.html" class="sitemap-link">Edit Product <i class="bi bi-arrow-right"></i></a>
+                                        <a href="ecommerce-product-show.html" class="sitemap-link">Product Show <i class="bi bi-arrow-right"></i></a>
+                                        <a href="ecommerce-product-detail.html" class="sitemap-link">Product Analytics <i class="bi bi-arrow-right"></i></a>
+                                        <a href="ecommerce-orders.html" class="sitemap-link">Order List <i class="bi bi-arrow-right"></i></a>
+                                        <a href="ecommerce-cart.html" class="sitemap-link">Shopping Cart <i class="bi bi-arrow-right"></i></a>
+                                        <a href="store-settings.html" class="sitemap-link">Store Settings <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Content & Pages -->
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                <div class="sitemap-card__header p-3 bg-warning text-dark d-flex align-items-center">
+                                    <i class="bi bi-journal-text fs-4 me-2"></i>
+                                    <h6 class="mb-0 fw-bold">Content & Blog</h6>
+                                </div>
+                                <div class="sitemap-card__body p-3">
+                                    <div class="sitemap-group__links">
+                                        <a href="blog-list.html" class="sitemap-link">Blog List <i class="bi bi-arrow-right"></i></a>
+                                        <a href="blog-detail.html" class="sitemap-link">Blog Details <i class="bi bi-arrow-right"></i></a>
+                                        <a href="course-dashboard.html" class="sitemap-link">Course Dashboard <i class="bi bi-arrow-right"></i></a>
+                                        <a href="course-interface.html" class="sitemap-link">Course Interface <i class="bi bi-arrow-right"></i></a>
+                                        <a href="gallery.html" class="sitemap-link">Gallery <i class="bi bi-arrow-right"></i></a>
+                                        <a href="video-player.html" class="sitemap-link">Video Player <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Forms & Tables -->
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                <div class="sitemap-card__header p-3 bg-danger text-white d-flex align-items-center">
+                                    <i class="bi bi-textarea-resize fs-4 me-2"></i>
+                                    <h6 class="mb-0 fw-bold">Forms & Tables</h6>
+                                </div>
+                                <div class="sitemap-card__body p-3">
+                                    <div class="sitemap-group__links">
+                                        <a href="form-basic.html" class="sitemap-link">Basic Forms <i class="bi bi-arrow-right"></i></a>
+                                        <a href="form-grid.html" class="sitemap-link">Form Grid <i class="bi bi-arrow-right"></i></a>
+                                        <a href="form-pickers.html" class="sitemap-link">Form Pickers <i class="bi bi-arrow-right"></i></a>
+                                        <a href="form-wizard.html" class="sitemap-link">Form Wizard <i class="bi bi-arrow-right"></i></a>
+                                        <a href="form-extras.html" class="sitemap-link">Form Extras <i class="bi bi-arrow-right"></i></a>
+                                        <a href="advanced-components.html" class="sitemap-link">Advanced Components <i class="bi bi-arrow-right"></i></a>
+                                        <a href="summernote-editor.html" class="sitemap-link">Summernote Editor <i class="bi bi-arrow-right"></i></a>
+                                        <a href="image-cropper.html" class="sitemap-link">Image Cropper <i class="bi bi-arrow-right"></i></a>
+                                        <a href="image-dropzone.html" class="sitemap-link">Image Dropzone <i class="bi bi-arrow-right"></i></a>
+                                        <a href="basic-table.html" class="sitemap-link">Basic Table <i class="bi bi-arrow-right"></i></a>
+                                        <a href="datatable.html" class="sitemap-link">Data Tables <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- UI Kit -->
+                        <div class="col-xl-6 col-lg-12">
+                            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                <div class="sitemap-card__header p-3 bg-dark text-white d-flex align-items-center">
+                                    <i class="bi bi-layers fs-4 me-2 text-info"></i>
+                                    <h6 class="mb-0 fw-bold">UI Kit & Components</h6>
+                                </div>
+                                <div class="sitemap-card__body p-3">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="ui-buttons.html" class="sitemap-link">Buttons <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-cards.html" class="sitemap-link">Cards <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-cards-hover.html" class="sitemap-link">Cards Hover <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-modals.html" class="sitemap-link">Modals <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-tabs.html" class="sitemap-link">Tabs <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-offcanvas.html" class="sitemap-link">Offcanvas <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="ui-notification.html" class="sitemap-link">Notifications <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-sweet-alert.html" class="sitemap-link">Sweet Alerts <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-timeline.html" class="sitemap-link">Timeline <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-progressbar.html" class="sitemap-link">Progressbar <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-typography.html" class="sitemap-link">Typography <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-list-group.html" class="sitemap-link">List Group <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="ui-range-slider.html" class="sitemap-link">Range Slider <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-carousel.html" class="sitemap-link">Carousel <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-toggle.html" class="sitemap-link">Toggle <i class="bi bi-arrow-right"></i></a>
+                                            <a href="ui-tooltip-popover.html" class="sitemap-link">Tooltips <i class="bi bi-arrow-right"></i></a>
+                                            <a href="bootstrap-icon.html" class="sitemap-link">Bootstrap Icons <i class="bi bi-arrow-right"></i></a>
+                                            <a href="font-awesome.html" class="sitemap-link">Font Awesome <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Charts -->
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                <div class="sitemap-card__header p-3 bg-secondary text-white d-flex align-items-center">
+                                    <i class="bi bi-pie-chart fs-4 me-2"></i>
+                                    <h6 class="mb-0 fw-bold">Charts & Maps</h6>
+                                </div>
+                                <div class="sitemap-card__body p-3">
+                                    <div class="sitemap-group__links">
+                                        <a href="apexcharts.html" class="sitemap-link">Apex Charts <i class="bi bi-arrow-right"></i></a>
+                                        <a href="chartjs.html" class="sitemap-link">Chart.js <i class="bi bi-arrow-right"></i></a>
+                                        <a href="e-chart.html" class="sitemap-link">E-Charts <i class="bi bi-arrow-right"></i></a>
+                                        <a href="highchart.html" class="sitemap-link">Highcharts <i class="bi bi-arrow-right"></i></a>
+                                        <a href="jtvector-map.html" class="sitemap-link">Vector Maps <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Extras & Auth -->
+                        <div class="col-xl-6 col-lg-12">
+                            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                <div class="sitemap-card__header p-3 bg-light text-dark d-flex align-items-center">
+                                    <i class="bi bi-plus-circle fs-4 me-2"></i>
+                                    <h6 class="mb-0 fw-bold">Extras & Authentication</h6>
+                                </div>
+                                <div class="sitemap-card__body p-3">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="profile.html" class="sitemap-link">User Profile <i class="bi bi-arrow-right"></i></a>
+                                            <a href="account-settings.html" class="sitemap-link">Account Settings <i class="bi bi-arrow-right"></i></a>
+                                            <a href="pricing-table.html" class="sitemap-link">Pricing Table <i class="bi bi-arrow-right"></i></a>
+                                            <a href="invoice.html" class="sitemap-link">Invoice <i class="bi bi-arrow-right"></i></a>
+                                            <a href="faq.html" class="sitemap-link">FAQ <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="login.html" class="sitemap-link">Login <i class="bi bi-arrow-right"></i></a>
+                                            <a href="register.html" class="sitemap-link">Register <i class="bi bi-arrow-right"></i></a>
+                                            <a href="forgot-password.html" class="sitemap-link">Forgot Password <i class="bi bi-arrow-right"></i></a>
+                                            <a href="reset-password.html" class="sitemap-link">Reset Password <i class="bi bi-arrow-right"></i></a>
+                                            <a href="lockscreen.html" class="sitemap-link">Lockscreen <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="two-factor-authentication.html" class="sitemap-link">2FA Auth <i class="bi bi-arrow-right"></i></a>
+                                            <a href="multi-step-account-onboarding.html" class="sitemap-link">Onboarding <i class="bi bi-arrow-right"></i></a>
+                                            <a href="maintenance.html" class="sitemap-link">Maintenance <i class="bi bi-arrow-right"></i></a>
+                                            <a href="help-support.html" class="sitemap-link">Help Support <i class="bi bi-arrow-right"></i></a>
+                                            <a href="notification.html" class="sitemap-link">Notifications List <i class="bi bi-arrow-right"></i></a>
+                                            <a href="search.html" class="sitemap-link">Search Results <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- System Pages -->
+                        <div class="col-xl-6 col-lg-12">
+                            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                <div class="sitemap-card__header p-3 bg-dark text-white d-flex align-items-center">
+                                    <i class="bi bi-bug fs-4 me-2 text-danger"></i>
+                                    <h6 class="mb-0 fw-bold">System & Error Pages</h6>
+                                </div>
+                                <div class="sitemap-card__body p-3">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="400.html" class="sitemap-link text-danger">400 Bad Request <i class="bi bi-arrow-right"></i></a>
+                                            <a href="403.html" class="sitemap-link text-danger">403 Forbidden <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="404.html" class="sitemap-link text-danger">404 Not Found <i class="bi bi-arrow-right"></i></a>
+                                            <a href="500.html" class="sitemap-link text-danger">500 Internal Error <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="503.html" class="sitemap-link text-danger">503 Service Unavailable <i class="bi bi-arrow-right"></i></a>
+                                            <a href="blank.html" class="sitemap-link">Blank Page <i class="bi bi-arrow-right"></i></a>
+                                            <a href="sitemap.html" class="sitemap-link">Sitemap <i class="bi bi-arrow-right"></i></a>
+                                            <a href="documentation.html" class="sitemap-link fw-bold text-primary">Documentation <i class="bi bi-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
 
         </div>
