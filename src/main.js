@@ -6,14 +6,10 @@ window.jQuery = window.$ = $;
 // 1. TOP-LEVEL VENDOR JS (Must be first for globals)
 import './scripts/jquery-setup.js';
 
-// 2. VENDOR STYLES (Direct imports for Vite bundling)
-import 'animate.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import "@fancyapps/ui/dist/fancybox/fancybox.css";
-import 'bootstrap-icons/font/bootstrap-icons.css';
-import 'summernote/dist/summernote-lite.css';
-import 'air-datepicker/air-datepicker.css';
-import 'timedropper/timedropper.css';
+// 2. PROJECT STYLES (Direct imports for Vite bundling)
+import './scss/vendors.scss';
+import './scss/main.scss';
+import './scss/components-bundle.scss';
 
 // 3. OTHER VENDOR JS
 import * as bootstrap from 'bootstrap';

@@ -4,87 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <title>503 Service Unavailable | XivigApp</title>
-
+    
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png" />
-
+    
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
+    
     <!-- Theme Detection (Prevents flashing) -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const savedTheme = localStorage.getItem('xivig-global-theme') || 'dark';
-            document.body.setAttribute('data-bs-theme', savedTheme);
-        });
+      document.addEventListener("DOMContentLoaded", function() {
+        const savedTheme = localStorage.getItem('xivig-global-theme') || 'dark';
+        document.body.setAttribute('data-bs-theme', savedTheme);
+      });
     </script>
-
+    
     <!-- Vendor Styles (Third Party) -->
-
-
+    
     <!-- Master CSS (Core Architecture) -->
-
-
+    
     <!-- Components CSS (UI Elements) -->
-
-
+    
     <!-- Cropper.js v1.6.2 (Compatibility for Elite Layout) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
-
+    
     <!-- Dropzone.js v6 (Modern Media Upload) -->
     <link rel="stylesheet" href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css">
     <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
-
+    
     <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    
     <!-- Form Components Dependencies -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"/>
+    
     <!-- Vector Map (MapLibre) -->
-    <link href="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.css" rel="stylesheet" />
-
+    <link href="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.css" rel="stylesheet"/>
+    
     <!-- Global jQuery Exposure (Critical for Plugins) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
         window.jQuery = window.$ = jQuery;
     </script>
-    <script type="module" crossorigin src="./assets/rolldown-runtime.js"></script>
-    <script type="module" crossorigin src="./assets/vendor-core.js"></script>
-    <script type="module" crossorigin src="./assets/vendor-fullcalendar.js"></script>
-    <script type="module" crossorigin src="./assets/vendor-chartjs.js"></script>
-    <script type="module" crossorigin src="./assets/vendor-apexcharts.js"></script>
-    <script type="module" crossorigin src="./assets/vendor-echarts.js"></script>
-    <script type="module" crossorigin src="./assets/vendor-highcharts.js"></script>
-    <script type="module" crossorigin src="./assets/vendor-jquery.js"></script>
-    <script type="module" crossorigin src="./assets/main.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/vendor-core.css">
-    <link rel="stylesheet" crossorigin href="./assets/main.css">
+  <script type="module" crossorigin src="./assets/rolldown-runtime.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-core.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-fullcalendar.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-chartjs.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-apexcharts.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-echarts.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-highcharts.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-jquery.js"></script>
+  <script type="module" crossorigin src="./assets/main.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main.css">
 </head>
 
 <body class="error-page-503">
-    <div class="error-card text-center">
+    <div class="status-card text-center">
         <div class="loader-dots">
             <div class="dot"></div>
             <div class="dot"></div>
             <div class="dot"></div>
         </div>
 
-        <h1>503</h1>
-        <h3 class="text-uppercase">Under Maintenance</h3>
+        <h1 class="error-code">503</h1>
+        <h3 class="status-title">Under Maintenance</h3>
 
-        <p class="fw-bold my-4">
+        <p class="status-message">
             We’re fine-tuning things to make your experience even better.<br>
             We'll be back online in just a few minutes!
         </p>
 
-        <a href="index.html" class="btn btn-primary btn-lg rounded-pill px-5 shadow btn-home">
-            Try Again
-        </a>
+        <div class="d-grid gap-2 col-md-8 mx-auto">
+            <a href="index.html" class="btn btn-refresh shadow-sm">
+                Try Again
+            </a>
+        </div>
     </div>
 
     <!-- Form Components Dependencies -->
@@ -94,8 +92,7 @@
     <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/addons/cleave-phone.us.js"></script>
     <script src="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-</body>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script></body>
 
 </html>

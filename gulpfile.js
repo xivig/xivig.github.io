@@ -26,7 +26,8 @@ export const viteBuild = (cb) => {
 // Note: We use base: 'src' to keep the folder structure consistent
 export const optimizeImages = () => {
     return gulp.src('src/images/**/*.{jpg,png,jpeg,webp}', {
-            base: 'src'
+            base: 'src/images',
+            allowEmpty: true
         })
         .pipe(sharpOptimizeImages({
             webp: {
@@ -36,8 +37,7 @@ export const optimizeImages = () => {
                 quality: 80
             }
         }))
-        .pipe(gulp.dest('dist/assets')) // Saves to dist/assets/images/...
-        // .pipe(gulp.dest('exports/assets')); // Saves to exports/assets/images/...
+        .pipe(gulp.dest('dist/assets')) // Saves to dist/assets/...
 };
 
 // 4. Servers
