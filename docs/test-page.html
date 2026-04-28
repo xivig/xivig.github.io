@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Form Wizards</title>
+    <title>Test Page</title>
     
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
@@ -50,17 +50,16 @@
     <script>
         window.jQuery = window.$ = jQuery;
     </script>
-  <script type="module" crossorigin src="./assets/form-wizard.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill.js">
-  <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-core.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-fullcalendar.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-chartjs.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-apexcharts.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-echarts.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-highcharts.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-jquery.js">
-  <link rel="modulepreload" crossorigin href="./assets/custom_scripts.js">
+  <script type="module" crossorigin src="./assets/modulepreload-polyfill.js"></script>
+  <script type="module" crossorigin src="./assets/rolldown-runtime.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-core.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-fullcalendar.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-chartjs.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-apexcharts.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-echarts.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-highcharts.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-jquery.js"></script>
+  <script type="module" crossorigin src="./assets/custom_scripts.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/vendor-core.css">
   <link rel="stylesheet" crossorigin href="./assets/components.css">
   <link rel="stylesheet" crossorigin href="./assets/main.css">
@@ -575,128 +574,19 @@
             
             <!-- Standardized Page Header -->
             <div class="page-header p-4 my-4 bg-white rounded shadow-sm border-bottom border-primary border-5 text-center">
-                <h2 class="page-header__title h4 text-primary fw-bold mb-1">Form Wizards</h2>
+                <h2 class="page-header__title h4 text-primary fw-bold mb-1">Test Page</h2>
                 <nav class="page-header__nav" aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 small justify-content-center">
                         <li class="breadcrumb__item">
                             <a href="index.html" class="breadcrumb__link">Home</a>
                         </li>
-                        <li class="breadcrumb__item">
-                            <a href="#" class="breadcrumb__link">Forms</a>
-                        </li>
-                        <li class="breadcrumb__item breadcrumb__item--active text-primary fw-semibold" aria-current="page">Form Wizards</li>
+                        <li class="breadcrumb__item breadcrumb__item--active text-primary fw-semibold" aria-current="page">Test Page</li>
                     </ol>
                 </nav>
             </div>
 
             <!-- Main Content Area -->
-            
-            <div class="row">
-                <div class="col-12">
-                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
-                        <div class="card-body p-4">
-            
-                            <div class="card border-0 shadow-sm rounded-4 overflow-hidden" id="wizard-section">
-                                <div class="card-body p-4 p-md-5">
-                                    <div class="mb-4 text-center">
-                                        <h4 class="fw-bold text-dark">Application Process</h4>
-                                        <p class="text-muted small">Please fill in the details accurately to proceed</p>
-                                    </div>
-            
-                                    <div class="wizard-wrapper position-relative mb-5 mt-2">
-                                        <div class="progress position-absolute start-50 translate-middle-x"
-                                            style="height: 2px; width: 75%; top: 25px; z-index: 0; background-color: #e9ecef;">
-                                            <div class="progress-bar bg-primary" id="wizard-progress"
-                                                style="width: 0%; transition: width 0.4s ease;"></div>
-                                        </div>
-            
-                                        <ul class="nav justify-content-between position-relative" id="wizard-nav"
-                                            style="z-index: 1; max-width: 600px; margin: 0 auto;">
-                                            <li class="nav-item text-center">
-                                                <a class="nav-link active wizard-circle shadow-sm fw-bold" data-step="0">1</a>
-                                                <div class="small fw-bold mt-2 text-dark">Personal</div>
-                                            </li>
-                                            <li class="nav-item text-center">
-                                                <a class="nav-link disabled wizard-circle border bg-white fw-bold"
-                                                    data-step="1">2</a>
-                                                <div class="small fw-bold mt-2 text-white">Job Status</div>
-                                            </li>
-                                            <li class="nav-item text-center">
-                                                <a class="nav-link disabled wizard-circle border bg-white fw-bold"
-                                                    data-step="2">3</a>
-                                                <div class="small fw-bold mt-2 text-white">Interview</div>
-                                            </li>
-                                            <li class="nav-item text-center">
-                                                <a class="nav-link disabled wizard-circle border bg-white fw-bold"
-                                                    data-step="3">4</a>
-                                                <div class="small fw-bold mt-2 text-white">Remarks</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-            
-                                    <form id="wizard-form" novalidate>
-                                        <section class="wizard-step">
-                                            <div class="row g-3">
-                                                <div class="col-md-6">
-                                                    <label class="form-label fw-semibold">First Name</label>
-                                                    <input type="text" class="form-control" required>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="form-label fw-semibold">Last Name</label>
-                                                    <input type="text" class="form-control" required>
-                                                </div>
-                                            </div>
-                                        </section>
-            
-                                        <section class="wizard-step d-none">
-                                            <div class="col-12">
-                                                <label class="form-label fw-semibold">Company Name</label>
-                                                <input type="text" class="form-control" required>
-                                            </div>
-                                        </section>
-            
-                                        <section class="wizard-step d-none">
-                                            <div class="col-12">
-                                                <label class="form-label fw-semibold">Interview Date</label>
-                                                <input type="date" class="form-control" required>
-                                            </div>
-                                        </section>
-            
-                                        <section class="wizard-step d-none">
-                                            <div class="col-12">
-                                                <label class="form-label fw-semibold">Comments</label>
-                                                <textarea class="form-control" rows="3"></textarea>
-                                            </div>
-                                        </section>
-            
-                                        <div class="d-flex justify-content-between mt-5">
-                                            <button type="button" class="btn btn-light border px-4 rounded-pill d-none"
-                                                id="prev-btn">
-                                                <i class="bi bi-arrow-left me-1"></i> Previous
-                                            </button>
-                                            <button type="button" class="btn btn-primary px-5 rounded-pill ms-auto" id="next-btn">
-                                                Next <i class="bi bi-arrow-right ms-1"></i>
-                                            </button>
-                                            <button type="submit" class="btn btn-success px-5 rounded-pill d-none ms-auto"
-                                                id="submit-btn">
-                                                Submit Application
-                                            </button>
-            
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-            
-                    </div>
-            
-                </div>
-            
-            </div>
-            
-            </div>
-            </div>
-            
+            <h1>Test Page</h1>
 
         </div>
     </main>

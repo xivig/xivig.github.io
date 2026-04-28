@@ -9,10 +9,10 @@
     .error-card {
         max-width: 500px;
         width: 100%;
-        background: #fff;
         padding: 3rem;
+        background: #fff;
         border-radius: 1.5rem;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         text-align: center;
     }
 
@@ -37,10 +37,10 @@
     .error-card {
         max-width: 550px;
         width: 100%;
-        background: #fff;
         padding: 4rem 2rem;
+        background: #fff;
         border-radius: 2rem;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
         text-align: center;
     }
 
@@ -67,10 +67,10 @@
     .error-card {
         max-width: 600px;
         width: 100%;
-        background: #fff;
         padding: 4rem;
+        background: #fff;
         border-radius: 2.5rem;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         text-align: center;
     }
 
@@ -83,3 +83,25 @@
         -webkit-text-fill-color: initial;
     }
 }
+
+/* Dark Mode Overrides for Legacy Error Pages */
+[data-bs-theme="dark"] {
+    .error-page-400, .error-page-403, .error-page-500 {
+        background-color: #0f172a;
+
+        .error-card {
+            background-color: #1e293b;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .error-code, h1, .error-title {
+            color: #f8fafc;
+        }
+
+        .error-message, p {
+            color: #94a3b8;
+        }
+    }
+}
+

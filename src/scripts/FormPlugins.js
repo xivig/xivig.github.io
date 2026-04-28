@@ -18,6 +18,8 @@ export const initSummernote = () => {
 export const initImageCropper = function () {
     console.log("Initializing Image Cropper...");
     const image = document.getElementById('image');
+    if (!image) return;
+
     const dataX = document.getElementById('dataX');
     const dataY = document.getElementById('dataY');
     const dataWidth = document.getElementById('dataWidth');
@@ -25,11 +27,9 @@ export const initImageCropper = function () {
     const resultContainer = document.getElementById('croppedResult');
     const downloadBtn = document.getElementById('download');
 
-    // Use globalThis.Cropper which is exposed in main.js (via CDN in head.html)
     const CropperClass = globalThis.Cropper;
 
-    if (image && CropperClass) {
-        console.log("Image and Cropper library found. Starting engine...");
+    if (CropperClass) {
         const options = {
             aspectRatio: 16 / 9,
             preview: '.img-preview',
@@ -44,38 +44,38 @@ export const initImageCropper = function () {
 
         let cropper = new CropperClass(image, options);
 
-        // Unified listener for all cropper actions
-        const handleAction = (e) => {
-            const btn = e.target.closest('[data-method]');
-            if (!btn) return;
+        // Remove old listeners if any (though typically this script runs on page load)
+        const actions = document.getElementById('actions');
+        if (actions) {
+            actions.addEventListener('click', (e) => {
+                const btn = e.target.closest('[data-method]');
+                if (!btn) return;
 
-            const method = btn.getAttribute('data-method');
-            let option = btn.getAttribute('data-option');
+                const method = btn.getAttribute('data-method');
+                let option = btn.getAttribute('data-option');
 
-            if (!method) return;
-            console.log(`Cropper Action: ${method}`, option);
+                if (!method) return;
 
-            if (option && !isNaN(option)) {
-                option = parseFloat(option);
-            } else if (option === 'NaN') {
-                option = NaN;
-            }
-
-            if (method === 'getCroppedCanvas') {
-                const canvas = cropper.getCroppedCanvas();
-                if (canvas && resultContainer) {
-                    resultContainer.innerHTML = '';
-                    resultContainer.appendChild(canvas);
-                    if (downloadBtn) {
-                        downloadBtn.href = canvas.toDataURL('image/jpeg');
-                    }
+                if (option && !isNaN(option)) {
+                    option = parseFloat(option);
+                } else if (option === 'NaN') {
+                    option = NaN;
                 }
-            } else if (typeof cropper[method] === 'function') {
-                cropper[method](option);
-            }
-        };
 
-        document.addEventListener('click', handleAction);
+                if (method === 'getCroppedCanvas') {
+                    const canvas = cropper.getCroppedCanvas();
+                    if (canvas && resultContainer) {
+                        resultContainer.innerHTML = '';
+                        resultContainer.appendChild(canvas);
+                        if (downloadBtn) {
+                            downloadBtn.href = canvas.toDataURL('image/jpeg');
+                        }
+                    }
+                } else if (typeof cropper[method] === 'function') {
+                    cropper[method](option);
+                }
+            });
+        }
 
         // Handle File Upload
         const inputImage = document.getElementById('inputImage');
@@ -90,14 +90,10 @@ export const initImageCropper = function () {
                         image.src = uploadedImageURL;
                         cropper = new CropperClass(image, options);
                         inputImage.value = null;
-                    } else {
-                        alert('Please choose an image file.');
                     }
                 }
             });
         }
-    } else {
-        console.error("Cropper initialization failed: Missing image element or Cropper library.");
     }
 };
 
