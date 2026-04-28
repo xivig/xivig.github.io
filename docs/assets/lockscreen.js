@@ -1,1 +1,1 @@
-/* empty css                 */import"./main.js";document.addEventListener(`DOMContentLoaded`,()=>{let e=document.getElementById(`lockInput`);e&&e.focus()});
+import"./main.js";document.addEventListener(`DOMContentLoaded`,()=>{let e=document.getElementById(`lockInput`);e&&e.focus()});

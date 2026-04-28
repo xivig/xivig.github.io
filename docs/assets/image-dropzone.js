@@ -1,1 +1,1 @@
-/* empty css                 */import"./main.js";import{n as e}from"./FormPlugins.js";document.addEventListener(`DOMContentLoaded`,()=>{e()});
+import"./main.js";import{n as e}from"./FormPlugins.js";document.addEventListener(`DOMContentLoaded`,()=>{e()});
