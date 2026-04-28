@@ -1,0 +1,36 @@
+// Monokai Syntax Theme for "View Source" blocks
+.monokai-wrapper {
+    background: #272822;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.monokai-header {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    
+    .text-secondary { color: #888 !important; }
+    .text-success { color: #a6e22e !important; }
+}
+
+.monokai-content {
+    padding: 20px;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #f8f8f2;
+    overflow-x: auto;
+    background: transparent;
+}
+
+// Syntax Highlighting Spans (Manual mode)
+.mt-tag { color: #f92672; } // Pink for tags
+.mt-attr { color: #a6e22e; } // Green for attributes
+.mt-val { color: #e6db74; } // Yellow for values
+.mt-comm { color: #75715e; } // Grey for comments
+
+// Utility for smaller text in header
+.x-small { font-size: 0.75rem; letter-spacing: 0.5px; }

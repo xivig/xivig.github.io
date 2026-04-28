@@ -1,0 +1,163 @@
+/* XIVIG ELITE LANDING - THEME AWARE (Dark Default) */
+
+:root {
+    --landing-bg: #0f172a;
+    --landing-text-main: #f8fafc;
+    --landing-text-muted: #94a3b8;
+    --glass-nav-bg: rgba(2, 6, 23, 0.9);
+    --glass-card-bg: rgba(255, 255, 255, 0.03);
+    --glass-card-border: rgba(255, 255, 255, 0.1);
+    --section-light-bg: #020617;
+    --nav-link-color: #cbd5e1;
+    --footer-bg: rgba(2, 6, 23, 0.9);
+}
+
+[data-bs-theme="light"] {
+    --landing-bg: #ffffff;
+    --landing-text-main: #1e293b;
+    --landing-text-muted: #64748b;
+    --glass-nav-bg: rgba(255, 255, 255, 0.9);
+    --glass-card-bg: rgba(255, 255, 255, 0.7);
+    --glass-card-border: rgba(0, 0, 0, 0.05);
+    --section-light-bg: #f8f9fa;
+    --nav-link-color: #475569;
+    --footer-bg: #f1f5f9; /* Slightly darker slate for distinction */
+}
+
+.glass-nav {
+    background: var(--glass-nav-bg) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    border-bottom: 1px solid var(--glass-card-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+
+    .navbar-brand {
+        color: var(--landing-text-main) !important;
+    }
+
+    .nav-link {
+        color: var(--nav-link-color) !important;
+        font-weight: 600;
+        &:hover {
+            color: var(--bs-primary) !important;
+        }
+    }
+}
+
+.theme-toggle-eye {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(var(--bs-primary-rgb), 0.1);
+    color: var(--bs-primary);
+    border: 1px solid rgba(var(--bs-primary-rgb), 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: var(--bs-primary);
+        color: #fff;
+        transform: rotate(15deg) scale(1.1);
+    }
+}
+
+.landing-footer {
+    background-color: var(--footer-bg) !important;
+    color: var(--landing-text-main);
+    border-top: 1px solid var(--glass-card-border);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+
+    h3, h4, h5 {
+        color: var(--landing-text-main) !important;
+    }
+
+    .footer-link-fb i, .footer-link-tw i, .footer-link-ig i {
+        color: var(--landing-text-main) !important;
+        transition: color 0.2s;
+        &:hover {
+            color: var(--bs-primary) !important;
+        }
+    }
+}
+
+.hero-section {
+    padding: 160px 0 100px;
+    background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+}
+
+.glass-card {
+    background: var(--glass-card-bg) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-card-border) !important;
+    border-radius: 24px;
+    color: var(--landing-text-main);
+}
+
+.bg-soft-primary {
+    background-color: rgba(99, 102, 241, 0.1);
+}
+
+.py-100 {
+    padding: 100px 0;
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.hover-up {
+    transition: all 0.3s ease;
+    &:hover {
+        transform: translateY(-10px);
+    }
+}
+
+.bg-elite-dark {
+    background-color: #0f172a;
+}
+
+/* Section Backgrounds */
+.section-theme-light {
+    background-color: var(--section-light-bg) !important;
+}
+
+.text-muted {
+    color: var(--landing-text-muted) !important;
+}
+
+.text-secondary {
+    color: var(--landing-text-muted) !important;
+}
+
+.text-dark {
+    color: var(--landing-text-main) !important;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--bs-primary) 0%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cta-gradient-bg {
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,245,255,0.9) 100%) !important;
+}
+
+[data-bs-theme="light"] .cta-gradient-bg {
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,245,255,0.9) 100%) !important;
+}
+
+[data-bs-theme="dark"] .cta-gradient-bg {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%) !important;
+}
