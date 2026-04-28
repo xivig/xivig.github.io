@@ -1,1 +1,1 @@
-import"./main.js";import{t as e}from"./FormPlugins.js";document.addEventListener(`DOMContentLoaded`,()=>{e()});
+import"./main.js";import{t as e}from"./FormPlugins.js";window.addEventListener(`DOMContentLoaded`,()=>{e()});
