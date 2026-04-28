@@ -58,8 +58,10 @@ export function copyVendorPackages() {
     return gulp
         .src(
             [
-                "node_modules/bootstrap-icons/**/*",
-                "node_modules/@fortawesome/fontawesome-free/**/*",
+                "node_modules/bootstrap-icons/font/fonts/**/*",
+                "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+                "node_modules/@fortawesome/fontawesome-free/webfonts/**/*",
+                "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
                 "node_modules/bootstrap/dist/**/*",
                 "node_modules/jquery/dist/**/*",
                 "node_modules/overlayscrollbars/**/*",
@@ -75,11 +77,9 @@ export function copyVendorPackages() {
             ], {
                 base: "node_modules"
             },
-        ) // preserve folder names
-        // .pipe(gulp.dest("dist/vendors/")) // copy into vendors/<package>/
-        .pipe(gulp.dest("dist/plugins/")) // copy into plugins/<package>/
-        .pipe(gulp.dest("src/plugins/")) // copy into plugins/<package>/
-
+        )
+        .pipe(gulp.dest("dist/plugins/"))
+        .pipe(gulp.dest("src/plugins/"))
 }
 
 // --- WORKFLOWS ---
