@@ -1,1 +1,1 @@
-/* empty css       *//* empty css    *//* empty css          */import"./modulepreload-polyfill.js";import"./custom_scripts.js";document.addEventListener(`DOMContentLoaded`,()=>{let e=document.getElementById(`lockInput`);e&&e.focus()});
+/* empty css                 */import"./main.js";document.addEventListener(`DOMContentLoaded`,()=>{let e=document.getElementById(`lockInput`);e&&e.focus()});

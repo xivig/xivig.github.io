@@ -54,14 +54,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         ...getHtmlEntries(),
-        // Vendor CSS Bundle
-        vendors: path.resolve(__dirname, 'src/scss/vendors.scss'),
-        // Master CSS Bundle
-        main: path.resolve(__dirname, 'src/scss/main.scss'),
-        // Components CSS Bundle
-        components: path.resolve(__dirname, 'src/scss/components-bundle.scss'),
-        // Custom Logic
-        custom_scripts: path.resolve(__dirname, 'src/main.js'),
       },
       output: {
         // This keeps the filenames clean in the dist folder

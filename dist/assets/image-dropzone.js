@@ -1,1 +1,1 @@
-/* empty css       *//* empty css    *//* empty css          */import"./modulepreload-polyfill.js";import"./custom_scripts.js";import{n as e}from"./FormPlugins.js";document.addEventListener(`DOMContentLoaded`,()=>{e()});
+/* empty css                 */import"./main.js";import{n as e}from"./FormPlugins.js";document.addEventListener(`DOMContentLoaded`,()=>{e()});
