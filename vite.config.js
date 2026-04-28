@@ -49,7 +49,7 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     // Prevent Vite from clearing the folder if Gulp is also writing there
-    emptyOutDir: true,
+    emptyOutDir: false,
     chunkSizeWarningLimit: 2000,
     rollupOptions: {
       input: {

@@ -30,14 +30,10 @@ export const optimizeImages = () => {
             allowEmpty: true
         })
         .pipe(sharpOptimizeImages({
-            webp: {
-                quality: 80
-            },
-            jpg_to_jpg: {
-                quality: 80
-            }
+            webp: { quality: 80 },
+            jpg_to_jpg: { quality: 80 }
         }))
-        .pipe(gulp.dest('dist/assets')) // Saves to dist/assets/...
+        .pipe(gulp.dest('dist/assets'))
 };
 
 // 4. Servers
