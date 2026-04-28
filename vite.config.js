@@ -69,7 +69,7 @@ export default defineConfig({
         chunkFileNames: `assets/[name].js`,
         assetFileNames: `assets/[name].[ext]`,
         manualChunks(id) {
-          if (id.includes('node_modules')) {
+          if (id.includes('node_modules') || id.includes('src/scripts/jquery-setup.js')) {
             if (id.includes('echarts') || id.includes('zrender')) {
               return 'vendor-echarts';
             }
