@@ -6,9 +6,9 @@ export function exportAssets() {
   return gulp.src([
       'dist/**/*.html',
       'dist/assets/**/*',
+      'dist/data/**/*',
       'dist/favicon.ico',
-      'dist/plugins/**/*',
-      'dist/vendors/**/*',
+      'dist/plugins/**/*',      'dist/vendors/**/*',
       'dist/**/*.{png,jpg,jpeg,gif,svg,webp,ico}',
       'dist/.nojekyll'
     ], {
