@@ -1,3 +1,8 @@
+// 0. BOOTSTRAP GLOBALS (Must be absolute first)
+import $ from 'jquery';
+globalThis.jQuery = globalThis.$ = $;
+window.jQuery = window.$ = $;
+
 // 1. TOP-LEVEL VENDOR JS (Must be first for globals)
 import './scripts/jquery-setup.js';
 

@@ -1,6 +1,7 @@
 import $ from 'jquery';
 
-window.jQuery = window.$ = $;
+// Define globally immediately
 globalThis.jQuery = globalThis.$ = $;
+window.jQuery = window.$ = $;
 
 export default $;

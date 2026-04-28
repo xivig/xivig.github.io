@@ -44,6 +44,12 @@
     
     <!-- Vector Map (MapLibre) -->
     <link href="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.css" rel="stylesheet"/>
+    
+    <!-- Global jQuery Exposure (Critical for Plugins) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        window.jQuery = window.$ = jQuery;
+    </script>
   <script type="module" crossorigin src="./assets/modulepreload-polyfill.js"></script>
   <script type="module" crossorigin src="./assets/rolldown-runtime.js"></script>
   <script type="module" crossorigin src="./assets/vendor-core.js"></script>
@@ -52,6 +58,7 @@
   <script type="module" crossorigin src="./assets/vendor-apexcharts.js"></script>
   <script type="module" crossorigin src="./assets/vendor-echarts.js"></script>
   <script type="module" crossorigin src="./assets/vendor-highcharts.js"></script>
+  <script type="module" crossorigin src="./assets/vendor-jquery.js"></script>
   <script type="module" crossorigin src="./assets/custom_scripts.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/vendor-core.css">
   <link rel="stylesheet" crossorigin href="./assets/components.css">

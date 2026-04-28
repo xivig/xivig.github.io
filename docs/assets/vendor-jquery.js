@@ -1,0 +1,1 @@
+import{r as e}from"./rolldown-runtime.js";import{b as t}from"./vendor-core.js";var n=e(t(),1);globalThis.jQuery=globalThis.$=n.default,window.jQuery=window.$=n.default;

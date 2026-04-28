@@ -25,8 +25,8 @@ export const initImageCropper = function () {
     const resultContainer = document.getElementById('croppedResult');
     const downloadBtn = document.getElementById('download');
 
-    // Use window.Cropper which is exposed in main.js (via CDN in head.html)
-    const CropperClass = window.Cropper;
+    // Use globalThis.Cropper which is exposed in main.js (via CDN in head.html)
+    const CropperClass = globalThis.Cropper;
 
     if (image && CropperClass) {
         console.log("Image and Cropper library found. Starting engine...");

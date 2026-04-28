@@ -44,6 +44,12 @@
     
     <!-- Vector Map (MapLibre) -->
     <link href="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.css" rel="stylesheet"/>
+    
+    <!-- Global jQuery Exposure (Critical for Plugins) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        window.jQuery = window.$ = jQuery;
+    </script>
   <script type="module" crossorigin src="./assets/summernote-editor.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill.js">
   <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime.js">
@@ -53,6 +59,7 @@
   <link rel="modulepreload" crossorigin href="./assets/vendor-apexcharts.js">
   <link rel="modulepreload" crossorigin href="./assets/vendor-echarts.js">
   <link rel="modulepreload" crossorigin href="./assets/vendor-highcharts.js">
+  <link rel="modulepreload" crossorigin href="./assets/vendor-jquery.js">
   <link rel="modulepreload" crossorigin href="./assets/custom_scripts.js">
   <link rel="modulepreload" crossorigin href="./assets/EditorModule.js">
   <link rel="stylesheet" crossorigin href="./assets/vendor-core.css">
