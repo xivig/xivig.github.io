@@ -1,0 +1,477 @@
+{{#> admin-layout title="Dashboard" }}
+
+<div class="container py-5">
+    <h2 class="mb-4 text-center fw-bold">📊 Elite Analytics Dashboard</h2>
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-3">
+            <div class="card-elite">
+                <div class="chart-box" id="chartEarnings"></div>
+                <div class="stat-label">My Earnings</div>
+                <div class="stat-meta trend-up">
+                    80% Average <i class="fa-solid fa-chart-line"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card-elite">
+                <div class="chart-box" id="chartBusiness"></div>
+                <div class="stat-label">Business Captured</div>
+                <div class="stat-meta trend-up">
+                    75% Average <i class="fa-solid fa-arrow-trend-up"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card-elite">
+                <div class="chart-box" id="chartSpeed"></div>
+                <div class="stat-label">Projects Speed</div>
+                <div class="stat-meta trend-up">
+                    90% Average <i class="fa-solid fa-bolt"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card-elite">
+                <div class="chart-box" id="chartPending"></div>
+                <div class="stat-label">Pending Orders</div>
+                <div class="stat-meta trend-down">
+                    65% Average <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row g-4">
+        <!-- Scatter -->
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Customer Segmentation</div>
+                <div class="chart-container">
+                    <canvas id="scatterChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Line -->
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Website Analytics</div>
+                <div class="chart-container">
+                    <canvas id="lineAnalytics"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Horizontal Bar -->
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Top Programming Languages</div>
+                <div class="chart-container">
+                    <canvas id="langBar"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Vertical Bar -->
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Global User Distribution</div>
+                <div class="chart-container">
+                    <canvas id="userBar"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Pie -->
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Device Share</div>
+                <div class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Doughnut -->
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Traffic Sources</div>
+                <div class="chart-container">
+                    <canvas id="doughnutChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Polar Area -->
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Regional Distribution</div>
+                <div class="chart-container">
+                    <canvas id="polarChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Radar -->
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Model Comparison</div>
+                <div class="chart-container">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    body {
+        background: #f8f9fa;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .dashboard-card {
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .dashboard-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    }
+
+    .dashboard-header {
+        background: grey;
+        /*background: linear-gradient(135deg, #0d6efd, #6610f2);*/
+        color: #fff;
+        padding: .75rem 1.25rem;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .chart-container {
+        height: 280px;
+        padding: 1rem;
+    }
+
+    .fade-in {
+        animation: fadeIn .8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+<style>
+    :root {
+        --elite-blue: #2563eb;
+        --elite-green: #10b981;
+        --elite-red: #ef4444;
+        --elite-purple: #8b5cf6;
+        --glass-bg: rgba(255, 255, 255, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.5);
+    }
+
+    body {
+        background: radial-gradient(at top left, #f8fafc, #e2e8f0);
+        font-family: 'Inter', sans-serif;
+        color: #0f172a;
+        min-height: 100vh;
+        padding: 40px 20px;
+    }
+
+    h1,
+    h2,
+    h3,
+    .card-label {
+        font-family: 'Sora', sans-serif;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+    }
+
+    /* Elite Analytics Card */
+    .card-elite {
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+        border-radius: 28px;
+        padding: 24px;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+        height: 100%;
+        text-align: center;
+    }
+
+    .card-elite:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+        border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Progress Container */
+    .chart-box {
+        position: relative;
+        margin: 0 auto;
+        height: 180px;
+        width: 100%;
+    }
+
+    .stat-label {
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 5px;
+        color: #1e293b;
+    }
+
+    .stat-meta {
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .trend-up {
+        color: var(--elite-green);
+    }
+
+    .trend-down {
+        color: var(--elite-red);
+    }
+
+    /* Customizing ApexCharts Tooltip */
+    .apexcharts-canvas {
+        margin: 0 auto;
+    }
+</style>
+<script>
+    // Scatter
+    new Chart(document.getElementById('scatterChart'), {
+        type: 'bubble',
+        data: {
+            datasets: [{
+                label: 'Customers', data: [
+                    { x: 5, y: 200, r: 10 }, { x: 10, y: 400, r: 15 }, { x: 15, y: 600, r: 20 }, { x: 20, y: 800, r: 25 }
+                ], backgroundColor: 'rgba(32,201,151,0.6)'
+            }]
+        },
+        options: {
+            scales: {
+                x: { title: { display: true, text: 'Purchase Frequency' } },
+                y: { title: { display: true, text: 'Avg Order Value' } }
+            }
+        }
+    });
+
+    // Line
+    new Chart(document.getElementById('lineAnalytics'), {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [
+                {
+                    label: 'Page Views',
+                    data: [200, 400, 600, 800, 900, 1000, 1200, 1300, 1400, 1500, 1600, 1700],
+                    borderColor: '#198754',
+                    fill: false
+                },
+                {
+                    label: 'Unique Visitors',
+                    data: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200],
+                    borderColor: '#0d6efd',
+                    fill: false
+                }
+            ]
+        },
+        options: { animation: { duration: 1200, easing: 'easeOutQuart' } }
+    });
+
+    // Horizontal Bar
+    new Chart(document.getElementById('langBar'), {
+        type: 'bar',
+        data: {
+            labels: ['Swift', 'Rust', 'Go', 'C#', 'TypeScript', 'Java', 'Python', 'JavaScript'],
+            datasets: [{
+                label: 'Popularity %', data: [20, 30, 40, 50, 60, 70, 80, 90],
+                backgroundColor: ['#0d6efd', '#20c997', '#fd7e14', '#6f42c1', '#6610f2', '#ffc107', '#198754', '#dc3545']
+            }]
+        },
+        options: { indexAxis: 'y' }
+    });
+
+    // Vertical Bar
+    new Chart(document.getElementById('userBar'), {
+        type: 'bar',
+        data: {
+            labels: ['USA', 'China', 'Japan', 'Germany', 'UK', 'France', 'Canada', 'Australia'],
+            datasets: [{
+                label: 'Users (K)', data: [2300, 1800, 1200, 1000, 800, 650, 500, 400],
+                backgroundColor: ['#0d6efd', '#198754', '#ffc107', '#dc3545', '#fd7e14', '#6f42c1', '#20c997', '#6c757d']
+            }]
+        }
+    });
+
+    // Pie
+    new Chart(document.getElementById('pieChart'), {
+        type: 'pie',
+        data: {
+            labels: ['Desktop', 'Mobile', 'Tablet', 'Other'],
+            datasets: [{ data: [45, 30, 15, 10], backgroundColor: ['#0d6efd', '#198754', '#6f42c1', '#dc3545'] }]
+        }
+    });
+
+    // Doughnut
+    new Chart(document.getElementById('doughnutChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Direct', 'Organic', 'Referral', 'Social'],
+            datasets: [{ data: [25, 35, 20, 20], backgroundColor: ['#0d6efd', '#198754', '#dc3545', '#fd7e14'] }]
+        }
+    });
+
+    // Polar Area
+    new Chart(document.getElementById('polarChart'), {
+        type: 'polarArea',
+        data: {
+            labels: ['North', 'East', 'South', 'West', 'Central'],
+            datasets: [{
+                data: [12, 16, 10, 14, 8],
+                backgroundColor: ['#0d6efd', '#ffc107', '#fd7e14', '#6f42c1', '#198754']
+            }]
+        }
+    });
+
+    // Radar
+    new Chart(document.getElementById('radarChart'), {
+        type: 'radar',
+        data: {
+            labels: ['Speed', 'Reliability', 'Comfort', 'Safety', 'Efficiency', 'Design'],
+            datasets: [
+                {
+                    label: 'Model A',
+                    data: [80, 70, 60, 90, 75, 85],
+                    borderColor: '#0d6efd',
+                    backgroundColor: 'rgba(13,110,253,0.3)'
+                },
+                {
+                    label: 'Model B',
+                    data: [70, 65, 75, 80, 70, 60],
+                    borderColor: '#dc3545',
+                    backgroundColor: 'rgba(220,53,69,0.3)'
+                }
+            ]
+        }
+    });
+</script>
+<script>
+    /**
+     * Elite Analytics Engine
+     */
+
+    const baseOptions = {
+        chart: {
+            height: 220,
+            type: 'radialBar',
+            sparkline: { enabled: true }
+        },
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                hollow: { size: '70%' },
+                track: {
+                    background: '#e2e8f0',
+                    strokeWidth: '97%',
+                    margin: 5,
+                },
+                dataLabels: {
+                    name: { show: false },
+                    value: {
+                        offsetY: 10,
+                        fontSize: '28px',
+                        fontWeight: '800',
+                        fontFamily: 'Sora',
+                        color: '#0f172a',
+                        formatter: function (val) {
+                            return val;
+                        }
+                    }
+                }
+            }
+        },
+        stroke: { lineCap: 'round' },
+        labels: ['Progress']
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // My Earnings - Blue
+        new ApexCharts(document.querySelector("#chartEarnings"), {
+            ...baseOptions,
+            series: [66],
+            colors: ['#2563eb']
+        }).render();
+
+        // Business Captured - Green
+        new ApexCharts(document.querySelector("#chartBusiness"), {
+            ...baseOptions,
+            series: [75],
+            colors: ['#10b981']
+        }).render();
+
+        // Projects Speed - Red
+        new ApexCharts(document.querySelector("#chartSpeed"), {
+            ...baseOptions,
+            series: [90],
+            colors: ['#ef4444']
+        }).render();
+
+        // Pending Orders - Purple
+        new ApexCharts(document.querySelector("#chartPending"), {
+            ...baseOptions,
+            series: [35],
+            colors: ['#8b5cf6']
+        }).render();
+
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // My Earnings - Blue
+        new ApexCharts(document.querySelector("#chartEarnings1"), {
+            ...baseOptions,
+            series: [31],
+            colors: ['#2563eb']
+        }).render();
+
+        // Business Captured - Green
+        new ApexCharts(document.querySelector("#chartBusiness1"), {
+            ...baseOptions,
+            series: [60],
+            colors: ['#10b981']
+        }).render();
+
+        // Projects Speed - Red
+        new ApexCharts(document.querySelector("#chartSpeed1"), {
+            ...baseOptions,
+            series: [46],
+            colors: ['#ef4444']
+        }).render();
+
+        // Pending Orders - Purple
+        new ApexCharts(document.querySelector("#chartPending1"), {
+            ...baseOptions,
+            series: [90],
+            colors: ['#8b5cf6']
+        }).render();
+
+    });
+
+</script>
+{{/admin-layout}}

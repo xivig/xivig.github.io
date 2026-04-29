@@ -5,10 +5,10 @@
         <div class="stat-card__body">
             <div class="stat-card__info">
                 <h3 class="stat-card__value">75</h3>
-                <div class="stat-card__label">Appointment</div>
+                <div class="stat-card__label">Deployment</div>
             </div>
             <div class="stat-card__icon stat-card__icon--info">
-                <i class="bi bi-calendar-event"></i>
+                <i class="bi bi-code-square fs-4 text-primary me-3"></i>
             </div>
         </div>
     </div>
@@ -17,10 +17,10 @@
         <div class="stat-card__body">
             <div class="stat-card__info">
                 <h3 class="stat-card__value">124,551</h3>
-                <div class="stat-card__label">Total Patient</div>
+                <div class="stat-card__label">Total User</div>
             </div>
             <div class="stat-card__icon stat-card__icon--danger">
-                <i class="bi bi-heart-fill"></i>
+                <i class="bi bi-people fs-4 text-danger me-3"></i>
             </div>
         </div>
     </div>
@@ -29,10 +29,10 @@
         <div class="stat-card__body">
             <div class="stat-card__info">
                 <h3 class="stat-card__value">400+</h3>
-                <div class="stat-card__label">Total Doctor</div>
+                <div class="stat-card__label">Total Project</div>
             </div>
             <div class="stat-card__icon stat-card__icon--primary">
-                <i class="bi bi-stethoscope"></i>
+                <i class="bi bi-clipboard-check fs-4 text-success me-3"></i>
             </div>
         </div>
     </div>
@@ -41,21 +41,21 @@
         <div class="stat-card__body">
             <div class="stat-card__info">
                 <h3 class="stat-card__value">$50,000</h3>
-                <div class="stat-card__label">Earning</div>
+                <div class="stat-card__label">Revenue / Usage</div>
             </div>
             <div class="stat-card__icon stat-card__icon--success">
-                <i class="bi bi-cash-stack"></i>
+                <i class="bi bi-coin fs-4 text-warning me-3"></i>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row g-4 pb-3">
+<div class="row g-4 pb-3 mt-1">
     <!-- Hospital Activities -->
     <div class="col-lg-8">
         <div class="card-box h-100 p-4 shadow-sm border-0">
             <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
-                <h5 class="mb-0 fw-bold">Hospital Activities</h5>
+                <h5 class="mb-0 fw-bold">System Activity Overview</h5>
                 <div class="d-flex align-items-center">
                     <select class="form-select form-select-sm shadow-none" style="width: 120px;">
                         <option value="">Last Week</option>
@@ -67,13 +67,13 @@
         </div>
     </div>
 
-    <!-- Appointment & Surgery Cards -->
+    <!-- Deployment & Active Sessions Cards -->
     <div class="col-lg-4 d-flex flex-column gap-4">
-        <!-- Appointment Card -->
+        <!-- Deployment Card -->
         <div class="card-box flex-fill p-4 rounded-3 shadow-sm border-0 text-white" style="background-color: #455a64;">
             <div class="d-flex justify-content-between align-items-start mb-2">
                 <div class="icon-wrap fs-2">
-                    <i class="bi bi-calendar-event"></i>
+                    <i class="bi bi-code-square fs-4 text-danger me-3"></i>
                 </div>
                 <div class="text-end">
                     <div class="fw-bold small"><i class="bi bi-arrow-up-short"></i> 2.69%</div>
@@ -82,18 +82,18 @@
             </div>
             <div class="d-flex justify-content-between align-items-end">
                 <div>
-                    <div class="opacity-75 small">Appointment</div>
+                    <div class="opacity-75 small">Deployment</div>
                     <div class="display-6 fw-bold">1,865</div>
                 </div>
-                <div id="appointment-chart" style="width: 100px;"></div>
+                <div id="deployment-chart" style="width: 100px;"></div>
             </div>
         </div>
 
-        <!-- Surgery Card -->
+        <!-- Active Sessions Card -->
         <div class="card-box flex-fill p-4 rounded-3 shadow-sm border-0 text-white" style="background-color: #265ed7;">
             <div class="d-flex justify-content-between align-items-start mb-2">
                 <div class="icon-wrap fs-2">
-                    <i class="bi bi-person-heart"></i>
+                    <i class="bi bi-cloud-check fs-4 me-3"></i>
                 </div>
                 <div class="text-end">
                     <div class="fw-bold small"><i class="bi bi-arrow-down-short"></i> 3.69%</div>
@@ -102,7 +102,7 @@
             </div>
             <div class="d-flex justify-content-between align-items-end">
                 <div>
-                    <div class="opacity-75 small">Surgery</div>
+                    <div class="opacity-75 small">Active Sessions</div>
                     <div class="display-6 fw-bold">250</div>
                 </div>
                 <div id="surgery-chart" style="width: 100px;"></div>
@@ -112,17 +112,19 @@
 </div>
 
 <div class="row g-4 pb-4">
-    <!-- Top Doctors -->
+    <!-- Top Faculty -->
     <div class="col-lg-4">
         <div class="card-box h-100 p-4 shadow-sm border-0">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h5 class="mb-0 fw-bold">Top Doctors</h5>
+                <h5 class="mb-0 fw-bold">Top Contributors</h5>
                 <div class="dropdown">
                     <a class="text-secondary" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="bi bi-three-dots-vertical fs-5"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-                        <li><a class="dropdown-item" href="#">View All</a></li>
+                        <li><a class="dropdown-item text-primary" href="#">View All</a></li>
+                        <li><a class="dropdown-item text-warning" href="#">Edit</a></li>
+                        <li><a class="dropdown-item text-danger" href="#">Delete</a></li>
                     </ul>
                 </div>
             </div>
@@ -130,67 +132,73 @@
             <div class="user-list">
                 <div class="d-flex align-items-center justify-content-between mb-4">
                     <div class="d-flex align-items-center">
-                        <img src="src/images/photo1.jpg" class="rounded-circle shadow-sm" width="50" height="50">
+                        <img src="app/src/images/photo1.jpg" class="rounded-circle shadow-sm" width="50" height="50">
                         <div class="ms-3">
                             <div class="text-primary small fw-bold">4.9 ★</div>
-                            <div class="fw-bold text-dark">Dr. Neil Wagner</div>
-                            <div class="small text-secondary">Pediatrician</div>
+                            <div class="fw-bold text-dark">Alex Carter</div>
+                            <div class="small text-secondary">Full Stack Dev</div>
                         </div>
                     </div>
-                    <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Schedule</button>
+                    <button class="btn btn-sm btn-outline-primary px-2">Schedule</button>
                 </div>
                 <div class="d-flex align-items-center justify-content-between mb-4">
                     <div class="d-flex align-items-center">
-                        <img src="src/images/photo2.jpg" class="rounded-circle shadow-sm" width="50" height="50">
+                        <img src="app/src/images/photo2.jpg" class="rounded-circle shadow-sm" width="50" height="50">
                         <div class="ms-3">
                             <div class="text-primary small fw-bold">4.8 ★</div>
-                            <div class="fw-bold text-dark">Dr. Ren Delan</div>
-                            <div class="small text-secondary">Pediatrician</div>
+                            <div class="fw-bold text-dark">Rahul Sen</div>
+                            <div class="small text-secondary">Backend Architect</div>
                         </div>
                     </div>
-                    <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Schedule</button>
+                    <button class="btn btn-sm btn-outline-primary px-2">Schedule</button>
                 </div>
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
-                        <img src="src/images/photo3.jpg" class="rounded-circle shadow-sm" width="50" height="50">
+                        <img src="app/src/images/photo3.jpg" class="rounded-circle shadow-sm" width="50" height="50">
                         <div class="ms-3">
                             <div class="text-primary small fw-bold">4.7 ★</div>
-                            <div class="fw-bold text-dark">Dr. Garrett Kincy</div>
-                            <div class="small text-secondary">Pediatrician</div>
+                            <div class="fw-bold text-dark">Nina Roy</div>
+                            <div class="small text-secondary">UI Engineer</div>
                         </div>
                     </div>
-                    <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Schedule</button>
+                    <button class="btn btn-sm btn-outline-primary px-2">Schedule</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Diseases Report -->
+    <!-- System Health Report -->
     <div class="col-lg-4">
         <div class="card-box h-100 p-4 shadow-sm border-0">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h5 class="mb-0 fw-bold">Diseases Report</h5>
+                <h5 class="mb-0 fw-bold">System Health</h5>
                 <div class="dropdown">
                     <a class="text-secondary" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="bi bi-three-dots-vertical fs-5"></i>
                     </a>
                 </div>
             </div>
-            <div id="diseases-chart" style="min-height: 350px;"></div>
+            <div class="chart-container">
+                <div id="health-chart" style="min-height: 350px;" class=" m-0 p-0"></div>
+            </div>
+            <!-- <div id="health-chart" style="min-height: 350px;" class="w-100"></div> -->
         </div>
     </div>
 
-    <!-- Upgrade to Pro -->
+    <!-- Unlock Xivig Pro -->
     <div class="col-lg-4">
         <div class="card-box h-100 p-4 shadow-sm border-0 d-flex flex-column align-items-center text-center">
             <div class="mb-4">
-                <img src="src/images/upgrade.svg" style="width: 200px;">
+                <img src="app/src/images/xivig-logo.png" style="width: 96px;">
             </div>
-            <h5 class="fw-bold mb-2">Upgrade to Pro</h5>
+            <h5 class="fw-bold mb-2">Unlock Xivig Pro</h5>
             <p class="text-secondary small mb-4">
-                You can enjoy all our premium features by upgrading to pro today.
+                Advanced analytics, AI tools, and enterprise controls.
             </p>
-            <button class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm w-100">Upgrade Now</button>
+            <div class="col-md-4">
+                <button class="btn btn-sm btn-primary p-2">Upgrade Now</button>
+            </div>
+
         </div>
     </div>
 </div>

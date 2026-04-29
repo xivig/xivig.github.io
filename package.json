@@ -10,15 +10,18 @@
     "dev": "vite --open",
     "build": "gulp build",
     "preview": "vite preview",
-    "production": "gulp production"
+    "production": "gulp production",
+    "postbuild": "node tasks/utils/replace-links.js",
+    "docs": "gulp serveDocs"
   },
   "devDependencies": {
+    "browser-sync": "^3.0.4",
     "del": "^7.1.0",
     "gulp": "^5.0.0",
+    "gulp-plumber": "^1.2.1",
     "gulp-sharp-optimize-images": "^4.0.3",
     "gulp-tap": "^2.0.0",
-    "gulp-plumber": "^1.2.1",
-    "sass": "^1.77.4",
+    "sass": "^1.99.0",
     "vite": "^5.2.11",
     "vite-plugin-handlebars": "^2.0.0"
   },

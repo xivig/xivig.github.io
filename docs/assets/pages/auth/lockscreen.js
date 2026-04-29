@@ -1,0 +1,1 @@
+import"../../main.js";import"../../vendor-jquery.js";import"../../vendor-core.js";import"../../vendor-fullcalendar.js";import"../../vendor-apexcharts.js";import"../../vendor-highcharts.js";import"../../vendor-chartjs.js";import"../../vendor-echarts.js";document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("lockInput");t&&t.focus()});

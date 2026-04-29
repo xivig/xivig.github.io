@@ -8,7 +8,10 @@ import {
 } from 'del';
 import {
     exportAssets
-} from './tasks/export.js';
+} from './tasks/gulp/export.js';
+import {
+    serveDocs
+} from './tasks/gulp/serve-docs.js';
 
 // 1. Clean
 export const clean = () => deleteAsync(['dist', 'exports']);
@@ -23,20 +26,33 @@ export const viteBuild = (cb) => {
 };
 
 // 3. Image Optimization
-// Note: We use base: 'src' to keep the folder structure consistent
+// Note: We use base: 'app/src' to keep the folder structure consistent
 export const optimizeImages = () => {
-    return gulp.src(['src/images/**/*.{jpg,png,jpeg,webp}'], {
-            base: 'src/images',
+    return gulp.src(['app/src/images/**/*.{jpg,png,jpeg,webp}'], {
+            base: 'app/src/images',
             allowEmpty: true
         })
         .pipe(sharpOptimizeImages({
-            webp: { quality: 80 },
-            jpg_to_jpg: { quality: 80 }
+            webp: {
+                quality: 80
+            },
+            jpg_to_jpg: {
+                quality: 80
+            }
         }))
         .pipe(gulp.dest('dist/assets'))
 };
 
-// 4. Servers
+// 4. Move HTML pages from app/pages to root pages in dist
+export const moveHtmlPages = () => {
+    return gulp.src('dist/app/pages/**/*', {
+            base: 'dist/app'
+        })
+        .pipe(gulp.dest('dist'))
+        .on('end', () => deleteAsync(['dist/app']));
+};
+
+// 5. Servers
 export const serve = (cb) => {
     const vite = exec('npx vite --open');
     vite.stdout.on('data', (d) => console.log(d));
@@ -75,7 +91,7 @@ export function copyVendorPackages() {
             },
         )
         .pipe(gulp.dest("dist/plugins/"))
-        .pipe(gulp.dest("src/plugins/"))
+        .pipe(gulp.dest("app/src/plugins/"))
 }
 
 // --- WORKFLOWS ---
@@ -87,7 +103,8 @@ export const dev = gulp.series(clean, serve);
 export const build = gulp.series(
     clean,
     viteBuild,
-    optimizeImages,    
+    optimizeImages,
+    moveHtmlPages,
     copyVendorPackages,
     exportAssets
 );
@@ -95,9 +112,9 @@ export const build = gulp.series(
 // Production: Build everything then preview the final result
 export const production = gulp.series(
     build,
-    copyVendorPackages,
     //preview dist folder
     preview
 );
 
+export const docs = gulp.series(serveDocs);
 export default dev;

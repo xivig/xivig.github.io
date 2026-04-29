@@ -1,1 +1,0 @@
-import"./modulepreload-polyfill.js";import"./main2.js";import{a as o}from"./FormPlugins.js";import"./vendor-jquery.js";import"./vendor-core.js";import"./vendor-fullcalendar.js";import"./vendor-apexcharts.js";import"./vendor-echarts.js";import"./vendor-chartjs.js";import"./vendor-highcharts.js";document.addEventListener("DOMContentLoaded",()=>{o()});

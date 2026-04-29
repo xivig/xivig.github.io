@@ -6,12 +6,23 @@
     <title>Dashboard</title>
     
     <!-- Site favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
     
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <!-- Theme Detection & Critical Style Initialization (Prevents flashing) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('xivig-global-theme') || 'dark';
+            document.documentElement.setAttribute('data-bs-theme', savedTheme);
+            // Set body background color immediately to prevent white flash
+            const bgColor = savedTheme === 'dark' ? '#0b0f12' : '#f8fafc';
+            document.write(`<style>body{background-color: ${bgColor} !important; visibility: hidden;} body.is-loaded, body.preloader-active{visibility: visible;}</style>`);
+        })();
+    </script>
     
     <!-- Critical Preloader Style (Prevents FOUC/Flash) -->
     <style>
@@ -19,7 +30,7 @@
             position: fixed;
             inset: 0;
             z-index: 99999;
-            background: #fff;
+            background: inherit; /* Use the body background color */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -33,17 +44,19 @@
         body:not(.is-loaded) {
             overflow: hidden;
         }
+        /* Ensure preloader is visible even if body is hidden */
+        .preloader { visibility: visible !important; }
     </style>
     
-    <!-- Theme Detection (Prevents flashing) -->
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const savedTheme = localStorage.getItem('xivig-global-theme') || 'dark';
-        document.body.setAttribute('data-bs-theme', savedTheme);
-      });
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.add('preloader-active');
+        });
     </script>
     
     <!-- Vendor Styles (Third Party) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <!-- Master CSS (Core Architecture) -->
     
@@ -148,16 +161,16 @@
             font-weight: 500;
         }
     </style>
-  <script type="module" crossorigin src="./assets/modulepreload-polyfill.js"></script>
-  <script type="module" crossorigin src="./assets/vendor-jquery.js"></script>
-  <script type="module" crossorigin src="./assets/vendor-core.js"></script>
-  <script type="module" crossorigin src="./assets/vendor-fullcalendar.js"></script>
-  <script type="module" crossorigin src="./assets/vendor-apexcharts.js"></script>
-  <script type="module" crossorigin src="./assets/vendor-echarts.js"></script>
-  <script type="module" crossorigin src="./assets/vendor-chartjs.js"></script>
-  <script type="module" crossorigin src="./assets/vendor-highcharts.js"></script>
-  <script type="module" crossorigin src="./assets/main2.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main2.css">
+  <script type="module" crossorigin src="/assets/vendor-jquery.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-core.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-fullcalendar.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-apexcharts.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-highcharts.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-chartjs.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-echarts.js"></script>
+  <script type="module" crossorigin src="/assets/main.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main.css">
+  <link rel="stylesheet" crossorigin href="/assets/vendor-core.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100" data-bs-spy="scroll" data-bs-target="#blog-toc" data-bs-offset="100">
@@ -166,7 +179,7 @@
     <div class="preloader">
         <div class="preloader__box text-center">
             <div class="preloader__logo mb-3">
-                <img src="./assets/xivig-logo1.png" alt="Logo" width="120" />
+                <img src="/assets/xivig-logo1.png" alt="Logo" width="120" />
             </div>
             <div class="preloader__progress">
                 <div class="preloader__bar" id="bar1"></div>
@@ -176,6 +189,7 @@
         </div>
     </div>
     <div class="mobile-menu-overlay"></div>
+
     <!-- Header -->
     <header class="header">
         <div class="header__container">
@@ -208,36 +222,36 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-end header__dropdown-menu shadow">
                             <h6 class="dropdown-header">Notifications</h6>
-                            <a class="dropdown-item header__dropdown-item" href="notification.html">
-                                <img src="./assets/photo1.jpg" alt="User" class="header__dropdown-img">
+                            <a class="dropdown-item header__dropdown-item" href="/pages/notification.html">
+                                <img src="/assets/photo1.jpg" alt="User" class="header__dropdown-img">
                                 <div class="header__dropdown-info">
                                     <span class="header__dropdown-title">Jennifer O. Oster</span>
                                     <small class="header__dropdown-text">New patient registered</small>
                                 </div>
                             </a>
-                            <a class="dropdown-item header__dropdown-item" href="notification.html">
-                                <img src="./assets/photo2.jpg" alt="User" class="header__dropdown-img">
+                            <a class="dropdown-item header__dropdown-item" href="/pages/notification.html">
+                                <img src="/assets/photo2.jpg" alt="User" class="header__dropdown-img">
                                 <div class="header__dropdown-info">
                                     <span class="header__dropdown-title">Jennifer O. Oster</span>
                                     <small class="header__dropdown-text">New patient registered</small>
                                 </div>
                             </a>
-                            <a class="dropdown-item header__dropdown-item" href="notification.html">
-                                <img src="./assets/photo3.jpg" alt="User" class="header__dropdown-img">
+                            <a class="dropdown-item header__dropdown-item" href="/pages/notification.html">
+                                <img src="/assets/photo3.jpg" alt="User" class="header__dropdown-img">
                                 <div class="header__dropdown-info">
                                     <span class="header__dropdown-title">Jennifer O. Oster</span>
                                     <small class="header__dropdown-text">New patient registered</small>
                                 </div>
                             </a>
-                            <a class="dropdown-item header__dropdown-item" href="notification.html">
-                                <img src="./assets/photo4.jpg" alt="User" class="header__dropdown-img">
+                            <a class="dropdown-item header__dropdown-item" href="/pages/notification.html">
+                                <img src="/assets/photo4.jpg" alt="User" class="header__dropdown-img">
                                 <div class="header__dropdown-info">
                                     <span class="header__dropdown-title">Jennifer O. Oster</span>
                                     <small class="header__dropdown-text">New patient registered</small>
                                 </div>
                             </a>
-                            <a class="dropdown-item header__dropdown-item" href="notification.html">
-                                <img src="./assets/photo5.jpg" alt="User" class="header__dropdown-img">
+                            <a class="dropdown-item header__dropdown-item" href="/pages/notification.html">
+                                <img src="/assets/photo5.jpg" alt="User" class="header__dropdown-img">
                                 <div class="header__dropdown-info">
                                     <span class="header__dropdown-title">Jennifer O. Oster</span>
                                     <small class="header__dropdown-text">New patient registered</small>
@@ -249,27 +263,27 @@
     
                 <div class="dropdown header__user">
                     <button class="header__user-btn" data-bs-toggle="dropdown">
-                        <img src="./assets/photo1.jpg" alt="Ross C. Lopez" class="header__user-img">
+                        <img src="/assets/photo1.jpg" alt="Ross C. Lopez" class="header__user-img">
                         <span class="header__user-name d-none d-sm-inline">John Doe</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu shadow">
                         <li>
-                            <a class="dropdown-item" href="profile.html">
+                            <a class="dropdown-item" href="/pages/profile.html">
                                 <i class="bi bi-person me-2"></i> Profile
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="account-settings.html">
+                            <a class="dropdown-item" href="/pages/account-settings.html">
                                 <i class="bi bi-gear me-2"></i> Account Settings
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="help-support.html">
+                            <a class="dropdown-item" href="/pages/help-support.html">
                                 <i class="bi bi-1-circle me-2"></i> Help
                             </a>
                         </li>
-                        <li><a class="dropdown-item text-danger" href="login.html"><i
-                                    class="bi bi-box-arrow-right me-2"></i>
+                        <li><a class="dropdown-item text-danger" href="/pages/auth/login.html"><i
+                                        class="bi bi-box-arrow-right me-2"></i>
                                 Logout</a></li>
                     </ul>
                 </div>
@@ -282,11 +296,12 @@
             </div>
         </div>
     </header>
+
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar__brand">
             <div class="sidebar__brand-wrapper">
-                <img src="./assets/logo.png" alt="Logo" class="sidebar__logo" />
+                <img src="/assets/logo.png" alt="Logo" class="sidebar__logo" />
                 <h4 class="sidebar__title">XivigApp</h4>
             </div>
             <div class="sidebar__close d-xl-none" id="sidebar-close">
@@ -304,9 +319,10 @@
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="index.html" class="sidebar__sub-link">Dashboard v1</a>
+                            <li class="sidebar__sub-item"><a href="/index.html" class="sidebar__sub-link">Dashboard v1</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="index2.html" class="sidebar__sub-link">Dashboard v2</a>
+                            <li class="sidebar__sub-item"><a href="/pages/dashboard-v2.html"
+                                    class="sidebar__sub-link">Dashboard v2</a>
                             </li>
                         </ul>
                     </div>
@@ -319,19 +335,31 @@
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="ecommerce-products.html"
-                                    class="sidebar__sub-link">Product List</a></li>
-                            <li class="sidebar__sub-item"><a href="ecommerce-add-product.html" class="sidebar__sub-link">Add
-                                    Product</a></li>
-                            <li class="sidebar__sub-item"><a href="ecommerce-product-show.html"
-                                    class="sidebar__sub-link">Product Show</a></li>
-                            <li class="sidebar__sub-item"><a href="ecommerce-product-detail.html"
+                            <li class="sidebar__sub-item sidebar__sub-item--has-dropdown">
+                                <a href="javascript:;" class="sidebar__sub-link">Product Management</a>
+                                <div class="sidebar__submenu-wrapper">
+                                    <ul class="sidebar__submenu">
+                                        <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-products.html"
+                                                class="sidebar__sub-link">Product List</a></li>
+                                        <li class="sidebar__sub-item"><a
+                                                href="/pages/ecommerce/ecommerce-add-product.html"
+                                                class="sidebar__sub-link">Add Product</a></li>
+                                        <li class="sidebar__sub-item"><a
+                                                href="/pages/ecommerce/ecommerce-product-show.html"
+                                                class="sidebar__sub-link">Product Show</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-product-detail.html"
                                     class="sidebar__sub-link">Product Analytics</a></li>
-                            <li class="sidebar__sub-item"><a href="ecommerce-orders.html" class="sidebar__sub-link">Order
+                            <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-orders.html"
+                                    class="sidebar__sub-link">Order
                                     List</a></li>
-                            <li class="sidebar__sub-item"><a href="ecommerce-cart.html" class="sidebar__sub-link">Shopping
+                            <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-cart.html"
+                                    class="sidebar__sub-link">Shopping
                                     Cart</a></li>
-                            <li class="sidebar__sub-item"><a href="store-settings.html" class="sidebar__sub-link">Store
+                            <li class="sidebar__sub-item"><a href="/pages/store-settings.html"
+                                    class="sidebar__sub-link">Store
                                     Settings</a></li>
                         </ul>
                     </div>
@@ -344,9 +372,11 @@
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="blog-list.html" class="sidebar__sub-link">Blog List</a>
+                            <li class="sidebar__sub-item"><a href="/pages/blog-list.html" class="sidebar__sub-link">Blog
+                                    List</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="blog-detail.html" class="sidebar__sub-link">Blog
+                            <li class="sidebar__sub-item"><a href="/pages/blog-detail.html"
+                                    class="sidebar__sub-link">Blog
                                     Details</a></li>
                         </ul>
                     </div>
@@ -359,9 +389,11 @@
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="course-dashboard.html" class="sidebar__sub-link">Course
+                            <li class="sidebar__sub-item"><a href="/pages/course-dashboard.html"
+                                    class="sidebar__sub-link">Course
                                     Dashboard</a></li>
-                            <li class="sidebar__sub-item"><a href="course-interface.html" class="sidebar__sub-link">Course
+                            <li class="sidebar__sub-item"><a href="/pages/course-interface.html"
+                                    class="sidebar__sub-link">Course
                                     Interface</a></li>
                         </ul>
                     </div>
@@ -374,23 +406,29 @@
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="calendar.html" class="sidebar__sub-link">Calendar</a>
+                            <li class="sidebar__sub-item"><a href="/pages/apps/calendar.html"
+                                    class="sidebar__sub-link">Calendar</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="chat.html" class="sidebar__sub-link">Chat
+                            <li class="sidebar__sub-item"><a href="/pages/apps/chat.html" class="sidebar__sub-link">Chat
                                     <span id="sidebar-chat-badge" class="badge rounded-pill bg-info ms-auto">
                                         3
                                         <span class="visually-hidden">notifications</span>
                                     </span>
                                 </a></li>
     
-                            <li class="sidebar__sub-item"><a href="video-player.html" class="sidebar__sub-link">Video
+                            <li class="sidebar__sub-item"><a href="/pages/apps/video-player.html"
+                                    class="sidebar__sub-link">Video
                                     Player</a></li>
-                            <li class="sidebar__sub-item"><a href="kanban.html" class="sidebar__sub-link">Kanban</a></li>
-                            <li class="sidebar__sub-item"><a href="task-manager.html" class="sidebar__sub-link">Task</a>
+                            <li class="sidebar__sub-item"><a href="/pages/apps/kanban.html"
+                                    class="sidebar__sub-link">Kanban</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/apps/task-manager.html"
+                                    class="sidebar__sub-link">Task</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="file-manager.html" class="sidebar__sub-link">File
+                            <li class="sidebar__sub-item"><a href="/pages/apps/file-manager.html"
+                                    class="sidebar__sub-link">File
                                     Manager</a></li>
-                            <li class="sidebar__sub-item"><a href="inbox.html" class="sidebar__sub-link">Mailbox
+                            <li class="sidebar__sub-item"><a href="/pages/apps/inbox.html"
+                                    class="sidebar__sub-link">Mailbox
                                     <span id="sidebar-inbox-badge" class="badge rounded-pill bg-primary ms-auto">
                                         12
                                         <span class="visually-hidden">notifications</span>
@@ -402,26 +440,98 @@
     
                 <li class="sidebar__item sidebar__item--has-dropdown">
                     <a href="javascript:;" class="sidebar__link">
+                        <span class="sidebar__icon bi bi-briefcase"></span>
+                        <span class="sidebar__text">Projects</span>
+                    </a>
+                    <div class="sidebar__submenu-wrapper">
+                        <ul class="sidebar__submenu">
+                            <li class="sidebar__sub-item"><a href="/pages/projects/project-list.html"
+                                    class="sidebar__sub-link">Project List</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/projects/project-add.html"
+                                    class="sidebar__sub-link">Add Project</a></li>
+                        </ul>
+                    </div>
+                </li>
+    
+                <li class="sidebar__item sidebar__item--has-dropdown">
+                    <a href="javascript:;" class="sidebar__link">
+                        <span class="sidebar__icon bi bi-people"></span>
+                        <span class="sidebar__text">Users</span>
+                    </a>
+                    <div class="sidebar__submenu-wrapper">
+                        <ul class="sidebar__submenu">
+                            <li class="sidebar__sub-item"><a href="/pages/users/user-list.html"
+                                    class="sidebar__sub-link">User List</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/users/user-add.html"
+                                    class="sidebar__sub-link">Add User</a></li>
+                        </ul>
+                    </div>
+                </li>
+    
+                <li class="sidebar__item sidebar__item--has-dropdown">
+                    <a href="javascript:;" class="sidebar__link">
+                        <span class="sidebar__icon bi bi-rocket-takeoff"></span>
+                        <span class="sidebar__text">Pipeline</span>
+                    </a>
+                    <div class="sidebar__submenu-wrapper">
+                        <ul class="sidebar__submenu">
+                            <li class="sidebar__sub-item"><a href="/pages/deployments/deployment-list.html"
+                                    class="sidebar__sub-link">Deployments</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/deployments/build-history.html"
+                                    class="sidebar__sub-link">Build History</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/deployments/releases.html"
+                                    class="sidebar__sub-link">Releases</a></li>
+                        </ul>
+                    </div>
+                </li>
+    
+                <li class="sidebar__item sidebar__item--has-dropdown">
+                    <a href="javascript:;" class="sidebar__link">
+                        <span class="sidebar__icon bi bi-bar-chart"></span>
+                        <span class="sidebar__text">Analytics</span>
+                    </a>
+                    <div class="sidebar__submenu-wrapper">
+                        <ul class="sidebar__submenu">
+                            <li class="sidebar__sub-item"><a href="/pages/analytics/overview.html"
+                                    class="sidebar__sub-link">Overview</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/analytics/system-metrics.html"
+                                    class="sidebar__sub-link">System Metrics</a></li>
+                        </ul>
+                    </div>
+                </li>
+    
+                <li class="sidebar__item sidebar__item--has-dropdown">
+                    <a href="javascript:;" class="sidebar__link">
                         <span class="sidebar__icon bi bi-textarea-resize"></span>
                         <span class="sidebar__text">Form</span>
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="form-basic.html" class="sidebar__sub-link">Form Basic</a>
+                            <li class="sidebar__sub-item"><a href="/pages/forms/form-basic.html"
+                                    class="sidebar__sub-link">Form Basic</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="advanced-components.html"
+                            <li class="sidebar__sub-item"><a href="/pages/forms/summernote-editor.html"
+                                    class="sidebar__sub-link">Html Editor</a>
+                            </li>
+                            <li class="sidebar__sub-item"><a href="/pages/forms/advanced-components.html"
                                     class="sidebar__sub-link">Advanced Components</a></li>
-                            <li class="sidebar__sub-item"><a href="form-pickers.html" class="sidebar__sub-link">Form
+                            <li class="sidebar__sub-item"><a href="/pages/forms/form-pickers.html"
+                                    class="sidebar__sub-link">Form
                                     Pickers</a></li>
-                            <li class="sidebar__sub-item"><a href="form-extras.html" class="sidebar__sub-link">Form
+                            <li class="sidebar__sub-item"><a href="/pages/forms/form-extras.html"
+                                    class="sidebar__sub-link">Form
                                     Extras</a></li>
-                            <li class="sidebar__sub-item"><a href="form-grid.html" class="sidebar__sub-link">Form Grid</a>
+                            <li class="sidebar__sub-item"><a href="/pages/forms/form-grid.html"
+                                    class="sidebar__sub-link">Form Grid</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="form-wizard.html" class="sidebar__sub-link">Form
+                            <li class="sidebar__sub-item"><a href="/pages/forms/form-wizard.html"
+                                    class="sidebar__sub-link">Form
                                     Wizard</a></li>
-                            <li class="sidebar__sub-item"><a href="image-cropper.html" class="sidebar__sub-link">Image
+                            <li class="sidebar__sub-item"><a href="/pages/forms/image-cropper.html"
+                                    class="sidebar__sub-link">Image
                                     Cropper</a></li>
-                            <li class="sidebar__sub-item"><a href="image-dropzone.html" class="sidebar__sub-link">Image
+                            <li class="sidebar__sub-item"><a href="/pages/forms/image-dropzone.html"
+                                    class="sidebar__sub-link">Image
                                     Dropzone</a></li>
                         </ul>
                     </div>
@@ -434,9 +544,11 @@
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="basic-table.html" class="sidebar__sub-link">Basic
+                            <li class="sidebar__sub-item"><a href="/pages/tables/basic-table.html"
+                                    class="sidebar__sub-link">Basic
                                     Table</a></li>
-                            <li class="sidebar__sub-item"><a href="datatable.html" class="sidebar__sub-link">Datatables</a>
+                            <li class="sidebar__sub-item"><a href="/pages/tables/datatable.html"
+                                    class="sidebar__sub-link">Datatables</a>
                             </li>
                         </ul>
                     </div>
@@ -449,32 +561,43 @@
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="ui-buttons.html" class="sidebar__sub-link">Buttons</a>
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-buttons.html"
+                                    class="sidebar__sub-link">Buttons</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="ui-cards.html" class="sidebar__sub-link">Cards</a></li>
-                            <li class="sidebar__sub-item"><a href="ui-cards-hover.html" class="sidebar__sub-link">Cards
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-cards.html"
+                                    class="sidebar__sub-link">Cards</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-cards-hover.html"
+                                    class="sidebar__sub-link">Cards
                                     Hover</a></li>
-                            <li class="sidebar__sub-item"><a href="ui-modals.html" class="sidebar__sub-link">Modals</a></li>
-                            <li class="sidebar__sub-item"><a href="ui-tabs.html" class="sidebar__sub-link">Tabs</a></li>
-                            <li class="sidebar__sub-item"><a href="ui-sweet-alert.html" class="sidebar__sub-link">Sweet
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-modals.html"
+                                    class="sidebar__sub-link">Modals</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-tabs.html"
+                                    class="sidebar__sub-link">Tabs</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-sweet-alert.html"
+                                    class="sidebar__sub-link">Sweet
                                     Alert</a></li>
-                            <li class="sidebar__sub-item"><a href="ui-notification.html"
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-notification.html"
                                     class="sidebar__sub-link">Notification</a></li>
-                            <li class="sidebar__sub-item"><a href="ui-timeline.html" class="sidebar__sub-link">Timeline</a>
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-timeline.html"
+                                    class="sidebar__sub-link">Timeline</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="ui-progressbar.html"
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-progressbar.html"
                                     class="sidebar__sub-link">Progressbar</a></li>
-                            <li class="sidebar__sub-item"><a href="ui-typography.html"
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-typography.html"
                                     class="sidebar__sub-link">Typography</a></li>
-                            <li class="sidebar__sub-item"><a href="ui-list-group.html" class="sidebar__sub-link">List
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-list-group.html"
+                                    class="sidebar__sub-link">List
                                     group</a></li>
-                            <li class="sidebar__sub-item"><a href="ui-range-slider.html" class="sidebar__sub-link">Range
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-range-slider.html"
+                                    class="sidebar__sub-link">Range
                                     slider</a></li>
-                            <li class="sidebar__sub-item"><a href="ui-carousel.html" class="sidebar__sub-link">Carousel</a>
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-carousel.html"
+                                    class="sidebar__sub-link">Carousel</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="ui-toggle.html" class="sidebar__sub-link">Collapsible
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-toggle.html"
+                                    class="sidebar__sub-link">Collapsible
                                     Toggle</a></li>
-                            <li class="sidebar__sub-item"><a href="ui-offcanvas.html"
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/ui-offcanvas.html"
                                     class="sidebar__sub-link">Offcanvas</a></li>
                         </ul>
                     </div>
@@ -487,9 +610,11 @@
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="bootstrap-icon.html" class="sidebar__sub-link">Bootstrap
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/bootstrap-icon.html"
+                                    class="sidebar__sub-link">Bootstrap
                                     Icons</a></li>
-                            <li class="sidebar__sub-item"><a href="font-awesome.html" class="sidebar__sub-link">FontAwesome
+                            <li class="sidebar__sub-item"><a href="/pages/ui-elements/font-awesome.html"
+                                    class="sidebar__sub-link">FontAwesome
                                     Icons</a></li>
                         </ul>
                     </div>
@@ -502,13 +627,18 @@
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="apexcharts.html" class="sidebar__sub-link">Apexcharts</a>
+                            <li class="sidebar__sub-item"><a href="/pages/charts/apexcharts.html"
+                                    class="sidebar__sub-link">Apexcharts</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="chartjs.html" class="sidebar__sub-link">Chart.js</a></li>
-                            <li class="sidebar__sub-item"><a href="e-chart.html" class="sidebar__sub-link">E-Charts</a></li>
-                            <li class="sidebar__sub-item"><a href="highchart.html" class="sidebar__sub-link">Highcharts</a>
+                            <li class="sidebar__sub-item"><a href="/pages/charts/chartjs.html"
+                                    class="sidebar__sub-link">Chart.js</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/charts/e-chart.html"
+                                    class="sidebar__sub-link">E-Charts</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/charts/highchart.html"
+                                    class="sidebar__sub-link">Highcharts</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="jtvector-map.html" class="sidebar__sub-link">Vector
+                            <li class="sidebar__sub-item"><a href="/pages/charts/jtvector-map.html"
+                                    class="sidebar__sub-link">Vector
                                     Map</a></li>
                         </ul>
                     </div>
@@ -522,14 +652,21 @@
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
     
-                            <li class="sidebar__sub-item"><a href="invoice.html" class="sidebar__sub-link">Invoice</a></li>
-                            <li class="sidebar__sub-item"><a href="faq.html" class="sidebar__sub-link">FAQ</a></li>
-                            <li class="sidebar__sub-item"><a href="gallery.html" class="sidebar__sub-link">Gallery</a></li>
-                            <li class="sidebar__sub-item"><a href="pricing-table.html" class="sidebar__sub-link">Pricing
+                            <li class="sidebar__sub-item"><a href="/pages/invoice.html"
+                                    class="sidebar__sub-link">Invoice</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/faq.html" class="sidebar__sub-link">FAQ</a>
+                            </li>
+                            <li class="sidebar__sub-item"><a href="/pages/gallery.html"
+                                    class="sidebar__sub-link">Gallery</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/pricing-table.html"
+                                    class="sidebar__sub-link">Pricing
                                     Table</a></li>
-                            <li class="sidebar__sub-item"><a href="sitemap.html" class="sidebar__sub-link">Sitemap</a></li>
-                            <li class="sidebar__sub-item"><a href="blank.html" class="sidebar__sub-link">Blank Page</a></li>
-                            <li class="sidebar__sub-item"><a href="search.html" class="sidebar__sub-link">Search Result</a>
+                            <li class="sidebar__sub-item"><a href="/pages/sitemap.html"
+                                    class="sidebar__sub-link">Sitemap</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/blank.html" class="sidebar__sub-link">Blank
+                                    Page</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/search.html" class="sidebar__sub-link">Search
+                                    Result</a>
                             </li>
                         </ul>
                     </div>
@@ -542,15 +679,20 @@
                     </a>
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="400.html" class="sidebar__sub-link">400 Bad Request</a>
+                            <li class="sidebar__sub-item"><a href="/pages/error/400.html" class="sidebar__sub-link">400
+                                    Bad Request</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="403.html" class="sidebar__sub-link">403 Forbidden</a>
+                            <li class="sidebar__sub-item"><a href="/pages/error/403.html" class="sidebar__sub-link">403
+                                    Forbidden</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="404.html" class="sidebar__sub-link">404 Not Found</a>
+                            <li class="sidebar__sub-item"><a href="/pages/error/404.html" class="sidebar__sub-link">404
+                                    Not Found</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="500.html" class="sidebar__sub-link">500 Internal
+                            <li class="sidebar__sub-item"><a href="/pages/error/500.html" class="sidebar__sub-link">500
+                                    Internal
                                     Error</a></li>
-                            <li class="sidebar__sub-item"><a href="503.html" class="sidebar__sub-link">503 Service
+                            <li class="sidebar__sub-item"><a href="/pages/error/503.html" class="sidebar__sub-link">503
+                                    Service
                                     Unavailable</a></li>
                         </ul>
                     </div>
@@ -563,34 +705,48 @@
     
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
-                            <li class="sidebar__sub-item"><a href="maintenance.html"
+                            <li class="sidebar__sub-item"><a href="/pages/maintenance.html"
                                     class="sidebar__sub-link">Maintenance</a></li>
-                            <li class="sidebar__sub-item"><a href="multi-step-account-onboarding.html"
+                            <li class="sidebar__sub-item"><a href="/pages/auth/multi-step-account-onboarding.html"
                                     class="sidebar__sub-link">Account Onboarding</a></li>
-                            <li class="sidebar__sub-item"><a href="help-support.html" class="sidebar__sub-link">Help &
+                            <li class="sidebar__sub-item"><a href="/pages/help-support.html"
+                                    class="sidebar__sub-link">Help &
                                     Support</a></li>
-                            <li class="sidebar__sub-item"><a href="profile.html" class="sidebar__sub-link">Profile</a></li>
-                            <li class="sidebar__sub-item"><a href="account-settings.html" class="sidebar__sub-link">Account
+                            <li class="sidebar__sub-item"><a href="/pages/profile.html"
+                                    class="sidebar__sub-link">Profile</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/account-settings.html"
+                                    class="sidebar__sub-link">Account
                                     Settings</a></li>
-                            <li class="sidebar__sub-item"><a href="login.html" class="sidebar__sub-link">Login</a></li>
-                            <li class="sidebar__sub-item"><a href="register.html" class="sidebar__sub-link">Register</a>
+                            <li class="sidebar__sub-item"><a href="/pages/auth/login.html"
+                                    class="sidebar__sub-link">Login</a></li>
+                            <li class="sidebar__sub-item"><a href="/pages/auth/register.html"
+                                    class="sidebar__sub-link">Register</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="forgot-password.html" class="sidebar__sub-link">Forgot
+                            <li class="sidebar__sub-item"><a href="/pages/auth/forgot-password.html"
+                                    class="sidebar__sub-link">Forgot
                                     Password</a></li>
-                            <li class="sidebar__sub-item"><a href="reset-password.html" class="sidebar__sub-link">Reset
+                            <li class="sidebar__sub-item"><a href="/pages/auth/reset-password.html"
+                                    class="sidebar__sub-link">Reset
                                     Password</a></li>
-                            <li class="sidebar__sub-item"><a href="two-factor-authentication.html"
+                            <li class="sidebar__sub-item"><a href="/pages/auth/two-factor-authentication.html"
                                     class="sidebar__sub-link">Two Factor Authentication</a></li>
-                            <li class="sidebar__sub-item"><a href="lockscreen.html" class="sidebar__sub-link">Lock
+                            <li class="sidebar__sub-item"><a href="/pages/auth/lockscreen.html"
+                                    class="sidebar__sub-link">Lock
                                     Screen</a></li>
-    
+                        </ul>
                     </div>
     
                 </li>
     
     
                 <li class="sidebar__item">
-                    <a href="documentation.html" class="sidebar__link">
+                    <a href="/pages/admin-settings.html" class="sidebar__link">
+                        <span class="sidebar__icon bi bi-gear"></span>
+                        <span class="sidebar__text">Settings</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="/pages/documentation.html" class="sidebar__link">
                         <span class="sidebar__icon bi bi-file-earmark-medical"></span>
                         <span class="sidebar__text">Documentation</span>
                     </a>
@@ -602,10 +758,15 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="xivig.html" class="sidebar__link">
+                    <a href="/pages/xivig.html" class="sidebar__link">
                         <span class="sidebar__icon bi bi-app"></span>
                         <span class="sidebar__text">Landing Page</span>
-                        <img src="./assets/xivig-logo.png" alt="Logo" class="sidebar__logo">
+                    </a>
+                </li>
+                <li class="sidebar__item mt-auto">
+                    <a href="/pages/auth/login.html" class="sidebar__link sidebar__link--logout text-danger">
+                        <span class="sidebar__icon bi bi-box-arrow-right"></span>
+                        <span class="sidebar__text">Logout</span>
                     </a>
                 </li>
             </ul>
@@ -630,7 +791,7 @@
                 <span class="settings-panel__subtitle">CONFIGURE YOUR WORKSPACE</span>
             </div>
             <button type="button" class="settings-panel__close" data-bs-dismiss="offcanvas">
-                <i class="bi bi-x-lg"></i>
+                <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
     
@@ -685,6 +846,7 @@
             </div>
         </div>
     </div>
+
     <main class="main mt-5">
         <div class="main__container container-fluid">
             
@@ -694,7 +856,7 @@
                 <nav class="page-header__nav" aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 small justify-content-center">
                         <li class="breadcrumb__item">
-                            <a href="index.html" class="breadcrumb__link">Home</a>
+                            <a href="/index.html" class="breadcrumb__link">Home</a>
                         </li>
                         <li class="breadcrumb__item breadcrumb__item--active text-primary fw-semibold" aria-current="page">Dashboard</li>
                     </ol>
@@ -708,10 +870,10 @@
                     <div class="stat-card__body">
                         <div class="stat-card__info">
                             <h3 class="stat-card__value">75</h3>
-                            <div class="stat-card__label">Appointment</div>
+                            <div class="stat-card__label">Deployment</div>
                         </div>
                         <div class="stat-card__icon stat-card__icon--info">
-                            <i class="bi bi-calendar-event"></i>
+                            <i class="bi bi-code-square fs-4 text-primary me-3"></i>
                         </div>
                     </div>
                 </div>
@@ -720,10 +882,10 @@
                     <div class="stat-card__body">
                         <div class="stat-card__info">
                             <h3 class="stat-card__value">124,551</h3>
-                            <div class="stat-card__label">Total Patient</div>
+                            <div class="stat-card__label">Total User</div>
                         </div>
                         <div class="stat-card__icon stat-card__icon--danger">
-                            <i class="bi bi-heart-fill"></i>
+                            <i class="bi bi-people fs-4 text-danger me-3"></i>
                         </div>
                     </div>
                 </div>
@@ -732,10 +894,10 @@
                     <div class="stat-card__body">
                         <div class="stat-card__info">
                             <h3 class="stat-card__value">400+</h3>
-                            <div class="stat-card__label">Total Doctor</div>
+                            <div class="stat-card__label">Total Project</div>
                         </div>
                         <div class="stat-card__icon stat-card__icon--primary">
-                            <i class="bi bi-stethoscope"></i>
+                            <i class="bi bi-clipboard-check fs-4 text-success me-3"></i>
                         </div>
                     </div>
                 </div>
@@ -744,21 +906,21 @@
                     <div class="stat-card__body">
                         <div class="stat-card__info">
                             <h3 class="stat-card__value">$50,000</h3>
-                            <div class="stat-card__label">Earning</div>
+                            <div class="stat-card__label">Revenue / Usage</div>
                         </div>
                         <div class="stat-card__icon stat-card__icon--success">
-                            <i class="bi bi-cash-stack"></i>
+                            <i class="bi bi-coin fs-4 text-warning me-3"></i>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="row g-4 pb-3">
+            <div class="row g-4 pb-3 mt-1">
                 <!-- Hospital Activities -->
                 <div class="col-lg-8">
                     <div class="card-box h-100 p-4 shadow-sm border-0">
                         <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
-                            <h5 class="mb-0 fw-bold">Hospital Activities</h5>
+                            <h5 class="mb-0 fw-bold">System Activity Overview</h5>
                             <div class="d-flex align-items-center">
                                 <select class="form-select form-select-sm shadow-none" style="width: 120px;">
                                     <option value="">Last Week</option>
@@ -770,13 +932,13 @@
                     </div>
                 </div>
             
-                <!-- Appointment & Surgery Cards -->
+                <!-- Deployment & Active Sessions Cards -->
                 <div class="col-lg-4 d-flex flex-column gap-4">
-                    <!-- Appointment Card -->
+                    <!-- Deployment Card -->
                     <div class="card-box flex-fill p-4 rounded-3 shadow-sm border-0 text-white" style="background-color: #455a64;">
                         <div class="d-flex justify-content-between align-items-start mb-2">
                             <div class="icon-wrap fs-2">
-                                <i class="bi bi-calendar-event"></i>
+                                <i class="bi bi-code-square fs-4 text-danger me-3"></i>
                             </div>
                             <div class="text-end">
                                 <div class="fw-bold small"><i class="bi bi-arrow-up-short"></i> 2.69%</div>
@@ -785,18 +947,18 @@
                         </div>
                         <div class="d-flex justify-content-between align-items-end">
                             <div>
-                                <div class="opacity-75 small">Appointment</div>
+                                <div class="opacity-75 small">Deployment</div>
                                 <div class="display-6 fw-bold">1,865</div>
                             </div>
-                            <div id="appointment-chart" style="width: 100px;"></div>
+                            <div id="deployment-chart" style="width: 100px;"></div>
                         </div>
                     </div>
             
-                    <!-- Surgery Card -->
+                    <!-- Active Sessions Card -->
                     <div class="card-box flex-fill p-4 rounded-3 shadow-sm border-0 text-white" style="background-color: #265ed7;">
                         <div class="d-flex justify-content-between align-items-start mb-2">
                             <div class="icon-wrap fs-2">
-                                <i class="bi bi-person-heart"></i>
+                                <i class="bi bi-cloud-check fs-4 me-3"></i>
                             </div>
                             <div class="text-end">
                                 <div class="fw-bold small"><i class="bi bi-arrow-down-short"></i> 3.69%</div>
@@ -805,7 +967,7 @@
                         </div>
                         <div class="d-flex justify-content-between align-items-end">
                             <div>
-                                <div class="opacity-75 small">Surgery</div>
+                                <div class="opacity-75 small">Active Sessions</div>
                                 <div class="display-6 fw-bold">250</div>
                             </div>
                             <div id="surgery-chart" style="width: 100px;"></div>
@@ -815,17 +977,19 @@
             </div>
             
             <div class="row g-4 pb-4">
-                <!-- Top Doctors -->
+                <!-- Top Faculty -->
                 <div class="col-lg-4">
                     <div class="card-box h-100 p-4 shadow-sm border-0">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h5 class="mb-0 fw-bold">Top Doctors</h5>
+                            <h5 class="mb-0 fw-bold">Top Contributors</h5>
                             <div class="dropdown">
                                 <a class="text-secondary" href="#" role="button" data-bs-toggle="dropdown">
                                     <i class="bi bi-three-dots-vertical fs-5"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-                                    <li><a class="dropdown-item" href="#">View All</a></li>
+                                    <li><a class="dropdown-item text-primary" href="#">View All</a></li>
+                                    <li><a class="dropdown-item text-warning" href="#">Edit</a></li>
+                                    <li><a class="dropdown-item text-danger" href="#">Delete</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -833,67 +997,73 @@
                         <div class="user-list">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="d-flex align-items-center">
-                                    <img src="./assets/photo1.jpg" class="rounded-circle shadow-sm" width="50" height="50">
+                                    <img src="/assets/photo1.jpg" class="rounded-circle shadow-sm" width="50" height="50">
                                     <div class="ms-3">
                                         <div class="text-primary small fw-bold">4.9 ★</div>
-                                        <div class="fw-bold text-dark">Dr. Neil Wagner</div>
-                                        <div class="small text-secondary">Pediatrician</div>
+                                        <div class="fw-bold text-dark">Alex Carter</div>
+                                        <div class="small text-secondary">Full Stack Dev</div>
                                     </div>
                                 </div>
-                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Schedule</button>
+                                <button class="btn btn-sm btn-outline-primary px-2">Schedule</button>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="d-flex align-items-center">
-                                    <img src="./assets/photo2.jpg" class="rounded-circle shadow-sm" width="50" height="50">
+                                    <img src="/assets/photo2.jpg" class="rounded-circle shadow-sm" width="50" height="50">
                                     <div class="ms-3">
                                         <div class="text-primary small fw-bold">4.8 ★</div>
-                                        <div class="fw-bold text-dark">Dr. Ren Delan</div>
-                                        <div class="small text-secondary">Pediatrician</div>
+                                        <div class="fw-bold text-dark">Rahul Sen</div>
+                                        <div class="small text-secondary">Backend Architect</div>
                                     </div>
                                 </div>
-                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Schedule</button>
+                                <button class="btn btn-sm btn-outline-primary px-2">Schedule</button>
                             </div>
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex align-items-center">
-                                    <img src="./assets/photo3.jpg" class="rounded-circle shadow-sm" width="50" height="50">
+                                    <img src="/assets/photo3.jpg" class="rounded-circle shadow-sm" width="50" height="50">
                                     <div class="ms-3">
                                         <div class="text-primary small fw-bold">4.7 ★</div>
-                                        <div class="fw-bold text-dark">Dr. Garrett Kincy</div>
-                                        <div class="small text-secondary">Pediatrician</div>
+                                        <div class="fw-bold text-dark">Nina Roy</div>
+                                        <div class="small text-secondary">UI Engineer</div>
                                     </div>
                                 </div>
-                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Schedule</button>
+                                <button class="btn btn-sm btn-outline-primary px-2">Schedule</button>
                             </div>
                         </div>
                     </div>
                 </div>
             
-                <!-- Diseases Report -->
+                <!-- System Health Report -->
                 <div class="col-lg-4">
                     <div class="card-box h-100 p-4 shadow-sm border-0">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h5 class="mb-0 fw-bold">Diseases Report</h5>
+                            <h5 class="mb-0 fw-bold">System Health</h5>
                             <div class="dropdown">
                                 <a class="text-secondary" href="#" role="button" data-bs-toggle="dropdown">
                                     <i class="bi bi-three-dots-vertical fs-5"></i>
                                 </a>
                             </div>
                         </div>
-                        <div id="diseases-chart" style="min-height: 350px;"></div>
+                        <div class="chart-container">
+                            <div id="health-chart" style="min-height: 350px;" class=" m-0 p-0"></div>
+                        </div>
+                        <!-- <div id="health-chart" style="min-height: 350px;" class="w-100"></div> -->
                     </div>
                 </div>
             
-                <!-- Upgrade to Pro -->
+                <!-- Unlock Xivig Pro -->
                 <div class="col-lg-4">
                     <div class="card-box h-100 p-4 shadow-sm border-0 d-flex flex-column align-items-center text-center">
                         <div class="mb-4">
-                            <img src="./assets/upgrade.svg" style="width: 200px;">
+                            <img src="/assets/xivig-logo.png" style="width: 96px;">
                         </div>
-                        <h5 class="fw-bold mb-2">Upgrade to Pro</h5>
+                        <h5 class="fw-bold mb-2">Unlock Xivig Pro</h5>
                         <p class="text-secondary small mb-4">
-                            You can enjoy all our premium features by upgrading to pro today.
+                            Advanced analytics, AI tools, and enterprise controls.
                         </p>
-                        <button class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm w-100">Upgrade Now</button>
+                        <div class="col-md-4">
+                            <button class="btn btn-sm btn-primary p-2">Upgrade Now</button>
+                        </div>
+            
                     </div>
                 </div>
             </div>
@@ -917,6 +1087,7 @@
             </div>
         </div>
     </footer>
+
     <!-- Form Components Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -925,7 +1096,8 @@
     <script src="https://unpkg.com/maplibre-gl@4.3.2/dist/maplibre-gl.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 </body>
 
 </html>

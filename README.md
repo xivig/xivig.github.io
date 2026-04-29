@@ -1,127 +1,144 @@
-# **XIVIG Admin Panel Elite Admin Edition**
+# 🚀 XIVIG Admin Panel - Elite Architect Edition
 
-A modern administrative dashboard built with Bootstrap 5, Handlebars templating, Vite for fast bundling and HMR, and Gulp for legacy/vendor asset orchestration. This repository adapts the Elite Admin template into a developer friendly Vite + Gulp workflow and provides a Handlebars-driven page structure for easy templating.
-________________________________________
-## **Quick Start**
-Prerequisites
-•	Node.js v18+
-•	npm or yarn
+[![Vite](https://img.shields.io/badge/bundler-Vite%205-646CFF?style=flat&logo=vite)](https://vitejs.dev/)
+[![Gulp](https://img.shields.io/badge/task%20runner-Gulp%205-CF4647?style=flat&logo=gulp)](https://gulpjs.com/)
+[![Bootstrap](https://img.shields.io/badge/ui%20kit-Bootstrap%205.3-7952B3?style=flat&logo=bootstrap)](https://getbootstrap.com/)
+[![Handlebars](https://img.shields.io/badge/template-Handlebars-f0772b?style=flat&logo=handlebars.js)](https://handlebarsjs.com/)
+[![Sass](https://img.shields.io/badge/styles-Sass%207--1-CC6699?style=flat&logo=sass)](https://sass-lang.com/)
 
-**Clone and install**
+**XIVIG Elite** is a premium, high-performance administrative dashboard designed for modern web applications. It leverages a unique hybrid workflow combining **Vite** for lightning-fast development (HMR) and **Gulp** for robust asset orchestration and legacy vendor management.
+
+---
+
+## ✨ Key Features
+
+-   **Elite Aesthetics**: Modern UI featuring Glassmorphism, advanced mesh gradients, and the "Elite Blue" color system.
+-   **Elite Analytics v2**: Advanced, modular dashboard featuring deep data visualization with ApexCharts and Chart.js.
+-   **Hybrid Build Pipeline**: The speed of Vite paired with the versatility of Gulp.
+-   **Modular SCSS (7-1 Pattern)**: A professional stylesheet architecture designed for scalability and ease of maintenance.
+-   **Handlebars Templating**: Clean separation of UI components using Handlebars partials.
+-   **Performance Optimized**: Automated image compression, intelligent vendor chunking, and aggressive tree-shaking.
+-   **Theme Aware**: Comprehensive dark mode support using CSS Design Tokens (Variables).
+
+---
+
+## 🛠 Technology Stack
+
+-   **Bundler**: [Vite](https://vitejs.dev/) (Primary engine for JS/SCSS and Dev Server)
+-   **Task Runner**: [Gulp](https://gulpjs.com/) (Image optimization and asset exports)
+-   **Framework**: [Bootstrap 5.3](https://getbootstrap.com/)
+-   **Templating**: [Handlebars](https://handlebarsjs.com/) (Integrated via `vite-plugin-handlebars`)
+-   **Styles**: [Sass/Dart Sass](https://sass-lang.com/)
+-   **Iconography**: Bootstrap Icons & FontAwesome 7
+
+---
+
+## 📂 Project Structure
+
+```text
+xivig.github.io/
+├── app/
+│   ├── pages/         # HTML views grouped by category
+│   └── src/           # Primary source code
+│       ├── partials/  # Handlebars components (header, sidebar, etc.)
+│       ├── scss/      # Modular Sass architecture (base, layout, components, etc.)
+│       ├── scripts/   # Modular JavaScript logic and app controllers
+│       ├── images/    # Source images and UI assets
+│       └── plugins/   # Local vendor plugins
+├── public/            # Static assets served as-is (data, fonts)
+├── tasks/             # Specialized Gulp modules
+├── docs/              # GitHub Pages deployment folder
+├── index.html         # Main dashboard entry point
+├── gulpfile.js        # Gulp orchestration script
+├── vite.config.js     # Primary build & server configuration
+└── developer-docs/    # In-depth technical guides
 ```
-git clone https://github.com/xivig/xivig-gulp-vite-bs5-admin-panel.git
-cd xivig-gulp-vite-bs5-admin-panel
+
+---
+
+## 🚀 Getting Started
+
+### 1. Prerequisites
+- **Node.js**: v18.0.0 or higher
+- **npm**: v9.0.0 or higher
+
+### 2. Installation
+```bash
+# Clone the repository
+git clone https://github.com/xivig/xivig-github-io.git
+
+# Navigate to directory
+cd xivig-github-io
+
+# Install dependencies
 npm install
 ```
 
-**Development**
-```
+### 3. Development
+Start the Vite development server with Hot Module Replacement (HMR):
+```bash
 npm run dev
-
 ```
-**Production build**
+Navigate to `http://localhost:5173` to view your dashboard.
 
-```
+### 4. Production Build
+Generate an optimized, production-ready bundle in the `dist/` folder:
+```bash
 npm run build
 ```
 
-**Preview production build**
+---
+
+## 🎨 Styling & Customization
+
+The project uses a highly structured **7-1 Sass Pattern**. For a deep dive into how to modify colors, tokens, and components, please refer to the [SCSS_ARCHITECTURE.md](./developer-docs/SCSS_ARCHITECTURE.md) file.
+
+### Quick Theme Change:
+Update primary design tokens in `app/src/scss/base/_tokens.scss`:
+```scss
+:root {
+  --elite-primary: #6366f1; /* Update your primary brand color */
+  --elite-radius: 24px;    /* Global border radius */
+}
 ```
-npm run preview
-```
-________________________________________
-### **Project Structure**
 
-xivig-gulp-vite-bs5-admin-panel/
+---
 
-├── src/
+## 📝 Templating Workflow
 
-│   ├── pages/        # Handlebars pages (.hbs)
+This project uses **Handlebars** for modular HTML construction.
+- **Entry Points**: `index.html` in the root and all `.html` files in `app/pages/`.
+- **Partials**: Located in `app/src/partials/`, these can be included in any page using:
+  ```handlebars
+  {{> sidebar }}
+  ```
 
-│   ├── partials/     # Handlebars partials (header sidebar footer)
+---
 
-│   ├── scss/         # SCSS entry points and variables
+## 📦 Build Commands
 
-│   ├── scripts/      # Application JS
+| Command | Action |
+| :--- | :--- |
+| `npm run dev` | Starts the local server with HMR |
+| `npm run build` | Compiles and minifies assets for production |
+| `npm run preview` | Locally previews the production build |
+| `npm run gulp:images` | Runs the Gulp image optimization pipeline |
 
-│   └── images/       # Project images
+---
 
-├── public/           # Static assets served as-is
+## 🤝 Contributing
 
-├── tasks/            # Gulp task modules
+1. **Fork** the repository.
+2. Create a **Feature Branch** (`git checkout -b feature/AmazingFeature`).
+3. **Commit** your changes (`git commit -m 'Add some AmazingFeature'`).
+4. **Push** to the branch (`git push origin feature/AmazingFeature`).
+5. Open a **Pull Request**.
 
-├── gulpfile.js       # Gulp task runner
+---
 
-├── vite.config.js    # Vite configuration and HBS plugin
+## 📄 License
 
-├── package.json
+Distributed under the MIT License. See `LICENSE` for more information.
 
-└── dist/            # Production output (generated)
-
-
-________________________________________
-### **Workflow and Integration**
-
-**Vite**
-
-•	Handles module bundling, SASS compilation, and HMR for fast development. Configure Handlebars entries in vite.config.js using a Handlebars plugin.
-
-**Handlebars**
-
-•	Use src/partials/ for reusable UI and src/pages/ for page entry points. Include partials with:
-```
-{{> header }}
-{{> sidebar }}
-{{> footer }}
-```
-•	Configure template data and helpers in the Vite Handlebars plugin options if you need build-time context.
-Gulp
-•	Used for vendor asset management and heavy legacy plugins that are not part of the Vite pipeline. Typical tasks: 
-o	Copy/minify vendor scripts into dist/vendor
-o	Process icon fonts and generate icon bundles
-
-**Theming**
-
-•	Main SCSS entry: src/scss/style.scss
-•	Override variables in src/scss/_variables.scss:
-```
-$primary: #0d6efd;
-$brand-sidebar-color: #1f2937;
-```
-Vite recompiles SCSS automatically during development.
-________________________________________
-| Commands Reference | Command Action |
-| ----- | ----- |
-| npm run dev  | Start Vite dev server (HMR)   |
-| ------ | ------ |
-|  npm run build  | Build production dist   |
-| ------ | ------ |
-| npm run preview  | Preview production build locally   |
-| ------ | ------ |
-| npm run gulp:images | Process images for compression |
-
-
-________________________________________
-#### Troubleshooting Contributing and License
-
-**Troubleshooting**
-•	SCSS errors: ensure sass is installed:
-```
-npm install -D sass
-```
-•	Broken install or missing modules:
-```
-rm -rf node_modules package-lock.json
-npm install
-```
-•	Handlebars pages not recognized: confirm vite-plugin-handlebars is installed and vite.config.js includes correct entry mapping.
-
-**Contributing**
-•	Fork the repo and create feature branches.
-•	Keep UI changes scoped to SCSS variables where possible.
-•	Add pages under src/pages/ and partials under src/partials/.
-•	Update or add Gulp tasks in tasks/ only when vendor processing is required.
-•	Run npm run build locally before opening a pull request.
-
-**License**
-•	 The repository license is specified in the LICENSE file;
+---
+*Built with ❤️ by [XIVIG](https://github.com/xivig)*

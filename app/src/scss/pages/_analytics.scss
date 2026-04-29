@@ -1,0 +1,17 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+// Analytics Overview Specific Styles
+.analytics-card {
+    transition: transform 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+#growthChart {
+    .apexcharts-canvas {
+        margin: 0 auto;
+    }
+}

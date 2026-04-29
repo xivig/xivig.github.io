@@ -1,0 +1,51 @@
+// simple mixins used across components
+@mixin center-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin transition($prop: all, $time: 0.3s, $ease: ease) {
+    transition: $prop $time $ease;
+}
+
+// Elite Design System Mixins
+@mixin elite-shadow($opacity: 0.05) {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, $opacity);
+}
+
+@mixin glass-effect($blur: 15px, $opacity: 0.7) {
+    background: rgba(255, 255, 255, $opacity);
+    backdrop-filter: blur($blur);
+    -webkit-backdrop-filter: blur($blur);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+@mixin elite-scrollbar($width: 5px, $thumb-opacity: 0.15) {
+    &::-webkit-scrollbar {
+        width: $width;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba(var(--bs-primary-rgb), $thumb-opacity);
+        border-radius: 10px;
+        transition: background 0.3s ease;
+        
+        &:hover {
+            background: rgba(var(--bs-primary-rgb), $thumb-opacity * 2.5);
+        }
+    }
+}
+
+@mixin circle($size) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+}
+
+@mixin avatar($size) {
+    @include circle($size);
+    object-fit: cover;
+}

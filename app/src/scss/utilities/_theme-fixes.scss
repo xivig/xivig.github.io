@@ -1,0 +1,90 @@
+/* --- Theme Consistency Fixes --- */
+.card,
+.page-header {
+    background-color: var(--card-bg) !important;
+    border-color: var(--card-border) !important;
+    color: var(--text-main);
+}
+
+.bg-white {
+    background-color: var(--card-bg) !important;
+}
+
+.bg-light {
+    background-color: var(--bg-body) !important;
+}
+
+.text-dark {
+    color: var(--text-main) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+[data-bs-theme="dark"] {
+    .breadcrumb-item+.breadcrumb-item::before {
+        color: var(--text-muted);
+    }
+
+    .table {
+        --bs-table-color: var(--text-main);
+        --bs-table-bg: transparent;
+        border-color: var(--card-border);
+    }
+
+    .dropdown-menu {
+        background-color: var(--card-bg);
+        border-color: var(--card-border);
+        color: var(--text-main);
+    }
+
+    .dropdown-item {
+        color: var(--text-main);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    }
+
+    input,
+    select,
+    textarea {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border-color: var(--card-border) !important;
+        color: var(--text-main) !important;
+
+        &::placeholder {
+            color: var(--text-muted) !important;
+        }
+    }
+}
+
+/* --- Theme-Aware Utilities --- */
+.bg-primary-light {
+    background-color: rgba(99, 102, 241, 0.1) !important;
+}
+
+.bg-success-light {
+    background-color: rgba(16, 185, 129, 0.1) !important;
+}
+
+.bg-info-light {
+    background-color: rgba(14, 165, 233, 0.1) !important;
+}
+
+.bg-warning-light {
+    background-color: rgba(245, 158, 11, 0.1) !important;
+}
+
+.bg-danger-light {
+    background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+.bg-light-subtle {
+    background-color: var(--bg-subtle) !important;
+}
+
+[data-bs-theme="dark"] .bg-light {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
