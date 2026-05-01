@@ -12,7 +12,7 @@ export function initSidebar() {
         
         if (!config) {
             try {
-                const response = await fetch('/public/data/sidebar-config.json');
+                const response = await fetch('/data/sidebar-config.json');
                 config = await response.json();
                 localStorage.setItem('xivig_sidebar_config', JSON.stringify(config));
             } catch (err) {
@@ -62,7 +62,7 @@ export function initSidebar() {
         const logoutLi = document.createElement('li');
         logoutLi.className = 'sidebar__item mt-auto';
         logoutLi.innerHTML = `
-            <a href="/app/pages/auth/login.html" class="sidebar__link sidebar__link--logout text-danger">
+            <a href="/pages/auth/login.html" class="sidebar__link sidebar__link--logout text-danger">
                 <span class="sidebar__icon bi bi-box-arrow-right"></span>
                 <span class="sidebar__text">Logout</span>
             </a>
