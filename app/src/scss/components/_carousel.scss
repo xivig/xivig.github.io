@@ -2,17 +2,17 @@
    Root Variables & Base Styles
    ========================================================= */
 :root {
-    --xivig-primary: #6366f1;
-    --xivig-secondary: #a855f7;
-    --xivig-grad: linear-gradient(135deg, #6366f1, #a855f7);
-    --bg-soft: #f8fafc;
-    --glass: rgba(255, 255, 255, 0.7);
+    --xivig-primary: var(--elite-primary);
+    --xivig-secondary: var(--elite-secondary);
+    --xivig-grad: var(--primary-gradient);
+    --bg-soft: var(--bg-body);
+    --glass: var(--header-bg);
 }
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: var(--bg-soft);
-    color: #0f172a;
+    background-color: var(--bg-body);
+    color: var(--text-main);
 }
 
 /* ===== End Root & Base ===== */
@@ -25,7 +25,7 @@ body {
     background: var(--glass);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--card-border);
     padding: 1rem 0;
 }
 
@@ -47,7 +47,7 @@ body {
 .carousel-elite-mini {
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--card-shadow);
     aspect-ratio: 700 / 400;
 }
 
@@ -71,7 +71,7 @@ body {
     border-radius: 32px;
     overflow: hidden;
     aspect-ratio: 700 / 400;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--card-shadow);
     height: 100%;
     position: relative;
 }
@@ -93,7 +93,7 @@ body {
     border-radius: 32px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--card-shadow);
 }
 
 .carousel-elite-frame img {
@@ -168,17 +168,17 @@ body {
    Cards & Badges
    ========================================================= */
 .elite-card {
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 28px;
     padding: 1.5rem;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: var(--transition-elite);
     height: 100%;
 }
 
 .elite-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 30px 60px rgba(99, 102, 241, 0.1);
+    box-shadow: var(--card-shadow-hover);
     border-color: var(--xivig-primary);
 }
 
@@ -190,7 +190,7 @@ body {
 }
 
 .badge-elite {
-    background: #eceeff;
+    background: var(--elite-primary-soft);
     color: var(--xivig-primary);
     padding: 4px 10px;
     border-radius: 10px;
@@ -258,12 +258,12 @@ body {
     bottom: 20px;
     left: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.85);
+    background: var(--header-bg);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--card-border);
     border-radius: 20px;
     padding: 1.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--card-shadow);
     z-index: 5;
 }
 

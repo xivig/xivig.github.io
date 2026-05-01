@@ -27,25 +27,26 @@ h6 {
 
 /* Soft Color Utilities */
 .bg-warning-soft {
-    background-color: #fff9e6 !important;
+    background-color: var(--elite-warning-soft) !important;
 }
 
 .text-warning {
-    color: #d97706 !important;
+    color: var(--elite-warning) !important;
 }
 
 .bg-primary-soft {
-    background-color: #f0f7ff !important;
+    background-color: var(--elite-primary-soft) !important;
 }
 
 .text-primary-soft-text {
-    color: #3b82f6 !important;
+    color: var(--elite-primary) !important;
 }
 
 /* Quote Styling */
 .blockquote {
     border: none;
     padding: 0;
+    color: var(--text-main);
 }
 
 .italic {
@@ -57,19 +58,24 @@ dt {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    color: var(--text-muted);
 }
 
 dd {
     font-size: 1rem;
     line-height: 1.6;
+    color: var(--text-main);
 }
 
 /* Hover Effect for Cards */
 .card-box {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--elite-radius);
+    transition: var(--transition-elite);
 }
 
 .card-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.08) !important;
+    box-shadow: var(--card-shadow-hover) !important;
 }

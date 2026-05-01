@@ -63,11 +63,11 @@ export const initIconFilter = async (inputId, containerId) => {
         const displayList = list.slice(0, 500);
         
         container.innerHTML = displayList.map(name => `
-            <div class="fa-hover col-xl-3 col-md-4 col-sm-6 col-12 animate__animated animate__fadeIn">
-                <a href="javascript:;" class="d-flex align-items-center p-3 border border-radius-10 text-dark text-decoration-none transition-all hover-shadow">
+            <div class="col-xl-3 col-md-4 col-sm-6 col-12 animate__animated animate__fadeIn icon-item">
+                <div class="fa-hover">
                     <i class="bi bi-${name} fs-4 text-primary me-3"></i>
-                    <span class="text-truncate">${name}</span>
-                </a>
+                    <span class="text-truncate small fw-bold">${name}</span>
+                </div>
             </div>
         `).join('');
 

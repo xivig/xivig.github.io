@@ -14,7 +14,7 @@
     position: absolute;
     width: 2px;
     /* Gradient starts and ends at the dot centers */
-    background: linear-gradient(to bottom, transparent, #e9ecef 5%, #e9ecef 95%, transparent);
+    background: linear-gradient(to bottom, transparent, var(--card-border) 5%, var(--card-border) 95%, transparent);
     top: 20px;
     bottom: 20px;
     left: 50%;
@@ -36,8 +36,8 @@
     position: absolute;
     width: 16px;
     height: 16px;
-    background-color: #fff;
-    border: 3px solid #0d6efd;
+    background-color: var(--card-bg);
+    border: 3px solid var(--elite-primary);
     border-radius: 50%;
     top: 28px;
     /* Aligned with the card title */
@@ -66,7 +66,7 @@
 .timeline-date {
     display: block;
     font-weight: 700;
-    color: #adb5bd;
+    color: var(--text-muted);
     font-size: 0.75rem;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -75,16 +75,16 @@
 
 /* Elite Card Style */
 .timeline-content {
-    background: #fff;
+    background: var(--card-bg);
     border-radius: 16px !important;
-    border: none !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid var(--card-border) !important;
+    transition: var(--transition-elite);
+    box-shadow: var(--card-shadow) !important;
 }
 
 .timeline-content:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: var(--card-shadow-hover) !important;
 }
 
 /* Responsive adjustments */

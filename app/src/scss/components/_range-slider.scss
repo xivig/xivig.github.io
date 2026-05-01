@@ -1,7 +1,7 @@
 /* Elite Range Slider Styling */
 .elite-range {
     height: 6px;
-    background: #f1f5f9;
+    background: var(--bg-subtle);
     /* Soft track color */
     border-radius: 50rem;
     appearance: none;
@@ -12,11 +12,11 @@
 .elite-range::-webkit-slider-thumb {
     width: 20px;
     height: 20px;
-    background: #ffffff;
-    border: 3px solid #0d6efd;
+    background: var(--card-bg);
+    border: 3px solid var(--elite-primary);
     /* Primary Color */
     border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.2);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     appearance: none;
     margin-top: -7px;
@@ -26,9 +26,9 @@
 /* Hover Interaction */
 .elite-range::-webkit-slider-thumb:hover {
     transform: scale(1.25);
-    background-color: #0d6efd;
-    border-color: #ffffff;
-    box-shadow: 0 0 15px rgba(13, 110, 253, 0.4);
+    background-color: var(--elite-primary);
+    border-color: var(--card-bg);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
 }
 
 /* Track Focus */
@@ -39,56 +39,56 @@
 
 /* Color Variants */
 .range-success::-webkit-slider-thumb {
-    border-color: #198754;
-    box-shadow: 0 4px 10px rgba(25, 135, 84, 0.2);
+    border-color: var(--elite-success);
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
 }
 
 .range-success::-webkit-slider-thumb:hover {
-    background-color: #198754;
+    background-color: var(--elite-success);
 }
 
 .range-info::-webkit-slider-thumb {
-    border-color: #0dcaf0;
-    box-shadow: 0 4px 10px rgba(13, 202, 240, 0.2);
+    border-color: var(--elite-info);
+    box-shadow: 0 4px 10px rgba(14, 165, 233, 0.2);
 }
 
 .range-info::-webkit-slider-thumb:hover {
-    background-color: #0dcaf0;
+    background-color: var(--elite-info);
 }
 
 .range-warning::-webkit-slider-thumb {
-    border-color: #ffc107;
-    box-shadow: 0 4px 10px rgba(255, 193, 7, 0.2);
+    border-color: var(--elite-warning);
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.2);
 }
 
 .range-warning::-webkit-slider-thumb:hover {
-    background-color: #ffc107;
+    background-color: var(--elite-warning);
 }
 
 .range-danger::-webkit-slider-thumb {
-    border-color: #dc3545;
-    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.2);
+    border-color: var(--elite-danger);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
 }
 
 .range-danger::-webkit-slider-thumb:hover {
-    background-color: #dc3545;
+    background-color: var(--elite-danger);
 }
 
 /* Soft Badge Utilities */
 .bg-primary-soft {
-    background-color: #e7f1ff !important;
+    background-color: var(--elite-primary-soft) !important;
 }
 
 .bg-success-soft {
-    background-color: #e1f7eb !important;
+    background-color: var(--elite-success-soft) !important;
 }
 
 .bg-info-soft {
-    background-color: #e0f7fa !important;
+    background-color: var(--elite-info-soft) !important;
 }
 
 .bg-warning-soft {
-    background-color: #fff8e6 !important;
+    background-color: var(--elite-warning-soft) !important;
 }
 
 /* Typography */

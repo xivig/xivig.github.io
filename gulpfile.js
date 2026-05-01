@@ -12,6 +12,9 @@ import {
 import {
     serveDocs
 } from './tasks/gulp/serve-docs.js';
+import {
+    fixLinks
+} from './tasks/utils/replace-links.js';
 
 // 1. Clean
 export const clean = () => deleteAsync(['dist', 'exports']);
@@ -62,6 +65,11 @@ export const serve = (cb) => {
 export const preview = (cb) => {
     const vite = exec('npx vite preview');
     vite.stdout.on('data', (d) => console.log(d));
+    cb();
+};
+
+export const fixDistLinks = (cb) => {
+    fixLinks("./dist");
     cb();
 };
 
@@ -119,6 +127,7 @@ export const build = gulp.series(
     viteBuild,
     optimizeImages,
     moveHtmlPages,
+    fixDistLinks,
     copyVendorPackages,
     exportAssets
 );

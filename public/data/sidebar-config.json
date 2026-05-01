@@ -1,129 +1,534 @@
 [
-    { "id": 1, "label": "Home", "icon": "bi bi-house", "path": "/index.html", "hasSubmenu": true, "submenu": [
-        { "label": "Dashboard v1", "path": "/index.html" },
-        { "label": "Dashboard v2", "path": "/app/pages/dashboard-v2.html" }
-    ]},
-    { "id": 2, "label": "Ecommerce", "icon": "bi bi-shop", "path": "/app/pages/ecommerce/ecommerce-products.html", "hasSubmenu": true, "submenu": [
-        { "label": "Product Management", "path": "javascript:;", "hasSubmenu": true, "submenu": [
-            { "label": "Product List", "path": "/app/pages/ecommerce/ecommerce-products.html" },
-            { "label": "Add Product", "path": "/app/pages/ecommerce/ecommerce-add-product.html" },
-            { "label": "Product Show", "path": "/app/pages/ecommerce/ecommerce-product-show.html" }
-        ]},
-        { "label": "Product Analytics", "path": "/app/pages/ecommerce/ecommerce-product-detail.html" },
-        { "label": "Order Management", "path": "javascript:;", "hasSubmenu": true, "submenu": [
-            { "label": "Order List", "path": "/app/pages/ecommerce/ecommerce-orders.html" },
-            { "label": "Create Order", "path": "/app/pages/ecommerce/create-order.html" }
-        ]},
-        { "label": "Shopping Cart", "path": "/app/pages/ecommerce/ecommerce-cart.html" },
-        { "label": "Store Settings", "path": "/app/pages/store-settings.html" }
-    ]},
-    { "id": 3, "label": "Blog", "icon": "bi bi-journal-text", "path": "/app/pages/blog-list.html", "hasSubmenu": true, "submenu": [
-        { "label": "Blog List", "path": "/app/pages/blog-list.html" },
-        { "label": "Blog Details", "path": "/app/pages/blog-detail.html" }
-    ]},
-    { "id": 4, "label": "Course", "icon": "bi bi-book-half", "path": "/app/pages/course-dashboard.html", "hasSubmenu": true, "submenu": [
-        { "label": "Course Dashboard", "path": "/app/pages/course-dashboard.html" },
-        { "label": "Course Interface", "path": "/app/pages/course-interface.html" }
-    ]},
-    { "id": 5, "label": "Apps", "icon": "bi bi-grid", "path": "/app/pages/apps/calendar.html", "hasSubmenu": true, "submenu": [
-        { "label": "Calendar", "path": "/app/pages/apps/calendar.html" },
-        { "label": "Chat", "path": "/app/pages/apps/chat.html" },
-        { "label": "Video Player", "path": "/app/pages/apps/video-player.html" },
-        { "label": "Kanban", "path": "/app/pages/apps/kanban.html" },
-        { "label": "Task", "path": "/app/pages/apps/task-manager.html" },
-        { "label": "File Manager", "path": "/app/pages/apps/file-manager.html" },
-        { "label": "Mailbox", "path": "/app/pages/apps/inbox.html" }
-    ]},
-    { "id": 6, "label": "Projects", "icon": "bi bi-briefcase", "path": "/app/pages/projects/project-list.html", "hasSubmenu": true, "submenu": [
-        { "label": "Project List", "path": "/app/pages/projects/project-list.html" },
-        { "label": "Add Project", "path": "/app/pages/projects/project-add.html" }
-    ]},
-    { "id": 7, "label": "Users", "icon": "bi bi-people", "path": "/app/pages/users/user-list.html", "hasSubmenu": true, "submenu": [
-        { "label": "User List", "path": "/app/pages/users/user-list.html" },
-        { "label": "Add User", "path": "/app/pages/users/user-add.html" }
-    ]},
-    { "id": 8, "label": "Pipeline", "icon": "bi bi-rocket-takeoff", "path": "/app/pages/deployments/deployment-list.html", "hasSubmenu": true, "submenu": [
-        { "label": "Deployments", "path": "/app/pages/deployments/deployment-list.html" },
-        { "label": "Build History", "path": "/app/pages/deployments/build-history.html" },
-        { "label": "Releases", "path": "/app/pages/deployments/releases.html" }
-    ]},
-    { "id": 9, "label": "Analytics", "icon": "bi bi-bar-chart", "path": "/app/pages/analytics/overview.html", "hasSubmenu": true, "submenu": [
-        { "label": "Overview", "path": "/app/pages/analytics/overview.html" },
-        { "label": "System Metrics", "path": "/app/pages/analytics/system-metrics.html" }
-    ]},
-    { "id": 10, "label": "Form", "icon": "bi bi-textarea-resize", "path": "/app/pages/forms/form-basic.html", "hasSubmenu": true, "submenu": [
-        { "label": "Form Basic", "path": "/app/pages/forms/form-basic.html" },
-        { "label": "Html Editor", "path": "/app/pages/forms/summernote-editor.html" },
-        { "label": "Advanced Components", "path": "/app/pages/forms/advanced-components.html" },
-        { "label": "Form Pickers", "path": "/app/pages/forms/form-pickers.html" },
-        { "label": "Form Extras", "path": "/app/pages/forms/form-extras.html" },
-        { "label": "Form Grid", "path": "/app/pages/forms/form-grid.html" },
-        { "label": "Form Wizard", "path": "/app/pages/forms/form-wizard.html" },
-        { "label": "Image Cropper", "path": "/app/pages/forms/image-cropper.html" },
-        { "label": "Image Dropzone", "path": "/app/pages/forms/image-dropzone.html" }
-    ]},
-    { "id": 11, "label": "Table", "icon": "bi bi-table", "path": "/app/pages/tables/basic-table.html", "hasSubmenu": true, "submenu": [
-        { "label": "Basic Table", "path": "/app/pages/tables/basic-table.html" },
-        { "label": "Datatables", "path": "/app/pages/tables/datatable.html" }
-    ]},
-    { "id": 12, "label": "UI Elements", "icon": "bi bi-archive", "path": "/app/pages/ui-elements/ui-buttons.html", "hasSubmenu": true, "submenu": [
-        { "label": "Buttons", "path": "/app/pages/ui-elements/ui-buttons.html" },
-        { "label": "Cards", "path": "/app/pages/ui-elements/ui-cards.html" },
-        { "label": "Cards Hover", "path": "/app/pages/ui-elements/ui-cards-hover.html" },
-        { "label": "Modals", "path": "/app/pages/ui-elements/ui-modals.html" },
-        { "label": "Tabs", "path": "/app/pages/ui-elements/ui-tabs.html" },
-        { "label": "Sweet Alert", "path": "/app/pages/ui-elements/ui-sweet-alert.html" },
-        { "label": "Notification", "path": "/app/pages/ui-elements/ui-notification.html" },
-        { "label": "Timeline", "path": "/app/pages/ui-elements/ui-timeline.html" },
-        { "label": "Progressbar", "path": "/app/pages/ui-elements/ui-progressbar.html" },
-        { "label": "Typography", "path": "/app/pages/ui-elements/ui-typography.html" },
-        { "label": "List group", "path": "/app/pages/ui-elements/ui-list-group.html" },
-        { "label": "Range slider", "path": "/app/pages/ui-elements/ui-range-slider.html" },
-        { "label": "Carousel", "path": "/app/pages/ui-elements/ui-carousel.html" },
-        { "label": "Collapsible Toggle", "path": "/app/pages/ui-elements/ui-toggle.html" },
-        { "label": "Offcanvas", "path": "/app/pages/ui-elements/ui-offcanvas.html" }
-    ]},
-    { "id": 13, "label": "Icons", "icon": "bi bi-command", "path": "/app/pages/ui-elements/bootstrap-icon.html", "hasSubmenu": true, "submenu": [
-        { "label": "Bootstrap Icons", "path": "/app/pages/ui-elements/bootstrap-icon.html" },
-        { "label": "FontAwesome Icons", "path": "/app/pages/ui-elements/font-awesome.html" }
-    ]},
-    { "id": 14, "label": "Charts", "icon": "bi bi-pie-chart", "path": "/app/pages/charts/apexcharts.html", "hasSubmenu": true, "submenu": [
-        { "label": "Apexcharts", "path": "/app/pages/charts/apexcharts.html" },
-        { "label": "Chart.js", "path": "/app/pages/charts/chartjs.html" },
-        { "label": "E-Charts", "path": "/app/pages/charts/e-chart.html" },
-        { "label": "Highcharts", "path": "/app/pages/charts/highchart.html" },
-        { "label": "Vector Map", "path": "/app/pages/charts/jtvector-map.html" }
-    ]},
-    { "id": 15, "label": "Extras", "icon": "bi bi-file-earmark-text", "path": "/app/pages/invoice.html", "hasSubmenu": true, "submenu": [
-        { "label": "Invoice", "path": "/app/pages/invoice.html" },
-        { "label": "FAQ", "path": "/app/pages/faq.html" },
-        { "label": "Gallery", "path": "/app/pages/gallery.html" },
-        { "label": "Pricing Table", "path": "/app/pages/pricing-table.html" },
-        { "label": "Sitemap", "path": "/app/pages/sitemap.html" },
-        { "label": "Blank Page", "path": "/app/pages/blank.html" },
-        { "label": "Search Result", "path": "/app/pages/search.html" }
-    ]},
-    { "id": 16, "label": "Errors", "icon": "bi bi-bug", "path": "/app/pages/error/404.html", "hasSubmenu": true, "submenu": [
-        { "label": "400 Bad Request", "path": "/app/pages/error/400.html" },
-        { "label": "403 Forbidden", "path": "/app/pages/error/403.html" },
-        { "label": "404 Not Found", "path": "/app/pages/error/404.html" },
-        { "label": "500 Internal Error", "path": "/app/pages/error/500.html" },
-        { "label": "503 Service Unavailable", "path": "/app/pages/error/503.html" }
-    ]},
-    { "id": 17, "label": "Additional Pages", "icon": "bi bi-file-earmark-plus", "path": "/app/pages/maintenance.html", "hasSubmenu": true, "submenu": [
-        { "label": "Maintenance", "path": "/app/pages/maintenance.html" },
-        { "label": "Account Onboarding", "path": "/app/pages/auth/multi-step-account-onboarding.html" },
-        { "label": "Help & Support", "path": "/app/pages/help-support.html" },
-        { "label": "Profile", "path": "/app/pages/profile.html" },
-        { "label": "Account Settings", "path": "/app/pages/account-settings.html" },
-        { "label": "Login", "path": "/app/pages/auth/login.html" },
-        { "label": "Register", "path": "/app/pages/auth/register.html" },
-        { "label": "Forgot Password", "path": "/app/pages/auth/forgot-password.html" },
-        { "label": "Reset Password", "path": "/app/pages/auth/reset-password.html" },
-        { "label": "2FA Authentication", "path": "/app/pages/auth/two-factor-authentication.html" },
-        { "label": "Lock Screen", "path": "/app/pages/auth/lockscreen.html" }
-    ]},
-    { "id": 18, "label": "Settings", "icon": "bi bi-gear", "path": "/app/pages/admin-settings.html", "hasSubmenu": false },
-    { "id": 19, "label": "Documentation", "icon": "bi bi-file-earmark-medical", "path": "/app/pages/documentation.html", "hasSubmenu": false },
-    { "id": 20, "label": "Landing Page", "icon": "bi bi-app", "path": "/app/pages/xivig.html", "hasSubmenu": false }
+    {
+        "id": 1,
+        "label": "Home",
+        "icon": "bi bi-house",
+        "path": "/index.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Dashboard v1",
+                "path": "/index.html"
+            },
+            {
+                "label": "Dashboard v2",
+                "path": "/app/pages/dashboard-v2.html"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "label": "Ecommerce",
+        "icon": "bi bi-shop",
+        "path": "/app/pages/ecommerce/ecommerce-products.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Product Management",
+                "path": "javascript:;",
+                "hasSubmenu": true,
+                "submenu": [
+                    {
+                        "label": "Product List",
+                        "path": "/app/pages/ecommerce/ecommerce-products.html"
+                    },
+                    {
+                        "label": "Add Product",
+                        "path": "/app/pages/ecommerce/ecommerce-add-product.html"
+                    },
+                    {
+                        "label": "Product Show",
+                        "path": "/app/pages/ecommerce/ecommerce-product-show.html"
+                    }
+                ]
+            },
+            {
+                "label": "Product Analytics",
+                "path": "/app/pages/ecommerce/ecommerce-product-detail.html"
+            },
+            {
+                "label": "Order Management",
+                "path": "javascript:;",
+                "hasSubmenu": true,
+                "submenu": [
+                    {
+                        "label": "Order List",
+                        "path": "/app/pages/ecommerce/ecommerce-orders.html"
+                    },
+                    {
+                        "label": "Create Order",
+                        "path": "/app/pages/ecommerce/create-order.html"
+                    }
+                ]
+            },
+            {
+                "label": "Shopping Cart",
+                "path": "/app/pages/ecommerce/ecommerce-cart.html"
+            },
+            {
+                "label": "Store Settings",
+                "path": "/app/pages/store-settings.html"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "label": "Blog",
+        "icon": "bi bi-journal-text",
+        "path": "/app/pages/blog-list.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Blog List",
+                "path": "/app/pages/blog-list.html"
+            },
+            {
+                "label": "Blog Details",
+                "path": "/app/pages/blog-detail.html"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "label": "Course",
+        "icon": "bi bi-book-half",
+        "path": "/app/pages/course-dashboard.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Course Dashboard",
+                "path": "/app/pages/course-dashboard.html"
+            },
+            {
+                "label": "Course Interface",
+                "path": "/app/pages/course-interface.html"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "label": "Apps",
+        "icon": "bi bi-grid",
+        "path": "/app/pages/apps/calendar.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Calendar",
+                "path": "/app/pages/apps/calendar.html"
+            },
+            {
+                "label": "Chat",
+                "path": "/app/pages/apps/chat.html"
+            },
+            {
+                "label": "Video Player",
+                "path": "/app/pages/apps/video-player.html"
+            },
+            {
+                "label": "Kanban",
+                "path": "/app/pages/apps/kanban.html"
+            },
+            {
+                "label": "Task",
+                "path": "/app/pages/apps/task-manager.html"
+            },
+            {
+                "label": "File Manager",
+                "path": "/app/pages/apps/file-manager.html"
+            },
+            {
+                "label": "Mailbox",
+                "path": "/app/pages/apps/inbox.html"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "label": "Projects",
+        "icon": "bi bi-briefcase",
+        "path": "/app/pages/projects/project-list.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Project List",
+                "path": "/app/pages/projects/project-list.html"
+            },
+            {
+                "label": "Add Project",
+                "path": "/app/pages/projects/project-add.html"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "label": "Users",
+        "icon": "bi bi-people",
+        "path": "/app/pages/users/user-list.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "User List",
+                "path": "/app/pages/users/user-list.html"
+            },
+            {
+                "label": "Add User",
+                "path": "/app/pages/users/user-add.html"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "label": "Pipeline",
+        "icon": "bi bi-rocket-takeoff",
+        "path": "/app/pages/deployments/deployment-list.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Deployments",
+                "path": "/app/pages/deployments/deployment-list.html"
+            },
+            {
+                "label": "Build History",
+                "path": "/app/pages/deployments/build-history.html"
+            },
+            {
+                "label": "Releases",
+                "path": "/app/pages/deployments/releases.html"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "label": "Analytics",
+        "icon": "bi bi-bar-chart",
+        "path": "/app/pages/analytics/overview.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Overview",
+                "path": "/app/pages/analytics/overview.html"
+            },
+            {
+                "label": "System Metrics",
+                "path": "/app/pages/analytics/system-metrics.html"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "label": "Form",
+        "icon": "bi bi-textarea-resize",
+        "path": "/app/pages/forms/form-basic.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Form Basic",
+                "path": "/app/pages/forms/form-basic.html"
+            },
+            {
+                "label": "Html Editor",
+                "path": "/app/pages/forms/summernote-editor.html"
+            },
+            {
+                "label": "Advanced Components",
+                "path": "/app/pages/forms/advanced-components.html"
+            },
+            {
+                "label": "Form Pickers",
+                "path": "/app/pages/forms/form-pickers.html"
+            },
+            {
+                "label": "Form Extras",
+                "path": "/app/pages/forms/form-extras.html"
+            },
+            {
+                "label": "Form Grid",
+                "path": "/app/pages/forms/form-grid.html"
+            },
+            {
+                "label": "Form Wizard",
+                "path": "/app/pages/forms/form-wizard.html"
+            },
+            {
+                "label": "Image Cropper",
+                "path": "/app/pages/forms/image-cropper.html"
+            },
+            {
+                "label": "Image Dropzone",
+                "path": "/app/pages/forms/image-dropzone.html"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "label": "Table",
+        "icon": "bi bi-table",
+        "path": "/app/pages/tables/basic-table.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Basic Table",
+                "path": "/app/pages/tables/basic-table.html"
+            },
+            {
+                "label": "Datatables",
+                "path": "/app/pages/tables/datatable.html"
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "label": "UI Elements",
+        "icon": "bi bi-archive",
+        "path": "/app/pages/ui-elements/ui-buttons.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Buttons",
+                "path": "/app/pages/ui-elements/ui-buttons.html"
+            },
+            {
+                "label": "Cards",
+                "path": "/app/pages/ui-elements/ui-cards.html"
+            },
+            {
+                "label": "Cards Hover",
+                "path": "/app/pages/ui-elements/ui-cards-hover.html"
+            },
+            {
+                "label": "Modals",
+                "path": "/app/pages/ui-elements/ui-modals.html"
+            },
+            {
+                "label": "Tabs",
+                "path": "/app/pages/ui-elements/ui-tabs.html"
+            },
+            {
+                "label": "Sweet Alert",
+                "path": "/app/pages/ui-elements/ui-sweet-alert.html"
+            },
+            {
+                "label": "Notification",
+                "path": "/app/pages/ui-elements/ui-notification.html"
+            },
+            {
+                "label": "Timeline",
+                "path": "/app/pages/ui-elements/ui-timeline.html"
+            },
+            {
+                "label": "Progressbar",
+                "path": "/app/pages/ui-elements/ui-progressbar.html"
+            },
+            {
+                "label": "Typography",
+                "path": "/app/pages/ui-elements/ui-typography.html"
+            },
+            {
+                "label": "List group",
+                "path": "/app/pages/ui-elements/ui-list-group.html"
+            },
+            {
+                "label": "Range slider",
+                "path": "/app/pages/ui-elements/ui-range-slider.html"
+            },
+            {
+                "label": "Carousel",
+                "path": "/app/pages/ui-elements/ui-carousel.html"
+            },
+            {
+                "label": "Collapsible Toggle",
+                "path": "/app/pages/ui-elements/ui-toggle.html"
+            },
+            {
+                "label": "Offcanvas",
+                "path": "/app/pages/ui-elements/ui-offcanvas.html"
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "label": "Icons",
+        "icon": "bi bi-command",
+        "path": "/app/pages/ui-elements/bootstrap-icon.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Bootstrap Icons",
+                "path": "/app/pages/ui-elements/bootstrap-icon.html"
+            },
+            {
+                "label": "FontAwesome Icons",
+                "path": "/app/pages/ui-elements/font-awesome.html"
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "label": "Charts",
+        "icon": "bi bi-pie-chart",
+        "path": "/app/pages/charts/apexcharts.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Apexcharts",
+                "path": "/app/pages/charts/apexcharts.html"
+            },
+            {
+                "label": "Chart.js",
+                "path": "/app/pages/charts/chartjs.html"
+            },
+            {
+                "label": "E-Charts",
+                "path": "/app/pages/charts/e-chart.html"
+            },
+            {
+                "label": "Highcharts",
+                "path": "/app/pages/charts/highchart.html"
+            },
+            {
+                "label": "Vector Map",
+                "path": "/app/pages/charts/jtvector-map.html"
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "label": "Extras",
+        "icon": "bi bi-file-earmark-text",
+        "path": "/app/pages/invoice.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Invoice",
+                "path": "/app/pages/invoice.html"
+            },
+            {
+                "label": "FAQ",
+                "path": "/app/pages/faq.html"
+            },
+            {
+                "label": "Gallery",
+                "path": "/app/pages/gallery.html"
+            },
+            {
+                "label": "Pricing Table",
+                "path": "/app/pages/pricing-table.html"
+            },
+            {
+                "label": "Sitemap",
+                "path": "/app/pages/sitemap.html"
+            },
+            {
+                "label": "Blank Page",
+                "path": "/app/pages/blank.html"
+            },
+            {
+                "label": "Search Result",
+                "path": "/app/pages/search.html"
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "label": "Errors",
+        "icon": "bi bi-bug",
+        "path": "/app/pages/error/404.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "400 Bad Request",
+                "path": "/app/pages/error/400.html"
+            },
+            {
+                "label": "403 Forbidden",
+                "path": "/app/pages/error/403.html"
+            },
+            {
+                "label": "404 Not Found",
+                "path": "/app/pages/error/404.html"
+            },
+            {
+                "label": "500 Internal Error",
+                "path": "/app/pages/error/500.html"
+            },
+            {
+                "label": "503 Service Unavailable",
+                "path": "/app/pages/error/503.html"
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "label": "Additional Pages",
+        "icon": "bi bi-file-earmark-plus",
+        "path": "/app/pages/maintenance.html",
+        "hasSubmenu": true,
+        "submenu": [
+            {
+                "label": "Maintenance",
+                "path": "/app/pages/maintenance.html"
+            },
+            {
+                "label": "Account Onboarding",
+                "path": "/app/pages/auth/account-onboarding.html"
+            },
+            {
+                "label": "Help & Support",
+                "path": "/app/pages/help-support.html"
+            },
+            {
+                "label": "Profile",
+                "path": "/app/pages/profile.html"
+            },
+            {
+                "label": "Account Settings",
+                "path": "/app/pages/account-settings.html"
+            },
+            {
+                "label": "Login",
+                "path": "/app/pages/auth/login.html"
+            },
+            {
+                "label": "Register",
+                "path": "/app/pages/auth/register.html"
+            },
+            {
+                "label": "Forgot Password",
+                "path": "/app/pages/auth/forgot-password.html"
+            },
+            {
+                "label": "Reset Password",
+                "path": "/app/pages/auth/reset-password.html"
+            },
+            {
+                "label": "2FA Authentication",
+                "path": "/app/pages/auth/two-factor-authentication.html"
+            },
+            {
+                "label": "Lock Screen",
+                "path": "/app/pages/auth/lockscreen.html"
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "label": "Settings",
+        "icon": "bi bi-gear",
+        "path": "/app/pages/admin-settings.html",
+        "hasSubmenu": false
+    },
+    {
+        "id": 19,
+        "label": "Documentation",
+        "icon": "bi bi-file-earmark-medical",
+        "path": "/app/pages/documentation.html",
+        "hasSubmenu": false
+    },
+    {
+        "id": 20,
+        "label": "Landing Page",
+        "icon": "bi bi-app",
+        "path": "/app/pages/xivig.html",
+        "hasSubmenu": false
+    }
 ]

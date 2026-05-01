@@ -26,6 +26,7 @@
         height: 80px;
         object-fit: cover;
         border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        box-shadow: var(--card-shadow);
+        border: 1px solid var(--card-border);
     }
 }

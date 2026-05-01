@@ -1,6 +1,6 @@
 /* Modern Progress Bar Aesthetics */
 .elite-progress {
-    background-color: #f1f5f9 !important;
+    background-color: var(--bg-subtle) !important;
     /* Soft track color */
     border-radius: 50rem !important;
     /* Pill shape */
@@ -18,23 +18,23 @@
 
 /* Glow Effects */
 .glow-primary {
-    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
 .glow-success {
-    box-shadow: 0 4px 12px rgba(25, 135, 84, 0.3);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .glow-info {
-    box-shadow: 0 4px 12px rgba(13, 202, 240, 0.3);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
 
 .glow-warning {
-    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
 }
 
 .glow-danger {
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
 /* Animation Overrides */

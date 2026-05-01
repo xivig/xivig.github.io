@@ -3,7 +3,7 @@
 .notification-list {
     display: block !important;
     width: 100% !important;
-    background: #fff;
+    background: var(--card-bg);
 }
 
 .notification-item {
@@ -12,11 +12,11 @@
     flex-direction: row !important;
     align-items: center !important;
     padding: 1.25rem 1.5rem !important;
-    border-bottom: 1px solid #f1f5f9 !important;
+    border-bottom: 1px solid var(--card-border) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     border-left: 4px solid transparent !important;
     position: relative !important;
-    background: #fff !important;
+    background: var(--card-bg) !important;
     min-height: 80px !important; /* Forces height to prevent overlap seen in screenshot */
     margin: 0 !important;
 
@@ -25,14 +25,14 @@
     }
 
     &:hover {
-        background-color: rgba(99, 102, 241, 0.02) !important;
+        background-color: var(--elite-primary-soft) !important;
         transform: translateX(5px) !important;
         z-index: 2 !important;
     }
 
     /* Selected state from Select All */
     &.bg-primary-subtle {
-        background-color: rgba(99, 102, 241, 0.08) !important;
+        background-color: var(--elite-primary-soft) !important;
         border-left-color: var(--elite-primary) !important;
     }
 
@@ -64,7 +64,7 @@
         h6 {
             margin-bottom: 0.25rem !important;
             font-weight: 700 !important;
-            color: #1e293b !important;
+            color: var(--text-main) !important;
             font-size: 0.9rem !important;
             white-space: nowrap !important;
             overflow: hidden !important;
@@ -73,7 +73,7 @@
 
         p {
             margin-bottom: 0 !important;
-            color: #64748b !important;
+            color: var(--text-muted) !important;
             font-size: 0.85rem !important;
             white-space: nowrap !important;
             overflow: hidden !important;
@@ -82,7 +82,7 @@
 
         .notification-time {
             font-size: 0.75rem !important;
-            color: #94a3b8 !important;
+            color: var(--text-muted) !important;
             margin-top: 0.25rem !important;
             font-weight: 600 !important;
         }
@@ -111,7 +111,7 @@
 }
 
 .alert-primary.elite-alert {
-    background: #f0f7ff !important;
-    color: #0052cc !important;
-    border-left-color: #0052cc !important;
+    background: var(--elite-primary-soft) !important;
+    color: var(--elite-primary) !important;
+    border-left-color: var(--elite-primary) !important;
 }

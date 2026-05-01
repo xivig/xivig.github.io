@@ -1,29 +1,31 @@
 /* Soft Badge UI */
 .bg-primary-soft {
-    background-color: #e7f1ff !important;
+    background-color: var(--elite-primary-soft) !important;
 }
 
 .bg-success-soft {
-    background-color: #e1f7eb !important;
+    background-color: var(--elite-success-soft) !important;
 }
 
 .bg-warning-soft {
-    background-color: #fff8e6 !important;
+    background-color: var(--elite-warning-soft) !important;
 }
 
 .bg-danger-soft {
-    background-color: #ffeef0 !important;
+    background-color: var(--elite-danger-soft) !important;
 }
 
 /* Elite Item Styling */
 .elite-list-group .list-group-item {
     transition: all 0.3s ease;
     font-weight: 500;
+    background-color: transparent;
+    color: var(--text-main);
 }
 
 .elite-list-group .list-group-item:hover:not(.active) {
-    background-color: #f8f9fa;
-    color: #0d6efd;
+    background-color: var(--bg-subtle);
+    color: var(--elite-primary);
     transform: translateX(5px);
 }
 
@@ -32,9 +34,9 @@
 }
 
 .elite-item:hover:not(.active) {
-    background-color: #fff !important;
+    background-color: var(--card-bg) !important;
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: var(--card-shadow-hover) !important;
 }
 
 /* Icons */

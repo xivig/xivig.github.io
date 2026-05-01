@@ -74,12 +74,12 @@ export const initIconApp = async () => {
         const displayList = list.slice(0, 500);
         
         container.innerHTML = `
-            <div class="card-box pd-20 mb-30 shadow-sm border-0">
+            <div class="card-box pd-20 mb-30 shadow-sm border-0 bg-transparent">
                 <div class="row fontawesome-icon-list g-3">
                     ${displayList.map(icon => `
                         <div class="col-xl-3 col-lg-4 col-md-6 icon-item animate__animated animate__fadeIn" data-name="${icon.name}">
-                            <div class="fa-hover border rounded-3 p-3 transition-all d-flex align-items-center bg-light-hover" title="Click to copy">
-                                <div class="icon-preview me-3 bg-white shadow-sm rounded p-2 text-primary text-center" style="width: 45px;">
+                            <div class="fa-hover border rounded-3 p-3 transition-all d-flex align-items-center" title="Click to copy">
+                                <div class="icon-preview me-3 shadow-sm rounded p-2 text-primary text-center" style="width: 45px;">
                                     <i class="${icon.prefix} fa-${icon.name} fs-4"></i>
                                 </div>
                                 <span class="icon-class text-muted small fw-bold text-truncate">${icon.prefix} fa-${icon.name}</span>

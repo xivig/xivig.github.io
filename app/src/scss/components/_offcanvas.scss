@@ -27,7 +27,7 @@
 .offcanvas {
     border: 0 !important;
     background: var(--card-bg);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--card-shadow);
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
     z-index: 10000 !important; /* Extremely high to beat sidebar and headers */
 }
