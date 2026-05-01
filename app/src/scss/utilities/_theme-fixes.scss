@@ -1,9 +1,9 @@
 /* --- Theme Consistency Fixes --- */
-.card,
-.page-header {
+.card {
     background-color: var(--card-bg) !important;
     border-color: var(--card-border) !important;
     color: var(--text-main);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .bg-white {
@@ -27,10 +27,61 @@
         color: var(--text-muted);
     }
 
-    .table {
+    .table,
+    .table-dark {
         --bs-table-color: var(--text-main);
         --bs-table-bg: transparent;
+        --bs-table-border-color: var(--card-border);
+        --bs-table-striped-bg: rgba(255, 255, 255, 0.02);
+        --bs-table-hover-bg: rgba(255, 255, 255, 0.04);
         border-color: var(--card-border);
+
+        thead,
+        thead tr,
+        thead th,
+        &.table-dark thead,
+        &.table-dark tr,
+        &.table-dark th,
+        .bg-light,
+        .bg-light-subtle {
+            background-color: var(--bg-subtle) !important;
+            color: var(--text-muted) !important;
+            border-bottom-color: var(--card-border) !important;
+            --bs-table-bg: var(--bg-subtle) !important;
+        }
+    }
+
+    .btn-light,
+    .btn-light-subtle,
+    .btn-light-soft,
+    .btn-outline-light {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border-color: var(--card-border) !important;
+        color: var(--text-main) !important;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #fff !important;
+        }
+    }
+
+    .btn-outline-light {
+        background-color: transparent !important;
+        
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+        }
+    }
+
+    .btn-white {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-color: var(--card-border) !important;
+        color: var(--text-main) !important;
+
+        &:hover {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
     }
 
     .dropdown-menu {

@@ -1,11 +1,15 @@
 import $ from 'jquery';
 
-// Define globally only if not already established with plugins
-if (window.jQuery && window.jQuery.fn && (window.jQuery.fn.DataTable || window.jQuery.fn.summernote)) {
-    console.log("♻️ jQuery Setup: Preserving existing global jQuery with plugins.");
+// Define globally only if not already established
+if (window.jQuery) {
+    // Priority: Use the existing global jQuery (from CDN)
+    window.$ = window.jQuery;
+    globalThis.jQuery = window.jQuery;
+    globalThis.$ = window.jQuery;
 } else {
-    globalThis.jQuery = globalThis.$ = $;
+    // Fallback: Use the bundled jQuery
     window.jQuery = window.$ = $;
+    globalThis.jQuery = globalThis.$ = $;
 }
 
-export default window.jQuery || $;
+export default window.jQuery;

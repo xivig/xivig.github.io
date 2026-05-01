@@ -162,16 +162,20 @@
         }
     </style>
   <script type="module" crossorigin src="/assets/pages/ecommerce/ecommerce-orders.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/vendor-jquery.js">
+  <link rel="modulepreload" crossorigin href="/assets/preloader.js">
+  <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-core.js">
+  <link rel="modulepreload" crossorigin href="/assets/pricing.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-jquery.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-fullcalendar.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-apexcharts.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-highcharts.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-chartjs.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-apexcharts.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-echarts.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-highcharts.js">
   <link rel="modulepreload" crossorigin href="/assets/main.js">
-  <link rel="stylesheet" crossorigin href="/assets/main.css">
+  <link rel="stylesheet" crossorigin href="/assets/preloader.css">
   <link rel="stylesheet" crossorigin href="/assets/vendor-core.css">
+  <link rel="stylesheet" crossorigin href="/assets/main.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100" data-bs-spy="scroll" data-bs-target="#blog-toc" data-bs-offset="100">
@@ -353,9 +357,18 @@
                             </li>
                             <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-product-detail.html"
                                     class="sidebar__sub-link">Product Analytics</a></li>
-                            <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-orders.html"
-                                    class="sidebar__sub-link">Order
-                                    List</a></li>
+                            <li class="sidebar__sub-item sidebar__sub-item--has-dropdown">
+                                <a href="javascript:;" class="sidebar__sub-link">Order Management</a>
+                                <div class="sidebar__submenu-wrapper">
+                                    <ul class="sidebar__submenu">
+                                        <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-orders.html"
+                                                class="sidebar__sub-link">Order List</a></li>
+                                        <li class="sidebar__sub-item"><a
+                                                href="/pages/ecommerce/create-order.html"
+                                                class="sidebar__sub-link">Create Order</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                             <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-cart.html"
                                     class="sidebar__sub-link">Shopping
                                     Cart</a></li>
@@ -874,9 +887,9 @@
                     <h2 class="h3 fw-black mb-1 text-dark">Order Management</h2>
                     <p class="text-muted small mb-0">Track and manage customer orders and fulfillment.</p>
                 </div>
-                <button class="btn btn-primary px-4 py-2 fw-bold shadow-primary rounded-pill">
-                    <i class="fa-solid fa-plus me-2"></i> Create Order
-                </button>
+                    <a href="create-order.html" class="btn btn-primary px-4 py-2 fw-bold shadow-primary rounded-pill">
+                        <i class="fa-solid fa-plus me-2"></i> Create Order
+                    </a>
             </div>
             
             <div class="row g-4 mb-4">
@@ -992,7 +1005,17 @@
                                 <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Completed</span></td>
                                 <td class="fw-black text-dark">$1,299.00</td>
                                 <td class="text-end pe-4">
-                                    <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2"><i class="bi bi-three-dots-vertical"></i></button>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2"></i>View Details</a></li>
+                                            <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                             
@@ -1016,7 +1039,17 @@
                                 <td><span class="badge bg-info-subtle text-info px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-arrow-repeat me-1"></i> Processing</span></td>
                                 <td class="fw-black text-dark">$450.50</td>
                                 <td class="text-end pe-4">
-                                    <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2"><i class="bi bi-three-dots-vertical"></i></button>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2"></i>View Details</a></li>
+                                            <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
             
@@ -1040,7 +1073,17 @@
                                 <td><span class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-clock-fill me-1"></i> Pending</span></td>
                                 <td class="fw-black text-dark">$85.00</td>
                                 <td class="text-end pe-4">
-                                    <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2"><i class="bi bi-three-dots-vertical"></i></button>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2"></i>View Details</a></li>
+                                            <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
             
@@ -1064,7 +1107,17 @@
                                 <td><span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-x-circle-fill me-1"></i> Cancelled</span></td>
                                 <td class="fw-black text-dark opacity-50">$320.00</td>
                                 <td class="text-end pe-4">
-                                    <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2"><i class="bi bi-three-dots-vertical"></i></button>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2"></i>View Details</a></li>
+                                            <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

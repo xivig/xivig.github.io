@@ -1,0 +1,1 @@
+import{r as e}from"./rolldown-runtime.js";import{t}from"./preloader.js";import{_ as n,v as r,y as i}from"./vendor-core.js";var a=e(i(),1);window.jQuery=window.$=a.default,window.Popper=r,window.bootstrap=n,window.addEventListener(`DOMContentLoaded`,()=>{t()});

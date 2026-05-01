@@ -22,7 +22,7 @@
     "gulp-sharp-optimize-images": "^4.0.3",
     "gulp-tap": "^2.0.0",
     "sass": "^1.99.0",
-    "vite": "^5.2.11",
+    "vite": "^8.0.10",
     "vite-plugin-handlebars": "^2.0.0"
   },
   "dependencies": {

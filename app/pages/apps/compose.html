@@ -1,4 +1,4 @@
-{{#> admin-layout title="Compose" }}
+{{#> admin-layout title="Compose" parentTitle="Apps" }}
 
 <div class="row g-4">
                         {{> mail-sidebar }}
@@ -21,8 +21,7 @@
                                     <form id="composeForm">
                                         <div
                                             class="compose__field mb-3 d-flex align-items-center border-bottom pb-2">
-                                            <span class="text-muted small fw-bold text-uppercase me-3"
-                                                style="width: 50px;">To</span>
+                                            <span class="text-muted small fw-bold text-uppercase me-3 compose__label">To</span>
                                             <input type="email"
                                                 class="form-control border-0 shadow-none bg-transparent ps-0"
                                                 placeholder="architect@xivig.com">
@@ -32,8 +31,7 @@
 
                                         <div
                                             class="compose__field mb-4 d-flex align-items-center border-bottom pb-2">
-                                            <span class="text-muted small fw-bold text-uppercase me-3"
-                                                style="width: 50px;">Sub</span>
+                                            <span class="text-muted small fw-bold text-uppercase me-3 compose__label">Sub</span>
                                             <input type="text"
                                                 class="form-control border-0 shadow-none bg-transparent ps-0"
                                                 placeholder="Enter subject line...">
@@ -51,7 +49,7 @@
                                             <div class="d-flex align-items-center">
                                                 <i class="bi bi-paperclip fs-5 text-primary me-2"></i>
                                                 <div>
-                                                    <span class="d-block small fw-bold text-dark">Add
+                                                    <span class="d-block small fw-bold">Add
                                                         Assets</span>
                                                     <small class="text-muted extra-small">Images or Docs (Max
                                                         32MB)</small>
@@ -75,7 +73,7 @@
 
                                     <div class="d-flex gap-3">
                                         <button
-                                            class="btn btn-outline-light border text-dark px-4 rounded-3 fw-semibold">
+                                            class="btn btn-outline-light border px-4 rounded-3 fw-semibold">
                                             Save Draft
                                         </button>
                                         <button class="btn btn-primary px-5 rounded-3 fw-bold shadow-primary">

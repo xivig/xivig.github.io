@@ -2,11 +2,62 @@
 
 /* XIVIG ELITE FILE MANAGER */
 .file-manager__wrapper {
-    height: 800px;
+    height: calc(100vh - 180px);
+    min-height: 700px;
     background: rgba(255, 255, 255, 0.6) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.file-sidebar-label {
+    opacity: 0.5;
+}
+
+.file-dot {
+    width: 8px;
+    height: 8px;
+}
+
+.file-storage-progress {
+    height: 5px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.file-btn-upgrade {
+    font-size: 0.75rem;
+}
+
+.file-search-input {
+    font-size: 0.85rem;
+}
+
+.file-btn-new, .file-btn-upload {
+    font-size: 0.8rem;
+}
+
+.file-breadcrumb {
+    font-size: 0.75rem;
+}
+
+.file-section-label {
+    font-size: 0.65rem;
+}
+
+.file-btn-share {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    i {
+        font-size: 0.6rem;
+    }
+}
+
+.file-item-min-width {
+    min-width: 130px;
 }
 
 .file-sidebar {

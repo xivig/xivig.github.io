@@ -1,0 +1,95 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+/* ==========================================================================
+   PAGE HEADER ARCHITECTURE
+   ========================================================================== */
+
+.page-header {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--card-border);
+    border-bottom: 5px solid var(--elite-primary) !important;
+    border-radius: var(--elite-radius);
+    padding: 2rem 2.5rem !important;
+    margin: 1.5rem 0 2.5rem 0 !important;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-elite);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at top right, var(--xivig-primary-glow), transparent);
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    [data-bs-theme="dark"] & {
+        background: var(--bg-subtle) !important;
+        border-color: var(--card-border) !important;
+        border-bottom-color: var(--elite-primary) !important;
+    }
+
+    &__title {
+        color: var(--elite-primary) !important;
+        font-weight: 900 !important;
+        font-size: 1.75rem;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.5rem !important;
+        text-transform: none;
+        
+        [data-bs-theme="dark"] & {
+            color: #ffffff !important;
+            text-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+        }
+    }
+
+    /* Breadcrumbs Architecture */
+    .breadcrumb {
+        display: inline-flex;
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        gap: 0.5rem;
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+
+            &::before {
+                float: none;
+                padding: 0;
+                margin-right: 0.5rem;
+                color: var(--text-muted);
+                opacity: 0.3;
+            }
+
+            a {
+                color: var(--text-muted);
+                text-decoration: none;
+                transition: var(--transition-elite);
+
+                &:hover {
+                    color: var(--elite-primary);
+                    transform: translateY(-1px);
+                }
+            }
+
+            &.active, 
+            &.breadcrumb__item--active {
+                color: var(--elite-primary) !important;
+                font-weight: 700;
+            }
+        }
+    }
+}

@@ -162,16 +162,20 @@
         }
     </style>
   <script type="module" crossorigin src="/assets/pages/ecommerce/ecommerce-products.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/vendor-jquery.js">
+  <link rel="modulepreload" crossorigin href="/assets/preloader.js">
+  <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-core.js">
+  <link rel="modulepreload" crossorigin href="/assets/pricing.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-jquery.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-fullcalendar.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-apexcharts.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor-highcharts.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-chartjs.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-apexcharts.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-echarts.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-highcharts.js">
   <link rel="modulepreload" crossorigin href="/assets/main.js">
-  <link rel="stylesheet" crossorigin href="/assets/main.css">
+  <link rel="stylesheet" crossorigin href="/assets/preloader.css">
   <link rel="stylesheet" crossorigin href="/assets/vendor-core.css">
+  <link rel="stylesheet" crossorigin href="/assets/main.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100" data-bs-spy="scroll" data-bs-target="#blog-toc" data-bs-offset="100">
@@ -353,9 +357,18 @@
                             </li>
                             <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-product-detail.html"
                                     class="sidebar__sub-link">Product Analytics</a></li>
-                            <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-orders.html"
-                                    class="sidebar__sub-link">Order
-                                    List</a></li>
+                            <li class="sidebar__sub-item sidebar__sub-item--has-dropdown">
+                                <a href="javascript:;" class="sidebar__sub-link">Order Management</a>
+                                <div class="sidebar__submenu-wrapper">
+                                    <ul class="sidebar__submenu">
+                                        <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-orders.html"
+                                                class="sidebar__sub-link">Order List</a></li>
+                                        <li class="sidebar__sub-item"><a
+                                                href="/pages/ecommerce/create-order.html"
+                                                class="sidebar__sub-link">Create Order</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                             <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-cart.html"
                                     class="sidebar__sub-link">Shopping
                                     Cart</a></li>

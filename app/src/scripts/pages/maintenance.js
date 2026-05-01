@@ -4,21 +4,50 @@ export function initMaintenance() {
     if (!document.getElementById('maintenance-card')) return;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const redirectUrl = urlParams.get("redirect") || "index.html";
+    // Determine a smart redirect URL: prefer root if in a subfolder
+    const isSubfolder = window.location.pathname.includes('/pages/');
+    const defaultRedirect = isSubfolder ? '../index.html' : 'index.html';
+    const redirectUrl = urlParams.get("redirect") || defaultRedirect;
 
-    // Configuration: 15 minutes from now
+    // Configuration: 15 minutes total duration
     const durationInMinutes = 15;
-    const targetTime = new Date().getTime() + (durationInMinutes * 60 * 1000);
+    const totalDurationMs = durationInMinutes * 60 * 1000;
+    
+    // Persistence: Use localStorage so the timer doesn't reset on refresh
+    let startTime = localStorage.getItem('xivig-maintenance-start');
+    const now = new Date().getTime();
+
+    if (!startTime || (now - parseInt(startTime)) > totalDurationMs) {
+        startTime = now.toString();
+        localStorage.setItem('xivig-maintenance-start', startTime);
+    }
+    
+    const startTimestamp = parseInt(startTime);
+    const targetTimestamp = startTimestamp + totalDurationMs;
 
     const updateCountdown = () => {
-        const now = new Date().getTime();
-        const distance = targetTime - now;
+        const currentTime = new Date().getTime();
+        const distance = targetTimestamp - currentTime;
 
-        if (distance < 0) {
+        if (distance <= 0) {
             const pb = document.getElementById("progressBar");
             if (pb) pb.style.width = "100%";
-            window.location.href = redirectUrl;
-            return;
+            
+            // Success state before redirect
+            const statusBadge = document.querySelector('.status-badge');
+            if (statusBadge) {
+                statusBadge.innerHTML = '<span class="dot" style="background: #10b981; box-shadow: 0 0 12px #10b981"></span> Deployment Complete';
+                statusBadge.style.color = '#10b981';
+                statusBadge.style.borderColor = 'rgba(16, 185, 129, 0.2)';
+            }
+
+            setTimeout(() => {
+                // Clear persistence and redirect
+                localStorage.removeItem('xivig-maintenance-start');
+                window.location.href = redirectUrl;
+            }, 2000);
+            
+            return true; // Finished
         }
 
         const d = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -37,15 +66,19 @@ export function initMaintenance() {
         updateText("minutes", m);
         updateText("seconds", s);
 
-        // Progress Calculation
-        const totalDuration = durationInMinutes * 60 * 1000;
-        const elapsed = totalDuration - distance;
-        const progressPercent = Math.min((elapsed / totalDuration) * 100, 100);
+        // Progress Calculation: Based on elapsed time since persistent start
+        const elapsed = currentTime - startTimestamp;
+        const progressPercent = Math.min((elapsed / totalDurationMs) * 100, 100);
         const pb = document.getElementById("progressBar");
         if (pb) pb.style.width = `${progressPercent}%`;
+        
+        return false;
     };
 
-    const timerInterval = setInterval(updateCountdown, 1000);
+    const timerInterval = setInterval(() => {
+        if (updateCountdown()) clearInterval(timerInterval);
+    }, 1000);
+    
     updateCountdown();
 
     // Handle Subscription Form
@@ -54,9 +87,20 @@ export function initMaintenance() {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = e.target.querySelector('button');
-            btn.innerHTML = '<i class="fa-solid fa-check"></i>';
-            btn.style.background = '#10b981'; // Success Green
-            e.target.querySelector('input').disabled = true;
+            const input = e.target.querySelector('input');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i>';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+                btn.style.background = '#10b981'; // Success Green
+                btn.style.borderColor = '#10b981';
+                input.disabled = true;
+                input.value = "We'll notify you!";
+                input.style.textAlign = "center";
+                input.style.fontWeight = "600";
+            }, 1500);
         });
     }
 }

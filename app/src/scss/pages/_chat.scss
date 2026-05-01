@@ -13,6 +13,19 @@
     border-right: 3px solid var(--bs-primary) !important;
 }
 
+.chat__contact-list {
+    height: 600px;
+}
+
+.chat__body {
+    height: 500px;
+}
+
+.chat__send-btn {
+    width: 42px;
+    height: 42px;
+}
+
 /* Message Bubbles */
 .message__bubble {
     padding: 12px 20px;

@@ -1,42 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    {{> head title="Xivig | Elite Web Solutions" }}
-</head>
-
-<body data-bs-spy="scroll" data-bs-target="#mainNav">
-
-    {{> preloader }}
-
-    <!-- ELITE NAVIGATION -->
-    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top glass-nav">
-        <div class="container">
-            <a class="navbar-brand fw-black d-flex align-items-center" href="#">
-                <i class="fa-solid fa-cube text-danger me-2"></i>XIVIG
-            </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center gap-2">
-                    <li class="nav-item"><a class="nav-link px-3" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#pricing">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#stats">Statistics</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#testimonials">Work</a></li>
-                    <li class="nav-item ms-lg-3 d-flex align-items-center gap-3">
-                        <div id="themeToggleLanding" class="theme-toggle-eye shadow-sm" title="Toggle Light/Dark Mode">
-                            <i class="bi bi-eye-fill"></i>
-                        </div>
-                        <a href="#" class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-primary" data-bs-toggle="modal"
-                            data-bs-target="#contactModal">Get in Touch</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+{{#> home-layout title="Xivig | Elite Web Solutions" }}
 
     <!-- HERO SECTION -->
     <header id="home" class="hero-section mt-0">
@@ -300,21 +262,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="py-100 landing-footer">
-        <div class="container text-center">
-            <h2 class="fw-black mb-4 d-flex align-items-center justify-content-center text-dark">
-                <i class="fa-solid fa-cube text-danger me-3"></i>XIVIG
-            </h2>
-            <div class="d-flex justify-content-center gap-4 mb-5">
-                <a href="#" class="footer-link-fb fs-4" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="footer-link-tw fs-4" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" class="footer-link-ig fs-4" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-            <p class="text-muted extra-small fw-bold text-uppercase tracking-widest mb-0 opacity-75">Copyrights &copy; 2026 Xivig Architect OS. All rights Reserved.</p>
-        </div>
-    </footer>
-
     <!-- CONTACT MODAL -->
     <div class="modal fade" id="contactModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered p-4">
@@ -353,8 +300,5 @@
         </div>
     </div>
 
-    {{> scripts }}
+{{/home-layout}}
 
-</body>
-
-</html>

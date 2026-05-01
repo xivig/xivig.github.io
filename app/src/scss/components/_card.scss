@@ -130,14 +130,25 @@ h5, .h5, .card-title {
 }
 
 .card-header {
-    background: var(--card-bg) !important;
-    border-bottom: 1px solid var(--card-border) !important;
-    color: var(--text-main) !important;
-    transition: background 0.3s ease;
+    background: var(--bg-subtle);
+    border-bottom: 1px solid var(--card-border);
+    color: var(--text-main);
+    padding: 1.25rem 1.5rem;
+    transition: all 0.3s ease;
 
-    h5, .h5, .card-title {
-        color: var(--text-main) !important;
+    [data-bs-theme="dark"] & {
+        /* Subtle overlay for dark mode header separation */
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .card-title {
+        color: inherit;
         margin-bottom: 0;
+        font-weight: 700;
+        
+        &.text-primary {
+            color: var(--elite-primary) !important;
+        }
     }
 }
 

@@ -5,10 +5,12 @@ import EditorModule from '../components/editor-module.js';
 
 // 1. Summernote Initialization
 export const initSummernote = () => {
-    const editor = new EditorModule('#summernote-editor', {
-        placeholder: 'Start writing your elite architecture notes...'
-    });
-    editor.init();
+    if (document.querySelector('#summernote-editor')) {
+        const editor = new EditorModule('#summernote-editor', {
+            placeholder: 'Start writing your elite architecture notes...'
+        });
+        editor.init();
+    }
 };
 
 /**

@@ -161,16 +161,21 @@
             font-weight: 500;
         }
     </style>
-  <script type="module" crossorigin src="/assets/vendor-jquery.js"></script>
-  <script type="module" crossorigin src="/assets/vendor-core.js"></script>
-  <script type="module" crossorigin src="/assets/vendor-fullcalendar.js"></script>
-  <script type="module" crossorigin src="/assets/vendor-apexcharts.js"></script>
-  <script type="module" crossorigin src="/assets/vendor-highcharts.js"></script>
-  <script type="module" crossorigin src="/assets/vendor-chartjs.js"></script>
-  <script type="module" crossorigin src="/assets/vendor-echarts.js"></script>
-  <script type="module" crossorigin src="/assets/main.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main.css">
+  <script type="module" crossorigin src="/assets/pages/ecommerce/ecommerce-cart.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/preloader.js">
+  <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-core.js">
+  <link rel="modulepreload" crossorigin href="/assets/pricing.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-jquery.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-fullcalendar.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-chartjs.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-apexcharts.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-echarts.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-highcharts.js">
+  <link rel="modulepreload" crossorigin href="/assets/main.js">
+  <link rel="stylesheet" crossorigin href="/assets/preloader.css">
   <link rel="stylesheet" crossorigin href="/assets/vendor-core.css">
+  <link rel="stylesheet" crossorigin href="/assets/main.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100" data-bs-spy="scroll" data-bs-target="#blog-toc" data-bs-offset="100">
@@ -352,9 +357,18 @@
                             </li>
                             <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-product-detail.html"
                                     class="sidebar__sub-link">Product Analytics</a></li>
-                            <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-orders.html"
-                                    class="sidebar__sub-link">Order
-                                    List</a></li>
+                            <li class="sidebar__sub-item sidebar__sub-item--has-dropdown">
+                                <a href="javascript:;" class="sidebar__sub-link">Order Management</a>
+                                <div class="sidebar__submenu-wrapper">
+                                    <ul class="sidebar__submenu">
+                                        <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-orders.html"
+                                                class="sidebar__sub-link">Order List</a></li>
+                                        <li class="sidebar__sub-item"><a
+                                                href="/pages/ecommerce/create-order.html"
+                                                class="sidebar__sub-link">Create Order</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                             <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-cart.html"
                                     class="sidebar__sub-link">Shopping
                                     Cart</a></li>
@@ -875,81 +889,15 @@
                         <div class="card-header bg-white bg-opacity-50 py-4 px-4 border-0 d-flex justify-content-between align-items-center">
                             <div>
                                 <h4 class="fw-black text-dark mb-1">Your Basket</h4>
-                                <p class="text-muted small mb-0"><i class="bi bi-info-circle me-1"></i> You have <span class="fw-bold text-primary">2 items</span> in your cart</p>
+                                <p class="text-muted small mb-0"><i class="bi bi-info-circle me-1"></i> You have <span id="cart-item-count" class="fw-bold text-primary">0 items</span> in your cart</p>
                             </div>
-                            <button class="btn btn-light btn-sm rounded-pill px-4 border text-muted fw-bold shadow-sm transition-all hover-shadow">
+                            <button id="empty-cart-btn" class="btn btn-light btn-sm rounded-pill px-4 border text-muted fw-bold shadow-sm transition-all hover-shadow">
                                 <i class="bi bi-trash3 me-2"></i> Empty Cart
                             </button>
                         </div>
             
-                        <div class="card-body p-0">
-                            <!-- Cart Item 1 -->
-                            <div class="cart-item d-flex align-items-center justify-content-between p-4 mx-2 my-2 border-bottom border-opacity-10 border-light">
-                                <div class="d-flex align-items-center gap-4">
-                                    <div class="bg-light p-2 rounded-4 border shadow-sm position-relative overflow-hidden" style="width: 100px; height: 100px;">
-                                        <img src="/assets/product-1.jpg" alt="Product" class="w-100 h-100 rounded-3" style="object-fit: cover;">
-                                    </div>
-                                    <div>
-                                        <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-1 extra-small fw-bold mb-2 text-uppercase">Best Seller</span>
-                                        <h6 class="fw-bold text-dark mb-1 fs-5">Air Jordan Elite Pro</h6>
-                                        <p class="text-muted small mb-0">Space Grey | US 10.5</p>
-                                    </div>
-                                </div>
-            
-                                <div class="d-flex align-items-center gap-5">
-                                    <div class="text-center">
-                                        <label class="apple-label mb-2" style="font-size: 0.6rem;">Quantity</label>
-                                        <div class="quantity-picker shadow-sm">
-                                            <button class="btn-qty"><i class="bi bi-dash"></i></button>
-                                            <input type="text" class="qty-input" value="1" readonly>
-                                            <button class="btn-qty"><i class="bi bi-plus"></i></button>
-                                        </div>
-                                    </div>
-            
-                                    <div class="text-end" style="min-width: 120px;">
-                                        <label class="apple-label mb-2" style="font-size: 0.6rem;">Total Price</label>
-                                        <h5 class="fw-black text-primary mb-0">$1,299.00</h5>
-                                    </div>
-            
-                                    <button class="btn btn-white btn-sm rounded-circle shadow-sm border p-2 text-danger hover-bg-danger hover-text-white transition-all">
-                                        <i class="bi bi-x-lg"></i>
-                                    </button>
-                                </div>
-                            </div>
-            
-                            <!-- Cart Item 2 -->
-                            <div class="cart-item d-flex align-items-center justify-content-between p-4 mx-2 my-2">
-                                <div class="d-flex align-items-center gap-4">
-                                    <div class="bg-light p-2 rounded-4 border shadow-sm position-relative overflow-hidden" style="width: 100px; height: 100px;">
-                                        <img src="/assets/product-2.jpg" alt="Product" class="w-100 h-100 rounded-3" style="object-fit: cover;">
-                                    </div>
-                                    <div>
-                                        <span class="badge bg-success-subtle text-success rounded-pill px-3 py-1 extra-small fw-bold mb-2 text-uppercase">In Stock</span>
-                                        <h6 class="fw-bold text-dark mb-1 fs-5">MacBook Pro M3 Max</h6>
-                                        <p class="text-muted small mb-0">Silver | 1TB SSD | 36GB RAM</p>
-                                    </div>
-                                </div>
-            
-                                <div class="d-flex align-items-center gap-5">
-                                    <div class="text-center">
-                                        <label class="apple-label mb-2" style="font-size: 0.6rem;">Quantity</label>
-                                        <div class="quantity-picker shadow-sm">
-                                            <button class="btn-qty"><i class="bi bi-dash"></i></button>
-                                            <input type="text" class="qty-input" value="1" readonly>
-                                            <button class="btn-qty"><i class="bi bi-plus"></i></button>
-                                        </div>
-                                    </div>
-            
-                                    <div class="text-end" style="min-width: 120px;">
-                                        <label class="apple-label mb-2" style="font-size: 0.6rem;">Total Price</label>
-                                        <h5 class="fw-black text-primary mb-0">$3,499.00</h5>
-                                    </div>
-            
-                                    <button class="btn btn-white btn-sm rounded-circle shadow-sm border p-2 text-danger hover-bg-danger hover-text-white transition-all">
-                                        <i class="bi bi-x-lg"></i>
-                                    </button>
-                                </div>
-                            </div>
+                        <div class="card-body p-0" id="cart-items-container">
+                            <!-- Cart items will be dynamically inserted here -->
                         </div>
             
                         <div class="card-footer bg-white bg-opacity-50 border-0 p-4">
@@ -972,15 +920,15 @@
                             <div class="space-y-4">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <span class="text-white opacity-75 fw-medium">Subtotal</span>
-                                    <span class="fw-bold">$4,798.00</span>
+                                    <span id="summary-subtotal" class="fw-bold">$0.00</span>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <span class="text-white opacity-75 fw-medium">Estimated Tax</span>
-                                    <span class="fw-bold">$398.00</span>
+                                    <span id="summary-tax" class="fw-bold">$0.00</span>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center mb-4">
                                     <span class="text-white opacity-75 fw-medium">Shipping</span>
-                                    <span class="fw-bold text-success">Calculated at next step</span>
+                                    <span class="fw-bold text-success">Free</span>
                                 </div>
                             </div>
             
@@ -996,14 +944,14 @@
                                 <div class="d-flex justify-content-between align-items-center mb-4">
                                     <span class="h5 fw-bold mb-0">Total</span>
                                     <div class="text-end">
-                                        <h3 class="fw-black text-primary mb-0">$5,196.00</h3>
+                                        <h3 id="summary-total" class="fw-black text-primary mb-0">$0.00</h3>
                                         <span class="text-muted extra-small">Includes VAT</span>
                                     </div>
                                 </div>
             
-                                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow-primary text-uppercase tracking-widest mb-3 transition-all hover-translate-y">
+                                <a href="checkout.html" id="checkout-btn" class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow-primary text-uppercase tracking-widest mb-3 transition-all hover-translate-y">
                                     Checkout Now <i class="bi bi-chevron-right ms-1"></i>
-                                </button>
+                                </a>
             
                                 <div class="text-center">
                                     <div class="d-flex justify-content-center gap-3 opacity-50 mb-3">
@@ -1020,6 +968,7 @@
                     </div>
                 </div>
             </div>
+            
             
 
         </div>

@@ -95,36 +95,57 @@ const initDatePickers = () => {
  * Time Pickers (using legacy timedropper with Vanilla safety)
  */
 const initTimePickers = () => {
-    // Check for jQuery and the timedropper plugin
-    if (window.jQuery && typeof window.jQuery.fn.timeDropper !== 'undefined') {
-        window.jQuery('.td-input').timeDropper({
-            format: 'hh:mm A',
-            primaryColor: '#0071e3',
-            setCurrentTime: false,
-            meridians: true,
-            // CRITICAL: Set animation to false or fadein to prevent "hanging"
-            init_animation: 'fadein',
-            autosize: false,
-            // Force the overlay to remove itself on selection
-            onSelect: function () {
-                window.jQuery('.td-overlay').fadeOut(100, function () {
-                    window.jQuery(this).remove();
-                });
-            }
-        });
-    } else {
-        // Vanilla Fallback if jQuery is missing
-        const timeSelectors = ['.td-input', '#time-delivery', '#train-departure', '#alarm-clock', '#quick-entry'];
-        timeSelectors.forEach(selector => {
-            const els = document.querySelectorAll(selector);
-            els.forEach(el => {
-                new AirDatepicker(el, {
-                    locale: enLocale,
-                    onlyTimepicker: true,
-                    timepicker: true,
-                    timeFormat: 'hh:mm aa',
-                    autoClose: true
-                });
+    // Priority 1: Use the global jQuery from the head (which has the plugins)
+    const $ = window.jQuery || window.$;
+    const $inputs = $ ? $('.td-input') : [];
+    
+    if ($ && $inputs.length > 0) {
+        console.log("🕒 Form Pickers: Detecting Time Selection Engine...");
+        const hasTimeDropper = typeof $.fn.timeDropper !== 'undefined';
+        const hasTimedropperLower = typeof $.fn.timedropper !== 'undefined';
+        
+        console.log("   - timeDropper (camel):", hasTimeDropper ? "✅" : "❌");
+        console.log("   - timedropper (lower):", hasTimedropperLower ? "✅" : "❌");
+
+        if (hasTimeDropper || hasTimedropperLower) {
+            console.log("🕒 Timedropper: Initializing on", $inputs.length, "elements");
+            $inputs.each(function() {
+                const $this = $(this);
+                if (typeof $this.timeDropper === 'function') {
+                    $this.timeDropper({
+                        format: 'hh:mm A',
+                        primaryColor: '#0071e3',
+                        setCurrentTime: false,
+                        meridians: true,
+                        init_animation: 'fadein',
+                        autosize: false
+                    });
+                } else if (typeof $this.timedropper === 'function') {
+                    $this.timedropper({
+                        format: 'hh:mm A',
+                        primaryColor: '#0071e3',
+                        setCurrentTime: false,
+                        meridians: true,
+                        init_animation: 'fadein',
+                        autosize: false
+                    });
+                }
+            });
+            return; // Success
+        }
+    }
+
+    // Priority 2: Fallback if Timedropper failed or jQuery is missing
+    if (document.querySelectorAll('.td-input').length > 0) {
+        console.warn("⚠️ Timedropper missing or jQuery unavailable, using AirDatepicker fallback.");
+        const els = document.querySelectorAll('.td-input');
+        els.forEach(el => {
+            new AirDatepicker(el, {
+                locale: enLocale,
+                onlyTimepicker: true,
+                timepicker: true,
+                timeFormat: 'hh:mm aa',
+                autoClose: true
             });
         });
     }

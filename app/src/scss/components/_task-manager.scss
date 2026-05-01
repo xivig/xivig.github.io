@@ -59,7 +59,7 @@
         padding: 4px 12px;
         border-radius: 100px;
         background: var(--card-bg);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        box-shadow: var(--card-shadow);
     }
 
     /* Task Cards */
@@ -74,7 +74,7 @@
         justify-content: space-between;
         transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         cursor: grab;
-        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
+        box-shadow: var(--card-shadow);
 
         &:hover {
             transform: translateY(-5px) scale(1.01);
@@ -91,12 +91,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: 'Sora', sans-serif;
+        font-family: 'Plus Jakarta Sans', sans-serif;
         font-weight: 800;
         color: white;
         text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         flex-shrink: 0;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         font-size: 0.9rem;
     }
 

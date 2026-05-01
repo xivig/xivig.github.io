@@ -10,7 +10,10 @@
             { "label": "Product Show", "path": "/app/pages/ecommerce/ecommerce-product-show.html" }
         ]},
         { "label": "Product Analytics", "path": "/app/pages/ecommerce/ecommerce-product-detail.html" },
-        { "label": "Order List", "path": "/app/pages/ecommerce/ecommerce-orders.html" },
+        { "label": "Order Management", "path": "javascript:;", "hasSubmenu": true, "submenu": [
+            { "label": "Order List", "path": "/app/pages/ecommerce/ecommerce-orders.html" },
+            { "label": "Create Order", "path": "/app/pages/ecommerce/create-order.html" }
+        ]},
         { "label": "Shopping Cart", "path": "/app/pages/ecommerce/ecommerce-cart.html" },
         { "label": "Store Settings", "path": "/app/pages/store-settings.html" }
     ]},

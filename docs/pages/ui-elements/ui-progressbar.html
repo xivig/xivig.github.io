@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Progressbar</title>
+    <title>Progress Bar</title>
     
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
@@ -161,16 +161,20 @@
             font-weight: 500;
         }
     </style>
-  <script type="module" crossorigin src="/assets/vendor-jquery.js"></script>
+  <script type="module" crossorigin src="/assets/preloader.js"></script>
+  <script type="module" crossorigin src="/assets/rolldown-runtime.js"></script>
   <script type="module" crossorigin src="/assets/vendor-core.js"></script>
+  <script type="module" crossorigin src="/assets/pricing.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-jquery.js"></script>
   <script type="module" crossorigin src="/assets/vendor-fullcalendar.js"></script>
-  <script type="module" crossorigin src="/assets/vendor-apexcharts.js"></script>
-  <script type="module" crossorigin src="/assets/vendor-highcharts.js"></script>
   <script type="module" crossorigin src="/assets/vendor-chartjs.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-apexcharts.js"></script>
   <script type="module" crossorigin src="/assets/vendor-echarts.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-highcharts.js"></script>
   <script type="module" crossorigin src="/assets/main.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main.css">
+  <link rel="stylesheet" crossorigin href="/assets/preloader.css">
   <link rel="stylesheet" crossorigin href="/assets/vendor-core.css">
+  <link rel="stylesheet" crossorigin href="/assets/main.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100" data-bs-spy="scroll" data-bs-target="#blog-toc" data-bs-offset="100">
@@ -352,9 +356,18 @@
                             </li>
                             <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-product-detail.html"
                                     class="sidebar__sub-link">Product Analytics</a></li>
-                            <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-orders.html"
-                                    class="sidebar__sub-link">Order
-                                    List</a></li>
+                            <li class="sidebar__sub-item sidebar__sub-item--has-dropdown">
+                                <a href="javascript:;" class="sidebar__sub-link">Order Management</a>
+                                <div class="sidebar__submenu-wrapper">
+                                    <ul class="sidebar__submenu">
+                                        <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-orders.html"
+                                                class="sidebar__sub-link">Order List</a></li>
+                                        <li class="sidebar__sub-item"><a
+                                                href="/pages/ecommerce/create-order.html"
+                                                class="sidebar__sub-link">Create Order</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                             <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-cart.html"
                                     class="sidebar__sub-link">Shopping
                                     Cart</a></li>
@@ -852,13 +865,16 @@
             
             <!-- Standardized Page Header -->
             <div class="page-header p-4 my-4 rounded shadow-sm border-bottom border-primary border-5 text-center">
-                <h2 class="page-header__title h4 text-primary fw-bold mb-1">Progressbar</h2>
+                <h2 class="page-header__title h4 text-primary fw-bold mb-1">Progress Bar</h2>
                 <nav class="page-header__nav" aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 small justify-content-center">
                         <li class="breadcrumb__item">
                             <a href="/index.html" class="breadcrumb__link">Home</a>
                         </li>
-                        <li class="breadcrumb__item breadcrumb__item--active text-primary fw-semibold" aria-current="page">Progressbar</li>
+                        <li class="breadcrumb__item">
+                            <a href="#" class="breadcrumb__link">UI Elements</a>
+                        </li>
+                        <li class="breadcrumb__item breadcrumb__item--active text-primary fw-semibold" aria-current="page">Progress Bar</li>
                     </ol>
                 </nav>
             </div>

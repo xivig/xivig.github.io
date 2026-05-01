@@ -20,6 +20,7 @@
     --text-main: #1e293b;
     --text-muted: #64748b;
     --card-bg: rgba(255, 255, 255, 0.9);
+    --card-bg-rgb: 255, 255, 255;
     --card-border: rgba(0, 0, 0, 0.05);
     --header-bg: rgba(255, 255, 255, 0.9);
     --sidebar-bg: #142127;
@@ -30,6 +31,11 @@
     --bg-subtle: #f8fafc;
     --elite-radius: 24px;
     --elite-soft: rgba(99, 102, 241, 0.05);
+    --elite-primary-soft: rgba(99, 102, 241, 0.1);
+    --elite-success-soft: rgba(16, 185, 129, 0.1);
+    --elite-danger-soft: rgba(239, 68, 68, 0.1);
+    --elite-warning-soft: rgba(245, 158, 11, 0.1);
+    --elite-info-soft: rgba(14, 165, 233, 0.1);
 
     /* Animations & Shadows */
     --transition-elite: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -57,12 +63,22 @@
     --text-main: #e2e8f0;
     --text-muted: #94a3b8;
     --card-bg: #15191c;
+    --card-bg-rgb: 21, 25, 28;
     --card-border: rgba(255, 255, 255, 0.08);
     --header-bg: rgba(21, 25, 28, 0.9);
     
     --sidebar-bg: #090e11;
     --sidebar-text: rgba(255, 255, 255, 0.5);
     --sidebar-active: var(--elite-primary);
+
+    /* Layout & Surface */
+    --bg-subtle: #111518;
+    --bs-heading-color: #f8fafc;
+    --elite-primary-soft: rgba(99, 102, 241, 0.15);
+    --elite-success-soft: rgba(16, 185, 129, 0.15);
+    --elite-danger-soft: rgba(239, 68, 68, 0.15);
+    --elite-warning-soft: rgba(245, 158, 11, 0.15);
+    --elite-info-soft: rgba(14, 165, 233, 0.15);
 
     /* Shadows in dark mode */
     --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);

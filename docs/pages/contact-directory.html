@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Contact Directory</title>
     
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
@@ -161,19 +161,23 @@
             font-weight: 500;
         }
     </style>
-  <script type="module" crossorigin src="/assets/vendor-jquery.js"></script>
+  <script type="module" crossorigin src="/assets/preloader.js"></script>
+  <script type="module" crossorigin src="/assets/rolldown-runtime.js"></script>
   <script type="module" crossorigin src="/assets/vendor-core.js"></script>
+  <script type="module" crossorigin src="/assets/pricing.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-jquery.js"></script>
   <script type="module" crossorigin src="/assets/vendor-fullcalendar.js"></script>
-  <script type="module" crossorigin src="/assets/vendor-apexcharts.js"></script>
-  <script type="module" crossorigin src="/assets/vendor-highcharts.js"></script>
   <script type="module" crossorigin src="/assets/vendor-chartjs.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-apexcharts.js"></script>
   <script type="module" crossorigin src="/assets/vendor-echarts.js"></script>
+  <script type="module" crossorigin src="/assets/vendor-highcharts.js"></script>
   <script type="module" crossorigin src="/assets/main.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main.css">
+  <link rel="stylesheet" crossorigin href="/assets/preloader.css">
   <link rel="stylesheet" crossorigin href="/assets/vendor-core.css">
+  <link rel="stylesheet" crossorigin href="/assets/main.css">
 </head>
 
-<body class="d-flex flex-column min-vh-100 " data-bs-spy="scroll" data-bs-target="#blog-toc" data-bs-offset="100">
+<body class="d-flex flex-column min-vh-100" data-bs-spy="scroll" data-bs-target="#blog-toc" data-bs-offset="100">
 
     <!-- PRELOADER -->
     <div class="preloader">
@@ -352,9 +356,18 @@
                             </li>
                             <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-product-detail.html"
                                     class="sidebar__sub-link">Product Analytics</a></li>
-                            <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-orders.html"
-                                    class="sidebar__sub-link">Order
-                                    List</a></li>
+                            <li class="sidebar__sub-item sidebar__sub-item--has-dropdown">
+                                <a href="javascript:;" class="sidebar__sub-link">Order Management</a>
+                                <div class="sidebar__submenu-wrapper">
+                                    <ul class="sidebar__submenu">
+                                        <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-orders.html"
+                                                class="sidebar__sub-link">Order List</a></li>
+                                        <li class="sidebar__sub-item"><a
+                                                href="/pages/ecommerce/create-order.html"
+                                                class="sidebar__sub-link">Create Order</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                             <li class="sidebar__sub-item"><a href="/pages/ecommerce/ecommerce-cart.html"
                                     class="sidebar__sub-link">Shopping
                                     Cart</a></li>
@@ -849,236 +862,224 @@
 
     <main class="main mt-5">
         <div class="main__container container-fluid">
-            <div class="row g-4">
-                <div class="col-12">
-                    <div
-                        class="page-header p-4 my-4 bg-white rounded shadow-sm border-bottom border-primary border-5 text-center">
-                        <h2 class="page-header__title h4 text-primary fw-bold mb-2">Contact Directory</h2>
-                        <nav class="page-header__nav" aria-label="breadcrumb">
-                            <ol class="breadcrumb mb-0 small">
-                                <li class="breadcrumb__item">
-                                    <a href="index.html" class="breadcrumb__link">Home</a>
-                                </li>
-                                <li class="breadcrumb__item breadcrumb__item--active text-primary fw-semibold" aria-current="page">Contact Directory</li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+            
+            <!-- Standardized Page Header -->
+            <div class="page-header p-4 my-4 rounded shadow-sm border-bottom border-primary border-5 text-center">
+                <h2 class="page-header__title h4 text-primary fw-bold mb-1">Contact Directory</h2>
+                <nav class="page-header__nav" aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 small justify-content-center">
+                        <li class="breadcrumb__item">
+                            <a href="/index.html" class="breadcrumb__link">Home</a>
+                        </li>
+                        <li class="breadcrumb__item breadcrumb__item--active text-primary fw-semibold" aria-current="page">Contact Directory</li>
+                    </ol>
+                </nav>
+            </div>
 
-                        <div
-                            class="card-header bg-white py-2 px-4 border-0 d-flex justify-content-center align-items-center">
-                            <div class="text-center">
-                                <h5 class="fw-bold mb-0">Contact
-                                    Directory</h5>
-                                <small class="text-muted">Short descriptions</small>
+            <!-- Main Content Area -->
+            
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+            
+                <div class="card-header bg-white py-2 px-4 border-0 d-flex justify-content-center align-items-center">
+                    <div class="text-center">
+                        <h5 class="fw-bold mb-0">Contact Directory</h5>
+                        <small class="text-muted">Short descriptions</small>
+                    </div>
+                </div>
+            
+                <div class="card-body p-4">
+                    <!--content goes here-->
+            
+                    <div class="row g-4">
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
+                                <div class="card-body p-4 text-center">
+                                    <div class="mb-3">
+                                        <img src="/assets/photo1.jpg" class="rounded-circle avatar-xl shadow-sm"
+                                            alt="Wade Wilson">
+                                    </div>
+                                    <h5 class="fw-bold mb-1">Wade Wilson</h5>
+                                    <p class="text-muted small mb-0">UI/UX Designer</p>
+                                    <div class="text-success small mb-3">
+                                        <i class="bi bi-person"></i> Freelancer
+                                    </div>
+            
+                                    <div class="d-flex justify-content-center gap-2 mb-3">
+                                        <span class="badge bg-light text-dark border rounded-pill px-3">UI</span>
+                                        <span class="badge bg-light text-dark border rounded-pill px-3">UX</span>
+                                        <span class="badge bg-primary text-white rounded-pill px-3">+8</span>
+                                    </div>
+            
+                                    <p class="small text-secondary mb-0">
+                                        Experienced designer specializing in modern dashboard interfaces and
+                                        mobile apps.
+                                    </p>
+                                </div>
+                                <a href="profile.html"
+                                    class="btn btn-white w-100 py-3 fw-bold text-primary btn-view-profile rounded-0">
+                                    View Profile <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
                             </div>
                         </div>
-
-                        <div class="card-body p-4">
-                            <!--content goes here-->
-
-                            <div class="row g-4">
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
-                                        <div class="card-body p-4 text-center">
-                                            <div class="mb-3">
-                                                <img src="/assets/photo1.jpg"
-                                                    class="rounded-circle avatar-xl shadow-sm" alt="Wade Wilson">
-                                            </div>
-                                            <h5 class="fw-bold mb-1">Wade Wilson</h5>
-                                            <p class="text-muted small mb-0">UI/UX Designer</p>
-                                            <div class="text-success small mb-3">
-                                                <i class="bi bi-person"></i> Freelancer
-                                            </div>
-
-                                            <div class="d-flex justify-content-center gap-2 mb-3">
-                                                <span
-                                                    class="badge bg-light text-dark border rounded-pill px-3">UI</span>
-                                                <span
-                                                    class="badge bg-light text-dark border rounded-pill px-3">UX</span>
-                                                <span class="badge bg-primary text-white rounded-pill px-3">+8</span>
-                                            </div>
-
-                                            <p class="small text-secondary mb-0">
-                                                Experienced designer specializing in modern dashboard interfaces and
-                                                mobile apps.
-                                            </p>
-                                        </div>
-                                        <a href="profile.html"
-                                            class="btn btn-white w-100 py-3 fw-bold text-primary btn-view-profile rounded-0">
-                                            View Profile <i class="bi bi-arrow-right ms-1"></i>
-                                        </a>
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
+                                <div class="card-body p-4 text-center">
+                                    <div class="mb-3">
+                                        <img src="/assets/photo2.jpg" class="rounded-circle avatar-xl shadow-sm"
+                                            alt="Wade Wilson">
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
-                                        <div class="card-body p-4 text-center">
-                                            <div class="mb-3">
-                                                <img src="/assets/photo2.jpg"
-                                                    class="rounded-circle avatar-xl shadow-sm" alt="Wade Wilson">
-                                            </div>
-                                            <h5 class="fw-bold mb-1">Wade Wilson</h5>
-                                            <p class="text-muted small mb-0">UI/UX Designer</p>
-                                            <div class="text-success small mb-3">
-                                                <i class="bi bi-person"></i> Freelancer
-                                            </div>
-
-                                            <div class="d-flex justify-content-center gap-2 mb-3">
-                                                <span
-                                                    class="badge bg-light text-dark border rounded-pill px-3">UI</span>
-                                                <span
-                                                    class="badge bg-light text-dark border rounded-pill px-3">UX</span>
-                                                <span class="badge bg-primary text-white rounded-pill px-3">+8</span>
-                                            </div>
-
-                                            <p class="small text-secondary mb-0">
-                                                Experienced designer specializing in modern dashboard interfaces and
-                                                mobile apps.
-                                            </p>
-                                        </div>
-                                        <a href="profile.html"
-                                            class="btn btn-white w-100 py-3 fw-bold text-primary btn-view-profile rounded-0">
-                                            View Profile <i class="bi bi-arrow-right ms-1"></i>
-                                        </a>
+                                    <h5 class="fw-bold mb-1">Wade Wilson</h5>
+                                    <p class="text-muted small mb-0">UI/UX Designer</p>
+                                    <div class="text-success small mb-3">
+                                        <i class="bi bi-person"></i> Freelancer
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
-                                        <div class="card-body p-4 text-center">
-                                            <div class="mb-3">
-                                                <img src="/assets/photo6.jpg"
-                                                    class="rounded-circle avatar-xl shadow-sm" alt="Wade Wilson">
-                                            </div>
-                                            <h5 class="fw-bold mb-1">Wade Wilson</h5>
-                                            <p class="text-muted small mb-0">UI/UX Designer</p>
-                                            <div class="text-success small mb-3">
-                                                <i class="bi bi-person"></i> Freelancer
-                                            </div>
-
-                                            <div class="d-flex justify-content-center gap-2 mb-3">
-                                                <span
-                                                    class="badge bg-light text-dark border rounded-pill px-3">UI</span>
-                                                <span
-                                                    class="badge bg-light text-dark border rounded-pill px-3">UX</span>
-                                                <span class="badge bg-primary text-white rounded-pill px-3">+8</span>
-                                            </div>
-
-                                            <p class="small text-secondary mb-0">
-                                                Experienced designer specializing in modern dashboard interfaces and
-                                                mobile apps.
-                                            </p>
-                                        </div>
-                                        <a href="profile.html"
-                                            class="btn btn-white w-100 py-3 fw-bold text-primary btn-view-profile rounded-0">
-                                            View Profile <i class="bi bi-arrow-right ms-1"></i>
-                                        </a>
+            
+                                    <div class="d-flex justify-content-center gap-2 mb-3">
+                                        <span class="badge bg-light text-dark border rounded-pill px-3">UI</span>
+                                        <span class="badge bg-light text-dark border rounded-pill px-3">UX</span>
+                                        <span class="badge bg-primary text-white rounded-pill px-3">+8</span>
                                     </div>
+            
+                                    <p class="small text-secondary mb-0">
+                                        Experienced designer specializing in modern dashboard interfaces and
+                                        mobile apps.
+                                    </p>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
-                                        <div class="card-body p-4 text-center">
-                                            <div class="mb-3">
-                                                <img src="/assets/photo3.jpg"
-                                                    class="rounded-circle avatar-xl shadow-sm" alt="Wade Wilson">
-                                            </div>
-                                            <h5 class="fw-bold mb-1">Wade Wilson</h5>
-                                            <p class="text-muted small mb-0">UI/UX Designer</p>
-                                            <div class="text-success small mb-3">
-                                                <i class="bi bi-person"></i> Freelancer
-                                            </div>
-
-                                            <div class="d-flex justify-content-center gap-2 mb-3">
-                                                <span
-                                                    class="badge bg-light text-dark border rounded-pill px-3">UI</span>
-                                                <span
-                                                    class="badge bg-light text-dark border rounded-pill px-3">UX</span>
-                                                <span class="badge bg-primary text-white rounded-pill px-3">+8</span>
-                                            </div>
-
-                                            <p class="small text-secondary mb-0">
-                                                Experienced designer specializing in modern dashboard interfaces and
-                                                mobile apps.
-                                            </p>
-                                        </div>
-                                        <a href="profile.html"
-                                            class="btn btn-white w-100 py-3 fw-bold text-primary btn-view-profile rounded-0">
-                                            View Profile <i class="bi bi-arrow-right ms-1"></i>
-                                        </a>
+                                <a href="profile.html"
+                                    class="btn btn-white w-100 py-3 fw-bold text-primary btn-view-profile rounded-0">
+                                    View Profile <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
+                                <div class="card-body p-4 text-center">
+                                    <div class="mb-3">
+                                        <img src="/assets/photo6.jpg" class="rounded-circle avatar-xl shadow-sm"
+                                            alt="Wade Wilson">
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
-                                        <div class="card-body p-4 text-center">
-                                            <div class="mb-3">
-                                                <img src="/assets/photo4.jpg"
-                                                    class="rounded-circle avatar-xl shadow-sm" alt="Wade Wilson">
-                                            </div>
-                                            <h5 class="fw-bold mb-1">Wade Wilson</h5>
-                                            <p class="text-muted small mb-0">UI/UX Designer</p>
-                                            <div class="text-success small mb-3">
-                                                <i class="bi bi-person"></i> Freelancer
-                                            </div>
-
-                                            <div class="d-flex justify-content-center gap-2 mb-3">
-                                                <span
-                                                    class="badge bg-light text-dark border rounded-pill px-3">UI</span>
-                                                <span
-                                                    class="badge bg-light text-dark border rounded-pill px-3">UX</span>
-                                                <span class="badge bg-primary text-white rounded-pill px-3">+8</span>
-                                            </div>
-
-                                            <p class="small text-secondary mb-0">
-                                                Experienced designer specializing in modern dashboard interfaces and
-                                                mobile apps.
-                                            </p>
-                                        </div>
-                                        <a href="profile.html"
-                                            class="btn btn-white w-100 py-3 fw-bold text-primary btn-view-profile rounded-0">
-                                            View Profile <i class="bi bi-arrow-right ms-1"></i>
-                                        </a>
+                                    <h5 class="fw-bold mb-1">Wade Wilson</h5>
+                                    <p class="text-muted small mb-0">UI/UX Designer</p>
+                                    <div class="text-success small mb-3">
+                                        <i class="bi bi-person"></i> Freelancer
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
-                                        <div class="card-body p-4 text-center">
-                                            <div class="mb-3">
-                                                <img src="/assets/photo5.jpg"
-                                                    class="rounded-circle avatar-xl shadow-sm" alt="Wade Wilson">
-                                            </div>
-                                            <h5 class="fw-bold mb-1">Wade Wilson</h5>
-                                            <p class="text-muted small mb-0">UI/UX Designer</p>
-                                            <div class="text-success small mb-3">
-                                                <i class="bi bi-person"></i> Freelancer
-                                            </div>
-
-                                            <div class="d-flex justify-content-center gap-2 mb-3">
-                                                <span
-                                                    class="badge bg-light text-dark border rounded-pill px-3">UI</span>
-                                                <span
-                                                    class="badge bg-light text-dark border rounded-pill px-3">UX</span>
-                                                <span class="badge bg-primary text-white rounded-pill px-3">+8</span>
-                                            </div>
-
-                                            <p class="small text-secondary mb-0">
-                                                Experienced designer specializing in modern dashboard interfaces and
-                                                mobile apps.
-                                            </p>
-                                        </div>
-                                        <a href="profile.html"
-                                            class="btn btn-white w-100 py-3 fw-bold text-primary btn-view-profile rounded-0">
-                                            View Profile <i class="bi bi-arrow-right ms-1"></i>
-                                        </a>
+            
+                                    <div class="d-flex justify-content-center gap-2 mb-3">
+                                        <span class="badge bg-light text-dark border rounded-pill px-3">UI</span>
+                                        <span class="badge bg-light text-dark border rounded-pill px-3">UX</span>
+                                        <span class="badge bg-primary text-white rounded-pill px-3">+8</span>
                                     </div>
+            
+                                    <p class="small text-secondary mb-0">
+                                        Experienced designer specializing in modern dashboard interfaces and
+                                        mobile apps.
+                                    </p>
                                 </div>
+                                <a href="profile.html"
+                                    class="btn btn-white w-100 py-3 fw-bold text-primary btn-view-profile rounded-0">
+                                    View Profile <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
+                                <div class="card-body p-4 text-center">
+                                    <div class="mb-3">
+                                        <img src="/assets/photo3.jpg" class="rounded-circle avatar-xl shadow-sm"
+                                            alt="Wade Wilson">
+                                    </div>
+                                    <h5 class="fw-bold mb-1">Wade Wilson</h5>
+                                    <p class="text-muted small mb-0">UI/UX Designer</p>
+                                    <div class="text-success small mb-3">
+                                        <i class="bi bi-person"></i> Freelancer
+                                    </div>
+            
+                                    <div class="d-flex justify-content-center gap-2 mb-3">
+                                        <span class="badge bg-light text-dark border rounded-pill px-3">UI</span>
+                                        <span class="badge bg-light text-dark border rounded-pill px-3">UX</span>
+                                        <span class="badge bg-primary text-white rounded-pill px-3">+8</span>
+                                    </div>
+            
+                                    <p class="small text-secondary mb-0">
+                                        Experienced designer specializing in modern dashboard interfaces and
+                                        mobile apps.
+                                    </p>
+                                </div>
+                                <a href="profile.html"
+                                    class="btn btn-white w-100 py-3 fw-bold text-primary btn-view-profile rounded-0">
+                                    View Profile <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
+                                <div class="card-body p-4 text-center">
+                                    <div class="mb-3">
+                                        <img src="/assets/photo4.jpg" class="rounded-circle avatar-xl shadow-sm"
+                                            alt="Wade Wilson">
+                                    </div>
+                                    <h5 class="fw-bold mb-1">Wade Wilson</h5>
+                                    <p class="text-muted small mb-0">UI/UX Designer</p>
+                                    <div class="text-success small mb-3">
+                                        <i class="bi bi-person"></i> Freelancer
+                                    </div>
+            
+                                    <div class="d-flex justify-content-center gap-2 mb-3">
+                                        <span class="badge bg-light text-dark border rounded-pill px-3">UI</span>
+                                        <span class="badge bg-light text-dark border rounded-pill px-3">UX</span>
+                                        <span class="badge bg-primary text-white rounded-pill px-3">+8</span>
+                                    </div>
+            
+                                    <p class="small text-secondary mb-0">
+                                        Experienced designer specializing in modern dashboard interfaces and
+                                        mobile apps.
+                                    </p>
+                                </div>
+                                <a href="profile.html"
+                                    class="btn btn-white w-100 py-3 fw-bold text-primary btn-view-profile rounded-0">
+                                    View Profile <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
+                                <div class="card-body p-4 text-center">
+                                    <div class="mb-3">
+                                        <img src="/assets/photo5.jpg" class="rounded-circle avatar-xl shadow-sm"
+                                            alt="Wade Wilson">
+                                    </div>
+                                    <h5 class="fw-bold mb-1">Wade Wilson</h5>
+                                    <p class="text-muted small mb-0">UI/UX Designer</p>
+                                    <div class="text-success small mb-3">
+                                        <i class="bi bi-person"></i> Freelancer
+                                    </div>
+            
+                                    <div class="d-flex justify-content-center gap-2 mb-3">
+                                        <span class="badge bg-light text-dark border rounded-pill px-3">UI</span>
+                                        <span class="badge bg-light text-dark border rounded-pill px-3">UX</span>
+                                        <span class="badge bg-primary text-white rounded-pill px-3">+8</span>
+                                    </div>
+            
+                                    <p class="small text-secondary mb-0">
+                                        Experienced designer specializing in modern dashboard interfaces and
+                                        mobile apps.
+                                    </p>
+                                </div>
+                                <a href="profile.html"
+                                    class="btn btn-white w-100 py-3 fw-bold text-primary btn-view-profile rounded-0">
+                                    View Profile <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
+
         </div>
     </main>
 
-    <footer class="footer py-4">
+    <footer class="footer">
         <div class="footer__container">
             <div class="footer__box">
                 <p class="footer__text">

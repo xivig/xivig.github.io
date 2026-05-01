@@ -4,17 +4,24 @@
 .settings-panel {
     border: none;
     width: 350px !important;
-    background: rgba($white, 0.95);
+    background: var(--card-bg);
     backdrop-filter: blur(15px);
     z-index: 3500 !important;
+    color: var(--text-main);
 
     &__header {
         position: relative !important;
         display: block !important;
         padding: 30px 25px !important;
-        background: $white;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        background: var(--bg-subtle);
+        border-bottom: 1px solid var(--card-border);
         min-height: 90px;
+        transition: background 0.3s ease;
+
+        [data-bs-theme="dark"] & {
+            background: rgba(255, 255, 255, 0.02) !important;
+            border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+        }
     }
 
     &__title-wrapper {
@@ -25,7 +32,7 @@
 
     &__title {
         font-weight: 800;
-        color: $primary-color;
+        color: var(--elite-primary);
         margin: 0;
         letter-spacing: -0.5px;
         line-height: 1.2;
@@ -35,7 +42,7 @@
         font-size: 0.72rem;
         text-transform: uppercase;
         letter-spacing: 1px;
-        color: #999;
+        color: var(--text-muted);
         font-weight: 600;
         margin-top: 4px;
     }
@@ -44,8 +51,8 @@
         position: absolute !important;
         top: 20px;
         right: 20px;
-        background: rgba(0, 0, 0, 0.05) !important;
-        border: 1px solid rgba(0, 0, 0, 0.1) !important;
+        background: var(--xivig-input-bg) !important;
+        border: 1px solid var(--card-border) !important;
         width: 36px;
         height: 36px;
         border-radius: 10px;
@@ -58,7 +65,7 @@
 
         i {
             font-size: 1.2rem;
-            color: #1e293b;
+            color: var(--text-main);
             line-height: 1;
             display: block;
             pointer-events: none;
@@ -86,7 +93,7 @@
             font-size: 0.85rem;
             font-weight: 700;
             margin-bottom: 15px;
-            color: #333;
+            color: var(--text-main);
         }
     }
 
@@ -97,25 +104,27 @@
 
     &__btn {
         &--outline {
-            border: 1px solid #dee2e6 !important;
-            color: #6c757d;
+            border: 1px solid var(--card-border) !important;
+            background: var(--xivig-input-bg);
+            color: var(--text-muted);
             font-weight: 600;
             font-size: 0.85rem;
             padding: 10px;
             @include transition;
 
             &:hover {
-                background: #f8f9fa;
+                background: var(--bg-body);
+                color: var(--text-main);
             }
         }
     }
 
     // Handle Checked States
     .btn-check:checked+&__btn--outline {
-        background-color: $primary-color !important;
-        border-color: $primary-color !important;
+        background-color: var(--elite-primary) !important;
+        border-color: var(--elite-primary) !important;
         color: $white !important;
-        box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
     }
 
     &__icon-grid {
@@ -127,27 +136,29 @@
     &__icon-label {
         height: 45px;
         @include center-flex;
-        border: 1px solid #dee2e6;
+        border: 1px solid var(--card-border);
+        background: var(--xivig-input-bg);
         border-radius: 8px;
         cursor: pointer;
-        color: #6c757d;
+        color: var(--text-muted);
         @include transition;
 
         &:hover {
-            border-color: $primary-color;
-            color: $primary-color;
+            border-color: var(--elite-primary);
+            color: var(--elite-primary);
+            background: var(--bg-body);
         }
     }
 
     .btn-check:checked+&__icon-label {
-        background: rgba($primary-color, 0.05);
-        border-color: $primary-color;
-        color: $primary-color;
+        background: rgba(99, 102, 241, 0.1);
+        border-color: var(--elite-primary);
+        color: var(--elite-primary);
     }
 
     &__footer {
         padding-top: 20px;
-        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        border-top: 1px solid var(--card-border);
     }
 
     &__reset-btn {
@@ -155,7 +166,7 @@
         padding: 14px;
         border-radius: 12px;
         border: none;
-        background: #ff3b30;
+        background: var(--elite-danger);
         color: $white;
         font-weight: 700;
         display: flex;
@@ -165,8 +176,8 @@
         @include transition;
 
         &:hover {
-            background: darken(#ff3b30, 5%);
-            box-shadow: 0 5px 15px rgba(#ff3b30, 0.2);
+            background: darken(#ef4444, 5%);
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.2);
         }
     }
 }

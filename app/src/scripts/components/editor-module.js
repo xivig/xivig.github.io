@@ -134,6 +134,24 @@ export default class EditorModule {
     }
 
     /**
+     * Disable the editor
+     */
+    disable() {
+        if (this.instance) {
+            this.instance.summernote('disable');
+        }
+    }
+
+    /**
+     * Enable the editor
+     */
+    enable() {
+        if (this.instance) {
+            this.instance.summernote('enable');
+        }
+    }
+
+    /**
      * Destroy the editor instance
      */
     destroy() {

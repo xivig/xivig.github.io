@@ -368,20 +368,31 @@
     // --- Dynamic Style Overrides ---
     
     // Style 1: Chevron (Default)
-    &.icon-style-1 {
-        &>.sidebar__link::after { content: "\f282"; }
+    &.icon-style-1 > .sidebar__link::after,
+    .sidebar__sub-item--has-dropdown.icon-style-1 > .sidebar__sub-link::after {
+        content: "\f282";
     }
 
     // Style 2: Plus/Minus
-    &.icon-style-2 {
-        &>.sidebar__link::after { content: "\f4fe"; font-size: 0.9rem; }
-        &.show>.sidebar__link::after { content: "\f2ea"; transform: translateY(-50%); }
+    &.icon-style-2 > .sidebar__link::after,
+    .sidebar__sub-item--has-dropdown.icon-style-2 > .sidebar__sub-link::after {
+        content: "\f4fe"; 
+        font-size: 0.9rem;
+    }
+    &.show.icon-style-2 > .sidebar__link::after,
+    .sidebar__sub-item--has-dropdown.show.icon-style-2 > .sidebar__sub-link::after {
+        content: "\f2ea"; 
+        transform: translateY(-50%);
     }
 
     // Style 3: Double Arrow
-    &.icon-style-3 {
-        &>.sidebar__link::after { content: "\f280"; }
-        &.show>.sidebar__link::after { transform: translateY(-50%) rotate(90deg); }
+    &.icon-style-3 > .sidebar__link::after,
+    .sidebar__sub-item--has-dropdown.icon-style-3 > .sidebar__sub-link::after {
+        content: "\f280";
+    }
+    &.show.icon-style-3 > .sidebar__link::after,
+    .sidebar__sub-item--has-dropdown.show.icon-style-3 > .sidebar__sub-link::after {
+        transform: translateY(-50%) rotate(90deg);
     }
 }
 

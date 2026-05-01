@@ -41,8 +41,8 @@
                     </button>
                 </div>
             </div>
-            <div class="card-body p-4 pt-0">
-                <div id="editable-content" class="border rounded-4 p-4 bg-light-subtle transition-all">
+            <div class="card-body bg-light p-4 pt-0">
+                <div id="editable-content" class="border rounded-4 p-4 bg-light transition-all">
                     <h4 class="fw-bold text-primary">Next-Gen Interface Architecture</h4>
                     <p class="text-secondary mb-0">Experience the seamless integration of classic plugins into a modern,
                         pure Vanilla JS architecture. Our modular approach ensures that even legacy tools like
@@ -148,7 +148,6 @@
                 let inlineEditor = null;
 
                 editBtn.addEventListener('click', () => {
-                    // Initialize Summernote via EditorModule
                     inlineEditor = new EditorModule(contentArea, {
                         focus: true,
                         height: 200,
@@ -159,31 +158,18 @@
                             ['insert', ['link']],
                             ['view', ['codeview']]
                         ],
-                        callbacks: {
-                            onInit: () => {
-                                // Additional custom styling for inline mode
-                                contentArea.classList.remove('bg-light-subtle');
-                                const wrapper = contentArea.nextElementSibling;
-                                if (wrapper) {
-                                    wrapper.classList.add('mb-3');
-                                }
-                            }
-                        }
                     });
-
                     inlineEditor.init();
 
+                    contentArea.classList.remove('bg-light-subtle');
                     editBtn.style.display = 'none';
                     saveBtn.style.display = 'inline-block';
                 });
 
                 saveBtn.addEventListener('click', () => {
                     if (inlineEditor) {
-                        // Get content BEFORE destroying, otherwise it reverts to old HTML
                         const newContent = inlineEditor.getContent();
                         inlineEditor.destroy();
-
-                        // Explicitly put the new content back into the div
                         contentArea.innerHTML = newContent;
                         inlineEditor = null;
                     }

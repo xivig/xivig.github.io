@@ -1,17 +1,23 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
-
-// Analytics Overview Specific Styles
-.analytics-card {
-    transition: transform 0.3s ease;
-    
-    &:hover {
-        transform: translateY(-5px);
-    }
+.chart-container-xl {
+    min-height: 400px;
 }
 
-#growthChart {
-    .apexcharts-canvas {
-        margin: 0 auto;
-    }
+.chart-container-lg {
+    min-height: 350px;
+}
+
+.chart-container-md {
+    min-height: 250px;
+}
+
+.chart-container-sm {
+    min-height: 180px;
+}
+
+.icon-xl {
+    font-size: 100px;
+}
+
+.progress-xs {
+    height: 6px;
 }

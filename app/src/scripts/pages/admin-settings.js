@@ -11,25 +11,47 @@ export const initAdminSettings = async () => {
 
     // --- 1. DATA INITIALIZATION ---
     let sidebarData = JSON.parse(localStorage.getItem('xivig_sidebar_config'));
-    
-    // Temporary storage for submenu items while editing a main item
     let currentEditingSubmenu = [];
 
-    const renderSubmenuItems = () => {
-        const container = document.getElementById('submenu-list');
-        if (!container) return;
+    const renderNestedSubmenus = (container, items) => {
         container.innerHTML = '';
-
-        currentEditingSubmenu.forEach((sub, idx) => {
+        items.forEach((item, index) => {
             const div = document.createElement('div');
-            div.className = 'd-flex gap-2 mb-2 align-items-center';
+            div.className = 'nested-item border-start border-2 border-primary ps-3 my-3';
+            const hasSubmenu = item.submenu && item.submenu.length > 0;
+
             div.innerHTML = `
-                <input type="text" class="form-control form-control-sm rounded-3 sub-label" value="${sub.label}" placeholder="Sub-item Label">
-                <input type="text" class="form-control form-control-sm rounded-3 sub-path" value="${sub.path}" placeholder="Path">
-                <button type="button" class="btn btn-sm btn-outline-danger border-0 remove-sub" data-idx="${idx}"><i class="bi bi-x-lg"></i></button>
+                <div class="d-flex gap-2 mb-2 align-items-center">
+                    <input type="text" class="form-control form-control-sm rounded-3 sub-label" value="${item.label}" placeholder="Sub-item Label">
+                    <input type="text" class="form-control form-control-sm rounded-3 sub-path" value="${item.path}" placeholder="Path">
+                    <button type="button" class="btn btn-sm btn-outline-danger border-0 remove-sub" data-index="${index}"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div class="form-check form-switch mb-2">
+                    <input class="form-check-input has-nested-submenu" type="checkbox" ${hasSubmenu ? 'checked' : ''}>
+                    <label class="form-check-label small">Has Nested Submenu?</label>
+                </div>
+                <div class="nested-submenu-container ps-3 ${hasSubmenu ? '' : 'd-none'}">
+                    <!-- Nested items go here -->
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3 mt-2 add-nested-submenu-item ${hasSubmenu ? '' : 'd-none'}">
+                    <i class="bi bi-plus-lg me-1"></i> Add Level 2 Item
+                </button>
             `;
             container.appendChild(div);
+
+            if (hasSubmenu) {
+                const nestedContainer = div.querySelector('.nested-submenu-container');
+                renderNestedSubmenus(nestedContainer, item.submenu);
+            }
         });
+    };
+
+    // This function will now just kick off the recursive render
+    const renderSubmenuItems = () => {
+        const topLevelContainer = document.getElementById('submenu-list');
+        if (topLevelContainer) {
+            renderNestedSubmenus(topLevelContainer, currentEditingSubmenu);
+        }
     };
 
     // --- 2. CORE RENDERING ---
@@ -142,6 +164,31 @@ export const initAdminSettings = async () => {
     const modal = document.getElementById('addMenuModal');
     const bsModal = modal ? new bootstrap.Modal(modal) : null;
 
+    const buildNestedSubmenuData = (container) => {
+        const items = [];
+        const itemElements = container.querySelectorAll(':scope > .nested-item');
+
+        itemElements.forEach(el => {
+            const label = el.querySelector('.sub-label').value;
+            const path = el.querySelector('.sub-path').value;
+            const hasNested = el.querySelector('.has-nested-submenu').checked;
+            const nestedContainer = el.querySelector('.nested-submenu-container');
+
+            if (label && path) {
+                const newItemData = { label, path };
+                if (hasNested && nestedContainer) {
+                    newItemData.hasSubmenu = true;
+                    newItemData.submenu = buildNestedSubmenuData(nestedContainer);
+                } else {
+                    newItemData.hasSubmenu = false;
+                    newItemData.submenu = null;
+                }
+                items.push(newItemData);
+            }
+        });
+        return items;
+    };
+
     menuForm?.addEventListener('submit', (e) => {
         e.preventDefault();
         const editIndex = parseInt(document.getElementById('edit-index').value);
@@ -150,22 +197,16 @@ export const initAdminSettings = async () => {
         const path = document.getElementById('item-path').value;
         const hasSubmenu = document.getElementById('item-has-dropdown').checked;
 
-        // Collect sub-items from inputs
-        const subItems = [];
-        if (hasSubmenu) {
-            const rows = document.querySelectorAll('#submenu-list .d-flex');
-            rows.forEach(row => {
-                const sLabel = row.querySelector('.sub-label').value;
-                const sPath = row.querySelector('.sub-path').value;
-                if (sLabel && sPath) subItems.push({ label: sLabel, path: sPath });
-            });
-        }
-
         const newItem = {
             id: editIndex === -1 ? Date.now() : sidebarData[editIndex].id,
             label, icon, path, hasSubmenu,
-            submenu: hasSubmenu ? subItems : null
+            submenu: null
         };
+        
+        if (hasSubmenu) {
+            const topLevelContainer = document.getElementById('submenu-list');
+            newItem.submenu = buildNestedSubmenuData(topLevelContainer);
+        }
 
         if (editIndex === -1) {
             sidebarData.push(newItem);
@@ -178,20 +219,75 @@ export const initAdminSettings = async () => {
         bsModal?.hide();
     });
 
-    // Add Submenu Item Action
-    document.getElementById('add-submenu-item')?.addEventListener('click', () => {
-        currentEditingSubmenu.push({ label: '', path: '' });
-        renderSubmenuItems();
+    // Delegated event listener for the whole submenu form
+    document.getElementById('submenu-list')?.addEventListener('click', (e) => {
+        // Handle removing an item
+        if (e.target.closest('.remove-sub')) {
+            e.target.closest('.nested-item')?.remove();
+            return;
+        }
+
+        // Handle adding a nested item
+        if (e.target.closest('.add-nested-submenu-item')) {
+            const container = e.target.closest('.nested-item').querySelector('.nested-submenu-container');
+            if (container) {
+                const newItem = document.createElement('div');
+                newItem.className = 'nested-item border-start border-2 border-primary ps-3 my-3';
+                newItem.innerHTML = `
+                    <div class="d-flex gap-2 mb-2 align-items-center">
+                        <input type="text" class="form-control form-control-sm rounded-3 sub-label" value="" placeholder="Sub-item Label">
+                        <input type="text" class="form-control form-control-sm rounded-3 sub-path" value="" placeholder="Path">
+                        <button type="button" class="btn btn-sm btn-outline-danger border-0 remove-sub"><i class="bi bi-x-lg"></i></button>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input has-nested-submenu" type="checkbox">
+                        <label class="form-check-label small">Has Nested Submenu?</label>
+                    </div>
+                    <div class="nested-submenu-container ps-3 d-none"></div>
+                    <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3 mt-2 add-nested-submenu-item d-none">
+                        <i class="bi bi-plus-lg me-1"></i> Add Level 2 Item
+                    </button>
+                `;
+                container.appendChild(newItem);
+            }
+            return;
+        }
     });
 
-    // Remove Submenu Item Action (Delegation)
-    document.getElementById('submenu-list')?.addEventListener('click', (e) => {
-        const btn = e.target.closest('.remove-sub');
-        if (btn) {
-            const idx = parseInt(btn.dataset.idx);
-            currentEditingSubmenu.splice(idx, 1);
-            renderSubmenuItems();
+    document.getElementById('submenu-list')?.addEventListener('change', (e) => {
+        // Handle toggling the "Has Nested Submenu" checkbox
+        if (e.target.classList.contains('has-nested-submenu')) {
+            const container = e.target.closest('.nested-item');
+            if (container) {
+                container.querySelector('.nested-submenu-container')?.classList.toggle('d-none', !e.target.checked);
+                container.querySelector('.add-nested-submenu-item')?.classList.toggle('d-none', !e.target.checked);
+            }
         }
+    });
+
+    // Add top-level submenu item
+    document.getElementById('add-submenu-item')?.addEventListener('click', () => {
+        const topLevelContainer = document.getElementById('submenu-list');
+        if(!topLevelContainer) return;
+        
+        const newItem = document.createElement('div');
+        newItem.className = 'nested-item border-start border-2 border-primary ps-3 my-3';
+        newItem.innerHTML = `
+            <div class="d-flex gap-2 mb-2 align-items-center">
+                <input type="text" class="form-control form-control-sm rounded-3 sub-label" value="" placeholder="Sub-item Label">
+                <input type="text" class="form-control form-control-sm rounded-3 sub-path" value="" placeholder="Path">
+                <button type="button" class="btn btn-sm btn-outline-danger border-0 remove-sub"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="form-check form-switch mb-2">
+                <input class="form-check-input has-nested-submenu" type="checkbox">
+                <label class="form-check-label small">Has Nested Submenu?</label>
+            </div>
+            <div class="nested-submenu-container ps-3 d-none"></div>
+            <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3 mt-2 add-nested-submenu-item d-none">
+                <i class="bi bi-plus-lg me-1"></i> Add Level 2 Item
+            </button>
+        `;
+        topLevelContainer.appendChild(newItem);
     });
 
     // Edit/Delete Main Items

@@ -33,7 +33,7 @@ export function initSettings() {
     const iconRadios = document.querySelectorAll('input[name="menu-icon"]');
 
     const updateMenuIcons = (selectedId) => {
-        const sidebarItems = document.querySelectorAll('.sidebar__item--has-dropdown');
+        const sidebarItems = document.querySelectorAll('.sidebar__item--has-dropdown, .sidebar__sub-item--has-dropdown');
         sidebarItems.forEach(item => {
             item.classList.remove('icon-style-1', 'icon-style-2', 'icon-style-3');
             if (selectedId === 'menu-icon-1') item.classList.add('icon-style-1');

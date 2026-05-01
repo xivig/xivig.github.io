@@ -6,7 +6,7 @@
         <div class="glass-card p-5 text-center shadow-sm border-0 position-relative overflow-hidden">
             <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10"
                 style="background: radial-gradient(circle at 20% 20%, var(--bs-primary) 0%, transparent 40%);"></div>
-            <h2 class="display-5 fw-bold text-dark mb-2">Elite Form Pickers</h2>
+            <h2 class="display-5 fw-bold mb-2">Elite Form Pickers</h2>
             <p class="text-muted lead mb-0">Premium precision tools for modern application interfaces.</p>
         </div>
     </div>
@@ -69,55 +69,84 @@
                 <span id="month-output" class="badge bg-white text-primary rounded-pill px-3 py-2">January 2026</span>
             </div>
         </div>
-
-        <div class="card-box glass-card border-primary border-opacity-10">
-            <div class="d-flex align-items-center mb-4">
-                <div class="icon-shape bg-primary-light text-primary rounded-3 p-3 me-3">
-                    <i class="bi bi-stopwatch fs-4"></i>
+    </div>
+    <div class="col-md-6">
+        <div class="card-box glass-card border-primary border-opacity-10 p-3">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <div class="icon-shape bg-primary-light text-primary rounded-circle p-2 me-3">
+                        <i class="bi bi-clock-history fs-5"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-black mb-0">System Time</h6>
+                        <div id="live-clock1" class="extra-small text-muted opacity-75"></div>
+                    </div>
                 </div>
-                <div>
-                    <h5 class="fw-bold mb-0">System Time</h5>
-                    <div id="live-clock1" class="text-muted small"></div>
+                <div id="live-clock" class="h4 fw-black text-primary mb-0"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="p-4 rounded-4 border mb-4 bg-light">
+            <label class="apple-label">Advanced Pickr Studio</label>
+            <div class="d-flex flex-wrap gap-4 justify-content-center py-3">
+                <div class="text-center">
+                    <span class="small text-muted d-block mb-2">Classic Theme</span>
+                    <div class="color-picker-classic"></div>
+                </div>
+                <div class="text-center">
+                    <span class="small text-muted d-block mb-2">Monolith Theme</span>
+                    <div class="color-picker-monolith"></div>
+                </div>
+                <div class="text-center">
+                    <span class="small text-muted d-block mb-2">Nano Theme</span>
+                    <div class="color-picker-nano"></div>
                 </div>
             </div>
-            <div id="live-clock"
-                class="display-6 fw-black text-dark text-center py-3 border rounded-4 bg-white shadow-sm mb-0"></div>
         </div>
     </div>
 
     <!-- Clock Pickers Section -->
     <div class="col-12">
         <div class="card-box">
-            <h4 class="section-title-modern">Precision Clock Pickers</h4>
+            <div class="d-flex align-items-center mb-4">
+                <div class="icon-shape bg-warning-subtle text-warning rounded-3 p-3 me-3">
+                    <i class="bi bi-alarm fs-4"></i>
+                </div>
+                <div>
+                    <h4 class="section-title-modern mb-0">Precision Clock Pickers</h4>
+                    <p class="text-muted small mb-0">Interactive time selection with timedropper</p>
+                </div>
+            </div>
             <div class="row g-4 text-center">
                 <div class="col-md-3">
-                    <div class="p-4 rounded-4 bg-light hover-shadow transition-all">
-                        <label class="apple-label">Delivery</label>
-                        <input id="time-delivery" class="form-control modern-input text-center td-input"
+                    <div class="p-3 rounded-4 bg-light hover-shadow transition-all border border-opacity-10">
+                        <label class="apple-label text-muted small mb-2">Delivery</label>
+                        <input id="time-delivery" class="form-control modern-input text-center td-input fw-bold"
                             value="09:00 AM" type="text" readonly />
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="p-4 rounded-4 bg-light hover-shadow transition-all">
-                        <label class="apple-label">Departure</label>
-                        <input id="train-departure" class="form-control modern-input text-center td-input"
+                    <div class="p-3 rounded-4 bg-light hover-shadow transition-all border border-opacity-10">
+                        <label class="apple-label text-muted small mb-2">Departure</label>
+                        <input id="train-departure" class="form-control modern-input text-center td-input fw-bold"
                             value="12:00 PM" type="text" readonly />
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div
-                        class="p-4 rounded-4 bg-light hover-shadow transition-all border border-primary border-opacity-25 shadow-sm">
-                        <label class="apple-label text-primary">Wake Up</label>
+                        class="p-3 rounded-4 bg-light hover-shadow transition-all border border-primary border-opacity-25 shadow-sm">
+                        <label class="apple-label text-primary small mb-2">Wake Up</label>
                         <input id="alarm-clock"
-                            class="form-control modern-input text-center border-primary border-opacity-50 td-input"
+                            class="form-control modern-input text-center border-primary border-opacity-10 fw-bold td-input"
                             value="07:30 AM" type="text" readonly />
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="p-4 rounded-4 bg-light hover-shadow transition-all">
-                        <label class="apple-label">Reminder</label>
-                        <input id="quick-entry" class="form-control modern-input text-center td-input" value="06:00 PM"
-                            type="text" readonly />
+                    <div class="p-3 rounded-4 bg-light hover-shadow transition-all border border-opacity-10">
+                        <label class="apple-label text-muted small mb-2">Reminder</label>
+                        <input id="quick-entry" class="form-control modern-input text-center td-input fw-bold"
+                            value="06:00 PM" type="text" readonly />
                     </div>
                 </div>
             </div>
@@ -129,25 +158,7 @@
         <div class="card-box">
             <h4 class="section-title-modern">Elite Color Designers</h4>
             <div class="row g-4">
-                <div class="col-lg-12">
-                    <div class="p-4 rounded-4 border mb-4 bg-light">
-                        <label class="apple-label">Advanced Pickr Studio</label>
-                        <div class="d-flex flex-wrap gap-4 justify-content-center py-3">
-                            <div class="text-center">
-                                <span class="small text-muted d-block mb-2">Classic Theme</span>
-                                <div class="color-picker-classic"></div>
-                            </div>
-                            <div class="text-center">
-                                <span class="small text-muted d-block mb-2">Monolith Theme</span>
-                                <div class="color-picker-monolith"></div>
-                            </div>
-                            <div class="text-center">
-                                <span class="small text-muted d-block mb-2">Nano Theme</span>
-                                <div class="color-picker-nano"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-lg-4">
                     <div class="p-4 rounded-4 border h-100">
                         <label class="apple-label">Simple & UI Accent</label>

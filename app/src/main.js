@@ -1,14 +1,7 @@
 // 0. BOOTSTRAP GLOBALS (Must be absolute first)
-import $ from 'jquery';
-if (!window.jQuery || !window.jQuery.fn || (!window.jQuery.fn.DataTable && !window.jQuery.fn.summernote)) {
-    window.jQuery = window.$ = $;
-}
-globalThis.jQuery = globalThis.$ = window.jQuery;
+import $ from './scripts/core/jquery-setup.js';
 
-// 1. TOP-LEVEL VENDOR JS (Must be first for globals)
-import './scripts/core/jquery-setup.js';
-
-// 2. PROJECT STYLES (Direct imports for Vite bundling)
+// 1. PROJECT STYLES (Direct imports for Vite bundling)
 import 'animate.css/animate.css';
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
 import 'air-datepicker/air-datepicker.css';
@@ -18,14 +11,12 @@ import 'plyr/dist/plyr.css';
 import './scss/vendors/vendors.scss';
 import './scss/main.scss';
 
-// 3. OTHER VENDOR JS
+// 2. OTHER VENDOR JS
 import * as bootstrap from 'bootstrap';
 import * as Popper from '@popperjs/core';
 import Plyr from 'plyr';
-import 'summernote/dist/summernote-lite.js';
-import 'summernote/dist/summernote-lite.css';
 import AirDatepicker from 'air-datepicker';
-import 'timedropper';
+import './scripts/plugins/timedropper-patched.js';
 
 // 4. EXPOSE GLOBALS
 window.Popper = Popper;
@@ -66,7 +57,7 @@ import { initLandingPage } from './scripts/pages/landing.js';
 import { initDataTables } from './scripts/components/data-table.js';
 import { initDashboard } from './scripts/pages/dashboard.js';
 import { initFormWizard } from './scripts/forms/form-wizard.js';
-import { initImageCropper, initImageDropzone } from './scripts/forms/form-plugins.js';
+import { initImageCropper, initImageDropzone, initSummernote } from './scripts/forms/form-plugins.js';
 import { initMaintenance } from './scripts/pages/maintenance.js';
 import { initAnalyticsOverview } from './scripts/pages/analytics.js';
 import { initSystemMetrics } from './scripts/pages/system-metrics.js';
