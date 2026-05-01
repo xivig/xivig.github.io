@@ -6,6 +6,9 @@ import sharpOptimizeImages from 'gulp-sharp-optimize-images';
 import {
     deleteAsync
 } from 'del';
+import terser from 'gulp-terser';
+import cleanCSS from 'gulp-clean-css';
+import rename from 'gulp-rename';
 import {
     exportAssets
 } from './tasks/gulp/export.js';
@@ -55,7 +58,22 @@ export const moveHtmlPages = () => {
         .on('end', () => deleteAsync(['dist/app']));
 };
 
-// 5. Servers
+// 5. Minification Tasks
+export const minifyJs = () => {
+    return gulp.src(['dist/assets/*.js', '!dist/assets/vendor-*.js'], { base: 'dist' })
+        .pipe(terser())
+        .on('error', function (err) { console.error('Terser Error:', err.toString()); this.emit('end'); })
+        .pipe(gulp.dest('dist'));
+};
+
+export const minifyCss = () => {
+    return gulp.src(['dist/assets/*.css', '!dist/assets/vendor-*.css'], { base: 'dist' })
+        .pipe(cleanCSS({ compatibility: 'ie8' }))
+        .on('error', function (err) { console.error('CleanCSS Error:', err.toString()); this.emit('end'); })
+        .pipe(gulp.dest('dist'));
+};
+
+// 6. Servers
 export const serve = (cb) => {
     const vite = exec('npx vite --open');
     vite.stdout.on('data', (d) => console.log(d));
@@ -129,6 +147,8 @@ export const build = gulp.series(
     moveHtmlPages,
     fixDistLinks,
     copyVendorPackages,
+    minifyJs,
+    minifyCss,
     exportAssets
 );
 

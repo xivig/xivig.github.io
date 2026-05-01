@@ -12,7 +12,8 @@ export function initSidebar() {
         
         if (!config) {
             try {
-                const response = await fetch('/data/sidebar-config.json');
+                const root = window.XIVIG_ROOT || '/';
+                const response = await fetch(`${root}data/sidebar-config.json`);
                 config = await response.json();
                 localStorage.setItem('xivig_sidebar_config', JSON.stringify(config));
             } catch (err) {

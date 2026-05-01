@@ -32,7 +32,17 @@ export function fixLinks(folder) {
         const relativePathToRoot = path.relative(path.dirname(file), rootDir);
         const prefix = relativePathToRoot ? relativePathToRoot.replace(/\\/g, '/') + '/' : './';
 
-        // 1. Handle HTML attributes (href, src, data-src, etc.)
+        // 1. Inject Root Path for JS
+        if (file.endsWith(".html")) {
+            const rootScript = `<script>window.XIVIG_ROOT = "${prefix}";</script>`;
+            if (content.includes("<head>")) {
+                content = content.replace("<head>", `<head>\n    ${rootScript}`);
+            } else {
+                content = rootScript + "\n" + content;
+            }
+        }
+
+        // 2. Handle HTML attributes (href, src, data-src, etc.)
         // Case A: Starting with / (e.g. href="/app/...")
         const attrSlashRegex = /(href|src|data-src|poster)=(['"])\/([^'"]*)(['"])/g;
         content = content.replace(attrSlashRegex, (match, attr, q1, p1, q2) => {
@@ -82,7 +92,7 @@ export function fixLinks(folder) {
             return `url(${q}${prefix}${target}${q})`;
         });
 
-        // 3. Final cleanup: Ensure no double slashes like .././
+        // 4. Final cleanup: Ensure no double slashes like .././
         content = content.replace(/\/\.\//g, '/');
 
         fs.writeFileSync(file, content, "utf8");
