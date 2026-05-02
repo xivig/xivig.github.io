@@ -168,7 +168,7 @@
         }
     </style>
   <script type="module" crossorigin src="../../assets/pages/forms/form-basic.js"></script>
-  <link rel="modulepreload" crossorigin href="../../assets/preloader.js">
+  <link rel="modulepreload" crossorigin href="../../assets/mobile-controller.js">
   <link rel="modulepreload" crossorigin href="../../assets/rolldown-runtime.js">
   <link rel="modulepreload" crossorigin href="../../assets/vendor-core.js">
   <link rel="modulepreload" crossorigin href="../../assets/maintenance.js">
@@ -179,7 +179,6 @@
   <link rel="modulepreload" crossorigin href="../../assets/vendor-echarts.js">
   <link rel="modulepreload" crossorigin href="../../assets/vendor-highcharts.js">
   <link rel="modulepreload" crossorigin href="../../assets/main.js">
-  <link rel="stylesheet" crossorigin href="../../assets/preloader.css">
   <link rel="stylesheet" crossorigin href="../../assets/vendor-core.css">
   <link rel="stylesheet" crossorigin href="../../assets/main.css">
 </head>
@@ -1083,6 +1082,30 @@
             </div>
         </div>
     </footer>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <div class="mobile-bottom-nav d-md-none">
+        <a href="../../index.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="../../pages/dashboard-v2.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-speedometer2"></i>
+            <span>Stats</span>
+        </a>
+        <a href="../../pages/apps/chat.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-chat-dots"></i>
+            <span>Chat</span>
+        </a>
+        <a href="../../pages/profile.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+        </a>
+        <a href="javascript:;" class="mobile-bottom-nav__item" id="sidebar-toggle">
+            <i class="bi bi-list"></i>
+            <span>Menu</span>
+        </a>
+    </div>
 
     <!-- Form Components Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>

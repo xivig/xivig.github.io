@@ -168,7 +168,7 @@
         }
     </style>
   <script type="module" crossorigin src="../../assets/pages/ecommerce/ecommerce-cart.js"></script>
-  <link rel="modulepreload" crossorigin href="../../assets/preloader.js">
+  <link rel="modulepreload" crossorigin href="../../assets/mobile-controller.js">
   <link rel="modulepreload" crossorigin href="../../assets/rolldown-runtime.js">
   <link rel="modulepreload" crossorigin href="../../assets/vendor-core.js">
   <link rel="modulepreload" crossorigin href="../../assets/maintenance.js">
@@ -179,7 +179,6 @@
   <link rel="modulepreload" crossorigin href="../../assets/vendor-echarts.js">
   <link rel="modulepreload" crossorigin href="../../assets/vendor-highcharts.js">
   <link rel="modulepreload" crossorigin href="../../assets/main.js">
-  <link rel="stylesheet" crossorigin href="../../assets/preloader.css">
   <link rel="stylesheet" crossorigin href="../../assets/vendor-core.css">
   <link rel="stylesheet" crossorigin href="../../assets/main.css">
 </head>
@@ -916,11 +915,13 @@
                 <!-- Order Summary Column -->
                 <div class="col-lg-4">
                     <div class="card border-0 shadow-lg rounded-4 overflow-hidden glass-card position-sticky summary-card" style="top: 100px;">
-                        <div class="position-absolute top-0 end-0 p-4 opacity-10 text-primary">
-                            <i class="bi bi-bag-check display-1"></i>
+                        <!-- Watermark Icon: Repositioned and dimmed to ensure content legibility -->
+                        <div class="position-absolute bottom-0 end-0 p-4 text-primary" style="opacity: 0.05; pointer-events: none; transform: translate(15%, 15%);">
+                            <i class="bi bi-bag-check" style="font-size: 9rem;"></i>
                         </div>
-                        <div class="card-body p-4 p-md-5 position-relative z-1">
-                            <h4 class="fw-black mb-4 pb-3 border-bottom border-light text-dark">Summary</h4>
+            
+                        <div class="card-body p-4 p-md-5 position-relative z-index-2">
+                            <h4 class="fw-black mb-3 pb-2 border-bottom text-dark" style="border-bottom: 2px solid var(--card-border) !important;">Summary</h4>
             
                             <div class="space-y-4">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -945,7 +946,7 @@
                                 </div>
                             </div>
             
-                            <div class="mt-4 pt-4 border-top border-light">
+                            <div class="mt-4 pt-4 border-top" style="border-top-color: var(--card-border) !important;">
                                 <div class="d-flex justify-content-between align-items-center mb-4">
                                     <span class="h5 fw-bold mb-0 text-dark">Total</span>
                                     <div class="text-end">
@@ -994,6 +995,30 @@
             </div>
         </div>
     </footer>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <div class="mobile-bottom-nav d-md-none">
+        <a href="../../index.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="../../pages/dashboard-v2.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-speedometer2"></i>
+            <span>Stats</span>
+        </a>
+        <a href="../../pages/apps/chat.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-chat-dots"></i>
+            <span>Chat</span>
+        </a>
+        <a href="../../pages/profile.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+        </a>
+        <a href="javascript:;" class="mobile-bottom-nav__item" id="sidebar-toggle">
+            <i class="bi bi-list"></i>
+            <span>Menu</span>
+        </a>
+    </div>
 
     <!-- Form Components Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>

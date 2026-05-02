@@ -167,7 +167,7 @@
             font-weight: 500;
         }
     </style>
-  <script type="module" crossorigin src="../../assets/preloader.js"></script>
+  <script type="module" crossorigin src="../../assets/mobile-controller.js"></script>
   <script type="module" crossorigin src="../../assets/rolldown-runtime.js"></script>
   <script type="module" crossorigin src="../../assets/vendor-core.js"></script>
   <script type="module" crossorigin src="../../assets/maintenance.js"></script>
@@ -178,7 +178,6 @@
   <script type="module" crossorigin src="../../assets/vendor-echarts.js"></script>
   <script type="module" crossorigin src="../../assets/vendor-highcharts.js"></script>
   <script type="module" crossorigin src="../../assets/main.js"></script>
-  <link rel="stylesheet" crossorigin href="../../assets/preloader.css">
   <link rel="stylesheet" crossorigin href="../../assets/vendor-core.css">
   <link rel="stylesheet" crossorigin href="../../assets/main.css">
 </head>
@@ -998,6 +997,30 @@
             </div>
         </div>
     </footer>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <div class="mobile-bottom-nav d-md-none">
+        <a href="../../index.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="../../pages/dashboard-v2.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-speedometer2"></i>
+            <span>Stats</span>
+        </a>
+        <a href="../../pages/apps/chat.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-chat-dots"></i>
+            <span>Chat</span>
+        </a>
+        <a href="../../pages/profile.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+        </a>
+        <a href="javascript:;" class="mobile-bottom-nav__item" id="sidebar-toggle">
+            <i class="bi bi-list"></i>
+            <span>Menu</span>
+        </a>
+    </div>
 
     <!-- Form Components Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>

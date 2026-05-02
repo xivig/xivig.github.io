@@ -1,4 +1,4 @@
-import"../../preloader.js";import"../../main.js";document.addEventListener(`DOMContentLoaded`,()=>{let e=document.getElementById(`addProductItem`),t=document.getElementById(`product-items`);e.addEventListener(`click`,()=>{let e=document.createElement(`div`);e.classList.add(`row`,`g-3`,`align-items-center`,`product-item`,`mb-3`),e.innerHTML=`
+import"../../mobile-controller.js";import"../../main.js";document.addEventListener(`DOMContentLoaded`,()=>{let e=document.getElementById(`addProductItem`),t=document.getElementById(`product-items`);e.addEventListener(`click`,()=>{let e=document.createElement(`div`);e.classList.add(`row`,`g-3`,`align-items-center`,`product-item`,`mb-3`),e.innerHTML=`
                             <div class="col-md-5">
                                 <input type="text" class="form-control" placeholder="Product Name">
                             </div>

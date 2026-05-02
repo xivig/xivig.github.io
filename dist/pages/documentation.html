@@ -167,7 +167,7 @@
             font-weight: 500;
         }
     </style>
-  <script type="module" crossorigin src="../assets/preloader.js"></script>
+  <script type="module" crossorigin src="../assets/mobile-controller.js"></script>
   <script type="module" crossorigin src="../assets/rolldown-runtime.js"></script>
   <script type="module" crossorigin src="../assets/vendor-core.js"></script>
   <script type="module" crossorigin src="../assets/maintenance.js"></script>
@@ -178,7 +178,6 @@
   <script type="module" crossorigin src="../assets/vendor-echarts.js"></script>
   <script type="module" crossorigin src="../assets/vendor-highcharts.js"></script>
   <script type="module" crossorigin src="../assets/main.js"></script>
-  <link rel="stylesheet" crossorigin href="../assets/preloader.css">
   <link rel="stylesheet" crossorigin href="../assets/vendor-core.css">
   <link rel="stylesheet" crossorigin href="../assets/main.css">
 </head>
@@ -925,16 +924,17 @@
                     <!-- Hero Section -->
                     <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
                         <div class="p-5 bg-primary text-white position-relative">
-                            <div class="position-relative z-index-1">
+                            <div class="position-relative" style="z-index: 2;">
                                 <div class="d-flex align-items-center gap-2 mb-3">
-                                    <span class="badge bg-white text-primary px-3 py-1 rounded-pill fw-bold small">ELITE v1.0</span>
+                                    <span class="badge bg-white text-primary px-3 py-1 rounded-pill fw-bold small shadow-sm">ELITE v1.0</span>
                                 </div>
-                                <h1 class="display-4 fw-800 mb-3">Developer Documentation</h1>
-                                <p class="fs-5 mb-0 opacity-90 text-white" style="max-width: 650px;">A comprehensive guide to the
+                                <h1 class="display-4 fw-800 mb-3 text-white">Developer Documentation</h1>
+                                <p class="fs-5 mb-0 opacity-90 text-white" style="max-width: 650px; line-height: 1.6;">A comprehensive guide to the
                                     Xivig architecture, build systems, and UI component ecosystem.</p>
                             </div>
-                            <div class="position-absolute top-0 end-0 mt-n5 me-n5 opacity-10">
-                                <i class="bi bi-journal-code" style="font-size: 15rem;"></i>
+                            <!-- Watermark Icon: Repositioned and stylized -->
+                            <div class="position-absolute bottom-0 end-0 mb-n5 me-n5 text-white d-none d-lg-block" style="opacity: 0.08; pointer-events: none; z-index: 1;">
+                                <i class="bi bi-journal-code" style="font-size: 18rem;"></i>
                             </div>
                         </div>
                     </div>
@@ -942,7 +942,7 @@
                     <!-- 1. Introduction -->
                     <section id="introduction" class="mb-5 py-3">
                         <div class="d-flex align-items-center gap-3 mb-4">
-                            <div class="icon-shape bg-primary-light text-primary rounded-3 p-2">
+                            <div class="icon-shape bg-primary-light text-primary rounded-3 p-2 shadow-sm">
                                 <i class="bi bi-info-circle fs-4"></i>
                             </div>
                             <h3 class="fw-800 mb-0">1. Introduction</h3>
@@ -958,19 +958,25 @@
                             </p>
                             <div class="row g-4 mt-2">
                                 <div class="col-md-4">
-                                    <h6 class="fw-bold"><i class="bi bi-check2-circle text-success me-2"></i> Modular UI</h6>
-                                    <p class="small text-muted">Handlebars-based components ensure you write code once and deploy it
-                                        everywhere.</p>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-check2-circle text-success fs-5"></i>
+                                        <h6 class="fw-bold mb-0">Modular UI</h6>
+                                    </div>
+                                    <p class="small text-muted mb-0">Handlebars-based components ensure you write code once and deploy it everywhere.</p>
                                 </div>
                                 <div class="col-md-4">
-                                    <h6 class="fw-bold"><i class="bi bi-check2-circle text-success me-2"></i> Performance First</h6>
-                                    <p class="small text-muted">Assets are optimized, images are compressed, and JS is bundled into
-                                        tiny chunks.</p>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-check2-circle text-success fs-5"></i>
+                                        <h6 class="fw-bold mb-0">Performance First</h6>
+                                    </div>
+                                    <p class="small text-muted mb-0">Assets are optimized, images are compressed, and JS is bundled into tiny chunks.</p>
                                 </div>
                                 <div class="col-md-4">
-                                    <h6 class="fw-bold"><i class="bi bi-check2-circle text-success me-2"></i> Theme Aware</h6>
-                                    <p class="small text-muted">Native Dark Mode support built into the CSS variable-driven design
-                                        tokens.</p>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <i class="bi bi-check2-circle text-success fs-5"></i>
+                                        <h6 class="fw-bold mb-0">Theme Aware</h6>
+                                    </div>
+                                    <p class="small text-muted mb-0">Native Dark Mode support built into the CSS variable-driven design tokens.</p>
                                 </div>
                             </div>
                         </div>
@@ -979,56 +985,61 @@
                     <!-- 2. Tech Stack -->
                     <section id="tech-stack" class="mb-5 py-3">
                         <div class="d-flex align-items-center gap-3 mb-4">
-                            <div class="icon-shape bg-success-light text-success rounded-3 p-2">
+                            <div class="icon-shape bg-success-light text-success rounded-3 p-2 shadow-sm">
                                 <i class="bi bi-stack fs-4"></i>
                             </div>
                             <h3 class="fw-800 mb-0">2. Tech Stack</h3>
                         </div>
-                        <div class="card border-0 shadow-sm rounded-4 p-4">
+                        <div class="card border-0 shadow-sm rounded-4 p-0 overflow-hidden">
                             <div class="table-responsive">
-                                <table class="table table-hover border-0 align-middle mb-0">
-                                    <thead class="bg-body-tertiary">
+                                <table class="table table-hover align-middle mb-0">
+                                    <thead class="bg-light-subtle">
                                         <tr>
-                                            <th class="border-0 px-4 py-3">Technology</th>
-                                            <th class="border-0 py-3">Role</th>
-                                            <th class="border-0 py-3">Benefit</th>
+                                            <th class="px-4 py-3 border-0">Technology</th>
+                                            <th class="py-3 border-0">Role</th>
+                                            <th class="py-3 border-0">Benefit</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="px-4"><img
-                                                    src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
-                                                    height="24" class="me-2"> <strong>Bootstrap 5.3</strong></td>
-                                            <td>Core UI Framework</td>
-                                            <td class="small text-muted">Responsive grid and robust component base.</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-4"><img src="https://vitejs.dev/logo.svg" height="24" class="me-2">
-                                                <strong>Vite 5.x</strong>
+                                            <td class="px-4 border-0">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <i class="bi bi-bootstrap-fill text-purple fs-4"></i>
+                                                    <span class="fw-bold">Bootstrap 5.3</span>
+                                                </div>
                                             </td>
-                                            <td>Development Server</td>
-                                            <td class="small text-muted">Instant HMR and modern JS bundling.</td>
+                                            <td class="border-0">Core UI Framework</td>
+                                            <td class="small text-muted border-0">Responsive grid and robust component base.</td>
                                         </tr>
                                         <tr>
-                                            <td class="px-4"><img src="../assets/gulp.png" height="24" class="me-2">
-                                                <strong>Gulp
-                                                    5.x</strong>
+                                            <td class="px-4 border-top border-light">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <i class="bi bi-lightning-fill text-warning fs-4"></i>
+                                                    <span class="fw-bold">Vite 5.x</span>
+                                                </div>
                                             </td>
-                                            <td>Production Pipelines</td>
-                                            <td class="small text-muted">Advanced image optimization and vendor exports.</td>
+                                            <td class="border-top border-light">Development Server</td>
+                                            <td class="small text-muted border-top border-light">Instant HMR and modern JS bundling.</td>
                                         </tr>
                                         <tr>
-                                            <td class="px-4"><i class="bi bi-code-square text-danger me-2"></i>
-                                                <strong>Handlebars</strong>
+                                            <td class="px-4 border-top border-light">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <img src="../assets/gulp.png" height="20" alt="Gulp">
+                                                    <span class="fw-bold">Gulp 5.x</span>
+                                                </div>
                                             </td>
-                                            <td>Templating Engine</td>
-                                            <td class="small text-muted">Partial-based layouts for modularity.</td>
+                                            <td class="border-top border-light">Production Pipelines</td>
+                                            <td class="small text-muted border-top border-light">Advanced image optimization and vendor exports.</td>
                                         </tr>
                                         <tr>
-                                            <td class="px-4"><i class="bi bi-lightning-charge text-warning me-2"></i> <strong>Dart
-                                                    Sass</strong></td>
-                                            <td>CSS Preprocessor</td>
-                                            <td class="small text-muted">Modular styling with @use and @forward.</td>
+                                            <td class="px-4 border-top border-light">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <i class="bi bi-code-square text-danger fs-4"></i>
+                                                    <span class="fw-bold">Handlebars</span>
+                                                </div>
+                                            </td>
+                                            <td class="border-top border-light">Templating Engine</td>
+                                            <td class="small text-muted border-top border-light">Partial-based layouts for modularity.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1088,7 +1099,7 @@
                     <!-- 4. Folder Structure -->
                     <section id="folder-structure" class="mb-5 py-3">
                         <div class="d-flex align-items-center gap-3 mb-4">
-                            <div class="icon-shape bg-info-light text-info rounded-3 p-2">
+                            <div class="icon-shape bg-info-light text-info rounded-3 p-2 shadow-sm">
                                 <i class="bi bi-folder2-open fs-4"></i>
                             </div>
                             <h3 class="fw-800 mb-0">4. Folder Structure</h3>
@@ -1096,40 +1107,24 @@
                         <div class="card border-0 shadow-sm rounded-4 p-4">
                             <div class="row g-4">
                                 <div class="col-lg-6">
-                                    <div class="file-tree font-monospace small">
-                                        <div class="file-tree-item"><i class="bi bi-folder-fill text-warning me-2"></i>src/</div>
-                                        <div class="file-tree-item ms-4"><i
-                                                class="bi bi-folder-fill text-warning me-2"></i>partials/ <span
-                                                class="text-muted opacity-50">// HBS Components</span></div>
-                                        <div class="file-tree-item ms-4"><i class="bi bi-folder-fill text-warning me-2"></i>scss/
-                                            <span class="text-muted opacity-50">// System Styles</span>
-                                        </div>
-                                        <div class="file-tree-item ms-5"><i
-                                                class="bi bi-folder-fill text-warning me-2"></i>components/ <span
-                                                class="text-muted opacity-50">// UI Elements</span></div>
-                                        <div class="file-tree-item ms-4"><i class="bi bi-folder-fill text-warning me-2"></i>scripts/
-                                            <span class="text-muted opacity-50">// Module Logic</span>
-                                        </div>
-                                        <div class="file-tree-item ms-4"><i class="bi bi-folder-fill text-warning me-2"></i>images/
-                                            <span class="text-muted opacity-50">// Assets</span>
-                                        </div>
-                                        <div class="file-tree-item"><i class="bi bi-folder-fill text-warning me-2"></i>tasks/ <span
-                                                class="text-muted opacity-50">// Gulp Pipelines</span></div>
-                                        <div class="file-tree-item"><i class="bi bi-folder-fill text-warning me-2"></i>public/ <span
-                                                class="text-muted opacity-50">// Static Vendors</span></div>
+                                    <div class="file-tree p-3 bg-light rounded-3 border">
+                                        <div class="file-tree-item"><i class="bi bi-folder-fill text-warning me-2"></i>app/</div>
+                                        <div class="file-tree-item ms-3 ps-3 border-start"><i class="bi bi-folder-fill text-warning me-2"></i>pages/ <span class="text-muted opacity-50 small">// HTML Source</span></div>
+                                        <div class="file-tree-item ms-3 ps-3 border-start"><i class="bi bi-folder-fill text-warning me-2"></i>src/</div>
+                                        <div class="file-tree-item ms-5 ps-3 border-start"><i class="bi bi-folder-fill text-warning me-2"></i>partials/ <span class="text-muted opacity-50 small">// HBS Components</span></div>
+                                        <div class="file-tree-item ms-5 ps-3 border-start"><i class="bi bi-folder-fill text-warning me-2"></i>scss/ <span class="text-muted opacity-50 small">// System Styles</span></div>
+                                        <div class="file-tree-item ms-5 ps-3 border-start"><i class="bi bi-folder-fill text-warning me-2"></i>scripts/ <span class="text-muted opacity-50 small">// Module Logic</span></div>
+                                        <div class="file-tree-item"><i class="bi bi-folder-fill text-warning me-2"></i>tasks/ <span class="text-muted opacity-50 small">// Gulp Pipelines</span></div>
+                                        <div class="file-tree-item"><i class="bi bi-folder-fill text-warning me-2"></i>public/ <span class="text-muted opacity-50 small">// Static Vendors</span></div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <h6 class="fw-bold mb-3">Key Definitions:</h6>
                                     <ul class="small text-muted lh-lg">
-                                        <li><strong>src/partials:</strong> Essential blocks like header, sidebar, and layout
-                                            templates.</li>
-                                        <li><strong>src/scss:</strong> Uses Dart Sass module system. Variables and tokens are
-                                            central.</li>
-                                        <li><strong>public/:</strong> Files here are copied directly to <code>dist/</code> without
-                                            processing.</li>
-                                        <li><strong>tasks/:</strong> Contains individual Gulp task logic for exports, cleanups, and
-                                            optimization.</li>
+                                        <li><strong>src/partials:</strong> Essential blocks like header, sidebar, and layout templates.</li>
+                                        <li><strong>src/scss:</strong> Uses Dart Sass module system. Variables and tokens are central.</li>
+                                        <li><strong>public/:</strong> Files here are copied directly to <code>dist/</code> without processing.</li>
+                                        <li><strong>tasks/:</strong> Contains individual Gulp task logic for exports and optimization.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1361,6 +1356,30 @@
             </div>
         </div>
     </footer>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <div class="mobile-bottom-nav d-md-none">
+        <a href="../index.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="../pages/dashboard-v2.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-speedometer2"></i>
+            <span>Stats</span>
+        </a>
+        <a href="../pages/apps/chat.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-chat-dots"></i>
+            <span>Chat</span>
+        </a>
+        <a href="../pages/profile.html" class="mobile-bottom-nav__item">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+        </a>
+        <a href="javascript:;" class="mobile-bottom-nav__item" id="sidebar-toggle">
+            <i class="bi bi-list"></i>
+            <span>Menu</span>
+        </a>
+    </div>
 
     <!-- Form Components Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>

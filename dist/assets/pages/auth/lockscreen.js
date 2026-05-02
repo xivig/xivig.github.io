@@ -1,1 +1,1 @@
-import"../../preloader.js";import"../../auth.js";document.addEventListener(`DOMContentLoaded`,()=>{let e=document.getElementById(`lockInput`);e&&e.focus()});
+import"../../mobile-controller.js";import"../../auth.js";document.addEventListener(`DOMContentLoaded`,()=>{let e=document.getElementById(`lockInput`);e&&e.focus()});
