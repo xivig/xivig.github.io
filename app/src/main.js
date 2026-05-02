@@ -9,7 +9,7 @@ import 'timedropper/timedropper.min.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import 'plyr/dist/plyr.css';
 import './scss/vendors/vendors.scss';
-import './scss/main.scss';
+import './scss/admin-bundle.scss';
 
 // 2. OTHER VENDOR JS
 import * as bootstrap from 'bootstrap';
@@ -30,6 +30,7 @@ import NotificationService from './scripts/components/sweet-alert.js';
 import { initPreloader } from './scripts/core/preloader.js';
 import { initSidebar } from './scripts/core/sidebar.js';
 import { initSettings } from './scripts/core/settings.js';
+import { initMobileController } from './scripts/core/mobile-controller.js';
 
 // 6. FEATURES & APPS
 import { initNotificationSelect } from './scripts/components/notification-manager.js';
@@ -85,6 +86,7 @@ const App = {
             UiController.init();
             initSidebar();
             initSettings();
+            initMobileController();
             
             // App Modules
             initNotificationSelect();

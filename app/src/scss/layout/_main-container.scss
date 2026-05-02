@@ -20,8 +20,8 @@
     
     // 3. Reset any padding/margin that could cause gaps
     margin-right: 0 !important;
-    padding: 0 0 5rem 0 !important; // Large bottom padding for the fixed footer
-    overflow-x: hidden;
+    padding: 0 0 3.5rem 0 !important; // Restored padding to accommodate fixed footer
+    overflow-x: hidden !important; // FORCED SAFETY
 }
 
 /* --- Expanded State (Sidebar Collapsed) --- */
@@ -44,6 +44,11 @@
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
+
+    // Reset margin for the very last element and apply mt-1 spacing above footer
+    & > *:last-child {
+        margin-bottom: 0.25rem !important; // Consistent mt-1 gap
+    }
 }
 
 /* --- Grid System --- */

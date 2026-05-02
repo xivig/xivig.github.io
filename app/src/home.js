@@ -8,7 +8,7 @@ globalThis.jQuery = globalThis.$ = window.jQuery;
 // 1. PROJECT STYLES
 import 'animate.css/animate.css';
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
-import './scss/main.scss';
+import './scss/home-bundle.scss';
 
 // 2. VENDOR JS
 import * as bootstrap from 'bootstrap';
@@ -24,6 +24,7 @@ import { initPreloader } from './scripts/core/preloader.js';
 import { initLightbox, initGalleryFilter } from './scripts/components/lightbox.js';
 import { initPricingToggle } from './scripts/components/pricing.js';
 import { initMaintenance } from './scripts/pages/maintenance.js';
+import { initMobileController } from './scripts/core/mobile-controller.js';
 
 window.addEventListener("DOMContentLoaded", () => {
     initPreloader();
@@ -32,4 +33,5 @@ window.addEventListener("DOMContentLoaded", () => {
     initGalleryFilter();
     initPricingToggle();
     initMaintenance();
+    initMobileController();
 });

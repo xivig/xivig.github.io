@@ -1,17 +1,21 @@
 /* FAQ Wrapper Container */
 .faq-wrap {
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.3s ease;
+    border: 1px solid var(--card-border);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    background: var(--card-bg);
+    border-radius: var(--elite-radius);
 
     &:hover {
-        box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.08) !important;
+        box-shadow: var(--card-shadow-hover) !important;
+        transform: translateY(-2px);
     }
 }
 
 /* Accordion Customization */
 .accordion-flush {
     .accordion-item {
-        border-bottom: 1px solid #f1f3f5;
+        border-bottom: 1px solid var(--card-border);
+        background: transparent;
 
         &:last-child {
             border-bottom: 0;
@@ -20,39 +24,40 @@
 
     .accordion-button {
         background-color: transparent;
-        color: #2d3748;
+        color: var(--text-main);
         font-size: 0.95rem;
         letter-spacing: -0.01em;
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 1.25rem 1.5rem;
 
         /* Remove the default focus ring */
         &:focus {
             box-shadow: none;
-            background-color: rgba(var(--bs-primary-rgb), 0.02);
+            background-color: var(--elite-primary-soft);
         }
 
         /* Active State (Opened) */
         &:not(.collapsed) {
-            color: var(--bs-primary);
-            background-color: rgba(var(--bs-primary-rgb), 0.03);
+            color: var(--elite-primary);
+            background-color: var(--elite-primary-soft);
 
-            /* Customizing the Chevron color to match your primary purple */
             &::after {
-                filter: sepia(100%) hue-rotate(210deg) saturate(300%);
+                filter: brightness(0) invert(1) hue-rotate(210deg) saturate(500%);
             }
         }
 
         /* Hover State */
         &:hover {
-            background-color: #f8f9fa;
+            background-color: var(--bg-subtle);
         }
     }
 
     .accordion-body {
         font-size: 0.9rem;
-        color: #718096; // Modern slate grey
+        color: var(--text-muted);
         line-height: 1.7;
-        background-color: #fff;
+        background-color: transparent;
+        padding: 0 1.5rem 1.5rem;
     }
 }
 

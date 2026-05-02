@@ -97,30 +97,30 @@
 .btn-close-elite {
     position: absolute !important;
     top: 50% !important;
-    right: 20px !important;
+    right: 15px !important; // Slightly tighter to the edge
     transform: translateY(-50%) !important;
-    background: rgba(255, 255, 255, 0.25) !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
     color: white !important;
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
+    width: 32px; // More standard size
+    height: 32px;
+    border-radius: 8px; // Matching "Elite Soft" radius
     display: flex !important;
     align-items: center;
     justify-content: center;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    z-index: 10002 !important; /* Above the header itself */
+    z-index: 10002 !important;
 
     i {
-        font-size: 1.1rem;
+        font-size: 0.9rem; // Crisp icon
         line-height: 1;
         display: block !important;
-        pointer-events: none; /* Ensure click goes to button */
+        pointer-events: none;
     }
 
     &:hover {
-        background: rgba(255, 255, 255, 0.4) !important;
-        transform: translateY(-50%) rotate(90deg) scale(1.1) !important;
+        background: rgba(255, 255, 255, 0.3) !important;
+        transform: translateY(-50%) scale(1.1) !important;
     }
 }

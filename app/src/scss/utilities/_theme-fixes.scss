@@ -109,6 +109,53 @@
             color: var(--text-muted) !important;
         }
     }
+
+    /* Accordion Dark Mode */
+    .accordion-item {
+        background-color: var(--card-bg);
+        border-color: var(--card-border);
+        color: var(--text-main);
+    }
+
+    .accordion-button {
+        background-color: transparent;
+        color: var(--text-main);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        &:not(.collapsed) {
+            background-color: rgba(var(--elite-primary-rgb), 0.1);
+            color: var(--elite-primary);
+            box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--card-border);
+
+            &::after {
+                filter: brightness(0) invert(1) hue-rotate(210deg) saturate(500%);
+            }
+        }
+
+        &::after {
+            filter: brightness(0) invert(1);
+            opacity: 0.7;
+        }
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .accordion-body {
+        background-color: transparent;
+        color: var(--text-muted);
+    }
+
+    /* Collapsible Content */
+    .collapse-content {
+        background: var(--bg-subtle) !important;
+        border-color: var(--card-border) !important;
+        color: var(--text-main);
+    }
 }
 
 /* --- Theme-Aware Utilities --- */

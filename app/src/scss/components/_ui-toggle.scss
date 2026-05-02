@@ -15,10 +15,22 @@
     }
 
     .collapse-content {
-        background: var(--bg-subtle);
+        background: var(--bg-subtle) !important;
         border-radius: 14px;
-        border: 1px dashed var(--card-border);
+        border: 1px dashed var(--card-border) !important;
         padding: 20px;
+        color: var(--text-main);
+        transition: var(--transition-elite);
+
+        [data-bs-theme="dark"] & {
+            background: rgba(255, 255, 255, 0.02) !important;
+            border-style: solid; // Solid looks better in dark mode
+        }
+    }
+
+    .border-dashed {
+        border-style: dashed !important;
+        border-color: var(--card-border) !important;
     }
 
     .img-aesthetic {

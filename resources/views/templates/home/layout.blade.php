@@ -21,6 +21,8 @@
     @include('templates.home.partials.footer')
     @endunless
 
+    <div class="sidebar-overlay"></div>
+
     @include('templates.home.partials.scripts')
 
 </body>

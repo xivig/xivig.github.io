@@ -18,6 +18,7 @@
 -   **Modular SCSS (7-1 Pattern)**: A professional stylesheet architecture designed for scalability and ease of maintenance.
 -   **Handlebars Templating**: Clean separation of UI components using Handlebars partials.
 -   **Performance Optimized**: Automated image compression, intelligent vendor chunking, and aggressive tree-shaking.
+-   **Mobile Elite (New)**: Comprehensive media queries, categorized CSS bundles, and a dedicated mobile bottom navigation for a native app-like experience.
 -   **Theme Aware**: Comprehensive dark mode support using CSS Design Tokens (Variables).
 
 ---

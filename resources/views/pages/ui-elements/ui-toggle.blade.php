@@ -8,8 +8,8 @@
         <div class="col-12">
             <div class="card card-elite p-4 mb-4 shadow-sm border-0">
                 <div class="d-flex align-items-center mb-3">
-                    <div class="bg-primary bg-opacity-10 p-2 rounded-3 me-3">
-                        <i class="bi bi-stack text-primary fs-4"></i>
+                    <div class="icon-shape bg-primary-light text-primary rounded-3 p-2 me-3 shadow-sm">
+                        <i class="bi bi-stack fs-4"></i>
                     </div>
                     <div>
                         <h5 class="fw-bold mb-0">Basic Component</h5>
@@ -18,13 +18,13 @@
                 </div>
 
                 <div class="d-flex gap-3 mb-3">
-                    <button class="btn btn-primary rounded-pill px-4" data-bs-toggle="collapse" data-bs-target="#basicElite">
+                    <button class="btn btn-primary rounded-pill px-4 shadow-sm" data-bs-toggle="collapse" data-bs-target="#basicElite">
                         Explore Content
                     </button>
                 </div>
 
                 <div class="collapse" id="basicElite">
-                    <div class="collapse-content d-flex align-items-center gap-4 mt-3">
+                    <div class="collapse-content d-flex align-items-center gap-4 mt-3 border border-light-subtle">
                         <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?w=200"
                              class="img-aesthetic" alt="Architecture">
                         <div>

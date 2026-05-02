@@ -44,6 +44,32 @@
 
     @include('templates.admin.partials.footer')
 
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <div class="mobile-bottom-nav d-md-none">
+        <a href="{{ url('/') }}" class="mobile-bottom-nav__item">
+            <i class="bi bi-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="{{ url('dashboard-v2.html') }}" class="mobile-bottom-nav__item">
+            <i class="bi bi-speedometer2"></i>
+            <span>Stats</span>
+        </a>
+        <a href="{{ url('apps/chat.html') }}" class="mobile-bottom-nav__item">
+            <i class="bi bi-chat-dots"></i>
+            <span>Chat</span>
+        </a>
+        <a href="{{ url('profile.html') }}" class="mobile-bottom-nav__item">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+        </a>
+        <a href="javascript:;" class="mobile-bottom-nav__item" id="sidebar-toggle">
+            <i class="bi bi-list"></i>
+            <span>Menu</span>
+        </a>
+    </div>
+
+    <div class="sidebar-overlay"></div>
+
     @include('templates.admin.partials.scripts')
 
 </body>

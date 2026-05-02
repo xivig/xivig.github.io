@@ -97,8 +97,9 @@
 <div class="offcanvas offcanvas-start" tabindex="-1" id="demoOcStart">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title">Navigation Menu</h5>
-        <button type="button" class="btn-close-elite" data-bs-dismiss="offcanvas"><i
-                class="fa-solid fa-xmark"></i></button>
+        <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
     </div>
     <div class="offcanvas-body">
         <p>This panel is perfect for sidebar navigation or user profiles. Notice the <strong>rounded edge</strong>
@@ -118,8 +119,9 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="demoOcEnd">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title">Contextual Help</h5>
-        <button type="button" class="btn-close-elite" data-bs-dismiss="offcanvas"><i
-                class="fa-solid fa-xmark"></i></button>
+        <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
     </div>
     <div class="offcanvas-body text-center">
         <i class="fa-solid fa-circle-question fa-4x text-primary-subtle mb-4"></i>
@@ -133,8 +135,9 @@
 <div class="offcanvas offcanvas-top" tabindex="-1" id="demoOcTop">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title">Global Search</h5>
-        <button type="button" class="btn-close-elite" data-bs-dismiss="offcanvas"><i
-                class="fa-solid fa-xmark"></i></button>
+        <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
     </div>
     <div class="offcanvas-body">
         <div class="input-group input-group-lg border rounded-3" style="border-color: var(--card-border) !important;">
@@ -147,8 +150,9 @@
 <div class="offcanvas offcanvas-bottom" tabindex="-1" id="demoOcBottom">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title">Selection Tray</h5>
-        <button type="button" class="btn-close-elite" data-bs-dismiss="offcanvas"><i
-                class="fa-solid fa-xmark"></i></button>
+        <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
     </div>
     <div class="offcanvas-body">
         <div class="d-flex justify-content-around align-items-center h-100">
@@ -169,8 +173,9 @@
 <div class="offcanvas offcanvas-bottom offcanvas-dark" tabindex="-1" id="demoOcDark">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title">Elite Night Shift</h5>
-        <button type="button" class="btn-close-elite" data-bs-dismiss="offcanvas"><i
-                class="fa-solid fa-xmark"></i></button>
+        <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
     </div>
     <div class="offcanvas-body d-flex align-items-center justify-content-center flex-column">
         <h3 class="fw-bold mb-3">Immersive Dark Mode</h3>
@@ -183,7 +188,9 @@
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
-    <button type="button" class="btn-close-elite" data-bs-dismiss="offcanvas"><i class="fa-solid fa-xmark"></i></button>
+    <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+        <i class="bi bi-x-lg"></i>
+    </button>
   </div>
   <div class="offcanvas-body">
     <p>Try scrolling the rest of the page to see this option in action.</p>
@@ -193,7 +200,9 @@
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Offcanvas with backdrop</h5>
-    <button type="button" class="btn-close-elite" data-bs-dismiss="offcanvas"><i class="fa-solid fa-xmark"></i></button>
+    <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+        <i class="bi bi-x-lg"></i>
+    </button>
   </div>
   <div class="offcanvas-body">
     <p>This is the default behavior. A semi-transparent backdrop appears behind the panel.</p>
@@ -203,7 +212,9 @@
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasBoth" aria-labelledby="offcanvasBothLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasBothLabel">Backdrop with scrolling</h5>
-    <button type="button" class="btn-close-elite" data-bs-dismiss="offcanvas"><i class="fa-solid fa-xmark"></i></button>
+    <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+        <i class="bi bi-x-lg"></i>
+    </button>
   </div>
   <div class="offcanvas-body">
     <p>You can scroll the page AND have a backdrop. Best of both worlds?</p>
@@ -214,7 +225,10 @@
 <div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Responsive offcanvas</h5>
-    <button type="button" class="btn-close-elite" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive"><i class="fa-solid fa-xmark"></i></button>
+    <!-- Note: For responsive offcanvas, data-bs-target MUST match the offcanvas ID -->
+    <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive" aria-label="Close">
+        <i class="bi bi-x-lg"></i>
+    </button>
   </div>
   <div class="offcanvas-body">
     <p class="mb-0">This is content within an <code>.offcanvas-lg</code>. It's hidden as an offcanvas on large viewports (≥992px) and becomes visible as standard content, but behaves like an offcanvas on smaller screens.</p>

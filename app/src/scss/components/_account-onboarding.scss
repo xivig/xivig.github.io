@@ -136,8 +136,9 @@
         display: flex;
         justify-content: space-between;
         gap: 12px;
-        padding: 12px 0;
-        border-bottom: 1px dashed var(--card-border);
+        padding: 8px 0; // Reduced from 12px
+        margin-top: 0.25rem; // mt-1
+        border-bottom: 1px solid var(--card-border); // Solid instead of dashed for "Elite" feel
         color: var(--text-main);
         font-size: 0.9rem;
 

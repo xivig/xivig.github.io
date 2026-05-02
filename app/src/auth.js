@@ -7,7 +7,7 @@ globalThis.jQuery = globalThis.$ = window.jQuery;
 
 // 1. PROJECT STYLES
 import 'animate.css/animate.css';
-import './scss/main.scss';
+import './scss/auth-bundle.scss';
 
 // 2. VENDOR JS
 import * as bootstrap from 'bootstrap';
@@ -19,7 +19,9 @@ window.bootstrap = bootstrap;
 
 // 4. CORE & UTILITIES
 import { initPreloader } from './scripts/core/preloader.js';
+import { initMobileController } from './scripts/core/mobile-controller.js';
 
 window.addEventListener("DOMContentLoaded", () => {
     initPreloader();
+    initMobileController();
 });
