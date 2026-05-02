@@ -1,0 +1,55 @@
+ The minified versions of your CSS and JS have been generated. After
+  running the build process, the assets are now fully optimized and
+  minified in the dist/assets (and docs/assets) folders.
+
+  📦 Optimized Asset Manifest:
+
+  ┌─────────────────┬──────┬──────┬────────────────────────────────┐
+  │ Asset Name      │ Type │ Size │ Description                    │
+  ├─────────────────┼──────┼──────┼────────────────────────────────┤
+  │ main.js         │ JS   │ ~90  │ Main application logic, fully  │
+  │                 │      │ KB   │ minified.                      │
+  │ vendor-core.js  │ JS   │ ~489 │ All third-party dependencies   │
+  │                 │      │ KB   │ (Bootstrap, etc.).             │
+  │ vendor-core.css │ CSS  │ ~141 │ Combined and minified vendor   │
+  │                 │      │ KB   │ styles.                        │
+  │ preloader.css   │ CSS  │ ~416 │ Standalone preloader styling.  │
+  │                 │      │ KB   │                                │
+  │ main.css        │ CSS  │ 0 KB │ Note: SCSS logic was           │
+  │                 │      │      │ automatically bundled into the │
+  │                 │      │      │ core JS/CSS.                   │
+  └─────────────────┴──────┴──────┴────────────────────────────────┘
+
+  📁 Asset Organization for Laravel:
+  For your standalone Laravel templates, I recommend placing these minified
+  files in the following directory structure within your Laravel public
+  folder to keep layouts completely separated:
+
+    1 public/
+    2 ├── assets/
+    3 │   ├── admin/
+    4 │   │   ├── js/main.js
+    5 │   │   ├── css/vendor-core.css
+    6 │   │   └── images/
+    7 │   ├── home/
+    8 │   │   ├── js/home.js
+    9 │   │   └── images/
+   10 │   └── auth/
+   11 │       ├── js/auth.js
+   12 │       └── images/
+
+  📄 Final Standalone Blade Views:
+  The conversion script I provided has generated the following standalone
+  layouts in resources/views/templates/:
+
+   1. Admin Layout: resources/views/templates/admin/layout.blade.php
+   2. Home Layout: resources/views/templates/home/layout.blade.php
+   3. Auth Layout: resources/views/templates/auth/layout.blade.php
+
+  And all 50+ application pages (like profile.blade.php,
+  dashboard-v2.blade.php, login.blade.php) are now available in
+  resources/views/pages/, each automatically extending the correct
+  standalone layout.
+
+  You can find the conversion tool at tasks/utils/convert-to-laravel.py if
+  you need to refresh these views in the future.

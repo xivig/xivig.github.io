@@ -89,6 +89,32 @@ npm run build
 
 ---
 
+## 🐘 Laravel Integration
+
+This repository includes a comprehensive workflow for migrating the frontend template into **Laravel**.
+
+- **[Laravel Implementation Guide](./developer-docs/LARAVEL_IMPLEMENTATION.md)**: How to move assets to a *fresh* Laravel project.
+- **[Laravel Template Process](./developer-docs/LARAVEL_TEMPLATE_CREATION.md)**: Details on the existing Blade implementation and directory mapping.
+- **Sample Routes**: A ready-to-use `web.php` is available at `resources/laravel/web.php`.
+
+---
+
+## 📚 Technical Documentation
+
+Explore our in-depth guides to master the Xivig architecture:
+
+### Build & Automation
+- **[Build System Guide](./developer-docs/BUILD_SYSTEM_GUIDE.md)**: Deep dive into Vite, Gulp, and Deployment.
+- **[Utility Scripts](./developer-docs/UTILITY_SCRIPTS.md)**: Documentation for all automation scripts in `tasks/utils/`.
+- **[Gulp Workflow](./developer-docs/GULP_WORKFLOW_GUIDE.md)**: How to write and extend Gulp tasks.
+
+### Frontend Architecture
+- **[Template Creation Guide](./developer-docs/TEMPLATE_CREATION.md)**: How to build new pages and components.
+- **[SCSS Architecture](./developer-docs/SCSS_ARCHITECTURE.md)**: Mastering the 7-1 pattern.
+- **[JS Architecture](./developer-docs/JS_ARCHITECTURE.md)**: Modular ES6 and initialization patterns.
+
+---
+
 ## 🎨 Styling & Customization
 
 The project uses a highly structured **7-1 Sass Pattern**. For a deep dive into how to modify colors, tokens, and components, please refer to the [SCSS_ARCHITECTURE.md](./developer-docs/SCSS_ARCHITECTURE.md) file.
