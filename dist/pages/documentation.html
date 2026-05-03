@@ -1183,11 +1183,9 @@
                             <h6 class="fw-bold mb-3">Adding a Notification Badge</h6>
                             <p class="small text-muted">Xivig features a modular notification badge system. Use the Handlebars
                                 partial to insert it anywhere:</p>
-                            <div class="bg-dark text-light p-3 rounded-4 font-monospace extra-small mb-4"><span id="my-badge" class="badge rounded-pill bg-danger ms-2">
-                5
-                <span class="visually-hidden">notifications</span>
-            </span>
-            </div>
+                            <div class="bg-dark text-light p-3 rounded-4 font-monospace extra-small mb-4">
+                                {{~> notification-badge id="my-badge" count="5" color="danger" class="ms-2" ~}}
+                            </div>
             
                             <h6 class="fw-bold mb-3">Dynamic Management (JS):</h6>
                             <div class="bg-dark text-light p-3 rounded-4 font-monospace extra-small">
