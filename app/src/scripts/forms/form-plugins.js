@@ -161,6 +161,14 @@ export const initImageCropper = function () {
                 case 'move':
                     cropper.move(option || 0, secondOption || 0);
                     break;
+                case 'setAspectRatio':
+                    cropper.setAspectRatio(option);
+                    const ratioGroup = btn.closest('#aspectRatioGroup, .cropper-toolbar-group');
+                    if (ratioGroup) {
+                        ratioGroup.querySelectorAll('[data-method="setAspectRatio"]').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                    }
+                    break;
                 default:
                     if (typeof cropper[method] === 'function') {
                         cropper[method](option);

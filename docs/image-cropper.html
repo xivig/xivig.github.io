@@ -977,44 +977,48 @@
                         </div>
             
                         <!-- Toolbar Actions Controls -->
-                        <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between pt-2 border-top border-secondary border-opacity-10" id="actions">
-                            <!-- Zoom & Move -->
-                            <div class="btn-group btn-group-sm shadow-2xs rounded-pill overflow-hidden">
-                                <button type="button" class="btn btn-light border border-secondary border-opacity-15" data-method="zoom" data-option="0.1" title="Zoom In">
-                                    <i class="bi bi-zoom-in"></i>
-                                </button>
-                                <button type="button" class="btn btn-light border border-secondary border-opacity-15" data-method="zoom" data-option="-0.1" title="Zoom Out">
-                                    <i class="bi bi-zoom-out"></i>
-                                </button>
-                                <button type="button" class="btn btn-light border border-secondary border-opacity-15" data-method="rotate" data-option="-45" title="Rotate -45°">
-                                    <i class="bi bi-arrow-counterclockwise"></i>
-                                </button>
-                                <button type="button" class="btn btn-light border border-secondary border-opacity-15" data-method="rotate" data-option="45" title="Rotate 45°">
-                                    <i class="bi bi-arrow-clockwise"></i>
-                                </button>
-                                <button type="button" class="btn btn-light border border-secondary border-opacity-15" data-method="scaleX" data-option="-1" title="Flip Horizontal">
-                                    <i class="bi bi-arrow-left-right"></i>
-                                </button>
-                                <button type="button" class="btn btn-light border border-secondary border-opacity-15" data-method="scaleY" data-option="-1" title="Flip Vertical">
-                                    <i class="bi bi-arrow-down-up"></i>
-                                </button>
-                                <button type="button" class="btn btn-light border border-secondary border-opacity-15" data-method="reset" title="Reset Frame">
-                                    <i class="bi bi-arrow-repeat"></i>
-                                </button>
-                            </div>
+                        <div class="d-flex flex-column flex-md-row gap-3 align-items-md-center justify-content-between pt-3 border-top border-secondary border-opacity-10" id="actions">
+                            <div class="d-flex flex-wrap gap-2.5 align-items-center">
+                                <!-- Zoom & Transform Controls -->
+                                <div class="cropper-toolbar-group shadow-2xs">
+                                    <button type="button" class="btn" data-method="zoom" data-option="0.1" title="Zoom In">
+                                        <i class="bi bi-zoom-in"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                                        <i class="bi bi-zoom-out"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-method="rotate" data-option="-45" title="Rotate -45°">
+                                        <i class="bi bi-arrow-counterclockwise"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-method="rotate" data-option="45" title="Rotate 45°">
+                                        <i class="bi bi-arrow-clockwise"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-method="scaleX" data-option="-1" title="Flip Horizontal">
+                                        <i class="bi bi-arrow-left-right"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-method="scaleY" data-option="-1" title="Flip Vertical">
+                                        <i class="bi bi-arrow-down-up"></i>
+                                    </button>
+                                    <button type="button" class="btn" data-method="reset" title="Reset Frame">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </button>
+                                </div>
             
-                            <!-- Aspect Ratio Presets -->
-                            <div class="btn-group btn-group-sm shadow-2xs rounded-pill overflow-hidden">
-                                <button type="button" class="btn btn-light border border-secondary border-opacity-15" data-method="setAspectRatio" data-option="1.7777777777777777">16:9</button>
-                                <button type="button" class="btn btn-light border border-secondary border-opacity-15" data-method="setAspectRatio" data-option="1.3333333333333333">4:3</button>
-                                <button type="button" class="btn btn-light border border-secondary border-opacity-15" data-method="setAspectRatio" data-option="1">1:1</button>
-                                <button type="button" class="btn btn-light border border-secondary border-opacity-15" data-method="setAspectRatio" data-option="NaN">Free</button>
+                                <!-- Aspect Ratio Presets -->
+                                <div class="cropper-toolbar-group shadow-2xs" id="aspectRatioGroup">
+                                    <button type="button" class="btn active fw-semibold" data-method="setAspectRatio" data-option="1.7777777777777777">16:9</button>
+                                    <button type="button" class="btn fw-semibold" data-method="setAspectRatio" data-option="1.3333333333333333">4:3</button>
+                                    <button type="button" class="btn fw-semibold" data-method="setAspectRatio" data-option="1">1:1</button>
+                                    <button type="button" class="btn fw-semibold" data-method="setAspectRatio" data-option="NaN">Free</button>
+                                </div>
                             </div>
             
                             <!-- Execute Crop Button -->
-                            <button type="button" class="btn btn-primary btn-sm rounded-pill px-3.5" data-method="getCroppedCanvas">
-                                <i class="bi bi-scissors me-1"></i> Render Canvas
-                            </button>
+                            <div>
+                                <button type="button" class="btn btn-primary btn-sm rounded-pill px-4 py-2 shadow-sm fw-bold d-inline-flex align-items-center" data-method="getCroppedCanvas">
+                                    <i class="bi bi-scissors me-1.5"></i> Render Canvas
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

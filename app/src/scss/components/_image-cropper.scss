@@ -1,0 +1,73 @@
+@use "../base/tokens";
+
+/* ==========================================================================
+   Elite Image Cropper Studio Styles
+   ========================================================================== */
+
+.cropper-toolbar-group {
+    border: 1px solid var(--xv-border, #E5EAF2);
+    border-radius: 50rem !important;
+    overflow: hidden;
+    display: inline-flex;
+    background: var(--card-bg, #ffffff);
+
+    .btn {
+        border: none !important;
+        border-right: 1px solid var(--xv-border, #E5EAF2) !important;
+        border-radius: 0 !important;
+        background: transparent;
+        color: var(--text-main, #111827);
+        padding: 0.45rem 0.85rem;
+        font-size: 0.8125rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.15s ease;
+
+        &:last-child {
+            border-right: none !important;
+        }
+
+        &:hover {
+            background: var(--bg-subtle, #F8FAFC);
+            color: var(--xv-brand, #4059E8);
+        }
+
+        &.active {
+            background: var(--xv-brand, #4059E8) !important;
+            color: #ffffff !important;
+        }
+    }
+}
+
+.img-preview {
+    overflow: hidden;
+}
+
+#croppedResult canvas {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 8px;
+}
+
+[data-bs-theme="dark"] {
+    .cropper-toolbar-group {
+        border-color: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+
+        .btn {
+            border-right-color: rgba(255, 255, 255, 0.12) !important;
+            color: #F2F5FA;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.08);
+                color: #ffffff;
+            }
+
+            &.active {
+                background: var(--xv-brand, #4059E8) !important;
+                color: #ffffff !important;
+            }
+        }
+    }
+}
