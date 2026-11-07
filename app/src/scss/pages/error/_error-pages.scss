@@ -31,7 +31,7 @@
     margin-bottom: 0.5rem;
     line-height: 1;
     letter-spacing: -0.05em;
-    background: linear-gradient(135deg, var(--elite-primary), var(--elite-secondary));
+    background: var(--elite-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(10px 10px 0px rgba(99, 102, 241, 0.05));

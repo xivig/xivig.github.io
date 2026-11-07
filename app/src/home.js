@@ -1,9 +1,3 @@
-// 0. BOOTSTRAP GLOBALS
-import $ from 'jquery';
-if (!window.jQuery || !window.jQuery.fn || (!window.jQuery.fn.DataTable && !window.jQuery.fn.summernote)) {
-    window.jQuery = window.$ = $;
-}
-globalThis.jQuery = globalThis.$ = window.jQuery;
 
 // 1. PROJECT STYLES
 import 'animate.css/animate.css';
@@ -25,13 +19,21 @@ import { initLightbox, initGalleryFilter } from './scripts/components/lightbox.j
 import { initPricingToggle } from './scripts/components/pricing.js';
 import { initMaintenance } from './scripts/pages/maintenance.js';
 import { initMobileController } from './scripts/core/mobile-controller.js';
+import { initLandingPage } from './scripts/pages/landing.js';
 
-window.addEventListener("DOMContentLoaded", () => {
+function startHome() {
     initPreloader();
     initXivig();
+    initLandingPage();
     initLightbox();
     initGalleryFilter();
     initPricingToggle();
     initMaintenance();
     initMobileController();
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startHome);
+} else {
+    startHome();
+}

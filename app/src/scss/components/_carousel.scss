@@ -109,7 +109,7 @@ body {
 
 /* --- Caption Refinements --- */
 .carousel-caption-glass {
-    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+    background: var(--elite-primary);
     padding: 2.5rem !important;
     left: 0 !important;
     right: 0 !important;

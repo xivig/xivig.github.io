@@ -1,69 +1,101 @@
 {{#> admin-layout title="ChartJS" parentTitle="Charts" }}
-<div class="row g-4">
-    <div class="col-md-6">
-        <div class="card shadow-sm border-0 rounded-4">
-            <div class="card-header bg-white border-0 py-3">
-                <h5 class="card-title mb-0">Sales (Vertical Bar)</h5>
+
+<div class="row g-4 mb-4">
+    <!-- Vertical Bar -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Gross Sales (Vertical Bar)</h5>
+                    <p class="text-muted extra-small mb-0">Monthly transaction and settlement volume</p>
+                </div>
+                <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold">Chart.js</span>
             </div>
-            <div class="card-body" style="height: 300px;">
+            <div class="card-body p-4" style="height: 320px;">
                 <canvas id="verticalBar"></canvas>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="card shadow-sm border-0 rounded-4">
-            <div class="card-header bg-white border-0 py-3">
-                <h5 class="card-title mb-0">Budget ($K)</h5>
+    <!-- Horizontal Bar -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Resource Allocation (Horizontal)</h5>
+                    <p class="text-muted extra-small mb-0">Platform engineering budget and operational quotas</p>
+                </div>
+                <span class="badge bg-success-subtle text-success rounded-pill px-2.5 py-1 extra-small fw-bold">Budget</span>
             </div>
-            <div class="card-body" style="height: 300px;">
+            <div class="card-body p-4" style="height: 320px;">
                 <canvas id="horizontalBar"></canvas>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="card shadow-sm border-0 rounded-4">
-            <div class="card-header bg-white border-0 py-3">
-                <h5 class="card-title mb-0">Grouped Bar (2024 vs 2025)</h5>
+    <!-- Grouped Bar -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Quarterly Comparison (Grouped Bar)</h5>
+                    <p class="text-muted extra-small mb-0">FY2025 Targets vs FY2026 Realized Performance</p>
+                </div>
+                <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold">Quarterly</span>
             </div>
-            <div class="card-body" style="height: 300px;">
+            <div class="card-body p-4" style="height: 320px;">
                 <canvas id="groupedBar"></canvas>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="card shadow-sm border-0 rounded-4">
-            <div class="card-header bg-white border-0 py-3">
-                <h5 class="card-title mb-0">Stacked Bar (Traffic)</h5>
+    <!-- Stacked Bar -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Traffic Channels (Stacked Bar)</h5>
+                    <p class="text-muted extra-small mb-0">Direct edge, CDN cache, and API gateway breakdown</p>
+                </div>
+                <span class="badge bg-info-subtle text-info rounded-pill px-2.5 py-1 extra-small fw-bold">Ingress</span>
             </div>
-            <div class="card-body" style="height: 300px;">
+            <div class="card-body p-4" style="height: 320px;">
                 <canvas id="stackedBar"></canvas>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="card shadow-sm border-0 rounded-4">
-            <div class="card-header bg-white border-0 py-3">
-                <h5 class="card-title mb-0">Line Chart</h5>
+    <!-- Line Chart -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Active Architects (Line Chart)</h5>
+                    <p class="text-muted extra-small mb-0">Weekly active sessions and pipeline concurrency</p>
+                </div>
+                <span class="badge bg-purple-subtle text-purple rounded-pill px-2.5 py-1 extra-small fw-bold" style="background: rgba(139, 92, 246, 0.1); color: #8B5CF6;">Weekly</span>
             </div>
-            <div class="card-body" style="height: 300px;">
+            <div class="card-body p-4" style="height: 320px;">
                 <canvas id="lineChart"></canvas>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="card shadow-sm border-0 rounded-4">
-            <div class="card-header bg-white border-0 py-3">
-                <h5 class="card-title mb-0">Area Chart (Filled)</h5>
+    <!-- Area Chart -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">ARR Expansion (Filled Area)</h5>
+                    <p class="text-muted extra-small mb-0">Cumulative revenue velocity across enterprise tier</p>
+                </div>
+                <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold">Revenue</span>
             </div>
-            <div class="card-body" style="height: 300px;">
+            <div class="card-body p-4" style="height: 320px;">
                 <canvas id="areaChart"></canvas>
             </div>
         </div>
     </div>
 </div>
+
 {{/admin-layout}}

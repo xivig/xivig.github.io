@@ -1,80 +1,95 @@
 {{#> admin-layout title="Timeline" parentTitle="UI Elements" }}
 
-<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+<div class="ui-timeline-module">
+    <!-- Header Hero -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <h4 class="fw-bold mb-0 text-main fs-18">Chronological Activity Timelines</h4>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Atelier UI System</span>
+                </div>
+                <p class="text-muted small mb-0">Connected chronological tracking rails, system event audits, milestone markers, and deployment histories</p>
+            </div>
+        </div>
+    </div>
 
-                        <div
-                            class="card-header bg-transparent py-3 px-4 border-0 d-flex justify-content-center align-items-center">
-                            <div class="text-center">
-                                <h5 class="fw-bold mb-0">Timeline</h5>
-                                <small class="text-muted">Overview and management of timeline</small>
-                            </div>
+    <!-- Timeline Container -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 p-md-5 mb-4 bg-body">
+        <h5 class="fw-bold text-main mb-1 fs-16">Platform Incident & Deployment Audit Trail</h5>
+        <p class="text-muted extra-small mb-4">Connected spine with status beads, commit tags, and author attribution</p>
+
+        <div class="position-relative ps-4 ps-md-5">
+            <!-- Vertical Spine Rail -->
+            <div class="position-absolute start-0 top-0 bottom-0 ms-2 ms-md-3 border-start border-2 border-primary border-opacity-25" style="z-index: 1;"></div>
+
+            <!-- Item 1: Success Deploy -->
+            <div class="position-relative mb-4 pb-2">
+                <div class="position-absolute start-0 top-0 ms-n3 ms-md-n3 mt-1 rounded-circle bg-success text-white d-flex align-items-center justify-content-center shadow" style="width: 28px; height: 28px; z-index: 2; margin-left: -14px !important;">
+                    <i class="bi bi-check-lg small"></i>
+                </div>
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-3.5 ms-2 ms-md-3 bg-body">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1.5">
+                        <div class="d-flex align-items-center gap-2">
+                            <h6 class="fw-bold mb-0 text-main fs-15">Production Cluster Deployment v2.4.0</h6>
+                            <span class="badge bg-success-subtle text-success extra-small fw-bold rounded-pill">100% Deployed</span>
                         </div>
+                        <span class="text-muted extra-small"><i class="bi bi-clock me-1"></i> 14 minutes ago</span>
+                    </div>
+                    <p class="text-secondary small mb-2">Automated pipeline build succeeded. 886 modules transformed and 84 Anycast edge nodes updated.</p>
+                    <div class="d-flex align-items-center justify-content-between pt-2 border-top border-secondary border-opacity-10 extra-small text-muted">
+                        <span class="font-monospace text-primary fw-semibold"><i class="bi bi-git me-1"></i> commit 7a1b2c3</span>
+                        <div class="d-flex align-items-center gap-1.5">
+                            <img src="/app/src/images/photo1.jpg" class="rounded-circle" width="20" height="20" alt="Alex">
+                            <span class="text-main fw-semibold">Alex Rivera</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="card-body p-4">
-                            <!--content goes here-->
-                            <div class="container py-3">
-                                <div class="elite-timeline">
+            <!-- Item 2: Security Secret Rotation -->
+            <div class="position-relative mb-4 pb-2">
+                <div class="position-absolute start-0 top-0 ms-n3 ms-md-n3 mt-1 rounded-circle bg-primary text-white d-flex align-items-center justify-content-center shadow" style="width: 28px; height: 28px; z-index: 2; margin-left: -14px !important;">
+                    <i class="bi bi-key-fill small"></i>
+                </div>
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-3.5 ms-2 ms-md-3 bg-body">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1.5">
+                        <div class="d-flex align-items-center gap-2">
+                            <h6 class="fw-bold mb-0 text-main fs-15">Automated TLS 1.3 Key Rotation</h6>
+                            <span class="badge bg-primary-subtle text-primary extra-small fw-bold rounded-pill">Automated</span>
+                        </div>
+                        <span class="text-muted extra-small"><i class="bi bi-clock me-1"></i> 2 hours ago</span>
+                    </div>
+                    <p class="text-secondary small mb-2">Master certificate authority renewed RSA 4096-bit keys for wildcard domain *.xivig.dev with zero downtime.</p>
+                    <div class="d-flex align-items-center justify-content-between pt-2 border-top border-secondary border-opacity-10 extra-small text-muted">
+                        <span>Vault Appliance: <strong>us-east-hsm-01</strong></span>
+                        <span class="text-success"><i class="bi bi-shield-check"></i> Sealed</span>
+                    </div>
+                </div>
+            </div>
 
-                                    <div class="timeline-item left">
-                                        <div class="timeline-dot shadow-sm"></div>
-                                        <div class="timeline-content card">
-                                            <div class="card-body p-4">
-                                                <span class="timeline-date">15 Jan 2026</span>
-                                                <h5 class="fw-bold">Project Kickoff</h5>
-                                                <p class="text-muted mb-0">Implementation of the Xivig Architect OS core
-                                                    modules.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="timeline-item right">
-                                        <div class="timeline-dot shadow-sm"></div>
-                                        <div class="timeline-content card">
-                                            <div class="card-body p-4">
-                                                <span class="timeline-date">14 Jan 2026</span>
-                                                <h5 class="fw-bold">Design Sprint</h5>
-                                                <p class="text-muted mb-0">Refining UI/UX with modern Bootstrap 5
-                                                    components and Apple-style
-                                                    aesthetics.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="timeline-item left">
-                                        <div class="timeline-dot shadow-sm"></div>
-                                        <div class="timeline-content card overflow-hidden">
-                                            <img src="/app/src/images/photo10.jpg" class="card-img-top" alt="Visual">
-                                            <div class="card-body p-4">
-                                                <span class="timeline-date">13 Jan 2026</span>
-                                                <h5 class="fw-bold">Visual Identity</h5>
-                                                <p class="text-muted small mb-3">Defining the color palette and
-                                                    iconography that sets our brand
-                                                    apart.</p>
-                                                <a href="#" class="btn btn-primary btn-sm px-4 rounded-pill">View
-                                                    Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="timeline-item right">
-                                        <div class="timeline-dot shadow-sm"></div>
-                                        <div class="timeline-content card bg-primary text-white">
-                                            <div class="card-body p-4">
-                                                <span class="timeline-date text-white-50">12 Jan 2026</span>
-                                                <blockquote class="blockquote mb-0">
-                                                    <p class="fs-6 italic text-white">"Design is not just what it looks
-                                                        like and
-                                                        feels like. Design is how it
-                                                        works."</p>
-                                                    <footer class="blockquote-footer text-white-50 mt-2">Steve Jobs
-                                                    </footer>
-                                                </blockquote>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        
+            <!-- Item 3: Warning Threshold Intercepted -->
+            <div class="position-relative mb-0">
+                <div class="position-absolute start-0 top-0 ms-n3 ms-md-n3 mt-1 rounded-circle bg-warning text-white d-flex align-items-center justify-content-center shadow" style="width: 28px; height: 28px; z-index: 2; margin-left: -14px !important;">
+                    <i class="bi bi-exclamation-triangle-fill small"></i>
+                </div>
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-3.5 ms-2 ms-md-3 bg-body">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1.5">
+                        <div class="d-flex align-items-center gap-2">
+                            <h6 class="fw-bold mb-0 text-main fs-15">High Throughput Spike Intercepted</h6>
+                            <span class="badge bg-warning-subtle text-warning extra-small fw-bold rounded-pill">Auto-Scaled</span>
+                        </div>
+                        <span class="text-muted extra-small"><i class="bi bi-clock me-1"></i> 5 hours ago</span>
+                    </div>
+                    <p class="text-secondary small mb-2">Throughput jumped from 22k to 58k TPS. Autoscaler provisioned 8 additional replica workers automatically.</p>
+                    <div class="d-flex align-items-center justify-content-between pt-2 border-top border-secondary border-opacity-10 extra-small text-muted">
+                        <span>Cluster: <strong>production-edge-east</strong></span>
+                        <span class="text-primary fw-semibold">Resolved in 18s</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{/admin-layout}}

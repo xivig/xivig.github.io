@@ -1,94 +1,139 @@
-{{#> admin-layout title="Edit Project" parentTitle="Projects" }}
+{{#> admin-layout title="Edit Project" parentTitle="Projects" actionText="Save changes" }}
 
-<div class="row justify-content-center">
-    <div class="col-lg-10">
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
-            <div class="card-header bg-white py-4 px-5 border-0">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <h4 class="fw-black text-dark mb-1">Edit Project: Elite Dashboard UI</h4>
-                        <p class="text-muted small mb-0">Modify the project details and update the status</p>
-                    </div>
-                    <button class="btn btn-light btn-sm rounded-pill px-4 border" onclick="history.back()">
-                        <i class="bi bi-arrow-left me-2"></i> Back
-                    </button>
-                </div>
+<div class="project-edit-module pb-4">
+    <!-- Action Header -->
+    <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+        <div class="d-flex align-items-center gap-3">
+            <a href="project-details.html" class="btn btn-sm btn-light rounded-circle border shadow-2xs d-flex align-items-center justify-content-center p-0" style="width: 36px; height: 36px;">
+                <i class="bi bi-arrow-left text-muted"></i>
+            </a>
+            <div>
+                <h4 class="fw-bold mb-0 text-main">Edit Initiative: Elite Dashboard UI</h4>
+                <p class="text-muted extra-small mb-0">Update timeline, allocated engineers, budget status, and milestone deliverables.</p>
             </div>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3.5 extra-small fw-semibold" onclick="history.back()">
+                Discard
+            </button>
+            <button type="submit" form="editProjectForm" class="btn btn-sm btn-primary rounded-pill px-4 extra-small fw-bold shadow-sm d-flex align-items-center gap-1.5">
+                <i class="bi bi-check2-circle"></i> Save Changes
+            </button>
+        </div>
+    </div>
 
-            <div class="card-body p-5 pt-0">
-                <form id="editProjectForm">
-                    <div class="row g-4">
-                        <!-- Project Basic Info -->
+    <form id="editProjectForm" onsubmit="event.preventDefault(); window.location.href='project-details.html';">
+        <div class="row g-4">
+            <!-- 8-Col Primary Details -->
+            <div class="col-lg-8">
+                <!-- Core Identity -->
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+                    <h6 class="fw-bold mb-3 text-main">Initiative Overview</h6>
+                    <div class="row g-3">
                         <div class="col-12">
-                            <label class="apple-label">Project Title</label>
-                            <input type="text" class="form-control modern-input" value="Elite Dashboard UI" required>
+                            <label class="form-label extra-small fw-bold text-muted text-uppercase">Project Title</label>
+                            <input type="text" class="form-control" value="Elite Dashboard UI" required>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="apple-label">Client Name</label>
-                            <input type="text" class="form-control modern-input" value="XIVIG Corp">
+                            <label class="form-label extra-small fw-bold text-muted text-uppercase">Client / Business Unit</label>
+                            <input type="text" class="form-control" value="XIVIG Corp" required>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="apple-label">Project Category</label>
-                            <select class="form-select modern-input">
-                                <option>Select Category</option>
-                                <option>Web Development</option>
-                                <option>Mobile App</option>
-                                <option selected>UI/UX Design</option>
-                                <option>Marketing</option>
+                            <label class="form-label extra-small fw-bold text-muted text-uppercase">Primary Category</label>
+                            <select class="form-select">
+                                <option>Engineering &amp; Cloud Infrastructure</option>
+                                <option selected>UI/UX Design System</option>
+                                <option>Mobile Application</option>
+                                <option>Security &amp; Compliance Audit</option>
                             </select>
                         </div>
 
-                        <div class="col-md-6">
-                            <label class="apple-label">Budget ($)</label>
-                            <div class="input-group modern-input-group border rounded-3 overflow-hidden">
-                                <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-currency-dollar"></i></span>
-                                <input type="number" class="form-control border-0 shadow-none py-2" value="12500">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="apple-label">Deadline</label>
-                            <input type="date" class="form-control modern-input" value="2026-12-15">
-                        </div>
-
                         <div class="col-12">
-                            <label class="apple-label">Project Description</label>
-                            <textarea class="form-control modern-input" rows="5">Developing a high-performance, aesthetically pleasing administrative dashboard for the next generation of XIVIG web applications.</textarea>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label class="apple-label">Project Status</label>
-                            <div class="d-flex gap-4 pt-2">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="projectStatus" id="statusPlanning">
-                                    <label class="form-check-label small" for="statusPlanning">Planning</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="projectStatus" id="statusInProgress" checked>
-                                    <label class="form-check-label small" for="statusInProgress">In Progress</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="projectStatus" id="statusOnHold">
-                                    <label class="form-check-label small" for="statusOnHold">On Hold</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="projectStatus" id="statusCompleted">
-                                    <label class="form-check-label small" for="statusCompleted">Completed</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 border-top pt-4 mt-5 text-end">
-                            <button type="button" class="btn btn-light rounded-pill px-5 py-2 border me-2" onclick="history.back()">Cancel</button>
-                            <button type="submit" class="btn btn-dark rounded-pill px-5 py-2 fw-bold shadow-sm">Save Changes</button>
+                            <label class="form-label extra-small fw-bold text-muted text-uppercase">Executive Summary &amp; Scope</label>
+                            <textarea class="form-control" rows="5">The Elite Dashboard UI project redefines the administrative experience for XIVIG's next-generation cloud infrastructure applications. Our focus is on blending high-performance telemetry visualization with a minimalist, high-contrast dark/light design system.</textarea>
                         </div>
                     </div>
-                </form>
+                </div>
+
+                <!-- Financial & Target Dates -->
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 bg-body">
+                    <h6 class="fw-bold mb-3 text-main">Budget &amp; Milestone Timeline</h6>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label extra-small fw-bold text-muted text-uppercase">Approved Total Budget ($ USD)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-body-tertiary border-end-0 extra-small text-muted"><i class="bi bi-currency-dollar"></i></span>
+                                <input type="number" class="form-control border-start-0 ps-0" value="12500.00" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label extra-small fw-bold text-muted text-uppercase">Target Delivery Deadline</label>
+                            <input type="date" class="form-control" value="2026-12-15" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4-Col Sticky Settings Rail -->
+            <div class="col-lg-4">
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body sticky-top" style="top: 88px;">
+                    <h6 class="fw-bold mb-3 text-main">Status &amp; Assignment</h6>
+
+                    <div class="mb-3.5">
+                        <label class="form-label extra-small fw-bold text-muted text-uppercase">Lifecycle Status</label>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="form-check p-2.5 rounded-3 border border-secondary border-opacity-10 bg-body-tertiary d-flex align-items-center">
+                                <input class="form-check-input ms-1 me-2" type="radio" name="projectStatus" id="statusPlanning">
+                                <label class="form-check-label extra-small fw-semibold text-main cursor-pointer" for="statusPlanning">
+                                    <span class="badge bg-warning-subtle text-warning extra-small fw-bold px-2 py-0.5 rounded-pill me-1.5">Planning</span> Initial Definition
+                                </label>
+                            </div>
+                            <div class="form-check p-2.5 rounded-3 border border-secondary border-opacity-10 bg-body-tertiary d-flex align-items-center">
+                                <input class="form-check-input ms-1 me-2" type="radio" name="projectStatus" id="statusInProgress" checked>
+                                <label class="form-check-label extra-small fw-semibold text-main cursor-pointer" for="statusInProgress">
+                                    <span class="badge bg-success-subtle text-success extra-small fw-bold px-2 py-0.5 rounded-pill me-1.5">In Progress</span> Active Execution
+                                </label>
+                            </div>
+                            <div class="form-check p-2.5 rounded-3 border border-secondary border-opacity-10 bg-body-tertiary d-flex align-items-center">
+                                <input class="form-check-input ms-1 me-2" type="radio" name="projectStatus" id="statusReview">
+                                <label class="form-check-label extra-small fw-semibold text-main cursor-pointer" for="statusReview">
+                                    <span class="badge bg-info-subtle text-info extra-small fw-bold px-2 py-0.5 rounded-pill me-1.5">Review</span> QA Validation
+                                </label>
+                            </div>
+                            <div class="form-check p-2.5 rounded-3 border border-secondary border-opacity-10 bg-body-tertiary d-flex align-items-center">
+                                <input class="form-check-input ms-1 me-2" type="radio" name="projectStatus" id="statusCompleted">
+                                <label class="form-check-label extra-small fw-semibold text-main cursor-pointer" for="statusCompleted">
+                                    <span class="badge bg-success-subtle text-success extra-small fw-bold px-2 py-0.5 rounded-pill me-1.5"><i class="bi bi-check2-circle"></i> Shipped</span> Complete
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3.5">
+                        <label class="form-label extra-small fw-bold text-muted text-uppercase">Lead Architect</label>
+                        <select class="form-select">
+                            <option selected>Alex Morgan (Lead Architect)</option>
+                            <option>Sarah Chen (Senior UI/UX)</option>
+                            <option>David Kim (Full-Stack Engineer)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="form-label extra-small fw-bold text-muted text-uppercase">Priority Rating</label>
+                        <select class="form-select">
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option selected>High</option>
+                            <option>Urgent / Mission Critical</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 
 {{/admin-layout}}

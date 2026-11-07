@@ -8,6 +8,7 @@ import path from 'path';
 import { exportAssets } from './tasks/gulp/export.js';
 import { serveDocs } from './tasks/gulp/serve-docs.js';
 import { fixLinks } from './tasks/utils/replace-links.js';
+import { runFullBuild } from './tasks/build.js';
 
 // 1. Clean
 export const clean = () => deleteAsync(['dist', 'exports']);
@@ -77,9 +78,7 @@ export async function copyVendorPackages() {
                 "node_modules/@fortawesome/fontawesome-free/webfonts/**/*",
                 "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
                 "node_modules/bootstrap/dist/**/*",
-                "node_modules/jquery/dist/**/*",
                 "node_modules/overlayscrollbars/**/*",
-                "node_modules/summernote/dist/**/*",
                 "node_modules/@fullcalendar/**/*",
                 "node_modules/dropzone/**/*",
                 "node_modules/air-datepicker/**/*",
@@ -88,7 +87,6 @@ export async function copyVendorPackages() {
                 "node_modules/dayjs/**/*",
                 "node_modules/moment/**/*",
                 "node_modules/clipboard/**/*",
-                "node_modules/timedropper/**/*",
             ], {
                 base: "node_modules"
             },
@@ -96,14 +94,6 @@ export async function copyVendorPackages() {
         .pipe(gulp.dest("dist/plugins/"))
         .on('end', resolve)
         .on('error', reject);
-    });
-
-    // Overwrite with patched version
-    await new Promise((resolve, reject) => {
-        gulp.src("app/src/scripts/plugins/timedropper-patched.js")
-            .pipe(gulp.dest("dist/plugins/timedropper/"))
-            .on('end', resolve)
-            .on('error', reject);
     });
 }
 
@@ -125,16 +115,10 @@ export const preview = (cb) => {
 // Local Development
 export const dev = gulp.series(clean, serve);
 
-// Modern Production Build: Clean, Vite compile, Optimize Images, Flatten HTML, Copy Vendors, Normalize Links, Export to Docs
-export const build = gulp.series(
-    clean,
-    viteBuild,
-    optimizeImages,
-    flattenHtmlPages,
-    copyVendorPackages,
-    fixDistLinks,
-    exportAssets
-);
+// Modern Production Build: Clean, Vite compile, Optimize Images, Flatten HTML, Copy Vendors, Normalize Links, Export to Docs, Automated Quality Gate
+export const build = async () => {
+    await runFullBuild();
+};
 
 // Preview production build
 export const production = gulp.series(

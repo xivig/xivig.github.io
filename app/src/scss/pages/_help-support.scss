@@ -51,7 +51,7 @@
  /* --- FAQ & Accordion --- */
  .faq-title {
      font-weight: 800;
-     background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+     background: var(--elite-primary);
      -webkit-background-clip: text;
      -webkit-text-fill-color: transparent;
  }

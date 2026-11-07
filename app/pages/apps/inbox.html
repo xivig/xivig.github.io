@@ -1,117 +1,192 @@
 {{#> admin-layout title="Mail Inbox" parentTitle="Apps" }}
 
-<div class="row g-4">
-                        {{> mail-sidebar isInbox=true }}
+<div class="row g-4 mb-4">
+    <!-- Left Mail Sidebar -->
+    {{> mail-sidebar isInbox=true }}
 
-                        <main class="col-lg-9">
-                            <div class="mail-list card border-0 shadow-lg rounded-4 overflow-hidden">
-                                <div class="mail-list__header card-header bg-white border-bottom p-4">
-                                    <div
-                                        class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="form-check mb-0">
-                                                <input class="form-check-input shadow-none" type="checkbox"
-                                                    id="selectAll">
-                                            </div>
-                                            <div class="btn-group rounded-3 overflow-hidden border shadow-sm">
-                                                <button class="btn btn-white border-0 py-2 px-3"
-                                                    title="Archive"><i class="bi bi-archive"></i></button>
-                                                <button class="btn btn-white border-0 py-2 px-3"
-                                                    title="Report"><i
-                                                        class="bi bi-shield-exclamation"></i></button>
-                                                <button class="btn btn-white border-0 py-2 px-3 text-danger"
-                                                    title="Delete"><i class="bi bi-trash3"></i></button>
-                                                <button class="btn btn-light border btn-sm text-secondary"
-                                                    title="Backward">
-                                                    <i class="bi bi-reply-fill"></i>
-                                                </button>
-                                                <button class="btn btn-light border btn-sm text-secondary"
-                                                    title="Forward">
-                                                    <i class="bi bi-share-fill"></i>
-                                                </button>
-                                                <button class="btn btn-light border btn-sm text-secondary"
-                                                    title="Sync / Refresh">
-                                                    <i class="bi bi-arrow-clockwise"></i>
-                                                </button>
-                                            </div>
-                                        </div>
+    <!-- Right Mailbox Content -->
+    <main class="col-lg-9">
+        <div class="card-box p-0 border-0 shadow-sm rounded-4 overflow-hidden">
+            <!-- Toolbar -->
+            <div class="modular-card-header p-3 p-md-4">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 w-100">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="form-check mb-0">
+                            <input class="form-check-input shadow-none" type="checkbox" id="selectAll">
+                        </div>
+                        <div class="btn-group rounded-pill overflow-hidden border border-secondary border-opacity-15 shadow-2xs">
+                            <button class="btn btn-sm btn-body-tertiary px-3" title="Archive"><i class="bi bi-archive text-muted"></i></button>
+                            <button class="btn btn-sm btn-body-tertiary px-3" title="Mark as Spam"><i class="bi bi-shield-exclamation text-muted"></i></button>
+                            <button class="btn btn-sm btn-body-tertiary px-3 text-danger" title="Delete"><i class="bi bi-trash3"></i></button>
+                            <button class="btn btn-sm btn-body-tertiary px-3" title="Forward"><i class="bi bi-share text-muted"></i></button>
+                            <button class="btn btn-sm btn-body-tertiary px-3" title="Refresh"><i class="bi bi-arrow-clockwise text-muted"></i></button>
+                        </div>
+                    </div>
 
-                                        <div class="d-flex align-items-center gap-2">
-                                            <span class="text-muted small d-none d-sm-inline">1-50/200</span>
-                                            <div class="btn-group btn-group-sm border shadow-sm rounded">
-                                                <button class="btn btn-light border-0"><i
-                                                        class="bi bi-chevron-left"></i></button>
-                                                <button class="btn btn-light border-0"><i
-                                                        class="bi bi-chevron-right"></i></button>
-                                            </div>
-                                            <div
-                                                class="mail-search input-group input-group-sm bg-light rounded-pill px-3">
-                                                <span class="input-group-text bg-transparent border-0"><i
-                                                        class="bi bi-search text-muted"></i></span>
-                                                <input type="text"
-                                                    class="form-control bg-transparent border-0 shadow-none"
-                                                    placeholder="Search mail...">
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="input-group modern-input-group bg-body-tertiary rounded-pill px-3 py-1 border border-secondary border-opacity-15 shadow-2xs" style="max-width: 240px;">
+                            <span class="input-group-text bg-transparent border-0 p-0 me-2"><i class="bi bi-search text-muted"></i></span>
+                            <input type="text" class="form-control border-0 bg-transparent shadow-none extra-small" placeholder="Search mail...">
+                        </div>
+                        <span class="text-muted extra-small d-none d-sm-inline ms-2">1-6 of 248</span>
+                        <div class="btn-group btn-group-sm rounded-pill border border-secondary border-opacity-15">
+                            <button class="btn btn-body-tertiary border-0 px-2.5 py-1 disabled"><i class="bi bi-chevron-left text-muted"></i></button>
+                            <button class="btn btn-body-tertiary border-0 px-2.5 py-1"><i class="bi bi-chevron-right text-muted"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mail Items List -->
+            <div class="table-responsive p-0" style="min-height: auto; padding-bottom: 0;">
+                <table class="table table-hover align-middle mb-0">
+                    <tbody>
+                        <!-- Email 1 -->
+                        <tr class="mail-item is-unread">
+                            <td class="ps-4" style="width: 40px;"><input type="checkbox" class="form-check-input"></td>
+                            <td style="width: 40px;"><i class="bi bi-star mail-item__star"></i></td>
+                            <td style="width: 200px;">
+                                <div class="d-flex align-items-center">
+                                    <img src="/app/src/images/photo1.jpg" class="rounded-circle me-2.5" width="32" height="32" alt="Alex Carter">
+                                    <span class="mail-item__sender text-main small">Alex Carter</span>
                                 </div>
+                            </td>
+                            <td>
+                                <div class="mail-item__subject">
+                                    <a href="read.html" class="text-decoration-none">
+                                        <span class="mail-item__subject-title text-main">Production Build #1084 Succeeded</span>
+                                        <span class="text-muted extra-small ms-2">— Zero regression tests failed in main branch. Ready for GitHub Pages deployment.</span>
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="text-end" style="width: 40px;"><i class="bi bi-paperclip text-muted"></i></td>
+                            <td class="text-end pe-4 text-muted extra-small fw-semibold" style="width: 90px;">11:03 PM</td>
+                        </tr>
 
-                                <div class="mail-list__body table-responsive">
-                                    <table class="table table-hover align-middle mb-0">
-                                        <tbody>
-                                            <tr class="mail-item is-unread">
-                                                <td class="ps-4" style="width: 40px;"><input type="checkbox"
-                                                        class="form-check-input"></td>
-                                                <td style="width: 40px;"><i
-                                                        class="bi bi-star mail-item__star"></i></td>
-                                                <td style="width: 200px;">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="/app/src/images/photo1.jpg"
-                                                            class="rounded-circle me-3" width="32" height="32">
-                                                        <span class="fw-bold">Alexander Pierce</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="mail-item__subject">
-                                                        <a href="read.html" class="text-decoration-none">
-                                                            <span class="fw-bold">Architecture Proposal - Phase 2</span>
-                                                            <span class="text-muted ms-2">— I've completed the refactoring of the Laravel Middleware...</span>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end"><i class="bi bi-paperclip text-muted"></i>
-                                                </td>
-                                                <td class="text-end pe-4 text-muted small fw-semibold">11:03 PM
-                                                </td>
-                                            </tr>
+                        <!-- Email 2 -->
+                        <tr class="mail-item is-unread">
+                            <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                            <td><i class="bi bi-star-fill text-warning mail-item__star"></i></td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-initial rounded-circle bg-primary bg-opacity-15 text-primary me-2.5">GH</div>
+                                    <span class="mail-item__sender text-main small">GitHub Actions</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mail-item__subject">
+                                    <a href="read.html" class="text-decoration-none">
+                                        <span class="mail-item__subject-title text-main">[CI/CD Alert] Gulp-Vite Build Optimization Complete</span>
+                                        <span class="text-muted extra-small ms-2">— WebP conversion generated 48 compressed image assets with 0 errors.</span>
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="text-end"></td>
+                            <td class="text-end pe-4 text-muted extra-small fw-semibold">10:45 PM</td>
+                        </tr>
 
-                                            <tr class="mail-item">
-                                                <td class="ps-4"><input type="checkbox"
-                                                        class="form-check-input"></td>
-                                                <td><i class="bi bi-star-fill text-warning"></i></td>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div
-                                                            class="avatar-initial bg-info-subtle text-info rounded-circle me-3">
-                                                            SJ</div>
-                                                        <span class="fw-semibold">Sarah Jenkins</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="mail-item__subject">
-                                                        <span
-                                                            class="badge bg-info-subtle text-info rounded-pill px-2 me-2">Social</span>
-                                                        <span class="fw-bold">New UI Mockups</span>
-                                                        <span class="text-muted ms-2">— Please review the latest
-                                                            assets for Xivig...</span>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end"></td>
-                                                <td class="text-end pe-4 text-muted small">Yesterday</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                
-                    
+                        <!-- Email 3 -->
+                        <tr class="mail-item">
+                            <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                            <td><i class="bi bi-star mail-item__star"></i></td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="/app/src/images/photo3.jpg" class="rounded-circle me-2.5" width="32" height="32" alt="Nina Roy">
+                                    <span class="mail-item__sender text-main small">Nina Roy</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mail-item__subject">
+                                    <a href="read.html" class="text-decoration-none">
+                                        <span class="mail-item__subject-title text-main">Design System v2.4 Modular CSS Spec</span>
+                                        <span class="text-muted extra-small ms-2">— Updated token guidelines, glassmorphism variables, and breadcrumb layout specs.</span>
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="text-end"><i class="bi bi-paperclip text-muted"></i></td>
+                            <td class="text-end pe-4 text-muted extra-small fw-semibold">9:12 PM</td>
+                        </tr>
+
+                        <!-- Email 4 -->
+                        <tr class="mail-item">
+                            <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                            <td><i class="bi bi-star mail-item__star"></i></td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-initial rounded-circle bg-info bg-opacity-15 text-info me-2.5">CF</div>
+                                    <span class="mail-item__sender text-main small">Cloudflare Edge</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mail-item__subject">
+                                    <a href="read.html" class="text-decoration-none">
+                                        <span class="mail-item__subject-title text-main">Global CDN Monthly Cache Report</span>
+                                        <span class="text-muted extra-small ms-2">— 99.8% cache hit ratio across 142 edge points of presence.</span>
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="text-end"></td>
+                            <td class="text-end pe-4 text-muted extra-small fw-semibold">Yesterday</td>
+                        </tr>
+
+                        <!-- Email 5 -->
+                        <tr class="mail-item">
+                            <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                            <td><i class="bi bi-star-fill text-warning mail-item__star"></i></td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-initial rounded-circle bg-success bg-opacity-15 text-success me-2.5">ST</div>
+                                    <span class="mail-item__sender text-main small">Stripe Billing</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mail-item__subject">
+                                    <a href="read.html" class="text-decoration-none">
+                                        <span class="mail-item__subject-title text-main">Monthly Platform ARR Milestone</span>
+                                        <span class="text-muted extra-small ms-2">— Net platform run-rate exceeded $128,450 (+32.6% YoY growth).</span>
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="text-end"><i class="bi bi-paperclip text-muted"></i></td>
+                            <td class="text-end pe-4 text-muted extra-small fw-semibold">Yesterday</td>
+                        </tr>
+
+                        <!-- Email 6 -->
+                        <tr class="mail-item">
+                            <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                            <td><i class="bi bi-star mail-item__star"></i></td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="/app/src/images/photo2.jpg" class="rounded-circle me-2.5" width="32" height="32" alt="Rahul Sen">
+                                    <span class="mail-item__sender text-main small">Rahul Sen</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mail-item__subject">
+                                    <a href="read.html" class="text-decoration-none">
+                                        <span class="mail-item__subject-title text-main">Kubernetes Cluster Migration Schedule</span>
+                                        <span class="text-muted extra-small ms-2">— Planned zero-downtime rolling update scheduled for Sunday 02:00 UTC.</span>
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="text-end"></td>
+                            <td class="text-end pe-4 text-muted extra-small fw-semibold">Nov 04</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Footer Pagination -->
+            <div class="p-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="extra-small text-muted">Showing <strong>6</strong> of <strong>248</strong> messages</span>
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 extra-small disabled">Previous</button>
+                    <span class="badge bg-primary text-white rounded-pill px-2.5 py-1 extra-small">1</span>
+                    <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 extra-small">Next</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
 
 {{/admin-layout}}

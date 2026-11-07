@@ -1,77 +1,73 @@
 {{#> admin-layout title="Tooltip & Popover" parentTitle="UI Elements" }}
 
-<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+<div class="ui-tooltips-module">
+    <!-- Header Hero -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <h4 class="fw-bold mb-0 text-main fs-18">Tooltips & Interactive Popovers</h4>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Popper.js Core &bull; Bootstrap 5.3</span>
+                </div>
+                <p class="text-muted small mb-0">Directional micro-tooltips (top, right, bottom, left) and interactive popover containers with HTML markup</p>
+            </div>
+        </div>
+    </div>
 
-                        <div
-                            class="card-header bg-transparent py-3 px-4 border-0 d-flex justify-content-center align-items-center">
-                            <div class="text-center">
-                                <h5 class="fw-bold mb-0">Tooltip & Popover</h5>
-                                <small class="text-muted">Overview and management of tooltip & popover</small>
-                            </div>
-                        </div>
+    <div class="row g-4">
+        <!-- 1. Directional Tooltips -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Four-Directional Tooltips</h5>
+                <p class="text-muted extra-small mb-4">Hover over any button to trigger the floating tooltip</p>
 
-                        <div class="card-body p-4">
-                            <!--content goes here-->
-                            <div class="row g-4">
-                                <div class="col-lg-12 mb-4">
-                                    <div class="xivig-card p-4 mb-30">
-                                        <h4 class="h4 mb-4 text-primary">System Tooltips</h4>
-                                        <div class="d-flex flex-wrap gap-3">
-                                            <button type="button" class="btn btn-xivig-primary" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="Schedules & Appointments">
-                                                Hover Top
-                                            </button>
+                <div class="d-flex flex-wrap gap-2.5">
+                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-3.5" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip anchored to Top">
+                        Tooltip on Top
+                    </button>
+                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-3.5" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip anchored to Right">
+                        Tooltip on Right
+                    </button>
+                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-3.5" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip anchored to Bottom">
+                        Tooltip on Bottom
+                    </button>
+                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-3.5" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip anchored to Left">
+                        Tooltip on Left
+                    </button>
+                </div>
+            </div>
+        </div>
 
-                                            <button type="button" class="btn btn-xivig-primary" data-bs-toggle="tooltip"
-                                                data-bs-placement="right" title="Patient Records Encrypted">
-                                                Hover Right
-                                            </button>
+        <!-- 2. Interactive Rich HTML Popovers -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Interactive Popovers</h5>
+                <p class="text-muted extra-small mb-4">Click triggers supporting rich titles, bodies, and dismiss triggers</p>
 
-                                            <button type="button" class="btn btn-xivig-primary" data-bs-toggle="tooltip"
-                                                data-bs-placement="bottom" title="Gulp Pipeline Active">
-                                                Hover Bottom
-                                            </button>
+                <div class="d-flex flex-wrap gap-2.5">
+                    <button type="button" class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm" data-bs-toggle="popover" data-bs-placement="top" title="Cluster Provisioning" data-bs-content="Automated Anycast routing nodes are provisioned across AWS, GCP, and Cloudflare edge.">
+                        Launch Popover
+                    </button>
 
-                                            <button type="button" class="btn btn-xivig-primary" data-bs-toggle="tooltip"
-                                                data-bs-placement="left" title="Global Intelligence Sync">
-                                                Hover Left
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3.5" data-bs-toggle="popover" data-bs-placement="right" data-bs-trigger="hover" title="Hover Triggered" data-bs-content="This popover opens automatically on hover and closes on blur.">
+                        Hover Popover
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                            </div>
-                            <div class="row g-4">
-                                <div class="col-lg-12 mb-4">
-                                    <div class="xivig-card p-4 mb-3">
-                                        <h4 class="h4 mb-4 text-primary">Advanced Info Popovers</h4>
-                                        <div class="d-flex flex-wrap gap-3">
-                                            <button type="button" class="btn btn-xivig-outline" data-bs-container="body"
-                                                data-bs-toggle="popover" data-bs-placement="top"
-                                                title="Security Protocol"
-                                                data-bs-content="Xivig Architect OS utilizes Pure ESM modules for maximum asset performance.">
-                                                Info Top
-                                            </button>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize tooltips
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
 
-                                            <button type="button" class="btn btn-xivig-outline" data-bs-container="body"
-                                                data-bs-toggle="popover" data-bs-placement="right"
-                                                title="Hospital Stats"
-                                                data-bs-content="Total Appointments: 1,240. System health is currently at 98%.">
-                                                Info Right
-                                            </button>
-
-                                            <button type="button" class="btn btn-xivig-outline" data-bs-container="body"
-                                                data-bs-toggle="popover" data-bs-placement="bottom"
-                                                title="Node Distribution"
-                                                data-bs-content="Live map tracking active across 14 distributed terminal points.">
-                                                Info Bottom
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    
+        // Initialize popovers
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+        [...popoverTriggerList].map(el => new bootstrap.Popover(el));
+    });
+</script>
 
 {{/admin-layout}}

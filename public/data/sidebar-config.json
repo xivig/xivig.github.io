@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "label": "Home",
+        "label": "Dashboard",
         "icon": "bi bi-house",
         "path": "index.html",
         "hasSubmenu": true,
@@ -18,7 +18,7 @@
     },
     {
         "id": 2,
-        "label": "Ecommerce",
+        "label": "Commerce",
         "icon": "bi bi-shop",
         "path": "ecommerce-products.html",
         "hasSubmenu": true,
@@ -73,7 +73,7 @@
     },
     {
         "id": 3,
-        "label": "Blog",
+        "label": "Content",
         "icon": "bi bi-journal-text",
         "path": "blog-list.html",
         "hasSubmenu": true,
@@ -90,7 +90,7 @@
     },
     {
         "id": 4,
-        "label": "Course",
+        "label": "Learning",
         "icon": "bi bi-book-half",
         "path": "course-dashboard.html",
         "hasSubmenu": true,

@@ -1,26 +1,36 @@
-<!-- ELITE NAVIGATION -->
+<!-- ELITE BRAND NAVIGATION -->
 <nav id="mainNav" class="navbar navbar-expand-lg fixed-top glass-nav">
     <div class="container">
-        <a class="navbar-brand fw-black d-flex align-items-center" href="xivig.html">
-            <i class="fa-solid fa-cube text-danger me-2"></i>XIVIG
+        <!-- Brand Identity with Official Logo & PRO Badge -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="xivig.html">
+            <img src="/app/src/images/logo.png" alt="XIVIG" width="34" height="34" style="object-fit: contain; filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.45));">
+            <span class="fw-black tracking-wider text-dark fs-4 mb-0">XIVIG<span class="text-primary">.</span></span>
+            <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-20 px-2 py-0.5 extra-small fw-bold ms-1">PRO</span>
         </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+        <!-- Mobile Toggler -->
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- Nav Links -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center gap-2">
+            <ul class="navbar-nav ms-auto align-items-center gap-1 gap-lg-2">
                 <li class="nav-item"><a class="nav-link px-3" href="xivig.html#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link px-3" href="xivig.html#about">About</a></li>
-                <li class="nav-item"><a class="nav-link px-3" href="xivig.html#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="xivig.html#showcase">Showcase</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="xivig.html#features">Features</a></li>
                 <li class="nav-item"><a class="nav-link px-3" href="xivig.html#pricing">Pricing</a></li>
-                <li class="nav-item"><a class="nav-link px-3" href="xivig.html#stats">Statistics</a></li>
-                <li class="nav-item"><a class="nav-link px-3" href="xivig.html#testimonials">Work</a></li>
-                <li class="nav-item ms-lg-3 d-flex align-items-center gap-3">
-                    <div id="themeToggleLanding" class="theme-toggle-eye shadow-sm" title="Toggle Light/Dark Mode">
-                        <i class="bi bi-eye-fill"></i>
-                    </div>
-                    <a href="#" class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-primary" data-bs-toggle="modal"
-                        data-bs-target="#contactModal">Get in Touch</a>
+                <li class="nav-item"><a class="nav-link px-3" href="documentation.html">Docs</a></li>
+                <li class="nav-item ms-lg-3 d-flex align-items-center gap-2">
+                    <!-- Light/Dark Mode Switcher -->
+                    <button type="button" id="themeToggleLanding" class="theme-toggle-eye shadow-sm border-0" title="Toggle Light/Dark Mode" aria-label="Toggle Light/Dark Mode">
+                        <i class="bi bi-moon-stars-fill theme-icon-dark"></i>
+                        <i class="bi bi-sun-fill theme-icon-light d-none"></i>
+                    </button>
+                    <!-- Direct Showcase Launch CTA -->
+                    <a href="index.html" class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-primary d-inline-flex align-items-center gap-2 hover-up">
+                        <i class="bi bi-speedometer2"></i> Launch Dashboard
+                    </a>
                 </li>
             </ul>
         </div>

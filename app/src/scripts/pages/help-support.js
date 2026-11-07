@@ -1,5 +1,8 @@
+import NotificationService from '../components/sweet-alert.js';
+
 /**
- * Help & Support Module
+ * Help & Support Module - Elite Interactive Experience
+ * Real-time keystroke FAQ filtering, category switching, and ticket management.
  */
 export const initHelpSupport = () => {
     const container = document.querySelector('.help-support-module');
@@ -9,118 +12,248 @@ export const initHelpSupport = () => {
     const faqTitle = container.querySelector('.faq-title');
     const faqDescription = container.querySelector('.faq-description');
     const accordionContainer = document.getElementById('faqAccordion');
+    const searchInput = document.getElementById('helpSearchInput');
+    const searchCountBadge = document.getElementById('searchCountBadge');
 
     const contentMap = {
-        'payment': {
-            title: 'Payment Solutions',
-            desc: 'Everything you need to know about managing your transactions and billing history.',
+        'architecture': {
+            title: 'Platform Architecture & Modularity',
+            desc: 'Understand the zero-blocking modular runtime, Vite bundler, SCSS tokens, and Vanilla JS foundation.',
             faqs: [
-                { q: "When will I be charged for my purchase?", a: "Standard protocol involves a temporary authorization hold at the moment of checkout, but the final charge is typically finalized once the order is dispatched." },
-                { q: "Which payment methods are accepted?", a: "We support Visa, Mastercard, AMEX, and PayPal. Digital wallets like Apple Pay and Google Pay are also integrated." },
-                { q: "Is my financial data encrypted?", a: "Security is our priority. All transactions are processed through a PCI-DSS Level 1 compliant gateway using 256-bit SSL encryption." }
+                {
+                    q: 'How does the XIVIG modular runtime achieve instant First Contentful Paint (FCP)?',
+                    a: 'XIVIG uses conditional lazy feature mounting in <code>main.js</code>. Rather than bundling all page code into a monolithic script, each page only evaluates DOM selectors and dynamically imports its corresponding module via <code>import()</code> when targets exist.',
+                    badge: 'Architecture'
+                },
+                {
+                    q: 'Where are the Atelier design tokens defined and customized?',
+                    a: 'Design tokens are located in <code>app/src/scss/base/_variables.scss</code> and exposed via CSS variables (e.g. <code>--xv-brand: #4F6BFF</code>). All components utilize these tokens for automatic dark and light theme adaptability.',
+                    badge: 'Theming'
+                },
+                {
+                    q: 'Can I use custom JavaScript libraries without jQuery?',
+                    a: 'Yes. XIVIG is 100% Vanilla JS and zero jQuery. You can import modern ESM modules such as ApexCharts, Chart.js, MapLibre, SortableJS, and Fancybox directly through npm or Vite.',
+                    badge: 'Vanilla JS'
+                }
             ]
         },
-        'shipping': {
-            title: 'Shipping Logistics',
-            desc: 'Track your deliveries and understand our global distribution network.',
+        'deployment': {
+            title: 'Edge Deployments & CI/CD Pipelines',
+            desc: 'Continuous delivery protocols, Docker orchestration, and automated static exports.',
             faqs: [
-                { q: "How long does standard shipping take?", a: "Domestic orders typically arrive within 3-5 business days. International shipping can take 7-14 business days depending on the region." },
-                { q: "Do you offer express delivery?", a: "Yes, we offer overnight and 2-day express shipping options for most metropolitan areas." },
-                { q: "How can I track my order?", a: "Once your order ships, you will receive an email with a tracking number and a link to our logistics portal." }
+                {
+                    q: 'How do I compile the production bundle for deployment?',
+                    a: 'Run <code>npm run build</code> or <code>npx vite build</code>. The build pipeline bundles all SCSS, compiles assets, optimizes images, and outputs to <code>dist/</code> and <code>docs/</code> with complete relative path integrity.',
+                    badge: 'Build'
+                },
+                {
+                    q: 'How are multi-region edge nodes synchronized?',
+                    a: 'Edge nodes in us-east-1, eu-west-1, and ap-northeast-1 utilize Anycast BGP routing combined with Cloud CDN edge caching. Real-time telemetry is reported directly into the System Metrics dashboard.',
+                    badge: 'Networking'
+                },
+                {
+                    q: 'Does XIVIG support GitHub Pages and custom domain deployments?',
+                    a: 'Yes. The <code>docs/</code> directory is automatically generated and optimized for GitHub Pages or static host providers (Netlify, Vercel, Cloudflare Pages) with zero extra server dependencies.',
+                    badge: 'GitHub Pages'
+                }
             ]
         },
-        'returns': {
-            title: 'Returns & Refunds',
-            desc: 'Hassle-free returns and automated refund processing protocols.',
+        'security': {
+            title: 'Authentication, Zero Trust & Security',
+            desc: 'Enterprise security standards, two-factor authentication, and PCI-DSS compliance.',
             faqs: [
-                { q: "What is your return policy?", a: "We offer a 30-day window for returns on all unused items in their original packaging." },
-                { q: "How do I start a return?", a: "Navigate to your Order History and click the 'Return Item' button next to the relevant order." },
-                { q: "When will I receive my refund?", a: "Refunds are processed within 48 hours of receiving the returned item at our warehouse." }
+                {
+                    q: 'How is data encrypted in transit and at rest?',
+                    a: 'All edge traffic requires TLS 1.3 encryption with modern cipher suites. Stored configurations, tokens, and telemetry utilize AES-256 GCM encryption at rest.',
+                    badge: 'Encryption'
+                },
+                {
+                    q: 'How do I configure Two-Factor Authentication (2FA)?',
+                    a: 'Navigate to the Profile &gt; Security Settings tab to enable TOTP (Google Authenticator, Authy). A backup recovery key matrix is generated immediately upon activation.',
+                    badge: 'Auth'
+                },
+                {
+                    q: 'What is the role of the Zero Trust security token?',
+                    a: 'API requests require ephemeral cryptographic bearer tokens that are validated against active IAM access control policies before proxy routing to downstream microservices.',
+                    badge: 'Zero Trust'
+                }
             ]
         },
-        'fulfillment': {
-            title: 'Order Fulfillment',
-            desc: 'Insight into how we process, pack, and ship your premium orders.',
+        'billing': {
+            title: 'Billing, Invoices & Licensing',
+            desc: 'Commercial licensing, seat management, automated invoices, and enterprise SLA.',
             faqs: [
-                { q: "Where are orders shipped from?", a: "We operate from three major fulfillment centers: San Francisco, London, and Tokyo." },
-                { q: "Can I change my shipping address?", a: "Address changes can be made within 2 hours of placing an order via the dashboard." }
+                {
+                    q: 'What is included with the XIVIG Elite License?',
+                    a: 'The Elite License provides full source code access, unlimited commercial deployments, all 85+ production pages, Figma token design files, and priority SLA direct support.',
+                    badge: 'License'
+                },
+                {
+                    q: 'How do I download VAT and enterprise tax invoices?',
+                    a: 'Invoices are generated upon settlement and available as downloadable PDFs from Store Settings or Account Billing with instant email dispatch.',
+                    badge: 'Invoices'
+                },
+                {
+                    q: 'What does the 99.98% SLA uptime guarantee cover?',
+                    a: 'Our Enterprise SLA guarantees 99.98% cluster edge availability across all edge nodes. Credits are automatically applied if network availability falls below threshold.',
+                    badge: 'SLA'
+                }
             ]
         },
-        'privacy': {
-            title: 'Privacy & Terms',
-            desc: 'Our commitment to data security and the legal framework of our services.',
+        'api': {
+            title: 'REST APIs, Webhooks & Telemetry',
+            desc: 'Integrate external services, subscribe to webhook events, and consume JSON endpoints.',
             faqs: [
-                { q: "How is my data used?", a: "Your data is strictly used to improve your user experience and facilitate transactions. We never sell data to third parties." },
-                { q: "Where can I read the full terms?", a: "Our full Terms of Service are available at elitepro.com/legal/terms." }
+                {
+                    q: 'What are the rate limits for the XIVIG REST API?',
+                    a: 'Production tier allows up to 10,000 requests per minute per API key. Bursting headroom of up to 15,000 req/min is supported for streaming analytics telemetry.',
+                    badge: 'Rate Limits'
+                },
+                {
+                    q: 'How do I listen for real-time deployment webhooks?',
+                    a: 'Register an endpoint in Store Settings &gt; Webhooks. XIVIG transmits signed HMAC-SHA256 payloads for events like <code>deployment.succeeded</code>, <code>alert.critical</code>, and <code>invoice.paid</code>.',
+                    badge: 'Webhooks'
+                }
             ]
         }
     };
 
-    const renderFaqs = (faqs) => {
+    let activeCategory = 'architecture';
+
+    const renderFaqs = (faqs, highlightQuery = '') => {
         if (!accordionContainer) return;
-        accordionContainer.innerHTML = faqs.map((faq, index) => `
-            <div class="accordion-item shadow-sm animate__animated animate__fadeInUp" style="animation-delay: ${index * 0.1}s">
-                <h2 class="accordion-header">
-                    <button class="accordion-button ${index === 0 ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#q${index}">
-                        ${faq.q}
-                    </button>
-                </h2>
-                <div id="q${index}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        ${faq.a}
+        if (!faqs || faqs.length === 0) {
+            accordionContainer.innerHTML = `
+                <div class="card card-box border-0 shadow-sm rounded-4 p-5 text-center">
+                    <i class="bi bi-search fs-1 text-muted opacity-50 mb-3"></i>
+                    <h5 class="fw-bold text-main">No Matching Results Found</h5>
+                    <p class="text-muted small mb-3">We couldn't find any questions matching "${highlightQuery}". Try adjusting your keywords or submit a priority ticket.</p>
+                    <div>
+                        <button type="button" class="btn btn-primary rounded-pill px-4 extra-small fw-bold" data-bs-toggle="modal" data-bs-target="#ticketModal">
+                            <i class="bi bi-ticket-perforated me-1"></i> Open Support Ticket
+                        </button>
                     </div>
                 </div>
-            </div>
-        `).join('');
+            `;
+            return;
+        }
+
+        accordionContainer.innerHTML = faqs.map((faq, index) => {
+            let qText = faq.q;
+            let aText = faq.a;
+
+            if (highlightQuery) {
+                const regex = new RegExp(`(${highlightQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+                qText = qText.replace(regex, '<mark class="bg-warning bg-opacity-25 text-dark fw-bold px-1 rounded">$1</mark>');
+                aText = aText.replace(regex, '<mark class="bg-warning bg-opacity-25 text-dark fw-bold px-1 rounded">$1</mark>');
+            }
+
+            return `
+                <div class="accordion-item card-box border-0 shadow-sm rounded-4 mb-3 overflow-hidden">
+                    <h2 class="accordion-header" id="heading-${index}">
+                        <button class="accordion-button ${index === 0 ? '' : 'collapsed'} bg-transparent p-4 fw-bold text-main" type="button" data-bs-toggle="collapse" data-bs-target="#q-${index}" aria-expanded="${index === 0 ? 'true' : 'false'}">
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold me-3">${faq.badge || 'FAQ'}</span>
+                            <span class="flex-grow-1">${qText}</span>
+                        </button>
+                    </h2>
+                    <div id="q-${index}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body px-4 pb-4 pt-0 text-muted" style="line-height: 1.7;">
+                            ${aText}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
     };
 
+    // Category click handler
     menuLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const type = link.dataset.type;
             if (!contentMap[type]) return;
 
-            // Update Active State
-            menuLinks.forEach(l => l.classList.remove('active'));
+            activeCategory = type;
+            menuLinks.forEach(l => l.classList.remove('active', 'btn-primary'));
             link.classList.add('active');
 
-            // Update Header
             if (faqTitle) faqTitle.innerText = contentMap[type].title;
             if (faqDescription) faqDescription.innerText = contentMap[type].desc;
 
-            // Update Accordion
+            if (searchInput) searchInput.value = '';
+            if (searchCountBadge) searchCountBadge.classList.add('d-none');
+
             renderFaqs(contentMap[type].faqs);
         });
     });
 
-    // --- Search & Ticket Functionality ---
-    const searchBtn = container.querySelector('.header-search-box .btn-white');
-    const searchInput = container.querySelector('.header-search-box input');
-    const ticketBtn = container.querySelector('.btn-glass');
+    // Real-time live keystroke search across all FAQs
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim().toLowerCase();
 
-    if (searchBtn && searchInput) {
-        searchBtn.addEventListener('click', () => {
-            const query = searchInput.value.trim();
-            if (query && window.NotificationService) {
-                window.NotificationService.loader('Searching...', `Looking for "${query}" in knowledge base`, () => {
-                    return new Promise(resolve => setTimeout(resolve, 1500));
-                }).then(() => {
-                    window.NotificationService.success('Search Complete', `Found 12 articles related to "${query}"`);
+            if (!query) {
+                if (searchCountBadge) searchCountBadge.classList.add('d-none');
+                if (faqTitle) faqTitle.innerText = contentMap[activeCategory].title;
+                if (faqDescription) faqDescription.innerText = contentMap[activeCategory].desc;
+                renderFaqs(contentMap[activeCategory].faqs);
+                return;
+            }
+
+            // Search across ALL categories
+            const matches = [];
+            Object.keys(contentMap).forEach(catKey => {
+                contentMap[catKey].faqs.forEach(item => {
+                    const qLower = item.q.toLowerCase();
+                    const aLower = item.a.toLowerCase();
+                    if (qLower.includes(query) || aLower.includes(query)) {
+                        matches.push({ ...item, categoryKey: catKey });
+                    }
                 });
+            });
+
+            if (searchCountBadge) {
+                searchCountBadge.innerText = `${matches.length} Match${matches.length === 1 ? '' : 'es'}`;
+                searchCountBadge.classList.remove('d-none');
             }
+
+            if (faqTitle) faqTitle.innerText = `Search Results: "${query}"`;
+            if (faqDescription) faqDescription.innerText = `Showing all matching questions across documentation categories`;
+
+            renderFaqs(matches, query);
         });
     }
 
-    if (ticketBtn) {
-        ticketBtn.addEventListener('click', () => {
-            if (window.NotificationService) {
-                window.NotificationService.confirm('Open Support Ticket?', 'Our team will respond within 2 hours.')
-                    .then(res => {
-                        if (res.isConfirmed) {
-                            window.NotificationService.success('Ticket Created', 'Your support request #9928 has been logged.');
-                        }
-                    });
+    // Quick tag pills click
+    document.querySelectorAll('.quick-filter-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+            const tag = pill.getAttribute('data-tag');
+            if (searchInput) {
+                searchInput.value = tag;
+                searchInput.dispatchEvent(new Event('input'));
             }
         });
-    }
+    });
+
+    // Ticket Form Submission
+    const ticketForm = document.getElementById('ticket-form');
+    ticketForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const subject = document.getElementById('ticket-subject')?.value;
+        const urgency = document.getElementById('ticket-urgency')?.value || 'P2 - High';
+
+        const modalEl = document.getElementById('ticketModal');
+        const modal = modalEl ? bootstrap.Modal.getInstance(modalEl) : null;
+        modal?.hide();
+
+        NotificationService.success(
+            'Support Ticket Submitted',
+            `Ticket #XIV-${Math.floor(1000 + Math.random() * 9000)} created with priority ${urgency}. Our solution architects will respond within 15 minutes.`
+        );
+
+        ticketForm.reset();
+    });
+
+    // Initial render
+    renderFaqs(contentMap[activeCategory].faqs);
 };

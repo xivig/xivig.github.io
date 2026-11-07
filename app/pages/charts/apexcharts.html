@@ -1,24 +1,69 @@
 {{#> admin-layout title="Apexcharts" parentTitle="Charts" }}
 
-<div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card shadow-sm border-0 rounded-4">
-                        <div class="card-header bg-white border-0 py-3">
-                            <h5 class="card-title mb-0">Area (Spline) Chart</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="apexSpline"></div>
-                        </div>
-                    </div>
+<div class="row g-4 mb-4">
+    <!-- Area Spline Chart -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Area (Spline) Chart</h5>
+                    <p class="text-muted extra-small mb-0">Smooth multi-series traffic &amp; engagement volume</p>
                 </div>
-                <div class="col-md-6">
-                    <div class="card shadow-sm border-0 rounded-4">
-                        <div class="card-header bg-white border-0 py-3">
-                            <h5 class="card-title mb-0">Column Chart</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="apexColumn"></div>
-                        </div>
-                    
+                <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold">Live</span>
+            </div>
+            <div class="card-body p-4">
+                <div id="apexSpline" style="min-height: 350px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Column Bar Chart -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Column Performance Chart</h5>
+                    <p class="text-muted extra-small mb-0">Quarterly net profit vs operational expense</p>
+                </div>
+                <span class="badge bg-warning-subtle text-warning rounded-pill px-2.5 py-1 extra-small fw-bold">Financial</span>
+            </div>
+            <div class="card-body p-4">
+                <div id="apexColumn" style="min-height: 350px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donut Breakdown -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Platform Share (Donut)</h5>
+                    <p class="text-muted extra-small mb-0">Client runtime distribution across architecture</p>
+                </div>
+                <span class="badge bg-success-subtle text-success rounded-pill px-2.5 py-1 extra-small fw-bold">Clients</span>
+            </div>
+            <div class="card-body p-4">
+                <div id="apexDonut" style="min-height: 350px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Radar Matrix -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">System Health Matrix</h5>
+                    <p class="text-muted extra-small mb-0">Multi-vector benchmark scores across nodes</p>
+                </div>
+                <span class="badge bg-info-subtle text-info rounded-pill px-2.5 py-1 extra-small fw-bold">Telemetry</span>
+            </div>
+            <div class="card-body p-4">
+                <div id="apexRadar" style="min-height: 350px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{/admin-layout}}

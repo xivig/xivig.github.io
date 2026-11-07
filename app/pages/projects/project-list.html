@@ -1,168 +1,382 @@
-{{#> admin-layout title="Project List" parentTitle="Projects" }}
+{{#> admin-layout title="Project List" parentTitle="Projects" actionText="New project" }}
 
-<div class="row g-4">
-    <div class="col-md-3">
-        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <p class="text-muted small fw-bold text-uppercase mb-1">Total Projects</p>
-                    <h3 class="fw-black mb-0">24</h3>
-                    <span class="text-success extra-small fw-bold">+2 this month</span>
-                </div>
-                <div class="icon-shape bg-primary-light text-primary rounded-3 p-3">
-                    <i class="bi bi-briefcase fs-3"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <p class="text-muted small fw-bold text-uppercase mb-1">Active Tasks</p>
-                    <h3 class="fw-black mb-0">142</h3>
-                    <span class="text-primary extra-small fw-bold">12 due today</span>
-                </div>
-                <div class="icon-shape bg-success-light text-success rounded-3 p-3">
-                    <i class="bi bi-list-check fs-3"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="card border-0 shadow-sm rounded-4 mt-4 has-table">
-    <div class="card-header bg-white py-4 border-0">
-        <div class="row align-items-center g-3">
-            <div class="col-md-4">
-                <h5 class="fw-black text-dark mb-0">Project Overview</h5>
-            </div>
-            <div class="col-md-8 text-md-end">
-                <div class="d-flex gap-2 justify-content-md-end">
-                    <div class="input-group modern-input-group bg-light rounded-pill px-3 py-1 border-0"
-                        style="max-width: 300px;">
-                        <span class="input-group-text bg-transparent border-0"><i
-                                class="bi bi-search text-muted"></i></span>
-                        <input type="text" class="form-control border-0 bg-transparent shadow-none small"
-                            placeholder="Search projects...">
+<div class="projects-module pb-4">
+    <!-- 1. Top KPI Row (4 Metric Telemetry Cards) -->
+    <div class="row g-4 mb-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="text-muted extra-small fw-bold text-uppercase tracking-wider">Total Projects</span>
+                    <div class="rounded-3 bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <i class="bi bi-briefcase fs-5"></i>
                     </div>
-                    <button class="btn btn-dark btn-sm rounded-3 px-4 fw-bold"
-                        onclick="location.href='project-add.html'">
-                        <i class="bi bi-plus-lg me-2"></i> New Project
-                    </button>
+                </div>
+                <h3 class="fw-bold mb-1 text-main">24</h3>
+                <div class="d-flex align-items-center gap-1.5 text-muted extra-small">
+                    <span class="text-success fw-bold"><i class="bi bi-arrow-up-right"></i> +2 this month</span>
+                    <span>&bull; 18 Active</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="text-muted extra-small fw-bold text-uppercase tracking-wider">Active Tasks</span>
+                    <div class="rounded-3 bg-info bg-opacity-10 text-info d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <i class="bi bi-list-check fs-5"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-1 text-main">142</h3>
+                <div class="d-flex align-items-center gap-1.5 text-muted extra-small">
+                    <span class="text-info fw-bold"><i class="bi bi-clock-history"></i> 12 due today</span>
+                    <span>&bull; 4 Sprints</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="text-muted extra-small fw-bold text-uppercase tracking-wider">Committed Budget</span>
+                    <div class="rounded-3 bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <i class="bi bi-currency-dollar fs-5"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-1 text-main">$148.5K</h3>
+                <div class="d-flex align-items-center gap-1.5 text-muted extra-small">
+                    <span class="text-success fw-bold"><i class="bi bi-graph-up-arrow"></i> 72% utilized</span>
+                    <span>&bull; On track</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="text-muted extra-small fw-bold text-uppercase tracking-wider">Shipped Projects</span>
+                    <div class="rounded-3 bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <i class="bi bi-award fs-5"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-1 text-main">18</h3>
+                <div class="d-flex align-items-center gap-1.5 text-muted extra-small">
+                    <span class="text-success fw-bold"><i class="bi bi-shield-check"></i> 99.4% quality</span>
+                    <span>&bull; Verified</span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="table-responsive pb-5">
-        <table class="table table-hover align-middle mb-0" id="projectsTable">
-            <thead class="bg-light-subtle text-muted small text-uppercase fw-bold">
-                <tr>
-                    <th class="ps-4" style="width: 40px;"><input type="checkbox" class="form-check-input"></th>
-                    <th>Project Name</th>
-                    <th>Client</th>
-                    <th>Progress</th>
-                    <th>Deadline</th>
-                    <th>Budget</th>
-                    <th>Status</th>
-                    <th class="text-end pe-4">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <div class="icon-shape bg-soft-primary text-primary rounded-3 me-3 p-2">
-                                <i class="bi bi-laptop fs-5"></i>
+
+    <!-- 2. Filter & Search Strip -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 mb-4 bg-body">
+        <div class="card-body p-4">
+            <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                <!-- Search & Status Tabs -->
+                <div class="d-flex align-items-center gap-2.5 flex-wrap">
+                    <div class="input-group" style="width: 260px;">
+                        <span class="input-group-text bg-body-tertiary border-end-0 text-muted">
+                            <i class="bi bi-search small"></i>
+                        </span>
+                        <input type="text" class="form-control border-start-0 ps-0" placeholder="Search initiatives..." id="projectSearchInput">
+                    </div>
+
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3 active fw-semibold">All (24)</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3 fw-semibold">In Progress (14)</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3 fw-semibold">Planning (4)</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3 fw-semibold">Shipped (6)</button>
+                    </div>
+                </div>
+
+                <!-- Right Action -->
+                <div class="d-flex align-items-center gap-2">
+                    <a href="project-add.html" class="btn btn-primary rounded-pill px-3.5 py-1.5 fw-bold btn-sm shadow-sm d-flex align-items-center gap-1.5">
+                        <i class="bi bi-plus-lg"></i> New Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Projects Table Card -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 bg-body overflow-hidden">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-body-tertiary">
+                    <tr class="extra-small text-muted text-uppercase fw-bold">
+                        <th class="ps-4 py-3" style="width: 40px;">
+                            <input type="checkbox" class="form-check-input">
+                        </th>
+                        <th class="py-3">Project Initiative</th>
+                        <th class="py-3">Client / Department</th>
+                        <th class="py-3">Progress</th>
+                        <th class="py-3">Team</th>
+                        <th class="py-3">Deadline</th>
+                        <th class="py-3">Budget</th>
+                        <th class="py-3">Status</th>
+                        <th class="text-end pe-4 py-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="extra-small">
+                    <!-- Project 1 -->
+                    <tr>
+                        <td class="ps-4">
+                            <input type="checkbox" class="form-check-input">
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="rounded-3 bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center p-2" style="width: 38px; height: 38px;">
+                                    <i class="bi bi-laptop fs-5"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-main fs-14">
+                                        <a href="project-details.html" class="text-main text-decoration-none hover-text-primary">Elite Dashboard UI</a>
+                                    </h6>
+                                    <span class="text-muted extra-small">Design System &bull; Frontend</span>
+                                </div>
                             </div>
-                            <div>
-                                <h6 class="mb-0 fw-bold">Elite Dashboard UI</h6>
-                                <p class="text-muted extra-small mb-0">Internal Project</p>
+                        </td>
+                        <td>
+                            <span class="fw-semibold text-main">XIVIG Corp</span>
+                            <div class="text-muted extra-small">Internal Core</div>
+                        </td>
+                        <td style="min-width: 140px;">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="progress flex-grow-1" style="height: 5px; background: rgba(79, 107, 255, 0.12); border-radius: 999px; overflow: hidden;">
+                                    <div class="progress-bar rounded-pill" style="width: 75%; background: linear-gradient(90deg, #4F6BFF, #20C5D7);"></div>
+                                </div>
+                                <span class="fw-bold text-main extra-small">75%</span>
                             </div>
-                        </div>
-                    </td>
-                    <td><span class="small fw-medium">XIVIG Corp</span></td>
-                    <td>
-                        <div class="d-flex align-items-center gap-2">
-                            <div class="progress flex-grow-1" style="height: 4px; width: 60px;">
-                                <div class="progress-bar bg-success" style="width: 75%"></div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center -space-x-2">
+                                <img src="/app/src/images/photo1.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="26" height="26" alt="Alex" title="Alex Morgan">
+                                <img src="/app/src/images/photo2.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="26" height="26" alt="Sarah" title="Sarah Chen" style="margin-left: -6px;">
+                                <img src="/app/src/images/photo3.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="26" height="26" alt="David" title="David Kim" style="margin-left: -6px;">
                             </div>
-                            <span class="small fw-bold">75%</span>
-                        </div>
-                    </td>
-                    <td><span class="small text-muted">Dec 15, 2026</span></td>
-                    <td class="fw-black">$12,500</td>
-                    <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small">In
-                            Progress</span></td>
-                    <td class="text-end pe-4">
-                        <div class="dropdown">
-                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm" type="button"
-                                data-bs-toggle="dropdown" data-bs-boundary="viewport">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
-                                <li><a class="dropdown-item py-2" href="project-edit.html"><i
-                                            class="bi bi-pencil-square me-2 opacity-50"></i> Edit Project</a></li>
-                                <li><a class="dropdown-item py-2" href="project-details.html"><i
-                                            class="bi bi-eye me-2 opacity-50"></i> View Details</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item py-2 text-danger" href="#"><i class="bi bi-trash3 me-2"></i>
-                                        Archive</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <div class="icon-shape bg-soft-warning text-warning rounded-3 me-3 p-2">
-                                <i class="bi bi-phone fs-5"></i>
+                        </td>
+                        <td>
+                            <span class="fw-semibold text-main">Dec 15, 2026</span>
+                            <div class="text-muted extra-small">In 38 days</div>
+                        </td>
+                        <td>
+                            <span class="fw-bold text-main fs-14">$12,500</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-success-subtle text-success extra-small fw-bold px-2 py-0.5 rounded-pill">In Progress</span>
+                        </td>
+                        <td class="text-end pe-4">
+                            <div class="dropdown">
+                                <button class="btn btn-light btn-sm rounded-circle p-1" data-bs-toggle="dropdown" aria-expanded="false" style="width: 28px; height: 28px;">
+                                    <i class="bi bi-three-dots-vertical text-muted"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg rounded-3">
+                                    <li><a class="dropdown-item small" href="project-details.html"><i class="bi bi-eye me-2 text-primary"></i> View Details</a></li>
+                                    <li><a class="dropdown-item small" href="project-edit.html"><i class="bi bi-pencil me-2 text-info"></i> Edit Project</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item small text-danger" href="javascript:;"><i class="bi bi-trash me-2"></i> Delete</a></li>
+                                </ul>
                             </div>
-                            <div>
-                                <h6 class="mb-0 fw-bold">Mobile App Design</h6>
-                                <p class="text-muted extra-small mb-0">Client Project</p>
+                        </td>
+                    </tr>
+
+                    <!-- Project 2 -->
+                    <tr>
+                        <td class="ps-4">
+                            <input type="checkbox" class="form-check-input">
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="rounded-3 bg-info bg-opacity-10 text-info d-flex align-items-center justify-content-center p-2" style="width: 38px; height: 38px;">
+                                    <i class="bi bi-cloud-arrow-up fs-5"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-main fs-14">
+                                        <a href="project-details.html" class="text-main text-decoration-none hover-text-primary">Cloudflare CDN Migration</a>
+                                    </h6>
+                                    <span class="text-muted extra-small">Infrastructure &bull; DevOps</span>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td><span class="small fw-medium">TechFlow Inc</span></td>
-                    <td>
-                        <div class="d-flex align-items-center gap-2">
-                            <div class="progress flex-grow-1" style="height: 4px; width: 60px;">
-                                <div class="progress-bar bg-warning" style="width: 40%"></div>
+                        </td>
+                        <td>
+                            <span class="fw-semibold text-main">Nexus Systems</span>
+                            <div class="text-muted extra-small">Enterprise Client</div>
+                        </td>
+                        <td style="min-width: 140px;">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="progress flex-grow-1" style="height: 5px; background: rgba(32, 197, 215, 0.12); border-radius: 999px; overflow: hidden;">
+                                    <div class="progress-bar rounded-pill" style="width: 90%; background: #20C5D7;"></div>
+                                </div>
+                                <span class="fw-bold text-main extra-small">90%</span>
                             </div>
-                            <span class="small fw-bold">40%</span>
-                        </div>
-                    </td>
-                    <td><span class="small text-muted">Jan 20, 2027</span></td>
-                    <td class="fw-black">$8,200</td>
-                    <td><span class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill small">Planning</span>
-                    </td>
-                    <td class="text-end pe-4">
-                        <div class="dropdown">
-                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm" type="button"
-                                data-bs-toggle="dropdown" data-bs-boundary="viewport">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
-                                <li><a class="dropdown-item py-2" href="project-edit.html"><i
-                                            class="bi bi-pencil-square me-2 opacity-50"></i> Edit Project</a></li>
-                                <li><a class="dropdown-item py-2" href="project-details.html"><i
-                                            class="bi bi-eye me-2 opacity-50"></i> View Details</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item py-2 text-danger" href="#"><i class="bi bi-trash3 me-2"></i>
-                                        Archive</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center -space-x-2">
+                                <img src="/app/src/images/photo3.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="26" height="26" alt="David" title="David Kim">
+                                <img src="/app/src/images/photo1.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="26" height="26" alt="Alex" title="Alex Morgan" style="margin-left: -6px;">
+                            </div>
+                        </td>
+                        <td>
+                            <span class="fw-semibold text-main">Nov 20, 2026</span>
+                            <div class="text-warning extra-small fw-bold">Due next week</div>
+                        </td>
+                        <td>
+                            <span class="fw-bold text-main fs-14">$34,000</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-info-subtle text-info extra-small fw-bold px-2 py-0.5 rounded-pill">In Review</span>
+                        </td>
+                        <td class="text-end pe-4">
+                            <div class="dropdown">
+                                <button class="btn btn-light btn-sm rounded-circle p-1" data-bs-toggle="dropdown" aria-expanded="false" style="width: 28px; height: 28px;">
+                                    <i class="bi bi-three-dots-vertical text-muted"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg rounded-3">
+                                    <li><a class="dropdown-item small" href="project-details.html"><i class="bi bi-eye me-2 text-primary"></i> View Details</a></li>
+                                    <li><a class="dropdown-item small" href="project-edit.html"><i class="bi bi-pencil me-2 text-info"></i> Edit Project</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item small text-danger" href="javascript:;"><i class="bi bi-trash me-2"></i> Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Project 3 -->
+                    <tr>
+                        <td class="ps-4">
+                            <input type="checkbox" class="form-check-input">
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="rounded-3 bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center p-2" style="width: 38px; height: 38px;">
+                                    <i class="bi bi-shield-lock fs-5"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-main fs-14">
+                                        <a href="project-details.html" class="text-main text-decoration-none hover-text-primary">SOC2 Type II Compliance</a>
+                                    </h6>
+                                    <span class="text-muted extra-small">Security &bull; Governance</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="fw-semibold text-main">FinTech Global</span>
+                            <div class="text-muted extra-small">Audit Partner</div>
+                        </td>
+                        <td style="min-width: 140px;">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="progress flex-grow-1" style="height: 5px; background: rgba(245, 165, 36, 0.12); border-radius: 999px; overflow: hidden;">
+                                    <div class="progress-bar rounded-pill" style="width: 40%; background: #F5A524;"></div>
+                                </div>
+                                <span class="fw-bold text-main extra-small">40%</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center -space-x-2">
+                                <img src="/app/src/images/photo2.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="26" height="26" alt="Sarah" title="Sarah Chen">
+                            </div>
+                        </td>
+                        <td>
+                            <span class="fw-semibold text-main">Jan 30, 2027</span>
+                            <div class="text-muted extra-small">Q1 2027</div>
+                        </td>
+                        <td>
+                            <span class="fw-bold text-main fs-14">$48,000</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-warning-subtle text-warning extra-small fw-bold px-2 py-0.5 rounded-pill">Planning</span>
+                        </td>
+                        <td class="text-end pe-4">
+                            <div class="dropdown">
+                                <button class="btn btn-light btn-sm rounded-circle p-1" data-bs-toggle="dropdown" aria-expanded="false" style="width: 28px; height: 28px;">
+                                    <i class="bi bi-three-dots-vertical text-muted"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg rounded-3">
+                                    <li><a class="dropdown-item small" href="project-details.html"><i class="bi bi-eye me-2 text-primary"></i> View Details</a></li>
+                                    <li><a class="dropdown-item small" href="project-edit.html"><i class="bi bi-pencil me-2 text-info"></i> Edit Project</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item small text-danger" href="javascript:;"><i class="bi bi-trash me-2"></i> Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Project 4 -->
+                    <tr>
+                        <td class="ps-4">
+                            <input type="checkbox" class="form-check-input">
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="rounded-3 bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center p-2" style="width: 38px; height: 38px;">
+                                    <i class="bi bi-phone fs-5"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-main fs-14">
+                                        <a href="project-details.html" class="text-main text-decoration-none hover-text-primary">iOS &amp; Android Companion App</a>
+                                    </h6>
+                                    <span class="text-muted extra-small">Mobile &bull; React Native</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="fw-semibold text-main">RetailPulse</span>
+                            <div class="text-muted extra-small">App Store</div>
+                        </td>
+                        <td style="min-width: 140px;">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="progress flex-grow-1" style="height: 5px; background: rgba(18, 185, 129, 0.12); border-radius: 999px; overflow: hidden;">
+                                    <div class="progress-bar rounded-pill" style="width: 100%; background: #12B981;"></div>
+                                </div>
+                                <span class="fw-bold text-success extra-small">100%</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center -space-x-2">
+                                <img src="/app/src/images/photo1.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="26" height="26" alt="Alex" title="Alex Morgan">
+                                <img src="/app/src/images/photo3.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="26" height="26" alt="David" title="David Kim" style="margin-left: -6px;">
+                            </div>
+                        </td>
+                        <td>
+                            <span class="fw-semibold text-main">Oct 18, 2026</span>
+                            <div class="text-success extra-small fw-bold">Shipped</div>
+                        </td>
+                        <td>
+                            <span class="fw-bold text-main fs-14">$54,000</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-success-subtle text-success extra-small fw-bold px-2 py-0.5 rounded-pill"><i class="bi bi-check2-circle me-1"></i> Shipped</span>
+                        </td>
+                        <td class="text-end pe-4">
+                            <div class="dropdown">
+                                <button class="btn btn-light btn-sm rounded-circle p-1" data-bs-toggle="dropdown" aria-expanded="false" style="width: 28px; height: 28px;">
+                                    <i class="bi bi-three-dots-vertical text-muted"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg rounded-3">
+                                    <li><a class="dropdown-item small" href="project-details.html"><i class="bi bi-eye me-2 text-primary"></i> View Details</a></li>
+                                    <li><a class="dropdown-item small" href="project-edit.html"><i class="bi bi-pencil me-2 text-info"></i> Edit Project</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item small text-danger" href="javascript:;"><i class="bi bi-trash me-2"></i> Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination Footer -->
+        <div class="card-footer bg-transparent py-3 px-4 border-top border-secondary border-opacity-10 d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3">
+            <span class="text-muted extra-small">Showing 1 to 4 of 24 active initiatives</span>
+            <ul class="pagination pagination-sm mb-0">
+                <li class="page-item disabled"><a class="page-link rounded-circle border-0 me-1" href="javascript:;"><i class="bi bi-chevron-left"></i></a></li>
+                <li class="page-item active"><a class="page-link rounded-circle border-0 me-1" href="javascript:;">1</a></li>
+                <li class="page-item"><a class="page-link rounded-circle border-0 me-1" href="javascript:;">2</a></li>
+                <li class="page-item"><a class="page-link rounded-circle border-0 me-1" href="javascript:;">3</a></li>
+                <li class="page-item"><a class="page-link rounded-circle border-0" href="javascript:;"><i class="bi bi-chevron-right"></i></a></li>
+            </ul>
+        </div>
     </div>
 </div>
 

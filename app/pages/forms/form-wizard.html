@@ -1,106 +1,215 @@
-{{#> admin-layout title="Form Wizards" parentTitle="Forms" }}
+{{#> admin-layout title="Form Wizard" parentTitle="Forms" }}
 
-<div class="row">
-    <div class="col-12">
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
-            <div class="card-body p-4">
+<div class="row justify-content-center">
+    <div class="col-xl-9 col-lg-10">
+        <!-- Header Hero -->
+        <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body text-center">
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-3 py-1 mx-auto mb-2">
+                Multi-Step Onboarding Architecture
+            </span>
+            <h3 class="fw-bold mb-1 text-main">Organization Provisioning Wizard</h3>
+            <p class="text-muted small mb-0 mx-auto" style="max-width: 540px;">
+                Complete the sequential steps to configure your dedicated workspace, establish role permissions, and provision deployment infrastructure.
+            </p>
+        </div>
 
-                <div class="card border-0 shadow-sm rounded-4 overflow-hidden" id="wizard-section">
-                    <div class="card-body p-4 p-md-5">
-                        <div class="mb-4 text-center">
-                            <h4 class="fw-bold">Application Process</h4>
-                            <p class="text-muted small">Please fill in the details accurately to proceed</p>
+        <!-- Wizard Stepper Container -->
+        <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 p-md-5 mb-5 bg-body" id="wizard-section">
+            <!-- Stepper Navigation Bar -->
+            <div class="position-relative mb-5 pt-2">
+                <!-- Background Line Track -->
+                <div class="progress position-absolute top-50 start-50 translate-middle" style="height: 3px; width: 80%; z-index: 1; background: rgba(79, 107, 255, 0.12);">
+                    <div class="progress-bar bg-primary" id="wizard-progress" style="width: 0%; transition: width 0.35s ease;"></div>
+                </div>
+
+                <!-- Step Beads -->
+                <div class="d-flex justify-content-between position-relative" style="z-index: 2;">
+                    <div class="text-center" style="width: 100px;">
+                        <div class="wizard-circle rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto fw-bold shadow-sm" style="width: 44px; height: 44px; cursor: pointer;">
+                            1
                         </div>
+                        <div class="small fw-semibold mt-2 text-main">Account</div>
+                    </div>
 
-                        <div class="wizard-wrapper position-relative mb-5 mt-2">
-                            <div class="progress position-absolute start-50 translate-middle-x"
-                                style="height: 2px; width: 75%; top: 25px; z-index: 0; background-color: #e9ecef;">
-                                <div class="progress-bar bg-primary" id="wizard-progress"
-                                    style="width: 0%; transition: width 0.4s ease;"></div>
-                            </div>
-
-                            <ul class="nav justify-content-between position-relative" id="wizard-nav"
-                                style="z-index: 1; max-width: 600px; margin: 0 auto;">
-                                <li class="nav-item text-center">
-                                    <a class="nav-link active wizard-circle shadow-sm fw-bold" data-step="0">1</a>
-                                    <div class="small fw-bold mt-2">Personal</div>
-                                </li>
-                                <li class="nav-item text-center">
-                                    <a class="nav-link disabled wizard-circle border bg-white fw-bold"
-                                        data-step="1">2</a>
-                                    <div class="small fw-bold mt-2 text-white">Job Status</div>
-                                </li>
-                                <li class="nav-item text-center">
-                                    <a class="nav-link disabled wizard-circle border bg-white fw-bold"
-                                        data-step="2">3</a>
-                                    <div class="small fw-bold mt-2 text-white">Interview</div>
-                                </li>
-                                <li class="nav-item text-center">
-                                    <a class="nav-link disabled wizard-circle border bg-white fw-bold"
-                                        data-step="3">4</a>
-                                    <div class="small fw-bold mt-2 text-white">Remarks</div>
-                                </li>
-                            </ul>
+                    <div class="text-center" style="width: 100px;">
+                        <div class="wizard-circle rounded-circle bg-body-tertiary text-muted border border-secondary border-opacity-25 d-flex align-items-center justify-content-center mx-auto fw-bold" style="width: 44px; height: 44px; cursor: pointer;">
+                            2
                         </div>
+                        <div class="small fw-semibold mt-2 text-muted">Workspace</div>
+                    </div>
 
-                        <form id="wizard-form" novalidate>
-                            <section class="wizard-step">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-semibold">First Name</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-semibold">Last Name</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                </div>
-                            </section>
+                    <div class="text-center" style="width: 100px;">
+                        <div class="wizard-circle rounded-circle bg-body-tertiary text-muted border border-secondary border-opacity-25 d-flex align-items-center justify-content-center mx-auto fw-bold" style="width: 44px; height: 44px; cursor: pointer;">
+                            3
+                        </div>
+                        <div class="small fw-semibold mt-2 text-muted">Security</div>
+                    </div>
 
-                            <section class="wizard-step d-none">
-                                <div class="col-12">
-                                    <label class="form-label fw-semibold">Company Name</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                            </section>
-
-                            <section class="wizard-step d-none">
-                                <div class="col-12">
-                                    <label class="form-label fw-semibold">Interview Date</label>
-                                    <input type="date" class="form-control" required>
-                                </div>
-                            </section>
-
-                            <section class="wizard-step d-none">
-                                <div class="col-12">
-                                    <label class="form-label fw-semibold">Comments</label>
-                                    <textarea class="form-control" rows="3"></textarea>
-                                </div>
-                            </section>
-
-                            <div class="d-flex justify-content-between mt-5">
-                                <button type="button" class="btn btn-light border px-4 rounded-pill d-none"
-                                    id="prev-btn">
-                                    <i class="bi bi-arrow-left me-1"></i> Previous
-                                </button>
-                                <button type="button" class="btn btn-primary px-5 rounded-pill ms-auto" id="next-btn">
-                                    Next <i class="bi bi-arrow-right ms-1"></i>
-                                </button>
-                                <button type="submit" class="btn btn-success px-5 rounded-pill d-none ms-auto"
-                                    id="submit-btn">
-                                    Submit Application
-                                </button>
-
-                            </div>
-                        </form>
+                    <div class="text-center" style="width: 100px;">
+                        <div class="wizard-circle rounded-circle bg-body-tertiary text-muted border border-secondary border-opacity-25 d-flex align-items-center justify-content-center mx-auto fw-bold" style="width: 44px; height: 44px; cursor: pointer;">
+                            4
+                        </div>
+                        <div class="small fw-semibold mt-2 text-muted">Confirm</div>
                     </div>
                 </div>
             </div>
 
+            <!-- Form Steps -->
+            <form id="wizard-form" novalidate>
+                <!-- STEP 1: Account & Identity -->
+                <section class="wizard-step">
+                    <h5 class="fw-bold text-main mb-1 fs-16">Step 1: Account Administrator Credentials</h5>
+                    <p class="text-muted extra-small mb-4">Set up primary owner identification and verified communication channel</p>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-muted">First Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Alex" value="Alex" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-muted">Last Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Rivera" value="Rivera" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-muted">Corporate Email Address <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15"><i class="bi bi-envelope"></i></span>
+                                <input type="email" class="form-control" placeholder="alex@xivig.dev" value="alex@xivig.dev" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-muted">Administrative Role <span class="text-danger">*</span></label>
+                            <select class="form-select" required>
+                                <option value="architect" selected>Chief Technology Officer / Architect</option>
+                                <option value="lead">Lead DevOps Engineer</option>
+                                <option value="product">Product Vice President</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STEP 2: Workspace & Cloud Region -->
+                <section class="wizard-step d-none">
+                    <h5 class="fw-bold text-main mb-1 fs-16">Step 2: Workspace & Compute Fabric</h5>
+                    <p class="text-muted extra-small mb-4">Select dedicated regional cluster coordinates and domain namespace</p>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-muted">Workspace Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="e.g. Acme Corporation" value="Xivig Systems Ltd" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-muted">Namespace Slug <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15">https://</span>
+                                <input type="text" class="form-control" placeholder="xivig" value="xivig-cluster" required>
+                                <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15">.xivig.dev</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-muted">Primary Cloud Host</label>
+                            <select class="form-select">
+                                <option selected>AWS us-east-1 (N. Virginia &bull; Low Latency)</option>
+                                <option>GCP europe-west3 (Frankfurt &bull; GDPR Verified)</option>
+                                <option>Cloudflare Global Anycast Edge</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-muted">Estimated Teammate Seats</label>
+                            <select class="form-select">
+                                <option>1 &ndash; 10 Members</option>
+                                <option selected>11 &ndash; 50 Members</option>
+                                <option>51 &ndash; 250 Members</option>
+                                <option>Unlimited Enterprise</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STEP 3: Security & Compliance -->
+                <section class="wizard-step d-none">
+                    <h5 class="fw-bold text-main mb-1 fs-16">Step 3: Security Baseline & Credentials</h5>
+                    <p class="text-muted extra-small mb-4">Configure authentication guards and cluster security standards</p>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-muted">Master Root Password <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" placeholder="Minimum 10 characters" value="AlphaXiviG2026!#" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-muted">Confirm Master Password <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" placeholder="Re-enter password" value="AlphaXiviG2026!#" required>
+                        </div>
+                        <div class="col-12 pt-2">
+                            <div class="p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-15 mb-2.5">
+                                <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" id="wizEnforce2fa" checked>
+                                    <label class="form-check-label fw-semibold small text-main" for="wizEnforce2fa">Mandatory Hardware Token / TOTP 2FA</label>
+                                    <div class="text-muted extra-small">Requires all provisioned team members to authenticate via authenticator app</div>
+                                </div>
+                            </div>
+                            <div class="p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-15">
+                                <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" id="wizIpAllowlist" checked>
+                                    <label class="form-check-label fw-semibold small text-main" for="wizIpAllowlist">Enforce IP CIDR Gateway Allowlist</label>
+                                    <div class="text-muted extra-small">Restricts cluster deployment triggers to verified corporate subnet ranges</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STEP 4: Review & Final Confirmation -->
+                <section class="wizard-step d-none">
+                    <h5 class="fw-bold text-main mb-1 fs-16">Step 4: Review & Final Launch</h5>
+                    <p class="text-muted extra-small mb-4">Verify provisioned parameters prior to infrastructure orchestration</p>
+
+                    <div class="card border border-secondary border-opacity-15 rounded-3 p-3.5 bg-body-tertiary mb-4">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <span class="text-muted extra-small fw-semibold text-uppercase">Account Administrator</span>
+                                <div class="fw-bold text-main fs-14">Alex Rivera &bull; alex@xivig.dev</div>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="text-muted extra-small fw-semibold text-uppercase">Cluster Namespace</span>
+                                <div class="fw-bold text-primary fs-14">xivig-cluster.xivig.dev</div>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="text-muted extra-small fw-semibold text-uppercase">Cloud Region</span>
+                                <div class="fw-bold text-main fs-14">AWS us-east-1 (N. Virginia)</div>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="text-muted extra-small fw-semibold text-uppercase">Security Posture</span>
+                                <div class="fw-bold text-success fs-14"><i class="bi bi-shield-check"></i> Enforced 2FA &bull; CIDR Guard</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-check mb-0">
+                        <input class="form-check-input" type="checkbox" id="wizTermsCheck" checked required>
+                        <label class="form-check-label small fw-semibold text-main" for="wizTermsCheck">
+                            I accept the Xivig Cloud Architecture terms of service and enterprise SLA governance.
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Navigation Controls -->
+                <div class="d-flex align-items-center justify-content-between pt-4 mt-4 border-top border-secondary border-opacity-10">
+                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-4 d-none" id="prev-btn">
+                        <i class="bi bi-arrow-left me-1.5"></i> Previous Step
+                    </button>
+                    <div class="ms-auto d-flex gap-2">
+                        <button type="button" class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm" id="next-btn">
+                            Next Step <i class="bi bi-arrow-right ms-1.5"></i>
+                        </button>
+                        <button type="submit" class="btn btn-success btn-sm rounded-pill px-5 fw-bold shadow-sm d-none" id="submit-btn">
+                            <i class="bi bi-rocket-takeoff-fill me-1.5"></i> Launch Cluster
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-
     </div>
-    </div>
+</div>
 
-    {{/admin-layout}}
-
+{{/admin-layout}}

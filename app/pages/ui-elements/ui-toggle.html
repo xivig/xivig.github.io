@@ -1,116 +1,123 @@
 {{#> admin-layout title="Collapsible Toggle" parentTitle="UI Elements" }}
 
 <div class="ui-toggle-module">
-    <div class="row g-4 mb-4">
-        <div class="col-12">
-            <div class="card card-elite p-4 mb-4 shadow-sm border-0">
-                <div class="d-flex align-items-center mb-3">
-                    <div class="icon-shape bg-primary-light text-primary rounded-3 p-2 me-3 shadow-sm">
-                        <i class="bi bi-stack fs-4"></i>
-                    </div>
-                    <div>
-                        <h5 class="fw-bold mb-0">Basic Component</h5>
-                        <small class="text-muted">Interactive visibility toggle with smooth transitions.</small>
-                    </div>
+    <!-- Header Hero -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <h4 class="fw-bold mb-0 text-main fs-18">Collapsible Toggles & Accordion Surfaces</h4>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Bootstrap 5.3 Collapse</span>
                 </div>
-
-                <div class="d-flex gap-3 mb-3">
-                    <button class="btn btn-primary rounded-pill px-4 shadow-sm" data-bs-toggle="collapse" data-bs-target="#basicElite">
-                        Explore Content
-                    </button>
-                </div>
-
-                <div class="collapse" id="basicElite">
-                    <div class="collapse-content d-flex align-items-center gap-4 mt-3 border border-light-subtle">
-                        <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?w=200"
-                             class="img-aesthetic" alt="Architecture">
-                        <div>
-                            <h6 class="fw-bold mb-1">Architecture Overview</h6>
-                            <p class="mb-0 text-muted small lh-lg">
-                                This component utilizes Bootstrap's native collapse engine enhanced with
-                                high-fidelity styling.
-                                It's designed for data-heavy dashboards where space is a premium.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <p class="text-muted small mb-0">Smooth animated height transitions, multi-target collapses, exclusive accordion groups, and chevron rotation</p>
             </div>
         </div>
     </div>
 
-    <div class="row g-4 mb-4">
-        <div class="col-12">
-            <div class="card card-elite p-4 mb-4 shadow-sm border-0">
-                <h5 class="fw-bold">Horizontal Collapse</h5>
-                <p class="text-muted small">The collapse plugin also supports horizontal collapsing.</p>
-                <div class="mb-3">
-                    <button class="btn btn-primary rounded-pill px-4" type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseWidthExample">
-                        Toggle width collapse
-                    </button>
-                </div>
+    <div class="row g-4">
+        <!-- 1. Basic Single Collapse -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Single Target Collapse</h5>
+                <p class="text-muted extra-small mb-3">Expands and collapses child element with height interpolation</p>
 
-                <div style="min-height: 120px;">
-                    <div class="collapse collapse-horizontal" id="collapseWidthExample">
-                        <div class="card card-body bg-transparent border-dashed rounded-4" style="width: 300px;">
-                            <p class="mb-0 small text-muted">
-                                This element collapses horizontally, providing a unique animation for sidebars or hidden toolbars.
-                            </p>
-                        </div>
+                <button class="btn btn-primary rounded-pill px-4 mb-3 shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Toggle Architecture Panel
+                </button>
+
+                <div class="collapse show" id="collapseExample">
+                    <div class="card border border-secondary border-opacity-10 rounded-3 p-3.5 bg-body-tertiary">
+                        <h6 class="fw-bold text-main mb-1">Dynamic Execution Context</h6>
+                        <p class="text-secondary small mb-0">
+                            Components animate smoothly between zero and scrollHeight using CSS transitions, preserving document layout stability with zero content shifting.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row g-4 mb-4">
-        <div class="col-12">
-            <div class="card card-elite p-4 shadow-sm border-0">
-                <div class="row align-items-center mb-4">
-                    <div class="col">
-                        <h5 class="fw-bold mb-0">Smart Selectors</h5>
-                        <p class="text-muted small mb-0">Simultaneously manage multiple data views.</p>
-                    </div>
-                    <div class="col-auto">
-                        <div class="btn-group rounded-pill overflow-hidden border border-light-subtle">
-                            <button class="btn btn-elite-soft btn-sm px-3 border-end" data-bs-toggle="collapse"
-                                    data-bs-target="#pane1">View A
-                            </button>
-                            <button class="btn btn-elite-soft btn-sm px-3 border-end" data-bs-toggle="collapse"
-                                    data-bs-target="#pane2">View B
-                            </button>
-                            <button class="btn btn-primary btn-sm px-3 fw-bold" data-bs-toggle="collapse"
-                                    data-bs-target=".multi-elite">Sync All
-                            </button>
-                        </div>
-                    </div>
+        <!-- 2. Multi-Target Collapse -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Multi-Target Synchronization</h5>
+                <p class="text-muted extra-small mb-3">Control multiple independent containers from a unified action trigger</p>
+
+                <div class="d-flex gap-2 mb-3">
+                    <button class="btn btn-outline-primary btn-sm rounded-pill px-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCol1">
+                        Toggle Panel A
+                    </button>
+                    <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCol2">
+                        Toggle Panel B
+                    </button>
+                    <button class="btn btn-primary btn-sm rounded-pill px-3" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse">
+                        Toggle Both
+                    </button>
                 </div>
 
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <div class="collapse multi-elite show" id="pane1">
-                            <div class="collapse-content border-start border-primary border-4">
-                                <div class="d-flex gap-3">
-                                    <i class="bi bi-cpu fs-2 text-primary"></i>
-                                    <p class="small text-muted mb-0">
-                                        <strong class="text-main">System Logic:</strong> Our proprietary algorithm ensures
-                                        low-latency state management across all UI nodes.
-                                    </p>
-                                </div>
+                <div class="row g-2">
+                    <div class="col-sm-6">
+                        <div class="collapse multi-collapse show" id="multiCol1">
+                            <div class="p-3 rounded-3 bg-primary-subtle border border-primary-subtle text-primary extra-small fw-semibold">
+                                <i class="bi bi-hdd-network me-1"></i> Panel A: Primary Cluster Node
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="collapse multi-elite show" id="pane2">
-                            <div class="collapse-content border-start border-success border-4">
-                                <div class="d-flex gap-3">
-                                    <i class="bi bi-database fs-2 text-success"></i>
-                                    <p class="small text-muted mb-0">
-                                        <strong class="text-main">Data Persistence:</strong> Auto-saving is enabled by default for
-                                        all interactive toggles in the elite tier.
-                                    </p>
-                                </div>
+                    <div class="col-sm-6">
+                        <div class="collapse multi-collapse show" id="multiCol2">
+                            <div class="p-3 rounded-3 bg-success-subtle border border-success-subtle text-success extra-small fw-semibold">
+                                <i class="bi bi-shield-check me-1"></i> Panel B: Standby Replica Node
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Exclusive Modern Accordion -->
+        <div class="col-12">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Flush Accordion Group</h5>
+                <p class="text-muted extra-small mb-3">Parent-constrained exclusive expansion (.accordion)</p>
+
+                <div class="accordion accordion-flush" id="accordionElite">
+                    <!-- Item 1 -->
+                    <div class="accordion-item border-bottom border-secondary border-opacity-15 bg-transparent">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button bg-transparent fw-bold text-main py-3 px-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+                                <i class="bi bi-cpu text-primary me-2 fs-5"></i> What is the zero-dependency Vanilla JS architecture?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionElite">
+                            <div class="accordion-body px-0 text-secondary small pt-0 pb-3">
+                                The Xivig dashboard architecture eliminates jQuery and bulky legacy wrappers entirely. By leveraging native modern browser APIs, ES modules, and Rollup code-splitting, entry bundles are reduced to ~150KB, ensuring sub-100ms first contentful paint.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="accordion-item border-bottom border-secondary border-opacity-15 bg-transparent">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed bg-transparent fw-bold text-main py-3 px-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                <i class="bi bi-palette text-success me-2 fs-5"></i> How does the Atelier Design Token system function?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionElite">
+                            <div class="accordion-body px-0 text-secondary small pt-0 pb-3">
+                                Atelier tokens are defined in SCSS variables and bound to CSS custom properties on <code>:root</code>. Switching between light and dark modes simply toggles <code>data-bs-theme</code>, instantaneously updating surfaces, text contrasts, borders, and glows without page reload.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="accordion-item border-0 bg-transparent">
+                        <h2 class="accordion-header" id="flush-headingThree">
+                            <button class="accordion-button collapsed bg-transparent fw-bold text-main py-3 px-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                <i class="bi bi-shield-lock text-info me-2 fs-5"></i> Are third-party scripts loaded asynchronously?
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionElite">
+                            <div class="accordion-body px-0 text-secondary small pt-0 pb-3">
+                                Yes. Heavy charting engines (ECharts, ApexCharts, Highcharts) and utility plugins are dynamically imported only on pages that contain their target DOM elements. Generic pages load 0 KB of unused vendor scripts.
                             </div>
                         </div>
                     </div>

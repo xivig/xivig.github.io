@@ -1,6 +1,6 @@
 /**
  * Xivig Mail Client Logic
- * Handles bulk selection and row highlighting
+ * Handles bulk selection, row highlighting, and compose operations
  */
 export const initMailSelection = () => {
     const selectAllBox = document.getElementById('selectAll');
@@ -15,7 +15,6 @@ export const initMailSelection = () => {
 
         mailCheckboxes.forEach(checkbox => {
             checkbox.checked = isChecked;
-            // Update row background for Elite visual feedback
             updateRowState(checkbox);
         });
     });
@@ -27,7 +26,6 @@ export const initMailSelection = () => {
             updateMasterCheckbox();
         });
 
-        // Elite Touch: Clicking the row (but not a link) toggles the checkbox
         const row = checkbox.closest('.mail-item');
         row.addEventListener('click', (e) => {
             if (e.target.tagName !== 'A' && e.target.tagName !== 'INPUT' && !e.target.classList.contains('bi-star')) {
@@ -37,8 +35,6 @@ export const initMailSelection = () => {
             }
         });
     });
-
-    // --- Helpers ---
 
     function updateRowState(cb) {
         const row = cb.closest('.mail-item');
@@ -54,7 +50,53 @@ export const initMailSelection = () => {
         const checkedCount = document.querySelectorAll('.mail-item .form-check-input:checked').length;
 
         selectAllBox.checked = (total === checkedCount);
-        // Add indeterminate state if some but not all are selected
         selectAllBox.indeterminate = (checkedCount > 0 && checkedCount < total);
     }
+};
+
+/**
+ * Compose Mail Logic
+ */
+export const initComposeMail = () => {
+    const composeForm = document.getElementById('composeForm');
+    const saveDraftBtn = document.getElementById('saveDraftBtn');
+    const discardBtn = document.getElementById('discardBtn');
+    const fileInput = document.getElementById('fileInput');
+    const attachmentLabel = document.getElementById('attachmentFileName');
+
+    if (!composeForm && !saveDraftBtn) return;
+
+    composeForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const recipient = document.getElementById('composeToInput')?.value || 'architect@xivig.com';
+        if (window.NotificationService) {
+            window.NotificationService.success('Message Dispatched', `Your email has been sent to ${recipient}.`);
+        }
+        composeForm.reset();
+    });
+
+    saveDraftBtn?.addEventListener('click', () => {
+        if (window.NotificationService) {
+            window.NotificationService.success('Draft Saved', 'Message safely saved to your Drafts folder.');
+        }
+    });
+
+    discardBtn?.addEventListener('click', () => {
+        if (window.NotificationService) {
+            window.NotificationService.confirm('Discard Message?', 'Are you sure you want to discard this draft?')
+                .then(res => {
+                    if (res.isConfirmed) {
+                        composeForm?.reset();
+                        window.NotificationService.success('Draft Discarded', 'Message cleared.');
+                    }
+                });
+        }
+    });
+
+    fileInput?.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file && attachmentLabel) {
+            attachmentLabel.innerText = `${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+        }
+    });
 };

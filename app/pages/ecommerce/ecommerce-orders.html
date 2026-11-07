@@ -1,89 +1,122 @@
-{{#> admin-layout title="Orders" parentTitle="Ecommerce" }}
+{{#> admin-layout title="Order List" parentTitle="Ecommerce" }}
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
-        <h2 class="h3 fw-black mb-1 text-dark">Order Management</h2>
-        <p class="text-muted small mb-0">Track and manage customer orders and fulfillment.</p>
-    </div>
-        <a href="create-order.html" class="btn btn-primary px-4 py-2 fw-bold shadow-primary rounded-pill">
-            <i class="fa-solid fa-plus me-2"></i> Create Order
-        </a>
-</div>
-
+<!-- Screen 07 / Order List: Order KPI Strip -->
 <div class="row g-4 mb-4">
-    <div class="col-md-3">
-        <div class="card border-0 shadow-sm p-4 rounded-4 h-100 bg-primary text-white position-relative overflow-hidden">
-            <div class="position-absolute top-0 end-0 p-3 opacity-25">
-                <i class="bi bi-box-seam display-1"></i>
-            </div>
-            <div class="position-relative z-1">
-                <p class="small fw-bold text-uppercase mb-1 opacity-75">Total Orders</p>
-                <h3 class="fw-black mb-0">4,289</h3>
-                <span class="extra-small fw-bold">+12.5% this month</span>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <p class="text-muted small fw-bold text-uppercase mb-1">Pending</p>
-                    <h3 class="fw-black mb-0 text-warning">142</h3>
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">TOTAL ORDERS</span>
+                <div class="stat-card__icon stat-card__icon--primary">
+                    <i class="bi bi-box-seam"></i>
                 </div>
-                <div class="icon-shape bg-warning-light text-warning rounded-3 p-3">
-                    <i class="bi bi-clock-history fs-3"></i>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">4,289</h3>
+                    <div class="stat-card__label">Lifetime Volume</div>
                 </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-arrow-up-right"></i> +12.5%
+                </span>
+                <span class="stat-card__context">vs last month</span>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <p class="text-muted small fw-bold text-uppercase mb-1">Processing</p>
-                    <h3 class="fw-black mb-0 text-info">85</h3>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">PENDING</span>
+                <div class="stat-card__icon stat-card__icon--warning">
+                    <i class="bi bi-clock-history"></i>
                 </div>
-                <div class="icon-shape bg-info-light text-info rounded-3 p-3">
-                    <i class="bi bi-gear-wide-connected fs-3"></i>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value text-warning">142</h3>
+                    <div class="stat-card__label">Awaiting Payment</div>
                 </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend text-warning">
+                    <i class="bi bi-exclamation-circle"></i> Requires review
+                </span>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <p class="text-muted small fw-bold text-uppercase mb-1">Completed</p>
-                    <h3 class="fw-black mb-0 text-success">4,062</h3>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">PROCESSING</span>
+                <div class="stat-card__icon stat-card__icon--cyan">
+                    <i class="bi bi-arrow-repeat"></i>
                 </div>
-                <div class="icon-shape bg-success-light text-success rounded-3 p-3">
-                    <i class="bi bi-check-circle fs-3"></i>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value text-info">85</h3>
+                    <div class="stat-card__label">In Picking / Packing</div>
                 </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend text-info">
+                    <i class="bi bi-truck"></i> Ready to dispatch
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">COMPLETED</span>
+                <div class="stat-card__icon stat-card__icon--emerald">
+                    <i class="bi bi-check2-circle"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value text-success">4,062</h3>
+                    <div class="stat-card__label">Delivered & Closed</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-shield-check"></i> 99.2% on-time
+                </span>
             </div>
         </div>
     </div>
 </div>
 
-<div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
-    <div class="card-header bg-white py-4 border-0">
+<!-- Order Table Card with Filter Toolbar -->
+<div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+    <div class="card-header bg-card py-4 border-0">
         <div class="row align-items-center g-3">
             <div class="col-lg-6">
                 <div class="nav nav-pills custom-tabs gap-2" id="orderFilters">
-                    <button class="nav-link active rounded-pill px-4 fw-bold" data-filter="all">All</button>
-                    <button class="nav-link rounded-pill px-4 fw-bold" data-filter="completed">Completed</button>
-                    <button class="nav-link rounded-pill px-4 fw-bold" data-filter="processing">Processing</button>
-                    <button class="nav-link rounded-pill px-4 fw-bold" data-filter="pending">Pending</button>
-                    <button class="nav-link rounded-pill px-4 fw-bold text-danger" data-filter="cancelled">Cancelled</button>
+                    <button class="nav-link active rounded-pill px-4 fw-bold" data-filter="all">All Orders</button>
+                    <button class="nav-link rounded-pill px-3 fw-bold" data-filter="completed">Completed</button>
+                    <button class="nav-link rounded-pill px-3 fw-bold" data-filter="processing">Processing</button>
+                    <button class="nav-link rounded-pill px-3 fw-bold" data-filter="pending">Pending</button>
+                    <button class="nav-link rounded-pill px-3 fw-bold text-danger" data-filter="cancelled">Cancelled</button>
                 </div>
             </div>
             <div class="col-lg-6 text-md-end">
                 <div class="d-flex gap-2 justify-content-lg-end">
                     <div class="input-group modern-input-group bg-light rounded-pill px-3 py-1 border-0" style="max-width: 250px;">
                         <span class="input-group-text bg-transparent border-0"><i class="bi bi-search text-muted"></i></span>
-                        <input type="text" class="form-control border-0 bg-transparent shadow-none small" placeholder="Search orders...">
+                        <input type="text" id="orderSearchInput" class="form-control border-0 bg-transparent shadow-none small" placeholder="Search orders or customer...">
                     </div>
-                    <button class="btn btn-white border rounded-pill px-3 shadow-sm fw-bold text-muted"><i class="bi bi-sliders me-2"></i>Filters</button>
-                    <button id="exportOrdersBtn" class="btn btn-white border rounded-pill px-3 shadow-sm fw-bold text-muted"><i class="bi bi-download me-2"></i>Export</button>
+                    <button id="exportOrdersBtn" class="btn btn-outline-secondary rounded-pill px-3 fw-bold">
+                        <i class="bi bi-download me-1"></i> Export
+                    </button>
+                    <a href="create-order.html" class="btn btn-primary rounded-pill px-3 fw-bold">
+                        <i class="bi bi-plus-lg me-1"></i> New Order
+                    </a>
                 </div>
             </div>
         </div>
@@ -92,78 +125,121 @@
     <div class="table-responsive">
         <table class="table table-hover align-middle mb-0" id="ordersTable">
             <thead class="bg-light-subtle border-bottom">
-                <tr class="text-muted small text-uppercase fw-bold">
-                    <th class="ps-4 py-3" style="width: 40px;"><input type="checkbox" class="form-check-input"></th>
+                <tr class="text-muted extra-small text-uppercase fw-bold letter-spacing-1">
+                    <th class="ps-4 py-3" style="width: 40px;"><input type="checkbox" class="form-check-input" id="selectAllOrders"></th>
                     <th class="py-3">Order ID</th>
                     <th class="py-3">Customer</th>
                     <th class="py-3">Date</th>
+                    <th class="py-3 text-center">Items</th>
+                    <th class="py-3">Total</th>
+                    <th class="py-3">Payment</th>
+                    <th class="py-3">Fulfilment</th>
                     <th class="py-3">Status</th>
-                    <th class="py-3">Amount</th>
                     <th class="text-end pe-4 py-3">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Completed Order -->
+                <!-- Completed Order 1 -->
                 <tr data-status="completed">
-                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
-                    <td><a href="#" class="fw-bold text-primary text-decoration-none">#ORD-7891</a></td>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input order-select"></td>
+                    <td>
+                        <a href="order-details.html" class="fw-bold text-primary text-decoration-none">#ORD-7891</a>
+                    </td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="avatar bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width: 40px; height: 40px;">EW</div>
+                            <div class="avatar bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width: 38px; height: 38px;">EW</div>
                             <div>
-                                <h6 class="fw-bold text-dark mb-0">Emma Wilson</h6>
+                                <h6 class="fw-bold text-dark mb-0 fs-14">Emma Wilson</h6>
                                 <p class="text-muted extra-small mb-0">emma.w@example.com</p>
                             </div>
                         </div>
                     </td>
                     <td>
-                        <span class="d-block fw-medium text-dark">Oct 24, 2026</span>
+                        <span class="d-block fw-semibold text-dark fs-13">Oct 24, 2026</span>
                         <span class="text-muted extra-small">09:42 AM</span>
                     </td>
-                    <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Completed</span></td>
-                    <td class="fw-black text-dark">$1,299.00</td>
+                    <td class="text-center">
+                        <span class="badge bg-light text-dark fw-bold px-2 py-1 rounded-pill">3 items</span>
+                    </td>
+                    <td>
+                        <span class="fw-bold text-dark fs-14">$1,299.00</span>
+                    </td>
+                    <td>
+                        <span class="badge bg-success-subtle text-success px-2.5 py-1 rounded-pill extra-small fw-bold">
+                            <i class="bi bi-check-circle me-1"></i> Paid
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge bg-primary-subtle text-primary px-2.5 py-1 rounded-pill extra-small fw-bold">
+                            <i class="bi bi-box me-1"></i> Delivered
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge bg-success-subtle text-success px-3 py-1.5 rounded-pill small fw-bold">Completed</span>
+                    </td>
                     <td class="text-end pe-4">
                         <div class="dropdown">
-                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-1.5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2"></i>View Details</a></li>
-                                <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                                <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2 text-primary"></i>View Details</a></li>
+                                <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil me-2 text-muted"></i>Edit Order</a></li>
+                                <li><a class="dropdown-item" href="/invoice.html"><i class="bi bi-file-earmark-pdf me-2 text-muted"></i>Invoice</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
                             </ul>
                         </div>
                     </td>
                 </tr>
-                
-                <!-- Processing Order -->
+
+                <!-- Processing Order 2 -->
                 <tr data-status="processing">
-                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
-                    <td><a href="#" class="fw-bold text-primary text-decoration-none">#ORD-7892</a></td>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input order-select"></td>
+                    <td>
+                        <a href="order-details.html" class="fw-bold text-primary text-decoration-none">#ORD-7892</a>
+                    </td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src="/app/src/images/photo1.jpg" class="rounded-circle me-3 border" width="40" height="40" alt="Avatar">
+                            <img src="/app/src/images/photo1.jpg" class="rounded-circle me-3 border" width="38" height="38" alt="Avatar">
                             <div>
-                                <h6 class="fw-bold text-dark mb-0">James Peterson</h6>
+                                <h6 class="fw-bold text-dark mb-0 fs-14">James Peterson</h6>
                                 <p class="text-muted extra-small mb-0">j.peterson@company.com</p>
                             </div>
                         </div>
                     </td>
                     <td>
-                        <span class="d-block fw-medium text-dark">Oct 24, 2026</span>
+                        <span class="d-block fw-semibold text-dark fs-13">Oct 24, 2026</span>
                         <span class="text-muted extra-small">11:15 AM</span>
                     </td>
-                    <td><span class="badge bg-info-subtle text-info px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-arrow-repeat me-1"></i> Processing</span></td>
-                    <td class="fw-black text-dark">$450.50</td>
+                    <td class="text-center">
+                        <span class="badge bg-light text-dark fw-bold px-2 py-1 rounded-pill">1 item</span>
+                    </td>
+                    <td>
+                        <span class="fw-bold text-dark fs-14">$450.50</span>
+                    </td>
+                    <td>
+                        <span class="badge bg-success-subtle text-success px-2.5 py-1 rounded-pill extra-small fw-bold">
+                            <i class="bi bi-check-circle me-1"></i> Paid
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge bg-warning-subtle text-warning px-2.5 py-1 rounded-pill extra-small fw-bold">
+                            <i class="bi bi-truck me-1"></i> In Transit
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge bg-info-subtle text-info px-3 py-1.5 rounded-pill small fw-bold">Processing</span>
+                    </td>
                     <td class="text-end pe-4">
                         <div class="dropdown">
-                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-1.5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2"></i>View Details</a></li>
-                                <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                                <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2 text-primary"></i>View Details</a></li>
+                                <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil me-2 text-muted"></i>Edit Order</a></li>
+                                <li><a class="dropdown-item" href="/invoice.html"><i class="bi bi-file-earmark-pdf me-2 text-muted"></i>Invoice</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
                             </ul>
@@ -171,33 +247,53 @@
                     </td>
                 </tr>
 
-                <!-- Pending Order -->
+                <!-- Pending Order 3 -->
                 <tr data-status="pending">
-                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
-                    <td><a href="#" class="fw-bold text-primary text-decoration-none">#ORD-7893</a></td>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input order-select"></td>
+                    <td>
+                        <a href="order-details.html" class="fw-bold text-primary text-decoration-none">#ORD-7893</a>
+                    </td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="avatar bg-warning-subtle text-warning rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width: 40px; height: 40px;">SL</div>
+                            <div class="avatar bg-warning-subtle text-warning rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width: 38px; height: 38px;">SL</div>
                             <div>
-                                <h6 class="fw-bold text-dark mb-0">Sarah Lin</h6>
+                                <h6 class="fw-bold text-dark mb-0 fs-14">Sarah Lin</h6>
                                 <p class="text-muted extra-small mb-0">sarah.lin@studio.net</p>
                             </div>
                         </div>
                     </td>
                     <td>
-                        <span class="d-block fw-medium text-dark">Oct 23, 2026</span>
+                        <span class="d-block fw-semibold text-dark fs-13">Oct 23, 2026</span>
                         <span class="text-muted extra-small">04:20 PM</span>
                     </td>
-                    <td><span class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-clock-fill me-1"></i> Pending</span></td>
-                    <td class="fw-black text-dark">$85.00</td>
+                    <td class="text-center">
+                        <span class="badge bg-light text-dark fw-bold px-2 py-1 rounded-pill">2 items</span>
+                    </td>
+                    <td>
+                        <span class="fw-bold text-dark fs-14">$85.00</span>
+                    </td>
+                    <td>
+                        <span class="badge bg-warning-subtle text-warning px-2.5 py-1 rounded-pill extra-small fw-bold">
+                            <i class="bi bi-clock me-1"></i> Awaiting
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge bg-secondary-subtle text-secondary px-2.5 py-1 rounded-pill extra-small fw-bold">
+                            <i class="bi bi-pause-circle me-1"></i> Unfulfilled
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge bg-warning-subtle text-warning px-3 py-1.5 rounded-pill small fw-bold">Pending</span>
+                    </td>
                     <td class="text-end pe-4">
                         <div class="dropdown">
-                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-1.5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2"></i>View Details</a></li>
-                                <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                                <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2 text-primary"></i>View Details</a></li>
+                                <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil me-2 text-muted"></i>Edit Order</a></li>
+                                <li><a class="dropdown-item" href="/invoice.html"><i class="bi bi-file-earmark-pdf me-2 text-muted"></i>Invoice</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
                             </ul>
@@ -205,33 +301,53 @@
                     </td>
                 </tr>
 
-                <!-- Cancelled Order -->
+                <!-- Cancelled Order 4 -->
                 <tr data-status="cancelled">
-                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
-                    <td><a href="#" class="fw-bold text-primary text-decoration-none opacity-50">#ORD-7894</a></td>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input order-select"></td>
                     <td>
-                        <div class="d-flex align-items-center opacity-50">
-                            <div class="avatar bg-danger-subtle text-danger rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width: 40px; height: 40px;">MR</div>
+                        <a href="order-details.html" class="fw-bold text-muted text-decoration-none">#ORD-7894</a>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center opacity-75">
+                            <div class="avatar bg-danger-subtle text-danger rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width: 38px; height: 38px;">MR</div>
                             <div>
-                                <h6 class="fw-bold text-dark mb-0">Mark Ruffalo</h6>
+                                <h6 class="fw-bold text-dark mb-0 fs-14">Mark Ruffalo</h6>
                                 <p class="text-muted extra-small mb-0">mark.r@test.org</p>
                             </div>
                         </div>
                     </td>
                     <td>
-                        <span class="d-block fw-medium text-dark opacity-50">Oct 22, 2026</span>
-                        <span class="text-muted extra-small opacity-50">09:00 AM</span>
+                        <span class="d-block fw-semibold text-dark fs-13 opacity-75">Oct 22, 2026</span>
+                        <span class="text-muted extra-small">09:00 AM</span>
                     </td>
-                    <td><span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-x-circle-fill me-1"></i> Cancelled</span></td>
-                    <td class="fw-black text-dark opacity-50">$320.00</td>
+                    <td class="text-center">
+                        <span class="badge bg-light text-muted fw-bold px-2 py-1 rounded-pill">1 item</span>
+                    </td>
+                    <td>
+                        <span class="fw-bold text-dark fs-14 opacity-75">$320.00</span>
+                    </td>
+                    <td>
+                        <span class="badge bg-danger-subtle text-danger px-2.5 py-1 rounded-pill extra-small fw-bold">
+                            <i class="bi bi-arrow-counterclockwise me-1"></i> Refunded
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge bg-danger-subtle text-danger px-2.5 py-1 rounded-pill extra-small fw-bold">
+                            <i class="bi bi-x-circle me-1"></i> Cancelled
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge bg-danger-subtle text-danger px-3 py-1.5 rounded-pill small fw-bold">Cancelled</span>
+                    </td>
                     <td class="text-end pe-4">
                         <div class="dropdown">
-                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-1.5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2"></i>View Details</a></li>
-                                <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                                <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2 text-primary"></i>View Details</a></li>
+                                <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil me-2 text-muted"></i>Edit Order</a></li>
+                                <li><a class="dropdown-item" href="/invoice.html"><i class="bi bi-file-earmark-pdf me-2 text-muted"></i>Invoice</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
                             </ul>
@@ -242,7 +358,7 @@
         </table>
     </div>
     
-    <div class="card-footer bg-white border-0 py-4 px-4 d-flex align-items-center justify-content-between">
+    <div class="card-footer bg-card border-0 py-4 px-4 d-flex align-items-center justify-content-between">
         <span class="text-muted small fw-medium">Showing 1 to 4 of 4,289 entries</span>
         <nav aria-label="Order pagination">
             <ul class="pagination pagination-sm mb-0">
@@ -258,20 +374,25 @@
 
 <script type="module">
     document.addEventListener('DOMContentLoaded', () => {
-        // Simple Order Filter Logic
+        // Wire up Blueprint Primary Action CTA in header
+        const primaryBtn = document.getElementById('pagePrimaryActionBtn');
+        if (primaryBtn) {
+            primaryBtn.addEventListener('click', () => {
+                window.location.href = 'create-order.html';
+            });
+        }
+
+        // Status Tabs Filter Logic
         const filterBtns = document.querySelectorAll('#orderFilters .nav-link');
         const rows = document.querySelectorAll('#ordersTable tbody tr');
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                
-                // Update active state
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
                 const filterValue = btn.getAttribute('data-filter');
-
                 rows.forEach(row => {
                     if (filterValue === 'all' || row.getAttribute('data-status') === filterValue) {
                         row.style.display = '';
@@ -282,22 +403,41 @@
             });
         });
 
+        // Search Input Filter Logic
+        const searchInput = document.getElementById('orderSearchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase().trim();
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = text.includes(query) ? '' : 'none';
+                });
+            });
+        }
+
+        // Select All Checkbox Logic
+        const selectAll = document.getElementById('selectAllOrders');
+        const rowCheckboxes = document.querySelectorAll('.order-select');
+        if (selectAll) {
+            selectAll.addEventListener('change', () => {
+                rowCheckboxes.forEach(cb => cb.checked = selectAll.checked);
+            });
+        }
+
         // CSV Export Logic
         const exportBtn = document.getElementById('exportOrdersBtn');
         if (exportBtn) {
             exportBtn.addEventListener('click', () => {
                 let csv = [];
                 const table = document.getElementById('ordersTable');
-                const rows = table.querySelectorAll('tr');
+                const tableRows = table.querySelectorAll('tr');
                 
-                for (let i = 0; i < rows.length; i++) {
-                    if (rows[i].style.display === 'none') continue;
-                    
-                    let row = [], cols = rows[i].querySelectorAll('td, th');
-                    
-                    for (let j = 1; j < cols.length - 1; j++) { // Skip checkbox and action columns
+                for (let i = 0; i < tableRows.length; i++) {
+                    if (tableRows[i].style.display === 'none') continue;
+                    let row = [], cols = tableRows[i].querySelectorAll('td, th');
+                    for (let j = 1; j < cols.length - 1; j++) {
                         let text = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, " ").replace(/"/g, '""');
-                        row.push('"' + text + '"');
+                        row.push('"' + text.trim() + '"');
                     }
                     csv.push(row.join(","));
                 }

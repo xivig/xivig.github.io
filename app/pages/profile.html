@@ -1,164 +1,381 @@
 {{#> admin-layout title="Profile" parentTitle="Pages" }}
 
-<div class="row g-4">
-    <!-- Sidebar: User Info -->
-    <div class="col-xl-4 col-lg-5 align-self-start">
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
-            <div class="card__profile-header-bg"
-                style="height: 120px; background: var(--primary-gradient); opacity: 0.15;"></div>
-            <div class="card-body text-center mt-n5">
-                <div class="position-relative d-inline-block mt-n5">
-                    <img src="/app/src/images/photo1.jpg" class="rounded-circle border border-4 border-white shadow-sm"
-                        width="120" height="120" style="object-fit: cover; background-color: var(--card-bg);">
-                    <button class="btn btn-primary btn-sm rounded-circle position-absolute bottom-0 end-0 shadow-sm">
-                        <i class="bi bi-camera"></i>
-                    </button>
-                </div>
-                <h4 class="fw-black mt-3 mb-1">John Doe</h4>
-                <p class="text-muted small mb-3">Full Stack Developer | Xivig Team</p>
-
-                <div class="d-flex justify-content-center gap-2 mb-4">
-                    <span class="badge bg-success-light text-success px-3 py-2 rounded-pill">Active</span>
-                    <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill">Pro</span>
+<div class="profile-module">
+    <div class="row g-4">
+        <!-- Sidebar: User Info Card -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden mb-4 position-sticky" style="top: 100px;">
+                <!-- Decorative Banner -->
+                <div class="position-relative" style="height: 120px; background: linear-gradient(135deg, #4F6BFF 0%, #1e1b4b 100%);">
+                    <span class="badge bg-white bg-opacity-20 text-white rounded-pill px-2.5 py-1 extra-small fw-bold position-absolute top-0 end-0 m-3">
+                        <i class="bi bi-shield-check me-1"></i> VERIFIED ARCHITECT
+                    </span>
                 </div>
 
-                <hr class="my-4 opacity-50">
+                <div class="card-body text-center pt-0 position-relative">
+                    <!-- Avatar with Camera Upload -->
+                    <div class="position-relative d-inline-block" style="margin-top: -60px;">
+                        <img src="/app/src/images/photo5.jpg" id="user-avatar-img" class="rounded-circle border border-4 border-white shadow" width="120" height="120" style="object-fit: cover;" alt="Alex Carter">
+                        <label for="avatar-upload" class="btn btn-primary btn-sm rounded-circle position-absolute bottom-0 end-0 shadow p-1.5 d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px; cursor: pointer;" title="Upload Avatar">
+                            <i class="bi bi-camera extra-small"></i>
+                        </label>
+                        <input type="file" id="avatar-upload" class="d-none" accept="image/*">
+                    </div>
 
-                <div class="text-start">
-                    <h6 class="fw-bold small text-uppercase tracking-wider text-muted mb-3">Contact Information</h6>
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="icon-shape bg-light-subtle rounded-3 me-3"><i
-                                class="bi bi-envelope text-primary"></i></div>
-                        <div><small class="text-muted d-block">Email</small><span
-                                class="fw-semibold">ross.lopez@xivig.com</span></div>
+                    <h4 class="fw-black text-main mt-3 mb-1">Alex Carter</h4>
+                    <p class="text-muted extra-small mb-3">Lead Platform Architect &bull; Core Contributor</p>
+
+                    <div class="d-flex justify-content-center gap-2 mb-4">
+                        <span class="badge bg-success-subtle text-success px-3 py-1.5 rounded-pill extra-small fw-bold">Active Status</span>
+                        <span class="badge bg-primary-subtle text-primary px-3 py-1.5 rounded-pill extra-small fw-bold">Elite Pro</span>
                     </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="icon-shape bg-light-subtle rounded-3 me-3"><i
-                                class="bi bi-geo-alt text-primary"></i></div>
-                        <div><small class="text-muted d-block">Location</small><span class="fw-semibold">New York,
-                                USA</span></div>
+
+                    <!-- Telemetry KPI Stats -->
+                    <div class="row g-2 text-center p-3 rounded-4 mb-4 border border-light border-opacity-10 bg-light bg-opacity-30">
+                        <div class="col-4">
+                            <h5 class="fw-black text-main mb-0">1,428</h5>
+                            <span class="text-muted extra-small">Commits</span>
+                        </div>
+                        <div class="col-4 border-start border-end border-light border-opacity-10">
+                            <h5 class="fw-black text-primary mb-0">42</h5>
+                            <span class="text-muted extra-small">Edge Repos</span>
+                        </div>
+                        <div class="col-4">
+                            <h5 class="fw-black text-success mb-0">99.98%</h5>
+                            <span class="text-muted extra-small">SLA Rank</span>
+                        </div>
                     </div>
-                    <div class="mt-4 pt-3 border-top border-light">
-                        <div class="d-flex justify-content-center gap-2">
-                            <a href="#" class="btn btn-outline-light-soft btn-sm rounded-3 px-3 py-2"><i
-                                    class="bi bi-facebook"></i></a>
-                            <a href="#" class="btn btn-outline-light-soft btn-sm rounded-3 px-3 py-2"><i
-                                    class="bi bi-twitter-x"></i></a>
-                            <a href="#" class="btn btn-outline-light-soft btn-sm rounded-3 px-3 py-2"><i
-                                    class="bi bi-linkedin"></i></a>
+
+                    <!-- Contact Strip -->
+                    <div class="text-start">
+                        <h6 class="fw-bold extra-small text-uppercase tracking-wider text-muted mb-3">Architect Details</h6>
+                        <div class="d-flex align-items-center mb-2.5">
+                            <div class="rounded-3 bg-light p-2 me-3 text-primary" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div>
+                                <small class="text-muted d-block extra-small">Email Address</small>
+                                <span class="fw-bold text-main small">alex.carter@xivig.com</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-2.5">
+                            <div class="rounded-3 bg-light p-2 me-3 text-primary" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div>
+                                <small class="text-muted d-block extra-small">Primary Region</small>
+                                <span class="fw-bold text-main small">New York, USA (us-east-1)</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-3 bg-light p-2 me-3 text-primary" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+                            <div>
+                                <small class="text-muted d-block extra-small">Timezone</small>
+                                <span class="fw-bold text-main small">UTC-05:00 Eastern Time</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-top border-light border-opacity-10">
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="https://github.com/xivig/xivig.github.io" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm rounded-circle p-2" style="width: 36px; height: 36px;"><i class="bi bi-github"></i></a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle p-2" style="width: 36px; height: 36px;"><i class="bi bi-twitter-x"></i></a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle p-2" style="width: 36px; height: 36px;"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle p-2" style="width: 36px; height: 36px;"><i class="bi bi-discord"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Main Content: Settings Tabs -->
-    <div class="col-xl-8 col-lg-7">
-        <div class="card border-0 shadow-sm rounded-4">
-            <div class="card-header bg-transparent border-0 p-4 pb-0">
-                <ul class="nav nav-pills custom-pills justify-content-center" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-profile" type="button">Edit Profile</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-security-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-security" type="button">Security</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-notif-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-notif" type="button">Notifications</button>
-                    </li>
-                </ul>
-            </div>
+        <!-- Main Content: Settings Tabs -->
+        <div class="col-xl-8 col-lg-7">
+            <div class="card card-box border-0 shadow-sm rounded-4">
+                <div class="card-header bg-transparent border-bottom border-light border-opacity-10 p-4 pb-0">
+                    <ul class="nav nav-pills custom-pills gap-2 pb-3" id="profileTabList" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill active extra-small fw-bold px-3 py-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab">
+                                <i class="bi bi-person me-1"></i> Personal Info
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill extra-small fw-bold px-3 py-2" id="pills-security-tab" data-bs-toggle="pill" data-bs-target="#pills-security" type="button" role="tab">
+                                <i class="bi bi-shield-lock me-1"></i> Security &amp; Sessions
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill extra-small fw-bold px-3 py-2" id="pills-notif-tab" data-bs-toggle="pill" data-bs-target="#pills-notif" type="button" role="tab">
+                                <i class="bi bi-bell me-1"></i> Notifications
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill extra-small fw-bold px-3 py-2" id="pills-api-tab" data-bs-toggle="pill" data-bs-target="#pills-api" type="button" role="tab">
+                                <i class="bi bi-key me-1"></i> API Credentials
+                            </button>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="card-body p-4 p-lg-5">
-                <div class="tab-content" id="pills-tabContent">
-                    <!-- Edit Profile Tab -->
-                    <div class="tab-pane fade show active" id="pills-profile" role="tabpanel">
-                        <h5 class="fw-black mb-4">Personal Information</h5>
-                        <form action="#" method="POST">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label small fw-bold">First Name</label>
-                                    <input type="text" class="form-control modern-input" value="Ross">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="tab-content" id="pills-tabContent">
+                        <!-- 1. Edit Profile Tab -->
+                        <div class="tab-pane fade show active" id="pills-profile" role="tabpanel">
+                            <h5 class="fw-black text-main mb-1">Personal &amp; Organizational Profile</h5>
+                            <p class="text-muted extra-small mb-4">Manage how your name and identity appear across projects and commit audits.</p>
+
+                            <form id="profile-form">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label extra-small fw-bold text-uppercase text-muted">First Name</label>
+                                        <input type="text" class="form-control rounded-3" value="Alex" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label extra-small fw-bold text-uppercase text-muted">Last Name</label>
+                                        <input type="text" class="form-control rounded-3" value="Carter" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label extra-small fw-bold text-uppercase text-muted">Professional Role</label>
+                                        <input type="text" class="form-control rounded-3" value="Lead Platform Architect">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label extra-small fw-bold text-uppercase text-muted">Organization / Team</label>
+                                        <input type="text" class="form-control rounded-3" value="XIVIG Core Infrastructure">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label extra-small fw-bold text-uppercase text-muted">Architect Bio</label>
+                                        <textarea class="form-control rounded-3" rows="3">Core maintainer of XIVIG Enterprise OS. Passionate about zero-dependency modular architecture, ultra-fast Vite builds, and modern responsive design systems.</textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label extra-small fw-bold text-uppercase text-muted">GitHub Handle</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light border-end-0 rounded-start-3"><i class="bi bi-github"></i></span>
+                                            <input type="text" class="form-control rounded-end-3 border-start-0" value="alex-carter-arch">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label extra-small fw-bold text-uppercase text-muted">Public Website</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light border-end-0 rounded-start-3"><i class="bi bi-globe"></i></span>
+                                            <input type="url" class="form-control rounded-end-3 border-start-0" value="https://xivig.github.io">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-4">
+                                        <button type="submit" class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-sm extra-small">
+                                            <i class="bi bi-check2-circle me-1"></i> Save Changes
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label small fw-bold">Last Name</label>
-                                    <input type="text" class="form-control modern-input" value="Lopez">
+                            </form>
+                        </div>
+
+                        <!-- 2. Security Tab -->
+                        <div class="tab-pane fade" id="pills-security" role="tabpanel">
+                            <h5 class="fw-black text-main mb-1">Security &amp; Session Management</h5>
+                            <p class="text-muted extra-small mb-4">Protect your architect account with multi-factor authentication and device control.</p>
+
+                            <!-- 2FA Box -->
+                            <div class="p-3 rounded-4 border border-light border-opacity-10 mb-4 d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="rounded-circle bg-primary-subtle text-primary p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                                        <i class="bi bi-shield-lock fs-5"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold text-main small">Two-Factor Authentication (2FA)</h6>
+                                        <p class="text-muted extra-small mb-0">Require TOTP authenticator code on unrecognized sign-ins</p>
+                                    </div>
                                 </div>
-                                <div class="col-12">
-                                    <label class="form-label small fw-bold">Bio</label>
-                                    <textarea class="form-control modern-input"
-                                        rows="4">Full-stack enthusiast working on the next generation of Laravel dashboard templates.</textarea>
-                                </div>
-                                <div class="col-12 mt-4">
-                                    <button type="submit"
-                                        class="btn btn-primary px-4 py-2 fw-bold rounded-3 shadow-sm">Save
-                                        Changes</button>
+                                <div class="form-check form-switch mb-0">
+                                    <input class="form-check-input" type="checkbox" id="twoFactorSwitch" checked style="width: 40px; height: 22px;">
                                 </div>
                             </div>
-                        </form>
-                    </div>
 
-                    <!-- Security Tab -->
-                    <div class="tab-pane fade" id="pills-security" role="tabpanel">
-                        <h5 class="fw-black mb-4">Security Settings</h5>
-                        <div class="list-group list-group-flush border-0">
-                            <div
-                                class="list-group-item d-flex justify-content-between align-items-center px-0 py-3 bg-transparent border-light border-bottom border-opacity-10">
+                            <!-- Password Update -->
+                            <h6 class="fw-bold text-main small mb-3">Change Account Password</h6>
+                            <form id="security-form" class="mb-5">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label extra-small fw-bold text-uppercase text-muted">Current Password</label>
+                                        <input type="password" class="form-control rounded-3" placeholder="••••••••" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label extra-small fw-bold text-uppercase text-muted">New Password</label>
+                                        <input type="password" class="form-control rounded-3" placeholder="Min. 12 characters" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-bold extra-small">
+                                            Update Password
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!-- Active Sessions -->
+                            <div class="d-flex justify-content-between align-items-center mb-3">
                                 <div>
-                                    <h6 class="mb-1 fw-bold">Two-Factor Authentication</h6>
-                                    <p class="text-muted small mb-0">Add an extra layer of security to your account.</p>
+                                    <h6 class="fw-bold text-main small mb-0">Active Device Sessions</h6>
+                                    <span class="text-muted extra-small">Currently authorized browser and client sessions</span>
                                 </div>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" checked>
-                                </div>
+                                <button type="button" id="revoke-sessions-btn" class="btn btn-outline-danger btn-sm rounded-pill px-3 extra-small fw-bold">
+                                    Revoke All Other Sessions
+                                </button>
                             </div>
-                            <div
-                                class="list-group-item d-flex justify-content-between align-items-center px-0 py-3 bg-transparent border-light border-bottom border-opacity-10">
-                                <div>
-                                    <h6 class="mb-1 fw-bold">Login Notifications</h6>
-                                    <p class="text-muted small mb-0">Receive an email for every login attempt.</p>
+
+                            <div class="vstack gap-2">
+                                <!-- Session 1: Current -->
+                                <div class="p-3 rounded-3 border border-light border-opacity-10 d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <i class="bi bi-laptop fs-4 text-primary"></i>
+                                        <div>
+                                            <div class="fw-bold text-main small">Chrome on Windows 11 &bull; New York, USA</div>
+                                            <span class="text-muted extra-small">IP: 192.0.2.42 &bull; Active Now (Current Session)</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-success-subtle text-success rounded-pill px-2.5 py-1 extra-small fw-bold">Current</span>
                                 </div>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox">
+
+                                <!-- Session 2: Remote -->
+                                <div class="remote-session-item p-3 rounded-3 border border-light border-opacity-10 d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <i class="bi bi-apple fs-4 text-muted"></i>
+                                        <div>
+                                            <div class="fw-bold text-main small">Safari on macOS Sonoma &bull; London, UK</div>
+                                            <span class="text-muted extra-small">IP: 198.51.100.18 &bull; Last active 2 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-secondary-subtle text-muted rounded-pill px-2.5 py-1 extra-small fw-bold">Remote</span>
+                                </div>
+
+                                <!-- Session 3: Mobile -->
+                                <div class="remote-session-item p-3 rounded-3 border border-light border-opacity-10 d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <i class="bi bi-phone fs-4 text-muted"></i>
+                                        <div>
+                                            <div class="fw-bold text-main small">XIVIG Mobile App (iOS) &bull; Tokyo, JP</div>
+                                            <span class="text-muted extra-small">IP: 203.0.113.75 &bull; Last active yesterday</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-secondary-subtle text-muted rounded-pill px-2.5 py-1 extra-small fw-bold">Mobile</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Notifications Tab -->
-                    <div class="tab-pane fade" id="pills-notif" role="tabpanel">
-                        <h5 class="fw-black mb-1">Notification Matrix</h5>
-                        <p class="text-muted small mb-4">Manage your preferences across all communication channels.</p>
+                        <!-- 3. Notifications Tab -->
+                        <div class="tab-pane fade" id="pills-notif" role="tabpanel">
+                            <h5 class="fw-black text-main mb-1">Notification Matrix</h5>
+                            <p class="text-muted extra-small mb-4">Select precisely which channels should alert you for system, security, and deployment events.</p>
 
-                        <div class="table-responsive border rounded-4 overflow-hidden">
-                            <table class="table align-middle mb-0">
-                                <thead class="bg-light-subtle">
-                                    <tr>
-                                        <th class="ps-3 border-0">TYPE</th>
-                                        <th class="border-0">EMAIL</th>
-                                        <th class="border-0">BROWSER</th>
-                                        <th class="border-0">APP</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="border-0">
-                                    <tr class="border-bottom border-light border-opacity-10">
-                                        <td class="ps-3 fw-medium">News & Updates</td>
-                                        <td><input type="checkbox" checked class="form-check-input"></td>
-                                        <td><input type="checkbox" checked class="form-check-input"></td>
-                                        <td><input type="checkbox" checked class="form-check-input"></td>
-                                    </tr>
-                                    <tr class="border-0">
-                                        <td class="ps-3 fw-medium">Account Security</td>
-                                        <td><input type="checkbox" checked class="form-check-input"></td>
-                                        <td><input type="checkbox" checked class="form-check-input"></td>
-                                        <td><input type="checkbox" class="form-check-input"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive border border-light border-opacity-10 rounded-4 overflow-hidden mb-4">
+                                <table class="table align-middle extra-small mb-0">
+                                    <thead class="bg-light bg-opacity-50">
+                                        <tr class="text-muted">
+                                            <th class="ps-3 py-3 border-0">EVENT CATEGORY</th>
+                                            <th class="border-0 text-center">EMAIL</th>
+                                            <th class="border-0 text-center">BROWSER PUSH</th>
+                                            <th class="border-0 text-center">MOBILE APP</th>
+                                            <th class="border-0 text-center">SMS ALERTS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-bottom border-light border-opacity-10">
+                                            <td class="ps-3 py-3">
+                                                <div class="fw-bold text-main">Production Deployment Status</div>
+                                                <span class="text-muted extra-small">Build successes, rollbacks, and release tags</span>
+                                            </td>
+                                            <td class="text-center"><input type="checkbox" checked class="form-check-input"></td>
+                                            <td class="text-center"><input type="checkbox" checked class="form-check-input"></td>
+                                            <td class="text-center"><input type="checkbox" checked class="form-check-input"></td>
+                                            <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                                        </tr>
+                                        <tr class="border-bottom border-light border-opacity-10">
+                                            <td class="ps-3 py-3">
+                                                <div class="fw-bold text-main">Security &amp; Auth Warnings</div>
+                                                <span class="text-muted extra-small">New device logins, token revocations, 2FA alerts</span>
+                                            </td>
+                                            <td class="text-center"><input type="checkbox" checked class="form-check-input"></td>
+                                            <td class="text-center"><input type="checkbox" checked class="form-check-input"></td>
+                                            <td class="text-center"><input type="checkbox" checked class="form-check-input"></td>
+                                            <td class="text-center"><input type="checkbox" checked class="form-check-input"></td>
+                                        </tr>
+                                        <tr class="border-bottom border-light border-opacity-10">
+                                            <td class="ps-3 py-3">
+                                                <div class="fw-bold text-main">Cluster Telemetry Anomalies</div>
+                                                <span class="text-muted extra-small">Latency spikes, CPU &gt;90%, node degradations</span>
+                                            </td>
+                                            <td class="text-center"><input type="checkbox" checked class="form-check-input"></td>
+                                            <td class="text-center"><input type="checkbox" checked class="form-check-input"></td>
+                                            <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                                            <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ps-3 py-3">
+                                                <div class="fw-bold text-main">Weekly Architectural Digest</div>
+                                                <span class="text-muted extra-small">Sprint velocity reports and ARR telemetry summaries</span>
+                                            </td>
+                                            <td class="text-center"><input type="checkbox" checked class="form-check-input"></td>
+                                            <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                                            <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                                            <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <button type="button" class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-sm extra-small">
+                                <i class="bi bi-check2-circle me-1"></i> Save Notification Matrix
+                            </button>
+                        </div>
+
+                        <!-- 4. Developer API Keys Tab -->
+                        <div class="tab-pane fade" id="pills-api" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <h5 class="fw-black text-main mb-0">Developer API Keys</h5>
+                                    <span class="text-muted extra-small">Access tokens for CI/CD pipelines, webhooks, and REST endpoints</span>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-sm rounded-pill px-3 extra-small fw-bold" data-bs-toggle="modal" data-bs-target="#newKeyModal">
+                                    <i class="bi bi-plus-lg me-1"></i> Generate Key
+                                </button>
+                            </div>
+
+                            <div class="vstack gap-3 mb-4">
+                                <!-- Key 1: Production -->
+                                <div class="p-3 rounded-4 border border-light border-opacity-10">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-0.5 extra-small fw-bold">Production Live</span>
+                                            <span class="fw-bold text-main small">ci-cd-github-actions</span>
+                                        </div>
+                                        <span class="text-muted extra-small">Created 12 days ago</span>
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control font-monospace bg-light" value="xivig_live_9f82d7a1b3c4e5f6a7b8c9d0" readonly>
+                                        <button class="btn btn-outline-secondary copy-api-key-btn" type="button" data-key="xivig_live_9f82d7a1b3c4e5f6a7b8c9d0">
+                                            <i class="bi bi-clipboard"></i> Copy
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Key 2: Staging -->
+                                <div class="p-3 rounded-4 border border-light border-opacity-10">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <span class="badge bg-warning-subtle text-warning rounded-pill px-2.5 py-0.5 extra-small fw-bold">Staging Preview</span>
+                                            <span class="fw-bold text-main small">staging-telemetry-ingest</span>
+                                        </div>
+                                        <span class="text-muted extra-small">Created 1 month ago</span>
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control font-monospace bg-light" value="xivig_stage_3a4b5c6d7e8f9a0b1c2d3e4f" readonly>
+                                        <button class="btn btn-outline-secondary copy-api-key-btn" type="button" data-key="xivig_stage_3a4b5c6d7e8f9a0b1c2d3e4f">
+                                            <i class="bi bi-clipboard"></i> Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -166,7 +383,37 @@
         </div>
     </div>
 </div>
-</div>
+
+<!-- Generate Key Modal -->
+<div class="modal fade" id="newKeyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card-box border-0 rounded-4 shadow-lg">
+            <div class="modal-header border-bottom border-light border-opacity-10 p-4">
+                <h5 class="modal-title fw-bold text-main">Generate Developer API Key</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form id="new-key-form">
+                    <div class="mb-3">
+                        <label class="form-label extra-small fw-bold text-uppercase text-muted">Key Identifier / Name</label>
+                        <input type="text" id="key-name" class="form-control rounded-3" required placeholder="e.g. edge-cluster-eu-west">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label extra-small fw-bold text-uppercase text-muted">Key Environment</label>
+                        <select class="form-select rounded-3">
+                            <option value="prod">Production (Full Access)</option>
+                            <option value="stage">Staging &amp; Sandbox</option>
+                            <option value="readonly">Read-Only Telemetry</option>
+                        </select>
+                    </div>
+                    <div class="d-flex gap-2 pt-2">
+                        <button type="button" class="btn btn-light rounded-pill px-4 w-100 extra-small fw-bold" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary rounded-pill px-4 w-100 shadow-sm extra-small fw-bold">Create Token</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 {{/admin-layout}}

@@ -1,94 +1,137 @@
-/* --- 1. Global Design Tokens --- */
-:root {
-    /* Colors */
-    --elite-primary: #6366f1;
-    --elite-primary-rgb: 99, 102, 241;
-    --elite-secondary: #94a3b8;
-    --elite-success: #10b981;
-    --elite-danger: #ef4444;
-    --elite-warning: #f59e0b;
-    --elite-info: #0ea5e9;
-    --elite-dark: #1e293b;
+/* ==========================================================================
+   XIVIG ELITE - DESIGN SYSTEM TOKENS & FOUNDATIONS
+   Source of Truth: XIVIG Elite Design System & Implementation Blueprint
+   ========================================================================== */
 
-    /* Brand specific tokens */
-    --xivig-primary: #6366f1;
-    --xivig-primary-glow: rgba(99, 102, 241, 0.15);
-    --xivig-dark: #0f172a;
-    --xivig-secondary: #64748b;
+:root {
+    /* --- Brand & Semantic Palette (From Blueprint Page 5 & 17) --- */
+    --xv-brand: #4F6BFF;
+    --xv-brand-hover: #3548D4;
+    --xv-brand-active: #2938B8;
+    --xv-accent: #20C5D7;
+    --xv-violet: #8B5CF6;
+
+    /* Surfaces & Layout Canvas */
+    --xv-canvas: #F4F6FB;
+    --xv-surface: #FFFFFF;
+    --xv-sidebar: #101B33;
+    --xv-sidebar-hover: rgba(255, 255, 255, 0.05);
+    --xv-sidebar-active: rgba(79, 107, 255, 0.14);
+
+    /* Typography & Neutral Colors */
+    --xv-text: #111827;
+    --xv-muted: #667085;
+    --xv-border: #E5EAF2;
+
+    /* Status Tokens */
+    --xv-success: #12B981;
+    --xv-warning: #F5A524;
+    --xv-danger: #EF5A6F;
+    --xv-info: #3B82F6;
+
+    /* Status Soft Fills & Text (From Blueprint Page 7) */
+    --xv-badge-success-bg: #E8F8F1;
+    --xv-badge-success-text: #087B55;
+    --xv-badge-warning-bg: #FFF5DF;
+    --xv-badge-warning-text: #9A6200;
+    --xv-badge-danger-bg: #FFF0F1;
+    --xv-badge-danger-text: #B42335;
+    --xv-badge-info-bg: #EEF4FF;
+    --xv-badge-info-text: #3159B8;
+
+    /* Geometry & Spacing (Base Unit: 4px) */
+    --xv-radius-card: 14px;
+    --xv-radius-control: 9px;
+    --xv-radius-pill: 999px;
+    --xv-shadow-overlay: 0 16px 40px rgba(16, 27, 51, 0.14);
+    --xv-sidebar-width: 256px;
+    --xv-sidebar-collapsed-width: 76px;
+    --xv-topbar-height: 68px;
+    --xv-content-gap: 24px;
+
+    /* --- Application Layer Aliases (Compatible with Bootstrap & Components) --- */
+    --elite-primary: var(--xv-brand);
+    --elite-primary-rgb: 79, 107, 255;
+    --elite-secondary: var(--xv-muted);
+    --elite-success: var(--xv-success);
+    --elite-danger: var(--xv-danger);
+    --elite-warning: var(--xv-warning);
+    --elite-info: var(--xv-info);
+    --elite-dark: var(--xv-sidebar);
+
+    --bs-primary: var(--xv-brand);
+    --bs-primary-rgb: 79, 107, 255;
+
+    --xivig-primary: var(--xv-brand);
+    --xivig-primary-glow: rgba(79, 107, 255, 0.15);
+    --xivig-dark: var(--xv-sidebar);
+    --xivig-secondary: var(--xv-muted);
 
     /* Theme Tokens - Default (Light) */
-    --bg-body: #f8fafc;
-    --text-main: #1e293b;
-    --text-muted: #64748b;
-    --card-bg: rgba(255, 255, 255, 0.9);
+    --bg-body: var(--xv-canvas);
+    --text-main: var(--xv-text);
+    --text-muted: var(--xv-muted);
+    --card-bg: var(--xv-surface);
     --card-bg-rgb: 255, 255, 255;
-    --card-border: rgba(0, 0, 0, 0.05);
-    --header-bg: rgba(255, 255, 255, 0.9);
-    --sidebar-bg: #142127;
-    --sidebar-text: rgba(255, 255, 255, 0.6);
-    --sidebar-active: #ffffff;
+    --card-border: var(--xv-border);
+    --header-bg: var(--xv-surface);
+    --sidebar-bg: var(--xv-sidebar);
+    --sidebar-text: #94A3B8;
+    --sidebar-active: #FFFFFF;
 
     /* Layout & Surface */
-    --bg-subtle: #f8fafc;
-    --elite-radius: 24px;
-    --elite-soft: rgba(99, 102, 241, 0.05);
-    --elite-primary-soft: rgba(99, 102, 241, 0.1);
-    --elite-success-soft: rgba(16, 185, 129, 0.1);
-    --elite-danger-soft: rgba(239, 68, 68, 0.1);
-    --elite-warning-soft: rgba(245, 158, 11, 0.1);
-    --elite-info-soft: rgba(14, 165, 233, 0.1);
+    --bg-subtle: #F8FAFC;
+    --elite-radius: var(--xv-radius-card);
+    --elite-soft: rgba(79, 107, 255, 0.05);
+    --elite-primary-soft: rgba(79, 107, 255, 0.1);
+    --elite-success-soft: rgba(18, 185, 129, 0.1);
+    --elite-danger-soft: rgba(239, 90, 111, 0.1);
+    --elite-warning-soft: rgba(245, 165, 36, 0.1);
+    --elite-info-soft: rgba(59, 130, 246, 0.1);
 
-    /* Animations & Shadows */
-    --transition-elite: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    --card-shadow-hover: 0 25px 50px rgba(79, 70, 229, 0.12);
-    
-    /* Legacy Compat */
-    --primary-accent: #6366f1;
-    --primary-hover: #4f46e5;
-    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #1d4ed8 100%);
-    --elite-gradient: var(--primary-gradient);
-    --glass-dark: rgba(15, 23, 42, 0.85);
+    /* Animations & Shadows (Flat / Subtle as required by blueprint) */
+    --transition-elite: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --card-shadow-hover: 0 6px 16px rgba(16, 27, 51, 0.08);
 
-    /* Xivig Specific UI Tokens */
-    --xivig-card-bg: #ffffff;
-    --xivig-border-color: rgba(0, 0, 0, 0.05);
-    --xivig-input-bg: #f8f9fa;
-    --xivig-qty-bg: #f1f3f5;
-    --xivig-qty-btn: #ffffff;
+    --primary-accent: var(--xv-brand);
+    --primary-hover: var(--xv-brand-hover);
+    --primary-gradient: var(--xv-brand);
+    --elite-gradient: var(--xv-brand);
 }
 
-/* --- Dark Theme Tokens --- */
+/* --- Dark Theme Tokens (Blueprint Page 17) --- */
+[data-theme="dark"],
 [data-bs-theme="dark"] {
-    --bg-body: #0b0f12;
-    --text-main: #e2e8f0;
-    --text-muted: #94a3b8;
-    --card-bg: #15191c;
-    --card-bg-rgb: 21, 25, 28;
-    --card-border: rgba(255, 255, 255, 0.08);
-    --header-bg: rgba(21, 25, 28, 0.9);
-    
-    --sidebar-bg: #090e11;
-    --sidebar-text: rgba(255, 255, 255, 0.5);
-    --sidebar-active: var(--elite-primary);
+    --xv-canvas: #0B1220;
+    --xv-surface: #111C2E;
+    --xv-sidebar: #080F1D;
+    --xv-sidebar-hover: rgba(255, 255, 255, 0.04);
+    --xv-sidebar-active: rgba(79, 107, 255, 0.22);
+    --xv-text: #F2F5FA;
+    --xv-muted: #A0AEC0;
+    --xv-border: #26344A;
 
-    /* Layout & Surface */
-    --bg-subtle: #111518;
-    --bs-heading-color: #f8fafc;
-    --elite-primary-soft: rgba(99, 102, 241, 0.15);
-    --elite-success-soft: rgba(16, 185, 129, 0.15);
-    --elite-danger-soft: rgba(239, 68, 68, 0.15);
-    --elite-warning-soft: rgba(245, 158, 11, 0.15);
-    --elite-info-soft: rgba(14, 165, 233, 0.15);
+    --bg-body: var(--xv-canvas);
+    --text-main: var(--xv-text);
+    --text-muted: var(--xv-muted);
+    --card-bg: var(--xv-surface);
+    --card-bg-rgb: 17, 28, 46;
+    --card-border: var(--xv-border);
+    --header-bg: var(--xv-surface);
+    --sidebar-bg: var(--xv-sidebar);
+    --sidebar-text: #94A3B8;
+    --sidebar-active: #FFFFFF;
 
-    /* Shadows in dark mode */
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    --xivig-primary-glow: rgba(99, 102, 241, 0.25);
+    --bg-subtle: #0E1726;
+    --bs-heading-color: #F8FAFC;
+    --elite-primary-soft: rgba(79, 107, 255, 0.2);
+    --elite-success-soft: rgba(18, 185, 129, 0.15);
+    --elite-danger-soft: rgba(239, 90, 111, 0.15);
+    --elite-warning-soft: rgba(245, 165, 36, 0.15);
+    --elite-info-soft: rgba(59, 130, 246, 0.15);
 
-    /* Xivig Specific Dark UI Tokens */
-    --xivig-card-bg: rgba(255, 255, 255, 0.03);
-    --xivig-border-color: rgba(255, 255, 255, 0.1);
-    --xivig-input-bg: rgba(255, 255, 255, 0.05);
-    --xivig-qty-bg: rgba(255, 255, 255, 0.08);
-    --xivig-qty-btn: rgba(255, 255, 255, 0.1);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --card-shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.45);
+    --xv-shadow-overlay: 0 16px 40px rgba(0, 0, 0, 0.6);
 }

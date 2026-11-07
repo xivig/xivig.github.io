@@ -1,65 +1,225 @@
-{{#> admin-layout title="Calendar" parentTitle="Apps" }}
+{{#> admin-layout title="Calendar" parentTitle="Apps" actionText="Create event" }}
 
 <div class="row g-4">
-                        <div class="col-xl-3 col-lg-4">
-                            <div class="card border-0 shadow-sm mb-4 rounded-3">
-                                <div class="card-header bg-white py-3 border-bottom">
-                                    <h6 class="mb-0 fw-bold">Draggable Events</h6>
-                                </div>
-                                <div class="card-body" id="external-events">
-                                    <div class="fc-event bg-success text-white border-0 p-2 mb-2 rounded-2 cursor-move"
-                                        data-class="bg-success">Lunch
-                                    </div>
-                                    <div class="fc-event bg-warning text-dark border-0 p-2 mb-2 rounded-2 cursor-move"
-                                        data-class="bg-warning">Go home
-                                    </div>
-                                    <div class="fc-event bg-info text-white border-0 p-2 mb-2 rounded-2 cursor-move"
-                                        data-class="bg-info">Do
-                                        homework
-                                    </div>
-                                    <div class="fc-event bg-primary text-white border-0 p-2 mb-2 rounded-2 cursor-move"
-                                        data-class="bg-primary">Work on UI design
-                                    </div>
-                                    <div class="fc-event bg-danger text-white border-0 p-2 mb-3 rounded-2 cursor-move"
-                                        data-class="bg-danger">Sleep tight
-                                    </div>
+    <!-- Left Sidebar: Filters, Quick Event & Draggables (4 cols on lg, 3 on xl) -->
+    <div class="col-xl-3 col-lg-4">
+        <!-- 1. Categories & Filter Checklist -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-transparent py-3.5 px-4 border-bottom d-flex align-items-center justify-content-between">
+                <h6 class="mb-0 fw-bold fs-6">Categories</h6>
+                <span class="badge bg-primary-subtle text-primary extra-small rounded-pill fw-bold px-2 py-0.5">Filter</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="d-flex flex-column gap-2.5">
+                    <label class="form-check d-flex align-items-center gap-2 cursor-pointer mb-0">
+                        <input class="form-check-input calendar-category-filter me-1" type="checkbox" value="work" checked>
+                        <span class="d-inline-block rounded-circle me-1" style="width: 10px; height: 10px; background: #4F6BFF;"></span>
+                        <span class="small fw-semibold text-secondary">Work &amp; Architecture</span>
+                    </label>
+                    <label class="form-check d-flex align-items-center gap-2 cursor-pointer mb-0">
+                        <input class="form-check-input calendar-category-filter me-1" type="checkbox" value="meeting" checked>
+                        <span class="d-inline-block rounded-circle me-1" style="width: 10px; height: 10px; background: #20C5D7;"></span>
+                        <span class="small fw-semibold text-secondary">Client Meetings</span>
+                    </label>
+                    <label class="form-check d-flex align-items-center gap-2 cursor-pointer mb-0">
+                        <input class="form-check-input calendar-category-filter me-1" type="checkbox" value="release" checked>
+                        <span class="d-inline-block rounded-circle me-1" style="width: 10px; height: 10px; background: #8B5CF6;"></span>
+                        <span class="small fw-semibold text-secondary">Release Sprints</span>
+                    </label>
+                    <label class="form-check d-flex align-items-center gap-2 cursor-pointer mb-0">
+                        <input class="form-check-input calendar-category-filter me-1" type="checkbox" value="urgent" checked>
+                        <span class="d-inline-block rounded-circle me-1" style="width: 10px; height: 10px; background: #EF5A6F;"></span>
+                        <span class="small fw-semibold text-secondary">Urgent &amp; Alerts</span>
+                    </label>
+                    <label class="form-check d-flex align-items-center gap-2 cursor-pointer mb-0">
+                        <input class="form-check-input calendar-category-filter me-1" type="checkbox" value="personal" checked>
+                        <span class="d-inline-block rounded-circle me-1" style="width: 10px; height: 10px; background: #12B981;"></span>
+                        <span class="small fw-semibold text-secondary">Personal Schedule</span>
+                    </label>
+                </div>
+            </div>
+        </div>
 
-                                    <div class="form-check small mt-3">
-                                        <input class="form-check-input" type="checkbox" id="drop-remove">
-                                        <label class="form-check-label text-muted" for="drop-remove">Remove after
-                                            drop</label>
-                                    </div>
-                                </div>
+        <!-- 2. Draggable Scheduled Event Chips -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-transparent py-3.5 px-4 border-bottom d-flex align-items-center justify-content-between">
+                <h6 class="mb-0 fw-bold fs-6">Draggable Queue</h6>
+                <small class="text-muted extra-small">Drag into grid</small>
+            </div>
+            <div class="card-body p-4">
+                <div id="external-events" class="d-flex flex-column gap-2 mb-3">
+                    <div class="fc-event bg-primary text-white p-2.5 rounded-3 cursor-move shadow-sm d-flex align-items-center justify-content-between"
+                        data-class="bg-primary">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-code-slash small"></i>
+                            <span class="small fw-bold">Refactor Auth Guard</span>
+                        </div>
+                        <i class="bi bi-grip-vertical opacity-50 small"></i>
+                    </div>
+                    <div class="fc-event bg-info text-white p-2.5 rounded-3 cursor-move shadow-sm d-flex align-items-center justify-content-between"
+                        data-class="bg-info">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-chat-left-dots small"></i>
+                            <span class="small fw-bold">Stakeholder Briefing</span>
+                        </div>
+                        <i class="bi bi-grip-vertical opacity-50 small"></i>
+                    </div>
+                    <div class="fc-event bg-success text-white p-2.5 rounded-3 cursor-move shadow-sm d-flex align-items-center justify-content-between"
+                        data-class="bg-success">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-cup-hot small"></i>
+                            <span class="small fw-bold">Team Lunch Session</span>
+                        </div>
+                        <i class="bi bi-grip-vertical opacity-50 small"></i>
+                    </div>
+                    <div class="fc-event bg-warning text-dark p-2.5 rounded-3 cursor-move shadow-sm d-flex align-items-center justify-content-between"
+                        data-class="bg-warning">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-shield-check small"></i>
+                            <span class="small fw-bold">Security Compliance</span>
+                        </div>
+                        <i class="bi bi-grip-vertical opacity-50 small"></i>
+                    </div>
+                </div>
+
+                <div class="form-check small mt-2">
+                    <input class="form-check-input" type="checkbox" id="drop-remove" checked>
+                    <label class="form-check-label text-muted" for="drop-remove">
+                        Remove from queue after drop
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Quick Event Creator -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-transparent py-3.5 px-4 border-bottom">
+                <h6 class="mb-0 fw-bold fs-6">Quick Add Event</h6>
+            </div>
+            <div class="card-body p-4">
+                <div class="d-flex gap-2 mb-3" id="event-color-picker">
+                    <button type="button" class="btn btn-primary p-2 rounded-2 border-0 color-btn active" data-color="bg-primary" title="Indigo" style="width: 32px; height: 32px;"></button>
+                    <button type="button" class="btn btn-info p-2 rounded-2 border-0 color-btn" data-color="bg-info" title="Teal" style="width: 32px; height: 32px;"></button>
+                    <button type="button" class="btn btn-success p-2 rounded-2 border-0 color-btn" data-color="bg-success" title="Emerald" style="width: 32px; height: 32px;"></button>
+                    <button type="button" class="btn btn-warning p-2 rounded-2 border-0 color-btn" data-color="bg-warning" title="Amber" style="width: 32px; height: 32px;"></button>
+                    <button type="button" class="btn btn-danger p-2 rounded-2 border-0 color-btn" data-color="bg-danger" title="Rose" style="width: 32px; height: 32px;"></button>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Event Title..." id="new-event-title">
+                    <button class="btn btn-primary px-3 fw-bold" id="add-new-event">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Team Attendees -->
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-transparent py-3.5 px-4 border-bottom d-flex align-items-center justify-content-between">
+                <h6 class="mb-0 fw-bold fs-6">Active Attendees</h6>
+                <span class="badge bg-success-subtle text-success extra-small fw-bold px-2 py-0.5 rounded-pill">4 Online</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="d-flex flex-column gap-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center gap-2.5">
+                            <div class="position-relative">
+                                <img src="/app/src/images/photo1.jpg" class="rounded-circle" width="34" height="34" alt="Alex">
+                                <span class="position-absolute bottom-0 end-0 p-1 bg-success border border-white rounded-circle"></span>
                             </div>
-
-                            <div class="card border-0 shadow-sm rounded-3">
-                                <div class="card-header bg-white py-3 border-bottom">
-                                    <h6 class="mb-0 fw-bold">Create Event</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="d-flex gap-1 mb-3" id="event-color-picker">
-                                        <button class="btn btn-primary p-2 rounded-1 border-0 color-btn color-btn-size"></button>
-                                        <button class="btn btn-warning p-2 rounded-1 border-0 color-btn color-btn-size"></button>
-                                        <button class="btn btn-success p-2 rounded-1 border-0 color-btn color-btn-size"></button>
-                                        <button class="btn btn-danger p-2 rounded-1 border-0 color-btn color-btn-size"></button>
-                                        <button class="btn btn-secondary p-2 rounded-1 border-0 color-btn color-btn-size"></button>
-                                    </div>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control border-end-0 bg-light"
-                                            placeholder="Event Title" id="new-event-title">
-                                        <button class="btn btn-primary px-3 fw-bold" id="add-new-event">Add</button>
-                                    </div>
-                                </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold small">Alex Morgan</h6>
+                                <span class="text-muted extra-small">Lead Architect</span>
                             </div>
                         </div>
+                        <span class="badge bg-light text-muted border extra-small">Host</span>
+                    </div>
 
-                        <div class="col-xl-9 col-lg-8">
-                            <div class="card border-0 shadow-sm rounded-3">
-                                <div class="card-body p-4">
-                                    <div id="calendar"></div>
-                                </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center gap-2.5">
+                            <div class="position-relative">
+                                <img src="/app/src/images/photo2.jpg" class="rounded-circle" width="34" height="34" alt="Sarah">
+                                <span class="position-absolute bottom-0 end-0 p-1 bg-success border border-white rounded-circle"></span>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold small">Sarah Chen</h6>
+                                <span class="text-muted extra-small">UI/UX Designer</span>
                             </div>
                         </div>
-                    
+                        <span class="badge bg-light text-muted border extra-small">Invited</span>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center gap-2.5">
+                            <div class="position-relative">
+                                <img src="/app/src/images/photo3.jpg" class="rounded-circle" width="34" height="34" alt="David">
+                                <span class="position-absolute bottom-0 end-0 p-1 bg-warning border border-white rounded-circle"></span>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold small">David Kim</h6>
+                                <span class="text-muted extra-small">Backend Engineer</span>
+                            </div>
+                        </div>
+                        <span class="badge bg-light text-muted border extra-small">Invited</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Calendar Stage (8 cols on lg, 9 on xl) -->
+    <div class="col-xl-9 col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-4">
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Elite Create / Edit Event Modal -->
+<div class="modal fade" id="createEventModal" tabindex="-1" aria-labelledby="createEventModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+            <div class="modal-header border-bottom py-3.5 px-4 bg-light">
+                <h5 class="modal-title fw-bold" id="createEventModalLabel">Schedule New Event</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="createEventForm">
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Event Title</label>
+                        <input type="text" class="form-control" id="modalEventTitle" placeholder="e.g. Q3 Sprint Planning" required>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Event Date</label>
+                            <input type="date" class="form-control" id="modalEventDate" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Category</label>
+                            <select class="form-select" id="modalEventCategory">
+                                <option value="fc-event-indigo" selected>Work &amp; Architecture</option>
+                                <option value="fc-event-cyan">Client Meeting</option>
+                                <option value="fc-event-purple">Release Sprint</option>
+                                <option value="fc-event-warning">Architecture Review</option>
+                                <option value="fc-event-danger">Urgent / Alert</option>
+                                <option value="fc-event-success">Personal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Description (Optional)</label>
+                        <textarea class="form-control" rows="3" placeholder="Add conference link, agenda or notes..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-top py-3 px-4 bg-light">
+                    <button type="button" class="btn btn-light rounded-pill px-4 border" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold">Save Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 {{/admin-layout}}

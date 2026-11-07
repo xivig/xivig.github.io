@@ -1,99 +1,241 @@
 {{#> admin-layout title="Checkout" parentTitle="Ecommerce" }}
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <h2 class="mb-4">Checkout</h2>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Order Summary</h5>
-                    <div id="order-summary"></div>
-                    <hr>
-                    <h5 class="card-title">Payment</h5>
-                    <form id="payment-form">
-                        <div id="payment-element">
-                        <!-- A Stripe Element will be inserted here. -->
-                        </div>
-                        <button id="submit" class="btn btn-primary mt-4">Pay now</button>
-                        <div id="error-message" class="mt-2 text-danger"></div>
-                    </form>
+<!-- Elite Checkout Flow: 8-col Form + 4-col Order Summary Rail -->
+<div class="row g-4">
+    <!-- Left Column: Shipping & Payment (8 cols) -->
+    <div class="col-lg-8">
+        <!-- 1. Contact & Shipping Address -->
+        <div class="card card-box border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-card py-3 px-4 border-bottom d-flex align-items-center justify-content-between">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <span class="badge bg-primary text-white rounded-circle me-2 px-2 py-1">1</span> Shipping &amp; Contact Details
+                </h6>
+                <span class="badge bg-primary-subtle text-primary extra-small fw-bold">STEP 1 OF 2</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">First Name</label>
+                        <input type="text" class="form-control rounded-3" id="checkoutFirstName" value="Emma" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Last Name</label>
+                        <input type="text" class="form-control rounded-3" id="checkoutLastName" value="Wilson" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Email Address</label>
+                        <input type="email" class="form-control rounded-3" id="checkoutEmail" value="emma.w@example.com" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Phone Number</label>
+                        <input type="tel" class="form-control rounded-3" id="checkoutPhone" value="+1 (555) 234-8901">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Street Address</label>
+                        <input type="text" class="form-control rounded-3" id="checkoutStreet" value="742 Evergreen Terrace" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">City</label>
+                        <input type="text" class="form-control rounded-3" id="checkoutCity" value="Springfield" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">State / Province</label>
+                        <input type="text" class="form-control rounded-3" id="checkoutState" value="Oregon">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">ZIP / Postal Code</label>
+                        <input type="text" class="form-control rounded-3" id="checkoutZip" value="97477" required>
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- 2. Payment Method -->
+        <div class="card card-box border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-card py-3 px-4 border-bottom d-flex align-items-center justify-content-between">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <span class="badge bg-primary text-white rounded-circle me-2 px-2 py-1">2</span> Payment Method
+                </h6>
+                <span class="badge bg-success-subtle text-success extra-small fw-bold">
+                    <i class="bi bi-shield-lock me-1"></i> 256-BIT ENCRYPTED
+                </span>
+            </div>
+            <div class="card-body p-4">
+                <!-- Payment Options Radio Grid -->
+                <div class="row g-3 mb-4">
+                    <div class="col-sm-4">
+                        <div class="border rounded-3 p-3 text-center cursor-pointer payment-option-card active" data-method="card" style="border-color: #4F6BFF !important; background: #EEF2FF;">
+                            <i class="bi bi-credit-card-2-front fs-3 text-primary mb-1 d-block"></i>
+                            <span class="fw-bold text-dark fs-14 d-block">Credit Card</span>
+                            <small class="text-muted extra-small">Visa, MC, Amex</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="border rounded-3 p-3 text-center cursor-pointer payment-option-card" data-method="paypal">
+                            <i class="bi bi-paypal fs-3 text-info mb-1 d-block"></i>
+                            <span class="fw-bold text-dark fs-14 d-block">PayPal</span>
+                            <small class="text-muted extra-small">Fast &amp; easy</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="border rounded-3 p-3 text-center cursor-pointer payment-option-card" data-method="apple">
+                            <i class="bi bi-apple fs-3 text-dark mb-1 d-block"></i>
+                            <span class="fw-bold text-dark fs-14 d-block">Apple Pay</span>
+                            <small class="text-muted extra-small">1-touch auth</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credit Card Fields Form -->
+                <div id="creditCardSection">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Card Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-0"><i class="bi bi-credit-card text-muted"></i></span>
+                                <input type="text" class="form-control rounded-end-3" placeholder="4242 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 4242" value="4242 9821 7349 1109">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Cardholder Name</label>
+                            <input type="text" class="form-control rounded-3" value="Emma Wilson">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Expiry Date</label>
+                            <input type="text" class="form-control rounded-3" placeholder="MM/YY" value="08/29">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">CVC / CVV</label>
+                            <input type="password" class="form-control rounded-3" placeholder="123" maxlength="4" value="882">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Billing Address Toggle -->
+                <div class="form-check mt-4">
+                    <input class="form-check-input" type="checkbox" id="sameAddressCheck" checked>
+                    <label class="form-check-label fs-14 fw-medium text-dark" for="sameAddressCheck">
+                        Billing address is identical to shipping address
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Order Review & Summary (4 cols) -->
+    <div class="col-lg-4">
+        <div class="card card-box border-0 shadow-sm rounded-4 sticky-top" style="top: 90px;">
+            <div class="card-header bg-card py-3 px-4 border-bottom d-flex align-items-center justify-content-between">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-bag-check me-2 text-primary"></i> Order Review
+                </h6>
+                <a href="ecommerce-cart.html" class="extra-small fw-bold text-primary text-decoration-none">Edit Cart</a>
+            </div>
+
+            <div class="card-body p-4">
+                <!-- Mini items preview -->
+                <div class="mb-3" id="checkoutItemsList">
+                    <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
+                        <div class="d-flex align-items-center gap-2.5">
+                            <div class="bg-light p-1.5 rounded-2 border" style="width: 36px; height: 36px;">
+                                <i class="bi bi-headphones text-primary fs-5 d-flex justify-content-center"></i>
+                            </div>
+                            <div>
+                                <span class="fw-bold text-dark fs-13 d-block">Studio Wireless ANC</span>
+                                <small class="text-muted extra-small">Qty: 1</small>
+                            </div>
+                        </div>
+                        <span class="fw-bold text-dark fs-14">$299.00</span>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
+                        <div class="d-flex align-items-center gap-2.5">
+                            <div class="bg-light p-1.5 rounded-2 border" style="width: 36px; height: 36px;">
+                                <i class="bi bi-smartwatch text-info fs-5 d-flex justify-content-center"></i>
+                            </div>
+                            <div>
+                                <span class="fw-bold text-dark fs-13 d-block">Chrono Titan Watch</span>
+                                <small class="text-muted extra-small">Qty: 1</small>
+                            </div>
+                        </div>
+                        <span class="fw-bold text-dark fs-14">$420.00</span>
+                    </div>
+                </div>
+
+                <!-- Price breakdown -->
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted fs-14">Items Subtotal</span>
+                    <span class="fw-semibold text-dark">$719.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted fs-14">Express Shipping</span>
+                    <span class="fw-semibold text-success">Free ($0.00)</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <span class="text-muted fs-14">Estimated Tax (10%)</span>
+                    <span class="fw-semibold text-dark">$71.90</span>
+                </div>
+
+                <hr class="my-3">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h5 class="fw-bold text-dark mb-0">Total Due</h5>
+                        <small class="text-muted extra-small">All taxes included</small>
+                    </div>
+                    <h3 class="fw-bold text-primary mb-0">$790.90</h3>
+                </div>
+
+                <!-- Complete Payment Button -->
+                <button type="button" class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow-primary mb-3" id="completePaymentBtn">
+                    <span class="btn-text"><i class="bi bi-shield-check me-1"></i> Complete &amp; Pay $790.90</span>
+                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                </button>
+
+                <p class="text-center text-muted extra-small mb-0">
+                    By clicking Complete &amp; Pay you agree to the Terms of Service &amp; Privacy Policy.
+                </p>
             </div>
         </div>
     </div>
 </div>
 
-<script src="https://js.stripe.com/v3/"></script>
+<script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+        // Payment option switching
+        const optionCards = document.querySelectorAll('.payment-option-card');
+        optionCards.forEach(card => {
+            card.addEventListener('click', () => {
+                optionCards.forEach(c => {
+                    c.classList.remove('active');
+                    c.style.borderColor = '';
+                    c.style.background = '';
+                });
+                card.classList.add('active');
+                card.style.borderColor = '#4F6BFF';
+                card.style.background = '#EEF2FF';
+            });
+        });
 
-<script>
-    document.addEventListener('DOMContentLoaded', async function () {
-        const orderSummary = document.getElementById('order-summary');
-        const cart = JSON.parse(localStorage.getItem('cart'));
-        let subtotal = 0;
+        // Complete Payment simulation
+        const payBtn = document.getElementById('completePaymentBtn');
+        if (payBtn) {
+            payBtn.addEventListener('click', () => {
+                const btnText = payBtn.querySelector('.btn-text');
+                const spinner = payBtn.querySelector('.spinner-border');
 
-        if (cart) {
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
-                orderSummary.innerHTML += `
-                    <div class="d-flex justify-content-between">
-                        <p>${item.name} x ${item.quantity}</p>
-                        <p>$${itemTotal.toFixed(2)}</p>
-                    </div>
-                `;
+                btnText.textContent = 'Processing Payment...';
+                spinner?.classList.remove('d-none');
+                payBtn.disabled = true;
+
+                setTimeout(() => {
+                    // Clear cart on successful checkout
+                    localStorage.removeItem('cart');
+                    window.location.href = 'payment-success.html';
+                }, 1200);
             });
         }
-        
-        const tax = subtotal * 0.1;
-        const total = subtotal + tax;
-        
-        orderSummary.innerHTML += `
-            <hr>
-            <div class="d-flex justify-content-between">
-                <p>Subtotal</p>
-                <p>$${subtotal.toFixed(2)}</p>
-            </div>
-            <div class="d-flex justify-content-between">
-                <p>Tax (10%)</p>
-                <p>$${tax.toFixed(2)}</p>
-            </div>
-            <div class="d-flex justify-content-between">
-                <h5>Total</h5>
-                <h5>$${total.toFixed(2)}</h5>
-            </div>
-        `;
-
-        const stripe = Stripe('YOUR_STRIPE_KEY');
-        
-        const response = await fetch('http://127.0.0.1:8000/api/stripe/create-payment-intent', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ cart: cart }),
-        });
-        const { clientSecret } = await response.json();
-
-        const elements = stripe.elements({ clientSecret });
-        const paymentElement = elements.create('payment');
-        paymentElement.mount('#payment-element');
-
-        const form = document.getElementById('payment-form');
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const { error } = await stripe.confirmPayment({
-                elements,
-                confirmParams: {
-                    return_url: window.location.origin + '/app/pages/ecommerce/payment-success.html',
-                },
-            });
-
-            if (error) {
-                const messageContainer = document.getElementById('error-message');
-                messageContainer.textContent = error.message;
-            }
-        });
     });
 </script>
+
 {{/admin-layout}}

@@ -1,190 +1,237 @@
 {{#> admin-layout title="Order Details" parentTitle="Ecommerce" }}
 
-<div class="row justify-content-center">
-    <div class="col-lg-10">
+<!-- Order Details: 8-col Order Tracking & Line Items + 4-col Customer & Delivery Rail -->
+<div class="row g-4">
+    <!-- Left Column: Order Content & Tracking (8 cols) -->
+    <div class="col-lg-8">
+        <!-- Order Header & Fulfillment Status Stepper -->
+        <div class="card card-box border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-card py-3 px-4 border-bottom d-flex align-items-center justify-content-between">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h5 class="fw-bold text-dark mb-0">Order #ORD-7891</h5>
+                        <span class="badge bg-success-subtle text-success px-2.5 py-1 rounded-pill extra-small fw-bold">
+                            <i class="bi bi-check-circle me-1"></i> Paid
+                        </span>
+                        <span class="badge bg-primary-subtle text-primary px-2.5 py-1 rounded-pill extra-small fw-bold">
+                            <i class="bi bi-truck me-1"></i> Delivered
+                        </span>
+                    </div>
+                    <small class="text-muted extra-small">Placed on Oct 24, 2026 at 09:42 AM &bull; Payment via Visa ending in 4242</small>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="/invoice.html" class="btn btn-outline-secondary btn-sm rounded-pill px-3 fw-bold">
+                        <i class="bi bi-printer me-1"></i> Invoice
+                    </a>
+                    <a href="edit-order.html" class="btn btn-primary btn-sm rounded-pill px-3 fw-bold">
+                        <i class="bi bi-pencil me-1"></i> Edit Order
+                    </a>
+                </div>
+            </div>
 
-        <!-- Breadcrumb & Header -->
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0 small">
-                    <li class="breadcrumb-item"><a href="/index.html" class="text-decoration-none text-muted">Home</a></li>
-                    <li class="breadcrumb-item"><a href="/app/pages/ecommerce/ecommerce-orders.html" class="text-decoration-none text-muted">Orders</a></li>
-                    <li class="breadcrumb-item active fw-bold text-primary" aria-current="page">Order #ORD-7891</li>
-                </ol>
-            </nav>
-            <div class="d-flex gap-2">
-                 <button class="btn btn-light btn-sm rounded-pill px-4 border" onclick="history.back()">
-                    <i class="bi bi-arrow-left me-2"></i> Back
-                </button>
-                <a href="edit-order.html" class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm">
-                    <i class="bi bi-pencil me-2"></i> Edit Order
-                </a>
+            <!-- Fulfillment Progress Stepper -->
+            <div class="card-body p-4 border-bottom bg-light-subtle">
+                <div class="row text-center g-2 position-relative">
+                    <div class="col-3">
+                        <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-1" style="width: 32px; height: 32px;">
+                            <i class="bi bi-check-lg"></i>
+                        </div>
+                        <span class="d-block fw-bold text-dark fs-12">Confirmed</span>
+                        <small class="text-muted extra-small">Oct 24, 09:42 AM</small>
+                    </div>
+                    <div class="col-3">
+                        <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-1" style="width: 32px; height: 32px;">
+                            <i class="bi bi-check-lg"></i>
+                        </div>
+                        <span class="d-block fw-bold text-dark fs-12">Packed</span>
+                        <small class="text-muted extra-small">Oct 24, 11:20 AM</small>
+                    </div>
+                    <div class="col-3">
+                        <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-1" style="width: 32px; height: 32px;">
+                            <i class="bi bi-check-lg"></i>
+                        </div>
+                        <span class="d-block fw-bold text-dark fs-12">Shipped</span>
+                        <small class="text-muted extra-small">Oct 24, 03:45 PM</small>
+                    </div>
+                    <div class="col-3">
+                        <div class="rounded-circle bg-success text-white d-inline-flex align-items-center justify-content-center mb-1" style="width: 32px; height: 32px;">
+                            <i class="bi bi-house-door-fill"></i>
+                        </div>
+                        <span class="d-block fw-bold text-success fs-12">Delivered</span>
+                        <small class="text-muted extra-small">Oct 26, 02:15 PM</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Line Items -->
+            <div class="card-body p-4">
+                <h6 class="fw-bold text-dark mb-3">Items in this order (2)</h6>
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0">
+                        <thead class="bg-light-subtle">
+                            <tr class="text-muted extra-small text-uppercase fw-bold letter-spacing-1">
+                                <th>Item</th>
+                                <th class="text-center">SKU</th>
+                                <th class="text-end">Price</th>
+                                <th class="text-center">Qty</th>
+                                <th class="text-end pe-3">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-light p-2 rounded-3 me-3 border" style="width: 48px; height: 48px;">
+                                            <i class="bi bi-laptop text-primary fs-4 d-flex justify-content-center"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold text-dark mb-0 fs-14">MacBook Pro M3 Max</h6>
+                                            <p class="text-muted extra-small mb-0">16-inch &bull; Space Black &bull; 1TB SSD</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center"><span class="badge bg-light text-dark fw-medium">MAC-M3-MAX</span></td>
+                                <td class="text-end fw-medium text-dark">$3,499.00</td>
+                                <td class="text-center fw-bold text-dark">1</td>
+                                <td class="text-end pe-3 fw-bold text-dark">$3,499.00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-light p-2 rounded-3 me-3 border" style="width: 48px; height: 48px;">
+                                            <i class="bi bi-headphones text-info fs-4 d-flex justify-content-center"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold text-dark mb-0 fs-14">Studio Wireless ANC Headphones</h6>
+                                            <p class="text-muted extra-small mb-0">Space Grey &bull; Carrying Case Included</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center"><span class="badge bg-light text-dark fw-medium">WH-1000XM5</span></td>
+                                <td class="text-end fw-medium text-dark">$299.00</td>
+                                <td class="text-center fw-bold text-dark">1</td>
+                                <td class="text-end pe-3 fw-bold text-dark">$299.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Totals Calculation -->
+                <div class="row justify-content-end mt-4">
+                    <div class="col-md-5">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted fs-14">Subtotal</span>
+                            <span class="fw-semibold text-dark">$3,798.00</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted fs-14">Discount (VIP Promo)</span>
+                            <span class="fw-semibold text-success">-$200.00</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted fs-14">Express Shipping</span>
+                            <span class="fw-semibold text-success">Free ($0.00)</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="text-muted fs-14">Estimated Tax (8%)</span>
+                            <span class="fw-semibold text-dark">$287.84</span>
+                        </div>
+                        <hr class="my-2">
+                        <div class="d-flex justify-content-between align-items-center pt-2">
+                            <span class="fw-bold text-dark fs-15">Grand Total</span>
+                            <h4 class="fw-bold text-primary mb-0">$3,885.84</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Customer & Shipping (4 cols) -->
+    <div class="col-lg-4">
+        <!-- Customer Profile Card -->
+        <div class="card card-box border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-card py-3 px-4 border-bottom d-flex align-items-center justify-content-between">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-person me-2 text-primary"></i> Customer Details
+                </h6>
+                <span class="badge bg-success-subtle text-success extra-small fw-bold">VIP CLIENT</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="avatar bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 48px; height: 48px; font-size: 1.1rem;">
+                        EW
+                    </div>
+                    <div>
+                        <h6 class="fw-bold text-dark mb-0 fs-15">Emma Wilson</h6>
+                        <small class="text-muted extra-small">12 lifetime orders &bull; $14.2k total</small>
+                    </div>
+                </div>
+                <div class="space-y-2 border-top pt-3">
+                    <div class="d-flex align-items-center gap-2 mb-2 text-muted fs-13">
+                        <i class="bi bi-envelope text-primary"></i>
+                        <span class="text-dark">emma.w@example.com</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 mb-2 text-muted fs-13">
+                        <i class="bi bi-telephone text-primary"></i>
+                        <span class="text-dark">+1 (555) 234-8901</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 text-muted fs-13">
+                        <i class="bi bi-clock-history text-primary"></i>
+                        <span>Customer since Jan 2024</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="row g-4">
-            <!-- Left Column: Order Details & Items -->
-            <div class="col-lg-8">
-                <div class="card border-0 shadow-sm rounded-4 mb-4">
-                    <div class="card-header bg-white p-4 d-flex justify-content-between align-items-center border-0">
-                        <div>
-                            <h4 class="fw-black text-dark mb-1">Order #ORD-7891</h4>
-                            <p class="text-muted small mb-0">October 24, 2026 at 09:42 AM</p>
-                        </div>
-                        <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small fw-bold">
-                            <i class="bi bi-check-circle-fill me-1"></i> Completed
-                        </span>
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="table-responsive">
-                            <table class="table align-middle mb-0">
-                                <thead class="border-bottom">
-                                    <tr class="text-muted small">
-                                        <th class="py-3">Product</th>
-                                        <th class="py-3 text-center">Qty</th>
-                                        <th class="py-3 text-end">Price</th>
-                                        <th class="py-3 text-end">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="py-3">
-                                            <div class="d-flex align-items-center">
-                                                <img src="/app/src/images/product-1.jpg" class="rounded-3 me-3 border" width="60" height="60" alt="Product">
-                                                <div>
-                                                    <h6 class="fw-bold text-dark mb-0">MacBook Pro M3 Max</h6>
-                                                    <p class="text-muted extra-small mb-0">Color: Space Black</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center fw-medium py-3">1</td>
-                                        <td class="text-end fw-medium py-3">$1,299.00</td>
-                                        <td class="text-end fw-black text-dark py-3">$1,299.00</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="card-footer bg-white p-4 border-0">
-                        <div class="row justify-content-end">
-                            <div class="col-md-6">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex justify-content-between px-0 py-2">
-                                        <span class="text-muted">Subtotal</span>
-                                        <span class="fw-medium text-dark">$1,299.00</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between px-0 py-2">
-                                        <span class="text-muted">Shipping</span>
-                                        <span class="fw-medium text-dark">$0.00</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between px-0 py-2 border-top border-2 border-dark mt-2">
-                                        <span class="fw-black text-dark h5 mb-0">Total</span>
-                                        <span class="fw-black text-dark h5 mb-0">$1,299.00</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+        <!-- Shipping & Delivery Card -->
+        <div class="card card-box border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-card py-3 px-4 border-bottom d-flex align-items-center justify-content-between">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-geo-alt me-2 text-primary"></i> Delivery Info
+                </h6>
+                <span class="badge bg-light text-dark extra-small fw-bold">FEDEX EXPRESS</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <span class="d-block extra-small text-muted fw-bold text-uppercase mb-1">Shipping Address</span>
+                    <p class="text-dark fs-14 fw-medium mb-0">
+                        742 Evergreen Terrace<br>
+                        Springfield, OR 97477<br>
+                        United States
+                    </p>
+                </div>
+                <div class="mb-3 pt-2 border-top">
+                    <span class="d-block extra-small text-muted fw-bold text-uppercase mb-1">Tracking Number</span>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <span class="fw-bold text-primary fs-14">#FX-98234190</span>
+                        <a href="#" class="btn btn-sm btn-link text-primary p-0 text-decoration-none">Track</a>
                     </div>
                 </div>
-
-                <div class="card border-0 shadow-sm rounded-4">
-                     <div class="card-header bg-white p-4 border-0">
-                        <h5 class="fw-bold text-dark mb-0">Order History</h5>
-                    </div>
-                    <div class="card-body p-4">
-                        <ul class="timeline">
-                            <li class="timeline-item timeline-item-success">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h6 class="fw-bold">Order Delivered</h6>
-                                    <p class="text-muted small">Your order has been delivered successfully.</p>
-                                    <span class="text-muted extra-small">Oct 26, 2026 - 11:30 AM</span>
-                                </div>
-                            </li>
-                            <li class="timeline-item timeline-item-success">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h6 class="fw-bold">Out for Delivery</h6>
-                                    <p class="text-muted small">Your package is on its way to you.</p>
-                                    <span class="text-muted extra-small">Oct 26, 2026 - 08:00 AM</span>
-                                </div>
-                            </li>
-                            <li class="timeline-item timeline-item-success">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h6 class="fw-bold">Order Confirmed</h6>
-                                    <p class="text-muted small">The seller has confirmed your order.</p>
-                                    <span class="text-muted extra-small">Oct 24, 2026 - 09:45 AM</span>
-                                </div>
-                            </li>
-                             <li class="timeline-item timeline-item-success">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h6 class="fw-bold">Order Placed</h6>
-                                    <p class="text-muted small">We have received your order.</p>
-                                    <span class="text-muted extra-small">Oct 24, 2026 - 09:42 AM</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="pt-2 border-top">
+                    <span class="d-block extra-small text-muted fw-bold text-uppercase mb-1">Billing Address</span>
+                    <p class="text-muted fs-13 mb-0">Same as shipping address</p>
                 </div>
             </div>
-            
-            <!-- Right Column: Customer & Shipping -->
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-sm rounded-4 mb-4">
-                    <div class="card-header bg-white p-4 border-0">
-                        <h5 class="fw-bold text-dark mb-0">Customer</h5>
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                           <div class="avatar bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width: 48px; height: 48px;">EW</div>
-                            <div>
-                                <h6 class="fw-bold text-dark mb-0">Emma Wilson</h6>
-                                <p class="text-muted small mb-0">Customer since 2024</p>
-                            </div>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex align-items-center px-0 py-2">
-                                <i class="bi bi-envelope text-muted me-3"></i>
-                                <span class="text-dark small">emma.w@example.com</span>
-                            </li>
-                             <li class="list-group-item d-flex align-items-center px-0 py-2">
-                                <i class="bi bi-phone text-muted me-3"></i>
-                                <span class="text-dark small">+1 (234) 567-8901</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        </div>
 
-                <div class="card border-0 shadow-sm rounded-4 mb-4">
-                    <div class="card-header bg-white p-4 border-0 d-flex justify-content-between">
-                        <h5 class="fw-bold text-dark mb-0">Shipping Address</h5>
-                        <button class="btn btn-light btn-sm border-0"><i class="bi bi-pencil"></i></button>
-                    </div>
-                    <div class="card-body p-4">
-                        <address class="text-dark small mb-0" style="line-height: 1.8;">
-                           <strong>Emma Wilson</strong><br>
-                           123 Market Street, Suite 450<br>
-                           San Francisco, CA 94103<br>
-                           United States
-                        </address>
-                    </div>
-                </div>
-
-                <div class="card border-0 shadow-sm rounded-4">
-                    <div class="card-header bg-white p-4 border-0">
-                        <h5 class="fw-bold text-dark mb-0">Payment Details</h5>
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg" width="40" alt="Mastercard">
-                            <div class="ms-3">
-                                <p class="mb-0 text-dark small">Mastercard ending in **** 4567</p>
-                                <p class="text-muted extra-small mb-0">Expiry: 08/2028</p>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Order Management Quick Actions -->
+        <div class="card card-box border-0 shadow-sm rounded-4">
+            <div class="card-header bg-card py-3 px-4 border-bottom">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-gear me-2 text-primary"></i> Quick Actions
+                </h6>
+            </div>
+            <div class="card-body p-4">
+                <div class="d-grid gap-2">
+                    <a href="/invoice.html" class="btn btn-outline-secondary py-2 rounded-pill fw-bold text-start">
+                        <i class="bi bi-file-earmark-pdf me-2 text-danger"></i> Download PDF Invoice
+                    </a>
+                    <button type="button" class="btn btn-outline-secondary py-2 rounded-pill fw-bold text-start" onclick="alert('Tracking update notification sent to customer email.');">
+                        <i class="bi bi-envelope-check me-2 text-primary"></i> Resend Delivery Notice
+                    </button>
+                    <button type="button" class="btn btn-outline-danger py-2 rounded-pill fw-bold text-start" onclick="if(confirm('Initiate partial or full refund?')) alert('Refund request initiated.');">
+                        <i class="bi bi-arrow-counterclockwise me-2"></i> Issue Refund
+                    </button>
                 </div>
             </div>
         </div>

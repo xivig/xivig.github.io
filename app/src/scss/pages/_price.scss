@@ -3,39 +3,40 @@
 
 /* Hero Header */
 .pricing-header {
-    padding: 60px 0;
-    background: radial-gradient(circle at top center, rgba(99, 102, 241, 0.05) 0%, transparent 100%);
-    border-radius: 2rem;
+    padding: 2.5rem 0 1.5rem;
+    background: transparent;
+    border-radius: var(--elite-radius, 1rem);
     margin-bottom: 2rem;
 }
 
 /* Toggle Styling */
 .billing-switcher-wrapper {
-    background: var(--card-bg);
+    background: var(--card-bg, #ffffff);
     padding: 6px;
     border-radius: 100px;
     display: inline-flex;
-    box-shadow: var(--card-shadow);
-    border: 1px solid var(--card-border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--card-border, #e2e8f0);
     transition: all 0.3s ease;
 
     .pricing-toggle-btn {
         font-weight: 700;
         font-size: 0.9rem;
-        padding: 10px 25px;
+        padding: 10px 24px;
         border-radius: 100px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.25s ease;
         border: none !important;
-        color: var(--text-muted);
+        color: var(--text-muted, #64748b);
+        background: transparent;
 
         &.active {
-            background: var(--elite-primary) !important;
-            color: #fff !important;
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+            background: var(--elite-primary, #6366f1) !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
 
         &:not(.active):hover {
-            color: var(--elite-primary) !important;
+            color: var(--elite-primary, #6366f1) !important;
             background: rgba(99, 102, 241, 0.05);
         }
     }
@@ -43,128 +44,167 @@
 
 /* Plan Cards */
 .plan-card {
-    border: 1px solid var(--card-border);
-    border-radius: 24px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: var(--card-bg);
+    border: 1px solid var(--card-border, #e2e8f0);
+    border-radius: var(--elite-radius, 1rem);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: var(--card-bg, #ffffff);
     position: relative;
-    color: var(--text-main);
+    color: var(--text-main, #0f172a);
 
     &:hover {
-        transform: translateY(-12px);
-        box-shadow: var(--card-shadow-hover);
-        border-color: var(--elite-primary);
+        transform: translateY(-8px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+        border-color: var(--elite-primary, #6366f1);
     }
 
     &.featured {
-        background: var(--elite-dark);
-        color: #fff;
-        border: none;
-        
-        .text-muted { color: rgba(255, 255, 255, 0.6) !important; }
-        .feature-list i { color: var(--elite-primary); }
-        h6, h2, h5, p { color: #fff !important; }
+        background: var(--card-bg, #ffffff);
+        border: 2px solid var(--elite-primary, #6366f1);
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.12);
+
+        .featured-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--elite-primary, #6366f1);
+            color: #ffffff;
+            padding: 5px 18px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            box-shadow: 0 6px 15px rgba(99, 102, 241, 0.3);
+        }
     }
 }
 
-.featured-badge {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(90deg, var(--elite-primary), #a855f7);
-    color: white;
-    padding: 6px 20px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
-}
-
 .price-text {
-    font-size: 3.5rem;
+    font-size: 3.25rem;
     font-weight: 900;
-    letter-spacing: -2px;
+    letter-spacing: -1.5px;
+    line-height: 1;
 }
 
 /* List Styling */
 .feature-list {
     li {
-        padding: 12px 0;
+        padding: 10px 0;
         display: flex;
         align-items: center;
-        font-size: 0.95rem;
-        border-bottom: 1px solid var(--card-border);
-        &:last-child { border-bottom: none; }
-    }
+        font-size: 0.92rem;
+        border-bottom: 1px solid var(--card-border, #f1f5f9);
 
-    i {
-        color: var(--elite-success);
-        margin-right: 12px;
-        font-size: 1.2rem;
+        &:last-child {
+            border-bottom: none;
+        }
+
+        i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
     }
 }
 
-/* Buttons */
-.btn-elite {
-    padding: 14px 28px;
-    border-radius: 14px;
-    font-weight: 700;
-    transition: 0.3s;
-}
+/* Comparison Matrix */
+.pricing-matrix-table {
+    border-collapse: separate;
+    border-spacing: 0;
 
-.btn-outline-elite {
-    border: 2px solid var(--card-border);
-    color: var(--text-main);
-    background: transparent;
-    &:hover {
-        background: var(--elite-primary);
-        color: #fff;
-        border-color: var(--elite-primary);
+    thead th {
+        background: var(--bg-subtle, #f8fafc);
+        font-weight: 700;
+        padding: 1.25rem 1rem;
+        border-bottom: 2px solid var(--card-border, #e2e8f0);
+    }
+
+    tbody td {
+        padding: 1rem;
+        border-bottom: 1px solid var(--card-border, #f1f5f9);
+        vertical-align: middle;
+    }
+
+    tbody tr:hover td {
+        background-color: rgba(99, 102, 241, 0.02);
+    }
+
+    .matrix-category-row {
+        background: var(--bg-subtle, #f8fafc);
+        font-weight: 800;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-muted, #64748b);
     }
 }
 
 /* FAQ Sleek Look */
-.accordion-item {
-    border: none;
-    margin-bottom: 1rem;
-    border-radius: 16px !important;
-    background: transparent;
-}
-
-.accordion-button {
-    border-radius: 16px !important;
-    padding: 20px;
-    font-weight: 700;
-    background: var(--card-bg);
-    color: var(--text-main);
-    box-shadow: none !important;
-    border: 1px solid var(--card-border);
-    transition: all 0.3s ease;
-
-    &:not(.collapsed) {
-        color: var(--elite-primary);
-        background: rgba(99, 102, 241, 0.05);
-        border-color: var(--elite-primary);
+.pricing-faq {
+    .accordion-item {
+        border: 1px solid var(--card-border, #e2e8f0);
+        margin-bottom: 0.75rem;
+        border-radius: var(--elite-radius, 1rem) !important;
+        background: var(--card-bg, #ffffff);
+        overflow: hidden;
     }
-    
-    &::after {
-        filter: grayscale(1) invert(var(--dark-invert, 0));
-    }
-}
 
-[data-bs-theme="dark"] .accordion-button::after {
-    --dark-invert: 1;
+    .accordion-button {
+        padding: 1.25rem 1.5rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        background: transparent;
+        color: var(--text-main, #0f172a);
+        box-shadow: none !important;
+
+        &:not(.collapsed) {
+            color: var(--elite-primary, #6366f1);
+            background: rgba(99, 102, 241, 0.04);
+        }
+    }
+
+    .accordion-body {
+        padding: 0 1.5rem 1.25rem;
+        font-size: 0.9rem;
+        color: var(--text-muted, #64748b);
+        line-height: 1.6;
+    }
 }
 
 .price-anim {
     transition: all 0.3s ease;
 }
 
-.text-gradient {
-    background: linear-gradient(135deg, var(--elite-primary) 0%, #a855f7 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+[data-bs-theme="dark"] {
+    .plan-card {
+        background: var(--card-bg, #1e293b);
+        border-color: var(--card-border, #334155);
+
+        &.featured {
+            background: var(--card-bg, #1e293b);
+            border-color: var(--elite-primary, #6366f1);
+        }
+    }
+
+    .pricing-matrix-table {
+        thead th,
+        .matrix-category-row {
+            background: #0f172a;
+            border-color: #334155;
+        }
+
+        tbody td {
+            border-color: #334155;
+        }
+
+        tbody tr:hover td {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+    }
+
+    .pricing-faq .accordion-item {
+        background: var(--card-bg, #1e293b);
+        border-color: var(--card-border, #334155);
+    }
 }

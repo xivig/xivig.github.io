@@ -26,13 +26,14 @@ export function initSidebar() {
         menuContainer.innerHTML = '';
 
         const createMenuItem = (item, isSubmenu = false) => {
+            const hasSubmenu = item.hasSubmenu === true || String(item.hasSubmenu) === 'true' || (Array.isArray(item.submenu) && item.submenu.length > 0);
             const li = document.createElement('li');
             li.className = isSubmenu 
-                ? `sidebar__sub-item ${item.hasSubmenu ? 'sidebar__sub-item--has-dropdown' : ''}`
-                : `sidebar__item ${item.hasSubmenu ? 'sidebar__item--has-dropdown' : ''}`;
+                ? `sidebar__sub-item ${hasSubmenu ? 'sidebar__sub-item--has-dropdown' : ''}`
+                : `sidebar__item ${hasSubmenu ? 'sidebar__item--has-dropdown' : ''}`;
             
             let submenuHtml = '';
-            if (item.hasSubmenu && item.submenu) {
+            if (hasSubmenu && item.submenu && item.submenu.length > 0) {
                 submenuHtml = `
                     <div class="sidebar__submenu-wrapper">
                         <ul class="sidebar__submenu">
@@ -46,7 +47,7 @@ export function initSidebar() {
             const iconHtml = item.icon ? `<span class="sidebar__icon ${item.icon}"></span>` : '';
             
             li.innerHTML = `
-                <a href="${item.hasSubmenu ? 'javascript:;' : item.path}" class="${linkClass}">
+                <a href="${hasSubmenu ? 'javascript:;' : item.path}" class="${linkClass}">
                     ${iconHtml}
                     <span class="sidebar__text">${item.label}</span>
                 </a>
@@ -63,7 +64,7 @@ export function initSidebar() {
         const logoutLi = document.createElement('li');
         logoutLi.className = 'sidebar__item mt-auto';
         logoutLi.innerHTML = `
-            <a href="/pages/auth/login.html" class="sidebar__link sidebar__link--logout text-danger">
+            <a href="login.html" class="sidebar__link sidebar__link--logout text-danger">
                 <span class="sidebar__icon bi bi-box-arrow-right"></span>
                 <span class="sidebar__text">Logout</span>
             </a>

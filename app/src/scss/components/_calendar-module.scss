@@ -1,42 +1,204 @@
-/* calendar.css */
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
 
-/* Draggable event styling */
-.fc-event {
+/* ==========================================================================
+   ELITE CALENDAR MODULE
+   ========================================================================== */
+
+/* FullCalendar Header & Controls */
+.fc {
+    .fc-toolbar {
+        margin-bottom: 24px !important;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .fc-toolbar-title {
+        font-size: 1.25rem !important;
+        font-weight: 800 !important;
+        color: var(--text-main, #111827) !important;
+        letter-spacing: -0.02em;
+    }
+
+    .fc-button-primary {
+        background-color: var(--xv-surface, #FFFFFF) !important;
+        border: 1px solid var(--xv-border, #E5EAF2) !important;
+        color: var(--xv-text, #111827) !important;
+        font-size: 0.8125rem !important;
+        font-weight: 600 !important;
+        text-transform: capitalize !important;
+        border-radius: var(--xv-radius-control, 9px) !important;
+        padding: 7px 14px !important;
+        box-shadow: none !important;
+        transition: all 0.2s ease !important;
+
+        &:hover {
+            background-color: #F4F6FB !important;
+            border-color: #D0D7E2 !important;
+            color: var(--xv-brand, #4F6BFF) !important;
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 3px rgba(79, 107, 255, 0.2) !important;
+        }
+
+        &.fc-button-active,
+        &:active {
+            background-color: var(--xv-brand, #4F6BFF) !important;
+            border-color: var(--xv-brand, #4F6BFF) !important;
+            color: #FFFFFF !important;
+        }
+
+        &.fc-today-button {
+            background-color: rgba(79, 107, 255, 0.08) !important;
+            border-color: rgba(79, 107, 255, 0.2) !important;
+            color: var(--xv-brand, #4F6BFF) !important;
+            font-weight: 700 !important;
+
+            &:hover {
+                background-color: var(--xv-brand, #4F6BFF) !important;
+                color: #FFFFFF !important;
+            }
+        }
+    }
+
+    /* Grid lines and days */
+    .fc-theme-bootstrap5-shaded,
+    .fc-scrollgrid {
+        border-color: var(--xv-border, #E5EAF2) !important;
+        border-radius: var(--xv-radius-card, 14px) !important;
+        overflow: hidden;
+    }
+
+    .fc-col-header-cell {
+        background: #F8FAFC !important;
+        padding: 10px 0 !important;
+        border-color: var(--xv-border, #E5EAF2) !important;
+
+        [data-bs-theme="dark"] & {
+            background: #111C2E !important;
+        }
+
+        .fc-col-header-cell-cushion {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            color: var(--xv-muted, #667085);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            text-decoration: none !important;
+        }
+    }
+
+    .fc-daygrid-day-number {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--xv-text, #111827);
+        padding: 8px 10px !important;
+        text-decoration: none !important;
+    }
+
+    .fc-day-today {
+        background: rgba(79, 107, 255, 0.03) !important;
+
+        .fc-daygrid-day-number {
+            background: var(--xv-brand, #4F6BFF);
+            color: #FFFFFF !important;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 4px;
+            padding: 0 !important;
+        }
+    }
+
+    /* Event pills inside calendar */
+    .fc-daygrid-event {
+        margin: 2px 4px !important;
+        border-radius: 6px !important;
+        font-size: 0.775rem !important;
+        font-weight: 600 !important;
+        padding: 3px 6px !important;
+        border: none !important;
+        transition: transform 0.15s ease;
+
+        &:hover {
+            transform: scale(1.02);
+        }
+    }
+
+    .fc-event-time {
+        font-weight: 700;
+        margin-right: 4px;
+    }
+}
+
+/* Elite Semantic Event Themes */
+.fc-event-indigo,
+.fc-event.bg-primary {
+    background: #EEF4FF !important;
+    color: #3159B8 !important;
+    border-left: 3px solid #4F6BFF !important;
+}
+
+.fc-event-cyan,
+.fc-event.bg-info {
+    background: #E0F7FA !important;
+    color: #00838F !important;
+    border-left: 3px solid #20C5D7 !important;
+}
+
+.fc-event-purple {
+    background: #F3E8FF !important;
+    color: #6B21A8 !important;
+    border-left: 3px solid #8B5CF6 !important;
+}
+
+.fc-event-warning,
+.fc-event.bg-warning {
+    background: #FFF5DF !important;
+    color: #9A6200 !important;
+    border-left: 3px solid #F5A524 !important;
+}
+
+.fc-event-danger,
+.fc-event.bg-danger {
+    background: #FFF0F1 !important;
+    color: #B42335 !important;
+    border-left: 3px solid #EF5A6F !important;
+}
+
+.fc-event-success,
+.fc-event.bg-success {
+    background: #E8F8F1 !important;
+    color: #087B55 !important;
+    border-left: 3px solid #12B981 !important;
+}
+
+/* External Draggable Events */
+.fc-event.cursor-move {
     cursor: grab;
-    padding: 8px 12px;
-    margin-bottom: 8px;
-    border-radius: 6px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border: none !important;
-    /* Let Bootstrap classes handle color */
+
+    &:active {
+        cursor: grabbing;
+        transform: scale(0.98);
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    }
 }
 
-.fc-event:active {
-    cursor: grabbing;
-    transform: scale(0.98);
-}
+.color-btn {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-.fc-event:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    filter: brightness(95%);
-}
-
-/* Customizing FullCalendar Header */
-.fc .fc-button-primary {
-    background-color: var(--bs-primary);
-    border-color: var(--bs-primary);
-    text-transform: capitalize;
-    font-weight: 600;
-}
-
-.fc .fc-toolbar-title {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--bs-dark);
-}
-
-.color-btn.active {
-    outline: 2px solid var(--bs-dark);
-    outline-offset: 2px;
-    transform: scale(1.1);
+    &.active {
+        box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px var(--xv-brand, #4F6BFF);
+        transform: scale(1.1);
+    }
 }

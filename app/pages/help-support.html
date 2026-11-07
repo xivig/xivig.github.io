@@ -1,160 +1,259 @@
 {{#> admin-layout title="Help & Support" parentTitle="Pages" }}
 
 <div class="help-support-module">
-    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-        <div class="card-header bg-white py-3 px-4 border-0 d-flex justify-content-center align-items-center">
-            <div class="text-center">
-                <h5 class="fw-bold mb-0">Help Center</h5>
-                <small class="text-muted">Expert assistance for your premium experience</small>
-            </div>
-        </div>
+    <!-- 1. Hero Glassmorphic Header & Search -->
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5 position-relative" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #1e3a8a 100%); color: #ffffff;">
+        <div class="card-body p-4 p-md-5 text-center position-relative z-1">
+            <span class="badge rounded-pill bg-white bg-opacity-15 text-white px-3 py-1.5 extra-small fw-bold mb-3 d-inline-flex align-items-center gap-1.5">
+                <i class="bi bi-patch-check-fill text-warning"></i> XIVIG ARCHITECT KNOWLEDGE HUB
+            </span>
+            <h1 class="display-6 fw-black text-white mb-2">How can we assist your architecture today?</h1>
+            <p class="text-white-50 extra-small mb-4 mx-auto" style="max-width: 640px;">
+                Instant access to platform architecture manuals, CI/CD pipeline automation, edge cluster APIs, and dedicated engineering support.
+            </p>
 
-        <div class="card-body p-4">
-            <div class="header-search-box text-center py-5 mb-5 rounded-4"
-                style="background: var(--elite-gradient); color: white;">
-                <h2 class="fw-800 mb-3">How can we help you?</h2>
-                <div class="col-lg-6 mx-auto px-4">
-                    <div class="input-group input-group-lg shadow-lg rounded-pill overflow-hidden border-0">
-                        <input type="text" class="form-control border-0 ps-4" placeholder="Search knowledge base...">
-                        <button class="btn btn-white px-4 text-primary fw-bold" type="button">
-                            <i class="bi bi-search me-2"></i> Search
-                        </button>
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <button class="btn btn-glass btn-sm rounded-pill px-4 fw-bold border border-white border-opacity-25"
-                        style="background: rgba(255,255,255,0.1); color: white;">
-                        <i class="bi bi-ticket-perforated me-2"></i> Submit a Ticket
+            <!-- Search Bar -->
+            <div class="col-lg-7 col-md-9 mx-auto mb-3">
+                <div class="input-group input-group-lg shadow-lg rounded-pill overflow-hidden bg-white p-1">
+                    <span class="input-group-text bg-white border-0 ps-3 text-muted">
+                        <i class="bi bi-search fs-5 text-primary"></i>
+                    </span>
+                    <input type="text" id="helpSearchInput" class="form-control border-0 ps-2 fs-6" placeholder="Search architecture, tokens, docker, webhooks, or billing..." autocomplete="off">
+                    <span id="searchCountBadge" class="badge bg-primary text-white rounded-pill px-3 py-2 align-self-center me-1 d-none extra-small">0 Matches</span>
+                    <button class="btn btn-primary rounded-pill px-4 fw-bold extra-small" type="button" data-bs-toggle="modal" data-bs-target="#ticketModal">
+                        <i class="bi bi-ticket-perforated me-1"></i> New Ticket
                     </button>
                 </div>
             </div>
 
-            <div class="container py-4">
-                <div class="row g-5">
-                    <aside class="col-lg-4">
-                        <div class="sidebar-menu animate__animated animate__fadeInLeft">
-                            <div class="mb-4 ps-2">
-                                <h5 class="fw-800 mb-1">Knowledge Base</h5>
-                                <p class="text-muted small">Select a category to explore</p>
-                            </div>
-                            <nav>
-                                <a href="#" class="menu-link active" data-type="payment">
-                                    <i class="bi bi-credit-card-2-front"></i> Payment & Billing
-                                </a>
-                                <a href="#" class="menu-link" data-type="shipping">
-                                    <i class="bi bi-truck"></i> Shipping Logistics
-                                </a>
-                                <a href="#" class="menu-link" data-type="returns">
-                                    <i class="bi bi-arrow-left-right"></i> Returns & Refunds
-                                </a>
-                                <a href="#" class="menu-link" data-type="fulfillment">
-                                    <i class="bi bi-bag-check"></i> Order Fulfillment
-                                </a>
-                                <a href="#" class="menu-link" data-type="privacy">
-                                    <i class="bi bi-shield-check"></i> Privacy & Terms
-                                </a>
-                            </nav>
-                        </div>
-                    </aside>
+            <!-- Quick Filter Pills -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 pt-2">
+                <span class="text-white-50 extra-small align-self-center me-1">Popular:</span>
+                <button type="button" class="btn btn-sm btn-outline-light rounded-pill px-2.5 py-0.5 extra-small quick-filter-pill border-opacity-25" data-tag="architecture">#architecture</button>
+                <button type="button" class="btn btn-sm btn-outline-light rounded-pill px-2.5 py-0.5 extra-small quick-filter-pill border-opacity-25" data-tag="tokens">#design-tokens</button>
+                <button type="button" class="btn btn-sm btn-outline-light rounded-pill px-2.5 py-0.5 extra-small quick-filter-pill border-opacity-25" data-tag="deployment">#ci-cd</button>
+                <button type="button" class="btn btn-sm btn-outline-light rounded-pill px-2.5 py-0.5 extra-small quick-filter-pill border-opacity-25" data-tag="security">#2fa-security</button>
+                <button type="button" class="btn btn-sm btn-outline-light rounded-pill px-2.5 py-0.5 extra-small quick-filter-pill border-opacity-25" data-tag="webhooks">#webhooks</button>
+            </div>
+        </div>
+    </div>
 
-                    <section class="col-lg-8 animate__animated animate__fadeIn">
-                        <header class="mb-5">
-                            <h2 class="faq-title display-5 mb-3">Payment Solutions</h2>
-                            <p class="text-muted lead faq-description">Everything you need to know about managing your
-                                transactions and billing history.</p>
-                        </header>
+    <!-- 2. 4 Quick-Assistance Architecture Cards -->
+    <div class="row g-4 mb-5">
+        <div class="col-sm-6 col-xl-3">
+            <div class="card card-box border-0 shadow-sm rounded-4 p-4 h-100 hover-elevate">
+                <div class="rounded-3 bg-primary-subtle text-primary p-3 d-inline-flex mb-3" style="width: 48px; height: 48px; align-items: center; justify-content: center;">
+                    <i class="bi bi-cpu fs-5"></i>
+                </div>
+                <h6 class="fw-bold text-main mb-1">Architecture &amp; SDK</h6>
+                <p class="text-muted extra-small mb-3">Modular runtime, build pipeline, and custom SCSS variables.</p>
+                <a href="sitemap.html" class="text-primary extra-small fw-bold text-decoration-none mt-auto d-inline-flex align-items-center gap-1">
+                    Explore Architecture <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
 
-                        <div class="accordion accordion-flush" id="faqAccordion">
-                            <div class="accordion-item shadow-sm">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#q1">
-                                        When will I be charged for my purchase?
-                                    </button>
-                                </h2>
-                                <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        Standard protocol involves a temporary authorization hold at the moment of
-                                        checkout, but the final charge is typically finalized once the order is
-                                        dispatched from our fulfillment center.
-                                    </div>
-                                </div>
-                            </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="card card-box border-0 shadow-sm rounded-4 p-4 h-100 hover-elevate">
+                <div class="rounded-3 bg-success-subtle text-success p-3 d-inline-flex mb-3" style="width: 48px; height: 48px; align-items: center; justify-content: center;">
+                    <i class="bi bi-rocket-takeoff fs-5"></i>
+                </div>
+                <h6 class="fw-bold text-main mb-1">CI/CD Deployments</h6>
+                <p class="text-muted extra-small mb-3">Docker manifests, GitHub Actions, and static cloud exports.</p>
+                <a href="releases.html" class="text-success extra-small fw-bold text-decoration-none mt-auto d-inline-flex align-items-center gap-1">
+                    Deployment Guides <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
 
-                            <div class="accordion-item shadow-sm">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#q2">
-                                        Which payment methods are accepted?
-                                    </button>
-                                </h2>
-                                <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        We support a full suite of secure payment options including <strong>Visa,
-                                            Mastercard, AMEX,</strong> and <strong>PayPal</strong>. For eligible
-                                        regions, digital wallets like Apple Pay and Google Pay are also integrated.
-                                    </div>
-                                </div>
-                            </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="card card-box border-0 shadow-sm rounded-4 p-4 h-100 hover-elevate">
+                <div class="rounded-3 bg-warning-subtle text-warning p-3 d-inline-flex mb-3" style="width: 48px; height: 48px; align-items: center; justify-content: center;">
+                    <i class="bi bi-shield-lock fs-5"></i>
+                </div>
+                <h6 class="fw-bold text-main mb-1">Security &amp; Zero Trust</h6>
+                <p class="text-muted extra-small mb-3">Two-factor auth, IAM tokens, and SOC2 Level 1 compliance.</p>
+                <a href="profile.html" class="text-warning extra-small fw-bold text-decoration-none mt-auto d-inline-flex align-items-center gap-1">
+                    Security Center <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
 
-                            <div class="accordion-item shadow-sm">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#q3">
-                                        Is my financial data encrypted?
-                                    </button>
-                                </h2>
-                                <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        Security is our priority. All transactions are processed through a PCI-DSS Level
-                                        1 compliant gateway using 256-bit SSL encryption. We never store your CVV or
-                                        full card number on our servers.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+        <div class="col-sm-6 col-xl-3">
+            <div class="card card-box border-0 shadow-sm rounded-4 p-4 h-100 hover-elevate">
+                <div class="rounded-3 bg-purple-subtle text-purple p-3 d-inline-flex mb-3" style="background: rgba(139, 92, 246, 0.1); color: #8B5CF6; width: 48px; height: 48px; align-items: center; justify-content: center;">
+                    <i class="bi bi-credit-card-2-front fs-5"></i>
+                </div>
+                <h6 class="fw-bold text-main mb-1">Billing &amp; License</h6>
+                <p class="text-muted extra-small mb-3">Invoice downloads, team seats, and 99.98% cluster SLA.</p>
+                <a href="pricing-table.html" class="text-purple extra-small fw-bold text-decoration-none mt-auto d-inline-flex align-items-center gap-1" style="color: #8B5CF6;">
+                    Plan Details <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Knowledgebase Categories & Interactive Accordion -->
+    <div class="row g-4 mb-5">
+        <aside class="col-lg-4">
+            <div class="card card-box border-0 shadow-sm rounded-4 p-4 position-sticky" style="top: 100px;">
+                <div class="mb-3">
+                    <h6 class="fw-bold text-main mb-1">Documentation Categories</h6>
+                    <p class="text-muted extra-small mb-0">Select a section to filter architectural guides</p>
+                </div>
+                <nav class="nav flex-column gap-2">
+                    <a href="#" class="menu-link btn text-start rounded-3 px-3 py-2.5 extra-small fw-bold active d-flex align-items-center justify-content-between" data-type="architecture">
+                        <span><i class="bi bi-layers me-2 text-primary"></i> Platform Architecture</span>
+                        <i class="bi bi-chevron-right text-muted x-small"></i>
+                    </a>
+                    <a href="#" class="menu-link btn text-start rounded-3 px-3 py-2.5 extra-small fw-bold d-flex align-items-center justify-content-between" data-type="deployment">
+                        <span><i class="bi bi-clouds me-2 text-success"></i> Edge Deployments &amp; CI/CD</span>
+                        <i class="bi bi-chevron-right text-muted x-small"></i>
+                    </a>
+                    <a href="#" class="menu-link btn text-start rounded-3 px-3 py-2.5 extra-small fw-bold d-flex align-items-center justify-content-between" data-type="security">
+                        <span><i class="bi bi-shield-check me-2 text-warning"></i> Authentication &amp; Zero Trust</span>
+                        <i class="bi bi-chevron-right text-muted x-small"></i>
+                    </a>
+                    <a href="#" class="menu-link btn text-start rounded-3 px-3 py-2.5 extra-small fw-bold d-flex align-items-center justify-content-between" data-type="billing">
+                        <span><i class="bi bi-cash-stack me-2 text-info"></i> Billing &amp; Invoices</span>
+                        <i class="bi bi-chevron-right text-muted x-small"></i>
+                    </a>
+                    <a href="#" class="menu-link btn text-start rounded-3 px-3 py-2.5 extra-small fw-bold d-flex align-items-center justify-content-between" data-type="api">
+                        <span><i class="bi bi-code-slash me-2 text-purple"></i> REST APIs &amp; Webhooks</span>
+                        <i class="bi bi-chevron-right text-muted x-small"></i>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <section class="col-lg-8">
+            <div class="mb-4">
+                <h4 class="faq-title fw-black text-main mb-1">Platform Architecture &amp; Modularity</h4>
+                <p class="faq-description text-muted extra-small mb-0">Understand the zero-blocking modular runtime, Vite bundler, SCSS tokens, and Vanilla JS foundation.</p>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="accordion accordion-flush" id="faqAccordion">
+                <!-- Dynamically populated by JS -->
+            </div>
+        </section>
+    </div>
+
+    <!-- 4. Direct 24/7 Priority Support Pods -->
+    <div class="card card-box border-0 shadow-sm rounded-4 p-4 p-md-5 text-center">
+        <span class="badge rounded-pill bg-primary-subtle text-primary px-3 py-1.5 extra-small fw-bold mb-2 d-inline-block">
+            24/7 DEDICATED ASSISTANCE
+        </span>
+        <h3 class="fw-black text-main mb-2">Need Direct Engineering Assistance?</h3>
+        <p class="text-muted extra-small mx-auto mb-4" style="max-width: 580px;">
+            Our core solution architects and DevOps engineers are available 24/7 across multiple SLA priority channels.
+        </p>
+
+        <div class="row g-4 justify-content-center">
+            <!-- Channel 1: Priority Phone -->
+            <div class="col-md-4">
+                <div class="p-4 rounded-4 border border-light border-opacity-10 h-100 d-flex flex-column align-items-center">
+                    <div class="rounded-circle bg-primary-subtle text-primary p-3 mb-3 d-flex align-items-center justify-content-center" style="width: 52px; height: 52px;">
+                        <i class="bi bi-telephone fs-4"></i>
+                    </div>
+                    <h6 class="fw-bold text-main mb-1">+1 (888) 555-XIVIG</h6>
+                    <span class="badge bg-success-subtle text-success rounded-pill px-2 py-0.5 extra-small fw-bold mb-2">Online &bull; &lt;1m wait</span>
+                    <p class="text-muted extra-small mb-0">Direct voice access to Tier-3 infrastructure leads</p>
                 </div>
             </div>
 
-            <section class="py-5 mt-5 border-top">
-                <div class="container">
-                    <div class="text-center mb-5">
-                        <span class="badge rounded-pill bg-primary-subtle text-primary px-3 py-2 mb-3">
-                            Direct Support
-                        </span>
-                        <h2 class="fw-800 display-6 mb-3">Still have a question?</h2>
-                        <p class="text-muted mx-auto" style="max-width: 600px;">
-                            Our dedicated team is ready to assist you. Reach out via your preferred channel for
-                            immediate guidance.
-                        </p>
+            <!-- Channel 2: Discord Architect Community -->
+            <div class="col-md-4">
+                <div class="p-4 rounded-4 border border-light border-opacity-10 h-100 d-flex flex-column align-items-center">
+                    <div class="rounded-circle bg-info-subtle text-info p-3 mb-3 d-flex align-items-center justify-content-center" style="width: 52px; height: 52px;">
+                        <i class="bi bi-discord fs-4"></i>
                     </div>
-
-                    <div class="row g-4 justify-content-center">
-                        <div class="col-md-5 col-lg-4">
-                            <div class="contact-footer-card bg-light-subtle">
-                                <div class="footer-icon-box">
-                                    <i class="bi bi-telephone-outbound"></i>
-                                </div>
-                                <h4 class="fw-bold mb-2">+(1) 2548 2568</h4>
-                                <p class="text-muted mb-0 small fw-500">Live phone support available 24/7</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-5 col-lg-4">
-                            <div class="contact-footer-card bg-light-subtle">
-                                <div class="footer-icon-box">
-                                    <i class="bi bi-envelope-paper"></i>
-                                </div>
-                                <h4 class="fw-bold mb-2">support@elitepro.com</h4>
-                                <p class="text-muted mb-0 small fw-500">Average response time: 2 hours</p>
-                            </div>
-                        </div>
-                    </div>
+                    <h6 class="fw-bold text-main mb-1">Architect Discord Hub</h6>
+                    <span class="badge bg-success-subtle text-success rounded-pill px-2 py-0.5 extra-small fw-bold mb-2">14,250 Architects Online</span>
+                    <p class="text-muted extra-small mb-0">Real-time troubleshooting &amp; community discussions</p>
                 </div>
-            </section>
+            </div>
+
+            <!-- Channel 3: Enterprise Email -->
+            <div class="col-md-4">
+                <div class="p-4 rounded-4 border border-light border-opacity-10 h-100 d-flex flex-column align-items-center">
+                    <div class="rounded-circle bg-purple-subtle text-purple p-3 mb-3 d-flex align-items-center justify-content-center" style="background: rgba(139, 92, 246, 0.1); color: #8B5CF6; width: 52px; height: 52px;">
+                        <i class="bi bi-envelope-check fs-4"></i>
+                    </div>
+                    <h6 class="fw-bold text-main mb-1">support@xivig.com</h6>
+                    <span class="badge bg-primary-subtle text-primary rounded-pill px-2 py-0.5 extra-small fw-bold mb-2">SLA Guaranteed &lt;15m</span>
+                    <p class="text-muted extra-small mb-0">Cryptographically signed ticket updates</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- Priority Ticket Modal -->
+<div class="modal fade" id="ticketModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card-box border-0 rounded-4 shadow-lg">
+            <div class="modal-header border-bottom border-light border-opacity-10 p-4">
+                <h5 class="modal-title fw-bold text-main">Open Priority Support Ticket</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form id="ticket-form">
+                    <div class="mb-3">
+                        <label class="form-label extra-small fw-bold text-uppercase text-muted">Issue Subject</label>
+                        <input type="text" id="ticket-subject" class="form-control rounded-3" required placeholder="e.g. Edge cluster latency in eu-west-1">
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label extra-small fw-bold text-uppercase text-muted">Category</label>
+                            <select class="form-select rounded-3">
+                                <option value="Architecture">Architecture &amp; SDK</option>
+                                <option value="Deployments">Deployments &amp; CI/CD</option>
+                                <option value="Security">Security &amp; Tokens</option>
+                                <option value="Billing">Billing &amp; License</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label extra-small fw-bold text-uppercase text-muted">Urgency SLA</label>
+                            <select id="ticket-urgency" class="form-select rounded-3">
+                                <option value="P1 - Critical">P1 - Critical (SLA &lt;15m)</option>
+                                <option value="P2 - High" selected>P2 - High (SLA &lt;1h)</option>
+                                <option value="P3 - Standard">P3 - Standard (SLA &lt;4h)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label extra-small fw-bold text-uppercase text-muted">Detailed Description</label>
+                        <textarea class="form-control rounded-3" rows="4" required placeholder="Describe what you observed, include error codes or CLI output..."></textarea>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-light rounded-pill px-4 w-100 extra-small fw-bold" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary rounded-pill px-4 w-100 shadow-sm extra-small fw-bold">Submit Priority Ticket</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .menu-link {
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+        color: var(--text-muted);
+    }
+    .menu-link:hover, .menu-link.active {
+        background-color: var(--primary-subtle, rgba(79, 107, 255, 0.1)) !important;
+        color: var(--xv-brand, #4F6BFF) !important;
+        border-color: rgba(79, 107, 255, 0.2);
+    }
+    .hover-elevate {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .hover-elevate:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+    }
+</style>
 
 {{/admin-layout}}

@@ -1,0 +1,87 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+/* ==========================================================================
+   DASHBOARD ARCHITECTURE - ELITE BRAND SHOWCASE (SOLID MINIMAL LUXURY)
+   ========================================================================== */
+
+.dashboard-pod {
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: var(--transition-elite);
+    position: relative;
+    overflow: hidden;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border) !important;
+
+    &--deployment {
+        &:hover {
+            border-color: var(--elite-primary) !important;
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-4px);
+        }
+    }
+
+    &--sessions {
+        &:hover {
+            border-color: var(--elite-info) !important;
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-4px);
+        }
+    }
+}
+
+.dashboard-showcase-pod {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border) !important;
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    transition: var(--transition-elite);
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-shadow-hover);
+        border-color: var(--elite-primary) !important;
+    }
+
+    .showcase-pod-emblem {
+        filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.25));
+        transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    &:hover .showcase-pod-emblem {
+        transform: scale(1.08);
+    }
+}
+
+.dashboard-architect-card {
+    padding: 0.75rem 1rem;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    transition: var(--transition-elite);
+
+    &:hover {
+        background: var(--elite-soft);
+        border-color: var(--card-border);
+        transform: translateX(4px);
+    }
+}
+
+.dashboard-telemetry-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 50px;
+    background: var(--elite-soft);
+    border: 1px solid var(--card-border);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+
+    strong {
+        color: var(--text-main);
+    }
+}

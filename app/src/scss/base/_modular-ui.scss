@@ -1,0 +1,433 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+/* ==========================================================================
+   MODULAR UI ECOSYSTEM - XIVIG ELITE COMPONENT RECIPES (PER BLUEPRINT)
+   ========================================================================== */
+
+/* 1. Universal Content Canvas & Spacing Scale */
+.main {
+    background-color: var(--xv-canvas, #F4F6FB);
+    min-height: calc(100vh - var(--xv-topbar-height, 68px));
+    padding-bottom: 2rem;
+    transition: var(--transition-elite);
+}
+
+.main__container {
+    max-width: 1600px;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+
+    @media (max-width: 991px) {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+}
+
+/* 2. Button Component Recipes (Heights 40 / 44 / 48, Radius 9px) */
+.btn {
+    border-radius: var(--xv-radius-control, 9px);
+    font-weight: 600;
+    font-size: 0.875rem; /* 14px */
+    letter-spacing: -0.01em;
+    padding: 8px 18px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: none !important;
+
+    &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(79, 107, 255, 0.25) !important;
+    }
+}
+
+.btn-lg {
+    height: 48px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+}
+
+.btn-sm {
+    height: 36px;
+    padding: 6px 14px;
+    font-size: 0.8125rem;
+}
+
+/* Primary Filled Indigo */
+.btn-primary,
+.btn-elite-primary {
+    background-color: var(--xv-brand, #4F6BFF) !important;
+    border-color: var(--xv-brand, #4F6BFF) !important;
+    color: #FFFFFF !important;
+
+    &:hover, &:focus {
+        background-color: var(--xv-brand-hover, #3548D4) !important;
+        border-color: var(--xv-brand-hover, #3548D4) !important;
+        color: #FFFFFF !important;
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        background-color: var(--xv-brand-active, #2938B8) !important;
+        border-color: var(--xv-brand-active, #2938B8) !important;
+        transform: translateY(0);
+    }
+}
+
+/* Secondary White + Border */
+.btn-secondary,
+.btn-outline-secondary,
+.btn-default {
+    background-color: var(--xv-surface, #FFFFFF) !important;
+    border: 1px solid var(--xv-border, #E5EAF2) !important;
+    color: var(--xv-text, #111827) !important;
+
+    &:hover, &:focus {
+        background-color: var(--xv-canvas, #F4F6FB) !important;
+        border-color: #D1D5DB !important;
+        color: var(--xv-text, #111827) !important;
+    }
+
+    [data-bs-theme="dark"] & {
+        background-color: var(--xv-surface, #111C2E) !important;
+        border-color: var(--xv-border, #26344A) !important;
+        color: var(--xv-text, #F2F5FA) !important;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+        }
+    }
+}
+
+/* Outline Primary */
+.btn-outline-primary {
+    background-color: transparent !important;
+    border: 1px solid var(--xv-brand, #4F6BFF) !important;
+    color: var(--xv-brand, #4F6BFF) !important;
+
+    &:hover, &:focus {
+        background-color: var(--xv-brand, #4F6BFF) !important;
+        color: #FFFFFF !important;
+    }
+}
+
+/* Destructive Red */
+.btn-danger,
+.btn-destructive {
+    background-color: var(--xv-danger, #EF5A6F) !important;
+    border-color: var(--xv-danger, #EF5A6F) !important;
+    color: #FFFFFF !important;
+
+    &:hover {
+        background-color: #E03E55 !important;
+        border-color: #E03E55 !important;
+    }
+}
+
+/* Icon Buttons (40x40 with Tooltip) */
+.btn-icon,
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--xv-radius-control, 9px);
+}
+
+/* 3. Cards & Surfaces (14px Radius, 1px Border, 20–24px Padding) */
+.card {
+    background-color: var(--xv-surface, #FFFFFF) !important;
+    border: 1px solid var(--xv-border, #E5EAF2) !important;
+    border-radius: var(--xv-radius-card, 14px) !important;
+    box-shadow: var(--card-shadow) !important;
+    margin-bottom: 24px;
+    position: relative;
+    background-clip: border-box;
+    transition: var(--transition-elite);
+
+    .card-header {
+        background: transparent !important;
+        border-bottom: 1px solid var(--xv-border, #E5EAF2);
+        padding: 1.125rem 1.5rem;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-footer {
+        background: transparent !important;
+        border-top: 1px solid var(--xv-border, #E5EAF2);
+        padding: 1rem 1.5rem;
+    }
+}
+
+/* 4. KPI Cards (Per Blueprint & Reference Wireframes Page 1 & 13) */
+.kpi-card,
+.stat-card {
+    background: var(--xv-surface, #FFFFFF);
+    border: 1px solid var(--xv-border, #E5EAF2);
+    border-radius: var(--xv-radius-card, 14px);
+    padding: 1.25rem 1.5rem;
+    height: 100%;
+    transition: var(--transition-elite);
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--card-shadow-hover);
+        border-color: var(--xv-brand, #4F6BFF);
+    }
+
+    .kpi-label {
+        font-size: 0.75rem; /* 12px */
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: var(--xv-muted, #667085);
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .kpi-metric {
+        font-size: 1.875rem; /* 30px */
+        font-weight: 700;
+        color: var(--xv-text, #111827);
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+        font-feature-settings: "tnum" 1;
+    }
+
+    .kpi-delta {
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 2px 8px;
+        border-radius: var(--xv-radius-pill, 999px);
+
+        &.positive, &.up {
+            background-color: var(--xv-badge-success-bg, #E8F8F1);
+            color: var(--xv-badge-success-text, #087B55);
+        }
+
+        &.negative, &.down {
+            background-color: var(--xv-badge-danger-bg, #FFF0F1);
+            color: var(--xv-badge-danger-text, #B42335);
+        }
+    }
+}
+
+/* 5. Inputs & Form Controls (44px Height, 9px Radius) */
+.form-control,
+.form-select {
+    min-height: 42px;
+    border-radius: var(--xv-radius-control, 9px);
+    border: 1px solid var(--xv-border, #E5EAF2);
+    background-color: var(--xv-surface, #FFFFFF);
+    color: var(--xv-text, #111827);
+    font-size: 0.875rem;
+    padding: 0.55rem 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:focus {
+        background-color: var(--xv-surface, #FFFFFF);
+        border-color: var(--xv-brand, #4F6BFF);
+        box-shadow: 0 0 0 3px rgba(79, 107, 255, 0.15);
+        outline: 0;
+        color: var(--xv-text, #111827);
+    }
+
+    [data-bs-theme="dark"] & {
+        background-color: var(--xv-surface, #111C2E);
+        border-color: var(--xv-border, #26344A);
+        color: var(--xv-text, #F2F5FA);
+
+        &:focus {
+            background-color: var(--xv-surface, #111C2E);
+            border-color: var(--xv-brand, #4F6BFF);
+            color: var(--xv-text, #F2F5FA);
+        }
+    }
+}
+
+.form-label {
+    font-size: 0.8125rem; /* 13px */
+    font-weight: 600;
+    color: var(--xv-text, #111827);
+    margin-bottom: 0.35rem;
+}
+
+/* 6. Semantic Soft Badges (Blueprint Page 7) */
+.badge {
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: var(--xv-radius-pill, 999px);
+    letter-spacing: 0.01em;
+}
+
+.badge-success,
+.bg-success-subtle,
+.bg-success.bg-opacity-10 {
+    background-color: var(--xv-badge-success-bg, #E8F8F1) !important;
+    color: var(--xv-badge-success-text, #087B55) !important;
+}
+
+.badge-warning,
+.bg-warning-subtle,
+.bg-warning.bg-opacity-10 {
+    background-color: var(--xv-badge-warning-bg, #FFF5DF) !important;
+    color: var(--xv-badge-warning-text, #9A6200) !important;
+}
+
+.badge-danger,
+.bg-danger-subtle,
+.bg-danger.bg-opacity-10 {
+    background-color: var(--xv-badge-danger-bg, #FFF0F1) !important;
+    color: var(--xv-badge-danger-text, #B42335) !important;
+}
+
+.badge-info,
+.bg-info-subtle,
+.bg-primary-subtle,
+.bg-primary.bg-opacity-10 {
+    background-color: var(--xv-badge-info-bg, #EEF4FF) !important;
+    color: var(--xv-badge-info-text, #3159B8) !important;
+}
+
+/* 7. Tables (Header 12px semibold, row 52–60px) */
+.table {
+    color: var(--xv-text, #111827);
+    border-color: var(--xv-border, #E5EAF2);
+    vertical-align: middle;
+
+    thead th {
+        font-size: 0.75rem; /* 12px */
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--xv-muted, #667085);
+        background-color: var(--bg-subtle, #F8FAFC);
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid var(--xv-border, #E5EAF2);
+    }
+
+    tbody td {
+        padding: 0.95rem 1rem;
+        border-bottom: 1px solid var(--xv-border, #E5EAF2);
+        font-size: 0.875rem;
+    }
+
+    tbody tr:hover td {
+        background-color: rgba(79, 107, 255, 0.02);
+    }
+}
+
+/* 8. Table Action Button & Dropdowns (Blueprint Page 7 & 15) */
+.table-action-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--xv-radius-control, 8px);
+    border: 1px solid var(--xv-border, #E5EAF2);
+    background-color: var(--xv-surface, #FFFFFF);
+    color: var(--xv-muted, #667085);
+    font-size: 1.05rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+
+    &:hover, &:focus {
+        background-color: var(--xv-canvas, #F4F6FB);
+        color: var(--xv-text, #111827);
+        border-color: #CBD5E1;
+    }
+
+    &[aria-expanded="true"] {
+        background-color: var(--xv-canvas, #F4F6FB);
+        color: var(--xv-brand, #4F6BFF);
+        border-color: var(--xv-brand, #4F6BFF);
+        box-shadow: 0 0 0 3px rgba(79, 107, 255, 0.12);
+    }
+
+    [data-bs-theme="dark"] & {
+        background-color: var(--xv-surface, #111C2E);
+        border-color: var(--xv-border, #26344A);
+        color: #94A3B8;
+
+        &:hover, &:focus {
+            background-color: rgba(255, 255, 255, 0.06);
+            color: #FFFFFF;
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        &[aria-expanded="true"] {
+            background-color: rgba(79, 107, 255, 0.15);
+            color: #818CF8;
+            border-color: #6366F1;
+        }
+    }
+}
+
+/* Elite Dropdown Menu Formatting */
+.dropdown-menu {
+    border-radius: var(--xv-radius-control, 9px) !important;
+    border: 1px solid var(--xv-border, #E5EAF2) !important;
+    box-shadow: 0 10px 25px -5px rgba(16, 27, 51, 0.1), 0 8px 10px -6px rgba(16, 27, 51, 0.04) !important;
+    padding: 6px !important;
+    background-color: var(--xv-surface, #FFFFFF) !important;
+    z-index: 1050;
+
+    .dropdown-item {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        padding: 7px 12px;
+        border-radius: 6px;
+        color: var(--xv-text, #111827);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: background-color 0.12s ease;
+
+        &:hover, &:focus {
+            background-color: var(--xv-canvas, #F4F6FB);
+            color: var(--xv-brand, #4F6BFF);
+        }
+
+        &.text-danger:hover {
+            background-color: #FFF0F1;
+            color: #D92D20 !important;
+        }
+    }
+
+    [data-bs-theme="dark"] & {
+        background-color: var(--xv-surface, #111C2E) !important;
+        border-color: var(--xv-border, #26344A) !important;
+        box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.5) !important;
+
+        .dropdown-item {
+            color: var(--xv-text, #F2F5FA);
+
+            &:hover, &:focus {
+                background-color: rgba(255, 255, 255, 0.06);
+                color: #FFFFFF;
+            }
+
+            &.text-danger:hover {
+                background-color: rgba(220, 38, 38, 0.15);
+                color: #F87171 !important;
+            }
+        }
+    }
+}

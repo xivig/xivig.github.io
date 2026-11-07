@@ -1,172 +1,462 @@
-{{#> admin-layout title="Invoice" parentTitle="Pages" }}
+{{#> admin-layout title="Invoice" parentTitle="Extras" }}
 
-<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+<!-- Telemetry Metric Grid -->
+<div class="row g-3 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="invoice-stat-card d-flex align-items-center justify-content-between">
+            <div>
+                <span class="text-muted extra-small text-uppercase fw-bold d-block mb-1">Total Invoiced</span>
+                <h3 class="fw-800 mb-1">$48,250.00</h3>
+                <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small">
+                    <i class="bi bi-arrow-up-right me-1"></i>+12.4% vs last mo
+                </span>
+            </div>
+            <div class="stat-icon bg-primary-subtle text-primary">
+                <i class="bi bi-receipt-cutoff"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="invoice-stat-card d-flex align-items-center justify-content-between">
+            <div>
+                <span class="text-muted extra-small text-uppercase fw-bold d-block mb-1">Cleared Receipts</span>
+                <h3 class="fw-800 mb-1">$39,800.00</h3>
+                <span class="badge bg-success-subtle text-success rounded-pill px-2.5 py-1 extra-small">
+                    <i class="bi bi-check2-circle me-1"></i>82.5% settlement
+                </span>
+            </div>
+            <div class="stat-icon bg-success-subtle text-success">
+                <i class="bi bi-check-circle-fill"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="invoice-stat-card d-flex align-items-center justify-content-between">
+            <div>
+                <span class="text-muted extra-small text-uppercase fw-bold d-block mb-1">Pending Invoices</span>
+                <h3 class="fw-800 mb-1">$6,200.00</h3>
+                <span class="badge bg-warning-subtle text-warning rounded-pill px-2.5 py-1 extra-small">
+                    <i class="bi bi-clock-history me-1"></i>5 in review
+                </span>
+            </div>
+            <div class="stat-icon bg-warning-subtle text-warning">
+                <i class="bi bi-hourglass-split"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="invoice-stat-card d-flex align-items-center justify-content-between">
+            <div>
+                <span class="text-muted extra-small text-uppercase fw-bold d-block mb-1">Overdue Claims</span>
+                <h3 class="fw-800 mb-1">$2,250.00</h3>
+                <span class="badge bg-danger-subtle text-danger rounded-pill px-2.5 py-1 extra-small">
+                    <i class="bi bi-exclamation-triangle-fill me-1"></i>Action required
+                </span>
+            </div>
+            <div class="stat-icon bg-danger-subtle text-danger">
+                <i class="bi bi-shield-exclamation"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
-                        <div
-                            class="card-header bg-white py-3 px-4 border-0 d-flex justify-content-center align-items-center">
-                            <div class="text-center">
-                                <h5 class="fw-bold mb-0">Invoice</h5>
-                                <small class="text-muted">Overview and management of invoice</small>
+<!-- Main Split Grid: Ledger on Left, Live Sheet on Right -->
+<div class="row g-4">
+    <!-- Left Column: Invoice Registry & Ledger -->
+    <div class="col-xl-4 col-lg-5">
+        <div class="invoice-registry-card shadow-sm">
+            <div class="p-3 border-bottom border-light d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="fw-bold mb-0">Invoice Registry</h6>
+                    <small class="text-muted">Showing 6 of 18 records</small>
+                </div>
+                <button type="button" class="btn btn-sm btn-primary rounded-pill px-3 fw-semibold">
+                    <i class="bi bi-plus-lg me-1"></i>Create
+                </button>
+            </div>
+
+            <!-- Search & Filter Bar -->
+            <div class="p-3 bg-body-tertiary border-bottom border-light">
+                <div class="input-group input-group-sm mb-2">
+                    <span class="input-group-text bg-white border-end-0">
+                        <i class="bi bi-search text-muted"></i>
+                    </span>
+                    <input type="text" id="invoiceFilterInput" class="form-control border-start-0 ps-0" placeholder="Filter by client, ID...">
+                </div>
+                <div class="d-flex gap-1">
+                    <button class="btn btn-xs btn-primary rounded-pill px-2.5 py-1 extra-small fw-bold invoice-tab-filter active" data-filter="all">All</button>
+                    <button class="btn btn-xs btn-outline-secondary rounded-pill px-2.5 py-1 extra-small fw-bold invoice-tab-filter" data-filter="paid">Paid</button>
+                    <button class="btn btn-xs btn-outline-secondary rounded-pill px-2.5 py-1 extra-small fw-bold invoice-tab-filter" data-filter="pending">Pending</button>
+                    <button class="btn btn-xs btn-outline-secondary rounded-pill px-2.5 py-1 extra-small fw-bold invoice-tab-filter" data-filter="overdue">Overdue</button>
+                </div>
+            </div>
+
+            <!-- Invoice Item List -->
+            <div class="invoice-list-group" id="invoiceList">
+                <!-- Item 1 (Active) -->
+                <a href="javascript:;" class="invoice-item active" data-status="overdue" data-id="XIV-8921" data-client="Alice Williams" data-amount="$1,015.00" data-date="Jan 20, 2026">
+                    <div class="d-flex justify-content-between align-items-start mb-1">
+                        <span class="fw-bold text-main">#XIV-8921</span>
+                        <span class="badge bg-danger-subtle text-danger rounded-pill extra-small fw-bold">OVERDUE</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold small text-truncate" style="max-width: 170px;">Alice Williams</div>
+                            <small class="text-muted extra-small">Apex Dynamics • Due Jan 20</small>
+                        </div>
+                        <div class="text-end">
+                            <span class="fw-bold text-dark d-block">$1,015.00</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Item 2 -->
+                <a href="javascript:;" class="invoice-item" data-status="paid" data-id="XIV-8920" data-client="TechCorp Global" data-amount="$4,500.00" data-date="Jan 18, 2026">
+                    <div class="d-flex justify-content-between align-items-start mb-1">
+                        <span class="fw-bold text-main">#XIV-8920</span>
+                        <span class="badge bg-success-subtle text-success rounded-pill extra-small fw-bold">PAID</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold small text-truncate" style="max-width: 170px;">TechCorp Global</div>
+                            <small class="text-muted extra-small">Architecture Audit • Paid Jan 18</small>
+                        </div>
+                        <div class="text-end">
+                            <span class="fw-bold text-dark d-block">$4,500.00</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Item 3 -->
+                <a href="javascript:;" class="invoice-item" data-status="paid" data-id="XIV-8919" data-client="Nexus Studio" data-amount="$8,200.00" data-date="Jan 15, 2026">
+                    <div class="d-flex justify-content-between align-items-start mb-1">
+                        <span class="fw-bold text-main">#XIV-8919</span>
+                        <span class="badge bg-success-subtle text-success rounded-pill extra-small fw-bold">PAID</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold small text-truncate" style="max-width: 170px;">Nexus Studio</div>
+                            <small class="text-muted extra-small">Frontend Engine • Paid Jan 15</small>
+                        </div>
+                        <div class="text-end">
+                            <span class="fw-bold text-dark d-block">$8,200.00</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Item 4 -->
+                <a href="javascript:;" class="invoice-item" data-status="pending" data-id="XIV-8918" data-client="Horizon Labs" data-amount="$3,450.00" data-date="Jan 28, 2026">
+                    <div class="d-flex justify-content-between align-items-start mb-1">
+                        <span class="fw-bold text-main">#XIV-8918</span>
+                        <span class="badge bg-warning-subtle text-warning rounded-pill extra-small fw-bold">PENDING</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold small text-truncate" style="max-width: 170px;">Horizon Labs</div>
+                            <small class="text-muted extra-small">AI Fine-Tuning • Due Jan 28</small>
+                        </div>
+                        <div class="text-end">
+                            <span class="fw-bold text-dark d-block">$3,450.00</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Item 5 -->
+                <a href="javascript:;" class="invoice-item" data-status="paid" data-id="XIV-8917" data-client="Stellar Systems" data-amount="$2,750.00" data-date="Jan 10, 2026">
+                    <div class="d-flex justify-content-between align-items-start mb-1">
+                        <span class="fw-bold text-main">#XIV-8917</span>
+                        <span class="badge bg-success-subtle text-success rounded-pill extra-small fw-bold">PAID</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold small text-truncate" style="max-width: 170px;">Stellar Systems</div>
+                            <small class="text-muted extra-small">Penetration Test • Paid Jan 10</small>
+                        </div>
+                        <div class="text-end">
+                            <span class="fw-bold text-dark d-block">$2,750.00</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Item 6 -->
+                <a href="javascript:;" class="invoice-item" data-status="paid" data-id="XIV-8916" data-client="Veritas Cloud" data-amount="$1,890.00" data-date="Jan 05, 2026">
+                    <div class="d-flex justify-content-between align-items-start mb-1">
+                        <span class="fw-bold text-main">#XIV-8916</span>
+                        <span class="badge bg-success-subtle text-success rounded-pill extra-small fw-bold">PAID</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-semibold small text-truncate" style="max-width: 170px;">Veritas Cloud</div>
+                            <small class="text-muted extra-small">DevOps Pipeline • Paid Jan 05</small>
+                        </div>
+                        <div class="text-end">
+                            <span class="fw-bold text-dark d-block">$1,890.00</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="p-3 bg-body-tertiary border-top border-light text-center">
+                <a href="javascript:;" class="extra-small fw-bold text-primary text-decoration-none">
+                    View Complete Transaction History <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Interactive Active Invoice Document Sheet -->
+    <div class="col-xl-8 col-lg-7">
+        <!-- Action Bar -->
+        <div class="invoice-action-bar d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3 p-3 bg-body-tertiary rounded-4 border border-light shadow-2xs">
+            <div class="d-flex align-items-center gap-2">
+                <span class="fw-bold text-main fs-5" id="activeInvoiceIdDisplay">Invoice #XIV-8921</span>
+                <span class="badge bg-danger-subtle text-danger rounded-pill px-3 py-1.5 extra-small fw-800" id="activeInvoiceStatusDisplay">OVERDUE</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-3" onclick="window.print()">
+                    <i class="bi bi-printer me-1.5"></i>Print
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-3">
+                    <i class="bi bi-download me-1.5"></i>Download PDF
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-primary rounded-3">
+                    <i class="bi bi-send me-1.5"></i>Send Reminder
+                </button>
+                <button type="button" class="btn btn-sm btn-primary rounded-3 fw-bold px-3 shadow-sm">
+                    <i class="bi bi-credit-card-2-front me-1.5"></i>Pay Invoice
+                </button>
+            </div>
+        </div>
+
+        <!-- The Printable Document Sheet -->
+        <div class="invoice-sheet">
+            <!-- Sheet Header -->
+            <div class="invoice-sheet__header">
+                <div class="row align-items-start g-4">
+                    <div class="col-sm-7">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <img src="/app/src/images/logo.png" alt="XIVIG" style="width: 44px; height: 44px; object-fit: contain;">
+                            <div>
+                                <h4 class="fw-800 mb-0 tracking-tight">XIVIG ARCHITECT STUDIO</h4>
+                                <span class="text-muted extra-small text-uppercase fw-bold">Elite Enterprise Infrastructure OS</span>
                             </div>
                         </div>
+                        <address class="text-muted small mb-0 lh-base">
+                            <strong>Xivig Architecture Labs LLC</strong><br>
+                            9990 St, 5000 Church Street, Suite 550<br>
+                            Huntsville, Alabama, 99990<br>
+                            <span class="text-primary">billing@xivig.com</span> • +1 (800) 555-0199
+                        </address>
+                    </div>
+                    <div class="col-sm-5 text-sm-end">
+                        <span class="text-muted text-uppercase extra-small fw-bold d-block mb-1">Invoice Reference</span>
+                        <h3 class="fw-800 text-dark mb-2" id="docInvoiceNum">#XIV-8921</h3>
+                        <div class="extra-small text-muted mb-1">
+                            <strong>Date Issued:</strong> <span id="docIssuedDate">January 05, 2026</span>
+                        </div>
+                        <div class="extra-small text-danger fw-bold">
+                            <strong>Payment Due:</strong> <span id="docDueDate">January 20, 2026</span>
+                        </div>
+                        <div class="extra-small text-muted mt-1">
+                            <strong>PO Number:</strong> PO-2026-88412
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="card-body p-4">
-                            <!--content goes here-->
+            <!-- Sheet Body -->
+            <div class="invoice-sheet__body">
+                <!-- Client Details -->
+                <div class="row mb-5 g-4">
+                    <div class="col-sm-6">
+                        <div class="p-3 bg-body-tertiary rounded-3 border border-light h-100">
+                            <span class="text-muted text-uppercase extra-small fw-bold d-block mb-2">Billed To</span>
+                            <h6 class="fw-bold mb-1" id="docClientName">Alice Williams</h6>
+                            <div class="text-muted small mb-1">Apex Dynamics Solutions Inc.</div>
+                            <address class="text-muted small mb-0 lh-base">
+                                7500 Oakdale Ave, Suite 300<br>
+                                San Francisco, California (CA), 94107<br>
+                                <span class="text-dark">alice.w@apexdyn.io</span>
+                            </address>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="p-3 bg-body-tertiary rounded-3 border border-light h-100">
+                            <span class="text-muted text-uppercase extra-small fw-bold d-block mb-2">Payment Settlement Routing</span>
+                            <div class="extra-small text-muted mb-1"><strong>Bank:</strong> Silicon Reserve National Bank</div>
+                            <div class="extra-small text-muted mb-1"><strong>Account Name:</strong> Xivig Architecture Labs LLC</div>
+                            <div class="extra-small text-muted mb-1"><strong>IBAN:</strong> US89 3000 0001 2345 6789 01</div>
+                            <div class="extra-small text-muted mb-0"><strong>SWIFT / BIC:</strong> SRNBUS33XXX</div>
+                        </div>
+                    </div>
+                </div>
 
-                            <div class="row g-4 justify-content-center">
-                                <div class="container py-5">
-                                    <div class="invoice card border-0 rounded-4 shadow-lg overflow-hidden">
+                <!-- Itemized Services Table -->
+                <div class="table-responsive mb-4">
+                    <table class="table table-borderless align-middle mb-0">
+                        <thead class="border-bottom border-light">
+                            <tr class="extra-small text-uppercase text-muted fw-bold">
+                                <th scope="col" class="pb-3 ps-0">Service & Deliverable Description</th>
+                                <th scope="col" class="text-center pb-3">Code</th>
+                                <th scope="col" class="text-center pb-3">Hours</th>
+                                <th scope="col" class="text-end pb-3">Rate</th>
+                                <th scope="col" class="text-end pb-3 pe-0">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody class="border-bottom border-light">
+                            <tr>
+                                <td class="py-3 ps-0">
+                                    <h6 class="fw-bold text-dark mb-1">Cloud Native Microservices Architecture & Spec</h6>
+                                    <p class="text-muted small mb-0">High-fidelity distributed prototypes and mobile-first container orchestration blueprints.</p>
+                                </td>
+                                <td class="text-center text-muted small">#XIV-651</td>
+                                <td class="text-center fw-semibold">40</td>
+                                <td class="text-end text-muted small">$15.00</td>
+                                <td class="text-end pe-0 fw-bold text-dark">$450.00</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 ps-0">
+                                    <h6 class="fw-bold text-dark mb-1">High-Performance Admin Design System Assets</h6>
+                                    <p class="text-muted small mb-0">Custom SCSS component tokens, typography scales, and modular dashboard layout engine.</p>
+                                </td>
+                                <td class="text-center text-muted small">#XIV-429</td>
+                                <td class="text-center fw-semibold">60</td>
+                                <td class="text-end text-muted small">$10.00</td>
+                                <td class="text-end pe-0 fw-bold text-dark">$550.00</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 ps-0">
+                                    <h6 class="fw-bold text-dark mb-1">Hardened CSP & Role-Based Access Control Setup</h6>
+                                    <p class="text-muted small mb-0">Subresource integrity checks, hardened session tokens, and XSS sanitization policy.</p>
+                                </td>
+                                <td class="text-center text-muted small">#XIV-104</td>
+                                <td class="text-center fw-semibold">1</td>
+                                <td class="text-end text-muted small">$15.00</td>
+                                <td class="text-end pe-0 fw-bold text-dark">$15.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                                        <div class="invoice__header p-5 bg-white border-bottom border-light">
-                                            <div
-                                                class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-4">
-                                                <div class="invoice__brand d-flex align-items-center">
-                                                    <div class="invoice__logo-wrapper bg-primary text-white rounded-3 d-flex align-items-center justify-content-center me-3"
-                                                        style="width: 50px; height: 50px;">
-                                                        <i class="bi bi-stack fs-3"></i>
-                                                    </div>
-                                                    <div>
-                                                        <h1 class="h3 mb-0 fw-bold tracking-tight">Unify Architect</h1>
-                                                        <span class="text-muted small fw-medium">Elite Enterprise
-                                                            OS</span>
-                                                    </div>
-                                                </div>
-                                                <div class="invoice__sender text-md-end">
-                                                    <h6 class="fw-bold mb-1">Venus Llc.</h6>
-                                                    <address class="text-muted small mb-0 lh-base">
-                                                        9990 St, 5000 Church Street, Suite 550<br>
-                                                        Huntsville, Alabama, 99990<br>
-                                                        <span class="text-primary">billing@venus-arch.com</span>
-                                                    </address>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="invoice__body p-5 bg-white">
-                                            <div
-                                                class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5 pb-4 border-bottom border-light gap-3">
-                                                <div class="d-flex align-items-center gap-3">
-                                                    <div class="invoice__id">
-                                                        <span
-                                                            class="text-muted text-uppercase extra-small fw-bold d-block mb-1">Invoice
-                                                            Number</span>
-                                                        <h2 class="h5 mb-0 fw-bold">#VEN009985</h2>
-                                                    </div>
-                                                    <span
-                                                        class="badge bg-danger-subtle text-danger rounded-pill px-3 py-2 extra-small fw-800">OVERDUE</span>
-                                                </div>
-                                                <div class="text-md-end">
-                                                    <span
-                                                        class="text-muted text-uppercase extra-small fw-bold d-block mb-1">Date
-                                                        Issued</span>
-                                                    <h2 class="h6 mb-0 fw-semibold text-dark">January 20th, 2026</h2>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-5">
-                                                <div class="col-sm-6">
-                                                    <span
-                                                        class="text-muted text-uppercase extra-small fw-bold d-block mb-3">Bill
-                                                        To</span>
-                                                    <h6 class="fw-bold mb-1">Alice Williams</h6>
-                                                    <p class="text-muted small mb-0 lh-lg">
-                                                        7500 Oakdale Ave,<br>
-                                                        San Francisco, California (CA), 94500
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="table-responsive mb-4">
-                                                <table class="table table-borderless align-middle">
-                                                    <thead class="border-bottom border-light">
-                                                        <tr class="extra-small text-uppercase text-muted fw-bold">
-                                                            <th scope="col" class="pb-3 ps-0">Item & Description</th>
-                                                            <th scope="col" class="text-center pb-3">Code</th>
-                                                            <th scope="col" class="text-center pb-3">Hours</th>
-                                                            <th scope="col" class="text-end pb-3 pe-0">Total</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="border-bottom border-light">
-                                                        <tr>
-                                                            <td class="py-4 ps-0">
-                                                                <h6 class="fw-bold text-dark mb-1">Bootstrap Admin
-                                                                    Template</h6>
-                                                                <p class="text-muted small mb-0">High-fidelity
-                                                                    prototypes and mobile-first
-                                                                    architecture.</p>
-                                                            </td>
-                                                            <td class="text-center text-muted small">#651</td>
-                                                            <td class="text-center fw-semibold">40</td>
-                                                            <td class="text-end pe-0 fw-bold text-dark">$450.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="py-4 ps-0">
-                                                                <h6 class="fw-bold text-dark mb-1">Admin Themes</h6>
-                                                                <p class="text-muted small mb-0">Premium dashboard
-                                                                    assets and layout components.</p>
-                                                            </td>
-                                                            <td class="text-center text-muted small">#429</td>
-                                                            <td class="text-center fw-semibold">60</td>
-                                                            <td class="text-end pe-0 fw-bold text-dark">$550.00</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                            <div class="row g-5">
-                                                <div class="col-lg-7">
-                                                    <div class="p-4 bg-light rounded-4">
-                                                        <h6 class="fw-bold text-uppercase extra-small mb-2">Architect
-                                                            Notes</h6>
-                                                        <p class="text-muted small mb-0 lh-lg">We appreciate your
-                                                            continued partnership. For any
-                                                            technical support regarding this architecture package,
-                                                            please contact our dev team via
-                                                            the Xivig support portal.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-5">
-                                                    <div class="d-grid gap-3">
-                                                        <div
-                                                            class="d-flex justify-content-between align-items-center px-2">
-                                                            <span class="text-muted small">Subtotal</span>
-                                                            <span class="fw-bold">$1000.00</span>
-                                                        </div>
-                                                        <div
-                                                            class="d-flex justify-content-between align-items-center px-2">
-                                                            <span class="text-muted small">Tax (VAT 5%)</span>
-                                                            <span class="fw-bold">$5.00</span>
-                                                        </div>
-                                                        <div
-                                                            class="invoice__total d-flex justify-content-between align-items-center p-3 bg-primary text-white rounded-3 shadow-sm">
-                                                            <span class="fw-semibold">Total Amount</span>
-                                                            <h4 class="mb-0 fw-800">$1,015.00</h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="invoice__footer p-5 bg-white border-top border-light">
-                                            <div
-                                                class="d-flex flex-wrap justify-content-center justify-content-md-end gap-3">
-                                                <button
-                                                    class="btn btn-outline-light border text-dark px-4 py-2 rounded-3 shadow-sm">
-                                                    <i class="bi bi-download me-2"></i> Download
-                                                </button>
-                                                <button
-                                                    class="btn btn-outline-light border text-dark px-4 py-2 rounded-3 shadow-sm">
-                                                    <i class="bi bi-printer me-2"></i> Print
-                                                </button>
-                                                <button class="btn btn-primary px-5 py-2 rounded-3 fw-bold shadow">
-                                                    <i class="bi bi-credit-card me-2"></i> Pay Now
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+                <!-- Financial Calculation & Verification Summary -->
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-3 bg-body-tertiary rounded-3 border border-light">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="invoice-qr-box flex-shrink-0">
+                                    <i class="bi bi-qr-code fs-1"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold extra-small text-uppercase mb-1">Cryptographic Verification</h6>
+                                    <p class="text-muted extra-small mb-1 lh-sm">Scan with your mobile authenticator to verify the SHA-256 ledger receipt on the Xivig Trust Registry.</p>
+                                    <span class="badge bg-secondary-subtle text-secondary extra-small font-monospace">HASH: 9e8a...3fc1</span>
                                 </div>
                             </div>
                         </div>
-                    
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="d-grid gap-2">
+                            <div class="d-flex justify-content-between align-items-center px-2">
+                                <span class="text-muted small">Subtotal</span>
+                                <span class="fw-bold">$1,015.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center px-2">
+                                <span class="text-muted small">Tax (VAT 5% inclusive)</span>
+                                <span class="fw-bold">$5.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center px-2">
+                                <span class="text-muted small">Enterprise Discount Applied</span>
+                                <span class="fw-bold text-success">-$5.00</span>
+                            </div>
+                            <div class="invoice__total-box d-flex justify-content-between align-items-center mt-2">
+                                <div>
+                                    <span class="extra-small text-uppercase opacity-75 d-block">Total Balance Due</span>
+                                    <h3 class="mb-0 fw-800 text-white" id="docTotalDue">$1,015.00</h3>
+                                </div>
+                                <span class="badge bg-white text-dark rounded-pill px-3 py-1.5 extra-small fw-bold">USD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sheet Footer -->
+            <div class="invoice-sheet__footer">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
+                    <div class="extra-small text-muted">
+                        <strong>Thank you for choosing Xivig Architect Studio.</strong> Questions? Inquire at <a href="mailto:billing@xivig.com" class="text-primary">billing@xivig.com</a>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="extra-small text-muted font-monospace">Generated via Xivig Engine v2.4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Invoice Tab Filter (All, Paid, Pending, Overdue)
+    const filterButtons = document.querySelectorAll('.invoice-tab-filter');
+    const invoiceItems = document.querySelectorAll('.invoice-item');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => {
+                b.classList.remove('active', 'btn-primary');
+                b.classList.add('btn-outline-secondary');
+            });
+            btn.classList.remove('btn-outline-secondary');
+            btn.classList.add('active', 'btn-primary');
+
+            const filter = btn.dataset.filter;
+            invoiceItems.forEach(item => {
+                if (filter === 'all' || item.dataset.status === filter) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // 2. Invoice Live Search
+    const searchInput = document.getElementById('invoiceFilterInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            invoiceItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(query) ? 'block' : 'none';
+            });
+        });
+    }
+
+    // 3. Select Item & Update Preview Sheet
+    invoiceItems.forEach(item => {
+        item.addEventListener('click', () => {
+            invoiceItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+
+            const id = item.dataset.id;
+            const client = item.dataset.client;
+            const amount = item.dataset.amount;
+            const status = item.dataset.status.toUpperCase();
+
+            document.getElementById('activeInvoiceIdDisplay').textContent = `Invoice #${id}`;
+            document.getElementById('docInvoiceNum').textContent = `#${id}`;
+            document.getElementById('docClientName').textContent = client;
+            document.getElementById('docTotalDue').textContent = amount;
+
+            const statusBadge = document.getElementById('activeInvoiceStatusDisplay');
+            statusBadge.textContent = status;
+            statusBadge.className = 'badge rounded-pill px-3 py-1.5 extra-small fw-800 ' + 
+                (status === 'PAID' ? 'bg-success-subtle text-success' : 
+                 status === 'PENDING' ? 'bg-warning-subtle text-warning' : 'bg-danger-subtle text-danger');
+        });
+    });
+});
+</script>
 
 {{/admin-layout}}

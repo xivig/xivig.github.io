@@ -1,63 +1,204 @@
-<!--right sidebar-->
-<div class="settings-panel offcanvas offcanvas-end shadow" tabindex="-1" id="rightSidebar"
-    aria-labelledby="settingsPanelLabel">
-    <div class="settings-panel__header offcanvas-header">
-        <div class="settings-panel__title-wrapper">
-            <h5 class="settings-panel__title" id="settingsPanelLabel">Interface Architect</h5>
-            <span class="settings-panel__subtitle">CONFIGURE YOUR WORKSPACE</span>
+<!-- Xivig Studio (Offcanvas Drawer) -->
+<div class="settings-panel atelier-studio offcanvas offcanvas-end shadow" tabindex="-1" id="rightSidebar"
+    aria-labelledby="xivigStudioLabel">
+    <!-- Header -->
+    <div class="atelier-header offcanvas-header">
+        <div class="d-flex align-items-center gap-3">
+            <a href="https://github.com/xivig/xivig.github.io" target="_blank" class="atelier-emblem text-decoration-none" title="Visit xivig.github.io on GitHub" aria-label="XIVIG GitHub Repository">
+                <img src="/app/src/images/logo.png" alt="XIVIG" width="26" height="26">
+            </a>
+            <div>
+                <h5 class="atelier-title mb-1" id="xivigStudioLabel">Xivig Studio</h5>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="atelier-live-pill"><span class="atelier-live-dot"></span> Live Session</span>
+                    <span class="atelier-subtitle mb-0">WORKSPACE ARCHITECT</span>
+                </div>
+            </div>
         </div>
-        <button type="button" class="settings-panel__close" data-bs-dismiss="offcanvas">
-            <i class="fa-solid fa-xmark"></i>
+        <button type="button" class="atelier-close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
         </button>
     </div>
 
-    <div class="settings-panel__body offcanvas-body custom-scroll">
-        <div class="settings-panel__section">
-            <h6 class="settings-panel__section-title">Global Theme</h6>
-            <div class="settings-panel__group btn-group w-100">
-                <input type="radio" class="btn-check" name="header-bg" id="header-white" checked>
-                <label class="settings-panel__btn settings-panel__btn--outline  btn btn-elite"
-                    for="header-white">Light</label>
+    <!-- Body -->
+    <div class="atelier-body offcanvas-body custom-scroll">
+        <!-- 1. Global Theme Control (Top) -->
+        <div class="atelier-section mb-4">
+            <h6 class="atelier-section-heading">Global Theme</h6>
+            <div class="atelier-toggle-group btn-group w-100" role="group" aria-label="Global Theme Toggle">
+                <input type="radio" class="btn-check" name="global-theme-toggle" id="theme-light-btn" value="light" checked>
+                <label class="atelier-toggle-btn btn" for="theme-light-btn">Light</label>
 
-                <input type="radio" class="btn-check" name="header-bg" id="header-dark">
-                <label class="settings-panel__btn settings-panel__btn--outline btn btn-elite"
-                    for="header-dark">Dark</label>
+                <input type="radio" class="btn-check" name="global-theme-toggle" id="theme-dark-btn" value="dark">
+                <label class="atelier-toggle-btn btn" for="theme-dark-btn">Dark</label>
             </div>
         </div>
 
-        <div class="settings-panel__section">
-            <h6 class="settings-panel__section-title">Sidebar Style</h6>
-            <div class="settings-panel__group btn-group w-100">
-                <input type="radio" class="btn-check" name="sidebar-bg" id="sidebar-light">
-                <label class="settings-panel__btn settings-panel__btn--outline  btn btn-elite"
-                    for="sidebar-light">Light</label>
+        <!-- 2. Sidebar Style Control (Top) -->
+        <div class="atelier-section mb-4">
+            <h6 class="atelier-section-heading">Sidebar Style</h6>
+            <div class="atelier-toggle-group btn-group w-100" role="group" aria-label="Sidebar Style Toggle">
+                <input type="radio" class="btn-check" name="sidebar-style-toggle" id="sidebar-light-btn" value="light">
+                <label class="atelier-toggle-btn btn" for="sidebar-light-btn">Light</label>
 
-                <input type="radio" class="btn-check" name="sidebar-bg" id="sidebar-dark" checked>
-                <label class="settings-panel__btn settings-panel__btn--outline  btn btn-elite"
-                    for="sidebar-dark">Dark</label>
+                <input type="radio" class="btn-check" name="sidebar-style-toggle" id="sidebar-dark-btn" value="dark" checked>
+                <label class="atelier-toggle-btn btn" for="sidebar-dark-btn">Dark</label>
             </div>
         </div>
 
-        <div class="settings-panel__section">
-            <h6 class="settings-panel__section-title">Menu Dropdown Icon</h6>
-            <div class="settings-panel__icon-grid">
-                <input class="btn-check" type="radio" name="menu-icon" id="menu-icon-1" checked>
-                <label class="settings-panel__icon-label btn btn-elite" for="menu-icon-1"><i
-                        class="bi bi-chevron-down"></i></label>
+        <!-- 3. Menu Dropdown Icon Control (Top) -->
+        <div class="atelier-section mb-4">
+            <h6 class="atelier-section-heading">Menu Dropdown Icon</h6>
+            <div class="atelier-icon-grid">
+                <input type="radio" class="btn-check" name="menu-dropdown-icon" id="menu-icon-1" value="menu-icon-1" checked>
+                <label class="atelier-icon-tile btn" for="menu-icon-1" title="Chevron">
+                    <i class="bi bi-chevron-down"></i>
+                </label>
 
-                <input class="btn-check" type="radio" name="menu-icon" id="menu-icon-2">
-                <label class="settings-panel__icon-label  btn btn-elite" for="menu-icon-2"><i
-                        class="bi bi-plus-lg"></i></label>
+                <input type="radio" class="btn-check" name="menu-dropdown-icon" id="menu-icon-2" value="menu-icon-2">
+                <label class="atelier-icon-tile btn" for="menu-icon-2" title="Plus / Minus">
+                    <i class="bi bi-plus-lg"></i>
+                </label>
 
-                <input class="btn-check" type="radio" name="menu-icon" id="menu-icon-3">
-                <label class="settings-panel__icon-label  btn btn-elite" for="menu-icon-3"><i
-                        class="bi bi-chevron-double-right"></i></label>
+                <input type="radio" class="btn-check" name="menu-dropdown-icon" id="menu-icon-3" value="menu-icon-3">
+                <label class="atelier-icon-tile btn" for="menu-icon-3" title="Double Chevron">
+                    <i class="bi bi-chevron-double-right"></i>
+                </label>
             </div>
         </div>
 
-        <div class="settings-panel__footer">
-            <button class="settings-panel__reset-btn btn btn-elite" id="reset-settings">
-                <i class="bi bi-arrow-counterclockwise"></i> Restore Defaults
+        <hr class="atelier-divider my-4">
+
+        <!-- 4. Visual Atmosphere -->
+        <div class="atelier-section mb-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="atelier-section-title">
+                    <i class="bi bi-globe me-1 text-warning-gold"></i> VISUAL ATMOSPHERE
+                </div>
+                <div class="atelier-active-label" id="atelier-atmosphere-label">Porcelain Couture</div>
+            </div>
+            <div class="atelier-atmosphere-grid">
+                <!-- Noir (Dark Mode) -->
+                <div class="atelier-atmosphere-tile" data-atmosphere="dark" role="button" tabindex="0">
+                    <div class="atelier-preview-mockup mockup-noir">
+                        <div class="mockup-header-bar"></div>
+                        <div class="mockup-body-lines">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="atelier-atmosphere-meta">
+                        <span class="atelier-atmosphere-name">Noir</span>
+                        <span class="atelier-atmosphere-sub">Dark Mode</span>
+                    </div>
+                </div>
+
+                <!-- Porcelain (Light Mode) -->
+                <div class="atelier-atmosphere-tile active" data-atmosphere="light" role="button" tabindex="0">
+                    <div class="atelier-preview-mockup mockup-porcelain">
+                        <div class="mockup-header-bar"></div>
+                        <div class="mockup-sidebar"></div>
+                        <div class="mockup-body-lines">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="atelier-atmosphere-meta">
+                        <span class="atelier-atmosphere-name">Porcelain</span>
+                        <span class="atelier-atmosphere-sub">Light Mode</span>
+                    </div>
+                </div>
+
+                <!-- Horizon (System Sync) -->
+                <div class="atelier-atmosphere-tile" data-atmosphere="auto" role="button" tabindex="0">
+                    <div class="atelier-preview-mockup mockup-horizon">
+                        <div class="mockup-horizon-split"></div>
+                        <div class="mockup-horizon-line"></div>
+                    </div>
+                    <div class="atelier-atmosphere-meta">
+                        <span class="atelier-atmosphere-name">Horizon</span>
+                        <span class="atelier-atmosphere-sub">System Sync</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Signature Accent Hue -->
+        <div class="atelier-section mb-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="atelier-section-title">
+                    <i class="bi bi-palette me-1 text-warning-gold"></i> SIGNATURE ACCENT HUE
+                </div>
+                <div class="atelier-active-label" id="atelier-accent-label">Luminous Indigo</div>
+            </div>
+            <div class="atelier-swatches-row">
+                <button type="button" class="atelier-swatch" data-accent="#E5A93C" data-name="Amber Sovereign" style="--swatch-color: #E5A93C;" title="Amber Sovereign" aria-label="Amber Sovereign"></button>
+                <button type="button" class="atelier-swatch active" data-accent="#4F6BFF" data-name="Luminous Indigo" style="--swatch-color: #4F6BFF;" title="Luminous Indigo" aria-label="Luminous Indigo">
+                    <i class="bi bi-check-lg"></i>
+                </button>
+                <button type="button" class="atelier-swatch" data-accent="#10B981" data-name="Emerald Pulse" style="--swatch-color: #10B981;" title="Emerald Pulse" aria-label="Emerald Pulse"></button>
+                <button type="button" class="atelier-swatch" data-accent="#E11D48" data-name="Crimson Core" style="--swatch-color: #E11D48;" title="Crimson Core" aria-label="Crimson Core"></button>
+                <button type="button" class="atelier-swatch" data-accent="#0EA5E9" data-name="Cyber Cyan" style="--swatch-color: #0EA5E9;" title="Cyber Cyan" aria-label="Cyber Cyan"></button>
+                <button type="button" class="atelier-swatch" data-accent="#8B5CF6" data-name="Amethyst Atelier" style="--swatch-color: #8B5CF6;" title="Amethyst Atelier" aria-label="Amethyst Atelier"></button>
+            </div>
+        </div>
+
+        <!-- 7. Interface Typography Scale -->
+        <div class="atelier-section mb-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="atelier-section-title">
+                    <i class="bi bi-type me-1 text-warning-gold"></i> INTERFACE TYPOGRAPHY SCALE
+                </div>
+            </div>
+            <div class="atelier-type-segmented">
+                <button type="button" class="atelier-type-btn" data-scale="92">
+                    <span class="type-name">Compact</span>
+                    <span class="type-pct">(92%)</span>
+                </button>
+                <button type="button" class="atelier-type-btn active" data-scale="100">
+                    <span class="type-name">Default</span>
+                    <span class="type-pct">(100%)</span>
+                </button>
+                <button type="button" class="atelier-type-btn" data-scale="108">
+                    <span class="type-name">Generous</span>
+                    <span class="type-pct">(108%)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 8. Source Code Repository Link -->
+        <div class="atelier-section mb-4">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="atelier-section-title">
+                    <i class="bi bi-git me-1 text-warning-gold"></i> SOURCE CODE REPOSITORY
+                </div>
+            </div>
+            <a href="https://github.com/xivig/xivig.github.io" target="_blank" class="atelier-repo-banner d-flex align-items-center justify-content-between p-3 rounded-4 text-decoration-none">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="atelier-repo-icon-box">
+                        <i class="bi bi-github"></i>
+                    </div>
+                    <div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="atelier-repo-name">xivig.github.io</span>
+                            <span class="badge bg-primary-subtle text-primary extra-small fw-bold px-2 py-0.5 rounded-pill">MAIN</span>
+                        </div>
+                        <small class="atelier-repo-desc text-muted">GitHub Repository &bull; Star &amp; Fork</small>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center text-muted">
+                    <i class="bi bi-chevron-right"></i>
+                </div>
+            </a>
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="atelier-actions pt-2 pb-2">
+            <button type="button" class="btn atelier-btn-restore w-100 mb-2" id="reset-settings">
+                <i class="bi bi-arrow-counterclockwise me-1"></i> Restore Default Xivig Preferences
+            </button>
+            <button type="button" class="btn atelier-btn-close w-100" data-bs-dismiss="offcanvas">
+                Done &amp; Close Studio
             </button>
         </div>
     </div>

@@ -1,9 +1,3 @@
-// 0. BOOTSTRAP GLOBALS
-import $ from 'jquery';
-if (!window.jQuery || !window.jQuery.fn || (!window.jQuery.fn.DataTable && !window.jQuery.fn.summernote)) {
-    window.jQuery = window.$ = $;
-}
-globalThis.jQuery = globalThis.$ = window.jQuery;
 
 // 1. PROJECT STYLES
 import 'animate.css/animate.css';
@@ -21,7 +15,13 @@ window.bootstrap = bootstrap;
 import { initPreloader } from './scripts/core/preloader.js';
 import { initMobileController } from './scripts/core/mobile-controller.js';
 
-window.addEventListener("DOMContentLoaded", () => {
+function startAuth() {
     initPreloader();
     initMobileController();
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startAuth);
+} else {
+    startAuth();
+}

@@ -1,123 +1,468 @@
 {{#> admin-layout title="Create Order" parentTitle="Ecommerce" }}
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
-        <h2 class="h3 fw-black mb-1 text-dark">Create New Order</h2>
-        <p class="text-muted small mb-0">Fill out the form below to add a new order.</p>
-    </div>
-    <a href="ecommerce-orders.html" class="btn btn-secondary px-4 py-2 fw-bold shadow-sm rounded-pill">
-        <i class="fa-solid fa-arrow-left me-2"></i> Back to Orders
-    </a>
-</div>
+<!-- Screen 08 / Create Order: 5-col Customer/Address + 7-col Product Picker & Order Summary -->
+<div class="row g-4">
+    <!-- Left Column: Customer Lookup & Shipping Address (5 cols) -->
+    <div class="col-lg-5">
+        <!-- Customer Lookup Card -->
+        <div class="card card-box border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-card py-3 border-bottom d-flex align-items-center justify-content-between">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-person me-2 text-primary"></i> Customer Information
+                </h6>
+                <span class="badge bg-primary-subtle text-primary extra-small fw-bold">REQUIRED</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Customer Lookup</label>
+                    <select class="form-select rounded-3" id="customerLookupSelect">
+                        <option value="">Search existing client or enter new...</option>
+                        <option value="emma" selected>Emma Wilson (emma.w@example.com)</option>
+                        <option value="james">James Peterson (j.peterson@company.com)</option>
+                        <option value="sarah">Sarah Lin (sarah.lin@studio.net)</option>
+                        <option value="mark">Mark Ruffalo (mark.r@test.org)</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="custName" class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Full Name</label>
+                    <input type="text" class="form-control rounded-3" id="custName" value="Emma Wilson" required>
+                </div>
+                <div class="mb-3">
+                    <label for="custEmail" class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Email Address</label>
+                    <input type="email" class="form-control rounded-3" id="custEmail" value="emma.w@example.com" required>
+                </div>
+                <div class="mb-0">
+                    <label for="custPhone" class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Phone Number</label>
+                    <input type="tel" class="form-control rounded-3" id="custPhone" value="+1 (555) 234-8901">
+                </div>
+            </div>
+        </div>
 
-<div class="card border-0 shadow-sm rounded-4">
-    <div class="card-body p-4">
-        <form id="createOrderForm">
-            <div class="row g-3">
-                <!-- Customer Information -->
-                <div class="col-md-6">
-                    <h5 class="fw-bold mb-3">Customer Details</h5>
-                    <div class="mb-3">
-                        <label for="customerName" class="form-label">Customer Name</label>
-                        <input type="text" class="form-control" id="customerName" placeholder="Enter full name" required>
+        <!-- Shipping & Delivery Address Card -->
+        <div class="card card-box border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-card py-3 border-bottom">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-geo-alt me-2 text-primary"></i> Shipping &amp; Delivery
+                </h6>
+            </div>
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <label for="shipStreet" class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Street Address</label>
+                    <input type="text" class="form-control rounded-3" id="shipStreet" value="742 Evergreen Terrace" required>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-sm-6">
+                        <label for="shipCity" class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">City</label>
+                        <input type="text" class="form-control rounded-3" id="shipCity" value="Springfield" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="customerEmail" class="form-label">Email Address</label>
-                        <input type="email" class="form-control" id="customerEmail" placeholder="e.g., mail@example.com" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="shippingAddress" class="form-label">Shipping Address</label>
-                        <textarea class="form-control" id="shippingAddress" rows="3" placeholder="Enter shipping address"></textarea>
+                    <div class="col-sm-6">
+                        <label for="shipState" class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">State / Province</label>
+                        <input type="text" class="form-control rounded-3" id="shipState" value="Oregon">
                     </div>
                 </div>
-
-                <!-- Order Details -->
-                <div class="col-md-6">
-                    <h5 class="fw-bold mb-3">Order Information</h5>
-                    <div class="mb-3">
-                        <label for="orderStatus" class="form-label">Order Status</label>
-                        <select class="form-select" id="orderStatus">
-                            <option value="pending">Pending</option>
-                            <option value="processing">Processing</option>
-                            <option value="completed">Completed</option>
-                            <option value="cancelled">Cancelled</option>
+                <div class="row g-3 mb-3">
+                    <div class="col-sm-6">
+                        <label for="shipPostal" class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Postal Code</label>
+                        <input type="text" class="form-control rounded-3" id="shipPostal" value="97477">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="shipCountry" class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Country</label>
+                        <select class="form-select rounded-3" id="shipCountry">
+                            <option value="US" selected>United States</option>
+                            <option value="CA">Canada</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="AU">Australia</option>
+                            <option value="DE">Germany</option>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="orderTotal" class="form-label">Total Amount</label>
-                        <div class="input-group">
-                            <span class="input-group-text">$</span>
-                            <input type="number" class="form-control" id="orderTotal" placeholder="0.00" required>
-                        </div>
+                </div>
+                <div class="mb-0">
+                    <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Delivery Method</label>
+                    <select class="form-select rounded-3" id="deliveryMethodSelect">
+                        <option value="15" selected>Standard Express Courier &bull; $15.00 (2-3 business days)</option>
+                        <option value="25">Priority Next-Day Air &bull; $25.00 (1 business day)</option>
+                        <option value="0">Local Store Pickup &bull; Free ($0.00)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Product Picker, Line Items & Order Summary (7 cols) -->
+    <div class="col-lg-7">
+        <!-- Searchable Product Picker Card -->
+        <div class="card card-box border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-card py-3 border-bottom d-flex align-items-center justify-content-between">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-cart me-2 text-primary"></i> Order Items &amp; Inventory
+                </h6>
+                <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3 fw-bold" id="quickAddCustomItem">
+                    <i class="bi bi-plus-lg me-1"></i> Add Custom Item
+                </button>
+            </div>
+            <div class="card-body p-4">
+                <!-- Search bar to pick product -->
+                <div class="input-group modern-input-group mb-3">
+                    <span class="input-group-text bg-light border-0"><i class="bi bi-search text-muted"></i></span>
+                    <input type="text" id="catalogSearchInput" class="form-control bg-light border-0" placeholder="Type to search catalog (e.g. Wireless Headphones, Smart Watch)...">
+                    <button class="btn btn-primary fw-bold px-3" type="button" id="addItemFromSearchBtn">Add to Order</button>
+                </div>
+
+                <!-- Product Line Items Table -->
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0" id="orderItemsTable">
+                        <thead class="bg-light-subtle">
+                            <tr class="text-muted extra-small text-uppercase fw-bold letter-spacing-1">
+                                <th>Item</th>
+                                <th style="width: 100px;">Price</th>
+                                <th style="width: 130px;" class="text-center">Quantity</th>
+                                <th style="width: 110px;" class="text-end">Total</th>
+                                <th style="width: 50px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderItemsList">
+                            <!-- Line Item 1 -->
+                            <tr data-price="299.00">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-light p-2 rounded-3 me-3 border" style="width: 44px; height: 44px;">
+                                            <i class="bi bi-headphones text-primary fs-4 d-flex justify-content-center"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold text-dark mb-0 fs-14">Studio Wireless ANC Headphones</h6>
+                                            <span class="text-muted extra-small">SKU: WH-1000XM5 &bull; Space Grey</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="fw-semibold text-dark item-price">$299.00</span></td>
+                                <td>
+                                    <div class="input-group input-group-sm rounded-pill overflow-hidden border">
+                                        <button class="btn btn-light border-0 qty-minus px-2" type="button">-</button>
+                                        <input type="number" class="form-control border-0 text-center qty-input px-1" value="2" min="1">
+                                        <button class="btn btn-light border-0 qty-plus px-2" type="button">+</button>
+                                    </div>
+                                </td>
+                                <td class="text-end"><span class="fw-bold text-dark item-total">$598.00</span></td>
+                                <td class="text-end">
+                                    <button type="button" class="btn btn-link text-danger p-0 border-0 remove-item-btn"><i class="bi bi-trash fs-5"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Line Item 2 -->
+                            <tr data-price="420.00">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-light p-2 rounded-3 me-3 border" style="width: 44px; height: 44px;">
+                                            <i class="bi bi-smartwatch text-info fs-4 d-flex justify-content-center"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold text-dark mb-0 fs-14">Chrono Titan Smartwatch</h6>
+                                            <span class="text-muted extra-small">SKU: SW-CHRONO &bull; Obsidian Black</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="fw-semibold text-dark item-price">$420.00</span></td>
+                                <td>
+                                    <div class="input-group input-group-sm rounded-pill overflow-hidden border">
+                                        <button class="btn btn-light border-0 qty-minus px-2" type="button">-</button>
+                                        <input type="number" class="form-control border-0 text-center qty-input px-1" value="1" min="1">
+                                        <button class="btn btn-light border-0 qty-plus px-2" type="button">+</button>
+                                    </div>
+                                </td>
+                                <td class="text-end"><span class="fw-bold text-dark item-total">$420.00</span></td>
+                                <td class="text-end">
+                                    <button type="button" class="btn btn-link text-danger p-0 border-0 remove-item-btn"><i class="bi bi-trash fs-5"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Order Summary Card -->
+        <div class="card card-box border-0 shadow-sm rounded-4 sticky-top" style="top: 90px;">
+            <div class="card-header bg-card py-3 border-bottom d-flex align-items-center justify-content-between">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-receipt me-2 text-primary"></i> Order Summary &amp; Totals
+                </h6>
+                <span class="badge bg-success-subtle text-success extra-small fw-bold">DRAFT READY</span>
+            </div>
+            <div class="card-body p-4">
+                <!-- Promo Code -->
+                <div class="mb-4">
+                    <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Promotional Discount</label>
+                    <div class="input-group">
+                        <input type="text" id="couponCodeInput" class="form-control rounded-start-3" placeholder="Enter coupon code (e.g. VIP20)">
+                        <button class="btn btn-outline-primary fw-bold px-3 rounded-end-3" type="button" id="applyCouponBtn">Apply</button>
+                    </div>
+                    <div id="couponFeedback" class="form-text extra-small mt-1 text-success d-none">
+                        <i class="bi bi-check-circle me-1"></i> Coupon "VIP20" applied (-20% discount)!
                     </div>
                 </div>
 
-                <!-- Products -->
-                <div class="col-12">
-                    <h5 class="fw-bold mb-3">Products</h5>
-                    <div id="product-items">
-                        <div class="row g-3 align-items-center product-item mb-3">
-                            <div class="col-md-5">
-                                <input type="text" class="form-control" placeholder="Product Name">
-                            </div>
-                            <div class="col-md-2">
-                                <input type="number" class="form-control" placeholder="Qty" value="1">
-                            </div>
-                            <div class="col-md-3">
-                                <input type="number" class="form-control" placeholder="Price">
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-danger btn-sm remove-product-item w-100">Remove</button>
-                            </div>
-                        </div>
+                <!-- Totals Breakdown -->
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted fs-14">Items Subtotal</span>
+                    <span class="fw-semibold text-dark" id="summarySubtotal">$1,018.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2 text-success d-none" id="summaryDiscountRow">
+                    <span class="fs-14">Discount Promo</span>
+                    <span class="fw-semibold" id="summaryDiscount">-$203.60</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted fs-14">Estimated Shipping</span>
+                    <span class="fw-semibold text-dark" id="summaryShipping">$15.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <span class="text-muted fs-14">Estimated Tax (8%)</span>
+                    <span class="fw-semibold text-dark" id="summaryTax">$81.44</span>
+                </div>
+
+                <hr class="my-3">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h5 class="fw-bold text-dark mb-0">Total Due</h5>
+                        <small class="text-muted extra-small">Including VAT &amp; regional taxes</small>
                     </div>
-                    <button type="button" id="addProductItem" class="btn btn-outline-primary btn-sm mt-2">Add Product</button>
+                    <h3 class="fw-bold text-primary mb-0" id="summaryGrandTotal">$1,114.44</h3>
+                </div>
+
+                <!-- Special Notes -->
+                <div class="mb-4">
+                    <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Order Notes</label>
+                    <textarea class="form-control rounded-3" rows="2" placeholder="Optional gift note, delivery instructions, or gate code..."></textarea>
+                </div>
+
+                <!-- Actions -->
+                <div class="d-flex gap-2">
+                    <a href="ecommerce-orders.html" class="btn btn-outline-secondary w-50 py-2.5 rounded-pill fw-bold">
+                        Discard Draft
+                    </a>
+                    <button type="button" class="btn btn-primary w-50 py-2.5 rounded-pill fw-bold shadow-primary" id="placeOrderBtn">
+                        <i class="bi bi-bag-check me-1"></i> Place Order
+                    </button>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            <div class="mt-4 text-end">
-                <button type="submit" class="btn btn-primary px-5 py-2 fw-bold shadow-primary rounded-pill">Create Order</button>
+<!-- Order Confirmation Modal -->
+<div class="modal fade" id="orderConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-body p-4 text-center">
+                <div class="bg-success-subtle text-success rounded-circle d-inline-flex p-3 mb-3">
+                    <i class="bi bi-check-lg display-6"></i>
+                </div>
+                <h4 class="fw-bold text-dark mb-1">Order Placed Successfully!</h4>
+                <p class="text-muted small mb-4">Order <strong class="text-dark">#ORD-7895</strong> has been generated and queued for fulfillment. Confirmation email sent to Emma Wilson.</p>
+                <div class="d-flex gap-2 justify-content-center">
+                    <a href="ecommerce-orders.html" class="btn btn-outline-secondary rounded-pill px-4 fw-bold">Back to Orders</a>
+                    <a href="order-details.html" class="btn btn-primary rounded-pill px-4 fw-bold">View Order Details</a>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 
 <script type="module">
     document.addEventListener('DOMContentLoaded', () => {
-        const addProductBtn = document.getElementById('addProductItem');
-        const productItemsContainer = document.getElementById('product-items');
+        let discountRate = 0;
+        let shippingFee = 15.00;
 
-        addProductBtn.addEventListener('click', () => {
-            const newItem = document.createElement('div');
-            newItem.classList.add('row', 'g-3', 'align-items-center', 'product-item', 'mb-3');
-            newItem.innerHTML = `
-                <div class="col-md-5">
-                    <input type="text" class="form-control" placeholder="Product Name">
-                </div>
-                <div class="col-md-2">
-                    <input type="number" class="form-control" placeholder="Qty" value="1">
-                </div>
-                <div class="col-md-3">
-                    <input type="number" class="form-control" placeholder="Price">
-                </div>
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-danger btn-sm remove-product-item w-100">Remove</button>
-                </div>
-            `;
-            productItemsContainer.appendChild(newItem);
-        });
+        // Recalculate totals
+        const recalculate = () => {
+            let subtotal = 0;
+            const rows = document.querySelectorAll('#orderItemsList tr');
+            rows.forEach(row => {
+                const price = parseFloat(row.getAttribute('data-price')) || 0;
+                const qtyInput = row.querySelector('.qty-input');
+                const qty = parseInt(qtyInput?.value) || 1;
+                const lineTotal = price * qty;
+                const totalEl = row.querySelector('.item-total');
+                if (totalEl) totalEl.textContent = `$${lineTotal.toFixed(2)}`;
+                subtotal += lineTotal;
+            });
 
-        productItemsContainer.addEventListener('click', (e) => {
-            if (e.target.classList.contains('remove-product-item')) {
-                e.target.closest('.product-item').remove();
+            const discount = subtotal * discountRate;
+            const taxable = subtotal - discount;
+            const tax = taxable * 0.08;
+            const grandTotal = taxable + shippingFee + tax;
+
+            document.getElementById('summarySubtotal').textContent = `$${subtotal.toFixed(2)}`;
+            const discountRow = document.getElementById('summaryDiscountRow');
+            if (discountRate > 0) {
+                discountRow.classList.remove('d-none');
+                document.getElementById('summaryDiscount').textContent = `-$${discount.toFixed(2)}`;
+            } else {
+                discountRow.classList.add('d-none');
+            }
+            document.getElementById('summaryShipping').textContent = `$${shippingFee.toFixed(2)}`;
+            document.getElementById('summaryTax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('summaryGrandTotal').textContent = `$${grandTotal.toFixed(2)}`;
+        };
+
+        // Stepper Quantity Listeners
+        const table = document.getElementById('orderItemsTable');
+        table.addEventListener('click', (e) => {
+            const minusBtn = e.target.closest('.qty-minus');
+            const plusBtn = e.target.closest('.qty-plus');
+            const removeBtn = e.target.closest('.remove-item-btn');
+
+            if (minusBtn) {
+                const input = minusBtn.parentElement.querySelector('.qty-input');
+                let val = parseInt(input.value) || 1;
+                if (val > 1) {
+                    input.value = val - 1;
+                    recalculate();
+                }
+            } else if (plusBtn) {
+                const input = plusBtn.parentElement.querySelector('.qty-input');
+                let val = parseInt(input.value) || 1;
+                input.value = val + 1;
+                recalculate();
+            } else if (removeBtn) {
+                const tr = removeBtn.closest('tr');
+                if (document.querySelectorAll('#orderItemsList tr').length > 1) {
+                    tr.remove();
+                    recalculate();
+                } else {
+                    alert('Order must contain at least one line item.');
+                }
             }
         });
 
-        document.getElementById('createOrderForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Handle form submission logic, e.g., via AJAX
-            alert('Order created successfully!');
+        table.addEventListener('input', (e) => {
+            if (e.target.classList.contains('qty-input')) {
+                if (e.target.value < 1) e.target.value = 1;
+                recalculate();
+            }
         });
+
+        // Shipping Select
+        const deliverySelect = document.getElementById('deliveryMethodSelect');
+        if (deliverySelect) {
+            deliverySelect.addEventListener('change', () => {
+                shippingFee = parseFloat(deliverySelect.value) || 0;
+                recalculate();
+            });
+        }
+
+        // Coupon code
+        const couponBtn = document.getElementById('applyCouponBtn');
+        const couponInput = document.getElementById('couponCodeInput');
+        const couponFeedback = document.getElementById('couponFeedback');
+        if (couponBtn && couponInput) {
+            couponBtn.addEventListener('click', () => {
+                const code = couponInput.value.trim().toUpperCase();
+                if (code === 'VIP20') {
+                    discountRate = 0.20;
+                    couponFeedback.classList.remove('d-none');
+                    recalculate();
+                } else if (code) {
+                    alert('Invalid promotional code. Try VIP20');
+                }
+            });
+        }
+
+        // Add custom item
+        const addCustomBtn = document.getElementById('quickAddCustomItem');
+        if (addCustomBtn) {
+            addCustomBtn.addEventListener('click', () => {
+                const name = prompt('Enter item name:', 'Premium Leather Case');
+                if (!name) return;
+                const priceStr = prompt('Enter unit price ($):', '49.00');
+                const price = parseFloat(priceStr) || 49.00;
+
+                const tr = document.createElement('tr');
+                tr.setAttribute('data-price', price.toFixed(2));
+                tr.innerHTML = `
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light p-2 rounded-3 me-3 border" style="width: 44px; height: 44px;">
+                                <i class="bi bi-box text-warning fs-4 d-flex justify-content-center"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold text-dark mb-0 fs-14">${name}</h6>
+                                <span class="text-muted extra-small">SKU: CUSTOM-${Math.floor(Math.random()*1000)}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="fw-semibold text-dark item-price">$${price.toFixed(2)}</span></td>
+                    <td>
+                        <div class="input-group input-group-sm rounded-pill overflow-hidden border">
+                            <button class="btn btn-light border-0 qty-minus px-2" type="button">-</button>
+                            <input type="number" class="form-control border-0 text-center qty-input px-1" value="1" min="1">
+                            <button class="btn btn-light border-0 qty-plus px-2" type="button">+</button>
+                        </div>
+                    </td>
+                    <td class="text-end"><span class="fw-bold text-dark item-total">$${price.toFixed(2)}</span></td>
+                    <td class="text-end">
+                        <button type="button" class="btn btn-link text-danger p-0 border-0 remove-item-btn"><i class="bi bi-trash fs-5"></i></button>
+                    </td>
+                `;
+                document.getElementById('orderItemsList').appendChild(tr);
+                recalculate();
+            });
+        }
+
+        // Search item add
+        const addSearchBtn = document.getElementById('addItemFromSearchBtn');
+        const searchInput = document.getElementById('catalogSearchInput');
+        if (addSearchBtn && searchInput) {
+            addSearchBtn.addEventListener('click', () => {
+                const val = searchInput.value.trim();
+                if (!val) {
+                    searchInput.focus();
+                    return;
+                }
+                const tr = document.createElement('tr');
+                tr.setAttribute('data-price', '150.00');
+                tr.innerHTML = `
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light p-2 rounded-3 me-3 border" style="width: 44px; height: 44px;">
+                                <i class="bi bi-tag text-success fs-4 d-flex justify-content-center"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold text-dark mb-0 fs-14">${val}</h6>
+                                <span class="text-muted extra-small">SKU: ADDED-01</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="fw-semibold text-dark item-price">$150.00</span></td>
+                    <td>
+                        <div class="input-group input-group-sm rounded-pill overflow-hidden border">
+                            <button class="btn btn-light border-0 qty-minus px-2" type="button">-</button>
+                            <input type="number" class="form-control border-0 text-center qty-input px-1" value="1" min="1">
+                            <button class="btn btn-light border-0 qty-plus px-2" type="button">+</button>
+                        </div>
+                    </td>
+                    <td class="text-end"><span class="fw-bold text-dark item-total">$150.00</span></td>
+                    <td class="text-end">
+                        <button type="button" class="btn btn-link text-danger p-0 border-0 remove-item-btn"><i class="bi bi-trash fs-5"></i></button>
+                    </td>
+                `;
+                document.getElementById('orderItemsList').appendChild(tr);
+                searchInput.value = '';
+                recalculate();
+            });
+        }
+
+        // Place order trigger
+        const placeOrderBtn = document.getElementById('placeOrderBtn');
+        const pageHeaderAction = document.getElementById('pagePrimaryActionBtn');
+        const confirmModal = new bootstrap.Modal(document.getElementById('orderConfirmModal'));
+
+        const triggerPlaceOrder = () => {
+            confirmModal.show();
+        };
+
+        if (placeOrderBtn) placeOrderBtn.addEventListener('click', triggerPlaceOrder);
+        if (pageHeaderAction) pageHeaderAction.addEventListener('click', triggerPlaceOrder);
     });
 </script>
 

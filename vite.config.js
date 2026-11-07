@@ -26,10 +26,11 @@ const buildPageMap = (baseDir) => {
     }
   };
   scan(path.join(baseDir, 'app/pages'));
+  map.set('index.html', '/index.html');
   return map;
 };
 
-// Dev server plugin: lets flat URLs like /calendar.html or /chat.html route to app/pages/** in dev mode
+// Dev server plugin: seamlessly routes any *.html request (flat or nested relative path) to the proper source file
 const devPageRouterPlugin = () => {
   const pageMap = buildPageMap(__dirname);
 
@@ -39,9 +40,14 @@ const devPageRouterPlugin = () => {
       server.middlewares.use((req, res, next) => {
         const urlObj = new URL(req.url, 'http://localhost');
         const pathname = urlObj.pathname.replace(/^\//, '');
+        const filename = path.basename(pathname);
 
+        // 1. Exact match on pathname
         if (pageMap.has(pathname)) {
           req.url = pageMap.get(pathname) + urlObj.search;
+        } else if (filename.endsWith('.html') && pageMap.has(filename)) {
+          // 2. Basename resolution (fixes relative link jumps between nested pages in dev)
+          req.url = pageMap.get(filename) + urlObj.search;
         }
         next();
       });

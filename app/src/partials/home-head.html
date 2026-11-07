@@ -9,54 +9,46 @@
 <!-- Mobile Specific Metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<!-- Theme Detection & Critical Style Initialization -->
+<!-- Instant Atelier Theme & Accent Initialization -->
 <script>
     (function() {
-        const savedTheme = localStorage.getItem('xivig-global-theme') || 'dark';
-        document.documentElement.setAttribute('data-bs-theme', savedTheme);
-        const bgColor = savedTheme === 'dark' ? '#080b0e' : '#f8fafc';
-        document.write(`<style>body{background-color: ${bgColor} !important; visibility: hidden;} body.is-loaded, body.preloader-active{visibility: visible;}</style>`);
+        try {
+            const savedTheme = localStorage.getItem('xivig-global-theme') || 'light';
+            const effectiveTheme = savedTheme === 'auto'
+                ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                : savedTheme;
+            document.documentElement.setAttribute('data-bs-theme', effectiveTheme);
+
+            const savedAccent = localStorage.getItem('xivig-accent-color') || '#4F6BFF';
+            if (savedAccent) {
+                document.documentElement.style.setProperty('--elite-primary', savedAccent);
+                document.documentElement.style.setProperty('--xivig-primary', savedAccent);
+                document.documentElement.style.setProperty('--primary-accent', savedAccent);
+                document.documentElement.style.setProperty('--primary-hover', savedAccent);
+                document.documentElement.style.setProperty('--bs-primary', savedAccent);
+            }
+
+            const savedScale = localStorage.getItem('xivig-typography-scale');
+            if (savedScale && savedScale !== '100') {
+                document.documentElement.style.fontSize = savedScale + '%';
+            }
+        } catch (e) {}
     })();
 </script>
 
-<!-- Critical Preloader Style -->
-<style>
-    .preloader {
-        position: fixed;
-        inset: 0;
-        z-index: 99999;
-        background: inherit;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
-    }
-    .preloader--hidden {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transform: scale(1.04);
-        filter: blur(8px);
-    }
-    body:not(.is-loaded) {
-        overflow: hidden;
-    }
-    .preloader { visibility: visible !important; }
-</style>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.body.classList.add('preloader-active');
-    });
-</script>
+
+<!-- Google Fonts Elite Typography (Plus Jakarta Sans & Inter & JetBrains Mono) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- Vendor Styles (Essential for Home) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-<!-- Global jQuery Exposure (Critical for Plugins) -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script>
-    window.jQuery = window.$ = jQuery;
-</script>
+<!-- Primary Theme SCSS (Render-blocking in Head to Prevent FOUC) -->
+<link rel="stylesheet" href="/app/src/scss/home-bundle.scss">
+
+

@@ -1,29 +1,24 @@
-// 0. BOOTSTRAP GLOBALS (Must be absolute first)
-import $ from './scripts/core/jquery-setup.js';
+// ==========================================================================
+// XIVIG ELITE ARCHITECTURE - ULTRA-FAST MODULAR APPLICATION RUNTIME
+// Zero render-blocking delays, dynamic code-splitting, instantaneous FCP
+// ==========================================================================
 
-// 1. PROJECT STYLES (Direct imports for Vite bundling)
+// 1. CORE BUNDLE STYLES (Synchronous minimal critical CSS)
 import 'animate.css/animate.css';
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
-import 'air-datepicker/air-datepicker.css';
-import 'timedropper/timedropper.min.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
-import 'plyr/dist/plyr.css';
 import './scss/vendors/vendors.scss';
 import './scss/admin-bundle.scss';
 
-// 2. OTHER VENDOR JS
+// 2. CORE RUNTIME DEPENDENCIES
 import * as bootstrap from 'bootstrap';
 import * as Popper from '@popperjs/core';
-import Plyr from 'plyr';
-import AirDatepicker from 'air-datepicker';
-import './scripts/plugins/timedropper-patched.js';
 
-// 4. EXPOSE GLOBALS
+// Expose Core Globals
 window.Popper = Popper;
 window.bootstrap = bootstrap;
-window.AirDatepicker = AirDatepicker;
 
-// 5. CORE & UTILITIES
+// 3. CORE FOUNDATION & UI SERVICES (Always active)
 import { initXivig } from './scripts/core/xivig-core.js';
 import UiController from './scripts/core/ui-controller.js';
 import NotificationService from './scripts/components/sweet-alert.js';
@@ -31,114 +26,264 @@ import { initPreloader } from './scripts/core/preloader.js';
 import { initSidebar } from './scripts/core/sidebar.js';
 import { initSettings } from './scripts/core/settings.js';
 import { initMobileController } from './scripts/core/mobile-controller.js';
-
-// 6. FEATURES & APPS
-import { initNotificationSelect } from './scripts/components/notification-manager.js';
-import { initLightbox, initGalleryFilter } from './scripts/components/lightbox.js';
-import { initPricingToggle } from './scripts/components/pricing.js';
-import { initKanban } from './scripts/apps/Kanban.js';
-import { initChatSearch } from './scripts/apps/chat-search.js';
-import { initMailSelection } from './scripts/apps/mail-logic.js';
-import { initMediaPlayers } from './scripts/components/video-player.js';
-import { initSearchApp } from './scripts/apps/search.js';
-import { initCalendarApp } from './scripts/apps/calendar.js';
-import { initIconApp } from './scripts/apps/fontawesome-logic.js';
-import { initIconFilter, initIconCopy } from './scripts/apps/bs-icon.js';
-import { initHelpSupport } from './scripts/pages/help-support.js';
-import { initAccountOnboarding } from './scripts/pages/account-onboarding.js';
-import { initAccountSettings } from './scripts/pages/account-settings.js';
-import { initAdvancedComponents } from './scripts/components/advanced-components.js';
-import { initFormPickers } from './scripts/forms/form-pickers.js';
-import { initFormAdv } from './scripts/forms/form-adv.js';
-import { initVectorMap } from './scripts/components/vector-map.js';
-import { initStoreSettings } from './scripts/pages/store-settings.js';
-import { initTaskManager } from './scripts/apps/task-manager.js';
 import { NotificationBadge } from './scripts/components/notification-badge.js';
-import { initLandingPage } from './scripts/pages/landing.js';
-import { initDataTables } from './scripts/components/data-table.js';
-import { initDashboard } from './scripts/pages/dashboard.js';
-import { initFormWizard } from './scripts/forms/form-wizard.js';
-import { initImageCropper, initImageDropzone, initSummernote } from './scripts/forms/form-plugins.js';
-import { initMaintenance } from './scripts/pages/maintenance.js';
-import { initAnalyticsOverview } from './scripts/pages/analytics.js';
-import { initSystemMetrics } from './scripts/pages/system-metrics.js';
-import { initDashboardV2 } from './scripts/pages/dashboard-v2.js';
-import { initAdminSettings } from './scripts/pages/admin-settings.js';
 
-// 7. CHARTS
-import { EChartModule } from './scripts/charts/echart.js';
-import ChartManager from './scripts/charts/chart-manager.js';
-import HighchartManager from './scripts/charts/highchart-manager.js';
-import ApexchartManager from './scripts/charts/apexchart-manager.js';
-
-// Global reference for legacy scripts
+// Global reference for legacy notifications
 window.NotificationService = NotificationService;
 
 const App = {
-    init() {
-        console.log("🚀 Elite Architect Engine Starting...");
-        
+    async init() {
+        // Fast-path preloader dismissal
         try {
-            // Start preloader logic immediately
             initPreloader();
+        } catch (e) {
+            console.warn("Preloader bypass:", e);
+        }
 
+        // Global structural shell
+        try {
             initXivig();
             UiController.init();
             initSidebar();
             initSettings();
             initMobileController();
-            
-            // App Modules
+            window.headerBadge = new NotificationBadge('header-notification-badge');
+        } catch (error) {
+            console.error("Shell initialization error:", error);
+        }
+
+        // Conditional Lazy Feature Mounting (Only executes when DOM targets exist)
+        this.mountConditionalModules();
+    },
+
+    async mountConditionalModules() {
+        // 1. Alert Triggers
+        initNotifications();
+
+        // 2. Notification Drawer
+        if (document.querySelector('.notification-select-all')) {
+            const { initNotificationSelect } = await import('./scripts/components/notification-manager.js');
             initNotificationSelect();
+        }
+
+        // 3. Lightbox & Gallery
+        if (document.querySelector('[data-fancybox], .gallery-filter, .filter-btn, #gallery-grid')) {
+            const { initLightbox, initGalleryFilter } = await import('./scripts/components/lightbox.js');
             initLightbox();
             initGalleryFilter();
+        }
+
+        // 4. Pricing Toggle
+        if (document.getElementById('pricingSwitch') || document.querySelector('.pricing-card')) {
+            const { initPricingToggle } = await import('./scripts/components/pricing.js');
             initPricingToggle();
+        }
+
+        // 5. Kanban Board
+        if (document.querySelector('.kanban-wrapper, .kanban-column, #todo, #inprogress')) {
+            const { initKanban } = await import('./scripts/apps/Kanban.js');
             initKanban();
-            initChatSearch();
-            initMailSelection();
-            initSearchApp();
-            initCalendarApp();
-            
-            // Icon Systems
-            initIconApp();
-            initIconFilter('filter_input', 'bsIconContainer');
-            
-            // New Modules
-            initHelpSupport();
-            initAccountOnboarding();
-            initAccountSettings();
-            initAdvancedComponents();
-            initFormPickers();
-            initFormAdv();
-            initVectorMap();
-            initStoreSettings();
+        }
+
+        // 6. Task Manager
+        if (document.querySelector('.task-manager-module, #taskListContainer')) {
+            const { initTaskManager } = await import('./scripts/apps/task-manager.js');
             initTaskManager();
-            initLandingPage();
-            initDataTables();
+        }
 
-            // Form & Plugin initializations
-            initFormWizard();
-            initImageCropper();
-            initImageDropzone();
-            initMaintenance();
-            initAnalyticsOverview();
-            initSystemMetrics();
-            initDashboardV2();
-            initAdminSettings();
-            
-            // Initialize Modular Notification Badge
-            window.headerBadge = new NotificationBadge('header-notification-badge');
-            
-            if (window.AOS) {
-                AOS.init({ duration: 1000, once: true, offset: 50 });
-            }
-            
+        // 7. Calendar
+        if (document.getElementById('calendar')) {
+            const { initCalendarApp } = await import('./scripts/apps/calendar.js');
+            initCalendarApp();
+        }
+
+        // 8. Chat Application
+        if (document.getElementById('chat-search') || document.querySelector('.chat-module')) {
+            const { initChatSearch } = await import('./scripts/apps/chat-search.js');
+            initChatSearch();
+        }
+
+        // 9. Mail Application
+        if (document.querySelector('.mail-list, #mail-container, .mail-sidebar, #composeForm')) {
+            const { initMailSelection, initComposeMail } = await import('./scripts/apps/mail-logic.js');
+            initMailSelection();
+            if (initComposeMail) initComposeMail();
+        }
+
+        // 10. Search Application
+        if (document.getElementById('search-input') || document.querySelector('.search-results')) {
+            const { initSearchApp } = await import('./scripts/apps/search.js');
+            initSearchApp();
+        }
+
+        // 11. Icon Suites
+        if (document.getElementById('faSearchInput')) {
+            const { initIconApp } = await import('./scripts/apps/fontawesome-logic.js');
+            initIconApp();
+        }
+        if (document.getElementById('filter_input') && document.getElementById('bsIconContainer')) {
+            const { initIconFilter } = await import('./scripts/apps/bs-icon.js');
+            initIconFilter('filter_input', 'bsIconContainer');
+        }
+
+        // 12. Video Players
+        if (document.querySelector('video, audio, .plyr')) {
+            const { initMediaPlayers } = await import('./scripts/components/video-player.js');
             initMediaPlayers();
-            initNotifications();
-            Dashboard.init();
+        }
 
-        } catch (error) {
-            console.error("❌ App Initialization Failed:", error);
+        // 13. DataTables
+        if (document.querySelector('#example, .dataTable, table.table-hover[id]')) {
+            const { initDataTables } = await import('./scripts/components/data-table.js');
+            initDataTables();
+        }
+
+        // 14. Vector Map
+        if (document.getElementById('map') || document.getElementById('map-vector') || document.querySelector('.vector-map, .vector-map-module')) {
+            const { initVectorMap } = await import('./scripts/components/vector-map.js');
+            initVectorMap();
+        }
+
+        // 15. Store Settings
+        if (document.getElementById('storeSettingsForm') || document.getElementById('shippingMatrixTable')) {
+            const { initStoreSettings } = await import('./scripts/pages/store-settings.js');
+            initStoreSettings();
+        }
+
+        // 16. Form Wizards
+        if (document.querySelector('[data-wizard], #smartwizard')) {
+            const { initFormWizard } = await import('./scripts/forms/form-wizard.js');
+            initFormWizard();
+        }
+
+        // 17. Form Pickers & Advanced Inputs
+        if (document.querySelector('.color-picker, .flatpickr, .air-datepicker, input[type="date"]')) {
+            const { initFormPickers } = await import('./scripts/forms/form-pickers.js');
+            initFormPickers();
+        }
+        if (document.querySelector('.cleave-input, [data-cleave], .advanced-form')) {
+            const { initFormAdv } = await import('./scripts/forms/form-adv.js');
+            initFormAdv();
+        }
+
+        // 18. Image Plugins
+        if (document.getElementById('cropper-image')) {
+            const { initImageCropper } = await import('./scripts/forms/form-plugins.js');
+            initImageCropper();
+        }
+        if (document.querySelector('.dropzone, #myDropzone')) {
+            const { initImageDropzone } = await import('./scripts/forms/form-plugins.js');
+            initImageDropzone();
+        }
+        if (document.getElementById('summernote') || document.getElementById('editor')) {
+            const { initSummernote } = await import('./scripts/forms/form-plugins.js');
+            initSummernote();
+        }
+
+        // 19. Specialized Pages
+        if (document.querySelector('.maintenance-container')) {
+            const { initMaintenance } = await import('./scripts/pages/maintenance.js');
+            initMaintenance();
+        }
+        if (document.querySelector('.analytics-dashboard, #growthChart, #userDistChart')) {
+            try {
+                const { initAnalyticsOverview } = await import('./scripts/pages/analytics.js');
+                initAnalyticsOverview();
+            } catch (e) {
+                console.error("Analytics Overview init error:", e);
+            }
+        }
+        if (document.querySelector('.system-metrics-container, #realtimeChart, #cpuChart')) {
+            try {
+                const { initSystemMetrics } = await import('./scripts/pages/system-metrics.js');
+                initSystemMetrics();
+            } catch (e) {
+                console.error("System Metrics init error:", e);
+            }
+        }
+
+        // 20. Dashboard v1 (Modular Telemetry & Charts)
+        if (document.getElementById('activities-chart') || document.getElementById('revenueSparkline') || document.getElementById('deploymentSparkline')) {
+            try {
+                const { initDashboard } = await import('./scripts/pages/dashboard.js');
+                initDashboard();
+            } catch (e) {
+                console.warn("Dashboard v1 init skipped:", e);
+            }
+        }
+
+        // 21. Dashboard v2
+        if (document.getElementById('scatterChart') || document.getElementById('performanceRadial')) {
+            try {
+                const { initDashboardV2 } = await import('./scripts/pages/dashboard-v2.js');
+                initDashboardV2();
+            } catch (e) {
+                console.warn("Dashboard v2 init skipped:", e);
+            }
+        }
+
+        // 22. Dedicated Chart Pages (ECharts, Highcharts, ApexCharts, Chart.js)
+        if (document.querySelector('.echart, #echart, [id*="echart"], #barChart, #miniPie, #trafficPie, #deviceArea')) {
+            try {
+                const { EChartModule } = await import('./scripts/charts/echart.js');
+                EChartModule.initAll();
+            } catch (e) {
+                console.error("ECharts init error:", e);
+            }
+        }
+        if (document.querySelector('#highchart, .highchart, [id*="highchart"], #highchartLine, #highchartArea')) {
+            try {
+                const { default: HighchartManager } = await import('./scripts/charts/highchart-manager.js');
+                HighchartManager.initAll();
+            } catch (e) {
+                console.error("Highcharts init error:", e);
+            }
+        }
+        if (document.querySelector('#apex-chart, .apex-chart, [id*="apex"], #apexSpline, #apexColumn')) {
+            try {
+                const { default: ApexchartManager } = await import('./scripts/charts/apexchart-manager.js');
+                ApexchartManager.initAll();
+            } catch (e) {
+                console.error("Apexcharts init error:", e);
+            }
+        }
+        if (document.querySelector('canvas.chartjs, #myChart, [id*="chartjs"], #verticalBar, #horizontalBar, #groupedBar, #stackedBar, #lineChart, #areaChart')) {
+            try {
+                const { default: ChartManager } = await import('./scripts/charts/chart-manager.js');
+                ChartManager.initAll();
+            } catch (e) {
+                console.error("Chart.js init error:", e);
+            }
+        }
+
+        // 23. Admin Settings
+        if (document.getElementById('sortable-sidebar') || document.querySelector('.admin-settings')) {
+            try {
+                const { initAdminSettings } = await import('./scripts/pages/admin-settings.js');
+                initAdminSettings();
+            } catch (e) {
+                console.error("Admin Settings init error:", e);
+            }
+        }
+
+        // 24. Help & Support
+        if (document.querySelector('.help-support-module') || document.getElementById('faqAccordion')) {
+            try {
+                const { initHelpSupport } = await import('./scripts/pages/help-support.js');
+                initHelpSupport();
+            } catch (e) {
+                console.error("Help Support init error:", e);
+            }
+        }
+
+        // 25. Profile Page
+        if (document.querySelector('.profile-module') || document.getElementById('pills-profile-tab')) {
+            try {
+                const { initProfile } = await import('./scripts/pages/profile.js');
+                initProfile();
+            } catch (e) {
+                console.error("Profile init error:", e);
+            }
         }
     }
 };
@@ -164,43 +309,12 @@ const initNotifications = () => {
     });
 };
 
-const Dashboard = {
-    state: { chartjs: {}, echarts: {}, highcharts: {}, apexcharts: {} },
-    init() {
-        console.log("📊 Dashboard & Charts Initializing...");
-        
-        // 1. Initialize the specialized modular dashboard (index.html)
-        try {
-            initDashboard();
-        } catch (e) {
-            console.warn("⚠️ Modular Dashboard init skipped or failed:", e);
-        }
-
-        // 2. Initialize generic chart managers for dedicated chart pages
-        try {
-            const safeInit = (name, initFn) => {
-                try { 
-                    return initFn(); 
-                } catch (e) { 
-                    // Only warn if we are actually on a page that likely contains these charts
-                    return {}; 
-                }
-            };
-            
-            this.state.chartjs = safeInit('Chart.js', () => ChartManager.initAll());
-            this.state.echarts = safeInit('ECharts', () => EChartModule.initAll());
-            this.state.highcharts = safeInit('Highcharts', () => HighchartManager.initAll());
-            this.state.apexcharts = safeInit('ApexCharts', () => ApexchartManager.initAll());
-            
-        } catch (error) {
-            console.error('❌ Charts initialization failure:', error);
-        }
-    }
-};
-
-window.addEventListener("DOMContentLoaded", () => {
-    App.init();
-});
-
 window.App = App;
-window.Dashboard = Dashboard;
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+        App.init();
+    });
+} else {
+    App.init();
+}

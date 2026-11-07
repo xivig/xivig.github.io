@@ -97,50 +97,59 @@
 
     .progress-fill {
         height: 100%;
-        background: linear-gradient(to right, var(--elite-primary), var(--elite-secondary));
+        background: var(--elite-primary);
         width: 0%;
         transition: width 1s linear;
     }
 
     .subscribe-group {
         display: flex;
-        padding: 5px;
-        background: #fff;
-        border-radius: 100px;
-        border: 1px solid #e2e8f0;
-        margin-bottom: 3rem;
+        align-items: center;
+        padding: 6px 6px 6px 24px;
+        background: var(--bg-subtle, #ffffff);
+        border-radius: 9999px;
+        border: 1.5px solid var(--card-border, #e2e8f0);
+        margin: 0 auto 3rem;
+        max-width: 540px;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 
         &:focus-within {
             border-color: var(--elite-primary);
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(79, 107, 255, 0.15);
         }
 
         input {
             flex: 1;
-            padding: 10px 25px;
+            min-width: 0;
+            padding: 10px 14px 10px 0;
             border: none;
             background: transparent;
             outline: none;
             font-size: 0.95rem;
-            color: #1e293b;
-            &::placeholder { color: #94a3b8; }
+            color: var(--text-main, #1e293b);
+            &::placeholder { color: var(--text-muted, #94a3b8); }
         }
 
         button {
-            padding: 10px 25px;
-            border-radius: 100px;
+            padding: 12px 28px;
+            border-radius: 9999px;
             background: var(--elite-primary);
             color: #fff;
             border: none;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             transition: all 0.3s ease;
             white-space: nowrap;
+            box-shadow: 0 4px 14px rgba(79, 107, 255, 0.35);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
             &:hover { 
                 background: var(--elite-dark);
-                transform: scale(1.02);
+                transform: translateY(-1px);
+                box-shadow: 0 8px 22px rgba(79, 107, 255, 0.45);
             }
         }
     }

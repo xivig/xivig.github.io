@@ -1,212 +1,243 @@
 {{#> admin-layout title="Form Basic" parentTitle="Forms" }}
 
-<div class="row">
-    <div class="col-12">
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
-    <div class="card-body p-4 p-md-5">
-        <div class="d-flex align-items-center justify-content-between mb-4">
+<div class="form-basic-module">
+    <!-- Header Hero -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
             <div>
-                <h4 class="fw-bold mb-1">System Configuration</h4>
-                <p class="text-muted small mb-0">Elite interface controls for xivig-app</p>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <h4 class="fw-bold mb-0 text-main fs-18">Basic Form Controls & Foundations</h4>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Atelier UI System</span>
+                </div>
+                <p class="text-muted small mb-0">Production-ready form components, floating labels, input groups, validation feedback, and custom select controls</p>
             </div>
-
             <div class="d-flex gap-2">
-                <button class="btn btn-light btn-sm btn-elite border shadow-sm copy-btn"
-                        data-clipboard-target="#config-code-raw">
-                    <i class="fa-solid fa-copy me-1 text-primary"></i> <span>Copy Code</span>
+                <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3.5" onclick="document.querySelectorAll('form').forEach(f => f.reset());">
+                    <i class="bi bi-arrow-counterclockwise me-1.5"></i> Reset All
                 </button>
-                <button class="btn btn-primary btn-sm btn-elite shadow-sm"
-                        id="toggleSourceBtn">
-                    <i class="fa-solid fa-code me-1"></i> <span id="toggleText">View Source</span>
+                <button type="button" class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm" onclick="window.NotificationService ? window.NotificationService.success('Validated', 'Form controls pass client-side schema verification.') : alert('All form controls valid!');">
+                    <i class="bi bi-check2-circle me-1.5"></i> Test Validation
                 </button>
             </div>
         </div>
+    </div>
 
-        <!-- Elite IDE-Style Code Viewer -->
-        <div id="sourceCollapse" class="d-none animate__animated animate__fadeIn">
-            <div class="monokai-wrapper shadow-lg mb-5">
-                <div class="monokai-header d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-2 ms-1">
-                        <div class="dot bg-danger"></div>
-                        <div class="dot bg-warning"></div>
-                        <div class="dot bg-success"></div>
-                        <span class="ms-2 text-secondary x-small fw-bold">form-layout.html — Elite Editor</span>
+    <div class="row g-4">
+        <!-- 1. Text Inputs & Core Types -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Standard Inputs</h5>
+                <p class="text-muted extra-small mb-3">Fundamental text, numeric, and credential inputs</p>
+
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-muted">Standard Text Input</label>
+                        <input type="text" class="form-control" placeholder="e.g. Alex Rivera" value="Alex Rivera">
                     </div>
-                    <span class="text-success x-small fw-bold"><i class="fa-solid fa-bolt me-1"></i> Syntax Verified</span>
-                </div>
-                
-                <!-- Hidden raw code for copy functionality -->
-                <textarea id="config-code-raw" class="d-none">
-<form id="xivigForm" class="elite-layout">
-    <div class="row g-4 align-items-center">
-        <label class="col-md-3 fw-semibold">Full Name</label>
-        <div class="col-md-9">
-            <input type="text" class="form-control apple-input">
-        </div>
-    </div>
-    
-    <div class="mt-5 d-flex justify-content-end">
-        <button type="submit" class="btn btn-primary">Save</button>
-    </div>
-</form></textarea>
-
-                <div class="code-viewer-container" id="config-code">
-                    <div class="code-line"><span class="mt-tag">&lt;form</span> <span class="mt-attr">id=</span><span class="mt-val">"xivigForm"</span> <span class="mt-attr">class=</span><span class="mt-val">"elite-layout"</span><span class="mt-tag">&gt;</span></div>
-                    <div class="code-line"><span class="mt-indent"></span><span class="mt-tag">&lt;div</span> <span class="mt-attr">class=</span><span class="mt-val">"row g-4 align-items-center"</span><span class="mt-tag">&gt;</span></div>
-                    <div class="code-line"><span class="mt-indent"></span><span class="mt-indent"></span><span class="mt-tag">&lt;label</span> <span class="mt-attr">class=</span><span class="mt-val">"col-md-3 fw-semibold"</span><span class="mt-tag">&gt;</span>Full Name<span class="mt-tag">&lt;/label&gt;</span></div>
-                    <div class="code-line"><span class="mt-indent"></span><span class="mt-indent"></span><span class="mt-tag">&lt;div</span> <span class="mt-attr">class=</span><span class="mt-val">"col-md-9"</span><span class="mt-tag">&gt;</span></div>
-                    <div class="code-line"><span class="mt-indent"></span><span class="mt-indent"></span><span class="mt-indent"></span><span class="mt-tag">&lt;input</span> <span class="mt-attr">type=</span><span class="mt-val">"text"</span> <span class="mt-attr">class=</span><span class="mt-val">"form-control apple-input"</span><span class="mt-tag">&gt;</span></div>
-                    <div class="code-line"><span class="mt-indent"></span><span class="mt-indent"></span><span class="mt-tag">&lt;/div&gt;</span></div>
-                    <div class="code-line"><span class="mt-indent"></span><span class="mt-tag">&lt;/div&gt;</span></div>
-                    <div class="code-line"></div>
-                    <div class="code-line"><span class="mt-indent"></span><span class="mt-tag">&lt;div</span> <span class="mt-attr">class=</span><span class="mt-val">"mt-5 d-flex justify-content-end"</span><span class="mt-tag">&gt;</span></div>
-                    <div class="code-line"><span class="mt-indent"></span><span class="mt-indent"></span><span class="mt-tag">&lt;button</span> <span class="mt-attr">type=</span><span class="mt-val">"submit"</span> <span class="mt-attr">class=</span><span class="mt-val">"btn btn-primary"</span><span class="mt-tag">&gt;</span>Save<span class="mt-tag">&lt;/button&gt;</span></div>
-                    <div class="code-line"><span class="mt-indent"></span><span class="mt-tag">&lt;/div&gt;</span></div>
-                    <div class="code-line"><span class="mt-tag">&lt;/form&gt;</span></div>
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-muted">Email Address</label>
+                        <input type="email" class="form-control" placeholder="name@company.com" value="alex.rivera@xivig.dev">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-muted">Password with Show/Hide</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="samplePassInput" value="superSecretPass123!">
+                            <button class="btn btn-outline-secondary" type="button" onclick="const p = document.getElementById('samplePassInput'); p.type = p.type==='password'?'text':'password'; this.querySelector('i').classList.toggle('bi-eye'); this.querySelector('i').classList.toggle('bi-eye-slash');">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-muted">Readonly State</label>
+                        <input type="text" class="form-control bg-body-tertiary" value="https://api.xivig.dev/v1/auth" readonly>
+                    </div>
+                    <div class="mb-0">
+                        <label class="form-label small fw-semibold text-muted">Disabled State</label>
+                        <input type="text" class="form-control bg-body-tertiary text-muted" value="Pro License Tier (Locked)" disabled>
+                    </div>
+                </form>
             </div>
         </div>
 
-        <form id="appleStyleForm">
-            <div class="row g-4 align-items-center mb-4">
-                <label class="col-md-3 fw-semibold text-secondary">Full Name</label>
-                <div class="col-md-9">
-                    <input class="form-control apple-input" type="text" placeholder="Johnny Brown">
+        <!-- 2. Input Sizing & Helper Texts -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Input Sizing & Floating Labels</h5>
+                <p class="text-muted extra-small mb-3">Small (36px), default (40px), and large (48px) heights</p>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted">Small Input (.form-control-sm)</label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Search keywords...">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted">Default Input</label>
+                    <input type="text" class="form-control" placeholder="Default control height (40px)">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted">Large Input (.form-control-lg)</label>
+                    <input type="text" class="form-control form-control-lg" placeholder="Large emphasis input (48px)">
+                </div>
+                <div class="mb-0">
+                    <label class="form-label small fw-semibold text-muted">Interactive Floating Label</label>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingExample" placeholder="Project Name" value="Next-Gen Architecture">
+                        <label for="floatingExample" class="text-muted">Repository or Cluster Name</label>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row g-4 align-items-center mb-4">
-                <label class="col-md-3 fw-semibold text-secondary">Work Email</label>
-                <div class="col-md-9">
-                    <input class="form-control apple-input" type="email" value="developer@xivig.com">
+        <!-- 3. Input Groups & Addons -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Input Groups & Addons</h5>
+                <p class="text-muted extra-small mb-3">Prepend, append, text tags, buttons, and currency indicators</p>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted">Prepend Icon & Domain Append</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15"><i class="bi bi-globe"></i></span>
+                        <input type="text" class="form-control" placeholder="subdomain" value="console">
+                        <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15">.xivig.dev</span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted">Currency & Pricing Addon</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15">$</span>
+                        <input type="number" class="form-control" placeholder="0.00" value="499.00">
+                        <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15">USD / month</span>
+                    </div>
+                </div>
+
+                <div class="mb-0">
+                    <label class="form-label small fw-semibold text-muted">Button Action Append</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Paste verification token..." value="tok_sec_991823abf">
+                        <button class="btn btn-primary" type="button" onclick="alert('Token verified!');">Verify Token</button>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row g-4 mb-4">
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold text-secondary">Access Level</label>
-                    <select class="form-select apple-input">
-                        <option>Standard User</option>
-                        <option selected>Elite Architect</option>
-                        <option>System Moderator</option>
+        <!-- 4. Select Controls & Multi-Selects -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Selects & Dropdowns</h5>
+                <p class="text-muted extra-small mb-3">Native styled custom selects and multi-select containers</p>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted">Single Select</label>
+                    <select class="form-select">
+                        <option value="1" selected>Production Cluster (AWS us-east-1)</option>
+                        <option value="2">Staging Cluster (GCP europe-west3)</option>
+                        <option value="3">Development Edge (Cloudflare)</option>
                     </select>
                 </div>
-                <div class="col-md-6">
-                    <label class="form-label fw-semibold text-secondary">Theme Accent</label>
-                    <div class="d-flex align-items-center gap-3">
-                        <input type="color" class="form-control form-control-color apple-input border-0 p-1" value="#0071e3" style="width: 60px; height: 42px;">
-                        <span class="text-muted small">Apple Blue Default</span>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted">Optgroup Structured Select</label>
+                    <select class="form-select">
+                        <optgroup label="Frontend Frameworks">
+                            <option selected>Pure Vanilla JS (ES Modules)</option>
+                            <option>React 19 / Next.js</option>
+                            <option>Vue 3 / Nuxt</option>
+                        </optgroup>
+                        <optgroup label="Backend & Microservices">
+                            <option>Node.js Fastify</option>
+                            <option>Go Fiber</option>
+                            <option>Rust Axum</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="mb-0">
+                    <label class="form-label small fw-semibold text-muted">Multi-Select Box</label>
+                    <select class="form-select" multiple size="3">
+                        <option selected>Read / View Metrics</option>
+                        <option selected>Trigger Deployment Pipelines</option>
+                        <option>Manage Database Backups</option>
+                        <option>Revoke API Credentials</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Checkboxes, Radios & Switches -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Checkboxes, Radios & Switches</h5>
+                <p class="text-muted extra-small mb-3">State selections and toggle controls</p>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-sm-6">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="checkOpt1" checked>
+                            <label class="form-check-label small fw-semibold text-main" for="checkOpt1">Automated Backups</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="checkOpt2" checked>
+                            <label class="form-check-label small fw-semibold text-main" for="checkOpt2">SSL Auto-Renewal</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="checkOpt3" disabled>
+                            <label class="form-check-label small text-muted" for="checkOpt3">Dedicated IP (Enterprise)</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="planRadio" id="radioOpt1">
+                            <label class="form-check-label small fw-semibold text-main" for="radioOpt1">Standard Engine</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="planRadio" id="radioOpt2" checked>
+                            <label class="form-check-label small fw-semibold text-main" for="radioOpt2">High-Throughput</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="planRadio" id="radioOpt3">
+                            <label class="form-check-label small fw-semibold text-main" for="radioOpt3">Ultra Cluster</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column gap-2 pt-2 border-top border-secondary border-opacity-10">
+                    <div class="form-check form-switch m-0">
+                        <input class="form-check-input" type="checkbox" id="switchRealtime" checked>
+                        <label class="form-check-label small fw-semibold text-main" for="switchRealtime">Real-Time Telemetry Streaming</label>
+                    </div>
+                    <div class="form-check form-switch m-0">
+                        <input class="form-check-input" type="checkbox" id="switchAlerts" checked>
+                        <label class="form-check-label small fw-semibold text-main" for="switchAlerts">Critical Incident Pager Alerts</label>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="d-flex justify-content-end gap-2 pt-4 border-top mt-5">
-                <button type="button" class="btn btn-light btn-elite border">Cancel</button>
-                <button type="submit" class="btn btn-primary btn-elite shadow-sm">Save Configuration</button>
+        <!-- 6. Validation Feedback States -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Validation States</h5>
+                <p class="text-muted extra-small mb-3">Live visual cues for verified and failed input criteria</p>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted">Validated Input (.is-valid)</label>
+                    <input type="text" class="form-control is-valid" value="xivig-cluster-01">
+                    <div class="valid-feedback small fw-semibold">
+                        <i class="bi bi-check-circle-fill me-1"></i> Unique cluster identifier available!
+                    </div>
+                </div>
+
+                <div class="mb-0">
+                    <label class="form-label small fw-semibold text-muted">Invalid Input (.is-invalid)</label>
+                    <input type="email" class="form-control is-invalid" value="invalid-email-address">
+                    <div class="invalid-feedback small fw-semibold">
+                        <i class="bi bi-exclamation-triangle-fill me-1"></i> Please enter a valid corporate email format.
+                    </div>
+                </div>
             </div>
-        </form>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
-<script type="module">
-    document.addEventListener('DOMContentLoaded', () => {
-        // 1. Clipboard Logic
-        if (typeof ClipboardJS !== 'undefined') {
-            new ClipboardJS('.copy-btn').on('success', (e) => {
-                const label = e.trigger.querySelector('span');
-                const originalText = label.textContent;
-                label.textContent = 'Copied!';
-                setTimeout(() => label.textContent = originalText, 2000);
-            });
-        }
-
-        // 2. Simplified Toggle Logic
-        const collapseBtn = document.getElementById('toggleSourceBtn');
-        const collapseEl = document.getElementById('sourceCollapse');
-        const toggleText = document.getElementById('toggleText');
-
-        if (collapseBtn && collapseEl) {
-            collapseBtn.addEventListener('click', () => {
-                const isHidden = collapseEl.classList.contains('d-none');
-                if (isHidden) {
-                    collapseEl.classList.remove('d-none');
-                    toggleText.textContent = 'Hide Source';
-                    collapseBtn.classList.replace('btn-primary', 'btn-dark');
-                } else {
-                    collapseEl.classList.add('d-none');
-                    toggleText.textContent = 'View Source';
-                    collapseBtn.classList.replace('btn-dark', 'btn-primary');
-                }
-            });
-        }
-    });
-</script>
-
-<style>
-    .monokai-wrapper {
-        background: #272822 !important;
-        border-radius: 14px;
-        border: 1px solid #3e3e3e;
-        overflow: hidden;
-        font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-    }
-    .monokai-header {
-        padding: 12px 18px;
-        background: rgba(0,0,0,0.4);
-        border-bottom: 1px solid #3e3e3e;
-    }
-    .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        display: inline-block;
-    }
-    
-    /* IDE Style Layout */
-    .code-viewer-container {
-        padding: 20px 0;
-        counter-reset: line;
-        background: transparent;
-    }
-    .code-line {
-        display: flex;
-        padding: 0 20px;
-        line-height: 1.6;
-        font-size: 14px;
-        color: #f8f8f2;
-        min-height: 1.6em;
-    }
-    .code-line::before {
-        counter-increment: line;
-        content: counter(line);
-        display: inline-block;
-        width: 40px;
-        margin-left: -20px;
-        margin-right: 20px;
-        text-align: right;
-        color: #75715e;
-        user-select: none;
-        border-right: 1px solid #3e3e3e;
-        padding-right: 12px;
-        background: rgba(0,0,0,0.1);
-    }
-    .code-line:hover {
-        background: rgba(255,255,255,0.05);
-    }
-
-    /* Indentation Helper */
-    .mt-indent {
-        display: inline-block;
-        width: 24px; /* 4 spaces approx */
-    }
-
-    /* Syntax Colors */
-    .mt-tag { color: #f92672; }
-    .mt-attr { color: #a6e22e; }
-    .mt-val { color: #e6db74; }
-    .x-small { font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; }
-</style>
+        </div>
     </div>
 </div>
 

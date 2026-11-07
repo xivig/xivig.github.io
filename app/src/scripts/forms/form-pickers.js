@@ -92,63 +92,19 @@ const initDatePickers = () => {
 };
 
 /**
- * Time Pickers (using legacy timedropper with Vanilla safety)
+ * Time Pickers (Pure Vanilla JS with AirDatepicker)
  */
 const initTimePickers = () => {
-    // Priority 1: Use the global jQuery from the head (which has the plugins)
-    const $ = window.jQuery || window.$;
-    const $inputs = $ ? $('.td-input') : [];
-    
-    if ($ && $inputs.length > 0) {
-        console.log("🕒 Form Pickers: Detecting Time Selection Engine...");
-        const hasTimeDropper = typeof $.fn.timeDropper !== 'undefined';
-        const hasTimedropperLower = typeof $.fn.timedropper !== 'undefined';
-        
-        console.log("   - timeDropper (camel):", hasTimeDropper ? "✅" : "❌");
-        console.log("   - timedropper (lower):", hasTimedropperLower ? "✅" : "❌");
-
-        if (hasTimeDropper || hasTimedropperLower) {
-            console.log("🕒 Timedropper: Initializing on", $inputs.length, "elements");
-            $inputs.each(function() {
-                const $this = $(this);
-                if (typeof $this.timeDropper === 'function') {
-                    $this.timeDropper({
-                        format: 'hh:mm A',
-                        primaryColor: '#0071e3',
-                        setCurrentTime: false,
-                        meridians: true,
-                        init_animation: 'fadein',
-                        autosize: false
-                    });
-                } else if (typeof $this.timedropper === 'function') {
-                    $this.timedropper({
-                        format: 'hh:mm A',
-                        primaryColor: '#0071e3',
-                        setCurrentTime: false,
-                        meridians: true,
-                        init_animation: 'fadein',
-                        autosize: false
-                    });
-                }
-            });
-            return; // Success
-        }
-    }
-
-    // Priority 2: Fallback if Timedropper failed or jQuery is missing
-    if (document.querySelectorAll('.td-input').length > 0) {
-        console.warn("⚠️ Timedropper missing or jQuery unavailable, using AirDatepicker fallback.");
-        const els = document.querySelectorAll('.td-input');
-        els.forEach(el => {
-            new AirDatepicker(el, {
-                locale: enLocale,
-                onlyTimepicker: true,
-                timepicker: true,
-                timeFormat: 'hh:mm aa',
-                autoClose: true
-            });
+    const timeInputs = document.querySelectorAll('.td-input, [data-time-picker]');
+    timeInputs.forEach(el => {
+        new AirDatepicker(el, {
+            locale: enLocale,
+            onlyTimepicker: true,
+            timepicker: true,
+            timeFormat: 'hh:mm aa',
+            autoClose: true
         });
-    }
+    });
 };
 
 /**

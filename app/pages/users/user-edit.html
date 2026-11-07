@@ -1,87 +1,272 @@
 {{#> admin-layout title="Edit User" parentTitle="Users" }}
 
 <div class="row justify-content-center">
-    <div class="col-lg-10">
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
-            <div class="card-header bg-white py-4 px-5 border-0">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <h4 class="fw-black text-dark mb-1">Edit User: Sarah Connor</h4>
-                        <p class="text-muted small mb-0">Update account details and managed permissions</p>
+    <div class="col-xl-10">
+        <!-- Header Banner & Action Bar -->
+        <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3">
+                <a href="user-list.html" class="btn btn-outline-secondary btn-sm rounded-circle p-0 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;" title="Back to directory">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+                <div>
+                    <div class="d-flex align-items-center gap-2">
+                        <h3 class="fw-bold mb-0 text-main">Sarah Connor</h3>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Active</span>
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Lead Architect</span>
                     </div>
-                    <button class="btn btn-light btn-sm rounded-pill px-4 border" onclick="history.back()">
-                        <i class="bi bi-arrow-left me-2"></i> Back
-                    </button>
+                    <p class="text-muted small mb-0">sarah.connor@xivig.dev &bull; Joined March 2024 &bull; ID: #USR-9821</p>
                 </div>
             </div>
+            <div class="d-flex align-items-center gap-2">
+                <button type="button" class="btn btn-outline-danger btn-sm rounded-pill px-3.5" onclick="if(confirm('Are you sure you want to suspend this user account?')) { window.NotificationService ? window.NotificationService.warning('Account Suspended', 'User access has been temporarily suspended.') : alert('Account suspended'); }">
+                    <i class="bi bi-slash-circle me-1.5"></i> Suspend
+                </button>
+                <button type="submit" form="editUserForm" class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm">
+                    <i class="bi bi-check2-circle me-1.5"></i> Save Changes
+                </button>
+            </div>
+        </div>
 
-            <div class="card-body p-5 pt-0">
-                <form id="editUserForm">
-                    <div class="row g-4">
-                        <!-- Profile Image -->
-                        <div class="col-12 text-center mb-4">
-                            <div class="position-relative d-inline-block">
-                                <img src="/app/src/images/chat-img1.jpg" class="rounded-circle border border-primary border-4 p-1" style="width: 120px; height: 120px; object-fit: cover;">
-                                <button type="button" class="btn btn-primary btn-sm rounded-circle position-absolute bottom-0 end-0 border-white border-3" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="bi bi-pencil-fill extra-small"></i>
-                                </button>
-                            </div>
+        <!-- Quick Telemetry Row -->
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-md-3">
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-3 p-3 bg-body">
+                    <div class="d-flex align-items-center justify-content-between mb-1">
+                        <span class="text-muted extra-small fw-bold text-uppercase">Assigned Sprints</span>
+                        <i class="bi bi-kanban text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold mb-0 text-main">14 Tasks</h5>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-3 p-3 bg-body">
+                    <div class="d-flex align-items-center justify-content-between mb-1">
+                        <span class="text-muted extra-small fw-bold text-uppercase">Production Deploys</span>
+                        <i class="bi bi-rocket-takeoff text-success"></i>
+                    </div>
+                    <h5 class="fw-bold mb-0 text-main">128 Runs</h5>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-3 p-3 bg-body">
+                    <div class="d-flex align-items-center justify-content-between mb-1">
+                        <span class="text-muted extra-small fw-bold text-uppercase">Security Status</span>
+                        <i class="bi bi-shield-check text-info"></i>
+                    </div>
+                    <h5 class="fw-bold mb-0 text-main">2FA Enabled</h5>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-3 p-3 bg-body">
+                    <div class="d-flex align-items-center justify-content-between mb-1">
+                        <span class="text-muted extra-small fw-bold text-uppercase">Last Active</span>
+                        <i class="bi bi-clock-history text-muted"></i>
+                    </div>
+                    <h5 class="fw-bold mb-0 text-main">14 mins ago</h5>
+                </div>
+            </div>
+        </div>
+
+        <form id="editUserForm" onsubmit="event.preventDefault(); window.NotificationService ? window.NotificationService.success('Profile Updated', 'Sarah Connor\'s account settings have been saved.') : alert('Saved successfully!');">
+            <div class="row g-4">
+                <!-- Left Column: Avatar & Account Meta -->
+                <div class="col-lg-4">
+                    <!-- Avatar Management -->
+                    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 text-center mb-4">
+                        <h6 class="fw-bold text-main mb-3 fs-14">User Avatar</h6>
+                        <div class="position-relative d-inline-block mx-auto mb-3">
+                            <img src="/app/src/images/chat-img1.jpg" id="editAvatarImg" class="rounded-circle border border-3 border-primary shadow-sm object-fit-cover" width="120" height="120" alt="Sarah Connor">
+                            <label for="editAvatarInput" class="btn btn-primary btn-sm rounded-circle position-absolute bottom-0 end-0 p-0 d-flex align-items-center justify-content-center shadow" style="width: 36px; height: 36px; cursor: pointer;" title="Change Photo">
+                                <i class="bi bi-pencil-fill small"></i>
+                            </label>
+                            <input type="file" id="editAvatarInput" class="d-none" accept="image/*" onchange="const f = this.files[0]; if(f){ const r = new FileReader(); r.onload = e => document.getElementById('editAvatarImg').src = e.target.result; r.readAsDataURL(f); }">
                         </div>
+                        <h6 class="fw-bold mb-0 text-main">Sarah Connor</h6>
+                        <p class="text-muted extra-small mb-3">sarah.c &bull; Principal Engineer</p>
 
-                        <!-- Basic Info -->
-                        <div class="col-md-6">
-                            <label class="apple-label">Full Name</label>
-                            <input type="text" class="form-control modern-input" value="Sarah Connor" required>
+                        <div class="d-flex justify-content-center gap-2">
+                            <button type="button" class="btn btn-sm btn-light border border-secondary border-opacity-15 rounded-pill px-3 extra-small" onclick="document.getElementById('editAvatarInput').click();">Replace</button>
+                            <button type="button" class="btn btn-sm btn-light text-danger border border-secondary border-opacity-15 rounded-pill px-3 extra-small" onclick="document.getElementById('editAvatarImg').src='/app/src/images/photo1.jpg';">Reset</button>
                         </div>
+                    </div>
 
-                        <div class="col-md-6">
-                            <label class="apple-label">Email Address</label>
-                            <input type="email" class="form-control modern-input" value="sarah.connor@example.com" required>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="apple-label">Username</label>
-                            <div class="input-group modern-input-group border rounded-3 overflow-hidden">
-                                <span class="input-group-text bg-light border-0 px-3">@</span>
-                                <input type="text" class="form-control border-0 shadow-none py-2" value="sarah.c">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="apple-label">User Role</label>
-                            <select class="form-select modern-input">
-                                <option>Select Role</option>
-                                <option value="developer" selected>Developer</option>
-                                <option value="client">Client</option>
-                                <option value="admin">Administrator</option>
+                    <!-- Account Status Card -->
+                    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4">
+                        <h6 class="fw-bold text-main mb-3 fs-14">Lifecycle & Status</h6>
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold text-muted">Account Status</label>
+                            <select class="form-select">
+                                <option value="active" selected>Active / Healthy</option>
+                                <option value="suspended">Suspended / Paused</option>
+                                <option value="locked">Locked (Too many failed logins)</option>
+                                <option value="archived">Archived / Offboarded</option>
                             </select>
                         </div>
+                        <div class="form-check form-switch mb-2.5">
+                            <input class="form-check-input" type="checkbox" id="twoFaActive" checked>
+                            <label class="form-check-label small fw-semibold text-main" for="twoFaActive">Enforce Hardware 2FA</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="auditLogging" checked>
+                            <label class="form-check-label small fw-semibold text-main" for="auditLogging">Verbose Audit Logging</label>
+                        </div>
+                    </div>
 
-                        <div class="col-md-6">
-                            <label class="apple-label">Status</label>
-                            <select class="form-select modern-input">
-                                <option value="active" selected>Active</option>
-                                <option value="suspended">Suspended</option>
-                                <option value="deactivated">Deactivated</option>
-                            </select>
+                    <!-- Danger Zone Card -->
+                    <div class="card border border-danger border-opacity-25 shadow-2xs rounded-4 p-4 bg-danger-subtle bg-opacity-10">
+                        <h6 class="fw-bold text-danger mb-1.5 fs-14"><i class="bi bi-exclamation-triangle-fill me-1.5"></i> Danger Zone</h6>
+                        <p class="text-muted extra-small mb-3">Irreversible actions that affect user authentication and assigned resources.</p>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-outline-danger btn-sm rounded-pill fw-semibold" onclick="if(confirm('Revoke all active session tokens for Sarah Connor?')) alert('All active session tokens revoked.');">
+                                Revoke All Sessions
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm rounded-pill fw-semibold" onclick="if(confirm('WARNING: Are you sure you want to permanently delete Sarah Connor? This action cannot be undone.')) alert('User marked for deletion.');">
+                                Delete Account
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Edit Fields -->
+                <div class="col-lg-8">
+                    <!-- General Profile -->
+                    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4">
+                        <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom border-secondary border-opacity-10">
+                            <i class="bi bi-person-lines-fill text-primary fs-5"></i>
+                            <h6 class="fw-bold text-main mb-0 fs-15">Personal Profile</h6>
                         </div>
 
-                        <div class="col-md-6">
-                            <label class="apple-label">Last Login</label>
-                            <input type="text" class="form-control modern-input bg-light" value="Today, 10:45 AM" readonly>
-                        </div>
-
-                        <div class="col-12 border-top pt-4 mt-5 d-flex justify-content-between align-items-center">
-                            <button type="button" class="btn btn-outline-danger rounded-pill px-4 py-2 fw-bold">Delete Account</button>
-                            <div>
-                                <button type="button" class="btn btn-light rounded-pill px-5 py-2 border me-2" onclick="history.back()">Cancel</button>
-                                <button type="submit" class="btn btn-dark rounded-pill px-5 py-2 fw-bold shadow-sm">Save Changes</button>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">First Name</label>
+                                <input type="text" class="form-control" value="Sarah" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Last Name</label>
+                                <input type="text" class="form-control" value="Connor" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-body-tertiary text-muted border-secondary border-opacity-15"><i class="bi bi-envelope"></i></span>
+                                    <input type="email" class="form-control" value="sarah.connor@xivig.dev" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Username</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-body-tertiary text-muted border-secondary border-opacity-15">@</span>
+                                    <input type="text" class="form-control" value="sarah.c" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Role Assignment</label>
+                                <select class="form-select">
+                                    <option value="lead" selected>Lead Systems Architect</option>
+                                    <option value="developer">Core Developer</option>
+                                    <option value="admin">System Administrator</option>
+                                    <option value="client">Client Representative</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Department</label>
+                                <select class="form-select">
+                                    <option selected>Core Infrastructure</option>
+                                    <option>Frontend Systems</option>
+                                    <option>Cloud Operations</option>
+                                    <option>Information Security</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-semibold text-muted">Bio & Responsibilities</label>
+                                <textarea class="form-control" rows="3">Lead architect specializing in distributed zero-dependency Vanilla JS frameworks, Vite high-speed compilation, and micro-frontend federation.</textarea>
                             </div>
                         </div>
                     </div>
-                </form>
+
+                    <!-- Security & Authentication -->
+                    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4">
+                        <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom border-secondary border-opacity-10">
+                            <i class="bi bi-shield-check text-primary fs-5"></i>
+                            <h6 class="fw-bold text-main mb-0 fs-15">Security & Password Reset</h6>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">New Password (leave blank to keep current)</label>
+                                <input type="password" class="form-control" placeholder="••••••••••••">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Confirm New Password</label>
+                                <input type="password" class="form-control" placeholder="••••••••••••">
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10">
+                                    <div class="d-flex align-items-center gap-2.5">
+                                        <i class="bi bi-envelope-paper text-primary fs-5"></i>
+                                        <div>
+                                            <div class="fw-semibold small text-main">Send Password Reset Link</div>
+                                            <div class="text-muted extra-small">Sends an authorized password reset email directly to sarah.connor@xivig.dev</div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3" onclick="alert('Password reset link dispatched!');">
+                                        Send Link
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Connected Sessions -->
+                    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom border-secondary border-opacity-10">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-laptop text-primary fs-5"></i>
+                                <h6 class="fw-bold text-main mb-0 fs-15">Active Sessions</h6>
+                            </div>
+                            <span class="badge bg-body-secondary text-muted extra-small">2 Devices</span>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-10">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-display fs-4 text-primary"></i>
+                                <div>
+                                    <div class="fw-semibold small text-main">macOS Sonoma &bull; Chrome 128</div>
+                                    <div class="text-muted extra-small">San Francisco, US &bull; 192.168.1.45 &bull; <span class="text-success fw-bold">Current Device</span></div>
+                                </div>
+                            </div>
+                            <span class="badge bg-success-subtle text-success extra-small rounded-pill px-2.5 py-0.5">Active</span>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between py-2">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-phone fs-4 text-muted"></i>
+                                <div>
+                                    <div class="fw-semibold small text-main">iPhone 15 Pro &bull; Safari iOS</div>
+                                    <div class="text-muted extra-small">San Francisco, US &bull; Last seen 2 hours ago</div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-light text-danger border border-secondary border-opacity-15 rounded-pill px-2.5 py-0.5 extra-small" onclick="this.closest('.d-flex').remove();">Revoke</button>
+                        </div>
+                    </div>
+
+                    <!-- Footer Actions -->
+                    <div class="d-flex align-items-center justify-content-between pt-2">
+                        <a href="user-list.html" class="btn btn-light border border-secondary border-opacity-15 rounded-pill px-4">
+                            Cancel
+                        </a>
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-outline-secondary rounded-pill px-4" onclick="document.getElementById('editUserForm').reset();">
+                                Discard Changes
+                            </button>
+                            <button type="submit" class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm">
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 

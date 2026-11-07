@@ -40,7 +40,7 @@
 }
 
 .message--outgoing .message__bubble {
-    background: linear-gradient(135deg, var(--bs-primary) 0%, #6f42c1 100%);
+    background: var(--elite-primary);
     color: #fff;
     border: none;
     border-top-left-radius: var(--chat-bubble-radius);

@@ -1,94 +1,84 @@
 {{#> admin-layout title="Advanced Components" parentTitle="Forms" }}
 
-<div class="row">
+<div class="row g-4">
+    <!-- Header Hero -->
     <div class="col-12">
-        <div class="card border-0 shadow-sm p-4 mb-4 rounded-4">
+        <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 bg-body">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h4 class="fw-bold mb-0 text-main fs-18">Advanced Form Components & Smart Controls</h4>
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Vanilla JS &bull; Zero jQuery</span>
+                    </div>
+                    <p class="text-muted small mb-0">Live filterable selectors, segmented state bars, multi-range dual sliders, and clipboard copy triggers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. Smart Filterable Selectors -->
+    <div class="col-lg-6">
+        <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+            <h5 class="fw-bold text-main mb-1 fs-16">Searchable Dropdown Select</h5>
+            <p class="text-muted extra-small mb-3">Live filtering without third-party heavy select libraries</p>
+
+            <div class="mb-3">
+                <label class="form-label small fw-semibold text-muted">Filterable Cloud Region</label>
+                <div class="dropdown" id="searchableDropdown">
+                    <button class="btn btn-light border border-secondary border-opacity-15 w-100 d-flex align-items-center justify-content-between text-main rounded-3 py-2 px-3 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownSelectedText">
+                        <span><i class="bi bi-hdd-network me-2 text-primary"></i> AWS us-east-1 (N. Virginia)</span>
+                    </button>
+                    <div class="dropdown-menu w-100 p-2 shadow-lg border-0 rounded-3">
+                        <input type="text" class="form-control form-control-sm mb-2" id="searchDropdownInput" placeholder="Type region or country..." oninput="const q = this.value.toLowerCase(); document.querySelectorAll('.dropdown-filter-item').forEach(i => i.style.display = i.textContent.toLowerCase().includes(q) ? '' : 'none');">
+                        <div class="custom-scroll" style="max-height: 180px; overflow-y: auto;">
+                            <a class="dropdown-item small rounded-2 dropdown-filter-item" href="javascript:;" onclick="document.getElementById('dropdownSelectedText').innerHTML = `<span><i class='bi bi-hdd-network me-2 text-primary'></i> ${this.textContent}</span>`;">AWS us-east-1 (N. Virginia)</a>
+                            <a class="dropdown-item small rounded-2 dropdown-filter-item" href="javascript:;" onclick="document.getElementById('dropdownSelectedText').innerHTML = `<span><i class='bi bi-hdd-network me-2 text-primary'></i> ${this.textContent}</span>`;">AWS us-west-2 (Oregon)</a>
+                            <a class="dropdown-item small rounded-2 dropdown-filter-item" href="javascript:;" onclick="document.getElementById('dropdownSelectedText').innerHTML = `<span><i class='bi bi-hdd-network me-2 text-primary'></i> ${this.textContent}</span>`;">GCP europe-west3 (Frankfurt)</a>
+                            <a class="dropdown-item small rounded-2 dropdown-filter-item" href="javascript:;" onclick="document.getElementById('dropdownSelectedText').innerHTML = `<span><i class='bi bi-hdd-network me-2 text-primary'></i> ${this.textContent}</span>`;">GCP asia-east1 (Tokyo)</a>
+                            <a class="dropdown-item small rounded-2 dropdown-filter-item" href="javascript:;" onclick="document.getElementById('dropdownSelectedText').innerHTML = `<span><i class='bi bi-hdd-network me-2 text-primary'></i> ${this.textContent}</span>`;">Cloudflare Global Anycast Edge</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-0">
+                <label class="form-label small fw-semibold text-muted">Selected Value Payload</label>
+                <input type="text" class="form-control font-monospace form-control-sm bg-body-tertiary" value="region_aws_us_east_1" readonly>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Dual Range Sliders -->
+    <div class="col-lg-6">
+        <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+            <h5 class="fw-bold text-main mb-1 fs-16">Precision Metric Sliders</h5>
+            <p class="text-muted extra-small mb-3">Live numeric binding with slider tracks</p>
+
             <div class="mb-4">
-                <h5 class="fw-bold">Smart Selectors</h5>
-                <p class="text-muted small">Search and multi-select integration powered by Select2</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <label class="form-label small fw-bold text-muted text-uppercase tracking-wider">Single
-                        Selection</label>
-                    <select class="form-select border-light bg-light rounded-3 py-2 custom-select2">
-                        <option value="AK">Alaska</option>
-                        <option value="HI">Hawaii</option>
-                    </select>
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                    <label class="form-label small fw-semibold text-muted mb-0">Compute Core Allocation</label>
+                    <span class="text-primary font-monospace fw-bold" id="coreValueDisplay">8 vCPUs</span>
                 </div>
-                <div class="col-md-6">
-                    <label class="form-label small fw-bold text-muted text-uppercase tracking-wider">Multiple
-                        Selection</label>
-                    <select class="form-select border-light bg-light rounded-3 py-2 custom-select2"
-                            multiple>
-                        <option value="CA" selected>California</option>
-                        <option value="NV" selected>Nevada</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-4 mb-4">
-            <div class="col-md-6">
-                <div class="card border-0 shadow-sm p-4 rounded-4">
-                    <label class="form-label small fw-bold text-muted text-uppercase tracking-wider mb-3">Keywords
-                        & Tags</label>
-                    <div class="bg-light border border-light rounded-3 p-3 shadow-sm" id="tags-container"
-                         style="min-height: 56px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
-
-                        <input type="text"
-                               class="form-control border-0 bg-transparent shadow-none p-0 ms-1"
-                               id="tag-input"
-                               placeholder="Add tag..."
-                               style="flex: 1; min-width: 120px; font-size: 0.9rem;">
-                    </div>
-                    <input type="hidden" name="tags" id="hidden-tags" value="Laravel,Bootstrap,VanillaJS">
-                    <div class="form-text mt-3 text-muted">
-                        Press <kbd class="bg-white text-dark border shadow-sm px-2">Enter</kbd> to add.
-                    </div>
+                <input type="range" class="form-range" min="1" max="64" value="8" id="coreRangeSlider" oninput="document.getElementById('coreValueDisplay').textContent = `${this.value} vCPUs`;">
+                <div class="d-flex justify-content-between text-muted extra-small">
+                    <span>1 vCPU</span>
+                    <span>16 vCPUs</span>
+                    <span>32 vCPUs</span>
+                    <span>64 vCPUs</span>
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
-                    <label class="form-label small fw-bold text-muted text-uppercase tracking-wider mb-3">System
-                        Controls</label>
-                    <div class="list-group list-group-flush">
-                        <div class="list-group-item border-0 bg-light rounded-3 d-flex justify-content-between align-items-center mb-2 p-3">
-                            <span class="fw-medium text-dark">Public Access</span>
-                            <div class="form-check form-switch m-0 p-0">
-                                <input class="form-check-input ms-0" type="checkbox" role="switch" checked
-                                       style="cursor: pointer;">
-                            </div>
-                        </div>
-                        <div class="list-group-item border-0 bg-light rounded-3 d-flex justify-content-between align-items-center p-3">
-                            <span class="fw-medium text-dark">Maintenance Mode</span>
-                            <div class="form-check form-switch m-0 p-0">
-                                <input class="form-check-input ms-0 bg-warning border-warning"
-                                       type="checkbox" role="switch" style="cursor: pointer;">
-                            </div>
-                        </div>
-                    </div>
+            <div class="mb-0">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                    <label class="form-label small fw-semibold text-muted mb-0">RAM Allocation</label>
+                    <span class="text-success font-monospace fw-bold" id="ramValueDisplay">32 GB</span>
                 </div>
-            </div>
-        </div>
-
-        <div class="card border-0 shadow-sm p-4 mb-4 rounded-4">
-            <label class="form-label small fw-bold text-muted text-uppercase tracking-wider mb-3">Adjust
-                Values</label>
-            <div class="row g-3">
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <button class="btn btn-outline-light border text-dark px-3" type="button"
-                                id="btn-minus">-
-                        </button>
-                        <input type="text" class="form-control text-center fw-bold bg-light border-light"
-                               value="85" id="stepper-input">
-                        <span class="input-group-text bg-white border-light fw-bold text-muted">%</span>
-                        <button class="btn btn-outline-light border text-dark px-3" type="button"
-                                id="btn-plus">+
-                        </button>
-                    </div>
+                <input type="range" class="form-range" min="4" max="256" step="4" value="32" id="ramRangeSlider" oninput="document.getElementById('ramValueDisplay').textContent = `${this.value} GB`;">
+                <div class="d-flex justify-content-between text-muted extra-small">
+                    <span>4 GB</span>
+                    <span>64 GB</span>
+                    <span>128 GB</span>
+                    <span>256 GB</span>
                 </div>
             </div>
         </div>

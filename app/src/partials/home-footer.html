@@ -1,14 +1,168 @@
-<!-- FOOTER -->
-<footer class="py-100 landing-footer">
-    <div class="container text-center">
-        <h2 class="fw-black mb-4 d-flex align-items-center justify-content-center text-dark">
-            <i class="fa-solid fa-cube text-danger me-3"></i>XIVIG
-        </h2>
-        <div class="d-flex justify-content-center gap-4 mb-5">
-            <a href="#" class="footer-link-fb fs-4" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="footer-link-tw fs-4" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#" class="footer-link-ig fs-4" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+<!-- ELITE BRAND SHOWCASE FOOTER -->
+<footer class="landing-footer">
+    <div class="container">
+        
+        <!-- Pre-Footer Newsletter & Trust Banner -->
+        <div class="landing-footer__newsletter-box">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-7">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold">WEEKLY ARCHITECT DIGEST</span>
+                        <span class="text-secondary small">&bull; Zero Spam</span>
+                    </div>
+                    <h3 class="fw-black text-dark mb-2">Stay Ahead of Modern Web Architecture.</h3>
+                    <p class="text-secondary mb-0 small" style="max-width: 580px; line-height: 1.6;">
+                        Receive weekly production releases, performance benchmarks, Glassmorphic component drops, and Vite + Sass optimization patterns.
+                    </p>
+                </div>
+                <div class="col-lg-5">
+                    <form class="d-flex flex-column flex-sm-row gap-2" onsubmit="event.preventDefault(); const b=this.querySelector('button'); b.innerHTML='Subscribed!'; b.classList.replace('landing-footer__submit-btn','btn-success');">
+                        <input type="email" class="form-control landing-footer__input flex-grow-1" placeholder="architect@company.com" required aria-label="Email Address">
+                        <button class="btn landing-footer__submit-btn d-inline-flex align-items-center justify-content-center gap-2" type="submit">
+                            <span>Join Digest</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </form>
+                    <div class="d-flex flex-wrap align-items-center gap-3 mt-2.5 text-secondary" style="font-size: 0.78rem;">
+                        <span><i class="bi bi-shield-check text-success me-1"></i> 100% Privacy</span>
+                        <span><i class="bi bi-check2 text-primary me-1"></i> Instant Unsubscribe</span>
+                        <span><i class="bi bi-people text-info me-1"></i> 14,200+ Architects</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p class="text-muted extra-small fw-bold text-uppercase tracking-widest mb-0 opacity-75">Copyrights &copy; 2026 Xivig Architect OS. All rights Reserved.</p>
+
+        <!-- Main Footer Navigation Columns -->
+        <div class="row g-4 g-lg-5">
+            <!-- 1. Brand & Telemetry Column -->
+            <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                <a class="d-inline-flex align-items-center gap-2 mb-3 text-decoration-none" href="xivig.html">
+                    <img src="/app/src/images/logo.png" alt="XIVIG" width="38" height="38" style="object-fit: contain; filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.4));">
+                    <span class="fw-black tracking-wider text-dark fs-4 mb-0">XIVIG<span class="text-primary">.</span></span>
+                    <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-20 px-2 py-0.5 extra-small fw-bold ms-1">ELITE v2.4</span>
+                </a>
+                <p class="landing-footer__desc mb-3" style="max-width: 360px;">
+                    A luxury enterprise application framework fusing Glassmorphism aesthetics, reactive Vanilla JS architecture, 91 modular templates, and high-velocity Vite + Sass build pipelines.
+                </p>
+
+                <!-- Live Cluster Status Beacon -->
+                <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill bg-success bg-opacity-10 border border-success border-opacity-25 mb-4">
+                    <span class="pulse-beacon-emerald"></span>
+                    <span class="text-success fw-bold extra-small" style="letter-spacing: 0.04em;">ALL CLUSTERS OPERATIONAL &bull; 99.99% SLA</span>
+                </div>
+
+                <!-- Social Action Pills -->
+                <div class="d-flex align-items-center gap-2.5 mb-4">
+                    <a href="https://github.com/xivig/xivig.github.io" target="_blank" rel="noopener noreferrer" class="footer-social-pill" title="GitHub Repository" aria-label="GitHub Repository"><i class="bi bi-github"></i></a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-pill" title="X / Twitter" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-pill" title="LinkedIn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="footer-social-pill" title="Discord Community" aria-label="Discord"><i class="bi bi-discord"></i></a>
+                </div>
+
+                <!-- Architectural Specs Pills -->
+                <div class="d-flex flex-wrap gap-1.5 text-secondary">
+                    <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-15 extra-small">Vite 5+</span>
+                    <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-15 extra-small">Sass 7-1</span>
+                    <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-15 extra-small">100% Vanilla JS</span>
+                    <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-15 extra-small">MIT License</span>
+                </div>
+            </div>
+
+            <!-- 2. Platform Modules Column -->
+            <div class="col-lg-2 col-md-3 col-6">
+                <h6 class="landing-footer__heading">Platform</h6>
+                <ul class="landing-footer__list">
+                    <li><a href="index.html" class="landing-footer__link">Dashboard v1</a></li>
+                    <li><a href="dashboard-v2.html" class="landing-footer__link">Dashboard v2</a></li>
+                    <li><a href="ecommerce-products.html" class="landing-footer__link">E-Commerce</a></li>
+                    <li>
+                        <a href="kanban.html" class="landing-footer__link">
+                            <span>Kanban Board</span>
+                            <span class="landing-footer__badge landing-footer__badge--primary">NEW</span>
+                        </a>
+                    </li>
+                    <li><a href="task-manager.html" class="landing-footer__link">Task Manager</a></li>
+                    <li><a href="calendar.html" class="landing-footer__link">Calendar Hub</a></li>
+                    <li><a href="chat.html" class="landing-footer__link">Live Chat App</a></li>
+                </ul>
+            </div>
+
+            <!-- 3. Design System Column -->
+            <div class="col-lg-2 col-md-3 col-6">
+                <h6 class="landing-footer__heading">Design System</h6>
+                <ul class="landing-footer__list">
+                    <li>
+                        <a href="ui-cards.html" class="landing-footer__link">
+                            <span>Cards Catalog</span>
+                            <span class="landing-footer__badge landing-footer__badge--warning">HOT</span>
+                        </a>
+                    </li>
+                    <li><a href="ui-cards-hover.html" class="landing-footer__link">Hover Effects</a></li>
+                    <li><a href="ui-buttons.html" class="landing-footer__link">Action Buttons</a></li>
+                    <li><a href="datatable.html" class="landing-footer__link">Data Tables</a></li>
+                    <li><a href="apexcharts.html" class="landing-footer__link">ApexCharts</a></li>
+                    <li><a href="form-wizard.html" class="landing-footer__link">Form Wizard</a></li>
+                    <li><a href="ui-modals.html" class="landing-footer__link">Modals &amp; Alerts</a></li>
+                </ul>
+            </div>
+
+            <!-- 4. Engineering & DevOps Column -->
+            <div class="col-lg-2 col-md-3 col-6">
+                <h6 class="landing-footer__heading">Engineering</h6>
+                <ul class="landing-footer__list">
+                    <li><a href="documentation.html" class="landing-footer__link">Technical Docs</a></li>
+                    <li>
+                        <a href="releases.html" class="landing-footer__link">
+                            <span>Releases</span>
+                            <span class="landing-footer__badge landing-footer__badge--success">v2.4</span>
+                        </a>
+                    </li>
+                    <li><a href="build-history.html" class="landing-footer__link">Build History</a></li>
+                    <li><a href="system-metrics.html" class="landing-footer__link">Telemetry &amp; SLA</a></li>
+                    <li><a href="overview.html" class="landing-footer__link">Analytics Hub</a></li>
+                    <li><a href="advanced-components.html" class="landing-footer__link">Advanced UI</a></li>
+                    <li><a href="sitemap.html" class="landing-footer__link">All 91 Pages</a></li>
+                </ul>
+            </div>
+
+            <!-- 5. Ecosystem & Resources Column -->
+            <div class="col-lg-2 col-md-3 col-6">
+                <h6 class="landing-footer__heading">Ecosystem</h6>
+                <ul class="landing-footer__list">
+                    <li><a href="xivig.html" class="landing-footer__link">Brand Showcase</a></li>
+                    <li><a href="pricing-table.html" class="landing-footer__link">Pricing Matrix</a></li>
+                    <li><a href="faq.html" class="landing-footer__link">Knowledgebase</a></li>
+                    <li><a href="help-support.html" class="landing-footer__link">Help Desk</a></li>
+                    <li><a href="contact-directory.html" class="landing-footer__link">Contact Roster</a></li>
+                    <li><a href="https://github.com/xivig/xivig.github.io" target="_blank" rel="noopener noreferrer" class="landing-footer__link">GitHub Repo</a></li>
+                    <li><a href="store-settings.html" class="landing-footer__link">Store Settings</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Legal & Telemetry Strip -->
+        <div class="landing-footer__bottom d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <div>
+                &copy; 2026 <strong class="text-dark">XIVIG Architect OS</strong>. Engineered for modern web velocity. Released under MIT License.
+            </div>
+            <div class="d-flex flex-wrap align-items-center gap-3.5">
+                <a href="system-metrics.html" class="text-secondary text-decoration-none extra-small d-inline-flex align-items-center gap-1.5">
+                    <span class="pulse-beacon-emerald" style="width: 6px; height: 6px;"></span>
+                    <span>Systems 99.99%</span>
+                </a>
+                <span class="text-secondary opacity-30">&bull;</span>
+                <a href="faq.html" class="text-secondary text-decoration-none extra-small">FAQ</a>
+                <span class="text-secondary opacity-30">&bull;</span>
+                <a href="help-support.html" class="text-secondary text-decoration-none extra-small">Support</a>
+                <span class="text-secondary opacity-30">&bull;</span>
+                <a href="documentation.html" class="text-secondary text-decoration-none extra-small">Docs</a>
+                <span class="text-secondary opacity-30">&bull;</span>
+                <a href="#home" class="footer-back-to-top btn btn-sm rounded-pill px-3 py-1 extra-small fw-bold d-inline-flex align-items-center gap-1 text-decoration-none">
+                    <i class="bi bi-arrow-up"></i>
+                    <span>Top</span>
+                </a>
+            </div>
+        </div>
+
     </div>
 </footer>

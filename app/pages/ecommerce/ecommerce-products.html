@@ -1,149 +1,390 @@
 {{#> admin-layout title="Product List" parentTitle="Ecommerce" }}
 
-<div class="row g-4">
-    <div class="col-md-3">
-        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <p class="text-muted small fw-bold text-uppercase mb-1">Store Sales</p>
-                    <h3 class="fw-black mb-0">$5,345</h3>
-                    <span class="text-success extra-small fw-bold">+5.7% from last month</span>
+<!-- Top Inventory Telemetry Pods -->
+<div class="row g-4 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">TOTAL REVENUE</span>
+                <div class="stat-card__icon stat-card__icon--primary">
+                    <i class="bi bi-wallet2"></i>
                 </div>
-                <div class="icon-shape bg-primary-light text-primary rounded-3 p-3">
-                    <i class="bi bi-shop fs-3"></i>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">$128,450</h3>
+                    <div class="stat-card__label">Store Sales (30d)</div>
                 </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-arrow-up-right"></i> +14.8%
+                </span>
+                <span class="stat-card__context">vs last month</span>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <p class="text-muted small fw-bold text-uppercase mb-1">Active Orders</p>
-                    <h3 class="fw-black mb-0">1,284</h3>
-                    <span class="text-primary extra-small fw-bold">Processing</span>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">ACTIVE ORDERS</span>
+                <div class="stat-card__icon stat-card__icon--info">
+                    <i class="bi bi-cart-check-fill"></i>
                 </div>
-                <div class="icon-shape bg-success-light text-success rounded-3 p-3">
-                    <i class="bi bi-cart-check fs-3"></i>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">1,284</h3>
+                    <div class="stat-card__label">Fulfillment Queue</div>
                 </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-arrow-up-right"></i> 98.4%
+                </span>
+                <span class="stat-card__context">on-time dispatch</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">INVENTORY UNITS</span>
+                <div class="stat-card__icon stat-card__icon--success">
+                    <i class="bi bi-boxes"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">8,490</h3>
+                    <div class="stat-card__label">Available Units</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-check-circle-fill"></i> In Stock
+                </span>
+                <span class="stat-card__context">across 4 hubs</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">LOW STOCK WATCH</span>
+                <div class="stat-card__icon stat-card__icon--warning">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">12 Items</h3>
+                    <div class="stat-card__label">Restock Priority</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--down">
+                    <i class="bi bi-bell-fill"></i> Action Req
+                </span>
+                <span class="stat-card__context">below threshold</span>
             </div>
         </div>
     </div>
 </div>
 
-<div class="card border-0 shadow-sm rounded-4 mt-4 has-table">
-    <div class="card-header bg-white py-4 border-0">
-        <div class="row align-items-center g-3">
-            <div class="col-md-4">
-                <h5 class="fw-black text-dark mb-0">Product Inventory</h5>
+<!-- Product Inventory Table Card -->
+<div class="card-box p-0 border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+    <div class="modular-card-header p-4">
+        <div>
+            <h5 class="fw-bold mb-1 text-main d-flex align-items-center gap-2">
+                Product Inventory
+                <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2.5 py-0.5 extra-small fw-bold">
+                    6 Active SKUs
+                </span>
+            </h5>
+            <p class="text-muted extra-small mb-0">Real-time catalog pricing, stock telemetry, and catalog operations.</p>
+        </div>
+        <div class="d-flex flex-wrap align-items-center gap-2">
+            <div class="input-group modern-input-group bg-body-tertiary rounded-pill px-3 py-1 border border-secondary border-opacity-15 shadow-2xs" style="max-width: 260px;">
+                <span class="input-group-text bg-transparent border-0 p-0 me-2"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" class="form-control border-0 bg-transparent shadow-none extra-small" placeholder="Search inventory...">
             </div>
-            <div class="col-md-8 text-md-end">
-                <div class="d-flex gap-2 justify-content-md-end">
-                    <div class="input-group modern-input-group bg-light rounded-pill px-3 py-1 border-0" style="max-width: 300px;">
-                        <span class="input-group-text bg-transparent border-0"><i class="bi bi-search text-muted"></i></span>
-                        <input type="text" class="form-control border-0 bg-transparent shadow-none small" placeholder="Search inventory...">
-                    </div>
-                    <button id="exportProductsBtn" class="btn btn-white border rounded-pill px-3 shadow-sm fw-bold text-muted me-2"><i class="bi bi-download me-2"></i>Export</button>
-                    <button class="btn btn-dark btn-sm rounded-3 px-4 fw-bold" onclick="location.href='ecommerce-add-product.html'">
-                        <i class="bi bi-plus-lg me-2"></i> Add Product
-                    </button>
-                </div>
-            </div>
+            <button id="exportProductsBtn" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1.5 extra-small fw-bold d-inline-flex align-items-center gap-1.5">
+                <i class="bi bi-download"></i> Export CSV
+            </button>
+            <a href="ecommerce-add-product.html" class="btn btn-sm btn-primary rounded-pill px-3.5 py-1.5 extra-small fw-bold d-inline-flex align-items-center gap-1.5 text-white shadow-sm" >
+                <i class="bi bi-plus-lg"></i> Add Product
+            </a>
         </div>
     </div>
-    <div class="table-responsive pb-5">
+
+    <div class="table-responsive p-0">
         <table class="table table-hover align-middle mb-0" id="productsTable">
-            <thead class="bg-light-subtle text-muted small text-uppercase fw-bold">
+            <thead class="bg-body-tertiary text-muted extra-small text-uppercase fw-bold border-bottom border-secondary border-opacity-10">
                 <tr>
                     <th class="ps-4" style="width: 40px;"><input type="checkbox" class="form-check-input"></th>
                     <th>Product Details</th>
                     <th>Category</th>
-                    <th>Inventory</th>
+                    <th>Inventory Stock</th>
                     <th>Base Price</th>
                     <th>Status</th>
-                    <th class="text-end pe-4">Actions</th>
+                    <th class="text-end pe-4" style="min-width: 80px;">Actions</th>
                 </tr>
             </thead>
             <tbody>
+                <!-- Item 1 -->
                 <tr>
                     <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="p-1 border rounded-3 bg-light me-3">
-                                <img src="/app/src/images/product-2.jpg" class="rounded-2" width="40" height="40" style="object-fit: cover;">
+                            <div class="p-1 border border-secondary border-opacity-15 rounded-3 bg-body-tertiary me-3 flex-shrink-0">
+                                <img src="/app/src/images/product-2.jpg" class="rounded-2" width="44" height="44" style="object-fit: cover;" alt="Air Jordan Elite">
                             </div>
                             <div>
-                                <h6 class="mb-0 fw-bold">Air Jordan Elite</h6>
+                                <h6 class="mb-0 fw-bold text-main">Air Jordan Elite High</h6>
                                 <p class="text-muted extra-small mb-0">SKU: AJ-8829-21</p>
                             </div>
                         </div>
                     </td>
-                    <td><span class="badge bg-white text-dark border shadow-sm px-3 py-2 rounded-pill small fw-medium">Footwear</span></td>
+                    <td><span class="badge rounded-pill bg-body-secondary text-body border border-secondary border-opacity-15 px-3 py-1 extra-small fw-semibold">Footwear</span></td>
                     <td>
                         <div class="d-flex align-items-center gap-2">
-                            <div class="progress flex-grow-1" style="height: 4px; width: 60px;">
+                            <div class="progress flex-grow-1" style="height: 5px; width: 80px; background: rgba(148, 163, 184, 0.15);">
                                 <div class="progress-bar bg-success" style="width: 85%"></div>
                             </div>
-                            <span class="small fw-bold">125</span>
+                            <span class="small fw-bold text-main">125 pcs</span>
                         </div>
                     </td>
-                    <td class="fw-black">$125.00</td>
-                    <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small">Active</span></td>
+                    <td class="fw-bold text-main">$185.00</td>
+                    <td><span class="status-pill status-pill--active"><i class="bi bi-check-circle-fill"></i> Active</span></td>
                     <td class="text-end pe-4">
                         <div class="dropdown">
-                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm" type="button" data-bs-toggle="dropdown" data-bs-boundary="viewport">
+                            <button class="table-action-btn" type="button" data-bs-toggle="dropdown" data-bs-popper-config='{"strategy":"fixed"}' aria-expanded="false" title="Actions">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
-                                <li><a class="dropdown-item py-2" href="ecommerce-edit-product.html"><i class="bi bi-pencil-square me-2 opacity-50"></i> Edit Product</a></li>
-                                <li><a class="dropdown-item py-2" href="ecommerce-product-detail.html"><i class="bi bi-eye me-2 opacity-50"></i> View Details</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item py-2 text-danger" href="#"><i class="bi bi-trash3 me-2"></i> Remove</a></li>
+                                <li><a class="dropdown-item" href="ecommerce-edit-product.html"><i class="bi bi-pencil-square me-2 text-primary"></i> Edit Product</a></li>
+                                <li><a class="dropdown-item" href="ecommerce-product-detail.html"><i class="bi bi-eye me-2 text-info"></i> View Details</a></li>
+                                <li><hr class="dropdown-divider my-1"></li>
+                                <li><a class="dropdown-item text-danger" href="javascript:;"><i class="bi bi-trash3 me-2"></i> Remove</a></li>
                             </ul>
                         </div>
                     </td>
                 </tr>
+
+                <!-- Item 2 -->
                 <tr>
                     <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <div class="p-1 border rounded-3 bg-light me-3">
-                                <img src="/app/src/images/product-1.jpg" class="rounded-2" width="40" height="40" style="object-fit: cover;">
+                            <div class="p-1 border border-secondary border-opacity-15 rounded-3 bg-body-tertiary me-3 flex-shrink-0">
+                                <img src="/app/src/images/product-1.jpg" class="rounded-2" width="44" height="44" style="object-fit: cover;" alt="Acoustic Pro Headphone">
                             </div>
                             <div>
-                                <h6 class="mb-0 fw-bold">Air Jordan Elite</h6>
-                                <p class="text-muted extra-small mb-0">SKU: AJ-8829-21</p>
+                                <h6 class="mb-0 fw-bold text-main">CyberPulse Pro ANC Headset</h6>
+                                <p class="text-muted extra-small mb-0">SKU: CP-7740-02</p>
                             </div>
                         </div>
                     </td>
-                    <td><span class="badge bg-white text-dark border shadow-sm px-3 py-2 rounded-pill small fw-medium">Footwear</span></td>
+                    <td><span class="badge rounded-pill bg-body-secondary text-body border border-secondary border-opacity-15 px-3 py-1 extra-small fw-semibold">Electronics</span></td>
                     <td>
                         <div class="d-flex align-items-center gap-2">
-                            <div class="progress flex-grow-1" style="height: 4px; width: 60px;">
-                                <div class="progress-bar bg-success" style="width: 85%"></div>
+                            <div class="progress flex-grow-1" style="height: 5px; width: 80px; background: rgba(148, 163, 184, 0.15);">
+                                <div class="progress-bar bg-primary" style="width: 62%"></div>
                             </div>
-                            <span class="small fw-bold">125</span>
+                            <span class="small fw-bold text-main">64 pcs</span>
                         </div>
                     </td>
-                    <td class="fw-black">$125.00</td>
-                    <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small">Active</span></td>
+                    <td class="fw-bold text-main">$249.99</td>
+                    <td><span class="status-pill status-pill--active"><i class="bi bi-check-circle-fill"></i> Active</span></td>
                     <td class="text-end pe-4">
                         <div class="dropdown">
-                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm" type="button" data-bs-toggle="dropdown" data-bs-boundary="viewport">
+                            <button class="table-action-btn" type="button" data-bs-toggle="dropdown" data-bs-popper-config='{"strategy":"fixed"}' aria-expanded="false" title="Actions">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
-                                <li><a class="dropdown-item py-2" href="ecommerce-edit-product.html"><i class="bi bi-pencil-square me-2 opacity-50"></i> Edit Product</a></li>
-                                <li><a class="dropdown-item py-2" href="ecommerce-product-detail.html"><i class="bi bi-eye me-2 opacity-50"></i> View Details</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item py-2 text-danger" href="#"><i class="bi bi-trash3 me-2"></i> Remove</a></li>
+                                <li><a class="dropdown-item" href="ecommerce-edit-product.html"><i class="bi bi-pencil-square me-2 text-primary"></i> Edit Product</a></li>
+                                <li><a class="dropdown-item" href="ecommerce-product-detail.html"><i class="bi bi-eye me-2 text-info"></i> View Details</a></li>
+                                <li><hr class="dropdown-divider my-1"></li>
+                                <li><a class="dropdown-item text-danger" href="javascript:;"><i class="bi bi-trash3 me-2"></i> Remove</a></li>
                             </ul>
                         </div>
                     </td>
                 </tr>
-                <!-- More rows would go here -->
+
+                <!-- Item 3 -->
+                <tr>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="p-1 border border-secondary border-opacity-15 rounded-3 bg-body-tertiary me-3 flex-shrink-0">
+                                <img src="/app/src/images/product-3.jpg" class="rounded-2" width="44" height="44" style="object-fit: cover;" alt="Chrono Elite Smartwatch">
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold text-main">Chronos Titanium Smartwatch</h6>
+                                <p class="text-muted extra-small mb-0">SKU: CT-9912-88</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge rounded-pill bg-body-secondary text-body border border-secondary border-opacity-15 px-3 py-1 extra-small fw-semibold">Wearables</span></td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="progress flex-grow-1" style="height: 5px; width: 80px; background: rgba(148, 163, 184, 0.15);">
+                                <div class="progress-bar bg-warning" style="width: 18%"></div>
+                            </div>
+                            <span class="small fw-bold text-warning">8 pcs</span>
+                        </div>
+                    </td>
+                    <td class="fw-bold text-main">$399.00</td>
+                    <td><span class="status-pill status-pill--warning"><i class="bi bi-exclamation-circle-fill"></i> Low Stock</span></td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="table-action-btn" type="button" data-bs-toggle="dropdown" data-bs-popper-config='{"strategy":"fixed"}' aria-expanded="false" title="Actions">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
+                                <li><a class="dropdown-item" href="ecommerce-edit-product.html"><i class="bi bi-pencil-square me-2 text-primary"></i> Edit Product</a></li>
+                                <li><a class="dropdown-item" href="ecommerce-product-detail.html"><i class="bi bi-eye me-2 text-info"></i> View Details</a></li>
+                                <li><hr class="dropdown-divider my-1"></li>
+                                <li><a class="dropdown-item text-danger" href="javascript:;"><i class="bi bi-trash3 me-2"></i> Remove</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Item 4 -->
+                <tr>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="p-1 border border-secondary border-opacity-15 rounded-3 bg-body-tertiary me-3 flex-shrink-0">
+                                <img src="/app/src/images/product-4.jpg" class="rounded-2" width="44" height="44" style="object-fit: cover;" alt="Minimal Tech Backpack">
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold text-main">AeroPack Waterproof Daypack</h6>
+                                <p class="text-muted extra-small mb-0">SKU: AP-3301-14</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge rounded-pill bg-body-secondary text-body border border-secondary border-opacity-15 px-3 py-1 extra-small fw-semibold">Accessories</span></td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="progress flex-grow-1" style="height: 5px; width: 80px; background: rgba(148, 163, 184, 0.15);">
+                                <div class="progress-bar bg-success" style="width: 90%"></div>
+                            </div>
+                            <span class="small fw-bold text-main">310 pcs</span>
+                        </div>
+                    </td>
+                    <td class="fw-bold text-main">$140.00</td>
+                    <td><span class="status-pill status-pill--active"><i class="bi bi-check-circle-fill"></i> Active</span></td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="table-action-btn" type="button" data-bs-toggle="dropdown" data-bs-popper-config='{"strategy":"fixed"}' aria-expanded="false" title="Actions">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
+                                <li><a class="dropdown-item" href="ecommerce-edit-product.html"><i class="bi bi-pencil-square me-2 text-primary"></i> Edit Product</a></li>
+                                <li><a class="dropdown-item" href="ecommerce-product-detail.html"><i class="bi bi-eye me-2 text-info"></i> View Details</a></li>
+                                <li><hr class="dropdown-divider my-1"></li>
+                                <li><a class="dropdown-item text-danger" href="javascript:;"><i class="bi bi-trash3 me-2"></i> Remove</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Item 5 -->
+                <tr>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="p-1 border border-secondary border-opacity-15 rounded-3 bg-body-tertiary me-3 flex-shrink-0">
+                                <img src="/app/src/images/product-5.jpg" class="rounded-2" width="44" height="44" style="object-fit: cover;" alt="Mechanical Keyboard">
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold text-main">Vortex65 Wireless Keyboard</h6>
+                                <p class="text-muted extra-small mb-0">SKU: VK-6500-RGB</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge rounded-pill bg-body-secondary text-body border border-secondary border-opacity-15 px-3 py-1 extra-small fw-semibold">Hardware</span></td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="progress flex-grow-1" style="height: 5px; width: 80px; background: rgba(148, 163, 184, 0.15);">
+                                <div class="progress-bar bg-success" style="width: 74%"></div>
+                            </div>
+                            <span class="small fw-bold text-main">92 pcs</span>
+                        </div>
+                    </td>
+                    <td class="fw-bold text-main">$179.50</td>
+                    <td><span class="status-pill status-pill--active"><i class="bi bi-check-circle-fill"></i> Active</span></td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="table-action-btn" type="button" data-bs-toggle="dropdown" data-bs-popper-config='{"strategy":"fixed"}' aria-expanded="false" title="Actions">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
+                                <li><a class="dropdown-item" href="ecommerce-edit-product.html"><i class="bi bi-pencil-square me-2 text-primary"></i> Edit Product</a></li>
+                                <li><a class="dropdown-item" href="ecommerce-product-detail.html"><i class="bi bi-eye me-2 text-info"></i> View Details</a></li>
+                                <li><hr class="dropdown-divider my-1"></li>
+                                <li><a class="dropdown-item text-danger" href="javascript:;"><i class="bi bi-trash3 me-2"></i> Remove</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Item 6 -->
+                <tr>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="p-1 border border-secondary border-opacity-15 rounded-3 bg-body-tertiary me-3 flex-shrink-0">
+                                <img src="/app/src/images/product-1.jpg" class="rounded-2" width="44" height="44" style="object-fit: cover;" alt="XIVIG Heavyweight Hoodie">
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold text-main">XIVIG OS Architect Hoodie</h6>
+                                <p class="text-muted extra-small mb-0">SKU: XV-2027-HD</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge rounded-pill bg-body-secondary text-body border border-secondary border-opacity-15 px-3 py-1 extra-small fw-semibold">Apparel</span></td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="progress flex-grow-1" style="height: 5px; width: 80px; background: rgba(148, 163, 184, 0.15);">
+                                <div class="progress-bar bg-danger" style="width: 5%"></div>
+                            </div>
+                            <span class="small fw-bold text-danger">3 pcs</span>
+                        </div>
+                    </td>
+                    <td class="fw-bold text-main">$95.00</td>
+                    <td><span class="status-pill status-pill--danger"><i class="bi bi-slash-circle-fill"></i> Restocking</span></td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="table-action-btn" type="button" data-bs-toggle="dropdown" data-bs-popper-config='{"strategy":"fixed"}' aria-expanded="false" title="Actions">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
+                                <li><a class="dropdown-item" href="ecommerce-edit-product.html"><i class="bi bi-pencil-square me-2 text-primary"></i> Edit Product</a></li>
+                                <li><a class="dropdown-item" href="ecommerce-product-detail.html"><i class="bi bi-eye me-2 text-info"></i> View Details</a></li>
+                                <li><hr class="dropdown-divider my-1"></li>
+                                <li><a class="dropdown-item text-danger" href="javascript:;"><i class="bi bi-trash3 me-2"></i> Remove</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
+    </div>
+
+    <div class="p-3 border-top border-secondary border-opacity-10 d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+        <span class="extra-small text-muted">Showing <strong>1-6</strong> of <strong>6</strong> catalog items</span>
+        <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 extra-small disabled">Previous</button>
+            <span class="badge bg-primary text-white rounded-pill px-2.5 py-1 extra-small">1</span>
+            <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 extra-small disabled">Next</button>
+        </div>
     </div>
 </div>
 
@@ -154,6 +395,7 @@
             exportBtn.addEventListener('click', () => {
                 let csv = [];
                 const table = document.getElementById('productsTable');
+                if (!table) return;
                 const rows = table.querySelectorAll('tr');
                 
                 for (let i = 0; i < rows.length; i++) {

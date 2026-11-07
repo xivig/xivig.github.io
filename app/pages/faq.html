@@ -1,99 +1,418 @@
-{{#> admin-layout title="FAQ" parentTitle="Pages" }}
+{{#> admin-layout title="FAQ" parentTitle="Extras" }}
 
-<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+<!-- Knowledge Base Search Hero -->
+<div class="faq-search-hero mb-4 text-center">
+    <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-1.5 extra-small fw-bold mb-3">
+        KNOWLEDGE BASE & SUPPORT
+    </span>
+    <h2 class="display-6 fw-bold mb-2">Frequently Asked Questions</h2>
+    <p class="text-muted mx-auto mb-4" style="max-width: 640px;">
+        Find fast, comprehensive answers to technical deployment, billing, system governance, and security configurations across Xivig Studio.
+    </p>
 
-                        <div
-                            class="card-header bg-white py-3 px-4 border-0 d-flex justify-content-center align-items-center">
-                            <div class="text-center">
-                                <h5 class="fw-bold mb-0">FAQ</h5>
-                                <small class="text-muted">Overview and management of faq</small>
+    <!-- Search Input Bar -->
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
+            <div class="input-group input-group-lg shadow-sm rounded-4 overflow-hidden border border-light">
+                <span class="input-group-text bg-white border-0 ps-4">
+                    <i class="bi bi-search text-primary"></i>
+                </span>
+                <input type="search" id="faqSearchInput" class="form-control border-0 py-3 ps-2" placeholder="Search questions, keywords, or topics..." autocomplete="off">
+                <span class="input-group-text bg-white border-0 pe-4 d-none d-sm-flex">
+                    <kbd class="badge bg-light text-dark border extra-small">/</kbd>
+                </span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center gap-2 mt-3 flex-wrap">
+                <span class="text-muted extra-small">Popular:</span>
+                <a href="javascript:;" class="badge bg-body-tertiary text-dark border text-decoration-none rounded-pill px-2.5 py-1 extra-small faq-quick-tag">Quickstart</a>
+                <a href="javascript:;" class="badge bg-body-tertiary text-dark border text-decoration-none rounded-pill px-2.5 py-1 extra-small faq-quick-tag">2FA Security</a>
+                <a href="javascript:;" class="badge bg-body-tertiary text-dark border text-decoration-none rounded-pill px-2.5 py-1 extra-small faq-quick-tag">Billing Cycles</a>
+                <a href="javascript:;" class="badge bg-body-tertiary text-dark border text-decoration-none rounded-pill px-2.5 py-1 extra-small faq-quick-tag">Webhooks</a>
+                <a href="javascript:;" class="badge bg-body-tertiary text-dark border text-decoration-none rounded-pill px-2.5 py-1 extra-small faq-quick-tag">Custom Domains</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 4 Topic Hub Cards -->
+<div class="row g-3 mb-5">
+    <div class="col-sm-6 col-xl-3">
+        <a href="#faqGeneral" class="faq-category-card">
+            <div class="category-icon bg-primary-subtle text-primary">
+                <i class="bi bi-rocket-takeoff-fill"></i>
+            </div>
+            <h6 class="fw-bold mb-1">General & Setup</h6>
+            <p class="text-muted small mb-2">Getting started, dashboard components, and architecture specs.</p>
+            <span class="extra-small fw-bold text-primary">12 Articles <i class="bi bi-arrow-right ms-1"></i></span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a href="#faqSecurity" class="faq-category-card">
+            <div class="category-icon bg-success-subtle text-success">
+                <i class="bi bi-shield-check"></i>
+            </div>
+            <h6 class="fw-bold mb-1">Security & Governance</h6>
+            <p class="text-muted small mb-2">2FA, AES-256 encryption, CSP policies, and access controls.</p>
+            <span class="extra-small fw-bold text-success">9 Articles <i class="bi bi-arrow-right ms-1"></i></span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a href="#faqBilling" class="faq-category-card">
+            <div class="category-icon bg-warning-subtle text-warning">
+                <i class="bi bi-credit-card-2-front-fill"></i>
+            </div>
+            <h6 class="fw-bold mb-1">Billing & Plans</h6>
+            <p class="text-muted small mb-2">Invoices, seat allocations, plan switches, and refunds.</p>
+            <span class="extra-small fw-bold text-warning">14 Articles <i class="bi bi-arrow-right ms-1"></i></span>
+        </a>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <a href="#faqApi" class="faq-category-card">
+            <div class="category-icon bg-info-subtle text-info">
+                <i class="bi bi-code-slash"></i>
+            </div>
+            <h6 class="fw-bold mb-1">API & Engineering</h6>
+            <p class="text-muted small mb-2">REST endpoints, webhook deliveries, rate limits, and SDKs.</p>
+            <span class="extra-small fw-bold text-info">16 Articles <i class="bi bi-arrow-right ms-1"></i></span>
+        </a>
+    </div>
+</div>
+
+<!-- Categorized FAQ Groups -->
+<div class="row g-4">
+    <div class="col-lg-8 mx-auto">
+        <!-- Section 1: General & Platform Setup -->
+        <div class="faq-section-card mb-4" id="faqGeneral">
+            <div class="d-flex align-items-center gap-2 mb-4 pb-2 border-bottom border-light">
+                <span class="badge bg-primary-subtle text-primary p-2 rounded-3">
+                    <i class="bi bi-rocket-takeoff fs-5"></i>
+                </span>
+                <div>
+                    <h5 class="fw-bold mb-0">General & Platform Setup</h5>
+                    <small class="text-muted">Core concepts, installation, and environment compatibility</small>
+                </div>
+            </div>
+
+            <div class="accordion faq-accordion" id="accGeneral">
+                <div class="accordion-item faq-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#g1" aria-expanded="true">
+                            How do I get started with Xivig Architect Studio?
+                        </button>
+                    </h2>
+                    <div id="g1" class="accordion-collapse collapse show" data-bs-parent="#accGeneral">
+                        <div class="accordion-body">
+                            Getting started is instantaneous. Clone the repository, install dependencies with <code>npm install</code>, and run <code>npm run dev</code> to boot the hot-reloading development server. All 85+ production interfaces and layouts are immediately available out of the box.
+                            <div class="faq-feedback">
+                                <span>Was this helpful?</span>
+                                <div class="d-flex gap-1.5">
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-up me-1"></i>Yes (48)</button>
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-down me-1"></i>No (1)</button>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="card-body p-4">
-                            <!--content goes here-->
-                            <div class="faq-wrap p-4 bg-white rounded-4 shadow-sm">
-
-                                <div class="mb-5">
-                                    <h5 class="text-dark mb-4 fw-bold d-flex align-items-center">
-                                        <span class="bg-primary-subtle text-primary p-2 rounded-3 me-3">
-                                            <i class="bi bi-question-circle fs-5"></i>
-                                        </span>
-                                        General Inquiries
-                                    </h5>
-
-                                    <div class="accordion accordion-flush border rounded-4 overflow-hidden"
-                                        id="accordionGeneral">
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header">
-                                                <button class="accordion-button fw-semibold py-3 px-4 shadow-none"
-                                                    type="button" data-bs-toggle="collapse" data-bs-target="#genFaq1"
-                                                    aria-expanded="true">
-                                                    How do I get started with the platform?
-                                                </button>
-                                            </h2>
-                                            <div id="genFaq1" class="accordion-collapse collapse show"
-                                                data-bs-parent="#accordionGeneral">
-                                                <div class="accordion-body text-muted lh-lg px-4 pb-4">
-                                                    Getting started with Xivig Architect is simple. Create your account,
-                                                    select a starter template, and use our intuitive dashboard to deploy
-                                                    your first application architecture in minutes.
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header">
-                                                <button
-                                                    class="accordion-button collapsed fw-semibold py-3 px-4 shadow-none"
-                                                    type="button" data-bs-toggle="collapse" data-bs-target="#genFaq2">
-                                                    Is there a mobile application available?
-                                                </button>
-                                            </h2>
-                                            <div id="genFaq2" class="accordion-collapse collapse"
-                                                data-bs-parent="#accordionGeneral">
-                                                <div class="accordion-body text-muted lh-lg px-4 pb-4">
-                                                    Yes, our mobile companion app is available on both iOS and Android.
-                                                    It allows you to monitor system health and respond to critical
-                                                    notifications while on the go.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-2">
-                                    <h5 class="text-dark mb-4 fw-bold d-flex align-items-center">
-                                        <span class="bg-success-subtle text-success p-2 rounded-3 me-3">
-                                            <i class="bi bi-shield-lock fs-5"></i>
-                                        </span>
-                                        Privacy & Security
-                                    </h5>
-
-                                    <div class="accordion accordion-flush border rounded-4 overflow-hidden"
-                                        id="accordionSecurity">
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header">
-                                                <button
-                                                    class="accordion-button collapsed fw-semibold py-3 px-4 shadow-none"
-                                                    type="button" data-bs-toggle="collapse" data-bs-target="#secFaq1">
-                                                    How is my data protected?
-                                                </button>
-                                            </h2>
-                                            <div id="secFaq1" class="accordion-collapse collapse"
-                                                data-bs-parent="#accordionSecurity">
-                                                <div class="accordion-body text-muted lh-lg px-4 pb-4">
-                                                    We use industry-standard **AES 256-bit encryption** for data at rest
-                                                    and TLS 1.3 for data in transit. Your security is our highest
-                                                    priority,
-                                                    backed by regular third-party audits.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                <div class="accordion-item faq-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#g2">
+                            Can I customize the design tokens and layout classes?
+                        </button>
+                    </h2>
+                    <div id="g2" class="accordion-collapse collapse" data-bs-parent="#accGeneral">
+                        <div class="accordion-body">
+                            Yes. Xivig is built on a modular SCSS architecture located in <code>app/src/scss/base/</code>. You can customize primary hues, typography scales, border radii, and dark mode tokens in <code>_variables.scss</code> without breaking Bootstrap 5 component standards.
+                            <div class="faq-feedback">
+                                <span>Was this helpful?</span>
+                                <div class="d-flex gap-1.5">
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-up me-1"></i>Yes (32)</button>
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-down me-1"></i>No (0)</button>
                                 </div>
                             </div>
                         </div>
-                    
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#g3">
+                            Is there a mobile companion application available?
+                        </button>
+                    </h2>
+                    <div id="g3" class="accordion-collapse collapse" data-bs-parent="#accGeneral">
+                        <div class="accordion-body">
+                            Yes, our responsive companion interface adapts seamlessly to touch devices, iOS Safari, and Android Chrome. We also provide Android CLI and device preview integration for enterprise builds.
+                            <div class="faq-feedback">
+                                <span>Was this helpful?</span>
+                                <div class="d-flex gap-1.5">
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-up me-1"></i>Yes (21)</button>
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-down me-1"></i>No (2)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Security & Governance -->
+        <div class="faq-section-card mb-4" id="faqSecurity">
+            <div class="d-flex align-items-center gap-2 mb-4 pb-2 border-bottom border-light">
+                <span class="badge bg-success-subtle text-success p-2 rounded-3">
+                    <i class="bi bi-shield-check fs-5"></i>
+                </span>
+                <div>
+                    <h5 class="fw-bold mb-0">Security & Governance</h5>
+                    <small class="text-muted">Encryption standards, 2FA enforcement, and regulatory compliance</small>
+                </div>
+            </div>
+
+            <div class="accordion faq-accordion" id="accSecurity">
+                <div class="accordion-item faq-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#s1" aria-expanded="true">
+                            How is tenant data protected and encrypted?
+                        </button>
+                    </h2>
+                    <div id="s1" class="accordion-collapse collapse show" data-bs-parent="#accSecurity">
+                        <div class="accordion-body">
+                            All tenant data is secured using <strong>AES 256-bit encryption</strong> at rest and <strong>TLS 1.3</strong> in transit. Cryptographic session keys are rotated automatically every 24 hours, and strict Content Security Policies (CSP) prevent cross-site scripting (XSS) and injection vulnerabilities.
+                            <div class="faq-feedback">
+                                <span>Was this helpful?</span>
+                                <div class="d-flex gap-1.5">
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-up me-1"></i>Yes (64)</button>
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-down me-1"></i>No (0)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s2">
+                            How do administrators enforce Two-Factor Authentication (2FA)?
+                        </button>
+                    </h2>
+                    <div id="s2" class="accordion-collapse collapse" data-bs-parent="#accSecurity">
+                        <div class="accordion-body">
+                            Administrators can mandate 2FA across the entire organization via the <strong>Admin Settings</strong> portal under <em>Security & Access</em>. Users will be prompted on their next login to bind their TOTP authenticator (Google Authenticator, 1Password, or YubiKey).
+                            <div class="faq-feedback">
+                                <span>Was this helpful?</span>
+                                <div class="d-flex gap-1.5">
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-up me-1"></i>Yes (37)</button>
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-down me-1"></i>No (1)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s3">
+                            Does Xivig comply with SOC 2 Type II and GDPR?
+                        </button>
+                    </h2>
+                    <div id="s3" class="accordion-collapse collapse" data-bs-parent="#accSecurity">
+                        <div class="accordion-body">
+                            Yes. Xivig maintains annual third-party SOC 2 Type II audits and conforms to GDPR requirements, including data residency in EU/US regions, Data Processing Agreements (DPA), and right-to-be-forgotten telemetry erasure.
+                            <div class="faq-feedback">
+                                <span>Was this helpful?</span>
+                                <div class="d-flex gap-1.5">
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-up me-1"></i>Yes (53)</button>
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-down me-1"></i>No (0)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Billing & Plans -->
+        <div class="faq-section-card mb-4" id="faqBilling">
+            <div class="d-flex align-items-center gap-2 mb-4 pb-2 border-bottom border-light">
+                <span class="badge bg-warning-subtle text-warning p-2 rounded-3">
+                    <i class="bi bi-credit-card-2-front fs-5"></i>
+                </span>
+                <div>
+                    <h5 class="fw-bold mb-0">Billing & Plans</h5>
+                    <small class="text-muted">Subscription tiers, seat scaling, and tax invoicing</small>
+                </div>
+            </div>
+
+            <div class="accordion faq-accordion" id="accBilling">
+                <div class="accordion-item faq-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#b1" aria-expanded="true">
+                            Can I switch between monthly and annual plans anytime?
+                        </button>
+                    </h2>
+                    <div id="b1" class="accordion-collapse collapse show" data-bs-parent="#accBilling">
+                        <div class="accordion-body">
+                            Yes. You can switch between billing periods at any time directly from the <strong>Pricing Table</strong> or <strong>Account Settings</strong>. Unused days are credited pro-rata toward your upgraded cycle immediately.
+                            <div class="faq-feedback">
+                                <span>Was this helpful?</span>
+                                <div class="d-flex gap-1.5">
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-up me-1"></i>Yes (42)</button>
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-down me-1"></i>No (0)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#b2">
+                            Where do I download VAT and GST compliant invoices?
+                        </button>
+                    </h2>
+                    <div id="b2" class="accordion-collapse collapse" data-bs-parent="#accBilling">
+                        <div class="accordion-body">
+                            Invoices are automatically issued on the 1st of every billing month and can be viewed or printed from the <strong>Invoice Registry</strong> at <code>/invoice.html</code>. Each invoice includes tax breakdown, cryptographic verification hash, and downloadable PDF format.
+                            <div class="faq-feedback">
+                                <span>Was this helpful?</span>
+                                <div class="d-flex gap-1.5">
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-up me-1"></i>Yes (39)</button>
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-down me-1"></i>No (1)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: API & Engineering -->
+        <div class="faq-section-card mb-4" id="faqApi">
+            <div class="d-flex align-items-center gap-2 mb-4 pb-2 border-bottom border-light">
+                <span class="badge bg-info-subtle text-info p-2 rounded-3">
+                    <i class="bi bi-code-slash fs-5"></i>
+                </span>
+                <div>
+                    <h5 class="fw-bold mb-0">API & Engineering</h5>
+                    <small class="text-muted">Developer endpoints, webhook secrets, and rate limit SLAs</small>
+                </div>
+            </div>
+
+            <div class="accordion faq-accordion" id="accApi">
+                <div class="accordion-item faq-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1" aria-expanded="true">
+                            What are the default rate limits for the Xivig Developer API?
+                        </button>
+                    </h2>
+                    <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#accApi">
+                        <div class="accordion-body">
+                            The Starter plan provides 60 requests/minute. Professional plans provide 1,000 requests/minute, while Enterprise organizations receive dedicated clusters with custom burst limits up to 100,000 requests/minute.
+                            <div class="faq-feedback">
+                                <span>Was this helpful?</span>
+                                <div class="d-flex gap-1.5">
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-up me-1"></i>Yes (29)</button>
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-down me-1"></i>No (0)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
+                            How do I sign and verify webhook payloads?
+                        </button>
+                    </h2>
+                    <div id="a2" class="accordion-collapse collapse" data-bs-parent="#accApi">
+                        <div class="accordion-body">
+                            Every outgoing webhook includes a <code>X-Xivig-Signature</code> HTTP header calculated as an HMAC-SHA256 hash using your webhook secret key. Compare this against your computed payload hash to verify packet integrity.
+                            <div class="faq-feedback">
+                                <span>Was this helpful?</span>
+                                <div class="d-flex gap-1.5">
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-up me-1"></i>Yes (34)</button>
+                                    <button class="faq-vote-btn" onclick="this.classList.toggle('active')"><i class="bi bi-hand-thumbs-down me-1"></i>No (0)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Still Have Questions CTA -->
+        <div class="p-4 bg-body-tertiary rounded-4 border border-light text-center">
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <div class="bg-primary-subtle text-primary p-3 rounded-circle" style="width: 56px; height: 56px; display: flex; align-items: center; justify-content: center;">
+                    <i class="bi bi-headset fs-3"></i>
+                </div>
+            </div>
+            <h5 class="fw-bold mb-1">Still have questions or need custom architecture?</h5>
+            <p class="text-muted small mx-auto mb-3" style="max-width: 500px;">
+                Our dedicated solutions engineering team is on standby 24/7 to help integrate Xivig into your production infrastructure.
+            </p>
+            <div class="d-flex align-items-center justify-content-center gap-2 flex-wrap">
+                <a href="contact-directory.html" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold">
+                    <i class="bi bi-chat-dots me-1.5"></i>Contact Support
+                </a>
+                <a href="documentation.html" class="btn btn-outline-secondary rounded-pill px-4 py-2 fw-semibold">
+                    <i class="bi bi-book me-1.5"></i>Documentation
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('faqSearchInput');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const quickTags = document.querySelectorAll('.faq-quick-tag');
+
+    // Live search through questions and answers
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            filterFaqs(query);
+        });
+
+        // Keyboard shortcut "/" to focus
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement !== searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
+    }
+
+    // Quick tags click
+    quickTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            const tagText = tag.textContent.trim();
+            searchInput.value = tagText;
+            filterFaqs(tagText.toLowerCase());
+        });
+    });
+
+    function filterFaqs(query) {
+        faqItems.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            const collapse = item.querySelector('.accordion-collapse');
+            const button = item.querySelector('.accordion-button');
+
+            if (query === '' || text.includes(query)) {
+                item.style.display = 'block';
+                if (query.length > 2 && text.includes(query) && collapse) {
+                    collapse.classList.add('show');
+                    if (button) button.classList.remove('collapsed');
+                }
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+});
+</script>
 
 {{/admin-layout}}

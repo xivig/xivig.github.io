@@ -1,12 +1,12 @@
-@use "../base/variables"as *;
-@use "../base/mixins"as *;
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
 
 /* XIVIG CUSTOM PAGE & PLUGIN TWEAKS */
 
 // 1. PAGE SPECIFIC TWEAKS
 .profile-header-bg {
     height: 120px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #6f42c1 100%);
+    background: var(--elite-primary);
 }
 
 // 2. THIRD-PARTY OVERRIDES
@@ -20,13 +20,10 @@
     @include elite-scrollbar(6px, 0.05);
 }
 
-
 // system health chart
-
 .chart-container {
     width: 100%;
     height: 320px;
-    /* HARD STOP overflow */
     position: relative;
 }
 
@@ -67,6 +64,136 @@
     transform: translateY(-50%) scaleY(1) !important;
 }
 
+/* --- Pulse Beacon --- */
+.pulse-beacon-emerald {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10B981;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: beaconPulse 2s infinite ease-out;
+    flex-shrink: 0;
+}
 
+@keyframes beaconPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
 
+/* ==========================================================================
+   FRACTIONAL SPACING & PADDING UTILITIES (4px Grid Sub-steps)
+   Resolves card padding, header heights, pill badges, and control spacing.
+   ========================================================================== */
 
+/* Fractional Padding (All Sides) */
+.p-0\.5 { padding: 2px !important; }
+.p-1\.5 { padding: 6px !important; }
+.p-2\.5 { padding: 10px !important; }
+.p-3\.5 { padding: 18px !important; }
+.p-4\.5 { padding: 28px !important; }
+
+/* Fractional Padding (Horizontal X) */
+.px-0\.5 { padding-left: 2px !important; padding-right: 2px !important; }
+.px-1\.5 { padding-left: 6px !important; padding-right: 6px !important; }
+.px-2\.5 { padding-left: 10px !important; padding-right: 10px !important; }
+.px-3\.5 { padding-left: 18px !important; padding-right: 18px !important; }
+.px-4\.5 { padding-left: 28px !important; padding-right: 28px !important; }
+
+/* Fractional Padding (Vertical Y) */
+.py-0\.5 { padding-top: 2px !important; padding-bottom: 2px !important; }
+.py-1\.5 { padding-top: 6px !important; padding-bottom: 6px !important; }
+.py-2\.5 { padding-top: 10px !important; padding-bottom: 10px !important; }
+.py-3\.5 { padding-top: 18px !important; padding-bottom: 18px !important; }
+.py-4\.5 { padding-top: 28px !important; padding-bottom: 28px !important; }
+
+/* Fractional Margin (All Sides) */
+.m-0\.5 { margin: 2px !important; }
+.m-1\.5 { margin: 6px !important; }
+.m-2\.5 { margin: 10px !important; }
+.m-3\.5 { margin: 14px !important; }
+
+/* Fractional Margin (Horizontal X & Vertical Y) */
+.mx-0\.5 { margin-left: 2px !important; margin-right: 2px !important; }
+.mx-1\.5 { margin-left: 6px !important; margin-right: 6px !important; }
+.mx-2\.5 { margin-left: 10px !important; margin-right: 10px !important; }
+.mx-3\.5 { margin-left: 14px !important; margin-right: 14px !important; }
+
+.my-0\.5 { margin-top: 2px !important; margin-bottom: 2px !important; }
+.my-1\.5 { margin-top: 6px !important; margin-bottom: 6px !important; }
+.my-2\.5 { margin-top: 10px !important; margin-bottom: 10px !important; }
+.my-3\.5 { margin-top: 14px !important; margin-bottom: 14px !important; }
+
+/* Fractional Margin (Top, Bottom, Start, End) */
+.mt-0\.5 { margin-top: 2px !important; }
+.mt-1\.5 { margin-top: 6px !important; }
+.mt-2\.5 { margin-top: 10px !important; }
+.mt-3\.5 { margin-top: 14px !important; }
+
+.mb-0\.5 { margin-bottom: 2px !important; }
+.mb-1\.5 { margin-bottom: 6px !important; }
+.mb-2\.5 { margin-bottom: 10px !important; }
+.mb-3\.5 { margin-bottom: 14px !important; }
+
+.ms-0\.5 { margin-left: 2px !important; }
+.ms-1\.5 { margin-left: 6px !important; }
+.ms-2\.5 { margin-left: 10px !important; }
+.ms-3\.5 { margin-left: 14px !important; }
+
+.me-0\.5 { margin-right: 2px !important; }
+.me-1\.5 { margin-right: 6px !important; }
+.me-2\.5 { margin-right: 10px !important; }
+.me-3\.5 { margin-right: 14px !important; }
+
+/* Fractional Gaps */
+.gap-0\.5 { gap: 2px !important; }
+.gap-1\.5 { gap: 6px !important; }
+.gap-2\.5 { gap: 10px !important; }
+.gap-3\.5 { gap: 14px !important; }
+
+/* --- Elite Card Padding & Interactive Feedback --- */
+.kanban-card {
+    padding: 16px !important;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(16, 27, 51, 0.08) !important;
+    }
+}
+
+.task-row-card {
+    padding: 14px 18px !important;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+
+    &:hover {
+        transform: translateY(-1px);
+        border-color: rgba(79, 107, 255, 0.35) !important;
+        box-shadow: 0 4px 14px rgba(16, 27, 51, 0.06) !important;
+    }
+}
+
+.card-box,
+.stat-card {
+    padding: 1.5rem !important;
+}
+
+.task-toggle-check {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    max-width: 18px !important;
+    max-height: 18px !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+}

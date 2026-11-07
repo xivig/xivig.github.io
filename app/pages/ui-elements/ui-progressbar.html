@@ -1,118 +1,156 @@
 {{#> admin-layout title="Progress Bar" parentTitle="UI Elements" }}
 
-<div class="card shadow-sm rounded-4 overflow-hidden border" style="border-color: var(--card-border) !important;">
+<div class="ui-progressbar-module">
+    <!-- Header Hero -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <h4 class="fw-bold mb-0 text-main fs-18">Progress Indicators & Telemetry Bars</h4>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Atelier UI System</span>
+                </div>
+                <p class="text-muted small mb-0">Gradient tracks, striped animations, multi-segment capacity distributions, and dynamic execution bars</p>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm" onclick="const b = document.getElementById('simProgress'); let w = 0; const int = setInterval(() => { w += 5; b.style.width = w + '%'; document.getElementById('simProgressLabel').textContent = w + '%'; if(w>=100){ clearInterval(int); window.NotificationService ? window.NotificationService.success('Complete', 'Build simulated 100% successfully.') : alert('Build simulated!'); } }, 60);">
+                <i class="bi bi-play-circle-fill me-1.5"></i> Simulate Deployment
+            </button>
+        </div>
+    </div>
 
-                        <div
-                            class="card-header bg-transparent py-3 px-4 border-0 d-flex justify-content-center align-items-center">
-                            <div class="text-center">
-                                <h5 class="fw-bold mb-0">Progressbar</h5>
-                                <small class="text-muted">Overview and management of progressbar</small>
-                            </div>
-                        </div>
+    <!-- Interactive Simulated Run -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+            <div>
+                <span class="fw-bold text-main fs-14">Live Deployment Execution Simulation</span>
+                <span class="text-muted extra-small ms-2">Click "Simulate Deployment" to trigger live transition</span>
+            </div>
+            <span class="fw-bold text-primary font-monospace" id="simProgressLabel">45%</span>
+        </div>
+        <div class="progress" style="height: 10px; background: rgba(79, 107, 255, 0.12); border-radius: 999px;">
+            <div class="progress-bar rounded-pill" id="simProgress" role="progressbar" style="width: 45%; background: linear-gradient(90deg, #4F6BFF, #20C5D7); transition: width 0.08s ease;"></div>
+        </div>
+    </div>
 
-                        <div class="card-body p-4">
-                            <!--content goes here-->
+    <div class="row g-4">
+        <!-- 1. Sized Progress Bars -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Height Variations & Precision Sizes</h5>
+                <p class="text-muted extra-small mb-3">4px micro track, 8px standard, 16px labeled, 22px deep</p>
 
-                            <div class="row g-4">
-                                <div class="col-lg-4 col-md-6 mb-3">
-                                    <div class="p-4 card-box h-100 shadow-sm rounded-4">
-                                        <h5 class="h6 fw-bold mb-3">System Load & Labels</h5>
-                                        <div class="progress elite-progress mb-4" style="height: 8px;">
-                                            <div class="progress-bar glow-primary" role="progressbar"
-                                                style="width: 25%"></div>
-                                        </div>
-                                        <div class="progress elite-progress mb-4" style="height: 20px;">
-                                            <div class="progress-bar fw-bold" role="progressbar" style="width: 50%">50%
-                                                Complete</div>
-                                        </div>
-                                        <div class="progress elite-progress" style="height: 8px;">
-                                            <div class="progress-bar bg-dark" role="progressbar" style="width: 100%">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted d-flex justify-content-between">
+                        <span>Micro Track (4px)</span>
+                        <span class="font-monospace text-primary">28%</span>
+                    </label>
+                    <div class="progress" style="height: 4px;">
+                        <div class="progress-bar bg-primary" style="width: 28%;"></div>
+                    </div>
+                </div>
 
-                                <div class="col-lg-4 col-md-6 mb-3">
-                                    <div class="p-4 card-box h-100 shadow-sm rounded-4">
-                                        <h5 class="h6 fw-bold mb-3">Elite Status States</h5>
-                                        <div class="progress elite-progress mb-4">
-                                            <div class="progress-bar bg-success glow-success" role="progressbar"
-                                                style="width: 15%"></div>
-                                        </div>
-                                        <div class="progress elite-progress mb-4">
-                                            <div class="progress-bar bg-info glow-info" role="progressbar"
-                                                style="width: 45%"></div>
-                                        </div>
-                                        <div class="progress elite-progress mb-4">
-                                            <div class="progress-bar bg-warning glow-warning" role="progressbar"
-                                                style="width: 65%"></div>
-                                        </div>
-                                        <div class="progress elite-progress">
-                                            <div class="progress-bar bg-danger glow-danger" role="progressbar"
-                                                style="width: 85%"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted d-flex justify-content-between">
+                        <span>Standard Track (8px)</span>
+                        <span class="font-monospace text-success">64%</span>
+                    </label>
+                    <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-success" style="width: 64%;"></div>
+                    </div>
+                </div>
 
-                                <div class="col-lg-4 col-md-6 mb-3">
-                                    <div class="p-4 card-box h-100 shadow-sm rounded-4">
-                                        <h5 class="h6 fw-bold mb-3">Multi-Layer Architecture</h5>
-                                        <p class="small text-muted mb-3">Resource distribution map</p>
-                                        <div class="progress elite-progress mb-4" style="height: 12px;">
-                                            <div class="progress-bar bg-primary" style="width: 30%"></div>
-                                            <div class="progress-bar bg-info" style="width: 20%"></div>
-                                            <div class="progress-bar bg-success" style="width: 15%"></div>
-                                        </div>
-                                        <div class="progress elite-progress" style="height: 12px;">
-                                            <div class="progress-bar bg-danger" style="width: 40%"></div>
-                                            <div class="progress-bar bg-warning" style="width: 25%"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted">Labeled Track (16px)</label>
+                    <div class="progress" style="height: 16px; border-radius: 999px;">
+                        <div class="progress-bar bg-info fw-bold extra-small" style="width: 75%;">75% Throughput</div>
+                    </div>
+                </div>
 
-                                <div class="col-lg-4 col-md-6 mb-3">
-                                    <div class="p-4 card-box h-100 shadow-sm rounded-4">
-                                        <h5 class="h6 fw-bold mb-3">Active Pipelines</h5>
-                                        <div class="progress elite-progress mb-4">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
-                                                style="width: 75%">
-                                            </div>
-                                        </div>
-                                        <div class="progress elite-progress mb-4">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
-                                                style="width: 50%">
-                                            </div>
-                                        </div>
-                                        <div class="progress elite-progress">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
-                                                style="width: 90%"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="mb-0">
+                    <label class="form-label small fw-semibold text-muted">Large Segmented Track (22px)</label>
+                    <div class="progress" style="height: 22px; border-radius: 999px;">
+                        <div class="progress-bar bg-primary fw-bold small" style="width: 90%;">90% Completed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                                <div class="col-lg-8 col-md-12 mb-3">
-                                    <div class="p-4 card-box h-100 shadow-sm rounded-4">
-                                        <h5 class="h6 fw-bold mb-3">Architecture Build Precision</h5>
-                                        <div class="row align-items-center mb-3">
-                                            <div class="col-2 small fw-bold">UI Kit</div>
-                                            <div class="col-10">
-                                                <div class="progress elite-progress" style="height: 6px;">
-                                                    <div class="progress-bar bg-primary" style="width: 80%"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center mb-0">
-                                            <div class="col-2 small fw-bold">Nodes</div>
-                                            <div class="col-10">
-                                                <div class="progress elite-progress" style="height: 6px;">
-                                                    <div class="progress-bar bg-info" style="width: 45%"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    
+        <!-- 2. Striped & Animated Strips -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Animated & Striped Stripes</h5>
+                <p class="text-muted extra-small mb-3">Visual motion indicating background network operations</p>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted">Primary Active Strip (.progress-bar-animated)</label>
+                    <div class="progress" style="height: 10px; border-radius: 999px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" style="width: 60%;"></div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted">Success Active Strip</label>
+                    <div class="progress" style="height: 10px; border-radius: 999px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold text-muted">Warning Static Strip</label>
+                    <div class="progress" style="height: 10px; border-radius: 999px;">
+                        <div class="progress-bar progress-bar-striped bg-warning" style="width: 48%;"></div>
+                    </div>
+                </div>
+
+                <div class="mb-0">
+                    <label class="form-label small fw-semibold text-muted">Danger High-Alert Strip</label>
+                    <div class="progress" style="height: 10px; border-radius: 999px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" style="width: 92%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Multi-Segment Stacked Progress -->
+        <div class="col-12">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h5 class="fw-bold text-main mb-0 fs-16">Multi-Segment Distribution Bar</h5>
+                    <span class="text-muted extra-small">Total Quota: 1.0 TB</span>
+                </div>
+                <p class="text-muted extra-small mb-3">Stacked progress container showcasing storage category breakdown</p>
+
+                <div class="progress mb-3" style="height: 14px; border-radius: 999px; overflow: hidden;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 38%;" title="Application Data: 380 GB"></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 24%;" title="Media & Video: 240 GB"></div>
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 18%;" title="Cache & Logs: 180 GB"></div>
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 8%;" title="Backups: 80 GB"></div>
+                </div>
+
+                <div class="d-flex flex-wrap gap-4 text-muted extra-small">
+                    <div class="d-flex align-items-center gap-1.5">
+                        <span class="d-inline-block rounded-circle bg-primary" style="width: 8px; height: 8px;"></span>
+                        <span>App Data: <strong>38% (380 GB)</strong></span>
+                    </div>
+                    <div class="d-flex align-items-center gap-1.5">
+                        <span class="d-inline-block rounded-circle bg-success" style="width: 8px; height: 8px;"></span>
+                        <span>Media Vault: <strong>24% (240 GB)</strong></span>
+                    </div>
+                    <div class="d-flex align-items-center gap-1.5">
+                        <span class="d-inline-block rounded-circle bg-warning" style="width: 8px; height: 8px;"></span>
+                        <span>Logs & Traces: <strong>18% (180 GB)</strong></span>
+                    </div>
+                    <div class="d-flex align-items-center gap-1.5">
+                        <span class="d-inline-block rounded-circle bg-danger" style="width: 8px; height: 8px;"></span>
+                        <span>Snapshots: <strong>8% (80 GB)</strong></span>
+                    </div>
+                    <div class="d-flex align-items-center gap-1.5 ms-auto">
+                        <span class="d-inline-block rounded-circle bg-secondary opacity-50" style="width: 8px; height: 8px;"></span>
+                        <span>Free Space: <strong>12% (120 GB)</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{/admin-layout}}

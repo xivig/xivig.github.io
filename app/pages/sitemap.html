@@ -1,215 +1,686 @@
-{{#> admin-layout title="System Architecture" parentTitle="Pages" }}
+{{#> admin-layout title="Sitemap" parentTitle="Extras" }}
 
-<div class="container-fluid py-4">
-    <div class="text-center mb-5">
-        <div class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2 mb-3 fw-bold">PROJECT SITEMAP</div>
-        <h1 class="display-5 fw-bold mb-2">System <span class="text-primary">Architecture</span></h1>
-        <p class="text-muted mx-auto" style="max-width: 500px;">A comprehensive overview of all available modules, interfaces, and enterprise tools within the Xivig ecosystem.</p>
+<!-- Sitemap Directory Hero -->
+<div class="sitemap-hero mb-4 text-center">
+    <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-1.5 extra-small fw-bold mb-3">
+        SYSTEM DIRECTORY & ROUTE ARCHITECTURE
+    </span>
+    <h2 class="display-6 fw-bold mb-2">Platform Architecture Sitemap</h2>
+    <p class="text-muted mx-auto mb-4" style="max-width: 650px;">
+        A complete, structured catalog of all 85+ production interfaces, workspaces, e-commerce systems, devops pipelines, and UI elements within the Xivig ecosystem.
+    </p>
+
+    <!-- Route Search & Metric Pills -->
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 mb-3">
+            <div class="input-group input-group-lg shadow-sm rounded-4 overflow-hidden border border-light">
+                <span class="input-group-text bg-white border-0 ps-4">
+                    <i class="bi bi-search text-primary"></i>
+                </span>
+                <input type="search" id="sitemapFilterInput" class="form-control border-0 py-3 ps-2" placeholder="Search routes, controllers, or modules..." autocomplete="off">
+            </div>
+        </div>
     </div>
 
-    <div class="row g-4">
-        <!-- Dashboards & Main -->
-        <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                <div class="card-header bg-primary text-white py-3 border-0">
-                    <h6 class="mb-0 fw-bold"><i class="fa-solid fa-gauge-high me-2"></i>Dashboards & Main</h6>
-                </div>
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush">
-                        <a href="index.html" class="list-group-item list-group-item-action sitemap-link">Main Dashboard <i class="bi bi-arrow-right"></i></a>
-                        <a href="dashboard-v2.html" class="list-group-item list-group-item-action sitemap-link">Elite Dashboard v2 <span class="badge bg-danger ms-2" style="font-size: 0.6rem;">NEW</span> <i class="bi bi-arrow-right"></i></a>
-                        <a href="course-dashboard.html" class="list-group-item list-group-item-action sitemap-link">Learning Dashboard <i class="bi bi-arrow-right"></i></a>
-                        <a href="xivig.html" class="list-group-item list-group-item-action sitemap-link">Landing Page <i class="bi bi-arrow-right"></i></a>
-                        <a href="documentation.html" class="list-group-item list-group-item-action sitemap-link">Documentation <i class="bi bi-arrow-right"></i></a>
+    <div class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
+        <span class="badge bg-body-tertiary text-dark border rounded-pill px-3 py-1.5 extra-small fw-bold">
+            <i class="bi bi-diagram-3-fill text-primary me-1.5"></i>85+ Endpoints
+        </span>
+        <span class="badge bg-body-tertiary text-dark border rounded-pill px-3 py-1.5 extra-small fw-bold">
+            <i class="bi bi-layers-fill text-success me-1.5"></i>12 Core Domains
+        </span>
+        <span class="badge bg-body-tertiary text-dark border rounded-pill px-3 py-1.5 extra-small fw-bold">
+            <i class="bi bi-check-circle-fill text-info me-1.5"></i>100% Production Ready
+        </span>
+    </div>
+</div>
+
+<!-- Category Cards Grid -->
+<div class="row g-4" id="sitemapCardGrid">
+    <!-- Domain 1: Dashboards & Main -->
+    <div class="col-xl-4 col-md-6 sitemap-category-col">
+        <div class="sitemap-card shadow-sm">
+            <div class="sitemap-card__header">
+                <div class="d-flex align-items-center gap-2.5">
+                    <div class="header-icon bg-primary-subtle text-primary">
+                        <i class="bi bi-speedometer2"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">Dashboards & Core</h6>
+                        <small class="text-muted">Command centers & overview</small>
                     </div>
                 </div>
+                <span class="badge bg-light text-dark border rounded-pill extra-small">5 Routes</span>
+            </div>
+            <div class="sitemap-card__body">
+                <a href="index.html" class="sitemap-route-item">
+                    <span class="route-name">Main Console <span class="badge bg-primary-subtle text-primary extra-small">Default</span></span>
+                    <span class="route-path">/index.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="dashboard-v2.html" class="sitemap-route-item">
+                    <span class="route-name">Elite Dashboard v2 <span class="badge bg-danger-subtle text-danger extra-small">NEW</span></span>
+                    <span class="route-path">/dashboard-v2.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="course-dashboard.html" class="sitemap-route-item">
+                    <span class="route-name">Learning Analytics</span>
+                    <span class="route-path">/course-dashboard.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="xivig.html" class="sitemap-route-item">
+                    <span class="route-name">Public Showcase</span>
+                    <span class="route-path">/xivig.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="documentation.html" class="sitemap-route-item">
+                    <span class="route-name">Architecture Docs</span>
+                    <span class="route-path">/documentation.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
             </div>
         </div>
+    </div>
 
-        <!-- Applications -->
-        <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                <div class="card-header bg-info text-white py-3 border-0">
-                    <h6 class="mb-0 fw-bold"><i class="fa-solid fa-layer-group me-2"></i>Applications</h6>
-                </div>
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush">
-                        <a href="chat.html" class="list-group-item list-group-item-action sitemap-link">Messenger Chat <i class="bi bi-arrow-right"></i></a>
-                        <a href="inbox.html" class="list-group-item list-group-item-action sitemap-link">Mailbox <i class="bi bi-arrow-right"></i></a>
-                        <a href="calendar.html" class="list-group-item list-group-item-action sitemap-link">Full Calendar <i class="bi bi-arrow-right"></i></a>
-                        <a href="kanban.html" class="list-group-item list-group-item-action sitemap-link">Kanban Board <i class="bi bi-arrow-right"></i></a>
-                        <a href="file-manager.html" class="list-group-item list-group-item-action sitemap-link">File Manager <i class="bi bi-arrow-right"></i></a>
-                        <a href="task-manager.html" class="list-group-item list-group-item-action sitemap-link">Task Manager <i class="bi bi-arrow-right"></i></a>
-                        <a href="video-player.html" class="list-group-item list-group-item-action sitemap-link">Video Player <i class="bi bi-arrow-right"></i></a>
+    <!-- Domain 2: Applications & Workspaces -->
+    <div class="col-xl-4 col-md-6 sitemap-category-col">
+        <div class="sitemap-card shadow-sm">
+            <div class="sitemap-card__header">
+                <div class="d-flex align-items-center gap-2.5">
+                    <div class="header-icon bg-info-subtle text-info">
+                        <i class="bi bi-grid-3x3-gap-fill"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">Apps & Workspaces</h6>
+                        <small class="text-muted">Communication & tools</small>
                     </div>
                 </div>
+                <span class="badge bg-light text-dark border rounded-pill extra-small">7 Routes</span>
+            </div>
+            <div class="sitemap-card__body">
+                <a href="chat.html" class="sitemap-route-item">
+                    <span class="route-name">Messenger Chat</span>
+                    <span class="route-path">/chat.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="inbox.html" class="sitemap-route-item">
+                    <span class="route-name">Unified Mailbox</span>
+                    <span class="route-path">/inbox.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="calendar.html" class="sitemap-route-item">
+                    <span class="route-name">Full Calendar</span>
+                    <span class="route-path">/calendar.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="kanban.html" class="sitemap-route-item">
+                    <span class="route-name">Kanban Board</span>
+                    <span class="route-path">/kanban.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="file-manager.html" class="sitemap-route-item">
+                    <span class="route-name">Cloud File Manager</span>
+                    <span class="route-path">/file-manager.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="task-manager.html" class="sitemap-route-item">
+                    <span class="route-name">Task Manager</span>
+                    <span class="route-path">/task-manager.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="video-player.html" class="sitemap-route-item">
+                    <span class="route-name">Video Player</span>
+                    <span class="route-path">/video-player.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
             </div>
         </div>
+    </div>
 
-        <!-- Ecommerce -->
-        <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                <div class="card-header bg-success text-white py-3 border-0">
-                    <h6 class="mb-0 fw-bold"><i class="fa-solid fa-cart-shopping me-2"></i>Ecommerce</h6>
-                </div>
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush">
-                        <a href="ecommerce-products.html" class="list-group-item list-group-item-action sitemap-link">Product Grid <i class="bi bi-arrow-right"></i></a>
-                        <a href="ecommerce-product-show.html" class="list-group-item list-group-item-action sitemap-link">Product Listing <i class="bi bi-arrow-right"></i></a>
-                        <a href="ecommerce-product-detail.html" class="list-group-item list-group-item-action sitemap-link">Product Details <i class="bi bi-arrow-right"></i></a>
-                        <a href="ecommerce-orders.html" class="list-group-item list-group-item-action sitemap-link">Order Tracking <i class="bi bi-arrow-right"></i></a>
-                        <a href="ecommerce-cart.html" class="list-group-item list-group-item-action sitemap-link">Shopping Cart <i class="bi bi-arrow-right"></i></a>
-                        <a href="ecommerce-add-product.html" class="list-group-item list-group-item-action sitemap-link">Add Product <i class="bi bi-arrow-right"></i></a>
-                        <a href="ecommerce-edit-product.html" class="list-group-item list-group-item-action sitemap-link">Edit Product <i class="bi bi-arrow-right"></i></a>
+    <!-- Domain 3: E-Commerce Engine -->
+    <div class="col-xl-4 col-md-6 sitemap-category-col">
+        <div class="sitemap-card shadow-sm">
+            <div class="sitemap-card__header">
+                <div class="d-flex align-items-center gap-2.5">
+                    <div class="header-icon bg-success-subtle text-success">
+                        <i class="bi bi-bag-check-fill"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">E-Commerce Engine</h6>
+                        <small class="text-muted">Catalog & sales pipeline</small>
                     </div>
                 </div>
+                <span class="badge bg-light text-dark border rounded-pill extra-small">7 Routes</span>
+            </div>
+            <div class="sitemap-card__body">
+                <a href="ecommerce-products.html" class="sitemap-route-item">
+                    <span class="route-name">Product Grid</span>
+                    <span class="route-path">/ecommerce-products.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ecommerce-product-show.html" class="sitemap-route-item">
+                    <span class="route-name">Product Inventory List</span>
+                    <span class="route-path">/ecommerce-product-show.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ecommerce-product-detail.html" class="sitemap-route-item">
+                    <span class="route-name">Product Details</span>
+                    <span class="route-path">/ecommerce-product-detail.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ecommerce-orders.html" class="sitemap-route-item">
+                    <span class="route-name">Order Tracking</span>
+                    <span class="route-path">/ecommerce-orders.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ecommerce-cart.html" class="sitemap-route-item">
+                    <span class="route-name">Shopping Cart</span>
+                    <span class="route-path">/ecommerce-cart.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ecommerce-add-product.html" class="sitemap-route-item">
+                    <span class="route-name">Add New Product</span>
+                    <span class="route-path">/ecommerce-add-product.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ecommerce-edit-product.html" class="sitemap-route-item">
+                    <span class="route-name">Edit Product</span>
+                    <span class="route-path">/ecommerce-edit-product.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
             </div>
         </div>
+    </div>
 
-        <!-- UI Elements -->
-        <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                <div class="card-header bg-warning text-dark py-3 border-0">
-                    <h6 class="mb-0 fw-bold"><i class="fa-solid fa-wand-magic-sparkles me-2"></i>UI Elements</h6>
-                </div>
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush" style="max-height: 300px; overflow-y: auto;">
-                        <a href="ui-buttons.html" class="list-group-item list-group-item-action sitemap-link">Buttons <i class="bi bi-arrow-right"></i></a>
-                        <a href="ui-cards.html" class="list-group-item list-group-item-action sitemap-link">Basic Cards <i class="bi bi-arrow-right"></i></a>
-                        <a href="ui-cards-hover.html" class="list-group-item list-group-item-action sitemap-link">Hover Cards <i class="bi bi-arrow-right"></i></a>
-                        <a href="ui-modals.html" class="list-group-item list-group-item-action sitemap-link">Modals <i class="bi bi-arrow-right"></i></a>
-                        <a href="ui-offcanvas.html" class="list-group-item list-group-item-action sitemap-link">Offcanvas <i class="bi bi-arrow-right"></i></a>
-                        <a href="ui-tabs.html" class="list-group-item list-group-item-action sitemap-link">Tabs & Accordions <i class="bi bi-arrow-right"></i></a>
-                        <a href="ui-notification.html" class="list-group-item list-group-item-action sitemap-link">Notifications <i class="bi bi-arrow-right"></i></a>
-                        <a href="ui-sweet-alert.html" class="list-group-item list-group-item-action sitemap-link">Sweet Alerts <i class="bi bi-arrow-right"></i></a>
-                        <a href="ui-timeline.html" class="list-group-item list-group-item-action sitemap-link">Timeline <i class="bi bi-arrow-right"></i></a>
-                        <a href="ui-progressbar.html" class="list-group-item list-group-item-action sitemap-link">Progress Bars <i class="bi bi-arrow-right"></i></a>
-                        <a href="ui-range-slider.html" class="list-group-item list-group-item-action sitemap-link">Range Sliders <i class="bi bi-arrow-right"></i></a>
-                        <a href="ui-typography.html" class="list-group-item list-group-item-action sitemap-link">Typography <i class="bi bi-arrow-right"></i></a>
+    <!-- Domain 4: Extras & Utilities -->
+    <div class="col-xl-4 col-md-6 sitemap-category-col">
+        <div class="sitemap-card shadow-sm">
+            <div class="sitemap-card__header">
+                <div class="d-flex align-items-center gap-2.5">
+                    <div class="header-icon bg-warning-subtle text-warning">
+                        <i class="bi bi-stars"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">Extras & Showcases</h6>
+                        <small class="text-muted">Enterprise utility modules</small>
                     </div>
                 </div>
+                <span class="badge bg-light text-dark border rounded-pill extra-small">7 Routes</span>
+            </div>
+            <div class="sitemap-card__body">
+                <a href="invoice.html" class="sitemap-route-item">
+                    <span class="route-name">Invoice Management <span class="badge bg-primary-subtle text-primary extra-small">Grid</span></span>
+                    <span class="route-path">/invoice.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="faq.html" class="sitemap-route-item">
+                    <span class="route-name">FAQ Knowledge Hub</span>
+                    <span class="route-path">/faq.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="pricing-table.html" class="sitemap-route-item">
+                    <span class="route-name">Pricing Plans & Matrix</span>
+                    <span class="route-path">/pricing-table.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="sitemap.html" class="sitemap-route-item">
+                    <span class="route-name">System Sitemap</span>
+                    <span class="route-path">/sitemap.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="search.html" class="sitemap-route-item">
+                    <span class="route-name">Search Results Feed</span>
+                    <span class="route-path">/search.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="gallery.html" class="sitemap-route-item">
+                    <span class="route-name">Media Gallery</span>
+                    <span class="route-path">/gallery.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="blank.html" class="sitemap-route-item">
+                    <span class="route-name">Blank Canvas</span>
+                    <span class="route-path">/blank.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
             </div>
         </div>
+    </div>
 
-        <!-- Forms & Wizards -->
-        <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                <div class="card-header bg-secondary text-white py-3 border-0">
-                    <h6 class="mb-0 fw-bold"><i class="fa-solid fa-pen-to-square me-2"></i>Forms & Wizards</h6>
-                </div>
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush">
-                        <a href="form-basic.html" class="list-group-item list-group-item-action sitemap-link">Basic Inputs <i class="bi bi-arrow-right"></i></a>
-                        <a href="form-grid.html" class="list-group-item list-group-item-action sitemap-link">Form Layouts <i class="bi bi-arrow-right"></i></a>
-                        <a href="advanced-components.html" class="list-group-item list-group-item-action sitemap-link">Advanced UI <i class="bi bi-arrow-right"></i></a>
-                        <a href="form-pickers.html" class="list-group-item list-group-item-action sitemap-link">Date & Color Pickers <i class="bi bi-arrow-right"></i></a>
-                        <a href="form-wizard.html" class="list-group-item list-group-item-action sitemap-link">Step Wizard <i class="bi bi-arrow-right"></i></a>
-                        <a href="summernote-editor.html" class="list-group-item list-group-item-action sitemap-link">Rich Text Editor <i class="bi bi-arrow-right"></i></a>
-                        <a href="image-cropper.html" class="list-group-item list-group-item-action sitemap-link">Image Cropper <i class="bi bi-arrow-right"></i></a>
-                        <a href="image-dropzone.html" class="list-group-item list-group-item-action sitemap-link">File Dropzone <i class="bi bi-arrow-right"></i></a>
+    <!-- Domain 5: Identity & Governance -->
+    <div class="col-xl-4 col-md-6 sitemap-category-col">
+        <div class="sitemap-card shadow-sm">
+            <div class="sitemap-card__header">
+                <div class="d-flex align-items-center gap-2.5">
+                    <div class="header-icon bg-secondary-subtle text-secondary">
+                        <i class="bi bi-person-gear"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">Identity & Users</h6>
+                        <small class="text-muted">Profiles & configurations</small>
                     </div>
                 </div>
+                <span class="badge bg-light text-dark border rounded-pill extra-small">5 Routes</span>
+            </div>
+            <div class="sitemap-card__body">
+                <a href="profile.html" class="sitemap-route-item">
+                    <span class="route-name">User Profile</span>
+                    <span class="route-path">/profile.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="contact-directory.html" class="sitemap-route-item">
+                    <span class="route-name">Contact Directory</span>
+                    <span class="route-path">/contact-directory.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="admin-settings.html" class="sitemap-route-item">
+                    <span class="route-name">Admin Settings <span class="badge bg-primary-subtle text-primary extra-small">ELITE</span></span>
+                    <span class="route-path">/admin-settings.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="account-settings.html" class="sitemap-route-item">
+                    <span class="route-name">Account Settings</span>
+                    <span class="route-path">/account-settings.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="help-support.html" class="sitemap-route-item">
+                    <span class="route-name">Help & Support</span>
+                    <span class="route-path">/help-support.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
             </div>
         </div>
+    </div>
 
-        <!-- Authentication -->
-        <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                <div class="card-header bg-danger text-white py-3 border-0">
-                    <h6 class="mb-0 fw-bold"><i class="fa-solid fa-shield-halved me-2"></i>Security & Auth</h6>
-                </div>
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush">
-                        <a href="login.html" class="list-group-item list-group-item-action sitemap-link">Sign In <i class="bi bi-arrow-right"></i></a>
-                        <a href="register.html" class="list-group-item list-group-item-action sitemap-link">Register Account <i class="bi bi-arrow-right"></i></a>
-                        <a href="forgot-password.html" class="list-group-item list-group-item-action sitemap-link">Forgot Password <i class="bi bi-arrow-right"></i></a>
-                        <a href="lockscreen.html" class="list-group-item list-group-item-action sitemap-link">Lock Screen <i class="bi bi-arrow-right"></i></a>
-                        <a href="two-factor-authentication.html" class="list-group-item list-group-item-action sitemap-link">2FA Security <i class="bi bi-arrow-right"></i></a>
-                        <a href="multi-step-account-onboarding.html" class="list-group-item list-group-item-action sitemap-link">User Onboarding <i class="bi bi-arrow-right"></i></a>
+    <!-- Domain 6: DevOps & Pipeline -->
+    <div class="col-xl-4 col-md-6 sitemap-category-col">
+        <div class="sitemap-card shadow-sm">
+            <div class="sitemap-card__header">
+                <div class="d-flex align-items-center gap-2.5">
+                    <div class="header-icon bg-primary-subtle text-primary">
+                        <i class="bi bi-git"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">Pipeline & DevOps</h6>
+                        <small class="text-muted">CI/CD & system metrics</small>
                     </div>
                 </div>
+                <span class="badge bg-light text-dark border rounded-pill extra-small">4 Routes</span>
+            </div>
+            <div class="sitemap-card__body">
+                <a href="build-history.html" class="sitemap-route-item">
+                    <span class="route-name">Deployment Pipeline</span>
+                    <span class="route-path">/build-history.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="releases.html" class="sitemap-route-item">
+                    <span class="route-name">Release Registry</span>
+                    <span class="route-path">/releases.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="system-metrics.html" class="sitemap-route-item">
+                    <span class="route-name">System Health Telemetry</span>
+                    <span class="route-path">/system-metrics.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="overview.html" class="sitemap-route-item">
+                    <span class="route-name">Analytics Overview</span>
+                    <span class="route-path">/overview.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
             </div>
         </div>
+    </div>
 
-        <!-- Charts & Data -->
-        <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                <div class="card-header bg-dark text-white py-3 border-0">
-                    <h6 class="mb-0 fw-bold"><i class="fa-solid fa-chart-line me-2"></i>Charts & Data</h6>
-                </div>
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush">
-                        <a href="apexcharts.html" class="list-group-item list-group-item-action sitemap-link">Apex Charts <i class="bi bi-arrow-right"></i></a>
-                        <a href="chartjs.html" class="list-group-item list-group-item-action sitemap-link">Chart.js <i class="bi bi-arrow-right"></i></a>
-                        <a href="e-chart.html" class="list-group-item list-group-item-action sitemap-link">E-Charts <i class="bi bi-arrow-right"></i></a>
-                        <a href="datatable.html" class="list-group-item list-group-item-action sitemap-link">Data Tables <i class="bi bi-arrow-right"></i></a>
-                        <a href="basic-table.html" class="list-group-item list-group-item-action sitemap-link">Basic Tables <i class="bi bi-arrow-right"></i></a>
+    <!-- Domain 7: Content & Editorial -->
+    <div class="col-xl-4 col-md-6 sitemap-category-col">
+        <div class="sitemap-card shadow-sm">
+            <div class="sitemap-card__header">
+                <div class="d-flex align-items-center gap-2.5">
+                    <div class="header-icon bg-info-subtle text-info">
+                        <i class="bi bi-journal-text"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">Blog & Publishing</h6>
+                        <small class="text-muted">Editorial and articles</small>
                     </div>
                 </div>
+                <span class="badge bg-light text-dark border rounded-pill extra-small">3 Routes</span>
+            </div>
+            <div class="sitemap-card__body">
+                <a href="blog-list.html" class="sitemap-route-item">
+                    <span class="route-name">Blog Listing</span>
+                    <span class="route-path">/blog-list.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="blog-detail.html" class="sitemap-route-item">
+                    <span class="route-name">Blog Article Detail</span>
+                    <span class="route-path">/blog-detail.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="summernote-editor.html" class="sitemap-route-item">
+                    <span class="route-name">Rich Article Editor</span>
+                    <span class="route-path">/summernote-editor.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
             </div>
         </div>
+    </div>
 
-        <!-- Pages & Utilities -->
-        <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="sitemap-card card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                <div class="card-header bg-light text-dark py-3 border-0">
-                    <h6 class="mb-0 fw-bold"><i class="fa-solid fa-file-invoice me-2"></i>Pages & Utils</h6>
-                </div>
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush" style="max-height: 300px; overflow-y: auto;">
-                        <a href="profile.html" class="list-group-item list-group-item-action sitemap-link">User Profile <i class="bi bi-arrow-right"></i></a>
-                        <a href="admin-settings.html" class="list-group-item list-group-item-action sitemap-link">Admin Settings <span class="badge bg-primary ms-2" style="font-size: 0.6rem;">ELITE</span> <i class="bi bi-arrow-right"></i></a>
-                        <a href="account-settings.html" class="list-group-item list-group-item-action sitemap-link">Account Settings <i class="bi bi-arrow-right"></i></a>
-                        <a href="blog-list.html" class="list-group-item list-group-item-action sitemap-link">Blog List <i class="bi bi-arrow-right"></i></a>
-                        <a href="blog-detail.html" class="list-group-item list-group-item-action sitemap-link">Blog Detail <i class="bi bi-arrow-right"></i></a>
-                        <a href="contact-directory.html" class="list-group-item list-group-item-action sitemap-link">Contact List <i class="bi bi-arrow-right"></i></a>
-                        <a href="faq.html" class="list-group-item list-group-item-action sitemap-link">F.A.Q <i class="bi bi-arrow-right"></i></a>
-                        <a href="pricing-table.html" class="list-group-item list-group-item-action sitemap-link">Pricing Plans <i class="bi bi-arrow-right"></i></a>
-                        <a href="invoice.html" class="list-group-item list-group-item-action sitemap-link">Invoice <i class="bi bi-arrow-right"></i></a>
-                        <a href="gallery.html" class="list-group-item list-group-item-action sitemap-link">Media Gallery <i class="bi bi-arrow-right"></i></a>
-                        <a href="maintenance.html" class="list-group-item list-group-item-action sitemap-link">Maintenance <i class="bi bi-arrow-right"></i></a>
-                        <a href="404.html" class="list-group-item list-group-item-action sitemap-link">404 Error <i class="bi bi-arrow-right"></i></a>
+    <!-- Domain 8: Forms & Inputs -->
+    <div class="col-xl-4 col-md-6 sitemap-category-col">
+        <div class="sitemap-card shadow-sm">
+            <div class="sitemap-card__header">
+                <div class="d-flex align-items-center gap-2.5">
+                    <div class="header-icon bg-warning-subtle text-warning">
+                        <i class="bi bi-input-cursor-text"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">Forms & Inputs</h6>
+                        <small class="text-muted">Form layouts & pickers</small>
                     </div>
                 </div>
+                <span class="badge bg-light text-dark border rounded-pill extra-small">8 Routes</span>
+            </div>
+            <div class="sitemap-card__body">
+                <a href="form-basic.html" class="sitemap-route-item">
+                    <span class="route-name">Basic Inputs</span>
+                    <span class="route-path">/form-basic.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="form-grid.html" class="sitemap-route-item">
+                    <span class="route-name">Form Grid Architecture</span>
+                    <span class="route-path">/form-grid.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="advanced-components.html" class="sitemap-route-item">
+                    <span class="route-name">Advanced Components</span>
+                    <span class="route-path">/advanced-components.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="form-pickers.html" class="sitemap-route-item">
+                    <span class="route-name">Date & Time Pickers</span>
+                    <span class="route-path">/form-pickers.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="form-wizard.html" class="sitemap-route-item">
+                    <span class="route-name">Step Wizard</span>
+                    <span class="route-path">/form-wizard.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="image-cropper.html" class="sitemap-route-item">
+                    <span class="route-name">Image Cropper</span>
+                    <span class="route-path">/image-cropper.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="image-dropzone.html" class="sitemap-route-item">
+                    <span class="route-name">File Dropzone</span>
+                    <span class="route-path">/image-dropzone.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="form-extras.html" class="sitemap-route-item">
+                    <span class="route-name">Form Extras</span>
+                    <span class="route-path">/form-extras.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Domain 9: Tables & Visualizations -->
+    <div class="col-xl-4 col-md-6 sitemap-category-col">
+        <div class="sitemap-card shadow-sm">
+            <div class="sitemap-card__header">
+                <div class="d-flex align-items-center gap-2.5">
+                    <div class="header-icon bg-success-subtle text-success">
+                        <i class="bi bi-table"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">Tables & Charts</h6>
+                        <small class="text-muted">Data visualizations</small>
+                    </div>
+                </div>
+                <span class="badge bg-light text-dark border rounded-pill extra-small">7 Routes</span>
+            </div>
+            <div class="sitemap-card__body">
+                <a href="datatable.html" class="sitemap-route-item">
+                    <span class="route-name">Interactive Datatables</span>
+                    <span class="route-path">/datatable.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="basic-table.html" class="sitemap-route-item">
+                    <span class="route-name">Basic Tables</span>
+                    <span class="route-path">/basic-table.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="apexcharts.html" class="sitemap-route-item">
+                    <span class="route-name">ApexCharts Suite</span>
+                    <span class="route-path">/apexcharts.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="chartjs.html" class="sitemap-route-item">
+                    <span class="route-name">Chart.js Engine</span>
+                    <span class="route-path">/chartjs.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="e-chart.html" class="sitemap-route-item">
+                    <span class="route-name">Apache E-Charts</span>
+                    <span class="route-path">/e-chart.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="highchart.html" class="sitemap-route-item">
+                    <span class="route-name">Highcharts</span>
+                    <span class="route-path">/highchart.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="jtvector-map.html" class="sitemap-route-item">
+                    <span class="route-name">Vector Maps</span>
+                    <span class="route-path">/jtvector-map.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Domain 10: UI Component Library -->
+    <div class="col-xl-4 col-md-6 sitemap-category-col">
+        <div class="sitemap-card shadow-sm">
+            <div class="sitemap-card__header">
+                <div class="d-flex align-items-center gap-2.5">
+                    <div class="header-icon bg-primary-subtle text-primary">
+                        <i class="bi bi-palette2"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">UI Component Kit</h6>
+                        <small class="text-muted">Widgets & interactions</small>
+                    </div>
+                </div>
+                <span class="badge bg-light text-dark border rounded-pill extra-small">10 Routes</span>
+            </div>
+            <div class="sitemap-card__body">
+                <a href="ui-buttons.html" class="sitemap-route-item">
+                    <span class="route-name">Buttons & Badges</span>
+                    <span class="route-path">/ui-buttons.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ui-cards.html" class="sitemap-route-item">
+                    <span class="route-name">Cards System</span>
+                    <span class="route-path">/ui-cards.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ui-modals.html" class="sitemap-route-item">
+                    <span class="route-name">Modals & Dialogs</span>
+                    <span class="route-path">/ui-modals.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ui-offcanvas.html" class="sitemap-route-item">
+                    <span class="route-name">Offcanvas Drawers</span>
+                    <span class="route-path">/ui-offcanvas.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ui-tabs.html" class="sitemap-route-item">
+                    <span class="route-name">Tabs & Accordions</span>
+                    <span class="route-path">/ui-tabs.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ui-notification.html" class="sitemap-route-item">
+                    <span class="route-name">Toast Notifications</span>
+                    <span class="route-path">/ui-notification.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ui-sweet-alert.html" class="sitemap-route-item">
+                    <span class="route-name">Sweet Alerts</span>
+                    <span class="route-path">/ui-sweet-alert.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ui-timeline.html" class="sitemap-route-item">
+                    <span class="route-name">Activity Timelines</span>
+                    <span class="route-path">/ui-timeline.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ui-progressbar.html" class="sitemap-route-item">
+                    <span class="route-name">Progress Bars</span>
+                    <span class="route-path">/ui-progressbar.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="ui-range-slider.html" class="sitemap-route-item">
+                    <span class="route-name">Range Sliders</span>
+                    <span class="route-path">/ui-range-slider.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Domain 11: Security & Auth Flows -->
+    <div class="col-xl-4 col-md-6 sitemap-category-col">
+        <div class="sitemap-card shadow-sm">
+            <div class="sitemap-card__header">
+                <div class="d-flex align-items-center gap-2.5">
+                    <div class="header-icon bg-danger-subtle text-danger">
+                        <i class="bi bi-shield-lock-fill"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">Security & Authentication</h6>
+                        <small class="text-muted">Auth flows & onboarding</small>
+                    </div>
+                </div>
+                <span class="badge bg-light text-dark border rounded-pill extra-small">6 Routes</span>
+            </div>
+            <div class="sitemap-card__body">
+                <a href="login.html" class="sitemap-route-item">
+                    <span class="route-name">Sign In Portal</span>
+                    <span class="route-path">/login.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="register.html" class="sitemap-route-item">
+                    <span class="route-name">Create Account</span>
+                    <span class="route-path">/register.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="forgot-password.html" class="sitemap-route-item">
+                    <span class="route-name">Forgot Password</span>
+                    <span class="route-path">/forgot-password.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="lockscreen.html" class="sitemap-route-item">
+                    <span class="route-name">Session Lockscreen</span>
+                    <span class="route-path">/lockscreen.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="two-factor-authentication.html" class="sitemap-route-item">
+                    <span class="route-name">2FA Verification</span>
+                    <span class="route-path">/two-factor-authentication.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="multi-step-account-onboarding.html" class="sitemap-route-item">
+                    <span class="route-name">Multi-Step Onboarding</span>
+                    <span class="route-path">/multi-step-account-onboarding.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Domain 12: Errors & System Responses -->
+    <div class="col-xl-4 col-md-6 sitemap-category-col">
+        <div class="sitemap-card shadow-sm">
+            <div class="sitemap-card__header">
+                <div class="d-flex align-items-center gap-2.5">
+                    <div class="header-icon bg-secondary-subtle text-secondary">
+                        <i class="bi bi-exclamation-octagon-fill"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">Error Responses</h6>
+                        <small class="text-muted">HTTP status pages</small>
+                    </div>
+                </div>
+                <span class="badge bg-light text-dark border rounded-pill extra-small">5 Routes</span>
+            </div>
+            <div class="sitemap-card__body">
+                <a href="400.html" class="sitemap-route-item">
+                    <span class="route-name">400 Bad Request</span>
+                    <span class="route-path">/400.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="403.html" class="sitemap-route-item">
+                    <span class="route-name">403 Access Forbidden</span>
+                    <span class="route-path">/403.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="404.html" class="sitemap-route-item">
+                    <span class="route-name">404 Page Not Found</span>
+                    <span class="route-path">/404.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="500.html" class="sitemap-route-item">
+                    <span class="route-name">500 Server Error</span>
+                    <span class="route-path">/500.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
+                <a href="maintenance.html" class="sitemap-route-item">
+                    <span class="route-name">System Maintenance</span>
+                    <span class="route-path">/maintenance.html</span>
+                    <i class="bi bi-chevron-right route-arrow"></i>
+                </a>
             </div>
         </div>
     </div>
 </div>
 
-<style>
-    .sitemap-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const filterInput = document.getElementById('sitemapFilterInput');
+    const routeItems = document.querySelectorAll('.sitemap-route-item');
+    const categoryCols = document.querySelectorAll('.sitemap-category-col');
+
+    if (filterInput) {
+        filterInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            categoryCols.forEach(col => {
+                let matchesInCard = 0;
+                const items = col.querySelectorAll('.sitemap-route-item');
+                
+                items.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (query === '' || text.includes(query)) {
+                        item.style.display = 'flex';
+                        matchesInCard++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                if (query === '' || matchesInCard > 0) {
+                    col.style.display = 'block';
+                } else {
+                    col.style.display = 'none';
+                }
+            });
+        });
     }
-    .sitemap-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important;
-    }
-    .sitemap-link {
-        padding: 0.85rem 1.25rem;
-        font-weight: 500;
-        font-size: 0.9rem;
-        border-left: 3px solid transparent;
-        transition: all 0.2s ease;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .sitemap-link i {
-        opacity: 0;
-        transform: translateX(-10px);
-        transition: all 0.2s ease;
-        font-size: 0.8rem;
-    }
-    .sitemap-link:hover {
-        background-color: var(--bs-light);
-        color: var(--bs-primary);
-        border-left-color: var(--bs-primary);
-        padding-left: 1.5rem;
-    }
-    .sitemap-link:hover i {
-        opacity: 1;
-        transform: translateX(0);
-    }
-</style>
+});
+</script>
 
 {{/admin-layout}}

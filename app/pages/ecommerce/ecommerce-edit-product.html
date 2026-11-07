@@ -1,186 +1,190 @@
 {{#> admin-layout title="Edit Product" parentTitle="Ecommerce" }}
 
-<div class="row justify-content-center">
-    <div class="col-xl-11">
-        
-        <!-- Elite Sticky Header -->
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-5 position-sticky top-0 bg-light py-3 z-3 border-bottom border-opacity-10" style="margin-top: -1.5rem;">
-            <div>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-1 small">
-                        <li class="breadcrumb-item"><a href="ecommerce-products.html" class="text-decoration-none text-muted">Products</a></li>
-                        <li class="breadcrumb-item active fw-bold text-primary">Modify Asset</li>
-                    </ol>
-                </nav>
-                <h2 class="h3 fw-black text-dark mb-0">Edit Product: <span class="text-primary">Air Jordan Elite</span></h2>
+<!-- Screen 04 Alignment: Two-column editor: product form (8 cols) + sticky publish/preview rail (4 cols) -->
+<form id="editProductForm">
+    <div class="row g-4">
+        <!-- Main Form Stream (8 cols) -->
+        <div class="col-lg-8">
+            <!-- Basic Information Card -->
+            <div class="card card-box border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-card py-3.5 px-4 border-bottom d-flex align-items-center justify-content-between">
+                    <h6 class="fw-bold mb-0 text-dark">
+                        <i class="bi bi-info-circle me-2 text-primary"></i> Basic Product Information
+                    </h6>
+                    <span class="badge bg-primary-subtle text-primary extra-small fw-bold">SKU: WH-1000XM5</span>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <label for="editProductName" class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Product Title</label>
+                        <input type="text" class="form-control rounded-3" id="editProductName" value="Studio Wireless ANC Headphones" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editProductSlug" class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">URL Handle / Slug</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-0 text-muted extra-small">xivig.store/products/</span>
+                            <input type="text" class="form-control rounded-end-3" id="editProductSlug" value="studio-wireless-anc-headphones">
+                        </div>
+                    </div>
+
+                    <div class="mb-0">
+                        <label for="editProductDesc" class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Rich Description</label>
+                        <textarea class="form-control rounded-3" id="editProductDesc" rows="6">Industry-leading noise canceling with two processors and 8 microphones. Magnificent Sound, engineered to perfection with the Integrated Processor V1. Crystal clear hands-free calling with 4 beamforming microphones, precise voice pickup, and advanced audio signal processing.</textarea>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex gap-2">
-                <button class="btn btn-white btn-sm rounded-pill px-4 border shadow-sm fw-bold text-muted transition-all hover-bg-danger hover-text-white" onclick="location.href='ecommerce-products.html'">
-                    Discard
-                </button>
-                <button type="submit" form="editProductForm" class="btn btn-primary btn-sm rounded-pill px-4 fw-bold shadow-primary transition-all hover-translate-y">
-                    <i class="bi bi-check-circle me-2"></i> Save Changes
-                </button>
+
+            <!-- Media Gallery & Assets Card -->
+            <div class="card card-box border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-card py-3.5 px-4 border-bottom d-flex align-items-center justify-content-between">
+                    <h6 class="fw-bold mb-0 text-dark">
+                        <i class="bi bi-images me-2 text-primary"></i> Media &amp; Product Gallery
+                    </h6>
+                    <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3 fw-bold">
+                        <i class="bi bi-cloud-upload me-1"></i> Add Image
+                    </button>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-4">
+                            <div class="position-relative border rounded-3 p-2 text-center bg-light">
+                                <img src="/app/src/images/product-1.jpg" class="img-fluid rounded-2 mb-2" style="max-height: 120px; object-fit: contain;" alt="Product Thumb 1">
+                                <span class="badge bg-primary position-absolute top-0 start-0 m-2 extra-small fw-bold">PRIMARY</span>
+                                <div class="d-flex justify-content-center gap-1">
+                                    <button type="button" class="btn btn-sm btn-light border p-1" title="Replace"><i class="bi bi-arrow-repeat"></i></button>
+                                    <button type="button" class="btn btn-sm btn-light border text-danger p-1" title="Delete"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="position-relative border rounded-3 p-2 text-center bg-light">
+                                <img src="/app/src/images/product-2.jpg" class="img-fluid rounded-2 mb-2" style="max-height: 120px; object-fit: contain;" alt="Product Thumb 2">
+                                <div class="d-flex justify-content-center gap-1">
+                                    <button type="button" class="btn btn-sm btn-light border p-1" title="Replace"><i class="bi bi-arrow-repeat"></i></button>
+                                    <button type="button" class="btn btn-sm btn-light border text-danger p-1" title="Delete"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="border rounded-3 border-dashed d-flex flex-column align-items-center justify-content-center p-3 text-center cursor-pointer bg-light h-100" style="min-height: 160px;">
+                                <i class="bi bi-cloud-arrow-up text-primary fs-2 mb-1"></i>
+                                <span class="fw-bold text-dark fs-13">Upload New</span>
+                                <small class="text-muted extra-small">PNG, JPG up to 10MB</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing & Inventory Card -->
+            <div class="card card-box border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-card py-3.5 px-4 border-bottom">
+                    <h6 class="fw-bold mb-0 text-dark">
+                        <i class="bi bi-tags me-2 text-primary"></i> Pricing, Inventory &amp; Logistics
+                    </h6>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3 mb-3">
+                        <div class="col-sm-6">
+                            <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Regular Price ($)</label>
+                            <input type="number" step="0.01" class="form-control rounded-3 fw-bold text-primary" value="299.00" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Compare-At Price ($)</label>
+                            <input type="number" step="0.01" class="form-control rounded-3" value="349.00">
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">SKU Code</label>
+                            <input type="text" class="form-control rounded-3" value="WH-1000XM5">
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Barcode (ISBN, UPC, GTIN)</label>
+                            <input type="text" class="form-control rounded-3" value="4548736132580">
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Stock Quantity</label>
+                            <input type="number" class="form-control rounded-3 fw-bold" value="142">
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Low Stock Warning At</label>
+                            <input type="number" class="form-control rounded-3" value="15">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <form id="editProductForm">
-            <div class="row g-4">
-                <!-- Left Column: Detailed Content -->
-                <div class="col-lg-8">
-                    <!-- General Info Card -->
-                    <div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden">
-                        <div class="card-header bg-white py-4 px-4 border-0 border-bottom border-light">
-                            <h6 class="fw-black text-dark mb-0 text-uppercase tracking-widest small">
-                                <i class="bi bi-file-earmark-text me-2 text-primary"></i> Basic Information
-                            </h6>
-                        </div>
-                        <div class="card-body p-4 p-md-5">
-                            <div class="mb-4">
-                                <label class="apple-label">Product Name</label>
-                                <input type="text" class="form-control modern-input" value="Air Jordan Elite Limited Pro" placeholder="Enter product name" required>
-                                <div class="form-text extra-small mt-2 text-muted">A unique and descriptive title helps customers find your product faster.</div>
-                            </div>
-                            
-                            <div class="mb-0">
-                                <label class="apple-label">Full Description</label>
-                                <textarea class="form-control modern-input" rows="8" placeholder="Describe the premium features...">Experience the pinnacle of footwear engineering. The Air Jordan Elite Pro combines ultra-responsive cushioning with a breathable, high-performance upper designed for architects of the game. Limited edition colorway with premium carbon fiber inserts.</textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pricing & Inventory Card -->
-                    <div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden">
-                        <div class="card-header bg-white py-4 px-4 border-0 border-bottom border-light">
-                            <h6 class="fw-black text-dark mb-0 text-uppercase tracking-widest small">
-                                <i class="bi bi-currency-dollar me-2 text-primary"></i> Pricing & Stock
-                            </h6>
-                        </div>
-                        <div class="card-body p-4 p-md-5">
-                            <div class="row g-4">
-                                <div class="col-md-6">
-                                    <label class="apple-label">Base Price</label>
-                                    <div class="input-group modern-input-group border rounded-3 overflow-hidden shadow-sm">
-                                        <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-tag-fill"></i></span>
-                                        <input type="number" class="form-control border-0 shadow-none py-2 fw-bold" value="1299.00">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="apple-label">Discount Price (Optional)</label>
-                                    <div class="input-group modern-input-group border rounded-3 overflow-hidden shadow-sm">
-                                        <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-percent"></i></span>
-                                        <input type="number" class="form-control border-0 shadow-none py-2" value="1099.00">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="apple-label">SKU Number</label>
-                                    <input type="text" class="form-control modern-input fw-mono" value="AJ-PRO-2026-X">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="apple-label">Warehouse Stock</label>
-                                    <div class="d-flex align-items-center gap-3">
-                                        <input type="number" class="form-control modern-input fw-bold" value="125" style="max-width: 100px;">
-                                        <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small fw-bold">In Stock</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Sticky Publish/Preview Rail (4 cols) -->
+        <div class="col-lg-4">
+            <!-- Publishing & Status Card -->
+            <div class="card card-box border-0 shadow-sm rounded-4 mb-4 sticky-top" style="top: 90px;">
+                <div class="card-header bg-card py-3 px-4 border-bottom d-flex align-items-center justify-content-between">
+                    <h6 class="fw-bold mb-0 text-dark">
+                        <i class="bi bi-send-check me-2 text-primary"></i> Publish Status
+                    </h6>
+                    <span class="badge bg-success-subtle text-success extra-small fw-bold">ACTIVE LIVE</span>
                 </div>
-
-                <!-- Right Column: Sidebar Settings -->
-                <div class="col-lg-4">
-                    <!-- Media Gallery Card -->
-                    <div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden">
-                        <div class="card-header bg-white py-4 px-4 border-0 border-bottom border-light">
-                            <h6 class="fw-black text-dark mb-0 text-uppercase tracking-widest small">
-                                <i class="bi bi-images me-2 text-primary"></i> Media Gallery
-                            </h6>
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="row g-2 mb-4">
-                                <div class="col-12">
-                                    <div class="position-relative rounded-4 overflow-hidden border shadow-sm mb-2 group">
-                                        <img src="/app/src/images/product-1.jpg" class="img-fluid w-100" alt="Primary">
-                                        <div class="position-absolute top-0 end-0 m-3 d-flex gap-2">
-                                            <button type="button" class="btn btn-white btn-sm rounded-circle shadow-sm p-2"><i class="bi bi-pencil"></i></button>
-                                            <button type="button" class="btn btn-danger btn-sm rounded-circle shadow-sm p-2"><i class="bi bi-trash"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="rounded-3 border overflow-hidden shadow-sm aspect-square">
-                                        <img src="/app/src/images/product-1.jpg" class="w-100 h-100 object-cover" alt="Thumb">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="rounded-3 border border-2 border-dashed d-flex align-items-center justify-content-center bg-light transition-all hover-bg-white cursor-pointer aspect-square" style="min-height: 80px;">
-                                        <i class="bi bi-plus-lg text-muted"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-light w-100 rounded-pill border fw-bold small py-2 shadow-sm">Manage Assets</button>
-                        </div>
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Visibility</label>
+                        <select class="form-select rounded-3">
+                            <option value="active" selected>Active &bull; Visible in Online Store</option>
+                            <option value="draft">Draft &bull; Hidden from Customers</option>
+                            <option value="archived">Archived &bull; Read Only</option>
+                        </select>
                     </div>
 
-                    <!-- Status & Optimization -->
-                    <div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden bg-primary text-white position-relative">
-                        <div class="position-absolute top-0 end-0 p-4 opacity-10">
-                            <i class="bi bi-rocket-takeoff-fill display-1"></i>
-                        </div>
-                        <div class="card-body p-4 position-relative z-1">
-                            <h6 class="fw-black text-white mb-4 text-uppercase tracking-widest small">Publication Status</h6>
-                            
-                            <div class="mb-4 bg-white bg-opacity-10 p-3 rounded-4 border border-white border-opacity-10">
-                                <div class="form-check form-switch custom-switch-light">
-                                    <input class="form-check-input" type="checkbox" id="publishedSwitch" checked>
-                                    <label class="form-check-label small fw-bold text-white" for="publishedSwitch">Public Live</label>
-                                </div>
-                                <div class="form-check form-switch custom-switch-light mt-3">
-                                    <input class="form-check-input" type="checkbox" id="featuredSwitch">
-                                    <label class="form-check-label small fw-bold text-white" for="featuredSwitch">Featured on Home</label>
-                                </div>
-                            </div>
-
-                            <div class="d-grid">
-                                <button class="btn btn-white rounded-pill fw-bold text-primary py-2 shadow-sm">View Store Page</button>
-                            </div>
-                        </div>
+                    <div class="mb-4">
+                        <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Primary Category</label>
+                        <select class="form-select rounded-3">
+                            <option value="audio" selected>Electronics &bull; Audio &amp; Headphones</option>
+                            <option value="wearables">Smartwatches &amp; Wearables</option>
+                            <option value="computing">Laptops &amp; Computing</option>
+                            <option value="accessories">Mobile Accessories</option>
+                        </select>
                     </div>
 
-                    <!-- Audit Log Info -->
-                    <div class="p-4 bg-white rounded-4 shadow-sm border border-light text-center">
-                        <div class="avatar bg-light text-primary rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 48px; height: 48px;">AA</div>
-                        <p class="text-muted extra-small mb-1">LAST MODIFIED BY</p>
-                        <h6 class="fw-bold text-dark mb-2">Admin Architect</h6>
-                        <span class="text-muted extra-small"><i class="bi bi-clock me-1"></i> Oct 24, 2026 • 09:42 AM</span>
+                    <div class="mb-4">
+                        <label class="form-label fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Product Tags</label>
+                        <input type="text" class="form-control rounded-3" value="wireless, anc, premium, bluetooth5, flagship">
+                    </div>
+
+                    <!-- SEO Preview Box -->
+                    <div class="p-3 bg-light rounded-3 mb-4 border">
+                        <span class="extra-small fw-bold text-muted text-uppercase d-block mb-1">Search Engine Snippet</span>
+                        <div class="text-primary fw-medium fs-14 text-truncate">Studio Wireless ANC Headphones &bull; Xivig Store</div>
+                        <div class="text-success extra-small mb-1">https://xivig.store/products/studio-wireless-anc-headphones</div>
+                        <p class="text-muted extra-small mb-0">Industry-leading noise canceling with two processors and 8 microphones. Magnificent Sound engineered to perfection...</p>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary py-2.5 rounded-pill fw-bold shadow-primary" id="saveProductBtn">
+                            <i class="bi bi-check2-circle me-1"></i> Save Changes
+                        </button>
+                        <a href="ecommerce-product-show.html" class="btn btn-outline-secondary py-2 rounded-pill fw-bold">
+                            <i class="bi bi-eye me-1"></i> View Live Product
+                        </a>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</form>
 
-<style>
-    /* Elite Toggle Customization */
-    .custom-switch-light .form-check-input {
-        width: 3em;
-        height: 1.5em;
-        cursor: pointer;
-        background-color: rgba(255,255,255,0.2);
-        border-color: rgba(255,255,255,0.3);
-    }
-    .custom-switch-light .form-check-input:checked {
-        background-color: #fff;
-        border-color: #fff;
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%236366f1'/%3e%3c/svg%3e");
-    }
-    .aspect-square {
-        aspect-ratio: 1 / 1;
-    }
-    .object-cover {
-        object-fit: cover;
-    }
-</style>
+<script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('editProductForm');
+        const headerBtn = document.getElementById('pagePrimaryActionBtn');
+
+        const handleSubmit = (e) => {
+            if (e) e.preventDefault();
+            alert('Product changes saved successfully!');
+            window.location.href = 'ecommerce-products.html';
+        };
+
+        if (form) form.addEventListener('submit', handleSubmit);
+        if (headerBtn) headerBtn.addEventListener('click', () => handleSubmit());
+    });
+</script>
 
 {{/admin-layout}}

@@ -1,212 +1,211 @@
 {{#> admin-layout title="Tabs" parentTitle="UI Elements" }}
 
-<div class="card shadow-sm rounded-4 overflow-hidden border" style="border-color: var(--card-border) !important;">
+<div class="ui-tabs-module">
+    <!-- Header Hero -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <h4 class="fw-bold mb-0 text-main fs-18">Tabbed Navigation & Segmented State Controls</h4>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Bootstrap 5.3 Tabs</span>
+                </div>
+                <p class="text-muted small mb-0">Underline active indicators, pill shapes, segmented macOS-style switch tabs, and vertical side navigation</p>
+            </div>
+        </div>
+    </div>
 
-                        <div
-                            class="card-header bg-transparent py-3 px-4 border-0 d-flex justify-content-center align-items-center">
-                            <div class="text-center">
-                                <h5 class="fw-bold mb-0">Tabs</h5>
-                                <small class="text-muted">Explore modern user interface components</small>
+    <div class="row g-4">
+        <!-- 1. Underline Active Indicator Tabs -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Underline Border Tabs</h5>
+                <p class="text-muted extra-small mb-3">Clean bottom border highlight for content-heavy sections</p>
+
+                <!-- Nav Tabs -->
+                <ul class="nav nav-tabs border-bottom border-secondary border-opacity-15 mb-3" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active border-0 border-bottom border-2 border-primary fw-bold text-primary bg-transparent px-3 py-2 small" data-bs-toggle="tab" data-bs-target="#tabUnderline1" type="button">
+                            <i class="bi bi-hdd-stack me-1.5"></i> Infrastructure
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link border-0 text-muted bg-transparent px-3 py-2 small fw-semibold" data-bs-toggle="tab" data-bs-target="#tabUnderline2" type="button">
+                            <i class="bi bi-shield-check me-1.5"></i> Security
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link border-0 text-muted bg-transparent px-3 py-2 small fw-semibold" data-bs-toggle="tab" data-bs-target="#tabUnderline3" type="button">
+                            <i class="bi bi-graph-up me-1.5"></i> Telemetry
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Panes -->
+                <div class="tab-content text-secondary small">
+                    <div class="tab-pane fade show active" id="tabUnderline1">
+                        <h6 class="fw-bold text-main mb-1">Dedicated Cluster Fabric</h6>
+                        <p class="mb-0">Direct integration with Kubernetes nodes, serverless edge workers, and distributed microservice mesh.</p>
+                    </div>
+                    <div class="tab-pane fade" id="tabUnderline2">
+                        <h6 class="fw-bold text-main mb-1">Zero-Trust Authentication</h6>
+                        <p class="mb-0">Continuous mutual TLS validation, encrypted hardware keys, and automatic secret rotation.</p>
+                    </div>
+                    <div class="tab-pane fade" id="tabUnderline3">
+                        <h6 class="fw-bold text-main mb-1">Real-Time Metrics Ingestion</h6>
+                        <p class="mb-0">Ingesting over 50,000 metrics per second with sub-millisecond querying capabilities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Pill Shape Navigation Tabs -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Pill Shape Tabs</h5>
+                <p class="text-muted extra-small mb-3">Rounded pill surface highlights (.nav-pills)</p>
+
+                <!-- Nav Pills -->
+                <ul class="nav nav-pills gap-2 mb-3" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active rounded-pill px-3 py-1.5 small fw-bold" data-bs-toggle="pill" data-bs-target="#pillTab1" type="button">
+                            Production
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link rounded-pill px-3 py-1.5 small fw-semibold text-muted bg-body-tertiary" data-bs-toggle="pill" data-bs-target="#pillTab2" type="button">
+                            Staging
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link rounded-pill px-3 py-1.5 small fw-semibold text-muted bg-body-tertiary" data-bs-toggle="pill" data-bs-target="#pillTab3" type="button">
+                            Development
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Panes -->
+                <div class="tab-content text-secondary small">
+                    <div class="tab-pane fade show active" id="pillTab1">
+                        <div class="p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10">
+                            <div class="fw-bold text-success mb-1"><i class="bi bi-check-circle-fill me-1.5"></i> Live Cluster (AWS us-east-1)</div>
+                            <div class="text-muted extra-small">Serving 99.99% of global user requests across Anycast edge nodes.</div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pillTab2">
+                        <div class="p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10">
+                            <div class="fw-bold text-primary mb-1"><i class="bi bi-arrow-repeat me-1.5"></i> Staging Cluster (Vercel Edge)</div>
+                            <div class="text-muted extra-small">Automated preview deployment generated for pull request #142.</div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pillTab3">
+                        <div class="p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10">
+                            <div class="fw-bold text-warning mb-1"><i class="bi bi-laptop me-1.5"></i> Local Development Daemon</div>
+                            <div class="text-muted extra-small">Vite HMR running locally on port 5173 with sub-50ms reload.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Segmented Switch Tabs (macOS Style) -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Segmented Switch Control</h5>
+                <p class="text-muted extra-small mb-3">Enclosed container with sliding active pill state</p>
+
+                <!-- Segmented Container -->
+                <div class="p-1 rounded-pill bg-body-tertiary border border-secondary border-opacity-15 d-inline-flex mb-3">
+                    <ul class="nav nav-pills gap-1" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link active rounded-pill px-3 py-1 extra-small fw-bold shadow-2xs" data-bs-toggle="pill" data-bs-target="#segTab1" type="button">
+                                24 Hours
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link rounded-pill px-3 py-1 extra-small fw-semibold text-muted" data-bs-toggle="pill" data-bs-target="#segTab2" type="button">
+                                7 Days
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link rounded-pill px-3 py-1 extra-small fw-semibold text-muted" data-bs-toggle="pill" data-bs-target="#segTab3" type="button">
+                                30 Days
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content text-secondary small">
+                    <div class="tab-pane fade show active" id="segTab1">
+                        <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10">
+                            <div>
+                                <span class="text-muted extra-small">24h Ingestion Volume</span>
+                                <div class="fw-bold text-main fs-16 font-monospace">4.2 TB</div>
+                            </div>
+                            <span class="badge bg-success-subtle text-success extra-small fw-bold">+12%</span>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="segTab2">
+                        <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10">
+                            <div>
+                                <span class="text-muted extra-small">7-Day Ingestion Volume</span>
+                                <div class="fw-bold text-main fs-16 font-monospace">28.6 TB</div>
+                            </div>
+                            <span class="badge bg-success-subtle text-success extra-small fw-bold">+8%</span>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="segTab3">
+                        <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10">
+                            <div>
+                                <span class="text-muted extra-small">30-Day Ingestion Volume</span>
+                                <div class="fw-bold text-main fs-16 font-monospace">124.8 TB</div>
+                            </div>
+                            <span class="badge bg-primary-subtle text-primary extra-small fw-bold">+24%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Vertical Side-Nav Tabs -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Vertical Nav Tabs</h5>
+                <p class="text-muted extra-small mb-3">Side-anchored navigation for settings panels and profiles</p>
+
+                <div class="row g-3">
+                    <div class="col-sm-4">
+                        <div class="nav flex-column nav-pills gap-1.5" role="tablist">
+                            <button class="nav-link active text-start rounded-3 px-3 py-2 small fw-semibold" data-bs-toggle="pill" data-bs-target="#vTab1" type="button">
+                                <i class="bi bi-person me-2"></i> Profile
+                            </button>
+                            <button class="nav-link text-start rounded-3 px-3 py-2 small fw-semibold text-muted bg-body-tertiary" data-bs-toggle="pill" data-bs-target="#vTab2" type="button">
+                                <i class="bi bi-bell me-2"></i> Alerts
+                            </button>
+                            <button class="nav-link text-start rounded-3 px-3 py-2 small fw-semibold text-muted bg-body-tertiary" data-bs-toggle="pill" data-bs-target="#vTab3" type="button">
+                                <i class="bi bi-key me-2"></i> API Keys
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="tab-content text-secondary small p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10 h-100">
+                            <div class="tab-pane fade show active" id="vTab1">
+                                <h6 class="fw-bold text-main mb-1">User Identity</h6>
+                                <p class="text-muted extra-small mb-0">Sarah Connor &bull; Principal Architecture Lead &bull; sarah.connor@xivig.dev</p>
+                            </div>
+                            <div class="tab-pane fade" id="vTab2">
+                                <h6 class="fw-bold text-main mb-1">Alerting Channels</h6>
+                                <p class="text-muted extra-small mb-0">Push notifications enabled via Slack webhook and SMS pager.</p>
+                            </div>
+                            <div class="tab-pane fade" id="vTab3">
+                                <h6 class="fw-bold text-main mb-1">Active API Tokens</h6>
+                                <p class="text-muted extra-small mb-0">2 active tokens. Last generated 3 days ago for CI/CD pipeline.</p>
                             </div>
                         </div>
-
-                        <div class="card-body p-4">
-                            <!--content goes here-->
-                            <div class="row g-4">
-                                <div class="col-lg-6 mb-4">
-                                    <div class="xivig-card p-4">
-                                        <h5 class="h5 mb-4">Project Overview</h5>
-                                        <ul class="nav nav-tabs xivig-tabs-modern" id="modernTab" role="tablist">
-                                            <li class="nav-item">
-                                                <button class="nav-link active" data-bs-toggle="tab"
-                                                    data-bs-target="#home-m" type="button">Analytics</button>
-                                            </li>
-                                            <li class="nav-item">
-                                                <button class="nav-link" data-bs-toggle="tab"
-                                                    data-bs-target="#profile-m" type="button">Security</button>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content mt-4">
-                                            <div class="tab-pane fade show active" id="home-m">
-                                                <p class="text-muted">High-level intelligence data for Xivig Architect
-                                                    OS.
-                                                </p>
-                                            </div>
-                                            <div class="tab-pane fade" id="profile-m">
-                                                <p class="text-muted">Security protocols and guard configurations.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="xivig-card p-4">
-                                        <div class="d-flex align-items-start">
-                                            <div class="nav flex-column nav-pills xivig-pills vtabs-modern me-3"
-                                                id="v-pills-tab" role="tablist">
-                                                <button class="nav-link active" data-bs-toggle="pill"
-                                                    data-bs-target="#v-home">
-                                                    <i class="bi bi-house-door me-2"></i> Core
-                                                </button>
-                                                <button class="nav-link" data-bs-toggle="pill"
-                                                    data-bs-target="#v-settings">
-                                                    <i class="bi bi-gear me-2"></i> Config
-                                                </button>
-                                            </div>
-                                            <div class="tab-content flex-grow-1 ps-3">
-                                                <div class="tab-pane fade show active" id="v-home">
-                                                    <h6>System Intelligence</h6>
-                                                    <p class="small text-muted">Real-time node distribution active.</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-settings">
-                                                    <h6>Gulp Pipeline</h6>
-                                                    <p class="small text-muted">ESM Module asset tracking enabled.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="row g-4">
-                                <div class="col-lg-6 mb-4">
-                                    <div class="xivig-card p-4 mb-3">
-                                        <div class="d-flex justify-content-start">
-                                            <div class="xivig-pill-wrapper">
-                                                <ul class="nav nav-pills xivig-pills-elite" id="pills-tab-left"
-                                                    role="tablist">
-                                                    <li class="nav-item">
-                                                        <button class="nav-link active" data-bs-toggle="pill"
-                                                            data-bs-target="#tab-left-1"
-                                                            type="button">Dashboard</button>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <button class="nav-link" data-bs-toggle="pill"
-                                                            data-bs-target="#tab-left-2" type="button">Node
-                                                            Map</button>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <button class="nav-link" data-bs-toggle="pill"
-                                                            data-bs-target="#tab-left-3" type="button">Archives</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-content mt-4">
-                                            <div class="tab-pane fade show active" id="tab-left-1">Content for Left Tab
-                                                1...</div>
-                                            <div class="tab-pane fade" id="tab-left-2">Content for Left Tab 2...</div>
-                                            <div class="tab-pane fade" id="tab-left-3">Content for Left Tab 3...</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="xivig-card p-4">
-                                        <div class="d-flex justify-content-between align-items-center mb-4">
-                                            <h5 class="h5 m-0">Activity Feed</h5>
-
-                                            <div class="xivig-pill-wrapper">
-                                                <ul class="nav nav-pills xivig-pills-elite" id="pills-tab-right"
-                                                    role="tablist">
-                                                    <li class="nav-item">
-                                                        <button class="nav-link active" data-bs-toggle="pill"
-                                                            data-bs-target="#tab-right-1" type="button">Today</button>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <button class="nav-link" data-bs-toggle="pill"
-                                                            data-bs-target="#tab-right-2" type="button">Global</button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-content">
-                                            <div class="tab-pane fade show active" id="tab-right-1">Monitoring local
-                                                instances...</div>
-                                            <div class="tab-pane fade" id="tab-right-2">Monitoring global intelligence
-                                                distribution...</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row g-4">
-                                <div class="col-lg-6 mb-4">
-                                    <div class="xivig-card p-4">
-                                        <div class="d-flex align-items-start">
-                                            <div class="nav flex-column nav-pills xivig-icon-vtabs" id="v-pills-icons"
-                                                role="tablist">
-                                                <button class="nav-link active" data-bs-toggle="pill"
-                                                    data-bs-target="#v-icon-1" type="button">
-                                                    <i class="bi bi-cpu"></i>
-                                                </button>
-                                                <button class="nav-link" data-bs-toggle="pill"
-                                                    data-bs-target="#v-icon-2" type="button">
-                                                    <i class="bi bi-diagram-3"></i>
-                                                </button>
-                                                <button class="nav-link" data-bs-toggle="pill"
-                                                    data-bs-target="#v-icon-3" type="button">
-                                                    <i class="bi bi-shield-check"></i>
-                                                </button>
-                                            </div>
-
-                                            <div class="tab-content xivig-v-content flex-grow-1"
-                                                id="v-pills-iconContent">
-                                                <div class="tab-pane fade show active" id="v-icon-1">
-                                                    <h5 class="h5">Processor Intelligence</h5>
-                                                    <p class="text-muted">Core architecture status: <span
-                                                            class="text-success">Optimal</span></p>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-icon-2">
-                                                    <h5 class="h5">Node Distribution</h5>
-                                                    <p class="text-muted">Analyzing mesh network paths...</p>
-                                                </div>
-                                                <div class="tab-pane fade" id="v-icon-3">
-                                                    <h5 class="h5">Security Guard</h5>
-                                                    <p class="text-muted">All Laravel guards and session drivers
-                                                        encrypted.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="xivig-card p-4">
-                                        <div class="row g-0">
-                                            <div class="col-auto">
-                                                <div class="nav flex-column nav-tabs xivig-icon-tabs-border"
-                                                    id="v-tabs-icons" role="tablist">
-                                                    <button class="nav-link active" data-bs-toggle="tab"
-                                                        data-bs-target="#v-tab-icon-1" type="button">
-                                                        <i class="bi bi-terminal-fill"></i>
-                                                    </button>
-                                                    <button class="nav-link" data-bs-toggle="tab"
-                                                        data-bs-target="#v-tab-icon-2" type="button">
-                                                        <i class="bi bi-envelope-at"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="tab-content ps-4" id="v-tabs-iconContent">
-                                                    <div class="tab-pane fade show active" id="v-tab-icon-1">
-                                                        <h5 class="h5">Terminal Output</h5>
-                                                        <div class="bg-dark text-light p-3 rounded">
-                                                            <code>xivig --status: active</code>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane fade" id="v-tab-icon-2">
-                                                        <h5 class="h5">EmailJS Bridge</h5>
-                                                        <p class="text-muted">Contact functionality ready for
-                                                            distribution.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{/admin-layout}}

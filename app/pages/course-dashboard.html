@@ -1,137 +1,217 @@
-{{#> admin-layout title="Course Dashboard" parentTitle="Learning" }}
+{{#> admin-layout title="Course Dashboard" parentTitle="Learning" actionText="Browse catalog" }}
 
-<div class="course-module">
-    <header class="text-center mb-5">
-        <h1 class="fw-800 display-6 mb-4">Education, talents, and career<br><span class="text-primary">opportunities in
-                one place.</span></h1>
-        <div class="col-lg-6 mx-auto">
-            <div class="header__search-wrapper w-100 py-2">
-                <i class="bi bi-search header__search-icon"></i>
-                <input type="text" class="header__search-input w-100" placeholder="Search your knowledge base...">
-            </div>
-        </div>
-    </header>
-
-    <div class="mb-5">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h4 class="fw-bold mb-0">My Courses <span
-                    class="badge rounded-pill bg-light text-muted fw-normal ms-2 border">6 Active</span></h4>
-            <div class="btn-group shadow-sm bg-white rounded-3 p-1">
-                <button class="btn btn-sm btn-light active rounded-2">Grid</button>
-                <button class="btn btn-sm btn-white rounded-2 text-muted border-0">List</button>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="course-card">
-                    <div class="course-img-wrapper">
-                        <img src="/app/src/images/product-4.jpg" alt="Music">
-                    </div>
-                    <div class="d-flex justify-content-between mb-2">
-                        <span class="badge-category">Music Production</span>
-                        <span class="small fw-bold text-warning"><i class="bi bi-star-fill me-1"></i>4.8</span>
-                    </div>
-                    <h5 class="fw-bold">Basics to Advanced</h5>
-                    <p class="text-muted small">Deep dive into music theory, mixing, and professional mastering
-                        workflows.</p>
-
-                    <div class="thin-progress progress">
-                        <div class="progress-bar" style="width: 45%"></div>
-                    </div>
-
-                    <div class="d-flex justify-content-between align-items-center">
-                        <button class="btn btn-light btn-sm rounded-pill px-3">Reset</button>
-                        <a href="course-interface.html" class="btn btn-primary btn-sm rounded-pill px-3">Continue <i
-                                class="bi bi-chevron-right ms-1"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="course-card">
-                    <div class="course-img-wrapper">
-                        <img src="/app/src/images/product-2.jpg" alt="Art">
-                    </div>
-                    <div class="d-flex justify-content-between mb-2">
-                        <span class="badge-category" style="color: #ea580c; background: rgba(234, 88, 12, 0.1);">Fine
-                            Art</span>
-                        <span class="small fw-bold text-warning"><i class="bi bi-star-fill me-1"></i>5.0</span>
-                    </div>
-                    <h5 class="fw-bold">Art & Drawing</h5>
-                    <p class="text-muted small">Master the fundamentals of anatomy, perspective, and color theory.</p>
-
-                    <div class="thin-progress progress">
-                        <div class="progress-bar bg-success" style="width: 100%"></div>
-                    </div>
-
-                    <button
-                        class="btn btn-outline-secondary w-100 rounded-pill fw-bold border-dashed">Completed</button>
-                </div>
-            </div>
-
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="course-card">
-                    <div class="course-img-wrapper">
-                        <img src="/app/src/images/product-3.jpg" alt="UIUX">
-                    </div>
-                    <div class="d-flex justify-content-between mb-2">
-                        <span class="badge-category" style="color: #db2777; background: rgba(219, 39, 119, 0.1);">UI/UX
-                            Design</span>
-                        <span class="small fw-bold text-warning"><i class="bi bi-star-fill me-1"></i>4.6</span>
-                    </div>
-                    <h5 class="fw-bold">Basics Fundamentals</h5>
-                    <p class="text-muted small">Develop a systematic approach to user interface and interactive systems.
+<div class="course-module pb-4">
+    <!-- 1. Hero Search & Overview Banner -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 mb-4 bg-body overflow-hidden">
+        <div class="card-body p-4 p-md-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-7">
+                    <span class="badge bg-primary bg-opacity-10 text-primary extra-small fw-bold px-3 py-1.5 rounded-pill mb-3">
+                        <i class="bi bi-mortarboard me-1"></i> Continuous Engineering Learning
+                    </span>
+                    <h2 class="fw-bold text-main mb-2">Elevate your architectural mastery.</h2>
+                    <p class="text-muted extra-small mb-4" style="max-width: 520px;">
+                        Explore production-ready roadmaps across distributed systems, design tokens, Vanilla JS optimizations, and cloud deployments.
                     </p>
-
-                    <div class="thin-progress progress">
-                        <div class="progress-bar" style="width: 25%"></div>
+                    <div class="input-group modern-input-group bg-body-tertiary rounded-pill px-3.5 py-1.5 border border-secondary border-opacity-15 shadow-2xs" style="max-width: 480px;">
+                        <span class="input-group-text bg-transparent border-0 p-0 me-2"><i class="bi bi-search text-muted"></i></span>
+                        <input type="text" class="form-control border-0 bg-transparent shadow-none extra-small" placeholder="Search courses, frameworks, or instructors...">
+                        <button class="btn btn-sm btn-primary rounded-pill px-3.5 fw-bold extra-small">Search</button>
                     </div>
-
-                    <div class="d-flex justify-content-between align-items-center">
-                        <button class="btn btn-light btn-sm rounded-pill px-3">Start Over</button>
-                        <button class="btn btn-primary btn-sm rounded-pill px-3">Continue <i
-                                class="bi bi-chevron-right ms-1"></i></button>
+                </div>
+                <div class="col-lg-5 text-center d-none d-lg-block">
+                    <div class="p-4 rounded-4 bg-primary bg-opacity-10 d-inline-block text-primary">
+                        <i class="bi bi-journal-code" style="font-size: 5rem;"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row g-4 mb-5">
-        <div class="col-md-6" data-aos="fade-right">
-            <div class="banner-promo banner-blue shadow-sm">
-                <div>
-                    <h4 class="fw-bold">Earn a Certificate</h4>
-                    <p class="mb-0 opacity-75">Professional programs designed for career growth.</p>
+    <!-- 2. KPI Telemetry Row (4 Cards) -->
+    <div class="row g-4 mb-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-2.5">
+                    <span class="text-muted extra-small fw-bold text-uppercase">Enrolled Courses</span>
+                    <div class="rounded-3 bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+                        <i class="bi bi-play-circle fs-5"></i>
+                    </div>
                 </div>
-                <button class="btn btn-primary rounded-pill px-4">View</button>
+                <h3 class="fw-bold mb-1 text-main">6</h3>
+                <div class="text-muted extra-small"><span class="text-primary fw-semibold">3 In progress</span> &bull; Active sprint</div>
             </div>
         </div>
-        <div class="col-md-6" data-aos="fade-left">
-            <div class="banner-promo banner-coral shadow-sm">
-                <div>
-                    <h4 class="fw-bold">Best Rated Courses</h4>
-                    <p class="mb-0 opacity-75">Explore top-tier education from world experts.</p>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-2.5">
+                    <span class="text-muted extra-small fw-bold text-uppercase">Time Invested</span>
+                    <div class="rounded-3 bg-info bg-opacity-10 text-info d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+                        <i class="bi bi-clock-history fs-5"></i>
+                    </div>
                 </div>
-                <button class="btn btn-danger rounded-pill px-4">Enroll</button>
+                <h3 class="fw-bold mb-1 text-main">42.5 hrs</h3>
+                <div class="text-muted extra-small"><span class="text-info fw-semibold">+4.2 hrs</span> this week</div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-2.5">
+                    <span class="text-muted extra-small fw-bold text-uppercase">Certifications</span>
+                    <div class="rounded-3 bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+                        <i class="bi bi-patch-check fs-5"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-1 text-main">4</h3>
+                <div class="text-muted extra-small"><span class="text-success fw-semibold">Verified</span> credentialed</div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-2.5">
+                    <span class="text-muted extra-small fw-bold text-uppercase">Average Score</span>
+                    <div class="rounded-3 bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+                        <i class="bi bi-star-half fs-5"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-1 text-main">94%</h3>
+                <div class="text-muted extra-small"><span class="text-warning fw-semibold">Top 5%</span> percentile</div>
             </div>
         </div>
     </div>
 
-    <div class="glass-box text-center p-5 mb-5" data-aos="zoom-in">
-        <div class="icon-box mx-auto mb-4"
-            style="width: 64px; height: 64px; background: var(--bg-subtle); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--elite-primary);">
-            <i class="bi bi-gift-fill"></i>
+    <!-- 3. Filter Navigation & View Mode -->
+    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+            <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 active fw-semibold">All Disciplines</button>
+            <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-semibold">UI/UX Design</button>
+            <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-semibold">Cloud Architecture</button>
+            <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 fw-semibold">Vanilla JS &amp; DOM</button>
         </div>
-        <h2 class="fw-800 mb-3">Today's Free Courses</h2>
-        <p class="text-muted mx-auto mb-4" style="max-width: 600px;">
-            Access 284+ Free Online courses from top tutors and industry leaders.
-            Start or advance your career skills today at no cost.
-        </p>
-        <button class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow-lg">
-            Explore Premium Free Courses
-        </button>
+        <div class="text-muted extra-small">Showing 3 of 6 enrolled courses</div>
+    </div>
+
+    <!-- 4. Course Cards Grid -->
+    <div class="row g-4 mb-4">
+        <!-- Course 1 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 overflow-hidden h-100 bg-body d-flex flex-column">
+                <div class="position-relative" style="height: 180px;">
+                    <img src="/app/src/images/product-4.jpg" class="w-100 h-100 object-fit-cover" alt="Course cover">
+                    <span class="badge bg-body bg-opacity-90 text-main border border-secondary border-opacity-15 rounded-pill px-2.5 py-1 extra-small fw-bold position-absolute top-0 start-0 m-3 shadow-2xs backdrop-blur">
+                        Audio Engineering
+                    </span>
+                    <span class="badge bg-warning bg-opacity-90 text-dark rounded-pill px-2 py-1 extra-small fw-bold position-absolute top-0 end-0 m-3 shadow-2xs backdrop-blur">
+                        <i class="bi bi-star-fill text-dark me-1"></i> 4.8
+                    </span>
+                </div>
+                <div class="card-body p-4 d-flex flex-column flex-grow-1">
+                    <h6 class="fw-bold mb-1.5 text-main fs-15">
+                        <a href="course-interface.html" class="text-main text-decoration-none hover-text-primary">Signal Processing &amp; Audio Mastery</a>
+                    </h6>
+                    <p class="text-muted extra-small mb-3">Master digital signal processing, sound staging, and real-time audio buffer streaming.</p>
+
+                    <div class="d-flex align-items-center justify-content-between text-muted extra-small mb-2">
+                        <span>Sprint Progress</span>
+                        <span class="fw-bold text-primary">45%</span>
+                    </div>
+                    <div class="progress mb-3" style="height: 5px; background: rgba(79, 107, 255, 0.12); border-radius: 999px; overflow: hidden;">
+                        <div class="progress-bar rounded-pill" style="width: 45%; background: #4F6BFF;"></div>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between pt-3 border-top border-secondary border-opacity-10 mt-auto">
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="/app/src/images/photo1.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="26" height="26" alt="Instructor">
+                            <span class="text-muted extra-small">Marcus Vance</span>
+                        </div>
+                        <a href="course-interface.html" class="btn btn-sm btn-primary rounded-pill px-3 extra-small fw-bold d-flex align-items-center gap-1">
+                            Continue <i class="bi bi-chevron-right small"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 overflow-hidden h-100 bg-body d-flex flex-column">
+                <div class="position-relative" style="height: 180px;">
+                    <img src="/app/src/images/product-2.jpg" class="w-100 h-100 object-fit-cover" alt="Course cover">
+                    <span class="badge bg-body bg-opacity-90 text-main border border-secondary border-opacity-15 rounded-pill px-2.5 py-1 extra-small fw-bold position-absolute top-0 start-0 m-3 shadow-2xs backdrop-blur">
+                        Design Systems
+                    </span>
+                    <span class="badge bg-warning bg-opacity-90 text-dark rounded-pill px-2 py-1 extra-small fw-bold position-absolute top-0 end-0 m-3 shadow-2xs backdrop-blur">
+                        <i class="bi bi-star-fill text-dark me-1"></i> 5.0
+                    </span>
+                </div>
+                <div class="card-body p-4 d-flex flex-column flex-grow-1">
+                    <h6 class="fw-bold mb-1.5 text-main fs-15">
+                        <a href="course-interface.html" class="text-main text-decoration-none hover-text-primary">Figma to SCSS Semantic Tokens</a>
+                    </h6>
+                    <p class="text-muted extra-small mb-3">Architect enterprise token pipelines from design files to live browser-computed CSS custom properties.</p>
+
+                    <div class="d-flex align-items-center justify-content-between text-muted extra-small mb-2">
+                        <span>Sprint Progress</span>
+                        <span class="fw-bold text-success">100%</span>
+                    </div>
+                    <div class="progress mb-3" style="height: 5px; background: rgba(18, 185, 129, 0.12); border-radius: 999px; overflow: hidden;">
+                        <div class="progress-bar rounded-pill" style="width: 100%; background: #12B981;"></div>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between pt-3 border-top border-secondary border-opacity-10 mt-auto">
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="/app/src/images/photo2.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="26" height="26" alt="Instructor">
+                            <span class="text-muted extra-small">Devonne Wallbridge</span>
+                        </div>
+                        <span class="badge bg-success-subtle text-success extra-small fw-bold px-3 py-1.5 rounded-pill">
+                            <i class="bi bi-check2-circle me-1"></i> Completed
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 overflow-hidden h-100 bg-body d-flex flex-column">
+                <div class="position-relative" style="height: 180px;">
+                    <img src="/app/src/images/product-3.jpg" class="w-100 h-100 object-fit-cover" alt="Course cover">
+                    <span class="badge bg-body bg-opacity-90 text-main border border-secondary border-opacity-15 rounded-pill px-2.5 py-1 extra-small fw-bold position-absolute top-0 start-0 m-3 shadow-2xs backdrop-blur">
+                        UI/UX Architecture
+                    </span>
+                    <span class="badge bg-warning bg-opacity-90 text-dark rounded-pill px-2 py-1 extra-small fw-bold position-absolute top-0 end-0 m-3 shadow-2xs backdrop-blur">
+                        <i class="bi bi-star-fill text-dark me-1"></i> 4.9
+                    </span>
+                </div>
+                <div class="card-body p-4 d-flex flex-column flex-grow-1">
+                    <h6 class="fw-bold mb-1.5 text-main fs-15">
+                        <a href="course-interface.html" class="text-main text-decoration-none hover-text-primary">UI/UX Basic Fundamentals</a>
+                    </h6>
+                    <p class="text-muted extra-small mb-3">Systematic approach to information hierarchy, optical spacing, typography rhythms, and telemetry UX.</p>
+
+                    <div class="d-flex align-items-center justify-content-between text-muted extra-small mb-2">
+                        <span>Sprint Progress</span>
+                        <span class="fw-bold text-primary">25%</span>
+                    </div>
+                    <div class="progress mb-3" style="height: 5px; background: rgba(79, 107, 255, 0.12); border-radius: 999px; overflow: hidden;">
+                        <div class="progress-bar rounded-pill" style="width: 25%; background: #4F6BFF;"></div>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between pt-3 border-top border-secondary border-opacity-10 mt-auto">
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="/app/src/images/testimonials-jane.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="26" height="26" alt="Instructor">
+                            <span class="text-muted extra-small">Devonne Wallbridge</span>
+                        </div>
+                        <a href="course-interface.html" class="btn btn-sm btn-primary rounded-pill px-3 extra-small fw-bold d-flex align-items-center gap-1">
+                            Continue <i class="bi bi-chevron-right small"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

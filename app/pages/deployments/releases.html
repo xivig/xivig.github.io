@@ -1,78 +1,320 @@
 {{#> admin-layout title="Releases" parentTitle="Pipeline" }}
 
-<div class="row g-4 mb-5">
-    <div class="col-md-6">
-        <div class="card border-0 shadow-sm p-4 rounded-4 bg-dark text-white">
-            <p class="small fw-bold text-uppercase opacity-75 mb-1">Latest Stable</p>
-            <h3 class="fw-black mb-1">v2.4.0</h3>
-            <span class="text-success extra-small fw-bold"><i class="bi bi-patch-check me-1"></i> Production
-                Ready</span>
+<div class="releases-module">
+    <!-- Top Telemetry Row -->
+    <div class="row g-4 mb-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="text-muted extra-small fw-bold text-uppercase tracking-wider">Latest Production</span>
+                    <div class="rounded-circle bg-success-subtle text-success d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <i class="bi bi-patch-check-fill fs-5"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-1 text-main">v2.4.0</h3>
+                <div class="d-flex align-items-center gap-1.5 text-muted extra-small">
+                    <span class="text-success fw-bold"><i class="bi bi-shield-check"></i> 100% Passing</span>
+                    <span>&bull; Deployed 2d ago</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="text-muted extra-small fw-bold text-uppercase tracking-wider">Upcoming Milestone</span>
+                    <div class="rounded-circle bg-primary-subtle text-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <i class="bi bi-flag-fill fs-5"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-1 text-main">v2.5.0-rc1</h3>
+                <div class="d-flex align-items-center gap-1.5 text-muted extra-small">
+                    <span class="text-primary fw-bold"><i class="bi bi-arrow-repeat"></i> In QA Testing</span>
+                    <span>&bull; ETA Nov 15</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="text-muted extra-small fw-bold text-uppercase tracking-wider">Sprint Velocity</span>
+                    <div class="rounded-circle bg-info-subtle text-info d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <i class="bi bi-lightning-charge-fill fs-5"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-1 text-main">18 Ships</h3>
+                <div class="d-flex align-items-center gap-1.5 text-muted extra-small">
+                    <span class="text-success fw-bold"><i class="bi bi-graph-up-arrow"></i> +24%</span>
+                    <span>&bull; In past 30 days</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="text-muted extra-small fw-bold text-uppercase tracking-wider">Pipeline Health</span>
+                    <div class="rounded-circle bg-warning-subtle text-warning d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <i class="bi bi-cpu-fill fs-5"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-1 text-main">99.98%</h3>
+                <div class="d-flex align-items-center gap-1.5 text-muted extra-small">
+                    <span class="text-success fw-bold"><i class="bi bi-check-all"></i> Zero downtime</span>
+                    <span>&bull; Edge verified</span>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="card border-0 shadow-sm p-4 rounded-4 bg-light">
-            <p class="text-muted small fw-bold text-uppercase mb-1">Next Release</p>
-            <h3 class="fw-black mb-1">v2.5.0-rc1</h3>
-            <span class="text-primary extra-small fw-bold">In Testing</span>
+
+    <!-- Filter Toolbar -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-3 mb-4 bg-body">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+                <button type="button" class="btn btn-primary btn-sm rounded-pill px-3 release-filter-btn active" data-filter="all">All Releases</button>
+                <button type="button" class="btn btn-light border border-secondary border-opacity-15 btn-sm rounded-pill px-3 release-filter-btn" data-filter="stable">Stable</button>
+                <button type="button" class="btn btn-light border border-secondary border-opacity-15 btn-sm rounded-pill px-3 release-filter-btn" data-filter="rc">Pre-releases</button>
+                <button type="button" class="btn btn-light border border-secondary border-opacity-15 btn-sm rounded-pill px-3 release-filter-btn" data-filter="patch">Patches</button>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <div class="input-group input-group-sm" style="width: 240px;">
+                    <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15"><i class="bi bi-search"></i></span>
+                    <input type="text" class="form-control" id="releaseSearchInput" placeholder="Filter by version or tag...">
+                </div>
+                <button class="btn btn-outline-primary btn-sm rounded-pill px-3 d-flex align-items-center gap-1.5" onclick="alert('Release tag generation modal opened');">
+                    <i class="bi bi-tag-fill"></i> New Release
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Connected Chronological Timeline Rail -->
+    <div class="timeline-releases position-relative ps-4 ps-md-5">
+        <!-- Vertical Spine Line -->
+        <div class="position-absolute start-0 top-0 bottom-0 ms-2 ms-md-3 border-start border-2 border-primary border-opacity-25" style="z-index: 1;"></div>
+
+        <!-- Release 1: v2.4.0 (Stable) -->
+        <div class="release-item position-relative mb-5" data-category="stable">
+            <!-- Timeline Bead -->
+            <div class="position-absolute start-0 top-0 ms-n3 ms-md-n3 mt-1 rounded-circle bg-success text-white d-flex align-items-center justify-content-center shadow" style="width: 28px; height: 28px; z-index: 2; margin-left: -14px !important;">
+                <i class="bi bi-check-lg small"></i>
+            </div>
+
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 ms-2 ms-md-3 bg-body">
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pb-3 mb-3 border-bottom border-secondary border-opacity-10">
+                    <div>
+                        <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
+                            <h4 class="fw-bold mb-0 text-main fs-18">Version 2.4.0</h4>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Latest Production</span>
+                            <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Architecture OS</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 text-muted extra-small">
+                            <span><i class="bi bi-calendar3 me-1"></i> Oct 12, 2026</span>
+                            <span>&bull;</span>
+                            <span class="font-monospace text-primary fw-semibold"><i class="bi bi-git me-1"></i> commit 7a1b2c3</span>
+                            <span>&bull;</span>
+                            <span>Deploy duration: <strong>1m 42s</strong></span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <a href="https://github.com" target="_blank" class="btn btn-sm btn-outline-secondary rounded-pill px-3 extra-small">
+                            <i class="bi bi-file-earmark-zip me-1"></i> Source (.zip)
+                        </a>
+                        <a href="https://github.com" target="_blank" class="btn btn-sm btn-outline-secondary rounded-pill px-3 extra-small">
+                            <i class="bi bi-journal-code me-1"></i> Release Notes
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Release Content Breakdown -->
+                <div class="row g-4 mb-3">
+                    <div class="col-lg-6">
+                        <h6 class="fw-bold text-main fs-13 text-uppercase tracking-wider mb-2.5 d-flex align-items-center gap-1.5">
+                            <span class="badge bg-primary rounded-pill p-1"></span> New Features & Architectural Innovations
+                        </h6>
+                        <ul class="list-unstyled mb-0 d-flex flex-column gap-2 text-secondary small">
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="bi bi-stars text-primary mt-0.5"></i>
+                                <div><strong>Elite Modular Architecture:</strong> Migrated entire application shell to dynamic code-splitting with sub-150KB entry chunks.</div>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="bi bi-stars text-primary mt-0.5"></i>
+                                <div><strong>Interactive Kanban & Sprint Hub:</strong> Complete SortableJS drag-and-drop workflow with dynamic modal creation and column WIP counters.</div>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="bi bi-stars text-primary mt-0.5"></i>
+                                <div><strong>Atelier Design System:</strong> Comprehensive CSS custom properties token mapping with seamless dark mode switching.</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <h6 class="fw-bold text-main fs-13 text-uppercase tracking-wider mb-2.5 d-flex align-items-center gap-1.5">
+                            <span class="badge bg-success rounded-pill p-1"></span> Performance & Bug Resolutions
+                        </h6>
+                        <ul class="list-unstyled mb-0 d-flex flex-column gap-2 text-secondary small">
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="bi bi-check2-circle text-success mt-0.5"></i>
+                                <div><strong>Render-Blocking Script Pruning:</strong> Removed 6.5MB of redundant CDN head scripts to achieve instant First Contentful Paint.</div>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="bi bi-check2-circle text-success mt-0.5"></i>
+                                <div><strong>Zero Layout Shifts:</strong> Enforced fractional padding utilities (.p-3.5, .p-4.5) ensuring comfortable card boundaries.</div>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="bi bi-check2-circle text-success mt-0.5"></i>
+                                <div><strong>Pure Vanilla JS Execution:</strong> 100% elimination of legacy jQuery dependencies and outdated timedropper plugins.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Deploy Targets & Contributors -->
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-3 border-top border-secondary border-opacity-10 extra-small text-muted">
+                    <div class="d-flex align-items-center gap-2">
+                        <span>Deploy Target:</span>
+                        <span class="badge bg-body-tertiary text-main border border-secondary border-opacity-15 font-monospace">AWS us-east-1</span>
+                        <span class="badge bg-body-tertiary text-main border border-secondary border-opacity-15 font-monospace">Cloudflare Edge</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span>Shipped by:</span>
+                        <img src="/app/src/images/photo1.jpg" class="rounded-circle border border-white" width="22" height="22" alt="Alex">
+                        <span class="fw-semibold text-main">Alex Rivera</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Release 2: v2.5.0-rc1 (Pre-release) -->
+        <div class="release-item position-relative mb-5" data-category="rc">
+            <!-- Timeline Bead -->
+            <div class="position-absolute start-0 top-0 ms-n3 ms-md-n3 mt-1 rounded-circle bg-primary text-white d-flex align-items-center justify-content-center shadow" style="width: 28px; height: 28px; z-index: 2; margin-left: -14px !important;">
+                <i class="bi bi-rocket-takeoff small"></i>
+            </div>
+
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 ms-2 ms-md-3 bg-body">
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pb-3 mb-3 border-bottom border-secondary border-opacity-10">
+                    <div>
+                        <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
+                            <h4 class="fw-bold mb-0 text-main fs-18">Version 2.5.0-rc1</h4>
+                            <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Pre-release</span>
+                            <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Staging Cluster</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 text-muted extra-small">
+                            <span><i class="bi bi-calendar3 me-1"></i> Oct 28, 2026</span>
+                            <span>&bull;</span>
+                            <span class="font-monospace text-primary fw-semibold"><i class="bi bi-git me-1"></i> commit 9e4f2a1</span>
+                            <span>&bull;</span>
+                            <span>Test coverage: <strong>98.4%</strong></span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <a href="javascript:;" class="btn btn-sm btn-outline-secondary rounded-pill px-3 extra-small">
+                            <i class="bi bi-file-earmark-zip me-1"></i> Source (.zip)
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-3">
+                    <div class="col-12">
+                        <h6 class="fw-bold text-main fs-13 text-uppercase tracking-wider mb-2.5 d-flex align-items-center gap-1.5">
+                            <span class="badge bg-primary rounded-pill p-1"></span> Upcoming Innovations in Validation
+                        </h6>
+                        <ul class="list-unstyled mb-0 d-flex flex-column gap-2 text-secondary small">
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="bi bi-arrow-right-short text-primary fs-5 mt-n1"></i>
+                                <div><strong>Quill v2 Dual WYSIWYG & HTML Inspector:</strong> Integrated live side-by-side editing with instant DOM token synchronization.</div>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="bi bi-arrow-right-short text-primary fs-5 mt-n1"></i>
+                                <div><strong>Universal Table Architecture:</strong> High-performance responsive scroll wrappers and custom sorting controls.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-3 border-top border-secondary border-opacity-10 extra-small text-muted">
+                    <div class="d-flex align-items-center gap-2">
+                        <span>Target:</span>
+                        <span class="badge bg-body-tertiary text-main border border-secondary border-opacity-15 font-monospace">Staging Vercel Edge</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span>Author:</span>
+                        <img src="/app/src/images/chat-img1.jpg" class="rounded-circle border border-white" width="22" height="22" alt="Sarah">
+                        <span class="fw-semibold text-main">Sarah Connor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Release 3: v2.3.9 (Patch) -->
+        <div class="release-item position-relative mb-4" data-category="patch">
+            <!-- Timeline Bead -->
+            <div class="position-absolute start-0 top-0 ms-n3 ms-md-n3 mt-1 rounded-circle bg-body-secondary text-muted d-flex align-items-center justify-content-center border border-secondary border-opacity-25" style="width: 28px; height: 28px; z-index: 2; margin-left: -14px !important;">
+                <i class="bi bi-wrench small"></i>
+            </div>
+
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 ms-2 ms-md-3 bg-body opacity-85">
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pb-3 mb-3 border-bottom border-secondary border-opacity-10">
+                    <div>
+                        <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
+                            <h4 class="fw-bold mb-0 text-main fs-18">Version 2.3.9</h4>
+                            <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Patch Release</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 text-muted extra-small">
+                            <span><i class="bi bi-calendar3 me-1"></i> Sep 28, 2026</span>
+                            <span>&bull;</span>
+                            <span class="font-monospace text-muted fw-semibold"><i class="bi bi-git me-1"></i> commit f2e3d4c</span>
+                        </div>
+                    </div>
+                    <a href="javascript:;" class="btn btn-sm btn-outline-secondary rounded-pill px-3 extra-small">
+                        <i class="bi bi-file-earmark-zip me-1"></i> Source (.zip)
+                    </a>
+                </div>
+
+                <p class="text-secondary small mb-0">Minor security patches, CSP header compatibility upgrades, and containerized image asset optimizations for the course dashboard modules.</p>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="timeline-releases">
-    <!-- Release v2.4.0 -->
-    <div class="release-item mb-5">
-        <div class="d-flex align-items-center mb-3">
-            <div class="icon-shape bg-primary text-white rounded-circle p-2 me-3"
-                style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                <i class="bi bi-tag-fill small"></i>
-            </div>
-            <div>
-                <h5 class="fw-black mb-0">Version 2.4.0 <span
-                        class="badge bg-success small ms-2 px-3 rounded-pill extra-small">Latest</span></h5>
-                <p class="text-muted extra-small mb-0">Released on Oct 12, 2025 • <code
-                        class="extra-small">7a1b2c3</code></p>
-            </div>
-        </div>
-        <div class="card border-0 shadow-sm rounded-4 p-4 ms-5">
-            <h6 class="fw-bold mb-3 small">🚀 New Features & Improvements</h6>
-            <ul class="text-secondary small lh-lg">
-                <li><strong>Glassmorphism UI:</strong> Introduced a comprehensive set of glass-style components.</li>
-                <li><strong>Pipeline Module:</strong> New interface for tracking builds, deployments, and releases.</li>
-                <li><strong>Vite 5 Upgrade:</strong> Migrated the entire build pipeline for 30% faster HMR.</li>
-            </ul>
-            <h6 class="fw-bold mt-4 mb-3 small">🐞 Bug Fixes</h6>
-            <ul class="text-secondary small lh-lg">
-                <li>Fixed sidebar overflow issue on mobile devices.</li>
-                <li>Resolved chart resizing bug in Analytics overview.</li>
-            </ul>
-            <div class="mt-4 pt-3 border-top d-flex gap-2">
-                <button class="btn btn-white btn-sm border rounded-pill px-3"><i
-                        class="bi bi-file-earmark-zip me-2"></i>Source Code (zip)</button>
-                <button class="btn btn-white btn-sm border rounded-pill px-3"><i
-                        class="bi bi-book me-2"></i>Documentation</button>
-            </div>
-        </div>
-    </div>
+<script>
+    // Release filtering
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterBtns = document.querySelectorAll('.release-filter-btn');
+        const items = document.querySelectorAll('.release-item');
+        const searchInput = document.getElementById('releaseSearchInput');
 
-    <!-- Release v2.3.9 -->
-    <div class="release-item mb-5">
-        <div class="d-flex align-items-center mb-3">
-            <div class="icon-shape bg-light text-muted rounded-circle p-2 me-3"
-                style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                <i class="bi bi-tag small"></i>
-            </div>
-            <div>
-                <h5 class="fw-black mb-0 text-muted">Version 2.3.9</h5>
-                <p class="text-muted extra-small mb-0">Released on Sep 28, 2025 • <code
-                        class="extra-small">f2e3d4c</code></p>
-            </div>
-        </div>
-        <div class="card border-0 shadow-sm rounded-4 p-4 ms-5 opacity-75">
-            <h6 class="fw-bold mb-3 small">🔧 Maintenance Update</h6>
-            <p class="text-secondary small">Minor security patches and performance optimizations for the course
-                dashboard modules.</p>
-        </div>
-    </div>
-</div>
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('btn-primary', 'active');
+                    b.classList.add('btn-light', 'border');
+                });
+                btn.classList.remove('btn-light', 'border');
+                btn.classList.add('btn-primary', 'active');
+
+                const filter = btn.dataset.filter;
+                items.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const q = e.target.value.toLowerCase().trim();
+                items.forEach(item => {
+                    const txt = item.textContent.toLowerCase();
+                    item.style.display = (!q || txt.includes(q)) ? '' : 'none';
+                });
+            });
+        }
+    });
+</script>
 
 {{/admin-layout}}

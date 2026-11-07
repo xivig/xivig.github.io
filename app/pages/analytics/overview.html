@@ -1,90 +1,361 @@
-{{#> admin-layout title="Analytics Overview" parentTitle="Analytics" }}
+{{#> admin-layout title="Analytics Overview" parentTitle="Analytics" actionText="Export Report" }}
 
+<!-- 1. Top KPI Telemetry Row -->
 <div class="row g-4 mb-4">
+    <!-- KPI 1: Active Sessions -->
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box h-100">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">GLOBAL SESSIONS</span>
+                <div class="stat-card__icon stat-card__icon--primary">
+                    <i class="bi bi-activity"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">142,550</h3>
+                    <div class="stat-card__label">Active Network Architects</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-arrow-up-right"></i> +14.2%
+                </span>
+                <span class="stat-card__context">vs last 30 days</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- KPI 2: Pipeline Velocity -->
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box h-100">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">DEPLOY VELOCITY</span>
+                <div class="stat-card__icon stat-card__icon--success">
+                    <i class="bi bi-speedometer2"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">99.98%</h3>
+                    <div class="stat-card__label">Cluster SLA Uptime</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-arrow-up-right"></i> +0.4%
+                </span>
+                <span class="stat-card__context">across 142 edge nodes</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- KPI 3: Project Completion -->
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box h-100">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">COMPLETION RATE</span>
+                <div class="stat-card__icon stat-card__icon--info">
+                    <i class="bi bi-check2-circle"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">84.6%</h3>
+                    <div class="stat-card__label">Sprint Milestones Met</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-arrow-up-right"></i> +8.2%
+                </span>
+                <span class="stat-card__context">42 closed releases</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- KPI 4: Monthly Revenue -->
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box h-100">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">MONTHLY ARR</span>
+                <div class="stat-card__icon stat-card__icon--warning">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">$52,800</h3>
+                    <div class="stat-card__label">Run Rate Expansion</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-arrow-up-right"></i> +22.4%
+                </span>
+                <span class="stat-card__context">net retention 118%</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 2. Main Analytics Rows -->
+<div class="row g-4 mb-4">
+    <!-- Growth Area Chart -->
     <div class="col-lg-8">
-        <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
-            <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="card card-box border-0 shadow-sm p-4 h-100">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
                 <div>
-                    <h5 class="fw-black mb-1">Growth Performance</h5>
-                    <p class="text-muted extra-small mb-0">Platform usage and project velocity</p>
+                    <h5 class="fw-bold mb-1 text-main">Growth &amp; Velocity Performance</h5>
+                    <p class="text-muted extra-small mb-0">Platform requests, deployment frequency, and capacity headroom</p>
                 </div>
                 <div class="dropdown">
-                    <button class="btn btn-light btn-sm rounded-pill border px-3 extra-small fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown">Last 30 Days</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item extra-small" href="#">Last 7 Days</a></li>
-                        <li><a class="dropdown-item extra-small" href="#">Last 3 Months</a></li>
+                    <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 py-1.5 extra-small fw-bold dropdown-toggle" type="button" id="growthPeriodDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Last 30 Days
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3">
+                        <li><a class="dropdown-item extra-small growth-period-select" href="#" data-period="7d">Last 7 Days</a></li>
+                        <li><a class="dropdown-item extra-small growth-period-select active" href="#" data-period="30d">Last 30 Days</a></li>
+                        <li><a class="dropdown-item extra-small growth-period-select" href="#" data-period="90d">Last 3 Months</a></li>
                     </ul>
                 </div>
             </div>
-            <!-- Chart Placeholder (Uses existing library styles) -->
-            <div id="growthChart" class="chart-container-lg"></div>
+            
+            <div id="growthChart" style="min-height: 340px;"></div>
         </div>
     </div>
+
+    <!-- Conversion & Architecture Status Panel -->
     <div class="col-lg-4">
-        <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-primary text-white position-relative overflow-hidden">
+        <div class="card border-0 shadow-sm rounded-4 p-4 h-100 position-relative overflow-hidden" style="background: linear-gradient(135deg, var(--xv-brand, #4F6BFF) 0%, #3046ba 100%); color: #FFFFFF;">
             <div class="position-absolute top-0 end-0 p-4 opacity-10">
-                <i class="bi bi-graph-up-arrow icon-xl"></i>
+                <i class="bi bi-graph-up-arrow" style="font-size: 8rem; line-height: 1;"></i>
             </div>
-            <div class="position-relative">
-                <h5 class="fw-bold mb-4">Conversion Summary</h5>
-                <div class="mb-4">
-                    <p class="extra-small fw-bold opacity-75 text-uppercase mb-1">Project Completion</p>
-                    <h2 class="fw-black mb-1">84%</h2>
-                    <div class="progress bg-white bg-opacity-20 progress-xs">
-                        <div class="progress-bar bg-white" style="width: 84%"></div>
+            <div class="position-relative z-1 d-flex flex-column justify-content-between h-100">
+                <div>
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <span class="badge rounded-pill bg-white bg-opacity-20 text-white px-2.5 py-1 extra-small fw-bold">
+                            <i class="bi bi-shield-check me-1"></i> REAL-TIME TELEMETRY
+                        </span>
+                        <span class="extra-small fw-semibold text-white-50">SLA 99.98%</span>
+                    </div>
+                    
+                    <h5 class="fw-black text-white mb-4">Conversion &amp; Velocity Hub</h5>
+
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="extra-small fw-bold text-uppercase text-white-50">Sprint Execution</span>
+                            <span class="fw-bold text-white small">84.6%</span>
+                        </div>
+                        <div class="progress bg-white bg-opacity-20" style="height: 6px; border-radius: 999px;">
+                            <div class="progress-bar bg-white" style="width: 84.6%; border-radius: 999px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="extra-small fw-bold text-uppercase text-white-50">Architect Satisfaction</span>
+                            <span class="fw-bold text-white small">4.92 / 5.0</span>
+                        </div>
+                        <div class="progress bg-white bg-opacity-20" style="height: 6px; border-radius: 999px;">
+                            <div class="progress-bar bg-warning" style="width: 98.4%; border-radius: 999px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="extra-small fw-bold text-uppercase text-white-50">Node Health Index</span>
+                            <span class="fw-bold text-white small">99.99%</span>
+                        </div>
+                        <div class="progress bg-white bg-opacity-20" style="height: 6px; border-radius: 999px;">
+                            <div class="progress-bar bg-success" style="width: 99.99%; border-radius: 999px;"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="mb-4">
-                    <p class="extra-small fw-bold opacity-75 text-uppercase mb-1">Client Satisfaction</p>
-                    <h2 class="fw-black mb-1">4.9/5.0</h2>
-                </div>
-                <div>
-                    <p class="extra-small fw-bold opacity-75 text-uppercase mb-1">Monthly Revenue</p>
-                    <h2 class="fw-black mb-0">$42,500</h2>
+
+                <div class="pt-4 border-top border-white border-opacity-15 mt-4 d-flex align-items-center justify-content-between">
+                    <div>
+                        <small class="d-block extra-small text-white-50">Active Region</small>
+                        <strong class="text-white small">us-east-1 &bull; 14 Nodes</strong>
+                    </div>
+                    <a href="system-metrics.html" class="btn btn-sm btn-white text-primary rounded-pill px-3 py-1.5 extra-small fw-bold shadow-sm">
+                        View Node Health
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- 3. Bottom Row: User Distribution & Velocity Table -->
 <div class="row g-4">
-    <div class="col-md-4">
-        <div class="card border-0 shadow-sm rounded-4 p-4">
-            <h6 class="fw-black mb-4 small text-uppercase text-muted">User Distribution</h6>
-            <div id="userDistChart" class="chart-container-md"></div>
+    <!-- User Regional Distribution -->
+    <div class="col-lg-4">
+        <div class="card card-box border-0 shadow-sm p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0 text-main small text-uppercase" style="letter-spacing: 0.05em;">User Distribution</h6>
+                <span class="badge bg-primary-subtle text-primary rounded-pill extra-small px-2 py-0.5 fw-bold">Live</span>
+            </div>
+            <div id="userDistChart" style="min-height: 270px;"></div>
         </div>
     </div>
-    <div class="col-md-8">
-        <div class="card border-0 shadow-sm rounded-4 p-4">
-            <h6 class="fw-black mb-4 small text-uppercase text-muted">Project Velocity by Category</h6>
+
+    <!-- Category Velocity & Active Projects -->
+    <div class="col-lg-8">
+        <div class="card card-box border-0 shadow-sm p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h6 class="fw-bold mb-1 text-main small text-uppercase" style="letter-spacing: 0.05em;">Project Velocity by Category</h6>
+                    <small class="text-muted extra-small">Cross-discipline engineering delivery rates and active pipeline count</small>
+                </div>
+                <a href="project-list.html" class="btn btn-outline-secondary btn-sm rounded-pill px-3 py-1 extra-small fw-semibold">
+                    View All Projects
+                </a>
+            </div>
+
             <div class="table-responsive">
-                <table class="table table-borderless align-middle mb-0">
-                    <thead class="extra-small text-muted fw-bold">
+                <table class="table align-middle mb-0">
+                    <thead class="extra-small text-muted fw-bold border-bottom">
                         <tr>
-                            <th>Category</th>
-                            <th>Active</th>
-                            <th>Completed</th>
-                            <th>Trend</th>
+                            <th class="ps-2">CATEGORY</th>
+                            <th>LEAD ARCHITECT</th>
+                            <th>ACTIVE</th>
+                            <th>COMPLETED</th>
+                            <th>VELOCITY RATE</th>
+                            <th class="text-end pe-2">TREND</th>
                         </tr>
                     </thead>
                     <tbody class="small">
-                        <tr>
-                            <td><span class="fw-bold">Web Development</span></td>
-                            <td>12</td>
-                            <td>45</td>
-                            <td class="text-success"><i class="bi bi-arrow-up-right me-1"></i> +12%</td>
+                        <tr class="border-bottom border-secondary border-opacity-10">
+                            <td class="ps-2">
+                                <div class="d-flex align-items-center gap-2.5">
+                                    <div class="rounded-3 bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center" style="width: 34px; height: 34px;">
+                                        <i class="bi bi-window-sidebar"></i>
+                                    </div>
+                                    <div>
+                                        <span class="fw-bold text-main d-block">Web Platforms</span>
+                                        <small class="text-muted extra-small">Vite 5 / Glassmorphism</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="/app/src/images/photo5.jpg" class="rounded-circle" width="26" height="26" alt="Alex Carter">
+                                    <span class="extra-small fw-semibold text-main">Alex Carter</span>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-body-secondary text-body fw-bold extra-small">18 Active</span></td>
+                            <td><strong class="text-main">84</strong></td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2" style="width: 110px;">
+                                    <div class="progress flex-grow-1" style="height: 5px;">
+                                        <div class="progress-bar bg-primary" style="width: 92%"></div>
+                                    </div>
+                                    <span class="extra-small fw-bold text-primary">92%</span>
+                                </div>
+                            </td>
+                            <td class="text-end pe-2 text-success fw-bold extra-small">
+                                <i class="bi bi-arrow-up-right me-0.5"></i> +14.2%
+                            </td>
                         </tr>
-                        <tr>
-                            <td><span class="fw-bold">Mobile Apps</span></td>
-                            <td>8</td>
-                            <td>22</td>
-                            <td class="text-success"><i class="bi bi-arrow-up-right me-1"></i> +5%</td>
+
+                        <tr class="border-bottom border-secondary border-opacity-10">
+                            <td class="ps-2">
+                                <div class="d-flex align-items-center gap-2.5">
+                                    <div class="rounded-3 bg-info bg-opacity-10 text-info d-flex align-items-center justify-content-center" style="width: 34px; height: 34px;">
+                                        <i class="bi bi-phone"></i>
+                                    </div>
+                                    <div>
+                                        <span class="fw-bold text-main d-block">Mobile Applications</span>
+                                        <small class="text-muted extra-small">iOS / Android Flutter</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="/app/src/images/photo2.jpg" class="rounded-circle" width="26" height="26" alt="Sarah Connor">
+                                    <span class="extra-small fw-semibold text-main">Sarah Connor</span>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-body-secondary text-body fw-bold extra-small">12 Active</span></td>
+                            <td><strong class="text-main">49</strong></td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2" style="width: 110px;">
+                                    <div class="progress flex-grow-1" style="height: 5px;">
+                                        <div class="progress-bar bg-info" style="width: 78%"></div>
+                                    </div>
+                                    <span class="extra-small fw-bold text-info">78%</span>
+                                </div>
+                            </td>
+                            <td class="text-end pe-2 text-success fw-bold extra-small">
+                                <i class="bi bi-arrow-up-right me-0.5"></i> +8.5%
+                            </td>
                         </tr>
+
+                        <tr class="border-bottom border-secondary border-opacity-10">
+                            <td class="ps-2">
+                                <div class="d-flex align-items-center gap-2.5">
+                                    <div class="rounded-3 bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center" style="width: 34px; height: 34px;">
+                                        <i class="bi bi-bezier2"></i>
+                                    </div>
+                                    <div>
+                                        <span class="fw-bold text-main d-block">UI/UX Design Systems</span>
+                                        <small class="text-muted extra-small">Atelier / 4px Grid</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="/app/src/images/photo3.jpg" class="rounded-circle" width="26" height="26" alt="Nina Roy">
+                                    <span class="extra-small fw-semibold text-main">Nina Roy</span>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-body-secondary text-body fw-bold extra-small">24 Active</span></td>
+                            <td><strong class="text-main">112</strong></td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2" style="width: 110px;">
+                                    <div class="progress flex-grow-1" style="height: 5px;">
+                                        <div class="progress-bar bg-warning" style="width: 95%"></div>
+                                    </div>
+                                    <span class="extra-small fw-bold text-warning">95%</span>
+                                </div>
+                            </td>
+                            <td class="text-end pe-2 text-success fw-bold extra-small">
+                                <i class="bi bi-arrow-up-right me-0.5"></i> +18.9%
+                            </td>
+                        </tr>
+
                         <tr>
-                            <td><span class="fw-bold">UI/UX Design</span></td>
-                            <td>15</td>
-                            <td>68</td>
-                            <td class="text-danger"><i class="bi bi-arrow-down-right me-1"></i> -2%</td>
+                            <td class="ps-2">
+                                <div class="d-flex align-items-center gap-2.5">
+                                    <div class="rounded-3 bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center" style="width: 34px; height: 34px;">
+                                        <i class="bi bi-cpu"></i>
+                                    </div>
+                                    <div>
+                                        <span class="fw-bold text-main d-block">DevOps &amp; Edge Clouds</span>
+                                        <small class="text-muted extra-small">K8s / Terraform Edge</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="/app/src/images/photo4.jpg" class="rounded-circle" width="26" height="26" alt="Marcus Vance">
+                                    <span class="extra-small fw-semibold text-main">Marcus Vance</span>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-body-secondary text-body fw-bold extra-small">9 Active</span></td>
+                            <td><strong class="text-main">62</strong></td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2" style="width: 110px;">
+                                    <div class="progress flex-grow-1" style="height: 5px;">
+                                        <div class="progress-bar bg-success" style="width: 88%"></div>
+                                    </div>
+                                    <span class="extra-small fw-bold text-success">88%</span>
+                                </div>
+                            </td>
+                            <td class="text-end pe-2 text-success fw-bold extra-small">
+                                <i class="bi bi-arrow-up-right me-0.5"></i> +6.1%
+                            </td>
                         </tr>
                     </tbody>
                 </table>

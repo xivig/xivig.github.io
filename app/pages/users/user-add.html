@@ -1,112 +1,249 @@
 {{#> admin-layout title="Add User" parentTitle="Users" }}
 
 <div class="row justify-content-center">
-    <div class="col-lg-10">
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
-            <div class="card-header bg-white py-4 px-5 border-0">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <h4 class="fw-black text-dark mb-1">Create New User</h4>
-                        <p class="text-muted small mb-0">Onboard a new developer or client to the platform</p>
-                    </div>
-                    <button class="btn btn-light btn-sm rounded-pill px-4 border" onclick="history.back()">
-                        <i class="bi bi-arrow-left me-2"></i> Back
-                    </button>
-                </div>
+    <div class="col-xl-10">
+        <!-- Header Banner / Breadcrumb Action -->
+        <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+            <div>
+                <h3 class="fw-bold mb-1 text-main">Create Platform User</h3>
+                <p class="text-muted small mb-0">Provision account credentials, role permissions, and workspace access</p>
             </div>
-
-            <div class="card-body p-5 pt-0">
-                <form id="addUserForm">
-                    <div class="row g-4">
-                        <!-- Profile Image -->
-                        <div class="col-12 text-center mb-4">
-                            <div class="position-relative d-inline-block">
-                                <div class="icon-shape bg-light rounded-circle border p-5" style="width: 120px; height: 120px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="bi bi-camera text-muted fs-2"></i>
-                                </div>
-                                <button type="button" class="btn btn-primary btn-sm rounded-circle position-absolute bottom-0 end-0 border-white border-3" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="bi bi-plus-lg"></i>
-                                </button>
-                            </div>
-                            <p class="text-muted small mt-2">Upload Profile Picture</p>
-                        </div>
-
-                        <!-- Basic Info -->
-                        <div class="col-md-6">
-                            <label class="apple-label">Full Name</label>
-                            <input type="text" class="form-control modern-input" placeholder="e.g. John Doe" required>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="apple-label">Email Address</label>
-                            <input type="email" class="form-control modern-input" placeholder="e.g. john@example.com" required>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="apple-label">Username</label>
-                            <div class="input-group modern-input-group border rounded-3 overflow-hidden">
-                                <span class="input-group-text bg-light border-0 px-3">@</span>
-                                <input type="text" class="form-control border-0 shadow-none py-2" placeholder="johndoe">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="apple-label">User Role</label>
-                            <select class="form-select modern-input">
-                                <option selected>Select Role</option>
-                                <option value="developer">Developer</option>
-                                <option value="client">Client</option>
-                                <option value="admin">Administrator</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="apple-label">Password</label>
-                            <input type="password" class="form-control modern-input" placeholder="Minimum 8 characters">
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="apple-label">Confirm Password</label>
-                            <input type="password" class="form-control modern-input" placeholder="Repeat password">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="apple-label">Biography / Notes</label>
-                            <textarea class="form-control modern-input" rows="4" placeholder="Brief professional summary..."></textarea>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label class="apple-label">Account Permissions</label>
-                            <div class="row g-2 pt-2">
-                                <div class="col-md-4">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="permProjects" checked>
-                                        <label class="form-check-label small" for="permProjects">Access Projects</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="permFinance">
-                                        <label class="form-check-label small" for="permFinance">View Financials</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="permSupport" checked>
-                                        <label class="form-check-label small" for="permSupport">Customer Support</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 border-top pt-4 mt-5 text-end">
-                            <button type="button" class="btn btn-light rounded-pill px-5 py-2 border me-2" onclick="history.back()">Cancel</button>
-                            <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 fw-bold shadow-primary">Create Account</button>
-                        </div>
-                    </div>
-                </form>
+            <div class="d-flex align-items-center gap-2">
+                <a href="user-list.html" class="btn btn-outline-secondary btn-sm rounded-pill px-3.5">
+                    <i class="bi bi-arrow-left me-1.5"></i> Back to Directory
+                </a>
+                <button type="submit" form="addUserForm" class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm">
+                    <i class="bi bi-person-check-fill me-1.5"></i> Create User
+                </button>
             </div>
         </div>
+
+        <form id="addUserForm" onsubmit="event.preventDefault(); window.NotificationService ? window.NotificationService.success('User Created', 'New user account has been successfully provisioned.') : alert('User created successfully!');">
+            <div class="row g-4">
+                <!-- Left Column: Avatar & Basic Information -->
+                <div class="col-lg-4">
+                    <!-- Avatar Upload Pod -->
+                    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 text-center mb-4">
+                        <h6 class="fw-bold text-main mb-3 fs-14">Profile Picture</h6>
+                        <div class="position-relative d-inline-block mx-auto mb-3">
+                            <div class="rounded-circle overflow-hidden border border-2 border-primary border-opacity-25 shadow-sm d-flex align-items-center justify-content-center bg-body-tertiary" style="width: 120px; height: 120px;" id="avatarPreviewBox">
+                                <i class="bi bi-person-fill text-muted" style="font-size: 3.5rem;"></i>
+                            </div>
+                            <label for="avatarUploadInput" class="btn btn-primary btn-sm rounded-circle position-absolute bottom-0 end-0 p-0 d-flex align-items-center justify-content-center shadow" style="width: 36px; height: 36px; cursor: pointer;" title="Upload photo">
+                                <i class="bi bi-camera-fill small"></i>
+                            </label>
+                            <input type="file" id="avatarUploadInput" class="d-none" accept="image/*" onchange="const f = this.files[0]; if(f){ const r = new FileReader(); r.onload = e => document.getElementById('avatarPreviewBox').innerHTML = `<img src='${e.target.result}' class='w-100 h-100 object-fit-cover rounded-circle'>`; r.readAsDataURL(f); }">
+                        </div>
+                        <p class="text-muted extra-small mb-2">Supported formats: JPG, PNG, WEBP. Max 2MB.</p>
+                        <div class="d-flex justify-content-center gap-2">
+                            <button type="button" class="btn btn-sm btn-light border border-secondary border-opacity-15 rounded-pill px-3 extra-small" onclick="document.getElementById('avatarUploadInput').click();">Browse</button>
+                            <button type="button" class="btn btn-sm btn-light text-danger border border-secondary border-opacity-15 rounded-pill px-3 extra-small" onclick="document.getElementById('avatarPreviewBox').innerHTML = `<i class='bi bi-person-fill text-muted' style='font-size: 3.5rem;'></i>`; document.getElementById('avatarUploadInput').value='';">Remove</button>
+                        </div>
+                    </div>
+
+                    <!-- Account Quick Settings -->
+                    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4">
+                        <h6 class="fw-bold text-main mb-3 fs-14">Account Activation</h6>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" id="userStatusSwitch" checked>
+                            <label class="form-check-label fw-semibold small text-main" for="userStatusSwitch">Active Immediately</label>
+                            <div class="text-muted extra-small">Allow instant sign-in upon account provisioning</div>
+                        </div>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" id="user2FASwitch" checked>
+                            <label class="form-check-label fw-semibold small text-main" for="user2FASwitch">Enforce 2FA</label>
+                            <div class="text-muted extra-small">Require multi-factor auth on first authentication</div>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="userInviteEmail" checked>
+                            <label class="form-check-label fw-semibold small text-main" for="userInviteEmail">Send Invite Email</label>
+                            <div class="text-muted extra-small">Email temporary password & onboarding link</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Account Details, Roles, Permissions -->
+                <div class="col-lg-8">
+                    <!-- Personal & Contact Information -->
+                    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4">
+                        <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom border-secondary border-opacity-10">
+                            <i class="bi bi-person-badge text-primary fs-5"></i>
+                            <h6 class="fw-bold text-main mb-0 fs-15">Identity & Contact Information</h6>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">First Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" placeholder="e.g. John" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Last Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" placeholder="e.g. Doe" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Email Address <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-body-tertiary text-muted border-secondary border-opacity-15"><i class="bi bi-envelope"></i></span>
+                                    <input type="email" class="form-control" placeholder="john.doe@company.com" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Username <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-body-tertiary text-muted border-secondary border-opacity-15">@</span>
+                                    <input type="text" class="form-control" placeholder="johndoe" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Phone Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-body-tertiary text-muted border-secondary border-opacity-15"><i class="bi bi-telephone"></i></span>
+                                    <input type="tel" class="form-control" placeholder="+1 (555) 019-2834">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Department</label>
+                                <select class="form-select">
+                                    <option selected>Engineering</option>
+                                    <option>Design & Creative</option>
+                                    <option>Product Management</option>
+                                    <option>DevOps & Infrastructure</option>
+                                    <option>Marketing & Sales</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-semibold text-muted">Bio / Professional Summary</label>
+                                <textarea class="form-control" rows="3" placeholder="Brief summary of skills, responsibility, or project ownership..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Role & Organization Assignment -->
+                    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4">
+                        <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom border-secondary border-opacity-10">
+                            <i class="bi bi-shield-lock text-primary fs-5"></i>
+                            <h6 class="fw-bold text-main mb-0 fs-15">Platform Role & Access Tier</h6>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="p-3 border border-secondary border-opacity-15 rounded-3 bg-body-tertiary h-100 position-relative cursor-pointer">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="userRoleRadio" id="roleDeveloper" checked>
+                                        <label class="form-check-label fw-bold small text-main" for="roleDeveloper">Developer</label>
+                                    </div>
+                                    <p class="text-muted extra-small mb-0 mt-1">Full access to repositories, deployments, API keys, and sprint tasks.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-3 border border-secondary border-opacity-15 rounded-3 bg-body-tertiary h-100 position-relative cursor-pointer">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="userRoleRadio" id="roleAdmin">
+                                        <label class="form-check-label fw-bold small text-main" for="roleAdmin">Administrator</label>
+                                    </div>
+                                    <p class="text-muted extra-small mb-0 mt-1">Complete system governance, user provisioning, billing, and cluster security.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-3 border border-secondary border-opacity-15 rounded-3 bg-body-tertiary h-100 position-relative cursor-pointer">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="userRoleRadio" id="roleViewer">
+                                        <label class="form-check-label fw-bold small text-main" for="roleViewer">Client / Viewer</label>
+                                    </div>
+                                    <p class="text-muted extra-small mb-0 mt-1">Read-only oversight across project milestones, reports, and invoices.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Granular Capabilities Matrix -->
+                        <h6 class="fw-bold text-main fs-13 text-uppercase tracking-wider mt-4 mb-2.5">Granular Capabilities</h6>
+                        <div class="row g-2.5">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center justify-content-between p-2.5 rounded-3 border border-secondary border-opacity-10 bg-body">
+                                    <div>
+                                        <div class="fw-semibold small text-main">Manage Deployments</div>
+                                        <div class="text-muted extra-small">Trigger CI/CD pipelines & rollbacks</div>
+                                    </div>
+                                    <div class="form-check form-switch m-0">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center justify-content-between p-2.5 rounded-3 border border-secondary border-opacity-10 bg-body">
+                                    <div>
+                                        <div class="fw-semibold small text-main">Financials & Invoicing</div>
+                                        <div class="text-muted extra-small">View contracts, payouts & invoices</div>
+                                    </div>
+                                    <div class="form-check form-switch m-0">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center justify-content-between p-2.5 rounded-3 border border-secondary border-opacity-10 bg-body">
+                                    <div>
+                                        <div class="fw-semibold small text-main">Database & API Access</div>
+                                        <div class="text-muted extra-small">Generate staging tokens & queries</div>
+                                    </div>
+                                    <div class="form-check form-switch m-0">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center justify-content-between p-2.5 rounded-3 border border-secondary border-opacity-10 bg-body">
+                                    <div>
+                                        <div class="fw-semibold small text-main">User Administration</div>
+                                        <div class="text-muted extra-small">Invite, edit, or archive teammates</div>
+                                    </div>
+                                    <div class="form-check form-switch m-0">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Credentials -->
+                    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4">
+                        <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom border-secondary border-opacity-10">
+                            <i class="bi bi-key text-primary fs-5"></i>
+                            <h6 class="fw-bold text-main mb-0 fs-15">Initial Password</h6>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Password <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" id="newPassInput" placeholder="Min. 8 characters with numbers" required oninput="const v = this.value; const b = document.getElementById('passStrengthBar'); if(v.length>8 && /[0-9]/.test(v) && /[^A-Za-z0-9]/.test(v)){ b.style.width='100%'; b.className='progress-bar bg-success'; } else if(v.length>=6){ b.style.width='60%'; b.className='progress-bar bg-warning'; } else { b.style.width='25%'; b.className='progress-bar bg-danger'; }">
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-danger" id="passStrengthBar" style="width: 25%;"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-muted">Confirm Password <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" placeholder="Re-enter password" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Bar -->
+                    <div class="d-flex align-items-center justify-content-between pt-2">
+                        <a href="user-list.html" class="btn btn-light border border-secondary border-opacity-15 rounded-pill px-4">
+                            Cancel
+                        </a>
+                        <div class="d-flex gap-2">
+                            <button type="reset" class="btn btn-outline-secondary rounded-pill px-4">
+                                Reset Form
+                            </button>
+                            <button type="submit" class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm">
+                                Create Account
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 

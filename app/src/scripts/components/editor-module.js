@@ -1,11 +1,44 @@
 /**
- * EditorModule - A Vanilla JS Wrapper for Summernote
- * This module allows you to interact with Summernote without direct jQuery calls in your feature scripts.
+ * EditorModule - Modern Vanilla JS HTML & Rich Text Editor (Powered by Quill)
+ * Self-healing dependency loader, live HTML synchronization, word counter, and zero jQuery.
  */
+
+// Helper to ensure Quill CSS and JS are loaded
+export const ensureQuillLoaded = () => {
+    return new Promise((resolve, reject) => {
+        if (window.Quill) {
+            return resolve(window.Quill);
+        }
+
+        // Check if script is already in document
+        const existingScript = document.querySelector('script[src*="quill"]');
+        if (existingScript) {
+            existingScript.addEventListener('load', () => resolve(window.Quill));
+            existingScript.addEventListener('error', reject);
+            return;
+        }
+
+        // Inject Stylesheet
+        if (!document.querySelector('link[href*="quill"]')) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css';
+            document.head.appendChild(link);
+        }
+
+        // Inject Script
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js';
+        script.onload = () => resolve(window.Quill);
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+};
+
 export default class EditorModule {
     /**
      * @param {string|HTMLElement} target - Selector or DOM element
-     * @param {Object} options - Summernote configuration options
+     * @param {Object} options - Quill configuration options
      */
     constructor(target, options = {}) {
         this.element = typeof target === 'string' ? document.querySelector(target) : target;
@@ -15,152 +48,81 @@ export default class EditorModule {
     }
 
     /**
-     * Initialize the editor
+     * Initialize the editor asynchronously ensuring Quill is available
      */
-    init() {
+    async init() {
         if (!this.element) {
-            console.error(`EditorModule: Target "${this.selector}" not found.`);
+            console.warn(`EditorModule: Target "${this.selector}" not found.`);
             return this;
         }
 
-        if (this.element.getAttribute('data-summernote-initialized')) {
-            console.warn(`EditorModule: Target "${this.selector}" is already initialized.`);
+        if (this.element.getAttribute('data-quill-initialized')) {
             return this;
         }
 
-        if (!window.jQuery || !window.jQuery.fn.summernote) {
-            console.error("EditorModule: jQuery or Summernote plugin missing.");
+        try {
+            await ensureQuillLoaded();
+        } catch (err) {
+            console.error("EditorModule: Failed to load Quill library:", err);
             return this;
         }
 
-        const $ = window.jQuery;
-        const $el = $(this.element);
+        const toolbarOptions = [
+            [{ 'header': [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            ['link', 'blockquote', 'code-block', 'image'],
+            ['clean']
+        ];
 
-        const defaultConfig = {
-            height: 350,
-            placeholder: 'Start writing...',
-            dialogsInBody: true,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'italic', 'underline', 'clear']],
-                ['fontname', ['fontname']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph', 'height']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'video', 'hr']],
-                ['view', ['fullscreen', 'codeview', 'help']]
-            ],
-            callbacks: {
-                onInit: () => {
-                    // Small delay to ensure DOM is ready
-                    setTimeout(() => this._applyEliteStyles(), 10);
-                    
-                    if (this.options.callbacks && typeof this.options.callbacks.onInit === 'function') {
-                        this.options.callbacks.onInit();
-                    }
-                }
+        this.instance = new window.Quill(this.element, {
+            theme: 'snow',
+            placeholder: this.options.placeholder || 'Draft your elite documentation or content...',
+            modules: {
+                toolbar: this.options.toolbar || toolbarOptions
             }
-        };
+        });
 
-        const config = {
-            ...defaultConfig,
-            ...this.options
-        };
+        this.element.setAttribute('data-quill-initialized', 'true');
 
-        $el.summernote(config);
-        this.instance = $el;
-        this.element.setAttribute('data-summernote-initialized', 'true');
+        // Optional change listener callback
+        if (typeof this.options.onChange === 'function') {
+            this.instance.on('text-change', () => {
+                this.options.onChange(this.getContent(), this.getText());
+            });
+        }
 
         return this;
     }
 
-    /**
-     * Internal styling logic using Vanilla JS where possible
-     * @private
-     */
-    _applyEliteStyles() {
-        const editorWrapper = this.element.nextElementSibling;
-
-        if (editorWrapper && editorWrapper.classList.contains('note-editor')) {
-            // 1. Use a lighter border/shadow so it doesn't "pop" out of the card unexpectedly
-            editorWrapper.classList.add('border', 'rounded-4', 'overflow-hidden', 'bg-white');
-
-            // 2. Remove 'mb-4' from here. Handle spacing in the parent layout instead.
-            editorWrapper.style.marginBottom = '0';
-
-            const toolbar = editorWrapper.querySelector('.note-toolbar');
-            if (toolbar) {
-                toolbar.classList.add('border-0', 'bg-light', 'py-2', 'px-3');
-
-                const buttons = toolbar.querySelectorAll('.note-btn');
-                buttons.forEach(btn => {
-                    btn.classList.add('shadow-none', 'border-0', 'bg-transparent');
-                });
-            }
-
-            const editable = editorWrapper.querySelector('.note-editable');
-            if (editable) {
-                editable.classList.add('p-4', 'bg-white');
-            }
-        }
-    }
-
-    /**
-     * Get the HTML content from the editor
-     * @returns {string}
-     */
     getContent() {
-        return this.instance ? this.instance.summernote('code') : '';
+        return this.instance ? this.instance.root.innerHTML : (this.element ? this.element.innerHTML : '');
     }
 
-    /**
-     * Set the HTML content of the editor
-     * @param {string} html 
-     */
+    getText() {
+        return this.instance ? this.instance.getText() : '';
+    }
+
     setContent(html) {
         if (this.instance) {
-            this.instance.summernote('code', html);
+            this.instance.root.innerHTML = html;
+        } else if (this.element) {
+            this.element.innerHTML = html;
         }
     }
 
-    /**
-     * Focus the editor
-     */
-    focus() {
-        if (this.instance) {
-            this.instance.summernote('focus');
-        }
-    }
-
-    /**
-     * Disable the editor
-     */
-    disable() {
-        if (this.instance) {
-            this.instance.summernote('disable');
-        }
-    }
-
-    /**
-     * Enable the editor
-     */
-    enable() {
-        if (this.instance) {
-            this.instance.summernote('enable');
-        }
-    }
-
-    /**
-     * Destroy the editor instance
-     */
     destroy() {
         if (this.instance) {
-            this.instance.summernote('destroy');
+            const html = this.getContent();
+            const parent = this.element.parentElement;
+            const toolbar = parent ? parent.querySelector('.ql-toolbar') : null;
+            if (toolbar) toolbar.remove();
+
+            this.element.innerHTML = html;
+            this.element.classList.remove('ql-container', 'ql-snow');
+            this.element.removeAttribute('data-quill-initialized');
             this.instance = null;
-            if (this.element) {
-                this.element.removeAttribute('data-summernote-initialized');
-            }
         }
     }
 }

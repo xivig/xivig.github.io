@@ -1,90 +1,133 @@
-{{#> admin-layout title="Add Project" parentTitle="Projects" }}
+{{#> admin-layout title="Add Project" parentTitle="Projects" actionText="Save project" }}
 
-<div class="row justify-content-center">
-    <div class="col-lg-10">
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
-            <div class="card-header bg-white py-4 px-5 border-0">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <h4 class="fw-black text-dark mb-1">Create New Project</h4>
-                        <p class="text-muted small mb-0">Fill in the details to start a new project initiative</p>
-                    </div>
-                    <button class="btn btn-light btn-sm rounded-pill px-4 border" onclick="history.back()">
-                        <i class="bi bi-arrow-left me-2"></i> Back
-                    </button>
-                </div>
+<div class="project-add-module pb-4">
+    <!-- Action Header -->
+    <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+        <div class="d-flex align-items-center gap-3">
+            <a href="project-list.html" class="btn btn-sm btn-light rounded-circle border shadow-2xs d-flex align-items-center justify-content-center p-0" style="width: 36px; height: 36px;">
+                <i class="bi bi-arrow-left text-muted"></i>
+            </a>
+            <div>
+                <h4 class="fw-bold mb-0 text-main">Create New Initiative</h4>
+                <p class="text-muted extra-small mb-0">Set up scope, milestones, financial allocation, and assign core engineers.</p>
             </div>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3.5 extra-small fw-semibold" onclick="history.back()">
+                Cancel
+            </button>
+            <button type="submit" form="addProjectForm" class="btn btn-sm btn-primary rounded-pill px-4 extra-small fw-bold shadow-sm d-flex align-items-center gap-1.5">
+                <i class="bi bi-check2-circle"></i> Create Project
+            </button>
+        </div>
+    </div>
 
-            <div class="card-body p-5 pt-0">
-                <form id="addProjectForm">
-                    <div class="row g-4">
-                        <!-- Project Basic Info -->
+    <form id="addProjectForm" onsubmit="event.preventDefault(); window.location.href='project-list.html';">
+        <div class="row g-4">
+            <!-- 8-Col Primary Details -->
+            <div class="col-lg-8">
+                <!-- Core Identity -->
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+                    <h6 class="fw-bold mb-3 text-main">Initiative Overview</h6>
+                    <div class="row g-3">
                         <div class="col-12">
-                            <label class="apple-label">Project Title</label>
-                            <input type="text" class="form-control modern-input" placeholder="e.g. Website Redesign 2026" required>
+                            <label class="form-label extra-small fw-bold text-muted text-uppercase">Project Title</label>
+                            <input type="text" class="form-control" placeholder="e.g. NextGen Microservices Gateway" required>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="apple-label">Client Name</label>
-                            <input type="text" class="form-control modern-input" placeholder="e.g. XIVIG Corp">
+                            <label class="form-label extra-small fw-bold text-muted text-uppercase">Client / Business Unit</label>
+                            <input type="text" class="form-control" placeholder="e.g. Enterprise Cloud Solutions" required>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="apple-label">Project Category</label>
-                            <select class="form-select modern-input">
-                                <option selected>Select Category</option>
-                                <option>Web Development</option>
-                                <option>Mobile App</option>
-                                <option>UI/UX Design</option>
-                                <option>Marketing</option>
+                            <label class="form-label extra-small fw-bold text-muted text-uppercase">Primary Category</label>
+                            <select class="form-select">
+                                <option selected>Engineering &amp; Cloud Infrastructure</option>
+                                <option>UI/UX Design System</option>
+                                <option>Mobile Application</option>
+                                <option>Security &amp; Compliance Audit</option>
                             </select>
                         </div>
 
-                        <div class="col-md-6">
-                            <label class="apple-label">Estimated Budget ($)</label>
-                            <div class="input-group modern-input-group border rounded-3 overflow-hidden">
-                                <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-currency-dollar"></i></span>
-                                <input type="number" class="form-control border-0 shadow-none py-2" placeholder="0.00">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="apple-label">Deadline</label>
-                            <input type="date" class="form-control modern-input">
-                        </div>
-
                         <div class="col-12">
-                            <label class="apple-label">Project Description</label>
-                            <textarea class="form-control modern-input" rows="5" placeholder="Outline the project scope and objectives..."></textarea>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label class="apple-label">Initial Status</label>
-                            <div class="d-flex gap-4 pt-2">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="projectStatus" id="statusPlanning" checked>
-                                    <label class="form-check-label small" for="statusPlanning">Planning</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="projectStatus" id="statusInProgress">
-                                    <label class="form-check-label small" for="statusInProgress">In Progress</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="projectStatus" id="statusOnHold">
-                                    <label class="form-check-label small" for="statusOnHold">On Hold</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 border-top pt-4 mt-5 text-end">
-                            <button type="button" class="btn btn-light rounded-pill px-5 py-2 border me-2" onclick="history.back()">Cancel</button>
-                            <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 fw-bold shadow-primary">Create Project</button>
+                            <label class="form-label extra-small fw-bold text-muted text-uppercase">Executive Summary &amp; Scope</label>
+                            <textarea class="form-control" rows="5" placeholder="Define the primary technical objectives, architectural constraints, and target outcomes..."></textarea>
                         </div>
                     </div>
-                </form>
+                </div>
+
+                <!-- Financial & Target Dates -->
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 bg-body">
+                    <h6 class="fw-bold mb-3 text-main">Budget &amp; Milestone Timeline</h6>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label extra-small fw-bold text-muted text-uppercase">Approved Total Budget ($ USD)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-body-tertiary border-end-0 extra-small text-muted"><i class="bi bi-currency-dollar"></i></span>
+                                <input type="number" class="form-control border-start-0 ps-0" placeholder="25000.00" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label extra-small fw-bold text-muted text-uppercase">Target Delivery Deadline</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4-Col Sticky Settings Rail -->
+            <div class="col-lg-4">
+                <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body sticky-top" style="top: 88px;">
+                    <h6 class="fw-bold mb-3 text-main">Status &amp; Assignment</h6>
+
+                    <div class="mb-3.5">
+                        <label class="form-label extra-small fw-bold text-muted text-uppercase">Lifecycle Status</label>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="form-check p-2.5 rounded-3 border border-secondary border-opacity-10 bg-body-tertiary d-flex align-items-center">
+                                <input class="form-check-input ms-1 me-2" type="radio" name="projectStatus" id="statusPlanning" checked>
+                                <label class="form-check-label extra-small fw-semibold text-main cursor-pointer" for="statusPlanning">
+                                    <span class="badge bg-warning-subtle text-warning extra-small fw-bold px-2 py-0.5 rounded-pill me-1.5">Planning</span> Initial Definition
+                                </label>
+                            </div>
+                            <div class="form-check p-2.5 rounded-3 border border-secondary border-opacity-10 bg-body-tertiary d-flex align-items-center">
+                                <input class="form-check-input ms-1 me-2" type="radio" name="projectStatus" id="statusInProgress">
+                                <label class="form-check-label extra-small fw-semibold text-main cursor-pointer" for="statusInProgress">
+                                    <span class="badge bg-success-subtle text-success extra-small fw-bold px-2 py-0.5 rounded-pill me-1.5">In Progress</span> Active Execution
+                                </label>
+                            </div>
+                            <div class="form-check p-2.5 rounded-3 border border-secondary border-opacity-10 bg-body-tertiary d-flex align-items-center">
+                                <input class="form-check-input ms-1 me-2" type="radio" name="projectStatus" id="statusReview">
+                                <label class="form-check-label extra-small fw-semibold text-main cursor-pointer" for="statusReview">
+                                    <span class="badge bg-info-subtle text-info extra-small fw-bold px-2 py-0.5 rounded-pill me-1.5">Review</span> QA Validation
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3.5">
+                        <label class="form-label extra-small fw-bold text-muted text-uppercase">Lead Architect</label>
+                        <select class="form-select">
+                            <option selected>Alex Morgan (Lead Architect)</option>
+                            <option>Sarah Chen (Senior UI/UX)</option>
+                            <option>David Kim (Full-Stack Engineer)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="form-label extra-small fw-bold text-muted text-uppercase">Priority Rating</label>
+                        <select class="form-select">
+                            <option>Low</option>
+                            <option selected>Medium</option>
+                            <option>High</option>
+                            <option>Urgent / Mission Critical</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 
 {{/admin-layout}}

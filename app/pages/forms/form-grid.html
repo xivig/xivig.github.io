@@ -1,204 +1,190 @@
 {{#> admin-layout title="Form Grid" parentTitle="Forms" }}
 
-<div class="grid-architect">
-    <!-- Elite Header -->
-    <div class="row g-4 mb-5">
-        <div class="col-12">
-            <div class="glass-card p-5 text-center shadow-sm border-0 position-relative overflow-hidden">
-                <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10"
-                    style="background: radial-gradient(circle at 80% 20%, var(--bs-primary) 0%, transparent 40%);"></div>
-                <span class="badge rounded-pill px-3 py-2 mb-3" style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.2);">
-                    <i class="bi bi-grid-3x3-gap me-2"></i>System Architecture
-                </span>
-                <h1 class="display-5 fw-bold mb-2">Layout Blueprint</h1>
-                <p class="text-muted lead mx-auto" style="max-width: 600px;">
-                    A high-fidelity visualization of the Bootstrap 5.3 fluid grid system with dynamic breakpoint scaling and elite design tokens.
-                </p>
+<div class="form-grid-module">
+    <!-- Header Hero -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <h4 class="fw-bold mb-0 text-main fs-18">Form Grid Systems & Multi-Column Layouts</h4>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Responsive 12-Column Blueprint</span>
+                </div>
+                <p class="text-muted small mb-0">Multi-column structures, inline filter strips, horizontal row labels, and dynamic line-item forms</p>
+            </div>
+            <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3.5" onclick="document.querySelectorAll('form').forEach(f => f.reset());">
+                    <i class="bi bi-arrow-counterclockwise me-1.5"></i> Clear Forms
+                </button>
+                <button type="button" class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm" onclick="window.NotificationService ? window.NotificationService.success('Validated', 'Multi-column grid payloads conform to schema.') : alert('Grid validated!');">
+                    <i class="bi bi-send-check me-1.5"></i> Submit Grid
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Breakpoint Controller -->
-    <div class="text-center mb-5">
-        <div class="control-panel shadow-sm mb-3">
-            <button class="bp-btn active" onclick="setBreakpoint('col-md', this)">
-                <i class="bi bi-tablet me-2"></i>Medium
-            </button>
-            <button class="bp-btn" onclick="setBreakpoint('col-lg', this)">
-                <i class="bi bi-laptop me-2"></i>Large
-            </button>
-            <button class="bp-btn" onclick="setBreakpoint('col-xl', this)">
-                <i class="bi bi-display me-2"></i>Extra Large
-            </button>
-        </div>
-        <div id="breakpoint-indicator" class="small text-muted fw-bold text-uppercase tracking-widest">
-            <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2">
-                Current Scope: <span id="active-bp-label">MD (768px+)</span>
-            </span>
-        </div>
+    <!-- 1. Inline Search & Filter Strip Grid -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <h5 class="fw-bold text-main mb-1 fs-16">1. Inline Form Grid Strip</h5>
+        <p class="text-muted extra-small mb-3">Fluid single-row auto-sizing controls commonly utilized across audit logs and data queries</p>
+
+        <form class="row g-2.5 align-items-center" onsubmit="event.preventDefault();">
+            <div class="col-md-4 col-lg-3">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15"><i class="bi bi-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search telemetry logs...">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-2">
+                <select class="form-select form-select-sm">
+                    <option selected>All Environments</option>
+                    <option>Production AWS</option>
+                    <option>Staging Vercel</option>
+                    <option>Dev Edge</option>
+                </select>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-2">
+                <select class="form-select form-select-sm">
+                    <option selected>Severity: Any</option>
+                    <option>Critical (P0)</option>
+                    <option>Major (P1)</option>
+                    <option>Notice</option>
+                </select>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-2">
+                <input type="date" class="form-control form-control-sm" value="2026-11-07">
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3 d-flex gap-2">
+                <button type="submit" class="btn btn-primary btn-sm rounded-pill px-3.5 flex-grow-1">
+                    <i class="bi bi-funnel me-1"></i> Apply Filter
+                </button>
+                <button type="reset" class="btn btn-light border border-secondary border-opacity-15 btn-sm rounded-pill px-2.5">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+        </form>
     </div>
 
-    <!-- Grid Visualization Canvas -->
-    <div class="card-box mb-5 p-0 overflow-hidden">
-        <div class="p-4 border-bottom bg-light bg-opacity-50">
-            <h4 class="fw-bold mb-0">Symmetric Architecture Visualization</h4>
-            <p class="text-muted small mb-0">The background grid (40px) aligns with the standard 12-column foundation.</p>
-        </div>
-        <div class="grid-canvas">
-            <span class="row-label">Full Width Foundation</span>
-            <div class="row g-4 mb-5">
+    <!-- 2. Complex Billing & Corporate Organization Grid -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <h5 class="fw-bold text-main mb-1 fs-16">2. Corporate Entity & Billing Address Grid</h5>
+        <p class="text-muted extra-small mb-4">Multi-breakpoint layout using responsive column spans (col-md-6, col-md-4, col-md-3)</p>
+
+        <form>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label small fw-semibold text-muted">Legal Company Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="e.g. Acme Systems Inc." value="Xivig Technologies Ltd.">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label small fw-semibold text-muted">VAT / Tax Identification No.</label>
+                    <input type="text" class="form-control" placeholder="e.g. US-88192019" value="EU-992817294B">
+                </div>
+
                 <div class="col-12">
-                    <div class="grid-box"><code>.col-12</code></div>
+                    <label class="form-label small fw-semibold text-muted">Primary Billing Address <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Street name and suite number" value="450 Mission Street, Suite 1200">
                 </div>
-            </div>
 
-            <span class="row-label">Symmetric Halves</span>
-            <div class="row g-4 mb-5" id="dynamicRow1">
-                <div class="col-md-6 grid-anim">
-                    <div class="grid-box"><code>.col-6</code></div>
+                <div class="col-md-5">
+                    <label class="form-label small fw-semibold text-muted">City <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="San Francisco" value="San Francisco">
                 </div>
-                <div class="col-md-6 grid-anim">
-                    <div class="grid-box"><code>.col-6</code></div>
+                <div class="col-md-4">
+                    <label class="form-label small fw-semibold text-muted">State / Region <span class="text-danger">*</span></label>
+                    <select class="form-select">
+                        <option selected>California (CA)</option>
+                        <option>New York (NY)</option>
+                        <option>Washington (WA)</option>
+                        <option>Texas (TX)</option>
+                    </select>
                 </div>
-            </div>
+                <div class="col-md-3">
+                    <label class="form-label small fw-semibold text-muted">Postal / ZIP Code <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="94105" value="94105">
+                </div>
 
-            <span class="row-label">Technical Thirds</span>
-            <div class="row g-4 mb-5" id="dynamicRow2">
-                <div class="col-md-4 grid-anim">
-                    <div class="grid-box"><code>.col-4</code></div>
-                </div>
-                <div class="col-md-4 grid-anim">
-                    <div class="grid-box"><code>.col-4</code></div>
-                </div>
-                <div class="col-md-4 grid-anim">
-                    <div class="grid-box"><code>.col-4</code></div>
-                </div>
-            </div>
-
-            <span class="row-label">Standard Quarters</span>
-            <div class="row g-4 mb-5" id="dynamicRow3">
-                <div class="col-md-3 grid-anim">
-                    <div class="grid-box"><code>.col-3</code></div>
-                </div>
-                <div class="col-md-3 grid-anim">
-                    <div class="grid-box"><code>.col-3</code></div>
-                </div>
-                <div class="col-md-3 grid-anim">
-                    <div class="grid-box"><code>.col-3</code></div>
-                </div>
-                <div class="col-md-3 grid-anim">
-                    <div class="grid-box"><code>.col-3</code></div>
-                </div>
-            </div>
-
-            <span class="row-label">Mixed Fractions (8:4)</span>
-            <div class="row g-4 mb-0" id="dynamicRow4">
-                <div class="col-md-8 grid-anim">
-                    <div class="grid-box" style="min-height: 100px;">
-                        <code>Main Workspace (.col-8)</code>
+                <div class="col-md-6">
+                    <label class="form-label small fw-semibold text-muted">Accounts Payable Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15"><i class="bi bi-envelope"></i></span>
+                        <input type="email" class="form-control" placeholder="billing@company.com" value="ap@xivig.dev">
                     </div>
                 </div>
-                <div class="col-md-4 grid-anim">
-                    <div class="grid-box" style="min-height: 100px;">
-                        <code>Sidebar Control (.col-4)</code>
+                <div class="col-md-6">
+                    <label class="form-label small fw-semibold text-muted">Finance Contact Phone</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15"><i class="bi bi-telephone"></i></span>
+                        <input type="tel" class="form-control" placeholder="+1 (555) 991-8234" value="+1 (415) 800-9120">
+                    </div>
+                </div>
+
+                <div class="col-12 pt-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridSameShipping" checked>
+                        <label class="form-check-label small fw-semibold text-main" for="gridSameShipping">
+                            Hardware shipping coordinates are identical to legal billing address
+                        </label>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
-    <!-- Practical Examples -->
-    <div class="row g-4 mb-5">
-        <div class="col-lg-7">
-            <div class="card-box h-100">
-                <h4 class="section-title-modern">Real-world Elite Form Layout</h4>
-                <p class="text-muted small mb-4">Demonstrating complex grid nesting for professional data entry.</p>
-                
-                <form class="row g-3">
-                    <div class="col-md-6">
-                        <label class="apple-label">First Name</label>
-                        <input type="text" class="form-control modern-input" placeholder="e.g. John">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="apple-label">Last Name</label>
-                        <input type="text" class="form-control modern-input" placeholder="e.g. Doe">
-                    </div>
-                    <div class="col-12">
-                        <label class="apple-label">Corporate Address</label>
-                        <input type="text" class="form-control modern-input" placeholder="1234 Elite St">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="apple-label">City</label>
-                        <input type="text" class="form-control modern-input">
-                    </div>
-                    <div class="col-md-4">
-                        <label class="apple-label">Region</label>
-                        <select class="form-select modern-input">
-                            <option selected>Choose...</option>
-                            <option>California</option>
-                            <option>New York</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label class="apple-label">Zip</label>
-                        <input type="text" class="form-control modern-input">
-                    </div>
-                    <div class="col-12 pt-2">
-                        <button type="submit" class="btn btn-primary rounded-pill px-4">Deploy Layout</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
-        <div class="col-lg-5">
-            <div class="card-box h-100 bg-dark text-white border-0 overflow-hidden position-relative">
-                <div class="position-absolute top-0 end-0 p-3 opacity-10">
-                    <i class="bi bi-shield-check display-1"></i>
-                </div>
-                <h4 class="section-title-modern text-white">System Diagnostics</h4>
-                <div class="d-flex flex-column gap-3 mt-4">
-                    <div class="p-3 rounded-4 bg-white bg-opacity-10 border border-white border-opacity-10">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span class="small opacity-75">Flexbox Convergence</span>
-                            <span class="badge bg-success">Active</span>
-                        </div>
-                        <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
-                            <div class="progress-bar bg-primary" style="width: 100%"></div>
-                        </div>
-                    </div>
-                    <div class="p-3 rounded-4 bg-white bg-opacity-10 border border-white border-opacity-10">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span class="small opacity-75">Responsive Scaling</span>
-                            <span class="badge bg-info">Fluid</span>
-                        </div>
-                        <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
-                            <div class="progress-bar bg-info" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="p-3 rounded-4 bg-white bg-opacity-10 border border-white border-opacity-10">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span class="small opacity-75">GPU Acceleration</span>
-                            <span class="badge bg-warning text-dark">Hardware</span>
-                        </div>
-                        <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
-                            <div class="progress-bar bg-warning" style="width: 95%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-auto pt-4 text-center">
-                    <div class="display-6 fw-bold mb-0">12</div>
-                    <div class="small opacity-50 text-uppercase tracking-widest">Columns Architecture</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- 3. Horizontal Row Form Grid -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <h5 class="fw-bold text-main mb-1 fs-16">3. Horizontal Label Form Grid</h5>
+        <p class="text-muted extra-small mb-4">Left-aligned semantic labels with 3-to-9 column balance</p>
 
-    <!-- Footer Stats -->
-    <div class="mt-5 pt-4 border-top border-secondary border-opacity-25 d-flex flex-wrap justify-content-between gap-3 small text-uppercase fw-bold text-muted">
-        <span><i class="bi bi-cpu me-2"></i> GPU Accelerated Layers</span>
-        <span><i class="bi bi-phone me-2"></i> Mobile-First Responsive Core</span>
-        <span><i class="bi bi-layers me-2"></i> Z-Index Management</span>
+        <form>
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-3 col-form-label small fw-semibold text-muted">Platform Namespace</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" value="production-edge-east">
+                    <div class="form-text extra-small text-muted">Must be lowercase alphanumeric string separated by hyphens.</div>
+                </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-3 col-form-label small fw-semibold text-muted">Replica Autoscaling</label>
+                <div class="col-sm-9">
+                    <div class="row g-2">
+                        <div class="col-sm-6">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15">Min</span>
+                                <input type="number" class="form-control" value="2" min="1">
+                                <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15">pods</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15">Max</span>
+                                <input type="number" class="form-control" value="16" max="100">
+                                <span class="input-group-text bg-body-tertiary border-secondary border-opacity-15">pods</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+                <label class="col-sm-3 col-form-label small fw-semibold text-muted">Failover Policy</label>
+                <div class="col-sm-9">
+                    <select class="form-select">
+                        <option selected>Automatic geo-distributed traffic migration</option>
+                        <option>Manual operator verification required</option>
+                        <option>Graceful degraded read-only snapshot</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-9 offset-sm-3">
+                    <button type="button" class="btn btn-primary rounded-pill px-4 shadow-sm" onclick="alert('Horizontal parameters saved!');">
+                        Update Policy
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 

@@ -7,33 +7,48 @@
 
 <body class="d-flex flex-column min-vh-100" data-bs-spy="scroll" data-bs-target="#blog-toc" data-bs-offset="100">
 
-    {{> preloader }}
-
     {{> header }}
 
     {{> sidebar }}
 
     {{> right-sidebar }}
 
-    <main class="main mt-5">
+    <main class="main">
         <div class="main__container container-fluid">
             
-            <!-- Standardized Page Header -->
-            <div class="page-header shadow-sm">
-                <h2 class="page-header__title">{{title}}</h2>
-                <nav class="page-header__nav" aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">Home</a>
-                        </li>
-                        {{#if parentTitle}}
-                        <li class="breadcrumb-item">
-                            <a href="#">{{parentTitle}}</a>
-                        </li>
+            <!-- Standardized Elite Page Header (Per Blueprint Page 7 & Wireframes) -->
+            <div class="page-header">
+                <div class="page-header__inner d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                    <div class="page-header__left">
+                        <nav class="page-header__nav mb-1" aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">Home</a>
+                                </li>
+                                {{#if parentTitle}}
+                                <li class="breadcrumb-item">
+                                    <span>{{parentTitle}}</span>
+                                </li>
+                                {{/if}}
+                                <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
+                            </ol>
+                        </nav>
+                        <h1 class="page-header__title mb-0" id="pageHeaderTitle">{{title}}</h1>
+                    </div>
+                    <div class="page-header__right d-flex align-items-center gap-2.5 flex-wrap">
+                        {{#if customAction}}
+                            {{{customAction}}}
+                        {{else}}
+                            <button type="button" class="btn btn-primary shadow-sm" id="pagePrimaryActionBtn">
+                                {{#if actionText}}
+                                    {{actionText}}
+                                {{else}}
+                                    Primary Action
+                                {{/if}}
+                            </button>
                         {{/if}}
-                        <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
-                    </ol>
-                </nav>
+                    </div>
+                </div>
             </div>
 
             <!-- Main Content Area -->
@@ -47,6 +62,114 @@
     {{> mobile-nav }}
 
     {{> scripts }}
+
+    <!-- Automatic Blueprint Primary Action Sync -->
+    <script>
+    (function() {
+        const titleEl = document.getElementById('pageHeaderTitle');
+        const actionBtn = document.getElementById('pagePrimaryActionBtn');
+        if (!titleEl || !actionBtn) return;
+
+        const title = titleEl.textContent.trim();
+        const blueprintActions = {
+            'Dashboard': 'View analytics',
+            'Dashboard v1': 'View analytics',
+            'Dashboard v2': 'Create report',
+            'Product List': 'Add product',
+            'Product Listing': 'Add product',
+            'Add Product': 'Save product',
+            'Product Show': 'Edit product',
+            'Product Details': 'Edit product',
+            'Product Analytics': 'Export analytics',
+            'Order List': 'Create order',
+            'Order Tracking': 'Create order',
+            'Create Order': 'Place order',
+            'Shopping Cart': 'Proceed to checkout',
+            'Store Settings': 'Save changes',
+            'Blog List': 'Write article',
+            'Blog Details': 'Edit article',
+            'Blog Detail': 'Edit article',
+            'Course Dashboard': 'Continue learning',
+            'Course Interface': 'Mark complete',
+            'Calendar': 'Create event',
+            'Chat': 'New message',
+            'Chat 3': 'New message',
+            'Video Player': 'Play video',
+            'Kanban': 'Add task',
+            'Kanban Board': 'Add task',
+            'Task': 'Create task',
+            'Task Manager': 'Create task',
+            'File Manager': 'Upload files',
+            'Mailbox': 'Compose',
+            'Mailbox 12': 'Compose',
+            'Inbox': 'Compose',
+            'Project List': 'Add project',
+            'Add Project': 'Create project',
+            'User List': 'Add user',
+            'Contact List': 'Add user',
+            'Contact Directory': 'Add user',
+            'Add User': 'Invite user',
+            'Profile': 'Edit profile',
+            'User Profile': 'Edit profile',
+            'Account Settings': 'Save settings',
+            'Deployments': 'Deploy now',
+            'Build History': 'Run build',
+            'Releases': 'Create release',
+            'Overview': 'Export report',
+            'System Metrics': 'Configure alert',
+            'Form Basic': 'Submit form',
+            'HTML Editor': 'Save content',
+            'Advanced Components': 'Save example',
+            'Form Pickers': 'Apply selection',
+            'Form Extras': 'Save form',
+            'Form Grid': 'Submit layout',
+            'Form Wizard': 'Continue',
+            'Image Cropper': 'Apply crop',
+            'Image Dropzone': 'Upload files',
+            'Basic Table': 'Add record',
+            'Datatables': 'Export data',
+            'Buttons': 'Copy component',
+            'Cards': 'Explore variants',
+            'Cards Hover': 'Preview card',
+            'Modals': 'Open modal',
+            'Tabs': 'Switch tab',
+            'Sweet Alert': 'Show alert',
+            'Notification': 'Trigger notification',
+            'Timeline': 'View activity',
+            'Progressbar': 'Run progress demo',
+            'Typography': 'Copy text style',
+            'List group': 'Select item',
+            'Range slider': 'Apply range',
+            'Carousel': 'Next slide',
+            'Collapsible Toggle': 'Expand section',
+            'Offcanvas': 'Open panel',
+            'Bootstrap Icons': 'Copy icon name',
+            'FontAwesome Icons': 'Copy class name',
+            'Apexcharts': 'Change period',
+            'Chart.js': 'Switch chart type',
+            'E-Charts': 'Open options',
+            'Highcharts': 'Drill into series',
+            'Vector Map': 'Select region',
+            'Invoice': 'Download invoice',
+            'FAQ': 'Search help',
+            'Gallery': 'Upload media',
+            'Pricing Table': 'Choose plan',
+            'Sitemap': 'Expand all',
+            'Blank Page': 'Create content',
+            'Search Result': 'Open result',
+            'Admin Settings': 'Save preferences',
+            'Settings': 'Save preferences',
+            'Documentation': 'Search docs',
+            'Online Docs': 'Open documentation',
+            'Help & Support': 'Create ticket',
+            'Account Onboarding': 'Complete setup'
+        };
+
+        if (blueprintActions[title]) {
+            actionBtn.textContent = blueprintActions[title];
+        }
+    })();
+    </script>
 
 </body>
 

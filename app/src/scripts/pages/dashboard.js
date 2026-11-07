@@ -1,186 +1,194 @@
 import ApexCharts from 'apexcharts';
-import Highcharts from 'highcharts';
 
 export const initDashboard = () => {
-    if (!document.getElementById('activities-chart')) return;
-
-    // 1. System Activity Overview (Polished Line Chart)
-    const activitiesOptions = {
-        series: [{
-            name: 'Users',
-            data: [15, 12, 14, 18, 22, 25, 24, 25, 22, 20, 25, 30]
-        }, {
-            name: 'Developers',
-            data: [18, 14, 13, 16, 18, 21, 28, 21, 25, 21, 27, 25]
-        }],
-        chart: {
-            height: 330,
-            type: 'line',
-            toolbar: {
-                show: false
-            },
-            dropShadow: {
-                enabled: true,
-                top: 8,
-                left: 0,
-                blur: 3,
-                color: '#000',
-                opacity: 0.1
-            },
-            zoom: {
-                enabled: false
-            }
-        },
-        colors: ['#f56767', '#265ed7'],
-        stroke: {
-            curve: 'smooth',
-            width: 3
-        },
-        markers: {
-            size: 0,
-            strokeColors: '#fff',
-            strokeWidth: 2,
-            hover: {
-                size: 6
-            }
-        },
-        xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            axisBorder: {
-                show: false
-            },
-            axisTicks: {
-                show: false
-            },
-            labels: {
-                style: {
-                    colors: '#94a3b8',
-                    fontSize: '12px'
+    // 1. Architecture Activity & Compute Throughput (Luminous Indigo & Restrained Teal)
+    const activitiesEl = document.getElementById('activities-chart');
+    if (activitiesEl) {
+        const isDark = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+        const activitiesOptions = {
+            series: [{
+                name: 'Throughput (kTPS)',
+                data: [18, 22, 19, 28, 35, 42, 38, 45, 40, 48, 52, 60]
+            }, {
+                name: 'API Requests (M)',
+                data: [14, 17, 22, 25, 29, 33, 30, 37, 34, 41, 46, 54]
+            }],
+            chart: {
+                height: 330,
+                type: 'area',
+                toolbar: {
+                    show: false
+                },
+                zoom: {
+                    enabled: false
                 }
-            }
-        },
-        yaxis: {
-            min: 0,
-            max: 35,
-            labels: {
-                style: {
-                    colors: '#94a3b8',
-                    fontSize: '12px'
+            },
+            colors: ['#4F6BFF', '#20C5D7'],
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shadeIntensity: 1,
+                    opacityFrom: 0.25,
+                    opacityTo: 0.02,
+                    stops: [0, 95, 100]
                 }
-            }
-        },
-        legend: {
-            position: 'top',
-            horizontalAlign: 'right',
-            offsetY: -5,
-            fontSize: '13px',
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 2.5
+            },
             markers: {
-                radius: 12,
-                width: 10,
-                height: 10
-            }
-        },
-        grid: {
-            borderColor: '#f1f5f9',
-            strokeDashArray: 4,
-            padding: {
-                right: 20,
-                left: 10,
-                top: 0,
-                bottom: 0
+                size: 0,
+                strokeColors: '#fff',
+                strokeWidth: 2,
+                hover: {
+                    size: 5
+                }
             },
             xaxis: {
-                lines: {
-                    show: true
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false
+                },
+                labels: {
+                    style: {
+                        colors: '#667085',
+                        fontSize: '12px',
+                        fontFamily: 'Inter, sans-serif',
+                        fontWeight: 500
+                    }
                 }
-            }
-        },
-        tooltip: {
-            shared: true,
-            intersect: false,
-            y: {
-                formatter: (y) => y + " numbers"
-            }
-        }
-    };
-    new ApexCharts(document.querySelector("#activities-chart"), activitiesOptions).render();
-
-    // 2. Deployment Mini Chart
-    const DeploymentOptions = {
-        series: [{
-            data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
-        }],
-        chart: {
-            type: 'bar',
-            width: 100,
-            height: 60,
-            sparkline: {
-                enabled: true
-            }
-        },
-        plotOptions: {
-            bar: {
-                columnWidth: '80%',
-                borderRadius: 2,
-                colors: {
-                    ranges: [{
-                        from: 0,
-                        to: 100,
-                        color: '#f56767'
-                    }]
+            },
+            yaxis: {
+                min: 0,
+                max: 70,
+                labels: {
+                    style: {
+                        colors: '#667085',
+                        fontSize: '12px',
+                        fontFamily: 'Inter, sans-serif',
+                        fontWeight: 500
+                    }
                 }
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'right',
+                offsetY: -5,
+                fontSize: '13px',
+                fontFamily: 'Inter, sans-serif',
+                fontWeight: 600,
+                labels: {
+                    colors: isDark ? '#94A3B8' : '#667085'
+                },
+                markers: {
+                    radius: 4,
+                    width: 10,
+                    height: 10
+                }
+            },
+            grid: {
+                borderColor: isDark ? '#26344A' : '#E5EAF2',
+                strokeDashArray: 4,
+                padding: {
+                    right: 20,
+                    left: 10,
+                    top: 0,
+                    bottom: 0
+                },
+                xaxis: {
+                    lines: {
+                        show: false
+                    }
+                }
+            },
+            tooltip: {
+                shared: true,
+                intersect: false,
+                theme: isDark ? 'dark' : 'light'
             }
-        },
-        colors: ['#ffffff'],
-        tooltip: {
-            enabled: false
-        }
-    };
-    new ApexCharts(document.querySelector("#deployment-chart"), DeploymentOptions).render();
+        };
+        new ApexCharts(activitiesEl, activitiesOptions).render();
+    }
 
-    // 3. Surgery Mini Chart
-    const surgeryOptions = {
-        series: [{
-            data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14]
-        }],
-        chart: {
-            type: 'bar',
-            width: 100,
-            height: 60,
-            sparkline: {
-                enabled: true
+    // 2. Deployment Mini Sparkline
+    const deployEl = document.querySelector("#deployment-chart");
+    if (deployEl) {
+        const deploymentOptions = {
+            series: [{
+                data: [25, 45, 41, 69, 53, 35, 64, 42, 56, 39, 75]
+            }],
+            chart: {
+                type: 'bar',
+                width: 100,
+                height: 56,
+                sparkline: {
+                    enabled: true
+                }
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: '70%',
+                    borderRadius: 3
+                }
+            },
+            colors: ['#4F6BFF'],
+            tooltip: {
+                enabled: false
             }
-        },
-        plotOptions: {
-            bar: {
-                columnWidth: '80%',
-                borderRadius: 2
+        };
+        new ApexCharts(deployEl, deploymentOptions).render();
+    }
+
+    // 3. Concurrent Sessions Sparkline
+    const surgeryEl = document.querySelector("#surgery-chart");
+    if (surgeryEl) {
+        const surgeryOptions = {
+            series: [{
+                data: [32, 44, 38, 57, 52, 45, 67, 75, 65, 59, 84]
+            }],
+            chart: {
+                type: 'bar',
+                width: 100,
+                height: 56,
+                sparkline: {
+                    enabled: true
+                }
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: '70%',
+                    borderRadius: 3
+                }
+            },
+            colors: ['#20C5D7'],
+            tooltip: {
+                enabled: false
             }
-        },
-        colors: ['#ffffff'],
-        tooltip: {
-            enabled: false
-        }
-    };
-    new ApexCharts(document.querySelector("#surgery-chart"), surgeryOptions).render();
+        };
+        new ApexCharts(surgeryEl, surgeryOptions).render();
+    }
 
-
-
+    // 4. Real-Time System Health Telemetry (Multi Radial Bar)
+    renderHealthChart();
 };
 
-
-// 4. System Health Report (Enhanced Radial Bar)
-let healthChart;
+let healthChartInstance = null;
 
 function renderHealthChart() {
     const healthChartEl = document.querySelector("#health-chart");
     if (!healthChartEl) return;
 
+    const isDark = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+
     const healthOptions = {
-        series: [44, 55, 67, 83],
+        series: [44, 72, 14, 99],
         chart: {
             type: 'radialBar',
-            height: 320, // ✅ number, not '320px'
+            height: 320,
             width: '100%',
             parentHeightOffset: 0,
             redrawOnParentResize: true,
@@ -191,63 +199,66 @@ function renderHealthChart() {
         },
         plotOptions: {
             radialBar: {
-                customScale: 0.85,
+                customScale: 0.92,
                 offsetX: 0,
                 offsetY: 0,
                 hollow: {
-                    size: '45%'
+                    size: '42%'
                 },
                 track: {
-                    margin: 10,
-                    background: '#f1f5f9',
-                    strokeWidth: '97%'
+                    margin: 8,
+                    background: isDark ? 'rgba(255, 255, 255, 0.05)' : '#F1F5F9',
+                    strokeWidth: '95%'
                 },
                 dataLabels: {
                     name: {
                         show: true,
-                        fontSize: '14px',
+                        fontSize: '12px',
+                        fontFamily: 'Inter, sans-serif',
                         fontWeight: 600,
-                        color: '#64748b',
-                        offsetY: -10
+                        color: '#667085',
+                        offsetY: -8
                     },
                     value: {
                         show: true,
-                        fontSize: '24px',
-                        fontWeight: 700,
-                        color: '#1e293b',
-                        offsetY: 5,
+                        fontSize: '22px',
+                        fontFamily: 'Inter, sans-serif',
+                        fontWeight: 800,
+                        color: isDark ? '#F2F5FA' : '#111827',
+                        offsetY: 4,
                         formatter: (val) => val + '%'
                     },
                     total: {
                         show: true,
-                        label: 'Total',
-                        fontSize: '14px',
-                        color: '#64748b',
-                        formatter: () => '260'
+                        label: 'Cluster SLA',
+                        fontSize: '11px',
+                        fontFamily: 'Inter, sans-serif',
+                        fontWeight: 700,
+                        color: '#087B55',
+                        formatter: () => '99.99%'
                     }
                 }
             }
         },
-        colors: ['#265ed7', '#f59e0b', '#f56767', '#1e293b'],
-        labels: ['CPU Load', 'API Latency', 'Error Rate', 'Uptime %'],
+        colors: ['#4F6BFF', '#20C5D7', '#EF4444', '#10B981'],
+        labels: ['CPU Load', 'Memory', 'Error Rate', 'Cluster SLA'],
         stroke: {
             lineCap: 'round'
         }
     };
 
-    if (healthChart) healthChart.destroy();
-    healthChart = new ApexCharts(document.querySelector("#health-chart"), healthOptions);
-    healthChart.render();
+    if (healthChartInstance) healthChartInstance.destroy();
+    healthChartInstance = new ApexCharts(healthChartEl, healthOptions);
+    healthChartInstance.render();
 
-    // 🔥 force correct sizing after paint
     setTimeout(() => {
         window.dispatchEvent(new Event('resize'));
-    }, 200);
+    }, 150);
 }
 
-// wait for layout to be ready
-window.addEventListener('load', () => {
-    requestAnimationFrame(() => {
-        setTimeout(renderHealthChart, 100);
-    });
-});
+// Auto init when loaded
+if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', initDashboard);
+} else {
+    initDashboard();
+}

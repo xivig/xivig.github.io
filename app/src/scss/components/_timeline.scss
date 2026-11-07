@@ -14,7 +14,7 @@
     position: absolute;
     width: 2px;
     /* Gradient starts and ends at the dot centers */
-    background: linear-gradient(to bottom, transparent, var(--card-border) 5%, var(--card-border) 95%, transparent);
+    background: var(--elite-primary);
     top: 20px;
     bottom: 20px;
     left: 50%;

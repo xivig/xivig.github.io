@@ -4,7 +4,7 @@
 <head>
     <script>window.XIVIG_ROOT = "./";</script>
     <meta charset="UTF-8">
-    <title>Xivig | Elite Web Solutions</title>
+    <title>XIVIG Elite // Next-Gen SaaS &amp; Admin Architecture</title>
     
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
@@ -14,62 +14,55 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
-    <!-- Theme Detection & Critical Style Initialization -->
+    <!-- Instant Atelier Theme & Accent Initialization -->
     <script>
         (function() {
-            const savedTheme = localStorage.getItem('xivig-global-theme') || 'dark';
-            document.documentElement.setAttribute('data-bs-theme', savedTheme);
-            const bgColor = savedTheme === 'dark' ? '#080b0e' : '#f8fafc';
-            document.write(`<style>body{background-color: ${bgColor} !important; visibility: hidden;} body.is-loaded, body.preloader-active{visibility: visible;}</style>`);
+            try {
+                const savedTheme = localStorage.getItem('xivig-global-theme') || 'light';
+                const effectiveTheme = savedTheme === 'auto'
+                    ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                    : savedTheme;
+                document.documentElement.setAttribute('data-bs-theme', effectiveTheme);
+    
+                const savedAccent = localStorage.getItem('xivig-accent-color') || '#4F6BFF';
+                if (savedAccent) {
+                    document.documentElement.style.setProperty('--elite-primary', savedAccent);
+                    document.documentElement.style.setProperty('--xivig-primary', savedAccent);
+                    document.documentElement.style.setProperty('--primary-accent', savedAccent);
+                    document.documentElement.style.setProperty('--primary-hover', savedAccent);
+                    document.documentElement.style.setProperty('--bs-primary', savedAccent);
+                }
+    
+                const savedScale = localStorage.getItem('xivig-typography-scale');
+                if (savedScale && savedScale !== '100') {
+                    document.documentElement.style.fontSize = savedScale + '%';
+                }
+            } catch (e) {}
         })();
     </script>
     
-    <!-- Critical Preloader Style -->
-    <style>
-        .preloader {
-            position: fixed;
-            inset: 0;
-            z-index: 99999;
-            background: inherit;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
-        }
-        .preloader--hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transform: scale(1.04);
-            filter: blur(8px);
-        }
-        body:not(.is-loaded) {
-            overflow: hidden;
-        }
-        .preloader { visibility: visible !important; }
-    </style>
     
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.body.classList.add('preloader-active');
-        });
-    </script>
+    
+    <!-- Google Fonts Elite Typography (Plus Jakarta Sans & Inter & JetBrains Mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Vendor Styles (Essential for Home) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Global jQuery Exposure (Critical for Plugins) -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script>
-        window.jQuery = window.$ = jQuery;
-    </script>
+    <!-- Primary Theme SCSS (Render-blocking in Head to Prevent FOUC) -->
+    
+    
   <script type="module" crossorigin src="./assets/mobile-controller.js"></script>
   <script type="module" crossorigin src="./assets/rolldown-runtime.js"></script>
   <script type="module" crossorigin src="./assets/vendor-core.js"></script>
+  <script type="module" crossorigin src="./assets/lightbox.js"></script>
+  <script type="module" crossorigin src="./assets/pricing.js"></script>
+  <script type="module" crossorigin src="./assets/xivig-core.js"></script>
   <script type="module" crossorigin src="./assets/maintenance2.js"></script>
-  <script type="module" crossorigin src="./assets/vendor-jquery.js"></script>
   <script type="module" crossorigin src="./assets/home.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/vendor-core.css">
   <link rel="stylesheet" crossorigin href="./assets/home.css">
@@ -77,76 +70,40 @@
 
 <body class="home-layout " data-bs-spy="scroll" data-bs-target="#mainNav">
 
-    <!-- PRELOADER (ELITE ARCHITECT EDITION) -->
-    <div class="preloader" id="elite-preloader" aria-live="polite" aria-busy="true">
-        <!-- Ambient Luminous Glow Orbs -->
-        <div class="preloader__backdrop">
-            <div class="preloader__aura preloader__aura--primary"></div>
-            <div class="preloader__aura preloader__aura--cyan"></div>
-        </div>
     
-        <div class="preloader__box">
-            <!-- Centerpiece: Orbital Ring Matrix + Glowing Core -->
-            <div class="preloader__core-wrap">
-                <div class="preloader__orbit preloader__orbit--outer"></div>
-                <div class="preloader__orbit preloader__orbit--inner"></div>
-                <div class="preloader__core-glow"></div>
-                
-                <div class="preloader__brand">
-                    <img src="./assets/logo.png" alt="XIVIG" class="preloader__logo-img" />
-                </div>
-            </div>
-    
-            <!-- Brand Name & Telemetry Header -->
-            <div class="preloader__identity">
-                <span class="preloader__brand-title">XIVIG</span>
-                <span class="preloader__brand-sub">ELITE ARCHITECTURE</span>
-            </div>
-    
-            <!-- Futuristic Sleek Progress Capsule -->
-            <div class="preloader__track-wrap">
-                <div class="preloader__track">
-                    <div class="preloader__bar" id="bar1">
-                        <span class="preloader__bar-laser"></span>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Dynamic Readout & Telemetry Status -->
-            <div class="preloader__hud">
-                <div class="preloader__percent" id="percent1">00%</div>
-                <div class="preloader__status" id="preloader-status">
-                    <span class="preloader__status-dot"></span>
-                    <span class="preloader__status-text" id="preloader-text">INITIALIZING CORE...</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="mobile-menu-overlay"></div>
-
-    <!-- ELITE NAVIGATION -->
+    <!-- ELITE BRAND NAVIGATION -->
     <nav id="mainNav" class="navbar navbar-expand-lg fixed-top glass-nav">
         <div class="container">
-            <a class="navbar-brand fw-black d-flex align-items-center" href="xivig.html">
-                <i class="fa-solid fa-cube text-danger me-2"></i>XIVIG
+            <!-- Brand Identity with Official Logo & PRO Badge -->
+            <a class="navbar-brand d-flex align-items-center gap-2" href="xivig.html">
+                <img src="./assets/logo.png" alt="XIVIG" width="34" height="34" style="object-fit: contain; filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.45));">
+                <span class="fw-black tracking-wider text-dark fs-4 mb-0">XIVIG<span class="text-primary">.</span></span>
+                <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-20 px-2 py-0.5 extra-small fw-bold ms-1">PRO</span>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    
+            <!-- Mobile Toggler -->
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+    
+            <!-- Nav Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center gap-2">
+                <ul class="navbar-nav ms-auto align-items-center gap-1 gap-lg-2">
                     <li class="nav-item"><a class="nav-link px-3" href="xivig.html#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="xivig.html#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="xivig.html#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="xivig.html#showcase">Showcase</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="xivig.html#features">Features</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="xivig.html#pricing">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="xivig.html#stats">Statistics</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="xivig.html#testimonials">Work</a></li>
-                    <li class="nav-item ms-lg-3 d-flex align-items-center gap-3">
-                        <div id="themeToggleLanding" class="theme-toggle-eye shadow-sm" title="Toggle Light/Dark Mode">
-                            <i class="bi bi-eye-fill"></i>
-                        </div>
-                        <a href="#" class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-primary" data-bs-toggle="modal"
-                            data-bs-target="#contactModal">Get in Touch</a>
+                    <li class="nav-item"><a class="nav-link px-3" href="documentation.html">Docs</a></li>
+                    <li class="nav-item ms-lg-3 d-flex align-items-center gap-2">
+                        <!-- Light/Dark Mode Switcher -->
+                        <button type="button" id="themeToggleLanding" class="theme-toggle-eye shadow-sm border-0" title="Toggle Light/Dark Mode" aria-label="Toggle Light/Dark Mode">
+                            <i class="bi bi-moon-stars-fill theme-icon-dark"></i>
+                            <i class="bi bi-sun-fill theme-icon-light d-none"></i>
+                        </button>
+                        <!-- Direct Showcase Launch CTA -->
+                        <a href="index.html" class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-primary d-inline-flex align-items-center gap-2 hover-up">
+                            <i class="bi bi-speedometer2"></i> Launch Dashboard
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -155,27 +112,337 @@
 
     <main class="pt-5 mt-5">
         
-            <!-- HERO SECTION -->
-            <header id="home" class="hero-section mt-0">
-                <div class="container position-relative">
-                    <div class="row align-items-center g-5">
+            <!-- HERO SHOWCASE SECTION -->
+            <header id="home" class="hero-section mt-0 position-relative overflow-hidden">
+                <div class="hero-ambient-glow hero-ambient-glow--1"></div>
+                <div class="hero-ambient-glow hero-ambient-glow--2"></div>
+        
+                <div class="container position-relative z-2">
+                    <div class="row align-items-center g-5 min-vh-75 py-5">
                         <div class="col-lg-6 animate__animated animate__fadeInLeft">
-                            <span class="badge rounded-pill bg-soft-primary text-primary px-3 py-2 mb-3 fw-black text-uppercase tracking-widest small">Next-Gen Architecture</span>
-                            <h1 class="display-3 fw-black text-dark mb-3">Welcome to <span class="text-gradient">Xivig!</span></h1>
-                            <p class="lead text-secondary mb-5" style="line-height: 1.7;">We create responsive designs so seamless that users won't just notice the difference—they'll feel it in every pixel.</p>
-                            <div class="d-flex flex-wrap gap-3">
-                                <a href="#about" class="btn btn-dark btn-lg rounded-pill px-5 py-3 shadow-lg hover-up fw-bold">Explore Now</a>
-                                <a href="#" class="btn btn-outline-primary btn-lg rounded-pill px-5 py-3 fw-bold">View Portfolio</a>
+                            <!-- Brand Version Badge -->
+                            <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill bg-primary bg-opacity-10 border border-primary border-opacity-20 mb-4 shadow-sm">
+                                <span class="badge bg-primary rounded-pill px-2.5 py-1 extra-small fw-bold">v2.4</span>
+                                <span class="text-primary small fw-bold tracking-wide">Next-Gen SaaS & Admin Architecture</span>
+                                <i class="bi bi-arrow-right text-primary small"></i>
+                            </div>
+        
+                            <!-- Main Showcase Heading -->
+                            <h1 class="display-3 fw-black text-dark mb-4 lh-sm">
+                                Architecting the <span class="text-gradient">Next Generation</span> of Web Dashboards.
+                            </h1>
+        
+                            <!-- Showcase Subtitle -->
+                            <p class="lead text-secondary mb-5" style="max-width: 580px; line-height: 1.8;">
+                                A luxury enterprise application framework fusing Glassmorphism aesthetics, reactive Vanilla JS architecture, 85+ modular templates, and modernized Vite & Gulp hybrid build pipelines.
+                            </p>
+        
+                            <!-- Hero Actions Hub -->
+                            <div class="d-flex flex-wrap align-items-center gap-3">
+                                <a href="index.html" class="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-primary fw-black d-inline-flex align-items-center gap-2 hover-up">
+                                    <i class="bi bi-grid-fill"></i> Live Dashboard Demo
+                                </a>
+                                <a href="#showcase" class="btn btn-outline-primary btn-lg rounded-pill px-4 py-3 fw-bold d-inline-flex align-items-center gap-2">
+                                    <i class="bi bi-collection-play"></i> Explore Showcase
+                                </a>
+                                <a href="https://github.com/xivig" target="_blank" class="btn btn-link text-secondary text-decoration-none fw-bold px-3 py-3 d-inline-flex align-items-center gap-2">
+                                    <i class="bi bi-github fs-5"></i> GitHub
+                                </a>
+                            </div>
+        
+                            <!-- Key Trust Indicators -->
+                            <div class="row g-4 mt-4 pt-3 border-top border-secondary border-opacity-10">
+                                <div class="col-4">
+                                    <h4 class="fw-black text-dark mb-0">85+</h4>
+                                    <p class="text-muted extra-small fw-bold text-uppercase tracking-wider mb-0">Flat Pages</p>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="fw-black text-dark mb-0">&lt;10ms</h4>
+                                    <p class="text-muted extra-small fw-bold text-uppercase tracking-wider mb-0">Core Latency</p>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="fw-black text-dark mb-0">100%</h4>
+                                    <p class="text-muted extra-small fw-bold text-uppercase tracking-wider mb-0">Zero FOUC</p>
+                                </div>
                             </div>
                         </div>
+        
+                        <!-- Interactive 3D Mockup Preview -->
                         <div class="col-lg-6 animate__animated animate__fadeInRight">
-                            <div class="glass-card p-1 shadow-2xl animate-float border-white border-opacity-20">
-                                <img src="./assets/xivig-dashboard-preview.png" class="img-fluid rounded-4 w-100" alt="Dashboard Preview">
+                            <div class="showcase-window shadow-2xl animate-float">
+                                <!-- macOS style window titlebar -->
+                                <div class="showcase-window-header d-flex align-items-center justify-content-between px-3 py-2 border-bottom border-secondary border-opacity-10">
+                                    <div class="d-flex align-items-center gap-1.5">
+                                        <span class="window-dot window-dot--close"></span>
+                                        <span class="window-dot window-dot--min"></span>
+                                        <span class="window-dot window-dot--max"></span>
+                                    </div>
+                                    <div class="extra-small font-monospace text-muted fw-bold">xivig.architect.os // command-center</div>
+                                    <span class="badge rounded-pill bg-success bg-opacity-10 text-success extra-small fw-bold px-2 py-0.5">● ONLINE</span>
+                                </div>
+        
+                                <!-- Main Preview Image -->
+                                <div class="position-relative overflow-hidden">
+                                    <img src="./assets/xivig-dashboard-preview.png" class="img-fluid w-100 d-block" alt="XIVIG Dashboard Showcase">
+        
+                                    <!-- Floating Metric Badges -->
+                                    <div class="floating-badge floating-badge--top glass-card p-3 shadow-lg">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="icon-shape bg-success bg-opacity-15 text-success rounded-circle p-2">
+                                                <i class="bi bi-graph-up-arrow fs-6"></i>
+                                            </div>
+                                            <div>
+                                                <div class="extra-small text-muted fw-bold">Live Revenue Velocity</div>
+                                                <div class="small fw-black text-dark">$128,450 <span class="text-success extra-small">(+24.8%)</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="floating-badge floating-badge--bottom glass-card p-3 shadow-lg">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="icon-shape bg-primary bg-opacity-15 text-primary rounded-circle p-2">
+                                                <i class="bi bi-cpu fs-6"></i>
+                                            </div>
+                                            <div>
+                                                <div class="extra-small text-muted fw-bold">System Health</div>
+                                                <div class="small fw-black text-dark">99.99% // Sub-10ms</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
+        
+            <!-- TECH STACK RIBBON -->
+            <div class="tech-stack-ribbon py-4 border-top border-bottom border-secondary border-opacity-10 section-theme-light">
+                <div class="container text-center">
+                    <p class="text-muted extra-small fw-bold text-uppercase tracking-widest mb-3">Enterprise Stack & Standards</p>
+                    <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 gap-md-4">
+                        <span class="tech-pill"><i class="bi bi-lightning-charge-fill text-warning me-1"></i> Vite 5 Engine</span>
+                        <span class="tech-pill"><i class="bi bi-bootstrap-fill text-primary me-1"></i> Bootstrap 5.3</span>
+                        <span class="tech-pill"><i class="bi bi-filetype-sass text-danger me-1"></i> Modular Sass 7-1</span>
+                        <span class="tech-pill"><i class="bi bi-bar-chart-line-fill text-info me-1"></i> ApexCharts & Chart.js</span>
+                        <span class="tech-pill"><i class="bi bi-code-slash text-success me-1"></i> Pure Vanilla JS Core</span>
+                        <span class="tech-pill"><i class="bi bi-git text-primary me-1"></i> GitHub Pages Flattened</span>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- CORE ARCHITECTURAL PILLARS -->
+            <section id="features" class="py-100">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2 small fw-bold text-uppercase tracking-widest mb-3">Core Innovations</span>
+                        <h2 class="display-5 fw-black text-dark mb-3">Built Different. Engineered for Scale.</h2>
+                        <p class="text-secondary mx-auto" style="max-width: 600px;">Every layer of XIVIG is optimized for high velocity, responsive fluid scaling, and architectural purity.</p>
+                    </div>
+        
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="glass-card p-4 h-100 border-0 shadow-sm hover-up transition-all">
+                                <div class="icon-box mb-4 bg-primary bg-opacity-10 text-primary rounded-4 d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                    <i class="bi bi-speedometer fs-3"></i>
+                                </div>
+                                <h4 class="fw-black text-dark h5 mb-3">Pure Velocity</h4>
+                                <p class="text-secondary small mb-0 lh-base">No bloated client runtimes. Pure Vanilla JS controllers deliver instant response times under 10ms.</p>
+                            </div>
+                        </div>
+        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="glass-card p-4 h-100 border-0 shadow-sm hover-up transition-all">
+                                <div class="icon-box mb-4 bg-info bg-opacity-10 text-info rounded-4 d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                    <i class="bi bi-palette fs-3"></i>
+                                </div>
+                                <h4 class="fw-black text-dark h5 mb-3">Glassmorphic Tokens</h4>
+                                <p class="text-secondary small mb-0 lh-base">Unified CSS variable design system featuring multi-layered obsidian dark mode and crisp porcelain light mode.</p>
+                            </div>
+                        </div>
+        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="glass-card p-4 h-100 border-0 shadow-sm hover-up transition-all">
+                                <div class="icon-box mb-4 bg-success bg-opacity-10 text-success rounded-4 d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                    <i class="bi bi-layers fs-3"></i>
+                                </div>
+                                <h4 class="fw-black text-dark h5 mb-3">85+ Flat Views</h4>
+                                <p class="text-secondary small mb-0 lh-base">Flattened directory structure ensures seamless GitHub Pages hosting without nested relative path breakage.</p>
+                            </div>
+                        </div>
+        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="glass-card p-4 h-100 border-0 shadow-sm hover-up transition-all">
+                                <div class="icon-box mb-4 bg-warning bg-opacity-10 text-warning rounded-4 d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                    <i class="bi bi-arrow-repeat fs-3"></i>
+                                </div>
+                                <h4 class="fw-black text-dark h5 mb-3">Hybrid Pipeline</h4>
+                                <p class="text-secondary small mb-0 lh-base">Combines Vite for sub-second development HMR with Gulp for Sharp WebP compression and distribution.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- THE FLAGSHIP SHOWCASE SECTION -->
+            <section id="showcase" class="py-100 section-theme-light border-top border-bottom border-secondary border-opacity-10">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2 small fw-bold text-uppercase tracking-widest mb-3">Product Portfolio</span>
+                        <h2 class="display-5 fw-black text-dark mb-3">The Flagship Application Showcase</h2>
+                        <p class="text-secondary mx-auto" style="max-width: 650px;">Explore the full suite of ready-to-deploy enterprise tools included in the XIVIG ecosystem.</p>
+                    </div>
+        
+                    <div class="row g-4">
+                        <!-- Showcase Card 1: Command Center -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="showcase-card glass-card h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-1.5 fw-bold">CORE APPS</span>
+                                        <i class="bi bi-speedometer2 fs-4 text-primary"></i>
+                                    </div>
+                                    <h4 class="fw-black text-dark mb-2">Command Center</h4>
+                                    <p class="text-secondary mb-4">Live revenue metrics, cluster health monitoring, and modular KPI widgets with interactive drilldowns.</p>
+                                    <ul class="list-unstyled text-muted space-y-2 mb-4">
+                                        <li><i class="bi bi-check2 text-primary me-2"></i> Real-time Revenue &amp; Usage Feed</li>
+                                        <li><i class="bi bi-check2 text-primary me-2"></i> Dual Dashboard Versions (v1 &amp; v2)</li>
+                                        <li><i class="bi bi-check2 text-primary me-2"></i> Glassmorphic Telemetry Cards</li>
+                                    </ul>
+                                </div>
+                                <div class="pt-3 border-top border-secondary border-opacity-10 d-flex gap-2">
+                                    <a href="index.html" class="btn btn-primary rounded-pill w-100 py-2.5 fw-bold text-uppercase tracking-wider">
+                                        Launch v1 <i class="bi bi-arrow-right ms-1"></i>
+                                    </a>
+                                    <a href="dashboard-v2.html" class="btn btn-outline-primary rounded-pill w-100 py-2.5 fw-bold text-uppercase tracking-wider">
+                                        Launch v2
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Showcase Card 2: Deep Analytics -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="showcase-card glass-card h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="badge bg-info bg-opacity-10 text-info rounded-pill px-3 py-1.5 fw-bold">VISUALIZATION</span>
+                                        <i class="bi bi-pie-chart-fill fs-4 text-info"></i>
+                                    </div>
+                                    <h4 class="fw-black text-dark mb-2">Deep Analytics Suite</h4>
+                                    <p class="text-secondary mb-4">Multi-engine chart ecosystem featuring ApexCharts, Highcharts, Chart.js, and ECharts modules.</p>
+                                    <ul class="list-unstyled text-muted space-y-2 mb-4">
+                                        <li><i class="bi bi-check2 text-info me-2"></i> System Metrics &amp; CPU/RAM graphs</li>
+                                        <li><i class="bi bi-check2 text-info me-2"></i> Vector Geospatial Heatmaps</li>
+                                        <li><i class="bi bi-check2 text-info me-2"></i> Synchronized Timeseries Crosshairs</li>
+                                    </ul>
+                                </div>
+                                <div class="pt-3 border-top border-secondary border-opacity-10">
+                                    <a href="overview.html" class="btn btn-outline-primary rounded-pill w-100 py-2.5 fw-bold text-uppercase tracking-wider">
+                                        Preview Analytics <i class="bi bi-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Showcase Card 3: Enterprise E-Commerce -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="showcase-card glass-card h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-1.5 fw-bold">COMMERCE</span>
+                                        <i class="bi bi-cart-check-fill fs-4 text-success"></i>
+                                    </div>
+                                    <h4 class="fw-black text-dark mb-2">E-Commerce Suite</h4>
+                                    <p class="text-secondary mb-4">Complete merchant infrastructure with catalog management, cart calculations, and order fulfillment.</p>
+                                    <ul class="list-unstyled text-muted space-y-2 mb-4">
+                                        <li><i class="bi bi-check2 text-success me-2"></i> Product Showcase &amp; Details</li>
+                                        <li><i class="bi bi-check2 text-success me-2"></i> Order Tracking &amp; Status Workflow</li>
+                                        <li><i class="bi bi-check2 text-success me-2"></i> Multi-Step Checkout &amp; Invoicing</li>
+                                    </ul>
+                                </div>
+                                <div class="pt-3 border-top border-secondary border-opacity-10">
+                                    <a href="ecommerce-products.html" class="btn btn-outline-primary rounded-pill w-100 py-2.5 fw-bold text-uppercase tracking-wider">
+                                        View Products <i class="bi bi-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Showcase Card 4: Workspaces & Productivity -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="showcase-card glass-card h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="badge bg-warning bg-opacity-10 text-warning rounded-pill px-3 py-1.5 fw-bold">COLLABORATION</span>
+                                        <i class="bi bi-kanban-fill fs-4 text-warning"></i>
+                                    </div>
+                                    <h4 class="fw-black text-dark mb-2">Workspace &amp; Productivity</h4>
+                                    <p class="text-secondary mb-4">Interactive operational tools: Kanban board with drag-and-drop, full Mail client, Chat, and Calendar.</p>
+                                    <ul class="list-unstyled text-muted space-y-2 mb-4">
+                                        <li><i class="bi bi-check2 text-warning me-2"></i> Drag-and-Drop Kanban Columns</li>
+                                        <li><i class="bi bi-check2 text-warning me-2"></i> Real-time Threaded Chat Module</li>
+                                        <li><i class="bi bi-check2 text-warning me-2"></i> FullCalendar 6 Scheduling</li>
+                                    </ul>
+                                </div>
+                                <div class="pt-3 border-top border-secondary border-opacity-10">
+                                    <a href="kanban.html" class="btn btn-outline-primary rounded-pill w-100 py-2.5 fw-bold text-uppercase tracking-wider">
+                                        Launch Kanban <i class="bi bi-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Showcase Card 5: Cloud Deployments -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="showcase-card glass-card h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="badge bg-danger bg-opacity-10 text-danger rounded-pill px-3 py-1.5 fw-bold">DEVOPS</span>
+                                        <i class="bi bi-cloud-arrow-up-fill fs-4 text-danger"></i>
+                                    </div>
+                                    <h4 class="fw-black text-dark mb-2">Cloud Deployments</h4>
+                                    <p class="text-secondary mb-4">Release management pipelines, build history verification, environment monitors, and server telemetry.</p>
+                                    <ul class="list-unstyled text-muted space-y-2 mb-4">
+                                        <li><i class="bi bi-check2 text-danger me-2"></i> CI/CD Build Logs &amp; History</li>
+                                        <li><i class="bi bi-check2 text-danger me-2"></i> Cluster Node Deployment List</li>
+                                        <li><i class="bi bi-check2 text-danger me-2"></i> Semantic Release Tagging</li>
+                                    </ul>
+                                </div>
+                                <div class="pt-3 border-top border-secondary border-opacity-10">
+                                    <a href="deployment-list.html" class="btn btn-outline-primary rounded-pill w-100 py-2.5 fw-bold text-uppercase tracking-wider">
+                                        Check Deployments <i class="bi bi-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Showcase Card 6: Design System & UI Library -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="showcase-card glass-card h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-1.5 fw-bold">DESIGN SYSTEM</span>
+                                        <i class="bi bi-gem fs-4 text-primary"></i>
+                                    </div>
+                                    <h4 class="fw-black text-dark mb-2">45+ Elite UI Elements</h4>
+                                    <p class="text-secondary mb-4">A complete component library with buttons, modals, badges, sliders, DataTables, and form wizards.</p>
+                                    <ul class="list-unstyled text-muted space-y-2 mb-4">
+                                        <li><i class="bi bi-check2 text-primary me-2"></i> DataTables with Instant Search &amp; Export</li>
+                                        <li><i class="bi bi-check2 text-primary me-2"></i> Summernote WYSIWYG &amp; Image Cropper</li>
+                                        <li><i class="bi bi-check2 text-primary me-2"></i> SweetAlert2 Toast Notifications</li>
+                                    </ul>
+                                </div>
+                                <div class="pt-3 border-top border-secondary border-opacity-10">
+                                    <a href="ui-buttons.html" class="btn btn-outline-primary rounded-pill w-100 py-2.5 fw-bold text-uppercase tracking-wider">
+                                        Browse UI Kit <i class="bi bi-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         
             <!-- ABOUT SECTION -->
             <section id="about" class="py-100">
@@ -186,85 +453,40 @@
                                 <img src="./assets/photo7.jpg" class="img-fluid rounded-5 shadow-lg border border-white border-opacity-10" alt="Legacy">
                                 <div class="glass-card p-4 position-absolute bottom-0 end-0 m-3 shadow-lg d-none d-lg-block border-primary border-opacity-20" style="width: 220px;">
                                     <h4 class="fw-black mb-1 text-primary">Since 2018</h4>
-                                    <p class="text-muted extra-small fw-bold text-uppercase tracking-widest mb-0">Innovation Leaders</p>
+                                    <p class="text-muted extra-small fw-bold text-uppercase tracking-widest mb-0">Architectural Leadership</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <h2 class="display-5 fw-black text-dark mb-4 lh-sm">Here’s how we <span class="text-primary">started.</span></h2>
-                            <p class="text-secondary fs-5 mb-5" style="line-height: 1.8;">It all started with one ambitious vision: to overcome the obstacles of the modern internet. We believe that responsive design is more than just resizing—it's about accessibility and elegance across all devices.</p>
+                            <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2 small fw-bold text-uppercase tracking-widest mb-3">Our Heritage</span>
+                            <h2 class="display-5 fw-black text-dark mb-4 lh-sm">Engineered for Velocity. Designed for Scale.</h2>
+                            <p class="text-secondary fs-5 mb-5" style="line-height: 1.8;">
+                                It all started with one clear vision: to free developers from bloated, slow web frameworks. We believe modern web applications should feel native, load instantaneously, and maintain structural perfection across any viewport.
+                            </p>
                             
                             <div class="row g-4">
                                 <div class="col-sm-6">
                                     <div class="d-flex gap-3">
-                                        <div class="icon-shape bg-primary bg-opacity-10 text-primary rounded-3 p-3 h-100">
-                                            <i class="fa-solid fa-mobile-screen fs-4"></i>
+                                        <div class="icon-shape bg-primary bg-opacity-10 text-primary rounded-4 p-3 h-100">
+                                            <i class="bi bi-phone-fill fs-4"></i>
                                         </div>
                                         <div>
-                                            <h5 class="fw-bold text-dark">Mobile First</h5>
-                                            <p class="small text-muted mb-0">Optimized for Google’s latest indexing standards.</p>
+                                            <h5 class="fw-bold text-dark mb-1">Mobile First</h5>
+                                            <p class="small text-muted mb-0">Responsive fluid breakpoints optimized for touch and handheld workflows.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="d-flex gap-3">
-                                        <div class="icon-shape bg-primary bg-opacity-10 text-primary rounded-3 p-3 h-100">
-                                            <i class="fa-solid fa-code fs-4"></i>
+                                        <div class="icon-shape bg-primary bg-opacity-10 text-primary rounded-4 p-3 h-100">
+                                            <i class="bi bi-code-square fs-4"></i>
                                         </div>
                                         <div>
-                                            <h5 class="fw-bold text-dark">Clean Code</h5>
-                                            <p class="small text-muted mb-0">Lightweight, fast, and scalable application logic.</p>
+                                            <h5 class="fw-bold text-dark mb-1">Zero Overhead</h5>
+                                            <p class="small text-muted mb-0">High-performance Vanilla JS controllers without virtual DOM penalties.</p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        
-            <!-- SERVICES SECTION -->
-            <section id="services" class="py-100 section-theme-light">
-                <div class="container text-center mb-5">
-                    <h2 class="display-6 fw-black text-dark">Our Professional <span class="text-primary">Services</span></h2>
-                    <p class="text-muted small text-uppercase tracking-widest fw-bold">Full-Cycle Digital Solutions</p>
-                </div>
-                <div class="container">
-                    <div class="row g-4">
-                        <div class="col-md-3">
-                            <div class="glass-card p-5 h-100 border-0 shadow-sm hover-up text-center transition-all">
-                                <div class="icon-box mb-4 mx-auto bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
-                                    <i class="fa-solid fa-pen-nib fs-3 text-danger"></i>
-                                </div>
-                                <h4 class="fw-black text-dark h5 mb-3">Web Design</h4>
-                                <p class="text-muted small mb-0">Crafting visual identities that resonate with your target audience.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="glass-card p-5 h-100 border-0 shadow-sm hover-up text-center transition-all">
-                                <div class="icon-box mb-4 mx-auto bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
-                                    <i class="fa-solid fa-earth-americas fs-3 text-danger"></i>
-                                </div>
-                                <h4 class="fw-black text-dark h5 mb-3">Global Support</h4>
-                                <p class="text-muted small mb-0">Seamless 24/7 support for international enterprise systems.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="glass-card p-5 h-100 border-0 shadow-sm hover-up text-center transition-all">
-                                <div class="icon-box mb-4 mx-auto bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
-                                    <i class="fa-solid fa-mobile-button fs-3 text-danger"></i>
-                                </div>
-                                <h4 class="fw-black text-dark h5 mb-3">Mobile Apps</h4>
-                                <p class="text-muted small mb-0">Native-feeling experiences for both iOS and Android platforms.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="glass-card p-5 h-100 border-0 shadow-sm hover-up text-center transition-all">
-                                <div class="icon-box mb-4 mx-auto bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
-                                    <i class="fa-solid fa-terminal fs-3 text-danger"></i>
-                                </div>
-                                <h4 class="fw-black text-dark h5 mb-3">Development</h4>
-                                <p class="text-muted small mb-0">Robust backends and fluid frontends using modern stacks.</p>
                             </div>
                         </div>
                     </div>
@@ -272,76 +494,102 @@
             </section>
         
             <!-- PRICING SECTION -->
-            <section id="pricing" class="py-100">
+            <section id="pricing" class="py-100 section-theme-light border-top border-bottom border-secondary border-opacity-10">
                 <div class="container">
                     <div class="text-center mb-5">
-                        <h2 class="display-6 fw-black text-dark">Select Your <span class="text-primary">Plan</span></h2>
-                        <p class="text-secondary fw-medium">Flexible architecture solutions for every scale.</p>
+                        <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2 small fw-bold text-uppercase tracking-widest mb-3">Transparent Plans</span>
+                        <h2 class="display-5 fw-black text-dark mb-3">Simple, Transparent Enterprise Licensing</h2>
+                        <p class="text-secondary fw-medium">Choose the architectural tier that fits your application scale.</p>
                     </div>
+        
                     <div class="row g-4 justify-content-center">
+                        <!-- Standard Plan -->
                         <div class="col-lg-4 col-md-6">
-                            <div class="glass-card p-5 h-100 border-0 shadow-sm hover-up text-center">
-                                <h4 class="fw-black text-dark mb-2">Standard</h4>
-                                <div class="display-5 fw-black text-dark my-4">$49<span class="fs-6 text-muted fw-bold">/MO</span></div>
-                                <ul class="list-unstyled mb-5 text-secondary space-y-3">
-                                    <li class="mb-3"><i class="fa-solid fa-circle-check text-primary me-2"></i> Custom UI Design</li>
-                                    <li class="mb-3"><i class="fa-solid fa-circle-check text-primary me-2"></i> Responsive Layout</li>
-                                    <li class="text-muted opacity-50"><i class="fa-solid fa-circle-xmark me-2"></i> Advanced Security</li>
-                                </ul>
-                                <a href="#" class="btn btn-outline-primary rounded-pill w-100 py-3 fw-bold border-2">Get Started</a>
+                            <div class="glass-card p-5 h-100 border-0 shadow-sm hover-up text-center d-flex flex-column justify-content-between">
+                                <div>
+                                    <h4 class="fw-black text-dark mb-2">Standard</h4>
+                                    <p class="text-muted small">Ideal for solo founders and startups.</p>
+                                    <div class="display-5 fw-black text-dark my-4">$49<span class="fs-6 text-muted fw-bold">/license</span></div>
+                                    <ul class="list-unstyled mb-5 text-secondary space-y-3 extra-small">
+                                        <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> All 85+ Flattened HTML Views</li>
+                                        <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Full SCSS 7-1 Source Files</li>
+                                        <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Vite & Gulp Hybrid Build Setup</li>
+                                        <li class="text-muted opacity-50"><i class="bi bi-x-circle me-2"></i> 24/7 Dedicated Priority Support</li>
+                                    </ul>
+                                </div>
+                                <a href="index.html" class="btn btn-outline-primary rounded-pill w-100 py-3 fw-bold border-2">Get Started</a>
                             </div>
                         </div>
+        
+                        <!-- Enterprise Plan (Featured) -->
                         <div class="col-lg-4 col-md-6">
-                            <div class="glass-card p-5 h-100 border-primary border-2 shadow-2xl hover-up text-center bg-white position-relative">
+                            <div class="glass-card p-5 h-100 border-primary border-2 shadow-2xl hover-up text-center position-relative d-flex flex-column justify-content-between" style="transform: scale(1.03);">
                                 <div class="position-absolute top-0 start-50 translate-middle">
                                     <span class="badge rounded-pill bg-primary px-4 py-2 shadow-primary fw-black text-uppercase">Most Popular</span>
                                 </div>
-                                <h4 class="fw-black text-dark mb-2 mt-2">Enterprise</h4>
-                                <div class="display-5 fw-black text-primary my-4">$199<span class="fs-6 text-muted fw-bold">/MO</span></div>
-                                <ul class="list-unstyled mb-5 text-secondary">
-                                    <li class="mb-3"><i class="fa-solid fa-circle-check text-primary me-2"></i> Full-Stack App</li>
-                                    <li class="mb-3"><i class="fa-solid fa-circle-check text-primary me-2"></i> 24/7 Priority Support</li>
-                                    <li class="mb-3"><i class="fa-solid fa-circle-check text-primary me-2"></i> Global Node Hosting</li>
-                                </ul>
-                                <a href="#" class="btn btn-primary rounded-pill w-100 py-3 fw-black shadow-primary">Contact Sales</a>
+                                <div>
+                                    <h4 class="fw-black text-dark mb-2 mt-2">Enterprise</h4>
+                                    <p class="text-muted small">For growing teams and serious products.</p>
+                                    <div class="display-5 fw-black text-primary my-4">$199<span class="fs-6 text-muted fw-bold">/license</span></div>
+                                    <ul class="list-unstyled mb-5 text-secondary extra-small">
+                                        <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Everything in Standard</li>
+                                        <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Full Commercial & SaaS Rights</li>
+                                        <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> 24/7 Priority Discord & Email</li>
+                                        <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Free Lifetime Updates</li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="btn btn-primary rounded-pill w-100 py-3 fw-black shadow-primary" data-bs-toggle="modal" data-bs-target="#contactModal">
+                                    Acquire License
+                                </a>
                             </div>
                         </div>
+        
+                        <!-- Custom Architecture -->
                         <div class="col-lg-4 col-md-6">
-                            <div class="glass-card p-5 h-100 border-0 shadow-sm hover-up text-center">
-                                <h4 class="fw-black text-dark mb-2">Premium</h4>
-                                <div class="display-5 fw-black text-dark my-4">$99<span class="fs-6 text-muted fw-bold">/MO</span></div>
-                                <ul class="list-unstyled mb-5 text-secondary">
-                                    <li class="mb-3"><i class="fa-solid fa-circle-check text-primary me-2"></i> Custom UI Design</li>
-                                    <li class="mb-3"><i class="fa-solid fa-circle-check text-primary me-2"></i> Responsive Layout</li>
-                                    <li class="mb-3"><i class="fa-solid fa-circle-check text-primary me-2"></i> Advanced Security</li>
-                                </ul>
-                                <a href="#" class="btn btn-outline-primary rounded-pill w-100 py-3 fw-bold border-2">Get Started</a>
+                            <div class="glass-card p-5 h-100 border-0 shadow-sm hover-up text-center d-flex flex-column justify-content-between">
+                                <div>
+                                    <h4 class="fw-black text-dark mb-2">Custom SaaS</h4>
+                                    <p class="text-muted small">Bespoke implementation & consulting.</p>
+                                    <div class="display-5 fw-black text-dark my-4">$999<span class="fs-6 text-muted fw-bold">/bespoke</span></div>
+                                    <ul class="list-unstyled mb-5 text-secondary extra-small">
+                                        <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Custom Component Engineering</li>
+                                        <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Dedicated Architectural Review</li>
+                                        <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Backend API Integration Support</li>
+                                        <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> White-Label Rebranding</li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="btn btn-outline-primary rounded-pill w-100 py-3 fw-bold border-2" data-bs-toggle="modal" data-bs-target="#contactModal">
+                                    Contact Us
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         
-            <!-- STATS SECTION -->
-            <section id="stats" class="py-0">
-                <div class="bg-elite-dark py-100 text-white shadow-2xl">
-                    <div class="container">
-                        <div class="row g-4 text-center">
-                            <div class="col-md-3">
-                                <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="99.9">0</h2>
-                                <p class="text-white opacity-50 small text-uppercase fw-black tracking-widest">Uptime Reliability</p>
+            <!-- LIVE TELEMETRY STATS (BOXED LAYOUT) -->
+            <section id="stats" class="py-5 my-2">
+                <div class="container">
+                    <div class="telemetry-boxed-card text-white py-5 px-4 px-md-5 shadow-2xl position-relative overflow-hidden">
+                        <!-- Ambient Gradient Glow -->
+                        <div class="position-absolute top-0 start-50 translate-middle w-50 h-50 rounded-circle" style="background: radial-gradient(circle, rgba(79, 107, 255, 0.18) 0%, transparent 70%); filter: blur(50px); pointer-events: none;"></div>
+        
+                        <div class="row g-0 text-center position-relative" style="z-index: 1;">
+                            <div class="col-lg-3 col-6 telemetry-item">
+                                <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="99.9">99.9%</h2>
+                                <p class="text-white opacity-60 extra-small text-uppercase fw-black tracking-widest mb-0">Uptime Reliability</p>
                             </div>
-                            <div class="col-md-3">
-                                <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="150">0</h2>
-                                <p class="text-white opacity-50 small text-uppercase fw-black tracking-widest">Projects Delivered</p>
+                            <div class="col-lg-3 col-6 telemetry-item">
+                                <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="85">85</h2>
+                                <p class="text-white opacity-60 extra-small text-uppercase fw-black tracking-widest mb-0">Modular Pages</p>
                             </div>
-                            <div class="col-md-3">
-                                <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="24">0</h2>
-                                <p class="text-white opacity-50 small text-uppercase fw-black tracking-widest">Global Nodes</p>
+                            <div class="col-lg-3 col-6 telemetry-item">
+                                <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="150">150+</h2>
+                                <p class="text-white opacity-60 extra-small text-uppercase fw-black tracking-widest mb-0">UI Components</p>
                             </div>
-                            <div class="col-md-3">
-                                <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="10">0</h2>
-                                <p class="text-white opacity-50 small text-uppercase fw-black tracking-widest">Latency (ms)</p>
+                            <div class="col-lg-3 col-6 telemetry-item">
+                                <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="10">&lt;10ms</h2>
+                                <p class="text-white opacity-60 extra-small text-uppercase fw-black tracking-widest mb-0">Core Latency</p>
                             </div>
                         </div>
                     </div>
@@ -350,11 +598,13 @@
         
             <!-- TESTIMONIALS SECTION -->
             <section id="testimonials" class="py-100">
-                <div class="container text-center mb-5">
-                    <h2 class="display-6 fw-black text-dark">Elite Community <span class="text-primary">Voice</span></h2>
-                    <p class="text-muted extra-small fw-bold text-uppercase tracking-widest">Trusted by 5,000+ architects</p>
-                </div>
                 <div class="container">
+                    <div class="text-center mb-5">
+                        <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2 small fw-bold text-uppercase tracking-widest mb-3">Community Endorsement</span>
+                        <h2 class="display-5 fw-black text-dark mb-3">Trusted by World-Class Architects</h2>
+                        <p class="text-muted extra-small fw-bold text-uppercase tracking-widest">Over 5,000+ engineers building modern SaaS</p>
+                    </div>
+        
                     <div class="row g-4">
                         <div class="col-lg-4">
                             <div class="glass-card p-5 border-0 shadow-sm h-100 hover-up transition-all">
@@ -362,55 +612,65 @@
                                     <img src="./assets/photo1.jpg" class="rounded-circle me-3 border border-3 border-primary border-opacity-20 shadow-sm" width="56" height="56" alt="Robert">
                                     <div>
                                         <h6 class="mb-0 fw-black text-dark">Robert Wilson</h6>
-                                        <small class="text-primary fw-bold">Lead Developer</small>
+                                        <small class="text-primary fw-bold">Principal Systems Architect</small>
                                     </div>
                                 </div>
-                                <p class="text-secondary italic mb-0" style="line-height: 1.7;">"The level of professionalism and responsiveness provided by Xivig is unmatched in the industry. Our workflow has never been smoother."</p>
+                                <p class="text-secondary italic mb-0" style="line-height: 1.7;">
+                                    "The level of professionalism in XIVIG is extraordinary. Having 85 modular pages with zero unstyled flash and instantaneous rendering changed how we deliver client portals."
+                                </p>
                             </div>
                         </div>
+        
                         <div class="col-lg-4">
                             <div class="glass-card p-5 border-0 shadow-sm h-100 hover-up transition-all">
                                 <div class="d-flex align-items-center mb-4">
                                     <img src="./assets/photo2.jpg" class="rounded-circle me-3 border border-3 border-primary border-opacity-20 shadow-sm" width="56" height="56" alt="Sarah">
                                     <div>
                                         <h6 class="mb-0 fw-black text-dark">Sarah Chen</h6>
-                                        <small class="text-primary fw-bold">UI/UX Architect</small>
+                                        <small class="text-primary fw-bold">Head of Product Design</small>
                                     </div>
                                 </div>
-                                <p class="text-secondary italic mb-0" style="line-height: 1.7;">"Switching to Xivig's Vanilla JS architecture cut our load times by 60%. It's the standard for modern enterprise applications."</p>
+                                <p class="text-secondary italic mb-0" style="line-height: 1.7;">
+                                    "The glassmorphic design system is deeply cohesive. It looks like a high-end Silicon Valley product straight out of the box."
+                                </p>
                             </div>
                         </div>
+        
                         <div class="col-lg-4">
                             <div class="glass-card p-5 border-0 shadow-sm h-100 hover-up transition-all">
                                 <div class="d-flex align-items-center mb-4">
                                     <img src="./assets/photo3.jpg" class="rounded-circle me-3 border border-3 border-primary border-opacity-20 shadow-sm" width="56" height="56" alt="James">
                                     <div>
                                         <h6 class="mb-0 fw-black text-dark">James Peterson</h6>
-                                        <small class="text-primary fw-bold">System Engineer</small>
+                                        <small class="text-primary fw-bold">Senior Cloud Engineer</small>
                                     </div>
                                 </div>
-                                <p class="text-secondary italic mb-0" style="line-height: 1.7;">"The glassmorphic design system is incredibly deep but stays remarkably fast. It's beautiful and technically superior."</p>
+                                <p class="text-secondary italic mb-0" style="line-height: 1.7;">
+                                    "Flattening the docs folder for GitHub Pages solved all our deployment headaches. The Vite + Gulp pipeline is fast and reliable."
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         
-            <!-- CTA SECTION -->
-            <section id="contact-cta" class="py-100 mt-1 section-theme-light">
+            <!-- FLAGSHIP CTA BANNER -->
+            <section id="contact-cta" class="py-100 section-theme-light border-top border-secondary border-opacity-10">
                 <div class="container">
-                    <div class="glass-card p-5 text-center shadow-2xl border-0 cta-gradient-bg animate-float">
+                    <div class="glass-card p-5 text-center shadow-2xl border-0 cta-gradient-bg animate-float position-relative overflow-hidden">
                         <div class="icon-box mb-4 bg-primary bg-opacity-10 d-inline-flex align-items-center justify-content-center rounded-circle shadow-sm" style="width: 80px; height: 80px;">
-                            <i class="fa-solid fa-shuttle-space fa-2x text-danger"></i>
+                            <i class="bi bi-rocket-takeoff-fill fs-2 text-primary"></i>
                         </div>
-                        <h2 class="display-5 fw-black mb-3 text-dark">Ready to build the <span class="text-gradient">Future?</span></h2>
-                        <p class="lead text-secondary mb-5 mx-auto px-md-5" style="max-width: 700px; line-height: 1.8;">
-                            Join the Xivig ecosystem and experience the power of enterprise-grade application architecture. Let's build something extraordinary together.
+                        <h2 class="display-4 fw-black mb-3 text-dark">Ready to Experience the <span class="text-gradient">Future?</span></h2>
+                        <p class="lead text-secondary mb-5 mx-auto" style="max-width: 650px; line-height: 1.8;">
+                            Launch the live dashboard right now, or explore our documentation to integrate XIVIG into your next enterprise application.
                         </p>
-                        <div class="d-flex justify-content-center gap-3">
-                            <button class="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-primary hover-up fw-black text-uppercase tracking-widest small"
-                                data-bs-toggle="modal" data-bs-target="#contactModal">
-                                <i class="bi bi-send-fill me-2"></i> Send Message
+                        <div class="d-flex flex-wrap justify-content-center gap-3">
+                            <a href="index.html" class="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-primary hover-up fw-black text-uppercase tracking-wider">
+                                <i class="bi bi-grid-fill me-2"></i> Launch Dashboard Demo
+                            </a>
+                            <button class="btn btn-outline-primary btn-lg rounded-pill px-5 py-3 fw-bold text-uppercase tracking-wider" data-bs-toggle="modal" data-bs-target="#contactModal">
+                                <i class="bi bi-send-fill me-2"></i> Contact Sales
                             </button>
                         </div>
                     </div>
@@ -422,33 +682,33 @@
                 <div class="modal-dialog modal-dialog-centered p-4">
                     <div class="modal-content glass-card border-0 shadow-2xl">
                         <div class="modal-header border-0 pb-0 px-4 pt-4">
-                            <h5 class="modal-title fw-black text-dark">Get in <span class="text-primary">Touch</span></h5>
+                            <h5 class="modal-title fw-black text-dark">Connect with <span class="text-primary">XIVIG</span></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body p-4">
                             <form id="contactForm">
                                 <div class="mb-3">
-                                    <label class="apple-label small mb-2">Full Name</label>
-                                    <input type="text" class="form-control modern-input rounded-pill px-4" placeholder="John Doe" required>
+                                    <label class="apple-label small mb-2 fw-bold text-dark">Full Name</label>
+                                    <input type="text" class="form-control modern-input rounded-pill px-4" placeholder="Your name" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="apple-label small mb-2">Email Address</label>
-                                    <input type="email" class="form-control modern-input rounded-pill px-4" placeholder="john@example.com" required>
+                                    <label class="apple-label small mb-2 fw-bold text-dark">Email Address</label>
+                                    <input type="email" class="form-control modern-input rounded-pill px-4" placeholder="you@company.com" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="apple-label small mb-2">Message</label>
-                                    <textarea class="form-control modern-input rounded-4 px-4 py-3" rows="4" placeholder="How can we help you?" required></textarea>
+                                    <label class="apple-label small mb-2 fw-bold text-dark">Project Scope</label>
+                                    <textarea class="form-control modern-input rounded-4 px-4 py-3" rows="4" placeholder="Describe your product requirements..." required></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100 rounded-pill py-3 shadow-primary fw-black text-uppercase tracking-widest mt-3">
-                                    <i class="bi bi-send-fill me-2"></i> Send Message
+                                <button type="submit" class="btn btn-primary w-100 rounded-pill py-3 shadow-primary fw-black text-uppercase tracking-wider mt-3">
+                                    <i class="bi bi-send-fill me-2"></i> Submit Inquiry
                                 </button>
                             </form>
                             <div id="formSuccess" class="text-center d-none py-5">
-                                <div class="icon-box mb-4 bg-success bg-opacity-10 d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px;">
-                                    <i class="fa-solid fa-check fa-2x text-success"></i>
+                                <div class="icon-box mb-4 bg-success bg-opacity-10 d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 70px; height: 70px;">
+                                    <i class="bi bi-check-lg fs-2 text-success"></i>
                                 </div>
-                                <h5 class="fw-black text-dark">Message Sent!</h5>
-                                <p class="text-muted small mb-0">We'll get back to you within 24 hours.</p>
+                                <h5 class="fw-black text-dark">Inquiry Dispatched!</h5>
+                                <p class="text-muted small mb-0">Our architectural team will respond within 24 hours.</p>
                             </div>
                         </div>
                     </div>
@@ -457,18 +717,172 @@
         
     </main>
 
-    <!-- FOOTER -->
-    <footer class="py-100 landing-footer">
-        <div class="container text-center">
-            <h2 class="fw-black mb-4 d-flex align-items-center justify-content-center text-dark">
-                <i class="fa-solid fa-cube text-danger me-3"></i>XIVIG
-            </h2>
-            <div class="d-flex justify-content-center gap-4 mb-5">
-                <a href="#" class="footer-link-fb fs-4" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="footer-link-tw fs-4" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" class="footer-link-ig fs-4" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <!-- ELITE BRAND SHOWCASE FOOTER -->
+    <footer class="landing-footer">
+        <div class="container">
+            
+            <!-- Pre-Footer Newsletter & Trust Banner -->
+            <div class="landing-footer__newsletter-box">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-7">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold">WEEKLY ARCHITECT DIGEST</span>
+                            <span class="text-secondary small">&bull; Zero Spam</span>
+                        </div>
+                        <h3 class="fw-black text-dark mb-2">Stay Ahead of Modern Web Architecture.</h3>
+                        <p class="text-secondary mb-0 small" style="max-width: 580px; line-height: 1.6;">
+                            Receive weekly production releases, performance benchmarks, Glassmorphic component drops, and Vite + Sass optimization patterns.
+                        </p>
+                    </div>
+                    <div class="col-lg-5">
+                        <form class="d-flex flex-column flex-sm-row gap-2" onsubmit="event.preventDefault(); const b=this.querySelector('button'); b.innerHTML='Subscribed!'; b.classList.replace('landing-footer__submit-btn','btn-success');">
+                            <input type="email" class="form-control landing-footer__input flex-grow-1" placeholder="architect@company.com" required aria-label="Email Address">
+                            <button class="btn landing-footer__submit-btn d-inline-flex align-items-center justify-content-center gap-2" type="submit">
+                                <span>Join Digest</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </form>
+                        <div class="d-flex flex-wrap align-items-center gap-3 mt-2.5 text-secondary" style="font-size: 0.78rem;">
+                            <span><i class="bi bi-shield-check text-success me-1"></i> 100% Privacy</span>
+                            <span><i class="bi bi-check2 text-primary me-1"></i> Instant Unsubscribe</span>
+                            <span><i class="bi bi-people text-info me-1"></i> 14,200+ Architects</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="text-muted extra-small fw-bold text-uppercase tracking-widest mb-0 opacity-75">Copyrights &copy; 2026 Xivig Architect OS. All rights Reserved.</p>
+    
+            <!-- Main Footer Navigation Columns -->
+            <div class="row g-4 g-lg-5">
+                <!-- 1. Brand & Telemetry Column -->
+                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                    <a class="d-inline-flex align-items-center gap-2 mb-3 text-decoration-none" href="xivig.html">
+                        <img src="./assets/logo.png" alt="XIVIG" width="38" height="38" style="object-fit: contain; filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.4));">
+                        <span class="fw-black tracking-wider text-dark fs-4 mb-0">XIVIG<span class="text-primary">.</span></span>
+                        <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-20 px-2 py-0.5 extra-small fw-bold ms-1">ELITE v2.4</span>
+                    </a>
+                    <p class="landing-footer__desc mb-3" style="max-width: 360px;">
+                        A luxury enterprise application framework fusing Glassmorphism aesthetics, reactive Vanilla JS architecture, 91 modular templates, and high-velocity Vite + Sass build pipelines.
+                    </p>
+    
+                    <!-- Live Cluster Status Beacon -->
+                    <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill bg-success bg-opacity-10 border border-success border-opacity-25 mb-4">
+                        <span class="pulse-beacon-emerald"></span>
+                        <span class="text-success fw-bold extra-small" style="letter-spacing: 0.04em;">ALL CLUSTERS OPERATIONAL &bull; 99.99% SLA</span>
+                    </div>
+    
+                    <!-- Social Action Pills -->
+                    <div class="d-flex align-items-center gap-2.5 mb-4">
+                        <a href="https://github.com/xivig/xivig.github.io" target="_blank" rel="noopener noreferrer" class="footer-social-pill" title="GitHub Repository" aria-label="GitHub Repository"><i class="bi bi-github"></i></a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-pill" title="X / Twitter" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-pill" title="LinkedIn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="footer-social-pill" title="Discord Community" aria-label="Discord"><i class="bi bi-discord"></i></a>
+                    </div>
+    
+                    <!-- Architectural Specs Pills -->
+                    <div class="d-flex flex-wrap gap-1.5 text-secondary">
+                        <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-15 extra-small">Vite 5+</span>
+                        <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-15 extra-small">Sass 7-1</span>
+                        <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-15 extra-small">100% Vanilla JS</span>
+                        <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-15 extra-small">MIT License</span>
+                    </div>
+                </div>
+    
+                <!-- 2. Platform Modules Column -->
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="landing-footer__heading">Platform</h6>
+                    <ul class="landing-footer__list">
+                        <li><a href="index.html" class="landing-footer__link">Dashboard v1</a></li>
+                        <li><a href="dashboard-v2.html" class="landing-footer__link">Dashboard v2</a></li>
+                        <li><a href="ecommerce-products.html" class="landing-footer__link">E-Commerce</a></li>
+                        <li>
+                            <a href="kanban.html" class="landing-footer__link">
+                                <span>Kanban Board</span>
+                                <span class="landing-footer__badge landing-footer__badge--primary">NEW</span>
+                            </a>
+                        </li>
+                        <li><a href="task-manager.html" class="landing-footer__link">Task Manager</a></li>
+                        <li><a href="calendar.html" class="landing-footer__link">Calendar Hub</a></li>
+                        <li><a href="chat.html" class="landing-footer__link">Live Chat App</a></li>
+                    </ul>
+                </div>
+    
+                <!-- 3. Design System Column -->
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="landing-footer__heading">Design System</h6>
+                    <ul class="landing-footer__list">
+                        <li>
+                            <a href="ui-cards.html" class="landing-footer__link">
+                                <span>Cards Catalog</span>
+                                <span class="landing-footer__badge landing-footer__badge--warning">HOT</span>
+                            </a>
+                        </li>
+                        <li><a href="ui-cards-hover.html" class="landing-footer__link">Hover Effects</a></li>
+                        <li><a href="ui-buttons.html" class="landing-footer__link">Action Buttons</a></li>
+                        <li><a href="datatable.html" class="landing-footer__link">Data Tables</a></li>
+                        <li><a href="apexcharts.html" class="landing-footer__link">ApexCharts</a></li>
+                        <li><a href="form-wizard.html" class="landing-footer__link">Form Wizard</a></li>
+                        <li><a href="ui-modals.html" class="landing-footer__link">Modals &amp; Alerts</a></li>
+                    </ul>
+                </div>
+    
+                <!-- 4. Engineering & DevOps Column -->
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="landing-footer__heading">Engineering</h6>
+                    <ul class="landing-footer__list">
+                        <li><a href="documentation.html" class="landing-footer__link">Technical Docs</a></li>
+                        <li>
+                            <a href="releases.html" class="landing-footer__link">
+                                <span>Releases</span>
+                                <span class="landing-footer__badge landing-footer__badge--success">v2.4</span>
+                            </a>
+                        </li>
+                        <li><a href="build-history.html" class="landing-footer__link">Build History</a></li>
+                        <li><a href="system-metrics.html" class="landing-footer__link">Telemetry &amp; SLA</a></li>
+                        <li><a href="overview.html" class="landing-footer__link">Analytics Hub</a></li>
+                        <li><a href="advanced-components.html" class="landing-footer__link">Advanced UI</a></li>
+                        <li><a href="sitemap.html" class="landing-footer__link">All 91 Pages</a></li>
+                    </ul>
+                </div>
+    
+                <!-- 5. Ecosystem & Resources Column -->
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="landing-footer__heading">Ecosystem</h6>
+                    <ul class="landing-footer__list">
+                        <li><a href="xivig.html" class="landing-footer__link">Brand Showcase</a></li>
+                        <li><a href="pricing-table.html" class="landing-footer__link">Pricing Matrix</a></li>
+                        <li><a href="faq.html" class="landing-footer__link">Knowledgebase</a></li>
+                        <li><a href="help-support.html" class="landing-footer__link">Help Desk</a></li>
+                        <li><a href="contact-directory.html" class="landing-footer__link">Contact Roster</a></li>
+                        <li><a href="https://github.com/xivig/xivig.github.io" target="_blank" rel="noopener noreferrer" class="landing-footer__link">GitHub Repo</a></li>
+                        <li><a href="store-settings.html" class="landing-footer__link">Store Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Bottom Legal & Telemetry Strip -->
+            <div class="landing-footer__bottom d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+                <div>
+                    &copy; 2026 <strong class="text-dark">XIVIG Architect OS</strong>. Engineered for modern web velocity. Released under MIT License.
+                </div>
+                <div class="d-flex flex-wrap align-items-center gap-3.5">
+                    <a href="system-metrics.html" class="text-secondary text-decoration-none extra-small d-inline-flex align-items-center gap-1.5">
+                        <span class="pulse-beacon-emerald" style="width: 6px; height: 6px;"></span>
+                        <span>Systems 99.99%</span>
+                    </a>
+                    <span class="text-secondary opacity-30">&bull;</span>
+                    <a href="faq.html" class="text-secondary text-decoration-none extra-small">FAQ</a>
+                    <span class="text-secondary opacity-30">&bull;</span>
+                    <a href="help-support.html" class="text-secondary text-decoration-none extra-small">Support</a>
+                    <span class="text-secondary opacity-30">&bull;</span>
+                    <a href="documentation.html" class="text-secondary text-decoration-none extra-small">Docs</a>
+                    <span class="text-secondary opacity-30">&bull;</span>
+                    <a href="#home" class="footer-back-to-top btn btn-sm rounded-pill px-3 py-1 extra-small fw-bold d-inline-flex align-items-center gap-1 text-decoration-none">
+                        <i class="bi bi-arrow-up"></i>
+                        <span>Top</span>
+                    </a>
+                </div>
+            </div>
+    
         </div>
     </footer>
 
@@ -477,4 +891,3 @@
 </body>
 
 </html>
-

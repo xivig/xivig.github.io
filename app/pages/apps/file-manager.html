@@ -1,200 +1,358 @@
 {{#> admin-layout title="File Manager" parentTitle="Apps" }}
 
-<div class="row g-4">
-    <!-- Main Explorer Wrapper -->
+<!-- Top Storage Telemetry Pods -->
+<div class="row g-4 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">TOTAL STORAGE</span>
+                <div class="stat-card__icon stat-card__icon--primary">
+                    <i class="bi bi-cloud-check-fill"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">68.4 GB</h3>
+                    <div class="stat-card__label">Of 100 GB Allocated</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-pie-chart-fill"></i> 68% Used
+                </span>
+                <span class="stat-card__context">31.6 GB available</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">DOCUMENTS & PDFS</span>
+                <div class="stat-card__icon stat-card__icon--danger">
+                    <i class="bi bi-file-earmark-pdf-fill"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">14.2 GB</h3>
+                    <div class="stat-card__label">842 Files Archived</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-arrow-up-right"></i> +4.2%
+                </span>
+                <span class="stat-card__context">in past 30 days</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">MEDIA & ASSETS</span>
+                <div class="stat-card__icon stat-card__icon--info">
+                    <i class="bi bi-images"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">32.6 GB</h3>
+                    <div class="stat-card__label">3,120 Graphic Assets</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-check-circle-fill"></i> Optimized
+                </span>
+                <span class="stat-card__context">WebP 80% lossy</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">CODE & ARCHIVES</span>
+                <div class="stat-card__icon stat-card__icon--warning">
+                    <i class="bi bi-file-earmark-zip-fill"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">21.6 GB</h3>
+                    <div class="stat-card__label">158 Repos & Builds</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-shield-check"></i> Encrypted
+                </span>
+                <span class="stat-card__context">AES-256 vault</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main File Explorer Panel -->
+<div class="row g-4 mb-4">
     <div class="col-12">
-        <div class="file-manager__wrapper rounded-4 overflow-hidden shadow-lg d-flex border-0 glass-card">
+        <div class="file-manager__wrapper shadow-sm d-flex flex-column flex-lg-row overflow-hidden">
             
-            <!-- Sidebar: Navigation & Storage -->
-            <aside class="file-sidebar d-none d-xl-flex flex-column border-end border-opacity-10 py-3">
-                <div class="px-4 mb-4">
-                    <h5 class="fw-black mb-1">Drive</h5>
-                    <p class="text-muted extra-small text-uppercase tracking-widest mb-0 file-section-label">Elite Cloud Storage</p>
+            <!-- Sidebar: Navigation & Storage Breakdown -->
+            <aside class="file-sidebar d-flex flex-column py-3 flex-shrink-0">
+                <div class="px-4 mb-3">
+                    <h5 class="fw-bold mb-0 text-main">Drive Storage</h5>
+                    <p class="text-muted extra-small text-uppercase tracking-wider mb-0">XIVIG Cloud Vault</p>
                 </div>
 
                 <nav class="file-nav flex-column gap-1">
                     <a class="file-nav__link is-active nav-link" href="#">
-                        <i class="bi bi-grid-fill me-3"></i> All Assets
+                        <i class="bi bi-grid-fill me-2.5"></i> All Assets
                     </a>
                     <a class="file-nav__link nav-link" href="#">
-                        <i class="bi bi-clock-history me-3"></i> Recent Files
+                        <i class="bi bi-clock-history me-2.5"></i> Recent Files
                     </a>
                     <a class="file-nav__link nav-link" href="#">
-                        <i class="bi bi-star-fill me-3 text-warning"></i> Starred items
+                        <i class="bi bi-star-fill me-2.5 text-warning"></i> Starred Items
                     </a>
                     <a class="file-nav__link nav-link" href="#">
-                        <i class="bi bi-trash3-fill me-3 text-danger"></i> Bin
+                        <i class="bi bi-people-fill me-2.5 text-info"></i> Shared With Me
+                    </a>
+                    <a class="file-nav__link nav-link" href="#">
+                        <i class="bi bi-trash3-fill me-2.5 text-danger"></i> Bin
                     </a>
                 </nav>
 
                 <div class="mt-4 px-4">
-                    <label class="apple-label mb-3 file-sidebar-label">Labels</label>
-                    <div class="d-flex flex-column gap-3">
-                        <a href="#" class="nav-link p-0 small fw-bold d-flex align-items-center">
-                            <span class="dot bg-primary me-2 file-dot"></span> Projects
+                    <label class="text-muted extra-small text-uppercase fw-bold letter-spacing-1 mb-2.5 d-block">Labels</label>
+                    <div class="d-flex flex-column gap-2.5">
+                        <a href="#" class="nav-link p-0 extra-small fw-semibold text-main d-flex align-items-center">
+                            <span class="d-inline-block rounded-circle bg-primary me-2" style="width: 8px; height: 8px;"></span> Architecture
                         </a>
-                        <a href="#" class="nav-link p-0 small fw-bold d-flex align-items-center">
-                            <span class="dot bg-success me-2 file-dot"></span> Final Assets
+                        <a href="#" class="nav-link p-0 extra-small fw-semibold text-main d-flex align-items-center">
+                            <span class="d-inline-block rounded-circle bg-success me-2" style="width: 8px; height: 8px;"></span> Production Builds
                         </a>
-                        <a href="#" class="nav-link p-0 small fw-bold d-flex align-items-center">
-                            <span class="dot bg-warning me-2 file-dot"></span> Pending
+                        <a href="#" class="nav-link p-0 extra-small fw-semibold text-main d-flex align-items-center">
+                            <span class="d-inline-block rounded-circle bg-warning me-2" style="width: 8px; height: 8px;"></span> Pending RFCs
+                        </a>
+                        <a href="#" class="nav-link p-0 extra-small fw-semibold text-main d-flex align-items-center">
+                            <span class="d-inline-block rounded-circle bg-info me-2" style="width: 8px; height: 8px;"></span> Assets & Brand
                         </a>
                     </div>
                 </div>
 
-                <div class="mt-auto p-4 mx-3 mb-3 rounded-4 bg-white bg-opacity-50 border shadow-sm">
-                    <div class="d-flex justify-content-between small mb-2">
-                        <span class="fw-bold extra-small">STORAGE</span>
-                        <span class="fw-black text-primary extra-small">85%</span>
+                <div class="mt-auto p-3 mx-3 mb-3 rounded-4 bg-body-tertiary border border-secondary border-opacity-15 shadow-2xs">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="fw-bold text-muted" style="letter-spacing: 0.06em; font-size: 0.72rem;">QUOTA USED</span>
+                        <span class="fw-bold text-primary" style="font-size: 0.8125rem;">68%</span>
                     </div>
-                    <div class="progress mb-3 file-storage-progress">
-                        <div class="progress-bar bg-primary shadow-sm" role="progressbar" style="width: 85%"></div>
+                    <div class="progress mb-3" style="height: 6px; background: rgba(79, 107, 255, 0.12); border-radius: 999px; overflow: hidden; margin-bottom: 14px !important;">
+                        <div class="progress-bar rounded-pill bg-primary" role="progressbar" style="width: 68%;"></div>
                     </div>
-                    <button class="btn btn-primary w-100 btn-sm rounded-pill fw-bold py-2 shadow-sm file-btn-upgrade">
-                         Upgrade
-                    </button>
+                    <a href="pricing-table.html" class="btn btn-primary w-100 btn-sm rounded-pill fw-semibold py-2 shadow-sm d-flex align-items-center justify-content-center gap-2" style="font-size: 0.78rem; letter-spacing: 0.02em;">
+                        <i class="bi bi-lightning-charge-fill"></i> Upgrade Vault
+                    </a>
                 </div>
             </aside>
 
-            <!-- Explorer: Toolbar & File Grid -->
-            <main class="file-explorer flex-grow-1 bg-white bg-opacity-30 p-0 d-flex flex-column">
+            <!-- Explorer: Toolbar & File Matrix -->
+            <main class="file-explorer flex-grow-1 p-0 d-flex flex-column">
                 
-                <!-- Advanced Toolbar -->
-                <header class="file-toolbar p-4 border-bottom border-opacity-10">
+                <!-- Toolbar -->
+                <header class="file-toolbar p-3 p-md-4">
                     <div class="row align-items-center g-3">
                         <div class="col-md-5">
-                            <div class="input-group modern-input-group bg-white rounded-pill px-3 py-1 shadow-sm border border-white">
-                                <span class="input-group-text bg-transparent border-0"><i class="bi bi-search text-muted"></i></span>
-                                <input type="text" class="form-control border-0 bg-transparent shadow-none small file-search-input" placeholder="Search your archive...">
+                            <div class="input-group modern-input-group bg-body-tertiary rounded-pill px-3 py-1 border border-secondary border-opacity-15 shadow-2xs">
+                                <span class="input-group-text bg-transparent border-0 p-0 me-2"><i class="bi bi-search text-muted"></i></span>
+                                <input type="text" class="form-control border-0 bg-transparent shadow-none extra-small" placeholder="Search archive, files, folders...">
                             </div>
                         </div>
-                        <div class="col-md-7 d-flex justify-content-md-end align-items-center gap-3">
-                            <div class="btn-group p-1 bg-white bg-opacity-50 rounded-pill shadow-sm border border-white">
-                                <button class="btn btn-white btn-sm shadow-sm rounded-pill px-3 border-0"><i class="bi bi-grid-3x3-gap-fill"></i></button>
-                                <button class="btn btn-transparent btn-sm text-muted rounded-pill px-3 border-0"><i class="bi bi-list-ul"></i></button>
+                        <div class="col-md-7 d-flex justify-content-md-end align-items-center gap-2 flex-wrap">
+                            <div class="btn-group p-0.5 bg-body-tertiary rounded-pill border border-secondary border-opacity-15">
+                                <button class="btn btn-sm btn-primary rounded-pill px-2.5 py-1 extra-small"><i class="bi bi-grid-3x3-gap-fill"></i></button>
+                                <button class="btn btn-sm btn-transparent text-muted rounded-pill px-2.5 py-1 extra-small"><i class="bi bi-list-ul"></i></button>
                             </div>
-                            <div class="vr opacity-10"></div>
-                            <button class="btn btn-dark btn-sm px-3 py-2 rounded-pill shadow-sm fw-bold border-0 file-btn-new">
-                                <i class="bi bi-plus-lg me-2"></i> New
+                            <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1.5 extra-small fw-bold d-inline-flex align-items-center gap-1.5">
+                                <i class="bi bi-folder-plus"></i> New Folder
                             </button>
-                            <button class="btn btn-primary btn-sm px-4 py-2 rounded-pill shadow-primary fw-bold border-0 file-btn-upload">
-                                <i class="bi bi-cloud-arrow-up-fill me-2"></i> Upload
+                            <button class="btn btn-sm btn-primary rounded-pill px-3.5 py-1.5 extra-small fw-bold d-inline-flex align-items-center gap-1.5 text-white shadow-sm" >
+                                <i class="bi bi-cloud-arrow-up-fill"></i> Upload Files
                             </button>
                         </div>
                     </div>
                 </header>
 
-                <!-- Scrollable Content -->
-                <div class="flex-grow-1 overflow-auto p-4 custom-scroll">
-                    <nav aria-label="breadcrumb" class="mb-4">
-                        <ol class="breadcrumb mb-0 file-breadcrumb">
-                            <li class="breadcrumb-item"><a href="#" class="text-muted text-decoration-none opacity-50">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="text-muted text-decoration-none opacity-50">Cloud Drive</a></li>
-                            <li class="breadcrumb-item active fw-black text-primary">Architecture Design</li>
+                <!-- Scrollable Explorer Grid -->
+                <div class="flex-grow-1 p-3 p-md-4">
+                    <nav aria-label="breadcrumb" class="mb-3">
+                        <ol class="breadcrumb mb-0 extra-small">
+                            <li class="breadcrumb-item"><a href="#" class="text-muted text-decoration-none"><i class="bi bi-house-door-fill me-1"></i> Root</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="text-muted text-decoration-none">Cloud Drive</a></li>
+                            <li class="breadcrumb-item active fw-bold text-primary">Architecture Design</li>
                         </ol>
                     </nav>
 
-                    <h6 class="apple-label mb-3 file-section-label">Folders</h6>
-                    <div class="row g-3 mb-5">
-                        <!-- Folder Item -->
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                            <div class="file-item card h-100 p-0 text-center">
+                    <!-- Folders Section -->
+                    <h6 class="text-muted extra-small text-uppercase fw-bold letter-spacing-1 mb-3">Folders (4)</h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-6 col-sm-4 col-md-3">
+                            <div class="file-item card h-100 text-center">
                                 <div class="file-item__icon folder-icon">
                                     <i class="bi bi-folder-fill"></i>
                                 </div>
-                                <div class="px-2 pb-3">
+                                <div class="px-2 pb-2">
                                     <h6 class="file-item__name">System Assets</h6>
-                                    <p class="file-item__meta mb-0">124 Files</p>
+                                    <p class="file-item__meta mb-0">124 Files • 8.4 GB</p>
                                 </div>
                                 <div class="file-item__actions">
-                                    <button class="btn btn-white btn-sm shadow-sm rounded-circle border-0 p-1 file-btn-share"><i class="bi bi-share-fill"></i></button>
+                                    <button class="table-action-btn" title="Folder Options"><i class="bi bi-three-dots"></i></button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                            <div class="file-item card h-100 p-0 text-center">
+
+                        <div class="col-6 col-sm-4 col-md-3">
+                            <div class="file-item card h-100 text-center">
                                 <div class="file-item__icon folder-icon">
-                                    <i class="bi bi-folder-fill text-warning"></i>
+                                    <i class="bi bi-folder-fill" style="color: #6366f1;"></i>
                                 </div>
-                                <div class="px-2 pb-3">
-                                    <h6 class="file-item__name">Client Mockups</h6>
-                                    <p class="file-item__meta mb-0">18 Files</p>
+                                <div class="px-2 pb-2">
+                                    <h6 class="file-item__name">UI Mockups</h6>
+                                    <p class="file-item__meta mb-0">68 Files • 4.1 GB</p>
+                                </div>
+                                <div class="file-item__actions">
+                                    <button class="table-action-btn" title="Folder Options"><i class="bi bi-three-dots"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-sm-4 col-md-3">
+                            <div class="file-item card h-100 text-center">
+                                <div class="file-item__icon folder-icon">
+                                    <i class="bi bi-folder-fill" style="color: #10b981;"></i>
+                                </div>
+                                <div class="px-2 pb-2">
+                                    <h6 class="file-item__name">Production Builds</h6>
+                                    <p class="file-item__meta mb-0">42 Files • 18.2 GB</p>
+                                </div>
+                                <div class="file-item__actions">
+                                    <button class="table-action-btn" title="Folder Options"><i class="bi bi-three-dots"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-sm-4 col-md-3">
+                            <div class="file-item card h-100 text-center">
+                                <div class="file-item__icon folder-icon">
+                                    <i class="bi bi-folder-fill" style="color: #ec4899;"></i>
+                                </div>
+                                <div class="px-2 pb-2">
+                                    <h6 class="file-item__name">Brand Resources</h6>
+                                    <p class="file-item__meta mb-0">35 Files • 2.6 GB</p>
+                                </div>
+                                <div class="file-item__actions">
+                                    <button class="table-action-btn" title="Folder Options"><i class="bi bi-three-dots"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <h6 class="apple-label mb-3 file-section-label">Recent Files</h6>
+                    <!-- Files Section -->
+                    <h6 class="text-muted extra-small text-uppercase fw-bold letter-spacing-1 mb-3">Recent Files (6)</h6>
                     <div class="row g-3">
                         <!-- PDF File -->
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xxl-1 file-item-min-width">
-                            <div class="file-item card h-100 p-0 text-center">
+                        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+                            <div class="file-item card h-100 text-center">
                                 <div class="file-item__icon pdf-icon">
                                     <i class="bi bi-file-earmark-pdf-fill"></i>
                                 </div>
-                                <div class="px-2 pb-3">
-                                    <h6 class="file-item__name">Project_Elite.pdf</h6>
-                                    <p class="file-item__meta mb-0">2.4 MB</p>
+                                <div class="px-2 pb-2">
+                                    <h6 class="file-item__name">Architecture_RFC.pdf</h6>
+                                    <p class="file-item__meta mb-0">2.4 MB • Updated 2h ago</p>
+                                </div>
+                                <div class="file-item__actions">
+                                    <button class="table-action-btn" title="File Options"><i class="bi bi-three-dots"></i></button>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Excel File -->
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xxl-1 file-item-min-width">
-                            <div class="file-item card h-100 p-0 text-center">
+                        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+                            <div class="file-item card h-100 text-center">
                                 <div class="file-item__icon excel-icon">
                                     <i class="bi bi-file-earmark-excel-fill"></i>
                                 </div>
-                                <div class="px-2 pb-3">
-                                    <h6 class="file-item__name">Financials_26.xlsx</h6>
-                                    <p class="file-item__meta mb-0">850 KB</p>
+                                <div class="px-2 pb-2">
+                                    <h6 class="file-item__name">Financials_Q4.xlsx</h6>
+                                    <p class="file-item__meta mb-0">850 KB • Updated 4h ago</p>
+                                </div>
+                                <div class="file-item__actions">
+                                    <button class="table-action-btn" title="File Options"><i class="bi bi-three-dots"></i></button>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Word File -->
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xxl-1 file-item-min-width">
-                            <div class="file-item card h-100 p-0 text-center">
+                        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+                            <div class="file-item card h-100 text-center">
                                 <div class="file-item__icon word-icon">
                                     <i class="bi bi-file-earmark-word-fill"></i>
                                 </div>
-                                <div class="px-2 pb-3">
-                                    <h6 class="file-item__name">Contract_V2.docx</h6>
-                                    <p class="file-item__meta mb-0">1.1 MB</p>
+                                <div class="px-2 pb-2">
+                                    <h6 class="file-item__name">Enterprise_SLA.docx</h6>
+                                    <p class="file-item__meta mb-0">1.1 MB • Updated yesterday</p>
+                                </div>
+                                <div class="file-item__actions">
+                                    <button class="table-action-btn" title="File Options"><i class="bi bi-three-dots"></i></button>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Image File -->
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xxl-1 file-item-min-width">
-                            <div class="file-item card h-100 p-0 text-center">
+                        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+                            <div class="file-item card h-100 text-center">
                                 <div class="file-item__icon img-icon">
                                     <i class="bi bi-file-earmark-image-fill"></i>
                                 </div>
-                                <div class="px-2 pb-3">
-                                    <h6 class="file-item__name">Dashboard_Final.png</h6>
-                                    <p class="file-item__meta mb-0">5.6 MB</p>
+                                <div class="px-2 pb-2">
+                                    <h6 class="file-item__name">Showcase_Hero.png</h6>
+                                    <p class="file-item__meta mb-0">5.6 MB • Updated yesterday</p>
+                                </div>
+                                <div class="file-item__actions">
+                                    <button class="table-action-btn" title="File Options"><i class="bi bi-three-dots"></i></button>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Zip File -->
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xxl-1 file-item-min-width">
-                            <div class="file-item card h-100 p-0 text-center">
+                        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+                            <div class="file-item card h-100 text-center">
                                 <div class="file-item__icon zip-icon">
                                     <i class="bi bi-file-earmark-zip-fill"></i>
                                 </div>
-                                <div class="px-2 pb-3">
-                                    <h6 class="file-item__name">Source_Code.zip</h6>
-                                    <p class="file-item__meta mb-0">124 MB</p>
+                                <div class="px-2 pb-2">
+                                    <h6 class="file-item__name">Source_Bundle_v2.zip</h6>
+                                    <p class="file-item__meta mb-0">124 MB • Updated 2d ago</p>
+                                </div>
+                                <div class="file-item__actions">
+                                    <button class="table-action-btn" title="File Options"><i class="bi bi-three-dots"></i></button>
                                 </div>
                             </div>
                         </div>
+
                         <!-- MD File -->
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xxl-1 file-item-min-width">
-                            <div class="file-item card h-100 p-0 text-center">
+                        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+                            <div class="file-item card h-100 text-center">
                                 <div class="file-item__icon md-icon">
                                     <i class="bi bi-file-earmark-code-fill"></i>
                                 </div>
-                                <div class="px-2 pb-3">
+                                <div class="px-2 pb-2">
                                     <h6 class="file-item__name">README_Elite.md</h6>
-                                    <p class="file-item__meta mb-0">12 KB</p>
+                                    <p class="file-item__meta mb-0">14 KB • Updated 3d ago</p>
+                                </div>
+                                <div class="file-item__actions">
+                                    <button class="table-action-btn" title="File Options"><i class="bi bi-three-dots"></i></button>
                                 </div>
                             </div>
                         </div>

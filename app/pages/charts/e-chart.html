@@ -1,48 +1,69 @@
 {{#> admin-layout title="E Charts" parentTitle="Charts" }}
 
-<div class="row g-4">
-                <!-- Bar Graph -->
-                <div class="col-md-6">
-                    <div class="card shadow-sm border-0 rounded-4">
-                        <div class="card-header bg-white border-0 py-3">
-                            <h5 class="card-title mb-0">Monthly Sales Performance</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="barChart" style="height: 400px;"></div>
-                        </div>
-                    </div>
+<div class="row g-4 mb-4">
+    <!-- Monthly Performance Bar Graph -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Monthly Sales &amp; Revenue</h5>
+                    <p class="text-muted extra-small mb-0">Multi-metric financial telemetry across fiscal year</p>
                 </div>
-                <!-- Mini Pie -->
-                <div class="col-md-6">
-                    <div class="card shadow-sm border-0 rounded-4">
-                        <div class="card-header bg-white border-0 py-3">
-                            <h5 class="card-title mb-0">Mini Pie</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="miniPie" style="height: 400px;"></div>
-                        </div>
-                    </div>
+                <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold">Apache ECharts</span>
+            </div>
+            <div class="card-body p-4">
+                <div id="barChart" style="height: 380px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mini Pie -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Traffic Distribution Donut</h5>
+                    <p class="text-muted extra-small mb-0">Direct ingress, CDN caches, and gateway nodes</p>
                 </div>
-                <!-- Website Traffic -->
-                <div class="col-md-6">
-                    <div class="card shadow-sm border-0 rounded-4">
-                        <div class="card-header bg-white border-0 py-3">
-                            <h5 class="card-title mb-0">Website Traffic Sources</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="trafficPie" style="height: 400px;"></div>
-                        </div>
-                    </div>
+                <span class="badge bg-success-subtle text-success rounded-pill px-2.5 py-1 extra-small fw-bold">Donut</span>
+            </div>
+            <div class="card-body p-4">
+                <div id="miniPie" style="height: 380px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Website Traffic Sources -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Website Traffic Sources</h5>
+                    <p class="text-muted extra-small mb-0">Proportional user origin channels</p>
                 </div>
-                <!-- Device Categories -->
-                <div class="col-md-6">
-                    <div class="card shadow-sm border-0 rounded-4">
-                        <div class="card-header bg-white border-0 py-3">
-                            <h5 class="card-title mb-0">Device Categories</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="deviceArea" style="height: 400px;"></div>
-                        </div>
-                    
+                <span class="badge bg-info-subtle text-info rounded-pill px-2.5 py-1 extra-small fw-bold">Channels</span>
+            </div>
+            <div class="card-body p-4">
+                <div id="trafficPie" style="height: 380px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Device Categories (Nightingale Rose Area) -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Device Categories (Rose Area)</h5>
+                    <p class="text-muted extra-small mb-0">Client endpoints by form factor and architecture</p>
+                </div>
+                <span class="badge bg-warning-subtle text-warning rounded-pill px-2.5 py-1 extra-small fw-bold">Endpoints</span>
+            </div>
+            <div class="card-body p-4">
+                <div id="deviceArea" style="height: 380px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{/admin-layout}}

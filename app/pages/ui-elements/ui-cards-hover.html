@@ -1,468 +1,265 @@
 {{#> admin-layout title="Cards Hover" parentTitle="UI Elements" }}
 
-<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+<div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+    <div class="card-header bg-transparent py-4 px-4 border-bottom border-light border-opacity-10 d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <div>
+            <h5 class="fw-bold mb-1 text-main">Interactive Hover Cards Showcase</h5>
+            <small class="text-muted">High-performance CSS micro-interactions, glass overlays, and directional slide reveals</small>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-1.5 extra-small fw-bold">
+                <i class="bi bi-magic me-1"></i> GPU Accelerated
+            </span>
+        </div>
+    </div>
 
-                        <div
-                            class="card-header bg-transparent py-3 px-4 border-0 d-flex justify-content-center align-items-center">
-                            <div class="text-center">
-                                <h5 class="fw-bold mb-0">Cards Hover</h5>
-                                <small class="text-muted">Overview and management of cards hover</small>
+    <div class="card-body p-4 p-md-5">
+        <!-- 1. Fade-in Overlay Section -->
+        <div class="mb-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div>
+                    <h5 class="fw-bold text-main mb-1">Fade-in Glassmorphism Reveal</h5>
+                    <p class="text-muted extra-small mb-0">Smooth opacity and blur transitions triggered via <code class="text-primary">.da-overlay</code></p>
+                </div>
+                <span class="badge bg-secondary-subtle text-muted rounded-pill px-2.5 py-1 extra-small fw-bold">Default Overlay</span>
+            </div>
+
+            <div class="row g-4">
+                <!-- Architect 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="da-card h-100 shadow-sm">
+                        <div class="da-card-photo" style="height: 260px;">
+                            <img src="/app/src/images/photo5.jpg" class="w-100 h-100 object-fit-cover" alt="Alex Carter">
+                            <div class="da-overlay">
+                                <div class="da-social">
+                                    <ul>
+                                        <li><a href="https://github.com/xivig/xivig.github.io" target="_blank" title="GitHub"><i class="bi bi-github"></i></a></li>
+                                        <li><a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
+                                        <li><a href="mailto:alex.carter@xivig.com" title="Email"><i class="bi bi-envelope"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="card-body p-4">
-                            <!--content goes here-->
-
-                            <h2 class="section-title">Fade-in effect</h2>
-                            <p> You can use by default <span class="text-danger">.da-overlays</span></p>
-                            <div class="row g-4">
-
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo1.jpg" alt="Profile">
-                                            <div class="da-overlay">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                        <li><a href="#"><i class="far fa-envelope"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Don H. Rabon</h5>
-                                            <p class="text-muted small mb-0">System Architect</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo2.jpg" alt="Profile">
-                                            <div class="da-overlay">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                        <li><a href="#"><i class="far fa-envelope"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Don H. Rabon</h5>
-                                            <p class="text-muted small mb-0">System Architect</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo3.jpg" alt="Profile">
-                                            <div class="da-overlay">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                        <li><a href="#"><i class="far fa-envelope"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Don H. Rabon</h5>
-                                            <p class="text-muted small mb-0">System Architect</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo4.jpg" alt="Profile">
-                                            <div class="da-overlay">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                        <li><a href="#"><i class="far fa-envelope"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Don H. Rabon</h5>
-                                            <p class="text-muted small mb-0">System Architect</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <h2 class="section-title">Slide Right effect</h2>
-                            <p> You can use by default <span class="text-danger">.da-overlays</span></p>
-                            <div class="row g-4">
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo1.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-left">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo2.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-left">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo3.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-left">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo4.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-left">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <h2 class="section-title">Slide Left effect</h2>
-                            <p> You can use by default <span class="text-danger">.da-overlays</span></p>
-                            <div class="row g-4">
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo1.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-right">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo2.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-right">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo3.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-right">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo4.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-right">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <h2 class="section-title">Slide Bottom effect</h2>
-                            <p> You can use by default <span class="text-danger">.da-overlays</span></p>
-                            <div class="row g-4">
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo1.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-top">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo2.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-top">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo3.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-top">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo4.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-top">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <h2 class="section-title">Slide Top effect</h2>
-                            <p> You can use by default <span class="text-danger">.da-overlay .da-slide-top</span>
-                            </p>
-                            <div class="row g-4">
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo1.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-bottom">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo2.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-bottom">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo3.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-bottom">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-4">
-                                    <div class="da-card">
-                                        <div class="da-card-photo">
-                                            <img src="/app/src/images/photo4.jpg" alt="Profile">
-                                            <div class="da-overlay da-slide-bottom">
-                                                <div class="da-social">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-
-                                                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="da-card-content">
-                                            <h5 class="fw-bold mb-1" style="color: var(--text-main);">Jane Doe</h5>
-                                            <p class="text-muted small mb-0">Lead Developer</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
+                        <div class="da-card-content p-3 text-center">
+                            <h6 class="fw-bold text-main mb-1">Alex Carter</h6>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">Lead Architect</span>
+                            <p class="text-muted extra-small mb-0">Core Runtime &amp; Vite Infrastructure</p>
                         </div>
-                    
+                    </div>
+                </div>
+
+                <!-- Architect 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="da-card h-100 shadow-sm">
+                        <div class="da-card-photo" style="height: 260px;">
+                            <img src="/app/src/images/photo2.jpg" class="w-100 h-100 object-fit-cover" alt="Elena Rostova">
+                            <div class="da-overlay">
+                                <div class="da-social">
+                                    <ul>
+                                        <li><a href="#" title="GitHub"><i class="bi bi-github"></i></a></li>
+                                        <li><a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
+                                        <li><a href="#" title="Discord"><i class="bi bi-discord"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="da-card-content p-3 text-center">
+                            <h6 class="fw-bold text-main mb-1">Elena Rostova</h6>
+                            <span class="badge bg-success-subtle text-success rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">Cloud Lead</span>
+                            <p class="text-muted extra-small mb-0">Edge Clusters &amp; Anycast Routing</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architect 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="da-card h-100 shadow-sm">
+                        <div class="da-card-photo" style="height: 260px;">
+                            <img src="/app/src/images/photo3.jpg" class="w-100 h-100 object-fit-cover" alt="Marcus Vance">
+                            <div class="da-overlay">
+                                <div class="da-social">
+                                    <ul>
+                                        <li><a href="#" title="GitHub"><i class="bi bi-github"></i></a></li>
+                                        <li><a href="#" title="Twitter"><i class="bi bi-twitter-x"></i></a></li>
+                                        <li><a href="#" title="Email"><i class="bi bi-envelope"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="da-card-content p-3 text-center">
+                            <h6 class="fw-bold text-main mb-1">Marcus Vance</h6>
+                            <span class="badge bg-warning-subtle text-warning rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">Principal SRE</span>
+                            <p class="text-muted extra-small mb-0">Kubernetes &amp; Cluster Health</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architect 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="da-card h-100 shadow-sm">
+                        <div class="da-card-photo" style="height: 260px;">
+                            <img src="/app/src/images/photo4.jpg" class="w-100 h-100 object-fit-cover" alt="Sophia Chen">
+                            <div class="da-overlay">
+                                <div class="da-social">
+                                    <ul>
+                                        <li><a href="#" title="Figma"><i class="bi bi-palette"></i></a></li>
+                                        <li><a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
+                                        <li><a href="#" title="Dribbble"><i class="bi bi-dribbble"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="da-card-content p-3 text-center">
+                            <h6 class="fw-bold text-main mb-1">Sophia Chen</h6>
+                            <span class="badge bg-purple-subtle text-purple rounded-pill px-2 py-0.5 extra-small fw-bold mb-1" style="background: rgba(139, 92, 246, 0.1); color: #8B5CF6;">Design Systems</span>
+                            <p class="text-muted extra-small mb-0">Atelier Tokens &amp; Component UX</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Directional Slide Overlays -->
+        <div class="mb-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div>
+                    <h5 class="fw-bold text-main mb-1">Directional Slide Transitions</h5>
+                    <p class="text-muted extra-small mb-0">Hardware-accelerated CSS transforms from 4 orthogonal axes</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold">Slide Left</span>
+                    <span class="badge bg-success-subtle text-success rounded-pill px-2.5 py-1 extra-small fw-bold">Slide Right</span>
+                    <span class="badge bg-warning-subtle text-warning rounded-pill px-2.5 py-1 extra-small fw-bold">Slide Top</span>
+                    <span class="badge bg-info-subtle text-info rounded-pill px-2.5 py-1 extra-small fw-bold">Slide Bottom</span>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Slide Left -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="da-card h-100 shadow-sm">
+                        <div class="da-card-photo" style="height: 260px;">
+                            <img src="/app/src/images/photo7.jpg" class="w-100 h-100 object-fit-cover" alt="Liam O'Connor">
+                            <div class="da-overlay da-slide-left">
+                                <div class="text-center p-3">
+                                    <span class="badge bg-primary rounded-pill px-3 py-1 extra-small fw-bold mb-2">Slide Left</span>
+                                    <h6 class="text-white fw-bold mb-3 small">DevOps Pipeline</h6>
+                                    <div class="da-social justify-content-center">
+                                        <ul>
+                                            <li><a href="#" title="GitHub"><i class="bi bi-github"></i></a></li>
+                                            <li><a href="#" title="Terminal"><i class="bi bi-terminal"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="da-card-content p-3 text-center">
+                            <h6 class="fw-bold text-main mb-1">Liam O'Connor</h6>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">CI/CD Architect</span>
+                            <p class="text-muted extra-small mb-0"><code class="text-primary">.da-slide-left</code></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide Right -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="da-card h-100 shadow-sm">
+                        <div class="da-card-photo" style="height: 260px;">
+                            <img src="/app/src/images/photo8.jpg" class="w-100 h-100 object-fit-cover" alt="Aria Montgomery">
+                            <div class="da-overlay da-slide-right">
+                                <div class="text-center p-3">
+                                    <span class="badge bg-success rounded-pill px-3 py-1 extra-small fw-bold mb-2">Slide Right</span>
+                                    <h6 class="text-white fw-bold mb-3 small">Security Officer</h6>
+                                    <div class="da-social justify-content-center">
+                                        <ul>
+                                            <li><a href="#" title="Key"><i class="bi bi-shield-lock"></i></a></li>
+                                            <li><a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="da-card-content p-3 text-center">
+                            <h6 class="fw-bold text-main mb-1">Aria Montgomery</h6>
+                            <span class="badge bg-success-subtle text-success rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">Zero-Trust Lead</span>
+                            <p class="text-muted extra-small mb-0"><code class="text-success">.da-slide-right</code></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide Top -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="da-card h-100 shadow-sm">
+                        <div class="da-card-photo" style="height: 260px;">
+                            <img src="/app/src/images/photo9.jpg" class="w-100 h-100 object-fit-cover" alt="David Sterling">
+                            <div class="da-overlay da-slide-top">
+                                <div class="text-center p-3">
+                                    <span class="badge bg-warning text-dark rounded-pill px-3 py-1 extra-small fw-bold mb-2">Slide Top</span>
+                                    <h6 class="text-white fw-bold mb-3 small">Database Architect</h6>
+                                    <div class="da-social justify-content-center">
+                                        <ul>
+                                            <li><a href="#" title="Database"><i class="bi bi-database"></i></a></li>
+                                            <li><a href="#" title="Slack"><i class="bi bi-slack"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="da-card-content p-3 text-center">
+                            <h6 class="fw-bold text-main mb-1">David Sterling</h6>
+                            <span class="badge bg-warning-subtle text-warning rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">Storage &amp; I/O</span>
+                            <p class="text-muted extra-small mb-0"><code class="text-warning">.da-slide-top</code></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide Bottom -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="da-card h-100 shadow-sm">
+                        <div class="da-card-photo" style="height: 260px;">
+                            <img src="/app/src/images/photo10.jpg" class="w-100 h-100 object-fit-cover" alt="Hannah Zhao">
+                            <div class="da-overlay da-slide-bottom">
+                                <div class="text-center p-3">
+                                    <span class="badge bg-info rounded-pill px-3 py-1 extra-small fw-bold mb-2">Slide Bottom</span>
+                                    <h6 class="text-white fw-bold mb-3 small">Frontend Core</h6>
+                                    <div class="da-social justify-content-center">
+                                        <ul>
+                                            <li><a href="#" title="Code"><i class="bi bi-code-slash"></i></a></li>
+                                            <li><a href="#" title="Globe"><i class="bi bi-globe"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="da-card-content p-3 text-center">
+                            <h6 class="fw-bold text-main mb-1">Hannah Zhao</h6>
+                            <span class="badge bg-info-subtle text-info rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">UI Performance</span>
+                            <p class="text-muted extra-small mb-0"><code class="text-info">.da-slide-bottom</code></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Architecture Blueprint Implementation Matrix -->
+        <div class="p-4 rounded-4 border border-light border-opacity-10 bg-light bg-opacity-30">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                <div>
+                    <h6 class="fw-bold text-main mb-1">Developer Implementation Guide</h6>
+                    <p class="text-muted extra-small mb-0">Use modular CSS classes on any container element to achieve instant glassmorphism overlays.</p>
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="badge bg-dark rounded-pill px-3 py-1.5 font-monospace extra-small">.da-card</span>
+                    <span class="badge bg-dark rounded-pill px-3 py-1.5 font-monospace extra-small">.da-card-photo</span>
+                    <span class="badge bg-dark rounded-pill px-3 py-1.5 font-monospace extra-small">.da-overlay</span>
+                    <span class="badge bg-dark rounded-pill px-3 py-1.5 font-monospace extra-small">.da-slide-left</span>
+                    <span class="badge bg-dark rounded-pill px-3 py-1.5 font-monospace extra-small">.da-slide-right</span>
+                    <span class="badge bg-dark rounded-pill px-3 py-1.5 font-monospace extra-small">.da-slide-top</span>
+                    <span class="badge bg-dark rounded-pill px-3 py-1.5 font-monospace extra-small">.da-slide-bottom</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{/admin-layout}}

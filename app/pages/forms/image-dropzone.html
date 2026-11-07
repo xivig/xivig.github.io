@@ -1,43 +1,95 @@
 {{#> admin-layout title="Image Dropzone" parentTitle="Forms" }}
 
-<div class="row">
+<div class="row g-4">
+    <!-- Header Hero -->
     <div class="col-12">
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
-    <div class="card-body p-4">
-        <div class="profile-wrap py-2">
-
-
-                        <div class="row g-4">
-                            <div class="col-12">
-                                <div class="card border-0 shadow-sm rounded-4">
-                                    <div class="card-header bg-white border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h5 class="fw-bold mb-0">Media Library</h5>
-                                            <small class="text-muted">Upload product images or documentation</small>
-                                        </div>
-                                        <span class="badge bg-primary-subtle text-primary rounded-pill px-3">Max 5MB</span>
-                                    </div>
-                                    <div class="card-body p-4">
-                                        <form action="/upload" class="dropzone admin-dropzone" id="admin-media-upload">
-                                            <div class="dz-message">
-                                                <div class="upload-icon-wrapper mb-3">
-                                                    <i class="bi bi-cloud-arrow-up-fill text-primary"></i>
-                                                </div>
-                                                <h6 class="fw-bold">Drag files here to upload</h6>
-                                                <p class="text-muted small">or <span
-                                                        class="text-primary text-decoration-underline"
-                                                        style="cursor:pointer">click to browse</span> from your computer
-                                                </p>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
+        <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 bg-body">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h4 class="fw-bold mb-0 text-main fs-18">Media Vault & Dropzone Uploader</h4>
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Dropzone.js v6 &bull; Asynchronous Pipeline</span>
                     </div>
+                    <p class="text-muted small mb-0">Multi-file drag-and-drop file ingestion, automatic thumbnail generation, and instant upload progress tracking</p>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3.5" onclick="if(window.Dropzone && window.Dropzone.instances.length){ window.Dropzone.instances.forEach(d => d.removeAllFiles()); }">
+                        <i class="bi bi-trash3 me-1.5"></i> Clear All Files
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm" onclick="if(window.Dropzone && window.Dropzone.instances.length){ window.Dropzone.instances.forEach(d => d.processQueue()); alert('Uploading queued assets...'); }">
+                        <i class="bi bi-cloud-arrow-up-fill me-1.5"></i> Process Queue
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dropzone Container -->
+    <div class="col-12">
+        <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 p-md-5 bg-body">
+            <div class="text-center mb-4">
+                <h5 class="fw-bold text-main mb-1 fs-16">Drag & Drop Assets to Stage</h5>
+                <p class="text-muted extra-small mb-0">PNG, JPG, WEBP, SVG, or PDF files accepted. Up to 10MB per individual payload.</p>
+            </div>
+
+            <!-- Modern Dropzone Surface -->
+            <form action="https://httpbin.org/post" class="dropzone rounded-4 border-2 border-dashed border-primary border-opacity-35 p-5 text-center bg-body-tertiary transition-all" id="admin-media-upload" style="cursor: pointer; min-height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div class="dz-message d-flex flex-column align-items-center justify-content-center m-0">
+                    <div class="rounded-circle bg-primary-subtle text-primary d-flex align-items-center justify-content-center mb-3 shadow-sm" style="width: 64px; height: 64px;">
+                        <i class="bi bi-cloud-arrow-up fs-2"></i>
+                    </div>
+                    <h5 class="fw-bold text-main mb-1">Drop files here or click to browse local system</h5>
+                    <p class="text-muted small mb-0">Files are immediately verified against checksum integrity standards</p>
+                </div>
+            </form>
+
+            <!-- Storage & Ingestion Policies -->
+            <div class="row g-3 mt-4 pt-4 border-top border-secondary border-opacity-10 text-muted extra-small">
+                <div class="col-md-4 d-flex align-items-center gap-2">
+                    <i class="bi bi-shield-check text-success fs-5"></i>
+                    <div>
+                        <strong class="text-main d-block">Automatic Virus Scan</strong>
+                        Every payload is sandboxed and checked against malicious signatures.
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex align-items-center gap-2">
+                    <i class="bi bi-lightning-charge text-primary fs-5"></i>
+                    <div>
+                        <strong class="text-main d-block">Instant WebP Optimization</strong>
+                        Images are automatically compressed and transcoded into modern WebP format.
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex align-items-center gap-2">
+                    <i class="bi bi-hdd-network text-info fs-5"></i>
+                    <div>
+                        <strong class="text-main d-block">Edge CDN Replication</strong>
+                        Assets are immediately distributed across global cache edge nodes.
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<!-- Dropzone Scoped -->
+<link rel="stylesheet" href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css">
+<script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+
+<style>
+    /* Dropzone Elite Customizations */
+    .dropzone {
+        border-style: dashed !important;
+    }
+    .dropzone:hover {
+        border-color: var(--xv-brand, #4F6BFF) !important;
+        background-color: rgba(79, 107, 255, 0.03) !important;
+    }
+    .dropzone .dz-preview .dz-image {
+        border-radius: 12px;
+    }
+    [data-bs-theme="dark"] .dropzone {
+        background-color: rgba(255, 255, 255, 0.02) !important;
+    }
+</style>
 
 {{/admin-layout}}

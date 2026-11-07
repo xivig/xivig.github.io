@@ -1,145 +1,269 @@
-{{#> home-layout title="Gallery" }}
+{{#> admin-layout title="Media Gallery" parentTitle="Pages" }}
 
+<div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+    <div class="card-header bg-transparent py-4 px-4 border-bottom border-light border-opacity-10 d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <div>
+            <h5 class="fw-bold mb-1 text-main">Media Gallery &amp; Asset Showcase</h5>
+            <small class="text-muted">High-resolution visual assets, screenshots, and architectural blueprints</small>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-1.5 extra-small fw-bold">
+                <i class="bi bi-images me-1"></i> 8 Curated Assets
+            </span>
+        </div>
+    </div>
 
-<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="card-body p-4">
+        <!-- Filter Controls -->
+        <div class="gallery-wrap py-2">
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+                <button class="btn btn-primary rounded-pill px-4 filter-btn active" data-filter="all">
+                    All Assets
+                </button>
+                <button class="btn btn-outline-primary rounded-pill px-4 filter-btn" data-filter="ui">
+                    UI &amp; Dashboards
+                </button>
+                <button class="btn btn-outline-primary rounded-pill px-4 filter-btn" data-filter="web">
+                    Web Applications
+                </button>
+                <button class="btn btn-outline-primary rounded-pill px-4 filter-btn" data-filter="brand">
+                    Brand &amp; System
+                </button>
+            </div>
 
-                        <div
-                            class="card-header bg-white py-3 px-4 border-0 d-flex justify-content-center align-items-center">
-                            <div class="text-center">
-                                <h5 class="fw-bold mb-0">Gallery</h5>
-                                <small class="text-muted">Overview and management of gallery</small>
-                            </div>
-                        </div>
-
-                        <div class="card-body p-4">
-                            <!--content goes here-->
-
-                            <div class="gallery-wrap py-2">
-                                <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
-                                    <button class="btn btn-primary rounded-pill px-4 filter-btn active"
-                                        data-filter="all">All Projects
-                                    </button>
-                                    <button class="btn btn-outline-primary rounded-pill px-4 filter-btn"
-                                        data-filter="ui">UI Design
-                                    </button>
-                                    <button class="btn btn-outline-primary rounded-pill px-4 filter-btn"
-                                        data-filter="web">Web Apps
-                                    </button>
-                                    <button class="btn btn-outline-primary rounded-pill px-4 filter-btn"
-                                        data-filter="brand">Branding
-                                    </button>
-                                </div>
-
-                                <div class="row g-4" id="gallery-grid">
-                                    <div class="col-xl-3 col-lg-4 col-md-6 gallery-item ui">
-                                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden gallery-card">
-                                            <div class="gallery-img-container">
-                                                <img src="/app/src/images/product-img1.jpg" class="img-fluid"
-                                                    alt="Analytics">
-                                                <div class="gallery-overlay">
-                                                    <div class="overlay-content text-center p-3">
-                                                        <h6 class="text-white fw-bold mb-3">Analytics Dashboard</h6>
-                                                        <div class="d-flex justify-content-center gap-2">
-                                                            <a href="/app/src/images/product-img1.jpg"
-                                                                data-fancybox="xivig-gallery"
-                                                                data-caption="Analytics Dashboard UI"
-                                                                class="btn btn-light rounded-circle p-2 shadow-lg">
-                                                                <i
-                                                                    class="bi bi-arrows-fullscreen fs-5 text-primary"></i>
-                                                            </a>
-                                                            <a href="ecommerce-product-detail.html"
-                                                                class="btn btn-light rounded-circle p-2 shadow-lg">
-                                                                <i class="bi bi-link-45deg fs-5 text-primary"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-3 col-lg-4 col-md-6 gallery-item web">
-                                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden gallery-card">
-                                            <div class="gallery-img-container">
-                                                <img src="/app/src/images/product-img2.jpg" class="img-fluid"
-                                                    alt="E-commerce">
-                                                <div class="gallery-overlay">
-                                                    <div class="overlay-content text-center p-3">
-                                                        <h6 class="text-white fw-bold mb-3">E-commerce Platform</h6>
-                                                        <div class="d-flex justify-content-center gap-2">
-                                                            <a href="/app/src/images/product-img2.jpg"
-                                                                data-fancybox="xivig-gallery"
-                                                                data-caption="E-commerce Platform"
-                                                                class="btn btn-light rounded-circle p-2 shadow-lg">
-                                                                <i
-                                                                    class="bi bi-arrows-fullscreen fs-5 text-primary"></i>
-                                                            </a>
-                                                            <a href="ecommerce-product-detail.html"
-                                                                class="btn btn-light rounded-circle p-2 shadow-lg">
-                                                                <i class="bi bi-link-45deg fs-5 text-primary"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 gallery-item ui">
-                                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden gallery-card">
-                                            <div class="gallery-img-container">
-                                                <img src="/app/src/images/product-img1.jpg" class="img-fluid"
-                                                    alt="Analytics">
-                                                <div class="gallery-overlay">
-                                                    <div class="overlay-content text-center p-3">
-                                                        <h6 class="text-white fw-bold mb-3">Analytics Dashboard</h6>
-                                                        <div class="d-flex justify-content-center gap-2">
-                                                            <a href="/app/src/images/product-img1.jpg"
-                                                                data-fancybox="xivig-gallery"
-                                                                data-caption="Analytics Dashboard UI"
-                                                                class="btn btn-light rounded-circle p-2 shadow-lg">
-                                                                <i
-                                                                    class="bi bi-arrows-fullscreen fs-5 text-primary"></i>
-                                                            </a>
-                                                            <a href="ecommerce-product-detail.html"
-                                                                class="btn btn-light rounded-circle p-2 shadow-lg">
-                                                                <i class="bi bi-link-45deg fs-5 text-primary"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-3 col-lg-4 col-md-6 gallery-item web">
-                                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden gallery-card">
-                                            <div class="gallery-img-container">
-                                                <img src="/app/src/images/product-img2.jpg" class="img-fluid"
-                                                    alt="E-commerce">
-                                                <div class="gallery-overlay">
-                                                    <div class="overlay-content text-center p-3">
-                                                        <h6 class="text-white fw-bold mb-3">E-commerce Platform</h6>
-                                                        <div class="d-flex justify-content-center gap-2">
-                                                            <a href="/app/src/images/product-img2.jpg"
-                                                                data-fancybox="xivig-gallery"
-                                                                data-caption="E-commerce Platform"
-                                                                class="btn btn-light rounded-circle p-2 shadow-lg">
-                                                                <i
-                                                                    class="bi bi-arrows-fullscreen fs-5 text-primary"></i>
-                                                            </a>
-                                                            <a href="ecommerce-product-detail.html"
-                                                                class="btn btn-light rounded-circle p-2 shadow-lg">
-                                                                <i class="bi bi-link-45deg fs-5 text-primary"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+            <!-- Gallery Grid -->
+            <div class="row g-4" id="gallery-grid">
+                <!-- Item 1: Dashboard Preview (UI) -->
+                <div class="col-xl-3 col-lg-4 col-md-6 gallery-item ui">
+                    <div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden gallery-card h-100">
+                        <div class="gallery-img-container position-relative overflow-hidden" style="height: 220px;">
+                            <img src="/app/src/images/xivig-dashboard-preview.png" class="w-100 h-100 object-fit-cover" alt="XIVIG OS Dashboard">
+                            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(15, 23, 42, 0.7); opacity: 0; transition: opacity 0.3s ease;">
+                                <div class="text-center p-3">
+                                    <h6 class="text-white fw-bold mb-3">Enterprise Dashboard</h6>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="/app/src/images/xivig-dashboard-preview.png" data-fancybox="xivig-gallery" data-caption="XIVIG OS Enterprise Dashboard v2.0" class="btn btn-light btn-sm rounded-circle p-2 shadow">
+                                            <i class="bi bi-arrows-fullscreen text-primary"></i>
+                                        </a>
+                                        <a href="dashboard-v2.html" class="btn btn-light btn-sm rounded-circle p-2 shadow" title="Open Page">
+                                            <i class="bi bi-link-45deg text-primary"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    
+                        <div class="p-3">
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">UI Design</span>
+                            <h6 class="fw-bold text-main mb-1 small">XIVIG OS Dashboard</h6>
+                            <p class="text-muted extra-small mb-0">High-concurrency modular admin shell</p>
+                        </div>
+                    </div>
+                </div>
 
-{{/home-layout}}
+                <!-- Item 2: Analytics Overview (Web) -->
+                <div class="col-xl-3 col-lg-4 col-md-6 gallery-item web">
+                    <div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden gallery-card h-100">
+                        <div class="gallery-img-container position-relative overflow-hidden" style="height: 220px;">
+                            <img src="/app/src/images/product-img1.jpg" class="w-100 h-100 object-fit-cover" alt="Analytics Engine">
+                            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(15, 23, 42, 0.7); opacity: 0; transition: opacity 0.3s ease;">
+                                <div class="text-center p-3">
+                                    <h6 class="text-white fw-bold mb-3">Analytics Hub</h6>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="/app/src/images/product-img1.jpg" data-fancybox="xivig-gallery" data-caption="Real-time Analytics Engine" class="btn btn-light btn-sm rounded-circle p-2 shadow">
+                                            <i class="bi bi-arrows-fullscreen text-primary"></i>
+                                        </a>
+                                        <a href="overview.html" class="btn btn-light btn-sm rounded-circle p-2 shadow" title="Open Page">
+                                            <i class="bi bi-link-45deg text-primary"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <span class="badge bg-success-subtle text-success rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">Web Apps</span>
+                            <h6 class="fw-bold text-main mb-1 small">Telemetry Engine</h6>
+                            <p class="text-muted extra-small mb-0">ApexCharts live area stream</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: E-Commerce Platform (Web) -->
+                <div class="col-xl-3 col-lg-4 col-md-6 gallery-item web">
+                    <div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden gallery-card h-100">
+                        <div class="gallery-img-container position-relative overflow-hidden" style="height: 220px;">
+                            <img src="/app/src/images/product-img2.jpg" class="w-100 h-100 object-fit-cover" alt="Commerce Hub">
+                            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(15, 23, 42, 0.7); opacity: 0; transition: opacity 0.3s ease;">
+                                <div class="text-center p-3">
+                                    <h6 class="text-white fw-bold mb-3">Commerce Suite</h6>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="/app/src/images/product-img2.jpg" data-fancybox="xivig-gallery" data-caption="E-Commerce Merchant Dashboard" class="btn btn-light btn-sm rounded-circle p-2 shadow">
+                                            <i class="bi bi-arrows-fullscreen text-primary"></i>
+                                        </a>
+                                        <a href="ecommerce-products.html" class="btn btn-light btn-sm rounded-circle p-2 shadow" title="Open Page">
+                                            <i class="bi bi-link-45deg text-primary"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <span class="badge bg-success-subtle text-success rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">Web Apps</span>
+                            <h6 class="fw-bold text-main mb-1 small">Commerce Engine</h6>
+                            <p class="text-muted extra-small mb-0">Product catalog &amp; checkout flows</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Brand Identity & Guidelines (Brand) -->
+                <div class="col-xl-3 col-lg-4 col-md-6 gallery-item brand">
+                    <div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden gallery-card h-100">
+                        <div class="gallery-img-container position-relative overflow-hidden" style="height: 220px;">
+                            <img src="/app/src/images/hero-bg.jpg" class="w-100 h-100 object-fit-cover" alt="Brand Identity">
+                            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(15, 23, 42, 0.7); opacity: 0; transition: opacity 0.3s ease;">
+                                <div class="text-center p-3">
+                                    <h6 class="text-white fw-bold mb-3">Brand Identity</h6>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="/app/src/images/hero-bg.jpg" data-fancybox="xivig-gallery" data-caption="XIVIG Brand Identity & Design Tokens" class="btn btn-light btn-sm rounded-circle p-2 shadow">
+                                            <i class="bi bi-arrows-fullscreen text-primary"></i>
+                                        </a>
+                                        <a href="xivig.html" class="btn btn-light btn-sm rounded-circle p-2 shadow" title="Open Page">
+                                            <i class="bi bi-link-45deg text-primary"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <span class="badge bg-warning-subtle text-warning rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">Branding</span>
+                            <h6 class="fw-bold text-main mb-1 small">Atelier Design Tokens</h6>
+                            <p class="text-muted extra-small mb-0">Luxury sapphire palette specifications</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Cloud Deployment Blueprint (UI) -->
+                <div class="col-xl-3 col-lg-4 col-md-6 gallery-item ui">
+                    <div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden gallery-card h-100">
+                        <div class="gallery-img-container position-relative overflow-hidden" style="height: 220px;">
+                            <img src="/app/src/images/product-1.jpg" class="w-100 h-100 object-fit-cover" alt="Cloud Pipeline">
+                            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(15, 23, 42, 0.7); opacity: 0; transition: opacity 0.3s ease;">
+                                <div class="text-center p-3">
+                                    <h6 class="text-white fw-bold mb-3">Cloud Pipeline</h6>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="/app/src/images/product-1.jpg" data-fancybox="xivig-gallery" data-caption="Automated Deployment Workflow" class="btn btn-light btn-sm rounded-circle p-2 shadow">
+                                            <i class="bi bi-arrows-fullscreen text-primary"></i>
+                                        </a>
+                                        <a href="releases.html" class="btn btn-light btn-sm rounded-circle p-2 shadow" title="Open Page">
+                                            <i class="bi bi-link-45deg text-primary"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">UI Design</span>
+                            <h6 class="fw-bold text-main mb-1 small">CI/CD Pipeline Matrix</h6>
+                            <p class="text-muted extra-small mb-0">Multi-stage cluster deployment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Mobile Adaptive Core (Web) -->
+                <div class="col-xl-3 col-lg-4 col-md-6 gallery-item web">
+                    <div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden gallery-card h-100">
+                        <div class="gallery-img-container position-relative overflow-hidden" style="height: 220px;">
+                            <img src="/app/src/images/product-2.jpg" class="w-100 h-100 object-fit-cover" alt="Adaptive Core">
+                            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(15, 23, 42, 0.7); opacity: 0; transition: opacity 0.3s ease;">
+                                <div class="text-center p-3">
+                                    <h6 class="text-white fw-bold mb-3">Adaptive Core</h6>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="/app/src/images/product-2.jpg" data-fancybox="xivig-gallery" data-caption="Mobile Adaptive Touch System" class="btn btn-light btn-sm rounded-circle p-2 shadow">
+                                            <i class="bi bi-arrows-fullscreen text-primary"></i>
+                                        </a>
+                                        <a href="task-manager.html" class="btn btn-light btn-sm rounded-circle p-2 shadow" title="Open Page">
+                                            <i class="bi bi-link-45deg text-primary"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <span class="badge bg-success-subtle text-success rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">Web Apps</span>
+                            <h6 class="fw-bold text-main mb-1 small">Task Manager Pro</h6>
+                            <p class="text-muted extra-small mb-0">Agile sprint backlog execution</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 7: Vector Geo Telemetry (Brand) -->
+                <div class="col-xl-3 col-lg-4 col-md-6 gallery-item brand">
+                    <div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden gallery-card h-100">
+                        <div class="gallery-img-container position-relative overflow-hidden" style="height: 220px;">
+                            <img src="/app/src/images/product-3.jpg" class="w-100 h-100 object-fit-cover" alt="Vector Geo Grid">
+                            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(15, 23, 42, 0.7); opacity: 0; transition: opacity 0.3s ease;">
+                                <div class="text-center p-3">
+                                    <h6 class="text-white fw-bold mb-3">Vector Geo Grid</h6>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="/app/src/images/product-3.jpg" data-fancybox="xivig-gallery" data-caption="Global Edge Intelligence Grid" class="btn btn-light btn-sm rounded-circle p-2 shadow">
+                                            <i class="bi bi-arrows-fullscreen text-primary"></i>
+                                        </a>
+                                        <a href="jtvector-map.html" class="btn btn-light btn-sm rounded-circle p-2 shadow" title="Open Page">
+                                            <i class="bi bi-link-45deg text-primary"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <span class="badge bg-warning-subtle text-warning rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">Branding</span>
+                            <h6 class="fw-bold text-main mb-1 small">Global Vector Map</h6>
+                            <p class="text-muted extra-small mb-0">MapLibre GL cluster nodes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 8: Architecture Matrix (UI) -->
+                <div class="col-xl-3 col-lg-4 col-md-6 gallery-item ui">
+                    <div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden gallery-card h-100">
+                        <div class="gallery-img-container position-relative overflow-hidden" style="height: 220px;">
+                            <img src="/app/src/images/product-4.jpg" class="w-100 h-100 object-fit-cover" alt="Architecture Hub">
+                            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(15, 23, 42, 0.7); opacity: 0; transition: opacity 0.3s ease;">
+                                <div class="text-center p-3">
+                                    <h6 class="text-white fw-bold mb-3">Architecture Suite</h6>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="/app/src/images/product-4.jpg" data-fancybox="xivig-gallery" data-caption="Component Architecture & Modular Bundler" class="btn btn-light btn-sm rounded-circle p-2 shadow">
+                                            <i class="bi bi-arrows-fullscreen text-primary"></i>
+                                        </a>
+                                        <a href="ui-cards.html" class="btn btn-light btn-sm rounded-circle p-2 shadow" title="Open Page">
+                                            <i class="bi bi-link-45deg text-primary"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-2 py-0.5 extra-small fw-bold mb-1">UI Design</span>
+                            <h6 class="fw-bold text-main mb-1 small">Modular UI System</h6>
+                            <p class="text-muted extra-small mb-0">85+ Production cards &amp; pods</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .gallery-img-container:hover .gallery-overlay {
+        opacity: 1 !important;
+    }
+    .gallery-card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .gallery-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1) !important;
+    }
+</style>
+
+{{/admin-layout}}

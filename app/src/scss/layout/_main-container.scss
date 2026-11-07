@@ -1,36 +1,35 @@
-@use "../base/variables"as *;
-@use "../base/mixins"as *;
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
 
-/* ================================
-   MAIN LAYOUT ARCHITECTURE
-   =============================== */
+/* ==========================================================================
+   MAIN CONTENT CANVAS LAYOUT (PER BLUEPRINT)
+   ========================================================================== */
 
 .main {
-    // 1. Position & Transition
     position: relative;
     display: block;
     min-height: 100vh;
-    background-color: var(--bg-body);
-    color: var(--text-main);
+    background-color: var(--xv-canvas, #F4F6FB);
+    color: var(--xv-text, #111827);
+    margin-left: var(--xv-sidebar-width, 256px) !important;
+    padding-top: var(--xv-topbar-height, 68px) !important;
+    padding-bottom: 2rem !important;
+    width: auto !important;
     transition: var(--transition-elite);
-    
-    // 2. Default Desktop State (Sidebar Visible)
-    margin-left: $sidebar-width !important;
-    width: auto !important; // Allow it to naturally fill the remaining space
-    
-    // 3. Reset any padding/margin that could cause gaps
-    margin-right: 0 !important;
-    padding: 0 0 3.5rem 0 !important; // Restored padding to accommodate fixed footer
-    overflow-x: hidden !important; // FORCED SAFETY
+    overflow-x: hidden !important;
+
+    [data-bs-theme="dark"] & {
+        background-color: var(--xv-canvas, #0B1220);
+        color: var(--xv-text, #F2F5FA);
+    }
 }
 
-/* --- Expanded State (Sidebar Collapsed) --- */
+/* Sidebar Collapsed State */
 .sidebar--collapsed .main {
-    margin-left: 0 !important;
-    width: 100% !important;
+    margin-left: var(--xv-sidebar-collapsed-width, 76px) !important;
 }
 
-/* --- Responsive Adjustments --- */
+/* Tablet & Mobile Breakpoints */
 @media (max-width: 1200px) {
     .main {
         margin-left: 0 !important;
@@ -38,22 +37,15 @@
     }
 }
 
-/* --- Container Interior --- */
-.main__container, .main-container {
-    padding: 1.5rem 2rem;
+/* Main Container Inner (12-col grid, max 1600px, 24px padding) */
+.main__container, 
+.main-container {
+    max-width: 1600px;
+    padding: 1.5rem 24px !important;
+    margin: 0 auto !important;
     width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
 
-    // Reset margin for the very last element and apply mt-1 spacing above footer
-    & > *:last-child {
-        margin-bottom: 0.25rem !important; // Consistent mt-1 gap
+    @media (max-width: 991px) {
+        padding: 1.25rem 16px !important;
     }
-}
-
-/* --- Grid System --- */
-.main__grid {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }

@@ -1,133 +1,227 @@
-{{#> admin-layout title="Course Interface" parentTitle="Learning" }}
+{{#> admin-layout title="Course Player" parentTitle="Learning" actionText="Back to dashboard" }}
 
-<div class="course-module">
-    <header class="course-header mb-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <span class="badge-category px-3 py-2">UI/UX DESIGN</span>
-            <div class="d-flex gap-2">
-                <button class="btn btn-light rounded-circle shadow-sm"><i class="bi bi-share"></i></button>
-                <button class="btn btn-light rounded-circle shadow-sm"><i class="bi bi-bookmark"></i></button>
+<div class="course-interface-module pb-4">
+    <!-- Breadcrumb Header -->
+    <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+        <div class="d-flex align-items-center gap-3">
+            <a href="course-dashboard.html" class="btn btn-sm btn-light rounded-circle border shadow-2xs d-flex align-items-center justify-content-center p-0" style="width: 36px; height: 36px;">
+                <i class="bi bi-arrow-left text-muted"></i>
+            </a>
+            <div>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-primary bg-opacity-10 text-primary extra-small fw-bold px-2.5 py-0.5 rounded-pill">UI/UX Architecture</span>
+                    <span class="text-muted extra-small">&bull; Lecture 1 of 5</span>
+                </div>
+                <h4 class="fw-bold mb-0 text-main">UI/UX Basic Fundamentals &bull; Design Systems</h4>
             </div>
         </div>
-        <h1 class="display-6 fw-800 mb-1">UI/UX Basic Fundamentals</h1>
-        <p class="text-muted">Mastered by <span class="text-dark fw-bold">Prof. Devonne Wallbridge</span></p>
-    </header>
+
+        <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-sm btn-light border rounded-pill px-3 extra-small fw-semibold shadow-2xs">
+                <i class="bi bi-bookmark me-1"></i> Bookmark
+            </button>
+            <button class="btn btn-sm btn-light border rounded-pill px-3 extra-small fw-semibold shadow-2xs">
+                <i class="bi bi-share me-1"></i> Share
+            </button>
+        </div>
+    </div>
 
     <div class="row g-4">
+        <!-- 8-Col Main Player & Lecture Tabs -->
         <div class="col-lg-8">
-            <div class="video-container mb-4" data-aos="zoom-in">
-                <div class="ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Course Content"
-                        allowfullscreen></iframe>
+            <!-- Video Container -->
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 overflow-hidden mb-4 bg-body">
+                <div class="ratio ratio-16x9 bg-dark">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Course Player" allowfullscreen class="border-0"></iframe>
                 </div>
-            </div>
-
-            <div class="mb-5" data-aos="fade-up">
-                <h4 class="fw-bold mb-3">About this course</h4>
-                <p class="text-secondary fs-5">Learn web design in 1 hour with 25+ simple-to-use rules and guidelines —
-                    tons of amazing web design resources included!</p>
-            </div>
-
-            <div class="row g-3 mb-5" data-aos="fade-up">
-                <div class="col-md-4">
-                    <div class="stat-card-course">
-                        <i class="bi bi-people text-primary fs-3 mb-2"></i>
-                        <h5 class="fw-bold mb-0">38,815</h5>
-                        <small class="text-muted">Active Students</small>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="stat-card-course">
-                        <i class="bi bi-play-circle text-primary fs-3 mb-2"></i>
-                        <h5 class="fw-bold mb-0">19 Lectures</h5>
-                        <small class="text-muted">1.5 Total Hours</small>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="stat-card-course">
-                        <i class="bi bi-translate text-primary fs-3 mb-2"></i>
-                        <h5 class="fw-bold mb-0">English</h5>
-                        <small class="text-muted">Captions Included</small>
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="/app/src/images/testimonials-jane.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="44" height="44" alt="Instructor">
+                            <div>
+                                <h6 class="fw-bold mb-0 text-main fs-15">Prof. Devonne Wallbridge</h6>
+                                <span class="text-muted extra-small">Lead Interface Architect &bull; 38,815 Students</span>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="btn btn-sm btn-primary rounded-pill px-3.5 fw-bold extra-small">
+                                <i class="bi bi-check-circle me-1"></i> Mark Lesson Complete
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card border-0 shadow-sm p-4 mb-5" style="border-radius: 24px;" data-aos="fade-up">
-                <h5 class="fw-bold mb-4">Mastering the Interface</h5>
-                <p>This course provides a high-impact overview of modern UI/UX principles. We bridge the gap between
-                    creative design and technical execution, giving you the vocabulary to discuss design with authority.
-                </p>
-
-                <div class="border-start border-4 border-primary ps-4 my-4">
-                    <p class="fst-italic text-secondary mb-0">"The practical, impactful techniques taught here made my
-                        transition from development to design seamless."</p>
-                    <small class="fw-bold">— Susan Darlene Cain</small>
+            <!-- Lecture Content Tabs -->
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 mb-4 bg-body">
+                <div class="card-header bg-transparent py-3 px-4 border-bottom border-secondary border-opacity-10">
+                    <ul class="nav nav-tabs card-header-tabs gap-2 border-0" id="courseDetailTabs" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link active py-2 px-3.5 extra-small fw-semibold border-0 rounded-pill" data-bs-toggle="tab" data-bs-target="#tab-overview">Overview &amp; Syllabus</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link py-2 px-3.5 extra-small fw-semibold border-0 rounded-pill" data-bs-toggle="tab" data-bs-target="#tab-notes">Lecture Transcript</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link py-2 px-3.5 extra-small fw-semibold border-0 rounded-pill" data-bs-toggle="tab" data-bs-target="#tab-resources">Resources (4)</button>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+                <div class="card-body p-4">
+                    <div class="tab-content" id="courseDetailTabsContent">
+                        <!-- Overview -->
+                        <div class="tab-pane fade show active" id="tab-overview" role="tabpanel">
+                            <h6 class="fw-bold mb-2 text-main">About This Architectural Module</h6>
+                            <p class="text-muted extra-small mb-4 lh-base">
+                                Learn the fundamental engineering and optical rules governing responsive enterprise design systems. 
+                                We break down the mathematical rhythm behind 4px and 8px spacing scales, color contrast compliance under WCAG 2.1 AAA, 
+                                and how to architect clean semantic token structures that translate effortlessly into production SCSS variables.
+                            </p>
 
-            <div class="instructor-profile shadow-sm">
-                <div class="avatar-glow">
-                    <img src="/app/src/images/testimonials-jane.jpg" alt="Instructor">
-                </div>
-                <div>
-                    <h5 class="fw-bold mb-1">Devonne Wallbridge</h5>
-                    <p class="text-muted small mb-0">Web Developer, Designer, and Senior Educator</p>
+                            <div class="row g-3">
+                                <div class="col-sm-4">
+                                    <div class="p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10 text-center">
+                                        <i class="bi bi-people text-primary fs-4 mb-1 d-block"></i>
+                                        <h6 class="fw-bold mb-0 text-main">38,815</h6>
+                                        <span class="text-muted extra-small">Active Students</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10 text-center">
+                                        <i class="bi bi-play-circle text-info fs-4 mb-1 d-block"></i>
+                                        <h6 class="fw-bold mb-0 text-main">19 Lectures</h6>
+                                        <span class="text-muted extra-small">1.5 Total Hours</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10 text-center">
+                                        <i class="bi bi-translate text-success fs-4 mb-1 d-block"></i>
+                                        <h6 class="fw-bold mb-0 text-main">English</h6>
+                                        <span class="text-muted extra-small">Full Captions</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="tab-pane fade" id="tab-notes" role="tabpanel">
+                            <h6 class="fw-bold mb-2 text-main">Synchronized Video Notes</h6>
+                            <p class="text-muted extra-small mb-3">
+                                <strong>00:45:</strong> Introduction to token-based spacing systems versus arbitrary CSS values.<br>
+                                <strong>02:10:</strong> Demonstrating why 4px grid aligns with standard display pixel density.<br>
+                                <strong>05:30:</strong> Mapping surface colors into primary, sub-surface, and card border tokens in SCSS.
+                            </p>
+                        </div>
+
+                        <!-- Resources -->
+                        <div class="tab-pane fade" id="tab-resources" role="tabpanel">
+                            <div class="d-flex flex-column gap-2.5">
+                                <a href="javascript:;" class="p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10 d-flex align-items-center justify-content-between text-decoration-none">
+                                    <div class="d-flex align-items-center gap-2.5">
+                                        <i class="bi bi-file-earmark-code text-primary fs-5"></i>
+                                        <div>
+                                            <span class="fw-semibold text-main extra-small d-block">Xivig_Tokens_Reference.scss</span>
+                                            <span class="text-muted extra-small">48 KB &bull; SCSS Source</span>
+                                        </div>
+                                    </div>
+                                    <i class="bi bi-download text-muted small"></i>
+                                </a>
+                                <a href="javascript:;" class="p-3 rounded-3 bg-body-tertiary border border-secondary border-opacity-10 d-flex align-items-center justify-content-between text-decoration-none">
+                                    <div class="d-flex align-items-center gap-2.5">
+                                        <i class="bi bi-file-earmark-pdf text-danger fs-5"></i>
+                                        <div>
+                                            <span class="fw-semibold text-main extra-small d-block">UI_Spacing_CheatSheet.pdf</span>
+                                            <span class="text-muted extra-small">1.2 MB &bull; PDF</span>
+                                        </div>
+                                    </div>
+                                    <i class="bi bi-download text-muted small"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- 4-Col Sticky Curriculum Rail -->
         <div class="col-lg-4">
-            <div class="curriculum-sidebar shadow-sm" data-aos="fade-left">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="fw-bold mb-0">Course Content</h5>
-                    <small class="text-primary fw-bold">2/5 Progress</small>
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 bg-body sticky-top" style="top: 88px;">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h6 class="fw-bold mb-0 text-main">Course Curriculum</h6>
+                    <span class="badge bg-primary-subtle text-primary extra-small fw-bold px-2 py-0.5 rounded-pill">2/5 Finished</span>
                 </div>
 
-                <div class="lesson-list">
-                    <div class="lesson-item completed active">
-                        <div class="lesson-check"><i class="bi bi-check-lg"></i></div>
-                        <div class="flex-grow-1">
-                            <div class="small fw-bold">1. Welcome to course</div>
-                            <small class="text-muted">2.4 min</small>
+                <div class="d-flex flex-column gap-2">
+                    <!-- Lesson 1 (Active) -->
+                    <div class="p-3 rounded-3 border border-primary border-opacity-40 bg-primary bg-opacity-10 d-flex align-items-center justify-content-between cursor-pointer">
+                        <div class="d-flex align-items-center gap-2.5">
+                            <span class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 24px; height: 24px; font-size: 0.7rem;">
+                                <i class="bi bi-play-fill"></i>
+                            </span>
+                            <div>
+                                <span class="fw-bold text-main extra-small d-block">1. Welcome &amp; System Overview</span>
+                                <span class="text-muted extra-small">2.4 min &bull; Video</span>
+                            </div>
                         </div>
+                        <i class="bi bi-check-circle-fill text-success small"></i>
                     </div>
 
-                    <div class="lesson-item completed">
-                        <div class="lesson-check"><i class="bi bi-check-lg"></i></div>
-                        <div class="flex-grow-1">
-                            <div class="small fw-bold">2. Watch before start</div>
-                            <small class="text-muted">4.8 min</small>
+                    <!-- Lesson 2 -->
+                    <div class="p-3 rounded-3 border border-secondary border-opacity-10 bg-body-tertiary d-flex align-items-center justify-content-between cursor-pointer hover-bg-light transition-all">
+                        <div class="d-flex align-items-center gap-2.5">
+                            <span class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center" style="width: 24px; height: 24px; font-size: 0.7rem;">
+                                <i class="bi bi-check"></i>
+                            </span>
+                            <div>
+                                <span class="fw-semibold text-main extra-small d-block">2. Establishing 4px Spacing</span>
+                                <span class="text-muted extra-small">4.8 min &bull; Video</span>
+                            </div>
                         </div>
+                        <i class="bi bi-check-circle-fill text-success small"></i>
                     </div>
 
-                    <div class="lesson-item">
-                        <div class="lesson-check"></div>
-                        <div class="flex-grow-1">
-                            <div class="small fw-bold">3. Basic design theory</div>
-                            <small class="text-muted">5.9 min</small>
+                    <!-- Lesson 3 -->
+                    <div class="p-3 rounded-3 border border-secondary border-opacity-10 bg-body-tertiary d-flex align-items-center justify-content-between cursor-pointer hover-bg-light transition-all">
+                        <div class="d-flex align-items-center gap-2.5">
+                            <span class="rounded-circle bg-body text-secondary border d-flex align-items-center justify-content-center" style="width: 24px; height: 24px; font-size: 0.7rem;">
+                                3
+                            </span>
+                            <div>
+                                <span class="fw-semibold text-main extra-small d-block">3. Semantic Token Structure</span>
+                                <span class="text-muted extra-small">8.2 min &bull; Video</span>
+                            </div>
                         </div>
+                        <i class="bi bi-lock text-muted small"></i>
                     </div>
 
-                    <div class="lesson-item">
-                        <div class="lesson-check"></div>
-                        <div class="flex-grow-1">
-                            <div class="small fw-bold">4. Basic fundamentals</div>
-                            <small class="text-muted">3.6 min</small>
+                    <!-- Lesson 4 -->
+                    <div class="p-3 rounded-3 border border-secondary border-opacity-10 bg-body-tertiary d-flex align-items-center justify-content-between cursor-pointer hover-bg-light transition-all">
+                        <div class="d-flex align-items-center gap-2.5">
+                            <span class="rounded-circle bg-body text-secondary border d-flex align-items-center justify-content-center" style="width: 24px; height: 24px; font-size: 0.7rem;">
+                                4
+                            </span>
+                            <div>
+                                <span class="fw-semibold text-main extra-small d-block">4. Vanilla DOM Event Architecture</span>
+                                <span class="text-muted extra-small">12.0 min &bull; Hands-on Code</span>
+                            </div>
                         </div>
+                        <i class="bi bi-lock text-muted small"></i>
                     </div>
 
-                    <div class="lesson-item">
-                        <div class="lesson-check"></div>
-                        <div class="flex-grow-1">
-                            <div class="small fw-bold">5. What is UI/UX?</div>
-                            <small class="text-muted">10.6 min</small>
+                    <!-- Lesson 5 -->
+                    <div class="p-3 rounded-3 border border-secondary border-opacity-10 bg-body-tertiary d-flex align-items-center justify-content-between cursor-pointer hover-bg-light transition-all">
+                        <div class="d-flex align-items-center gap-2.5">
+                            <span class="rounded-circle bg-body text-secondary border d-flex align-items-center justify-content-center" style="width: 24px; height: 24px; font-size: 0.7rem;">
+                                5
+                            </span>
+                            <div>
+                                <span class="fw-semibold text-main extra-small d-block">5. Final Exam &amp; Certification</span>
+                                <span class="text-muted extra-small">20 questions &bull; Assessment</span>
+                            </div>
                         </div>
+                        <i class="bi bi-lock text-muted small"></i>
                     </div>
                 </div>
-
-                <button class="btn btn-primary w-100 mt-4 rounded-pill py-2">
-                    <i class="bi bi-cloud-arrow-down me-2"></i> Download Video
-                </button>
             </div>
         </div>
     </div>

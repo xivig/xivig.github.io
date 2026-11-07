@@ -1,124 +1,101 @@
 {{#> admin-layout title="Typography" parentTitle="UI Elements" }}
 
-<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+<div class="ui-typography-module">
+    <!-- Header Hero -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <h4 class="fw-bold mb-0 text-main fs-18">Typography & Hierarchy Scale</h4>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Plus Jakarta Sans &bull; Inter &bull; JetBrains Mono</span>
+                </div>
+                <p class="text-muted small mb-0">Engineered font scales, display headers, inline semantic tags, monospaced tokens, and blockquotes</p>
+            </div>
+        </div>
+    </div>
 
-                        <div
-                            class="card-header bg-transparent py-3 px-4 border-0 d-flex justify-content-center align-items-center">
-                            <div class="text-center">
-                                <h5 class="fw-bold mb-0">Typography</h5>
-                                <small class="text-muted">Overview and management of typography</small>
-                            </div>
-                        </div>
+    <div class="row g-4">
+        <!-- 1. Semantic Headings H1-H6 -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Heading Hierarchy (H1 &ndash; H6)</h5>
+                <p class="text-muted extra-small mb-4">Clean proportional scaling with negative letter-spacing</p>
 
-                        <div class="card-body p-4">
-                            <!--content goes here-->
-                            <div class="row g-4">
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="p-4 card-box h-100 border-0 shadow-sm rounded-4 bg-transparent">
-                                        <h4 class="mb-4 h5 fw-bold text-primary text-uppercase letter-spacing-1">
-                                            Standard Headings</h4>
-                                        <div class="elite-headings">
-                                            <h1 class="mb-3">h1. Architect OS</h1>
-                                            <h2 class="mb-3 text-secondary">h2. Global Nodes</h2>
-                                            <h3 class="mb-3">h3. System Core</h3>
-                                            <h4 class="mb-3 text-muted">h4. User Interface</h4>
-                                            <h5 class="mb-2">h5. Component Detail</h5>
-                                            <h6 class="text-uppercase fw-bold text-primary-soft-text">h6. Metadata State
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="d-flex flex-column gap-3">
+                    <div class="d-flex align-items-baseline justify-content-between pb-2 border-bottom border-secondary border-opacity-10">
+                        <h1 class="fw-bold mb-0 text-main fs-28">Heading 1 &bull; 28px</h1>
+                        <span class="text-muted extra-small font-monospace">&lt;h1&gt;</span>
+                    </div>
+                    <div class="d-flex align-items-baseline justify-content-between pb-2 border-bottom border-secondary border-opacity-10">
+                        <h2 class="fw-bold mb-0 text-main fs-24">Heading 2 &bull; 24px</h2>
+                        <span class="text-muted extra-small font-monospace">&lt;h2&gt;</span>
+                    </div>
+                    <div class="d-flex align-items-baseline justify-content-between pb-2 border-bottom border-secondary border-opacity-10">
+                        <h3 class="fw-bold mb-0 text-main fs-20">Heading 3 &bull; 20px</h3>
+                        <span class="text-muted extra-small font-monospace">&lt;h3&gt;</span>
+                    </div>
+                    <div class="d-flex align-items-baseline justify-content-between pb-2 border-bottom border-secondary border-opacity-10">
+                        <h4 class="fw-bold mb-0 text-main fs-18">Heading 4 &bull; 18px</h4>
+                        <span class="text-muted extra-small font-monospace">&lt;h4&gt;</span>
+                    </div>
+                    <div class="d-flex align-items-baseline justify-content-between pb-2 border-bottom border-secondary border-opacity-10">
+                        <h5 class="fw-bold mb-0 text-main fs-16">Heading 5 &bull; 16px</h5>
+                        <span class="text-muted extra-small font-monospace">&lt;h5&gt;</span>
+                    </div>
+                    <div class="d-flex align-items-baseline justify-content-between">
+                        <h6 class="fw-bold mb-0 text-main fs-14">Heading 6 &bull; 14px</h6>
+                        <span class="text-muted extra-small font-monospace">&lt;h6&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                                <div class="col-md-6 col-sm-12">
-                                    <div
-                                        class="p-4 card-box h-100 border-0 shadow-sm rounded-4 bg-transparent overflow-hidden">
-                                        <h4 class="mb-4 h5 fw-bold text-primary text-uppercase letter-spacing-1">Display
-                                            Headings</h4>
-                                        <h1 class="display-1 fw-bold tracking-tighter">D1. Elite</h1>
-                                        <h1 class="display-4 fw-semibold">D4. Aesthetic</h1>
-                                        <p class="text-muted small mt-4">Display headings are used when you need a piece
-                                            of text to truly stand out
-                                            with a modern, oversized feel.</p>
-                                    </div>
-                                </div>
+        <!-- 2. Display Headings & Paragraph Styles -->
+        <div class="col-lg-6">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 h-100 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Display Headers & Lead Paragraphs</h5>
+                <p class="text-muted extra-small mb-4">Heroic typography for landing showcases and dashboard overviews</p>
 
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="p-4 card-box h-100 border-0 shadow-sm rounded-4 bg-transparent">
-                                        <h4 class="mb-4 h5 fw-bold text-primary text-uppercase letter-spacing-1">Inline
-                                            Elements</h4>
-                                        <ul class="list-unstyled">
-                                            <li class="mb-3">Use the
-                                                <mark class="bg-warning-soft text-warning px-2 rounded">highlight</mark>
-                                                tag for emphasis.
-                                            </li>
-                                            <li class="mb-3 text-muted"><s>This information is no longer
-                                                    synchronized.</s></li>
-                                            <li class="mb-3">
-                                                <ins
-                                                    class="text-success text-decoration-none border-bottom border-success">New
-                                                    node addition to the
-                                                    cluster.
-                                                </ins>
-                                            </li>
-                                            <li class="mb-3"><small class="text-muted">Fine print: End-to-end encryption
-                                                    is active.</small></li>
-                                            <li class="mb-0"><strong>Bold importance</strong> meets <em>italicized
-                                                    nuance</em>.</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                <h1 class="display-6 fw-bold text-main mb-2">Display 6 Heroic</h1>
+                <p class="lead text-secondary mb-3">
+                    A vibrant, highly-optimized design system engineered to deliver immediate rendering speed with zero visual layout shifts.
+                </p>
 
-                                <div class="col-md-6 col-sm-12">
-                                    <div
-                                        class="p-4 card-box h-100 border-0 shadow-sm rounded-4 bg-transparent border-start border-primary border-4">
-                                        <h4 class="mb-4 h5 fw-bold text-primary text-uppercase letter-spacing-1">Elite
-                                            Quotes</h4>
-                                        <figure class="mb-0">
-                                            <blockquote class="blockquote">
-                                                <p class="fs-5 fw-medium italic">"Design is the silent
-                                                    ambassador of your brand. It should
-                                                    speak with clarity and precision."</p>
-                                            </blockquote>
-                                            <figcaption class="blockquote-footer mt-2">
-                                                Xivig Architect in <cite title="Source Title">OS Core Principles</cite>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                </div>
+                <blockquote class="blockquote border-start border-4 border-primary ps-3 my-3">
+                    <p class="small text-secondary mb-1">
+                        "Good design is as little design as possible. Less, but better &mdash; because it concentrates on the essential aspects."
+                    </p>
+                    <footer class="blockquote-footer extra-small text-muted">Dieter Rams in <cite title="Ten Principles">Ten Principles</cite></footer>
+                </blockquote>
+            </div>
+        </div>
 
-                                <div class="col-md-12">
-                                    <div class="p-4 card-box border-0 shadow-sm rounded-4 bg-transparent">
-                                        <h4 class="mb-4 h5 fw-bold text-primary text-uppercase letter-spacing-1">System
-                                            Architecture Glossary</h4>
-                                        <dl class="row mb-0">
-                                            <dt class="col-sm-3 fw-bold text-primary">Description Lists</dt>
-                                            <dd class="col-sm-9 text-muted">A description list is perfect for defining
-                                                technical terms within the
-                                                Xivig ecosystem.
-                                            </dd>
+        <!-- 3. Inline Semantic Formatting -->
+        <div class="col-12">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 bg-body">
+                <h5 class="fw-bold text-main mb-1 fs-16">Inline Text Elements & Code Tokens</h5>
+                <p class="text-muted extra-small mb-3">Standard inline semantic markup</p>
 
-                                            <hr class="my-4 opacity-5">
-
-                                            <dt class="col-sm-3 fw-bold text-primary">Core Intelligence</dt>
-                                            <dd class="col-sm-9">
-                                                <p class="mb-2">The centralized node governing all distribution maps and
-                                                    UI bridges.</p>
-                                                <p class="mb-0 small text-muted">Donec id elit non mi porta gravida at
-                                                    eget metus.</p>
-                                            </dd>
-
-                                            <hr class="my-4 opacity-5">
-
-                                            <dt class="col-sm-3 text-truncate fw-bold text-primary">Global Distribution
-                                                Node</dt>
-                                            <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                                                condimentum nibh.</dd>
-                                        </dl>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    
+                <div class="row g-3 text-secondary small">
+                    <div class="col-md-4">
+                        <p class="mb-1">You can use the mark tag to <mark>highlight</mark> critical text.</p>
+                        <p class="mb-1"><del>This line of text is treated as deleted text.</del></p>
+                        <p class="mb-0"><u>This line of text will render as underlined.</u></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="mb-1"><strong>Rendered as bold text</strong> for strong emphasis.</p>
+                        <p class="mb-1"><em>Rendered as italicized text</em> for subtle inflection.</p>
+                        <p class="mb-0"><small>This line of text is treated as fine print.</small></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="mb-1">Inline code token: <code>const app = new Xivig();</code></p>
+                        <p class="mb-1">Keyboard indicator: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd></p>
+                        <p class="mb-0">Variable identifier: <var>y</var> = <var>m</var><var>x</var> + <var>b</var></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{/admin-layout}}

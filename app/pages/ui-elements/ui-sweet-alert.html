@@ -1,86 +1,105 @@
 {{#> admin-layout title="Sweet Alert" parentTitle="UI Elements" }}
 
-<div class="card shadow-sm rounded-4 overflow-hidden border" style="border-color: var(--card-border) !important;">
+<div class="ui-sweet-alert-module">
+    <!-- Header Hero -->
+    <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 mb-4 bg-body">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <h4 class="fw-bold mb-0 text-main fs-18">SweetAlert2 Notification & Modal Alerts</h4>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">SweetAlert2 Integration</span>
+                </div>
+                <p class="text-muted small mb-0">Custom styled alert dialogs, confirm action prompts, auto-closing toasts, and asynchronous network loaders</p>
+            </div>
+        </div>
+    </div>
 
-                        <div
-                            class="card-header bg-transparent py-3 px-4 border-0 d-flex justify-content-center align-items-center">
-                            <div class="text-center">
-                                <h5 class="fw-bold mb-0">Sweet Alert</h5>
-                                <small class="text-muted">Overview and management of sweet alert</small>
-                            </div>
-                        </div>
+    <!-- Alert Cards Grid -->
+    <div class="row g-4">
+        <!-- 1. Basic Alert -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 text-center h-100 bg-body">
+                <div class="rounded-circle bg-primary-subtle text-primary d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 50px; height: 50px;">
+                    <i class="bi bi-info-circle-fill fs-4"></i>
+                </div>
+                <h5 class="fw-bold text-main mb-1.5 fs-16">Standard Informational</h5>
+                <p class="text-muted extra-small mb-4">Clean announcement modal with bold header and confirmation button.</p>
+                <button type="button" class="btn btn-outline-primary btn-sm rounded-pill w-100 mt-auto" id="sa-basic">
+                    Trigger Basic
+                </button>
+            </div>
+        </div>
 
-                        <div class="card-body p-4">
-                            <!--content goes here-->
-                            <div class="row g-4">
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="alert-card p-4 text-center">
-                                        <div>
-                                            <div class="card-icon">💬</div>
-                                            <h5>A basic message</h5>
-                                        </div>
-                                        <button type="button" class="btn btn-modern w-100" id="sa-basic">Launch
-                                            Alert</button>
-                                    </div>
-                                </div>
+        <!-- 2. Success Alert -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 text-center h-100 bg-body">
+                <div class="rounded-circle bg-success-subtle text-success d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 50px; height: 50px;">
+                    <i class="bi bi-check2-circle fs-4"></i>
+                </div>
+                <h5 class="fw-bold text-main mb-1.5 fs-16">Success Confirmation</h5>
+                <p class="text-muted extra-small mb-4">Positive operational feedback with animated green check icon.</p>
+                <button type="button" class="btn btn-outline-success btn-sm rounded-pill w-100 mt-auto" id="sa-success">
+                    Trigger Success
+                </button>
+            </div>
+        </div>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="alert-card p-4 text-center">
-                                        <div>
-                                            <div class="card-icon">✅</div>
-                                            <h5>Action Success notification</h5>
-                                        </div>
-                                        <button type="button" class="btn btn-modern w-100" id="sa-success">Show
-                                            Success</button>
-                                    </div>
-                                </div>
+        <!-- 3. Error Alert -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 text-center h-100 bg-body">
+                <div class="rounded-circle bg-danger-subtle text-danger d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 50px; height: 50px;">
+                    <i class="bi bi-x-circle-fill fs-4"></i>
+                </div>
+                <h5 class="fw-bold text-main mb-1.5 fs-16">Critical Error State</h5>
+                <p class="text-muted extra-small mb-4">Failure notice with red badge, error description, and retry action.</p>
+                <button type="button" class="btn btn-outline-danger btn-sm rounded-pill w-100 mt-auto" id="sa-error">
+                    Trigger Error
+                </button>
+            </div>
+        </div>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="alert-card p-4 text-center">
-                                        <div>
-                                            <div class="card-icon">❌</div>
-                                            <h5>Error handling dialog</h5>
-                                        </div>
-                                        <button type="button" class="btn btn-modern w-100" id="sa-error">Show
-                                            Error</button>
-                                    </div>
-                                </div>
+        <!-- 4. Warning / Confirm Prompt -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 text-center h-100 bg-body">
+                <div class="rounded-circle bg-warning-subtle text-warning d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 50px; height: 50px;">
+                    <i class="bi bi-exclamation-triangle-fill fs-4"></i>
+                </div>
+                <h5 class="fw-bold text-main mb-1.5 fs-16">Destructive Confirm</h5>
+                <p class="text-muted extra-small mb-4">Two-button prompt requiring user confirmation prior to execution.</p>
+                <button type="button" class="btn btn-outline-warning btn-sm rounded-pill w-100 mt-auto" id="sa-warning">
+                    Trigger Confirm
+                </button>
+            </div>
+        </div>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="alert-card p-4 text-center">
-                                        <div>
-                                            <div class="card-icon">⚠️</div>
-                                            <h5>Warning with confirmation callback</h5>
-                                        </div>
-                                        <button type="button" class="btn btn-modern w-100" id="sa-warning">Show
-                                            Warning</button>
-                                    </div>
-                                </div>
+        <!-- 5. Custom HTML Alert -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 text-center h-100 bg-body">
+                <div class="rounded-circle bg-info-subtle text-info d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 50px; height: 50px;">
+                    <i class="bi bi-code-slash fs-4"></i>
+                </div>
+                <h5 class="fw-bold text-main mb-1.5 fs-16">Rich HTML Content</h5>
+                <p class="text-muted extra-small mb-4">Formatted modal supporting custom markup, code tags, and links.</p>
+                <button type="button" class="btn btn-outline-info btn-sm rounded-pill w-100 mt-auto" id="custom-html-alert">
+                    Trigger HTML Alert
+                </button>
+            </div>
+        </div>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="alert-card p-4 text-center">
-                                        <div>
-                                            <div class="card-icon">🌐</div>
-                                            <h5>Custom HTML and rich description</h5>
-                                        </div>
-                                        <button type="button" class="btn btn-modern w-100" id="custom-html-alert">Render
-                                            HTML</button>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="alert-card p-4 text-center">
-                                        <div>
-                                            <div class="card-icon">⏳</div>
-                                            <h5>Ajax request & dynamic loading</h5>
-                                        </div>
-                                        <button type="button" class="btn btn-modern w-100" id="ajax-alert">Test
-                                            Request</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    
+        <!-- 6. Async Network Loader -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border border-secondary border-opacity-15 shadow-2xs rounded-4 p-4 text-center h-100 bg-body">
+                <div class="rounded-circle bg-primary-subtle text-primary d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 50px; height: 50px;">
+                    <i class="bi bi-arrow-repeat fs-4"></i>
+                </div>
+                <h5 class="fw-bold text-main mb-1.5 fs-16">Async API Loader</h5>
+                <p class="text-muted extra-small mb-4">Simulated network query with spinner and delayed completion callback.</p>
+                <button type="button" class="btn btn-primary btn-sm rounded-pill w-100 mt-auto shadow-sm" id="ajax-alert">
+                    Trigger Async Loader
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{/admin-layout}}

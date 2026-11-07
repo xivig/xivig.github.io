@@ -7,10 +7,14 @@
   "type": "module",
   "main": "gulpfile.js",
   "scripts": {
-    "dev": "vite --open",
-    "build": "gulp build",
+    "dev": "vite",
+    "build": "node tasks/build.js",
+    "build:vite": "vite build",
+    "build:gulp": "gulp build",
+    "lint:links": "node tasks/utils/check-links.js",
     "preview": "vite preview",
-    "production": "gulp production",
+    "preview:docs": "vite preview --outDir docs",
+    "production": "node tasks/build.js && vite preview",
     "docs": "gulp serveDocs"
   },
   "devDependencies": {
@@ -56,7 +60,6 @@
     "plyr": "^3.8.4",
     "sortablejs": "^1.15.7",
     "summernote": "^0.9.1",
-    "sweetalert2": "^11.26.24",
-    "timedropper": "^1.0.0"
+    "sweetalert2": "^11.26.24"
   }
 }

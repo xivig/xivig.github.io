@@ -1,38 +1,203 @@
 {{#> admin-layout title="System Metrics" parentTitle="Analytics" }}
 
-<div class="row g-4 mb-4">
-    <div class="col-md-4">
-        <div class="card border-0 shadow-sm rounded-4 p-4 text-center">
-            <h6 class="fw-bold extra-small text-uppercase text-muted mb-3">CPU Usage</h6>
-            <div id="cpuChart" class="chart-container-sm"></div>
-            <h3 class="fw-black mb-0">24.5%</h3>
-            <span class="text-success extra-small fw-bold">Optimized</span>
+<div class="system-metrics-container">
+    <!-- Top System Telemetry Gauges -->
+    <div class="row g-4 mb-4">
+        <!-- CPU Load -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="card card-box border-0 shadow-sm rounded-4 p-4 text-center h-100">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold">CPU Core Load</span>
+                    <i class="bi bi-cpu text-muted"></i>
+                </div>
+                <div id="cpuChart" class="my-2" style="min-height: 160px;"></div>
+                <h4 class="fw-black mb-1 text-main">24.5%</h4>
+                <div class="extra-small text-muted">16 Cores Xeon Silver &bull; <span class="text-success fw-bold">Optimized</span></div>
+            </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card border-0 shadow-sm rounded-4 p-4 text-center">
-            <h6 class="fw-bold extra-small text-uppercase text-muted mb-3">Memory Usage</h6>
-            <div id="ramChart" class="chart-container-sm"></div>
-            <h3 class="fw-black mb-0">4.2 GB</h3>
-            <span class="text-muted extra-small fw-bold">of 16 GB</span>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card border-0 shadow-sm rounded-4 p-4 text-center">
-            <h6 class="fw-bold extra-small text-uppercase text-muted mb-3">Network Latency</h6>
-            <div id="netChart" class="chart-container-sm"></div>
-            <h3 class="fw-black mb-0">12ms</h3>
-            <span class="text-success extra-small fw-bold">Global Average</span>
-        </div>
-    </div>
-</div>
 
-<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-    <div class="card-header bg-white py-4 px-5 border-0">
-        <h5 class="fw-black mb-0">Real-time Performance Monitoring</h5>
+        <!-- RAM Memory Allocation -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="card card-box border-0 shadow-sm rounded-4 p-4 text-center h-100">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-warning-subtle text-warning rounded-pill px-2.5 py-1 extra-small fw-bold">RAM Memory</span>
+                    <i class="bi bi-memory text-muted"></i>
+                </div>
+                <div id="ramChart" class="my-2" style="min-height: 160px;"></div>
+                <h4 class="fw-black mb-1 text-main">6.1 GB</h4>
+                <div class="extra-small text-muted">of 16.0 GB DDR5 &bull; <span class="text-warning fw-bold">Healthy</span></div>
+            </div>
+        </div>
+
+        <!-- Network Latency -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="card card-box border-0 shadow-sm rounded-4 p-4 text-center h-100">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-success-subtle text-success rounded-pill px-2.5 py-1 extra-small fw-bold">Network Ping</span>
+                    <i class="bi bi-activity text-muted"></i>
+                </div>
+                <div id="netChart" class="my-2" style="min-height: 160px;"></div>
+                <h4 class="fw-black mb-1 text-main">12 ms</h4>
+                <div class="extra-small text-muted">Global Ingress Average &bull; <span class="text-success fw-bold">A+ Grade</span></div>
+            </div>
+        </div>
+
+        <!-- Storage & I/O -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="card card-box border-0 shadow-sm rounded-4 p-4 text-center h-100">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-purple-subtle text-purple rounded-pill px-2.5 py-1 extra-small fw-bold" style="background: rgba(139, 92, 246, 0.1); color: #8B5CF6;">NVMe Storage</span>
+                    <i class="bi bi-hdd-network text-muted"></i>
+                </div>
+                <div id="diskChart" class="my-2" style="min-height: 160px;"></div>
+                <h4 class="fw-black mb-1 text-main">920 GB</h4>
+                <div class="extra-small text-muted">of 2.0 TB NVMe Gen4 &bull; <span class="text-primary fw-bold">46% Used</span></div>
+            </div>
+        </div>
     </div>
-    <div class="card-body p-5 pt-0">
-        <div id="realtimeChart" class="chart-container-xl"></div>
+
+    <!-- Real-time Live Stream Telemetry Chart -->
+    <div class="card card-box border-0 shadow-sm rounded-4 mb-4">
+        <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <span class="badge bg-danger rounded-circle p-1"></span>
+                    <h5 class="fw-black mb-0 text-main">Real-time Performance Telemetry</h5>
+                </div>
+                <p class="text-muted extra-small mb-0">Live streaming throughput (1,000ms polling rate) across primary gateway socket</p>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <span class="badge bg-success-subtle text-success rounded-pill px-3 py-1.5 extra-small fw-bold">
+                    <i class="bi bi-broadcast me-1"></i> Socket Connected
+                </span>
+            </div>
+        </div>
+        <div class="card-body p-4">
+            <div id="realtimeChart" style="min-height: 340px;"></div>
+        </div>
+    </div>
+
+    <!-- Cluster Nodes & Active Workloads Row -->
+    <div class="row g-4 mb-4">
+        <!-- Edge Clusters -->
+        <div class="col-lg-5">
+            <div class="card card-box border-0 shadow-sm rounded-4 h-100 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="fw-bold text-main mb-0">Edge Cluster Telemetry</h6>
+                    <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold">3 Regions</span>
+                </div>
+
+                <div class="vstack gap-3">
+                    <!-- Node 1 -->
+                    <div class="p-3 rounded-3 border border-light border-opacity-10 d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle bg-success bg-opacity-10 text-success p-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                                <i class="bi bi-hdd-rack"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold text-main small">us-east-1 (N. Virginia)</h6>
+                                <span class="extra-small text-muted">14 Edge Nodes &bull; 1.4k req/s</span>
+                            </div>
+                        </div>
+                        <span class="badge bg-success-subtle text-success rounded-pill px-2.5 py-1 extra-small fw-bold">99.99%</span>
+                    </div>
+
+                    <!-- Node 2 -->
+                    <div class="p-3 rounded-3 border border-light border-opacity-10 d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle bg-primary bg-opacity-10 text-primary p-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                                <i class="bi bi-hdd-rack"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold text-main small">eu-west-1 (Ireland)</h6>
+                                <span class="extra-small text-muted">8 Edge Nodes &bull; 890 req/s</span>
+                            </div>
+                        </div>
+                        <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold">99.98%</span>
+                    </div>
+
+                    <!-- Node 3 -->
+                    <div class="p-3 rounded-3 border border-light border-opacity-10 d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle bg-info bg-opacity-10 text-info p-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                                <i class="bi bi-hdd-rack"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold text-main small">ap-northeast-1 (Tokyo)</h6>
+                                <span class="extra-small text-muted">6 Edge Nodes &bull; 620 req/s</span>
+                            </div>
+                        </div>
+                        <span class="badge bg-info-subtle text-info rounded-pill px-2.5 py-1 extra-small fw-bold">100.0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Daemon Processes -->
+        <div class="col-lg-7">
+            <div class="card card-box border-0 shadow-sm rounded-4 h-100 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="fw-bold text-main mb-0">System Daemon Workloads</h6>
+                    <span class="badge bg-secondary-subtle text-muted rounded-pill px-2.5 py-1 extra-small fw-bold">Top 4 Processes</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table align-middle extra-small mb-0">
+                        <thead>
+                            <tr class="text-muted border-bottom border-light border-opacity-10">
+                                <th>PROCESS</th>
+                                <th>PID</th>
+                                <th>CPU LOAD</th>
+                                <th>MEMORY</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="fw-bold text-main">xivig-ingress-gw</div>
+                                    <span class="text-muted" style="font-size: 10px;">HTTP/3 Envoy Proxy</span>
+                                </td>
+                                <td><code>1042</code></td>
+                                <td><span class="fw-bold text-primary">8.4%</span></td>
+                                <td>380 MB</td>
+                                <td><span class="badge bg-success-subtle text-success rounded-pill px-2 py-0.5">Running</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="fw-bold text-main">xivig-telemetry-agent</div>
+                                    <span class="text-muted" style="font-size: 10px;">Prometheus Scraper</span>
+                                </td>
+                                <td><code>1088</code></td>
+                                <td><span class="fw-bold text-primary">3.2%</span></td>
+                                <td>145 MB</td>
+                                <td><span class="badge bg-success-subtle text-success rounded-pill px-2 py-0.5">Running</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="fw-bold text-main">xivig-cache-sync</div>
+                                    <span class="text-muted" style="font-size: 10px;">Redis Cluster Node</span>
+                                </td>
+                                <td><code>1140</code></td>
+                                <td><span class="fw-bold text-primary">5.1%</span></td>
+                                <td>820 MB</td>
+                                <td><span class="badge bg-success-subtle text-success rounded-pill px-2 py-0.5">Running</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="fw-bold text-main">xivig-worker-cron</div>
+                                    <span class="text-muted" style="font-size: 10px;">Queue Processor</span>
+                                </td>
+                                <td><code>1205</code></td>
+                                <td><span class="fw-bold text-primary">1.8%</span></td>
+                                <td>95 MB</td>
+                                <td><span class="badge bg-success-subtle text-success rounded-pill px-2 py-0.5">Running</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

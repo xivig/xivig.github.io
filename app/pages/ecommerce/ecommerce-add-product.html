@@ -1,99 +1,278 @@
-{{#> admin-layout title="Add Product" parentTitle="Ecommerce" }}
+{{#> admin-layout title="Add Product" parentTitle="Ecommerce" actionText="Save product" }}
 
-<div class="row justify-content-center">
-    <div class="col-lg-10">
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
-            <div class="card-header bg-white py-4 px-5 border-0">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <h4 class="fw-black text-dark mb-1">Create New Product</h4>
-                        <p class="text-muted small mb-0">Fill in the details to publish a new asset to your store</p>
+<form id="addProductForm">
+    <div class="row g-4">
+        <!-- Main Form Canvas (8 cols) -->
+        <div class="col-lg-8">
+            <!-- 1. Basic Product Information -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-transparent py-3.5 px-4 border-bottom">
+                    <h6 class="mb-0 fw-bold fs-6">Basic Information</h6>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-3.5">
+                        <label class="form-label small fw-bold">Product Title <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="e.g. Apex Hyperlight Velocity Running Shoes" required>
+                        <div class="form-text extra-small text-muted">A clear, customer-friendly title that highlights key specifications.</div>
                     </div>
-                    <button class="btn btn-light btn-sm rounded-pill px-4 border" onclick="history.back()">
-                        <i class="bi bi-arrow-left me-2"></i> Back
-                    </button>
+
+                    <div class="row g-3 mb-3.5">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Brand / Manufacturer</label>
+                            <input type="text" class="form-control" placeholder="e.g. Xivig Athletics">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Product Handle / Slug</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted small">/products/</span>
+                                <input type="text" class="form-control" placeholder="apex-hyperlight-velocity">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-0">
+                        <label class="form-label small fw-bold">Description &amp; Specifications</label>
+                        <textarea class="form-control" rows="6" placeholder="Describe the product architecture, materials, craftsmanship, and performance characteristics..."></textarea>
+                    </div>
                 </div>
             </div>
 
-            <div class="card-body p-5 pt-0">
-                <form id="addProductForm">
-                    <div class="row g-4">
-                        <!-- Product Basic Info -->
-                        <div class="col-12">
-                            <label class="apple-label">Product Title</label>
-                            <input type="text" class="form-control modern-input" placeholder="e.g. Air Jordan Limited Edition" required>
+            <!-- 2. Media Uploader -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-transparent py-3.5 px-4 border-bottom d-flex align-items-center justify-content-between">
+                    <h6 class="mb-0 fw-bold fs-6">Product Media</h6>
+                    <span class="badge bg-primary-subtle text-primary extra-small fw-bold px-2 py-0.5 rounded-pill">JPG, PNG, WEBP &bull; Max 10MB</span>
+                </div>
+                <div class="card-body p-4">
+                    <div class="p-4 p-md-5 border border-2 border-dashed rounded-4 text-center bg-light bg-opacity-50 transition-all hover-border-primary cursor-pointer mb-3">
+                        <div class="rounded-circle bg-white shadow-sm p-3 mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 56px; height: 56px;">
+                            <i class="bi bi-cloud-arrow-up fs-3 text-primary"></i>
                         </div>
+                        <h6 class="fw-bold mb-1">Drag and drop high-res product assets</h6>
+                        <p class="text-muted extra-small mb-3">Add up to 8 gallery photos or 3D model GLTF previews</p>
+                        <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-semibold">
+                            Browse Local Files
+                        </button>
+                    </div>
 
-                        <div class="col-md-6">
-                            <label class="apple-label">Category</label>
-                            <select class="form-select modern-input">
-                                <option selected>Select Category</option>
-                                <option>Footwear</option>
-                                <option>Apparel</option>
-                                <option>Electronics</option>
-                                <option>Architecture</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="apple-label">Base Price ($)</label>
-                            <div class="input-group modern-input-group border rounded-3 overflow-hidden">
-                                <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-currency-dollar"></i></span>
-                                <input type="number" class="form-control border-0 shadow-none py-2" placeholder="0.00">
+                    <div class="row g-3">
+                        <div class="col-3 col-md-2">
+                            <div class="position-relative rounded-3 overflow-hidden border shadow-sm" style="aspect-ratio: 1;">
+                                <img src="/app/src/images/product-1.jpg" class="w-100 h-100 object-fit-cover" alt="Thumb 1">
+                                <span class="badge bg-primary position-absolute top-0 start-0 m-1 extra-small">Main</span>
                             </div>
                         </div>
-
-                        <!-- Media Upload -->
-                        <div class="col-12">
-                            <label class="apple-label">Product Media</label>
-                            <div class="p-5 border-2 border-dashed rounded-4 bg-light text-center border-primary border-opacity-10 mb-2">
-                                <div class="icon-shape bg-white shadow-sm rounded-circle p-3 mx-auto mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="bi bi-cloud-arrow-up text-primary fs-3"></i>
-                                </div>
-                                <h6 class="fw-bold">Drag and drop your product images</h6>
-                                <p class="text-muted small">Max file size: 5MB • Formats: JPG, PNG, WEBP</p>
-                                <button type="button" class="btn btn-white btn-sm rounded-pill px-4 border shadow-sm mt-2">Browse Files</button>
+                        <div class="col-3 col-md-2">
+                            <div class="position-relative rounded-3 overflow-hidden border shadow-sm" style="aspect-ratio: 1;">
+                                <img src="/app/src/images/product-2.jpg" class="w-100 h-100 object-fit-cover" alt="Thumb 2">
                             </div>
                         </div>
-
-                        <div class="col-12">
-                            <label class="apple-label">Description</label>
-                            <textarea class="form-control modern-input" rows="5" placeholder="Detailed product specifications..."></textarea>
-                        </div>
-
-                        <div class="col-md-4">
-                            <label class="apple-label">SKU Code</label>
-                            <input type="text" class="form-control modern-input" placeholder="e.g. AJ-102">
-                        </div>
-
-                        <div class="col-md-4">
-                            <label class="apple-label">Stock Quantity</label>
-                            <input type="number" class="form-control modern-input" placeholder="0">
-                        </div>
-
-                        <div class="col-md-4">
-                            <label class="apple-label">Status</label>
-                            <div class="d-flex gap-3 pt-2">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status" id="active" checked>
-                                    <label class="form-check-label small" for="active">Active</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status" id="draft">
-                                    <label class="form-check-label small" for="draft">Draft</label>
-                                </div>
+                        <div class="col-3 col-md-2">
+                            <div class="position-relative rounded-3 overflow-hidden border shadow-sm" style="aspect-ratio: 1;">
+                                <img src="/app/src/images/product-3.jpg" class="w-100 h-100 object-fit-cover" alt="Thumb 3">
                             </div>
                         </div>
-
-                        <div class="col-12 border-top pt-4 mt-5 text-end">
-                            <button type="button" class="btn btn-light rounded-pill px-5 py-2 border me-2">Cancel</button>
-                            <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 fw-bold shadow-primary">Publish Product</button>
+                        <div class="col-3 col-md-2">
+                            <div class="rounded-3 border border-dashed d-flex align-items-center justify-content-center text-muted cursor-pointer" style="aspect-ratio: 1; background: #fafafa;">
+                                <i class="bi bi-plus-lg fs-4"></i>
+                            </div>
                         </div>
                     </div>
-                </form>
+                </div>
+            </div>
+
+            <!-- 3. Pricing & Inventory -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-transparent py-3.5 px-4 border-bottom">
+                    <h6 class="mb-0 fw-bold fs-6">Pricing &amp; Inventory</h6>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3 mb-3.5">
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Base Retail Price ($) <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted">$</span>
+                                <input type="number" step="0.01" class="form-control" placeholder="189.00" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Compare-at Price ($)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted">$</span>
+                                <input type="number" step="0.01" class="form-control" placeholder="220.00">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Cost per Item ($)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted">$</span>
+                                <input type="number" step="0.01" class="form-control" placeholder="65.00">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">SKU (Stock Keeping Unit)</label>
+                            <input type="text" class="form-control" placeholder="XIV-APX-801">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Barcode (ISBN, UPC, GTIN)</label>
+                            <input type="text" class="form-control" placeholder="019283746501">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Available Quantity</label>
+                            <input type="number" class="form-control" placeholder="240" value="240">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between p-3 bg-light rounded-3 border">
+                        <div>
+                            <h6 class="mb-0 fw-bold small">Track Inventory</h6>
+                            <small class="text-muted extra-small">Automatically decrement stock count upon checkout fulfillment.</small>
+                        </div>
+                        <div class="form-check form-switch mb-0">
+                            <input class="form-check-input" type="checkbox" id="trackStockSwitch" checked style="width: 38px; height: 20px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Variants & Options -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-transparent py-3.5 px-4 border-bottom d-flex align-items-center justify-content-between">
+                    <h6 class="mb-0 fw-bold fs-6">Variants &amp; Attributes</h6>
+                    <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold">
+                        <i class="bi bi-plus-lg me-1"></i> Add Variant Option
+                    </button>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-3.5">
+                        <label class="form-label small fw-bold">Sizes</label>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="badge bg-white text-dark border px-3 py-2 rounded-pill shadow-sm fw-semibold">US 8.5 &times;</span>
+                            <span class="badge bg-white text-dark border px-3 py-2 rounded-pill shadow-sm fw-semibold">US 9.0 &times;</span>
+                            <span class="badge bg-white text-dark border px-3 py-2 rounded-pill shadow-sm fw-semibold">US 10.0 &times;</span>
+                            <span class="badge bg-white text-dark border px-3 py-2 rounded-pill shadow-sm fw-semibold">US 10.5 &times;</span>
+                            <span class="badge bg-white text-dark border px-3 py-2 rounded-pill shadow-sm fw-semibold">US 11.0 &times;</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="form-label small fw-bold">Colorways</label>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="badge bg-white text-dark border px-3 py-2 rounded-pill shadow-sm fw-semibold d-inline-flex align-items-center gap-1.5">
+                                <span class="d-inline-block rounded-circle" style="width: 10px; height: 10px; background: #101B33;"></span>
+                                Midnight Obsidian &times;
+                            </span>
+                            <span class="badge bg-white text-dark border px-3 py-2 rounded-pill shadow-sm fw-semibold d-inline-flex align-items-center gap-1.5">
+                                <span class="d-inline-block rounded-circle" style="width: 10px; height: 10px; background: #4F6BFF;"></span>
+                                Hyper Cobalt &times;
+                            </span>
+                            <span class="badge bg-white text-dark border px-3 py-2 rounded-pill shadow-sm fw-semibold d-inline-flex align-items-center gap-1.5">
+                                <span class="d-inline-block rounded-circle" style="width: 10px; height: 10px; background: #F8FAFC; border: 1px solid #ccc;"></span>
+                                Porcelain Pure &times;
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Right Rail (4 cols) -->
+        <div class="col-lg-4">
+            <!-- 1. Publish & Status -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4 position-sticky" style="top: 88px;">
+                <div class="card-header bg-transparent py-3.5 px-4 border-bottom d-flex align-items-center justify-content-between">
+                    <h6 class="mb-0 fw-bold fs-6">Publish Status</h6>
+                    <span class="badge bg-success-subtle text-success extra-small fw-bold px-2 py-0.5 rounded-pill">Ready</span>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-3.5">
+                        <label class="form-label small fw-bold">Status</label>
+                        <select class="form-select">
+                            <option value="active" selected>Active &bull; Live in Catalog</option>
+                            <option value="draft">Draft &bull; Hidden from Store</option>
+                            <option value="archived">Archived &bull; Discontinued</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold">Publish Channel</label>
+                        <div class="d-flex flex-column gap-2">
+                            <label class="form-check d-flex align-items-center justify-content-between cursor-pointer mb-0">
+                                <span class="small fw-semibold">Online Web Store</span>
+                                <input class="form-check-input" type="checkbox" checked>
+                            </label>
+                            <label class="form-check d-flex align-items-center justify-content-between cursor-pointer mb-0">
+                                <span class="small fw-semibold">Point of Sale (POS)</span>
+                                <input class="form-check-input" type="checkbox" checked>
+                            </label>
+                            <label class="form-check d-flex align-items-center justify-content-between cursor-pointer mb-0">
+                                <span class="small fw-semibold">Mobile App Showcase</span>
+                                <input class="form-check-input" type="checkbox" checked>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary rounded-pill py-2.5 fw-bold shadow-sm">
+                            <i class="bi bi-cloud-check me-1"></i> Save Product
+                        </button>
+                        <a href="ecommerce-products.html" class="btn btn-light rounded-pill py-2 border text-muted fw-semibold">
+                            Discard Changes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Organization & Category -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-transparent py-3.5 px-4 border-bottom">
+                    <h6 class="mb-0 fw-bold fs-6">Organization</h6>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Category</label>
+                        <select class="form-select">
+                            <option selected>Footwear &amp; Sneakers</option>
+                            <option>Performance Apparel</option>
+                            <option>Audio &amp; Electronics</option>
+                            <option>Workspace Accessories</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Collection</label>
+                        <select class="form-select">
+                            <option selected>Summer Velocity 2026</option>
+                            <option>Signature Architecture</option>
+                            <option>Limited Edition Drops</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="form-label small fw-bold">Tags</label>
+                        <input type="text" class="form-control" placeholder="running, lightweight, cushion, carbon" value="running, velocity, carbon">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Search Engine Preview -->
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-header bg-transparent py-3.5 px-4 border-bottom">
+                    <h6 class="mb-0 fw-bold fs-6">Search Engine Listing</h6>
+                </div>
+                <div class="card-body p-4">
+                    <div class="p-3 bg-light rounded-3 border">
+                        <div class="text-primary fw-bold small text-truncate">Apex Hyperlight Velocity Running Shoes &bull; Xivig Store</div>
+                        <div class="text-success extra-small">https://xivig.com/products/apex-hyperlight-velocity</div>
+                        <div class="text-muted extra-small mt-1 text-truncate-2">High-performance lightweight architectural athletic footwear engineered with carbon-plate propulsion.</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 
 {{/admin-layout}}

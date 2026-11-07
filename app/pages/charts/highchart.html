@@ -1,24 +1,37 @@
 {{#> admin-layout title="Highchart" parentTitle="Charts" }}
 
-<div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card shadow-sm border-0 rounded-4">
-                        <div class="card-header bg-white border-0 py-3">
-                            <h5 class="card-title mb-0">Line Chart</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="highchartLine" style="height: 400px;"></div>
-                        </div>
-                    </div>
+<div class="row g-4 mb-4">
+    <!-- Line / Spline Chart -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Throughput Velocity (Spline)</h5>
+                    <p class="text-muted extra-small mb-0">Highcharts multi-region edge node requests</p>
                 </div>
-                <div class="col-md-6">
-                    <div class="card shadow-sm border-0 rounded-4">
-                        <div class="card-header bg-white border-0 py-3">
-                            <h5 class="card-title mb-0">Area Chart</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="highchartArea" style="height: 400px;"></div>
-                        </div>
-                    
+                <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold">Highcharts</span>
+            </div>
+            <div class="card-body p-4">
+                <div id="highchartLine" style="min-height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Area Spline Chart -->
+    <div class="col-lg-6">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title fw-bold mb-1">Compute Infrastructure Spend</h5>
+                    <p class="text-muted extra-small mb-0">Cumulative cloud runtime consumption</p>
+                </div>
+                <span class="badge bg-success-subtle text-success rounded-pill px-2.5 py-1 extra-small fw-bold">Spend</span>
+            </div>
+            <div class="card-body p-4">
+                <div id="highchartArea" style="min-height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{/admin-layout}}

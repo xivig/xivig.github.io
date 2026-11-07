@@ -11,56 +11,69 @@
                 <div class="header__search-wrapper">
                     <i class="bi bi-search header__search-icon"></i>
                     <input type="text" class="header__search-input" placeholder="Search architecture...">
+                    <kbd class="header__kbd d-none d-lg-inline-block">⌘K</kbd>
                 </div>
             </div>
         </div>
 
         <div class="header__right">
+            <!-- Cluster Status Beacon -->
+            <div class="header__cluster-pill d-none d-xl-flex align-items-center gap-2 px-3 py-1 rounded-pill" style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25);">
+                <span class="pulse-beacon-emerald"></span>
+                <span class="extra-small fw-bold text-success" style="letter-spacing: 0.04em;">CLUSTER 99.99%</span>
+            </div>
+
+            <!-- Theme Toggle Quick Button -->
+            <button class="header__action-btn header__theme-toggle me-1" id="header-theme-toggle" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+                <i class="bi bi-moon-stars theme-icon-dark"></i>
+                <i class="bi bi-sun theme-icon-light d-none"></i>
+            </button>
+
             <div class="header__actions">
                 <div class="dropdown header__dropdown">
-                    <button class="header__action-btn me-2" data-bs-toggle="offcanvas" data-bs-target="#rightSidebar">
+                    <button class="header__action-btn me-2" data-bs-toggle="offcanvas" data-bs-target="#rightSidebar" title="Layout Settings">
                         <i class="bi bi-gear"></i>
                     </button>
-                    <button class="header__action-btn header__action-btn--badge" data-bs-toggle="dropdown">
+                    <button class="header__action-btn header__action-btn--badge" data-bs-toggle="dropdown" aria-label="Notifications">
                         <i class="bi bi-bell"></i>
-                        {{> notification-badge id="header-notification-badge" count="5" class="position-absolute top-0
-                        start-100 translate-middle" }}
+                        {{> notification-badge id="header-notification-badge" count="4" class="position-absolute top-0 start-100 translate-middle" }}
                     </button>
                     <div class="dropdown-menu dropdown-menu-end header__dropdown-menu shadow">
-                        <h6 class="dropdown-header">Notifications</h6>
+                        <h6 class="dropdown-header">System Notifications</h6>
                         <a class="dropdown-item header__dropdown-item" href="notification.html">
-                            <img src="/app/src/images/photo1.jpg" alt="User" class="header__dropdown-img">
+                            <div class="header__dropdown-icon rounded-circle bg-success bg-opacity-15 text-success d-flex align-items-center justify-content-center flex-shrink-0" style="width: 36px; height: 36px;">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
                             <div class="header__dropdown-info">
-                                <span class="header__dropdown-title">Jennifer O. Oster</span>
-                                <small class="header__dropdown-text">New patient registered</small>
+                                <span class="header__dropdown-title">Production Build #1084</span>
+                                <small class="header__dropdown-text text-muted">Deployed to GitHub Pages edge</small>
                             </div>
                         </a>
                         <a class="dropdown-item header__dropdown-item" href="notification.html">
-                            <img src="/app/src/images/photo2.jpg" alt="User" class="header__dropdown-img">
+                            <div class="header__dropdown-icon rounded-circle bg-primary bg-opacity-15 text-primary d-flex align-items-center justify-content-center flex-shrink-0" style="width: 36px; height: 36px;">
+                                <i class="bi bi-cpu-fill"></i>
+                            </div>
                             <div class="header__dropdown-info">
-                                <span class="header__dropdown-title">Jennifer O. Oster</span>
-                                <small class="header__dropdown-text">New patient registered</small>
+                                <span class="header__dropdown-title">Cluster Autoscaled</span>
+                                <small class="header__dropdown-text text-muted">+4 worker nodes online (US-East)</small>
                             </div>
                         </a>
                         <a class="dropdown-item header__dropdown-item" href="notification.html">
-                            <img src="/app/src/images/photo3.jpg" alt="User" class="header__dropdown-img">
+                            <div class="header__dropdown-icon rounded-circle bg-info bg-opacity-15 text-info d-flex align-items-center justify-content-center flex-shrink-0" style="width: 36px; height: 36px;">
+                                <i class="bi bi-shield-lock-fill"></i>
+                            </div>
                             <div class="header__dropdown-info">
-                                <span class="header__dropdown-title">Jennifer O. Oster</span>
-                                <small class="header__dropdown-text">New patient registered</small>
+                                <span class="header__dropdown-title">Security Audit Passed</span>
+                                <small class="header__dropdown-text text-muted">Zero vulnerabilities found</small>
                             </div>
                         </a>
                         <a class="dropdown-item header__dropdown-item" href="notification.html">
-                            <img src="/app/src/images/photo4.jpg" alt="User" class="header__dropdown-img">
-                            <div class="header__dropdown-info">
-                                <span class="header__dropdown-title">Jennifer O. Oster</span>
-                                <small class="header__dropdown-text">New patient registered</small>
+                            <div class="header__dropdown-icon rounded-circle bg-warning bg-opacity-15 text-warning d-flex align-items-center justify-content-center flex-shrink-0" style="width: 36px; height: 36px;">
+                                <i class="bi bi-lightning-charge-fill"></i>
                             </div>
-                        </a>
-                        <a class="dropdown-item header__dropdown-item" href="notification.html">
-                            <img src="/app/src/images/photo5.jpg" alt="User" class="header__dropdown-img">
                             <div class="header__dropdown-info">
-                                <span class="header__dropdown-title">Jennifer O. Oster</span>
-                                <small class="header__dropdown-text">New patient registered</small>
+                                <span class="header__dropdown-title">Telemetry Peak Hit</span>
+                                <small class="header__dropdown-text text-muted">4,820 TPS sustained rate</small>
                             </div>
                         </a>
                     </div>
@@ -69,8 +82,8 @@
 
             <div class="dropdown header__user">
                 <button class="header__user-btn" data-bs-toggle="dropdown">
-                    <img src="/app/src/images/photo5.jpg" alt="Ross C. Lopez" class="header__user-img">
-                    <span class="header__user-name d-none d-sm-inline">John Doe</span>
+                    <img src="/app/src/images/photo5.jpg" alt="Alex Carter" class="header__user-img">
+                    <span class="header__user-name d-none d-sm-inline">Alex Carter</span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu shadow">
                     <li>
@@ -85,18 +98,27 @@
                     </li>
                     <li>
                         <a class="dropdown-item" href="help-support.html">
-                            <i class="bi bi-1-circle me-2"></i> Help
+                            <i class="bi bi-question-circle me-2"></i> Help & Support
                         </a>
                     </li>
+                    <li><hr class="dropdown-divider my-1"></li>
                     <li><a class="dropdown-item text-danger" href="login.html"><i
                                 class="bi bi-box-arrow-right me-2"></i>
                             Logout</a></li>
                 </ul>
             </div>
 
+            <div class="header__showcase d-none d-md-block me-2">
+                <a href="xivig.html" class="header__showcase-btn btn btn-sm rounded-pill px-3 py-1.5 extra-small fw-bold d-inline-flex align-items-center gap-2 text-white shadow-sm" title="Launch Brand Showcase">
+                    <i class="bi bi-stars"></i>
+                    <span>Showcase</span>
+                    <span class="badge bg-white text-primary rounded-pill px-1.5 py-0.5 fw-bold" style="font-size: 9px; letter-spacing: 0.5px;">PRO</span>
+                </a>
+            </div>
+
             <div class="header__github">
-                <a href="https://github.com/xivig" target="_blank" class="header__github-link">
-                    <img src="/app/src/images/github.svg" alt="GitHub" width="24">
+                <a href="https://github.com/xivig/xivig.github.io" target="_blank" rel="noopener noreferrer" class="header__action-btn header__github-btn" title="Fork xivig.github.io on GitHub" aria-label="GitHub Repository">
+                    <i class="bi bi-github"></i>
                 </a>
             </div>
         </div>

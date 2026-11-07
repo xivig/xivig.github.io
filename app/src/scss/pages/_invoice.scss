@@ -1,7 +1,7 @@
 /* Xivig Elite Invoice CSS */
 .extra-small {
     font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
 }
 
 .fw-800 {
@@ -12,38 +12,158 @@
     letter-spacing: -0.02em;
 }
 
-.invoice {
-    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+/* Metric Telemetry Card */
+.invoice-stat-card {
+    background: var(--card-bg, #ffffff);
+    border: 1px solid var(--card-border, #e2e8f0);
+    border-radius: var(--elite-radius, 1rem);
+    padding: 1.25rem 1.5rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+    }
 }
 
-.invoice__total {
-    background: linear-gradient(135deg, var(--bs-primary) 0%, #6f42c1 100%);
-    box-shadow: 0 10px 20px rgba(var(--bs-primary-rgb), 0.2) !important;
+/* Invoice Registry / Ledger */
+.invoice-registry-card {
+    background: var(--card-bg, #ffffff);
+    border: 1px solid var(--card-border, #e2e8f0);
+    border-radius: var(--elite-radius, 1rem);
+    overflow: hidden;
 }
 
-/* Elite Hover State for Buttons */
-.btn-outline-light:hover {
-    background-color: #f8f9fa !important;
-    border-color: var(--bs-primary) !important;
-    color: var(--bs-primary) !important;
+.invoice-item {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--card-border, #f1f5f9);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:hover {
+        background-color: var(--bg-subtle, #f8fafc);
+    }
+
+    &.active {
+        background-color: rgba(99, 102, 241, 0.06);
+        border-left: 3px solid var(--elite-primary, #6366f1);
+    }
 }
 
-.table-borderless tbody tr {
-    transition: background-color 0.2s ease;
+/* Printable Invoice Sheet */
+.invoice-sheet {
+    background: var(--card-bg, #ffffff);
+    border: 1px solid var(--card-border, #e2e8f0);
+    border-radius: var(--elite-radius, 1rem);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+
+    .invoice-sheet__header {
+        padding: 2.5rem;
+        border-bottom: 1px solid var(--card-border, #f1f5f9);
+    }
+
+    .invoice-sheet__body {
+        padding: 2.5rem;
+    }
+
+    .invoice-sheet__footer {
+        padding: 1.75rem 2.5rem;
+        background: var(--bg-subtle, #f8fafc);
+        border-top: 1px solid var(--card-border, #f1f5f9);
+    }
 }
 
-.table-borderless tbody tr:hover {
-    background-color: rgba(var(--bs-primary-rgb), 0.02);
+.invoice__total-box {
+    background: var(--elite-primary, #6366f1);
+    color: #ffffff;
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+.invoice-qr-box {
+    width: 80px;
+    height: 80px;
+    background: #ffffff;
+    border: 1px dashed var(--card-border, #cbd5e1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f172a;
+}
+
+/* Dark Mode Overrides */
+[data-bs-theme="dark"] {
+    .invoice-stat-card,
+    .invoice-registry-card,
+    .invoice-sheet {
+        background: var(--card-bg, #1e293b);
+        border-color: var(--card-border, #334155);
+    }
+
+    .invoice-item:hover {
+        background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .invoice-item.active {
+        background-color: rgba(99, 102, 241, 0.15);
+    }
+
+    .invoice-sheet__footer {
+        background: rgba(0, 0, 0, 0.15);
+        border-color: var(--card-border, #334155);
+    }
+
+    .invoice-qr-box {
+        background: #ffffff;
+        color: #0f172a;
+    }
 }
 
 /* Print Optimization */
 @media print {
-    .invoice__footer {
-        display: none;
+    body {
+        background: #ffffff !important;
     }
 
-    .invoice {
+    .header,
+    .sidebar,
+    .right-sidebar,
+    .page-header,
+    .invoice-stat-card,
+    .invoice-registry-card,
+    .invoice-action-bar,
+    .footer {
+        display: none !important;
+    }
+
+    .main {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .invoice-sheet {
         box-shadow: none !important;
         border: none !important;
+        width: 100% !important;
     }
 }

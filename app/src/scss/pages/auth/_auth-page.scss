@@ -9,7 +9,7 @@
         position: absolute;
         width: 400px;
         height: 400px;
-        background: linear-gradient(135deg, var(--bs-primary), #6f42c1);
+        background: var(--elite-primary);
         filter: blur(100px);
         opacity: 0.1;
         top: 10%;
@@ -50,7 +50,7 @@
         transition: opacity 0.2s;
 
         &__header {
-            background: linear-gradient(to bottom, rgba(var(--bs-primary-rgb), 0.02), transparent);
+            background: var(--elite-primary);
         }
     }
 }
@@ -61,7 +61,7 @@
     }
 
     &__submit {
-        background: linear-gradient(135deg, var(--bs-primary) 0%, #6f42c1 100%);
+        background: var(--elite-primary);
         border: none;
         box-shadow: 0 4px 15px rgba(var(--bs-primary-rgb), 0.3);
         transition: transform 0.2s;

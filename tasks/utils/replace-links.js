@@ -6,13 +6,20 @@ import path from "path";
  * Bulletproof async write file with retry on transient Windows locks.
  */
 async function safeWriteFile(filePath, data) {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 8; i++) {
         try {
             await fsp.writeFile(filePath, data, 'utf8');
             return;
         } catch (err) {
-            if (i === 4) throw err;
-            await new Promise(r => setTimeout(r, 150 * (i + 1)));
+            if (i === 7) {
+                try {
+                    fs.writeFileSync(filePath, data, 'utf8');
+                    return;
+                } catch (syncErr) {
+                    throw err;
+                }
+            }
+            await new Promise(r => setTimeout(r, 200 * (i + 1)));
         }
     }
 }
@@ -80,6 +87,8 @@ export async function fixLinks(folder) {
         content = content.replace(/ecommerce-order-edit\.html/g, 'edit-order.html');
         content = content.replace(/ecommerce-ecommerce-product-detail\.html/g, 'ecommerce-product-detail.html');
         content = content.replace(/(?<!ecommerce-)product-detail\.html/g, 'ecommerce-product-detail.html');
+        content = content.replace(/pipeline\.html/g, 'build-history.html');
+        content = content.replace(/(?<!releases\.)release\.html/g, 'releases.html');
         content = content.replace(/(['"])\/?(?:app\/src\/images|assets)\/product\.jpg\1/g, '$1./assets/product-1.jpg$1');
 
         // 3. Normalize asset references:

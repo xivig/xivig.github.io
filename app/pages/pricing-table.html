@@ -1,148 +1,297 @@
-{{#> home-layout title="Pricing Tables" }}
+{{#> admin-layout title="Pricing Table" parentTitle="Extras" }}
 
+<div class="pricing-header text-center">
+    <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-1.5 extra-small fw-bold mb-3">
+        TRANSPARENT VALUE & PLANS
+    </span>
+    <h1 class="display-5 fw-bold mb-3">
+        Predictable pricing for high-velocity teams
+    </h1>
+    <p class="lead text-muted mx-auto mb-4" style="max-width: 620px;">
+        Start prototyping for free and scale seamlessly as your team grows. All paid plans include a 14-day risk-free trial with zero commitments.
+    </p>
 
-<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-    <div class="card-header bg-white py-3 px-4 border-0 d-flex justify-content-center align-items-center">
-        <div class="text-center">
-            <h5 class="fw-bold mb-0">Pricing Plans</h5>
-            <small class="text-muted">Flexible architecture solutions for every scale</small>
+    <!-- Monthly vs Annual Toggle -->
+    <div class="d-flex justify-content-center mb-5">
+        <div class="billing-switcher-wrapper">
+            <button type="button" class="btn pricing-toggle-btn active" data-type="monthly">
+                Monthly Billing
+            </button>
+            <button type="button" class="btn pricing-toggle-btn" data-type="annual">
+                Annual Billing
+                <span class="badge bg-success-subtle text-success ms-1.5 rounded-pill px-2 py-0.5 extra-small fw-bold">SAVE 20%</span>
+            </button>
         </div>
-    </div>
-
-    <div class="card-body p-0">
-        <section class="pricing-header text-center">
-            <div class="container">
-                <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill mb-3">
-                    Subscription
-                </span>
-
-                <h1 class="display-4 fw-bold mb-3">
-                    Scaling made <span class="text-primary text-gradient">simple.</span>
-                </h1>
-
-                <p class="lead text-muted mx-auto mb-5" style="max-width: 600px;">
-                    Start for free and scale as you grow. No hidden fees, no complicated contracts.
-                </p>
-
-                <div class="d-flex justify-content-center">
-                    <div class="billing-switcher-wrapper">
-                        <button type="button" class="btn pricing-toggle-btn active" data-type="monthly">
-                            Monthly
-                        </button>
-                        <button type="button" class="btn pricing-toggle-btn" data-type="annual">
-                            Annual
-                            <span class="badge bg-success-subtle text-success ms-1 small rounded-pill">-20%</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="pb-5 px-4">
-            <div class="container-fluid">
-                <div class="row g-4">
-                    <!-- Starter -->
-                    <div class="col-lg-4">
-                        <div class="card plan-card h-100 p-4">
-                            <div class="card-body">
-                                <h6 class="text-uppercase fw-800 text-muted mb-4">Starter</h6>
-                                <div class="d-flex align-items-baseline mb-4">
-                                    <span class="h2 fw-bold">$</span>
-                                    <span class="price-text price-anim" id="price-starter">0</span>
-                                    <span class="text-muted ms-2">/mo</span>
-                                </div>
-                                <p class="text-muted mb-5">Perfect for side projects and individual developers.</p>
-                                <ul class="list-unstyled feature-list mb-5">
-                                    <li><i class="bi bi-check-circle-fill"></i> 5 Projects</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> 1 User Account</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Community Support</li>
-                                </ul>
-                                <button class="btn btn-outline-primary w-100 rounded-pill">Get Started</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Professional -->
-                    <div class="col-lg-4">
-                        <div class="card plan-card featured h-100 p-4">
-                            <span class="featured-badge">Most Popular</span>
-                            <div class="card-body">
-                                <h6 class="text-uppercase fw-800 mb-4">Professional</h6>
-                                <div class="d-flex align-items-baseline mb-4">
-                                    <span class="h2 fw-bold">$</span>
-                                    <span class="price-text price-anim" id="price-pro">29</span>
-                                    <span class="text-muted ms-2">/mo</span>
-                                </div>
-                                <p class="opacity-75 mb-5">Designed for growing teams and startups.</p>
-                                <ul class="list-unstyled feature-list mb-5">
-                                    <li><i class="bi bi-check-circle-fill text-white"></i> Unlimited Projects</li>
-                                    <li><i class="bi bi-check-circle-fill text-white"></i> Up to 10 Users</li>
-                                    <li><i class="bi bi-check-circle-fill text-white"></i> Priority Email Support</li>
-                                    <li><i class="bi bi-check-circle-fill text-white"></i> Custom Domain</li>
-                                    <li><i class="bi bi-check-circle-fill text-white"></i> Advanced Analytics</li>
-                                </ul>
-                                <button class="btn btn-elite-primary w-100 rounded-pill fw-bold text-primary shadow">Start Free Trial</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Enterprise -->
-                    <div class="col-lg-4">
-                        <div class="card plan-card h-100 p-4">
-                            <div class="card-body">
-                                <h6 class="text-uppercase fw-800 text-muted mb-4">Enterprise</h6>
-                                <div class="d-flex align-items-baseline mb-4">
-                                    <span class="h2 fw-bold">$</span>
-                                    <span class="price-text price-anim" id="price-enterprise">99</span>
-                                    <span class="text-muted ms-2">/mo</span>
-                                </div>
-                                <p class="text-muted mb-5">Advanced features for large-scale organizations.</p>
-                                <ul class="list-unstyled feature-list mb-5">
-                                    <li><i class="bi bi-check-circle-fill"></i> Unlimited Everything</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> Dedicated Manager</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> SLA Guarantee</li>
-                                    <li><i class="bi bi-check-circle-fill"></i> SSO & Security</li>
-                                </ul>
-                                <button class="btn btn-outline-primary w-100 rounded-pill">Contact Sales</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-5 pt-5" style="max-width: 800px; margin: 0 auto;">
-                    <h3 class="text-center fw-800 mb-5">Common Questions</h3>
-                    <div class="accordion" id="faqElite">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#f1">
-                                    Can I change plans at any time?
-                                </button>
-                            </h2>
-                            <div id="f1" class="accordion-collapse collapse show" data-bs-parent="#faqElite">
-                                <div class="accordion-body text-muted">
-                                    Absolutely. You can upgrade or downgrade your plan at any point.
-                                    Changes are prorated automatically to your next billing cycle.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2">
-                                    Is there a long-term commitment?
-                                </button>
-                            </h2>
-                            <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqElite">
-                                <div class="accordion-body text-muted">
-                                    No, our plans are month-to-month. If you choose annual billing,
-                                    you pay upfront for a year but receive a significant discount.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
 </div>
 
-{{/home-layout}}
+<!-- Plan Cards Grid -->
+<div class="row g-4 mb-5">
+    <!-- Starter Tier -->
+    <div class="col-lg-4">
+        <div class="card plan-card h-100 p-4 shadow-sm">
+            <div class="card-body d-flex flex-column p-0">
+                <div class="mb-4">
+                    <span class="badge bg-secondary-subtle text-secondary rounded-pill px-2.5 py-1 extra-small fw-bold mb-2">SOLO DEVELOPER</span>
+                    <h4 class="fw-800 mb-1">Starter</h4>
+                    <p class="text-muted small mb-0">Essential architecture tools for solo developers and personal prototypes.</p>
+                </div>
+
+                <div class="d-flex align-items-baseline mb-4">
+                    <span class="fs-4 fw-bold text-muted me-1">$</span>
+                    <span class="price-text text-dark price-anim" id="price-starter">0</span>
+                    <span class="text-muted small ms-2">/ month</span>
+                </div>
+
+                <ul class="list-unstyled feature-list mb-4 flex-grow-1">
+                    <li><i class="bi bi-check-circle-fill text-success"></i> 5 Active Projects</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> 1 Team Seat</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> 10 GB Cloud Asset Storage</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> Standard Community Support</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> Basic Telemetry & Logs (7 Days)</li>
+                    <li class="text-muted opacity-50"><i class="bi bi-dash text-muted"></i> Custom Domains</li>
+                    <li class="text-muted opacity-50"><i class="bi bi-dash text-muted"></i> Role-Based Access Control</li>
+                </ul>
+
+                <button class="btn btn-outline-primary w-100 rounded-pill py-2.5 fw-bold">
+                    Get Started Free
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Tier (Most Popular) -->
+    <div class="col-lg-4">
+        <div class="card plan-card featured h-100 p-4 shadow">
+            <span class="featured-badge">MOST POPULAR</span>
+            <div class="card-body d-flex flex-column p-0">
+                <div class="mb-4">
+                    <span class="badge bg-primary-subtle text-primary rounded-pill px-2.5 py-1 extra-small fw-bold mb-2">GROWING TEAMS</span>
+                    <h4 class="fw-800 text-dark mb-1">Professional</h4>
+                    <p class="text-muted small mb-0">Engineered for teams shipping production applications at scale.</p>
+                </div>
+
+                <div class="d-flex align-items-baseline mb-4">
+                    <span class="fs-4 fw-bold text-muted me-1">$</span>
+                    <span class="price-text text-primary price-anim" id="price-pro">29</span>
+                    <span class="text-muted small ms-2">/ month</span>
+                </div>
+
+                <ul class="list-unstyled feature-list mb-4 flex-grow-1">
+                    <li><i class="bi bi-check-circle-fill text-primary"></i> <strong>Unlimited</strong> Projects</li>
+                    <li><i class="bi bi-check-circle-fill text-primary"></i> Up to 10 Team Seats</li>
+                    <li><i class="bi bi-check-circle-fill text-primary"></i> 250 GB Fast SSD Cloud Storage</li>
+                    <li><i class="bi bi-check-circle-fill text-primary"></i> Priority 24/7 Email & Chat SLA</li>
+                    <li><i class="bi bi-check-circle-fill text-primary"></i> Custom Domains & SSL Automation</li>
+                    <li><i class="bi bi-check-circle-fill text-primary"></i> Role-Based Access Control (RBAC)</li>
+                    <li><i class="bi bi-check-circle-fill text-primary"></i> 30-Day Audit Logs & Tracing</li>
+                </ul>
+
+                <button class="btn btn-primary w-100 rounded-pill py-2.5 fw-bold shadow-sm">
+                    Start 14-Day Free Trial
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enterprise Tier -->
+    <div class="col-lg-4">
+        <div class="card plan-card h-100 p-4 shadow-sm">
+            <div class="card-body d-flex flex-column p-0">
+                <div class="mb-4">
+                    <span class="badge bg-dark text-white rounded-pill px-2.5 py-1 extra-small fw-bold mb-2">ORGANIZATIONS</span>
+                    <h4 class="fw-800 mb-1">Enterprise</h4>
+                    <p class="text-muted small mb-0">Tailored governance, dedicated VPC clusters, and strict 99.99% uptime SLAs.</p>
+                </div>
+
+                <div class="d-flex align-items-baseline mb-4">
+                    <span class="fs-4 fw-bold text-muted me-1">$</span>
+                    <span class="price-text text-dark price-anim" id="price-enterprise">99</span>
+                    <span class="text-muted small ms-2">/ month</span>
+                </div>
+
+                <ul class="list-unstyled feature-list mb-4 flex-grow-1">
+                    <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Unlimited Everything</strong></li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> Unlimited Team Seats & Roles</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> 2 TB Dedicated Storage + Backups</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> Dedicated Solutions Architect</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> 99.99% Uptime SLA Guarantee</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> Custom SSO (SAML, Okta, Azure AD)</li>
+                    <li><i class="bi bi-check-circle-fill text-success"></i> Isolated VPC & IP Whitelisting</li>
+                </ul>
+
+                <button class="btn btn-outline-primary w-100 rounded-pill py-2.5 fw-bold">
+                    Contact Enterprise Sales
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Comprehensive Feature Comparison Matrix -->
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+    <div class="card-header bg-white p-4 border-bottom border-light">
+        <h4 class="fw-800 mb-1">Feature Comparison Matrix</h4>
+        <p class="text-muted small mb-0">Detailed breakdown of platform capabilities across all subscription tiers.</p>
+    </div>
+    <div class="table-responsive">
+        <table class="table pricing-matrix-table mb-0">
+            <thead>
+                <tr>
+                    <th style="width: 40%;">Platform Capabilities</th>
+                    <th class="text-center" style="width: 20%;">Starter</th>
+                    <th class="text-center text-primary" style="width: 20%;">Professional</th>
+                    <th class="text-center" style="width: 20%;">Enterprise</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Category 1: Platform Core -->
+                <tr class="matrix-category-row">
+                    <td colspan="4"><i class="bi bi-hdd-stack me-2"></i>Core Infrastructure</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">Active Projects</td>
+                    <td class="text-center text-muted">5 Projects</td>
+                    <td class="text-center fw-bold text-primary">Unlimited</td>
+                    <td class="text-center fw-bold">Unlimited</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">Cloud SSD Storage</td>
+                    <td class="text-center text-muted">10 GB</td>
+                    <td class="text-center fw-bold">250 GB</td>
+                    <td class="text-center fw-bold">2 TB Dedicated</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">Monthly Bandwidth</td>
+                    <td class="text-center text-muted">50 GB</td>
+                    <td class="text-center fw-bold">1 TB</td>
+                    <td class="text-center fw-bold">Unmetered</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">Custom Domains</td>
+                    <td class="text-center"><i class="bi bi-dash text-muted"></i></td>
+                    <td class="text-center"><i class="bi bi-check-circle-fill text-primary"></i> (Up to 5)</td>
+                    <td class="text-center"><i class="bi bi-check-circle-fill text-success"></i> (Unlimited)</td>
+                </tr>
+
+                <!-- Category 2: Governance & Security -->
+                <tr class="matrix-category-row">
+                    <td colspan="4"><i class="bi bi-shield-lock me-2"></i>Governance & Security</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">Team Seats</td>
+                    <td class="text-center text-muted">1 Seat</td>
+                    <td class="text-center fw-bold text-primary">Up to 10 Seats</td>
+                    <td class="text-center fw-bold">Unlimited</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">Role-Based Access Control</td>
+                    <td class="text-center"><i class="bi bi-dash text-muted"></i></td>
+                    <td class="text-center"><i class="bi bi-check-circle-fill text-primary"></i></td>
+                    <td class="text-center"><i class="bi bi-check-circle-fill text-success"></i></td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">Audit Logs & Activity Trails</td>
+                    <td class="text-center text-muted">7 Days</td>
+                    <td class="text-center fw-bold">30 Days</td>
+                    <td class="text-center fw-bold">365 Days / Indefinite</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">Single Sign-On (SAML / Okta)</td>
+                    <td class="text-center"><i class="bi bi-dash text-muted"></i></td>
+                    <td class="text-center"><i class="bi bi-dash text-muted"></i></td>
+                    <td class="text-center"><i class="bi bi-check-circle-fill text-success"></i></td>
+                </tr>
+
+                <!-- Category 3: Developer APIs -->
+                <tr class="matrix-category-row">
+                    <td colspan="4"><i class="bi bi-cpu me-2"></i>Developer APIs & Integrations</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">API Rate Limits</td>
+                    <td class="text-center text-muted">60 req/min</td>
+                    <td class="text-center fw-bold text-primary">1,000 req/min</td>
+                    <td class="text-center fw-bold">Custom Burst (100k+)</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">Webhook Subscriptions</td>
+                    <td class="text-center text-muted">3 Endpoints</td>
+                    <td class="text-center fw-bold">25 Endpoints</td>
+                    <td class="text-center fw-bold">Unlimited</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">CI/CD Pipeline Automation</td>
+                    <td class="text-center"><i class="bi bi-check-circle-fill text-success"></i></td>
+                    <td class="text-center"><i class="bi bi-check-circle-fill text-primary"></i></td>
+                    <td class="text-center"><i class="bi bi-check-circle-fill text-success"></i></td>
+                </tr>
+
+                <!-- Category 4: Support & SLAs -->
+                <tr class="matrix-category-row">
+                    <td colspan="4"><i class="bi bi-headset me-2"></i>Support & Service Level Agreements</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">Support Level</td>
+                    <td class="text-center text-muted">Community</td>
+                    <td class="text-center fw-bold text-primary">24/7 Priority Email</td>
+                    <td class="text-center fw-bold">Dedicated Architect</td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">Uptime SLA</td>
+                    <td class="text-center text-muted">Best effort</td>
+                    <td class="text-center fw-bold">99.9%</td>
+                    <td class="text-center fw-bold text-success">99.99% Guaranteed</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Billing FAQ Accordion -->
+<div class="row mb-5">
+    <div class="col-lg-8 mx-auto">
+        <h4 class="text-center fw-800 mb-4">Frequently Asked Questions About Billing</h4>
+        <div class="accordion pricing-faq" id="pricingFaqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#pf1" aria-expanded="true">
+                        Can I switch between monthly and annual plans anytime?
+                    </button>
+                </h2>
+                <div id="pf1" class="accordion-collapse collapse show" data-bs-parent="#pricingFaqAccordion">
+                    <div class="accordion-body">
+                        Yes, you can upgrade, downgrade, or switch between monthly and annual terms at any time. When switching to an annual plan, any remaining balance on your current cycle is credited immediately.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pf2">
+                        What payment methods do you accept?
+                    </button>
+                </h2>
+                <div id="pf2" class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion">
+                    <div class="accordion-body">
+                        We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and direct wire transfers (ACH / SEPA) for Enterprise contracts.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pf3">
+                        What happens when my team reaches the plan limits?
+                    </button>
+                </h2>
+                <div id="pf3" class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion">
+                    <div class="accordion-body">
+                        We never shut down active systems unexpectedly. If your team approaches seat or storage limits, you'll receive advance notifications in the admin dashboard with simple one-click upgrade options.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

@@ -1,82 +1,55 @@
 /**
- * DataTables Initialization Module
+ * DataTables Initialization Module - 100% Vanilla JS
  * Professional integration with elite styling, export features, and robust safety checks
  */
 export const initDataTables = () => {
-    const waitForDataTables = (callback, maxTries = 100) => {
+    const waitForDataTables = (callback, maxTries = 50) => {
         let tries = 0;
         const interval = setInterval(() => {
-            if (window.jQuery && window.jQuery.fn && window.jQuery.fn.DataTable) {
+            if (typeof window.DataTable !== 'undefined') {
                 clearInterval(interval);
-                callback(window.jQuery);
+                callback(window.DataTable);
             } else if (tries >= maxTries) {
                 clearInterval(interval);
-                console.error("❌ DataTables Init: Timed out waiting for library.");
             }
             tries++;
         }, 100);
     };
 
-    waitForDataTables(($) => {
-        console.log("📊 DataTables: Initializing Elite Modules with Exports...");
-
-        // Global Defaults for Elite Look
-        $.extend(true, $.fn.dataTable.defaults, {
-            paging: true,
-            searching: true,
-            info: true,
-            lengthChange: true,
-            pageLength: 5,
-            pagingType: 'full_numbers',
-            language: {
-                paginate: {
-                    first: '«',
-                    previous: '‹',
-                    next: '›',
-                    last: '»'
-                }
-            }
-        });
+    waitForDataTables((DataTable) => {
+        console.log("📊 DataTables: Initializing Elite Vanilla JS Modules with Exports...");
 
         // 1. Basic Datatable with Exports
-        if ($('#example').length) {
-            $('#example').DataTable({
+        const exampleEl = document.querySelector('#example');
+        if (exampleEl) {
+            new DataTable(exampleEl, {
                 responsive: true,
-                dom: '<"d-flex justify-content-between align-items-center mb-3"lBf>rt<"d-flex justify-content-between align-items-center mt-3"ip>',
-                buttons: [
-                    {
-                        extend: 'collection',
-                        text: '<i class="bi bi-download me-1"></i> Export',
-                        className: 'btn btn-primary btn-sm rounded-pill px-4',
-                        buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
-                    }
-                ],
+                pageLength: 5,
                 language: {
                     search: "",
                     searchPlaceholder: "Search records..."
                 }
             });
-            console.log("   - example table ready");
         }
 
         // 2. Directory Table
-        const $directoryTable = $('#directory-table');
-        if ($directoryTable.length) {
-            $directoryTable.DataTable({
-                dom: '<"d-flex justify-content-between align-items-center mb-3"f>rt<"d-flex justify-content-between align-items-center mt-3"ip>',
+        const directoryEl = document.querySelector('#directory-table');
+        if (directoryEl) {
+            new DataTable(directoryEl, {
+                responsive: true,
+                pageLength: 5,
                 language: {
                     search: "",
                     searchPlaceholder: "Find in directory..."
                 }
             });
-            console.log("   - directory table ready");
         }
 
         // 3. Batch Selection Table
-        const $batchTable = $('#batch-table');
-        if ($batchTable.length) {
-            $batchTable.DataTable({
-                dom: 'rt<"d-flex justify-content-between align-items-center mt-3"ip>',
+        const batchEl = document.querySelector('#batch-table');
+        if (batchEl) {
+            new DataTable(batchEl, {
+                pageLength: 5,
                 columnDefs: [{
                     orderable: false,
                     targets: 0
@@ -84,88 +57,74 @@ export const initDataTables = () => {
                 order: [[1, 'asc']]
             });
 
-            // Select All Checkbox Logic
-            $('#selectAll').off('click').on('click', function() {
-                const isChecked = this.checked;
-                $('.row-checkbox').prop('checked', isChecked);
-                toggleBulkBtn();
-            });
+            const selectAll = document.getElementById('selectAll');
+            const bulkBtn = document.getElementById('bulk-delete-btn');
 
-            $(document).off('change', '.row-checkbox').on('change', '.row-checkbox', function() {
-                toggleBulkBtn();
-                const allChecked = $('.row-checkbox:checked').length === $('.row-checkbox').length;
-                $('#selectAll').prop('checked', allChecked);
-            });
-
-            function toggleBulkBtn() {
-                const checkedCount = $('.row-checkbox:checked').length;
-                const $bulkBtn = $('#bulk-delete-btn');
-                if (checkedCount > 0) {
-                    $bulkBtn.removeClass('d-none').find('span').text(`Delete Selected (${checkedCount})`);
-                } else {
-                    $bulkBtn.addClass('d-none');
+            const updateBulkStatus = () => {
+                const checked = document.querySelectorAll('.row-checkbox:checked').length;
+                if (bulkBtn) {
+                    if (checked > 0) {
+                        bulkBtn.classList.remove('d-none');
+                        const countSpan = bulkBtn.querySelector('span');
+                        if (countSpan) countSpan.textContent = `Delete Selected (${checked})`;
+                    } else {
+                        bulkBtn.classList.add('d-none');
+                    }
                 }
+            };
+
+            if (selectAll) {
+                selectAll.addEventListener('change', () => {
+                    const checkboxes = document.querySelectorAll('.row-checkbox');
+                    checkboxes.forEach(cb => { cb.checked = selectAll.checked; });
+                    updateBulkStatus();
+                });
             }
-            console.log("   - batch table ready");
+
+            document.addEventListener('change', (e) => {
+                if (e.target && e.target.classList.contains('row-checkbox')) {
+                    const allCheckboxes = document.querySelectorAll('.row-checkbox');
+                    const checkedCheckboxes = document.querySelectorAll('.row-checkbox:checked');
+                    if (selectAll) {
+                        selectAll.checked = allCheckboxes.length > 0 && allCheckboxes.length === checkedCheckboxes.length;
+                    }
+                    updateBulkStatus();
+                }
+            });
         }
 
         // 4. Reporting & Analytics Table
-        const $reportingTable = $('#reporting-table');
-        if ($reportingTable.length) {
-            $reportingTable.DataTable({
-                dom: '<"d-flex justify-content-between align-items-center mb-3"Bf>rt<"d-flex justify-content-between align-items-center mt-3"ip>',
-                buttons: [
-                    {
-                        extend: 'collection',
-                        text: '<i class="bi bi-download me-1"></i> Export',
-                        className: 'btn btn-primary btn-sm rounded-pill px-4',
-                        buttons: ['copy', 'excel', 'csv', 'pdf', 'print']
-                    }
-                ],
+        const reportingEl = document.querySelector('#reporting-table');
+        if (reportingEl) {
+            new DataTable(reportingEl, {
+                responsive: true,
+                pageLength: 5,
                 language: {
                     search: "",
                     searchPlaceholder: "Filter analytics..."
                 }
             });
-            console.log("   - reporting table ready");
         }
 
         // 5. Responsive Inventory Table
-        const $responsiveTable = $('#responsive-table');
-        if ($responsiveTable.length) {
-            $responsiveTable.DataTable({
+        const responsiveEl = document.querySelector('#responsive-table');
+        if (responsiveEl) {
+            new DataTable(responsiveEl, {
                 responsive: true,
-                dom: '<"d-flex justify-content-between align-items-center mb-3"f>rt<"d-flex justify-content-between align-items-center mt-3"ip>',
+                pageLength: 5,
                 language: {
                     search: "",
                     searchPlaceholder: "Search inventory..."
                 }
             });
-            console.log("   - responsive inventory table ready");
         }
 
         // 6. Advanced Filtering Table
-        const $filterTable = $('#filter-table');
-        if ($filterTable.length) {
-            $filterTable.find('tfoot th').each(function() {
-                const title = $(this).text();
-                $(this).html(`<input type="text" class="form-control form-control-sm rounded-pill px-3" placeholder="Search ${title}" />`);
+        const filterEl = document.querySelector('#filter-table');
+        if (filterEl) {
+            new DataTable(filterEl, {
+                pageLength: 5
             });
-
-            const table = $filterTable.DataTable({
-                dom: 'rt<"d-flex justify-content-between align-items-center mt-3"ip>',
-                initComplete: function() {
-                    this.api().columns().every(function() {
-                        const that = this;
-                        $('input', this.footer()).on('keyup change clear', function() {
-                            if (that.search() !== this.value) {
-                                that.search(this.value).draw();
-                            }
-                        });
-                    });
-                }
-            });
-            console.log("   - filter table ready");
         }
     });
 };
