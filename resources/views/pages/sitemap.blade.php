@@ -60,6 +60,7 @@
                         <a href="/app/pages/ecommerce/ecommerce-products.html" class="list-group-item list-group-item-action sitemap-link">Product Grid <i class="bi bi-arrow-right"></i></a>
                         <a href="/app/pages/ecommerce/ecommerce-product-show.html" class="list-group-item list-group-item-action sitemap-link">Product Listing <i class="bi bi-arrow-right"></i></a>
                         <a href="/app/pages/ecommerce/ecommerce-product-detail.html" class="list-group-item list-group-item-action sitemap-link">Product Details <i class="bi bi-arrow-right"></i></a>
+                        <a href="/app/pages/ecommerce/ecommerce-product-analytics.html" class="list-group-item list-group-item-action sitemap-link">Product Analytics <i class="bi bi-arrow-right"></i></a>
                         <a href="/app/pages/ecommerce/ecommerce-orders.html" class="list-group-item list-group-item-action sitemap-link">Order Tracking <i class="bi bi-arrow-right"></i></a>
                         <a href="/app/pages/ecommerce/ecommerce-cart.html" class="list-group-item list-group-item-action sitemap-link">Shopping Cart <i class="bi bi-arrow-right"></i></a>
                         <a href="/app/pages/ecommerce/ecommerce-add-product.html" class="list-group-item list-group-item-action sitemap-link">Add Product <i class="bi bi-arrow-right"></i></a>

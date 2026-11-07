@@ -1,0 +1,442 @@
+@extends('templates.admin.layout')
+
+@section('content')
+
+<!-- Screen 06 / Product Analytics: Date/Filter Bar -->
+<div class="card card-box border-0 shadow-sm rounded-4 p-3 mb-4">
+    <div class="row align-items-center g-3">
+        <div class="col-md-5">
+            <div class="d-flex align-items-center gap-2">
+                <span class="fs-13 fw-semibold text-muted text-uppercase letter-spacing-1">Timeframe:</span>
+                <div class="btn-group btn-group-sm" role="group" aria-label="Analytics range">
+                    <button type="button" class="btn btn-outline-secondary px-3 active" data-period="7d">7 Days</button>
+                    <button type="button" class="btn btn-outline-secondary px-3" data-period="30d">30 Days</button>
+                    <button type="button" class="btn btn-outline-secondary px-3" data-period="90d">Quarter</button>
+                    <button type="button" class="btn btn-outline-secondary px-3" data-period="1y">1 Year</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 text-md-end">
+            <div class="d-flex align-items-center justify-content-md-end gap-2">
+                <select class="form-select form-select-sm rounded-pill border shadow-none" style="max-width: 200px;">
+                    <option value="all" selected>All Product Categories</option>
+                    <option value="audio">Audio &amp; Headphones</option>
+                    <option value="wearables">Smartwatches &amp; Wearables</option>
+                    <option value="computing">Laptops &amp; Computing</option>
+                </select>
+                <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3 fw-bold" id="refreshAnalyticsBtn">
+                    <i class="bi bi-arrow-repeat me-1"></i> Refresh
+                </button>
+                <button type="button" class="btn btn-primary btn-sm rounded-pill px-3 fw-bold" id="exportAnalyticsBtn">
+                    <i class="bi bi-download me-1"></i> Export Analytics
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Revenue & Performance 4 KPI Cards -->
+<div class="row g-4 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">TOTAL REVENUE</span>
+                <div class="stat-card__icon stat-card__icon--primary">
+                    <i class="bi bi-cash-stack"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">$128,420</h3>
+                    <div class="stat-card__label">Gross Merchandise Value</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-arrow-up-right"></i> +18.4%
+                </span>
+                <span class="stat-card__context">vs prior period</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">UNITS SOLD</span>
+                <div class="stat-card__icon stat-card__icon--cyan">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">3,420</h3>
+                    <div class="stat-card__label">Fulfilled Product Units</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-arrow-up-right"></i> +9.2%
+                </span>
+                <span class="stat-card__context">high velocity</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">CONVERSION RATE</span>
+                <div class="stat-card__icon stat-card__icon--emerald">
+                    <i class="bi bi-lightning-charge"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">4.2%</h3>
+                    <div class="stat-card__label">Visitor to Paid Orders</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend stat-card__trend--up">
+                    <i class="bi bi-arrow-up-right"></i> +0.8%
+                </span>
+                <span class="stat-card__context">above industry avg (3.1%)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card card-box">
+            <div class="stat-card__header">
+                <span class="stat-card__tag">RETURN RATE</span>
+                <div class="stat-card__icon stat-card__icon--warning">
+                    <i class="bi bi-arrow-left-right"></i>
+                </div>
+            </div>
+            <div class="stat-card__body">
+                <div class="stat-card__info">
+                    <h3 class="stat-card__value">1.1%</h3>
+                    <div class="stat-card__label">RMA / Customer Refunds</div>
+                </div>
+            </div>
+            <div class="stat-card__footer">
+                <span class="stat-card__trend text-success">
+                    <i class="bi bi-arrow-down-right"></i> -0.4%
+                </span>
+                <span class="stat-card__context">quality benchmark met</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sales Trend Line Chart & Category Performance Split (8 cols + 4 cols) -->
+<div class="row g-4 mb-4">
+    <!-- Sales Trend Line Chart (8 cols) -->
+    <div class="col-lg-8">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-card py-3 px-4 border-bottom d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="fw-bold mb-0 text-dark">
+                        <i class="bi bi-graph-up me-2 text-primary"></i> Product Sales Trend
+                    </h6>
+                    <small class="text-muted extra-small">Daily revenue and order volume comparison</small>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-primary-subtle text-primary extra-small fw-bold px-2 py-1 rounded-pill">REVENUE</span>
+                    <span class="badge bg-light text-muted extra-small fw-bold px-2 py-1 rounded-pill">UNITS</span>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <div id="productSalesTrendChart" style="min-height: 320px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Distribution (4 cols) -->
+    <div class="col-lg-4">
+        <div class="card card-box border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-card py-3 px-4 border-bottom">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-pie-chart me-2 text-primary"></i> Category Revenue
+                </h6>
+            </div>
+            <div class="card-body p-4 d-flex flex-column justify-content-center">
+                <div id="categoryDonutChart" style="min-height: 230px;"></div>
+                <div class="mt-3">
+                    <div class="d-flex justify-content-between align-items-center py-1.5 border-bottom">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="rounded-circle" style="width: 10px; height: 10px; background: #4059E8;"></span>
+                            <span class="fs-13 fw-semibold text-dark">Audio &amp; Headphones</span>
+                        </div>
+                        <span class="fs-13 fw-bold text-dark">$62,400 (48.6%)</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center py-1.5 border-bottom">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="rounded-circle" style="width: 10px; height: 10px; background: #0EA5E9;"></span>
+                            <span class="fs-13 fw-semibold text-dark">Wearables</span>
+                        </div>
+                        <span class="fs-13 fw-bold text-dark">$38,200 (29.7%)</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center py-1.5">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="rounded-circle" style="width: 10px; height: 10px; background: #10B981;"></span>
+                            <span class="fs-13 fw-semibold text-dark">Laptops &amp; Gear</span>
+                        </div>
+                        <span class="fs-13 fw-bold text-dark">$27,820 (21.7%)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Best Sellers Performance Table (12 cols) -->
+<div class="card card-box border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+    <div class="card-header bg-card py-3.5 px-4 border-bottom d-flex align-items-center justify-content-between">
+        <div>
+            <h6 class="fw-bold mb-0 text-dark">
+                <i class="bi bi-trophy me-2 text-warning"></i> Best Selling Products
+            </h6>
+            <small class="text-muted extra-small">Ranked by revenue contribution &amp; conversion velocity</small>
+        </div>
+        <a href="ecommerce-products.html" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold">
+            Full Catalog <i class="bi bi-chevron-right ms-1"></i>
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="bg-light-subtle border-bottom">
+                <tr class="text-muted extra-small text-uppercase fw-bold letter-spacing-1">
+                    <th class="ps-4 py-3">Product Name</th>
+                    <th class="py-3">SKU</th>
+                    <th class="py-3">Unit Price</th>
+                    <th class="py-3 text-center">Units Sold</th>
+                    <th class="py-3">Total Gross</th>
+                    <th class="py-3 text-center">Conversion</th>
+                    <th class="text-end pe-4 py-3">Stock Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="ps-4">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light p-2 rounded-3 me-3 border" style="width: 40px; height: 40px;">
+                                <i class="bi bi-headphones text-primary fs-5 d-flex justify-content-center"></i>
+                            </div>
+                            <div>
+                                <a href="ecommerce-product-detail.html" class="fw-bold text-dark text-decoration-none fs-14">Studio Wireless ANC Headphones</a>
+                                <p class="text-muted extra-small mb-0">Audio &bull; Space Grey</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge bg-light text-dark fw-medium">WH-1000XM5</span></td>
+                    <td><span class="fw-semibold text-dark">$299.00</span></td>
+                    <td class="text-center"><span class="fw-bold text-dark">1,480</span></td>
+                    <td><span class="fw-bold text-primary fs-14">$442,520</span></td>
+                    <td class="text-center"><span class="badge bg-success-subtle text-success fw-bold px-2 py-1 rounded-pill">5.4%</span></td>
+                    <td class="text-end pe-4">
+                        <span class="badge bg-success-subtle text-success rounded-pill px-3 py-1 extra-small fw-bold">142 in stock</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="ps-4">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light p-2 rounded-3 me-3 border" style="width: 40px; height: 40px;">
+                                <i class="bi bi-smartwatch text-info fs-5 d-flex justify-content-center"></i>
+                            </div>
+                            <div>
+                                <a href="ecommerce-product-detail.html" class="fw-bold text-dark text-decoration-none fs-14">Chrono Titan Smartwatch</a>
+                                <p class="text-muted extra-small mb-0">Wearables &bull; Obsidian Black</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge bg-light text-dark fw-medium">SW-CHRONO</span></td>
+                    <td><span class="fw-semibold text-dark">$420.00</span></td>
+                    <td class="text-center"><span class="fw-bold text-dark">910</span></td>
+                    <td><span class="fw-bold text-primary fs-14">$382,200</span></td>
+                    <td class="text-center"><span class="badge bg-success-subtle text-success fw-bold px-2 py-1 rounded-pill">4.8%</span></td>
+                    <td class="text-end pe-4">
+                        <span class="badge bg-warning-subtle text-warning rounded-pill px-3 py-1 extra-small fw-bold">18 in stock (Low)</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="ps-4">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light p-2 rounded-3 me-3 border" style="width: 40px; height: 40px;">
+                                <i class="bi bi-laptop text-emerald fs-5 d-flex justify-content-center"></i>
+                            </div>
+                            <div>
+                                <a href="ecommerce-product-detail.html" class="fw-bold text-dark text-decoration-none fs-14">MacBook Pro M3 Max</a>
+                                <p class="text-muted extra-small mb-0">Computing &bull; Space Black</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge bg-light text-dark fw-medium">MAC-M3-MAX</span></td>
+                    <td><span class="fw-semibold text-dark">$3,499.00</span></td>
+                    <td class="text-center"><span class="fw-bold text-dark">82</span></td>
+                    <td><span class="fw-bold text-primary fs-14">$286,918</span></td>
+                    <td class="text-center"><span class="badge bg-success-subtle text-success fw-bold px-2 py-1 rounded-pill">3.9%</span></td>
+                    <td class="text-end pe-4">
+                        <span class="badge bg-success-subtle text-success rounded-pill px-3 py-1 extra-small fw-bold">45 in stock</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="ps-4">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light p-2 rounded-3 me-3 border" style="width: 40px; height: 40px;">
+                                <i class="bi bi-keyboard text-muted fs-5 d-flex justify-content-center"></i>
+                            </div>
+                            <div>
+                                <a href="ecommerce-product-detail.html" class="fw-bold text-dark text-decoration-none fs-14">Ergonomic Mechanical Keyboard</a>
+                                <p class="text-muted extra-small mb-0">Accessories &bull; Moonlight White</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge bg-light text-dark fw-medium">KB-MECH-01</span></td>
+                    <td><span class="fw-semibold text-dark">$189.00</span></td>
+                    <td class="text-center"><span class="fw-bold text-dark">948</span></td>
+                    <td><span class="fw-bold text-primary fs-14">$179,172</span></td>
+                    <td class="text-center"><span class="badge bg-success-subtle text-success fw-bold px-2 py-1 rounded-pill">6.2%</span></td>
+                    <td class="text-end pe-4">
+                        <span class="badge bg-success-subtle text-success rounded-pill px-3 py-1 extra-small fw-bold">210 in stock</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="module">
+    import ApexCharts from 'apexcharts';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Blueprint Primary Action CTA in header
+        const pageHeaderAction = document.getElementById('pagePrimaryActionBtn');
+        const exportBtn = document.getElementById('exportAnalyticsBtn');
+
+        const triggerExport = () => {
+            const data = "Date,Revenue,Units,Conversion\n2026-10-01,14200,410,4.1%\n2026-10-08,18500,520,4.3%\n2026-10-15,22100,640,4.6%\n2026-10-22,26800,780,4.9%";
+            const blob = new Blob([data], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', `product-analytics-${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        };
+
+        if (pageHeaderAction) pageHeaderAction.addEventListener('click', triggerExport);
+        if (exportBtn) exportBtn.addEventListener('click', triggerExport);
+
+        // Sales Trend Line Chart (ApexCharts)
+        const trendEl = document.getElementById('productSalesTrendChart');
+        if (trendEl) {
+            const trendOptions = {
+                series: [
+                    {
+                        name: 'Revenue ($)',
+                        data: [12400, 15800, 14200, 19400, 22100, 18900, 25800]
+                    },
+                    {
+                        name: 'Units Sold',
+                        data: [320, 410, 390, 520, 580, 490, 680]
+                    }
+                ],
+                chart: {
+                    type: 'area',
+                    height: 320,
+                    toolbar: { show: false },
+                    fontFamily: 'Inter, sans-serif'
+                },
+                colors: ['#4059E8', '#0EA5E9'],
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.35,
+                        opacityTo: 0.05,
+                        stops: [0, 95, 100]
+                    }
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: [2.5, 2]
+                },
+                dataLabels: { enabled: false },
+                xaxis: {
+                    categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    labels: { style: { colors: '#94A3B8', fontSize: '12px' } },
+                    axisBorder: { show: false },
+                    axisTicks: { show: false }
+                },
+                yaxis: [
+                    {
+                        labels: {
+                            formatter: (val) => '$' + (val / 1000).toFixed(1) + 'k',
+                            style: { colors: '#94A3B8', fontSize: '12px' }
+                        }
+                    },
+                    {
+                        opposite: true,
+                        labels: {
+                            formatter: (val) => val + ' pcs',
+                            style: { colors: '#94A3B8', fontSize: '12px' }
+                        }
+                    }
+                ],
+                grid: {
+                    borderColor: '#F1F5F9',
+                    strokeDashArray: 4
+                },
+                legend: { position: 'top', horizontalAlign: 'right' },
+                tooltip: { theme: 'light' }
+            };
+
+            const trendChart = new ApexCharts(trendEl, trendOptions);
+            trendChart.render();
+        }
+
+        // Category Donut Chart (ApexCharts)
+        const donutEl = document.getElementById('categoryDonutChart');
+        if (donutEl) {
+            const donutOptions = {
+                series: [48.6, 29.7, 21.7],
+                labels: ['Audio', 'Wearables', 'Laptops'],
+                chart: {
+                    type: 'donut',
+                    height: 230,
+                    fontFamily: 'Inter, sans-serif'
+                },
+                colors: ['#4059E8', '#0EA5E9', '#10B981'],
+                dataLabels: { enabled: false },
+                legend: { show: false },
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            size: '72%',
+                            labels: {
+                                show: true,
+                                total: {
+                                    show: true,
+                                    label: 'Total Revenue',
+                                    formatter: () => '$128.4K'
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            const donutChart = new ApexCharts(donutEl, donutOptions);
+            donutChart.render();
+        }
+    });
+</script>
+
+@endsection

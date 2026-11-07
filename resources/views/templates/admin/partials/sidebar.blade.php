@@ -43,6 +43,9 @@
                                     <li class="sidebar__sub-item"><a href="{{ url('ecommerce/ecommerce-products.html') }}"
                                             class="sidebar__sub-link">Product List</a></li>
                                     <li class="sidebar__sub-item"><a
+                                            href="{{ url('ecommerce/ecommerce-product-detail.html') }}"
+                                            class="sidebar__sub-link">Product Details</a></li>
+                                    <li class="sidebar__sub-item"><a
                                             href="{{ url('ecommerce/ecommerce-add-product.html') }}"
                                             class="sidebar__sub-link">Add Product</a></li>
                                     <li class="sidebar__sub-item"><a
@@ -51,7 +54,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="sidebar__sub-item"><a href="{{ url('ecommerce/ecommerce-product-detail.html') }}"
+                        <li class="sidebar__sub-item"><a href="{{ url('ecommerce/ecommerce-product-analytics.html') }}"
                                 class="sidebar__sub-link">Product Analytics</a></li>
                         <li class="sidebar__sub-item sidebar__sub-item--has-dropdown">
                             <a href="javascript:;" class="sidebar__sub-link">Order Management</a>
