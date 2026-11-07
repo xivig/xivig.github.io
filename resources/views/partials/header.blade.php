@@ -99,7 +99,7 @@
             </div>
 
             <div class="header__github">
-                <a href="https://github.com/xivig" target="_blank" class="header__github-link">
+                <a href="https://github.com/xivig" target="_blank" class="header__github-link" rel="noopener noreferrer">
                     <img src="{{ asset('assets/github.svg') }}" alt="GitHub" width="24">
                 </a>
             </div>

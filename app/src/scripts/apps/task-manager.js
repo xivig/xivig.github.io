@@ -1,3 +1,13 @@
+const escapeHtml = (str) => {
+    if (str === null || str === undefined) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+};
+
 import Sortable from 'sortablejs';
 
 /**
@@ -142,10 +152,10 @@ export const initTaskManager = () => {
                         <input class="form-check-input task-toggle-check cursor-pointer rounded-2 m-0 flex-shrink-0" type="checkbox" ${task.status === 'completed' ? 'checked' : ''} style="width: 18px; height: 18px; cursor: pointer;">
                     </div>
                     <div class="d-flex align-items-center gap-2 flex-wrap flex-grow-1 min-w-0">
-                        <span class="fw-semibold mb-0 task-title text-truncate me-2 ${task.status === 'completed' ? 'text-decoration-line-through text-muted opacity-75' : 'text-main'}" style="font-size: 0.9rem;">${task.title}</span>
+                        <span class="fw-semibold mb-0 task-title text-truncate me-2 ${task.status === 'completed' ? 'text-decoration-line-through text-muted opacity-75' : 'text-main'}" style="font-size: 0.9rem;">${escapeHtml(task.title)}</span>
                         <span class="badge ${priorityClass} extra-small fw-bold px-2 py-0.5 rounded-pill">${task.priority}</span>
-                        <span class="badge bg-body-secondary text-muted border border-secondary border-opacity-15 extra-small px-2 py-0.5 rounded-pill">${task.category}</span>
-                        <span class="text-muted extra-small ms-auto ms-sm-0"><i class="bi bi-clock me-1"></i> ${task.dueDate}</span>
+                        <span class="badge bg-body-secondary text-muted border border-secondary border-opacity-15 extra-small px-2 py-0.5 rounded-pill">${escapeHtml(task.category)}</span>
+                        <span class="text-muted extra-small ms-auto ms-sm-0"><i class="bi bi-clock me-1"></i> ${escapeHtml(task.dueDate)}</span>
                     </div>
                 </div>
 
@@ -340,7 +350,7 @@ export const initTaskManager = () => {
                     li.className = 'form-check mb-2';
                     li.innerHTML = `
                         <input class="form-check-input" type="checkbox" ${item.done ? 'checked' : ''} disabled>
-                        <label class="form-check-label small ${item.done ? 'text-decoration-line-through text-muted' : ''}">${item.text}</label>
+                        <label class="form-check-label small ${item.done ? 'text-decoration-line-through text-muted' : ''}">${escapeHtml(item.text)}</label>
                     `;
                     checklistContainer.appendChild(li);
                 });

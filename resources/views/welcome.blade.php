@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('templates.home.layout')
 
 @section('title', 'Home')
 @section('bodyClass', 'landing-page')

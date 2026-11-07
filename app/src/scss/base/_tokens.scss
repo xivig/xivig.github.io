@@ -5,9 +5,9 @@
 
 :root {
     /* --- Brand & Semantic Palette (From Blueprint Page 5 & 17) --- */
-    --xv-brand: #4F6BFF;
-    --xv-brand-hover: #3548D4;
-    --xv-brand-active: #2938B8;
+    --xv-brand: #4059E8;
+    --xv-brand-hover: #3146C7;
+    --xv-brand-active: #2536A5;
     --xv-accent: #20C5D7;
     --xv-violet: #8B5CF6;
 
@@ -16,7 +16,7 @@
     --xv-surface: #FFFFFF;
     --xv-sidebar: #101B33;
     --xv-sidebar-hover: rgba(255, 255, 255, 0.05);
-    --xv-sidebar-active: rgba(79, 107, 255, 0.14);
+    --xv-sidebar-active: rgba(64, 89, 232, 0.14);
 
     /* Typography & Neutral Colors */
     --xv-text: #111827;
@@ -51,7 +51,7 @@
 
     /* --- Application Layer Aliases (Compatible with Bootstrap & Components) --- */
     --elite-primary: var(--xv-brand);
-    --elite-primary-rgb: 79, 107, 255;
+    --elite-primary-rgb: 64, 89, 232;
     --elite-secondary: var(--xv-muted);
     --elite-success: var(--xv-success);
     --elite-danger: var(--xv-danger);
@@ -60,10 +60,10 @@
     --elite-dark: var(--xv-sidebar);
 
     --bs-primary: var(--xv-brand);
-    --bs-primary-rgb: 79, 107, 255;
+    --bs-primary-rgb: 64, 89, 232;
 
     --xivig-primary: var(--xv-brand);
-    --xivig-primary-glow: rgba(79, 107, 255, 0.15);
+    --xivig-primary-glow: rgba(64, 89, 232, 0.20);
     --xivig-dark: var(--xv-sidebar);
     --xivig-secondary: var(--xv-muted);
 
@@ -82,8 +82,8 @@
     /* Layout & Surface */
     --bg-subtle: #F8FAFC;
     --elite-radius: var(--xv-radius-card);
-    --elite-soft: rgba(79, 107, 255, 0.05);
-    --elite-primary-soft: rgba(79, 107, 255, 0.1);
+    --elite-soft: rgba(64, 89, 232, 0.05);
+    --elite-primary-soft: rgba(64, 89, 232, 0.1);
     --elite-success-soft: rgba(18, 185, 129, 0.1);
     --elite-danger-soft: rgba(239, 90, 111, 0.1);
     --elite-warning-soft: rgba(245, 165, 36, 0.1);
@@ -107,7 +107,7 @@
     --xv-surface: #111C2E;
     --xv-sidebar: #080F1D;
     --xv-sidebar-hover: rgba(255, 255, 255, 0.04);
-    --xv-sidebar-active: rgba(79, 107, 255, 0.22);
+    --xv-sidebar-active: rgba(64, 89, 232, 0.22);
     --xv-text: #F2F5FA;
     --xv-muted: #A0AEC0;
     --xv-border: #26344A;

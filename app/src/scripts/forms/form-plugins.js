@@ -162,7 +162,7 @@ export const initImageDropzone = () => {
 
         try {
             new Dropzone(dropzoneEl, {
-                url: "https://httpbin.org/post", // Demo endpoint
+                url: window.XIVIG_UPLOAD_URL || "#", // Configurable upload endpoint with client-side fallback
                 maxFilesize: 5,
                 acceptedFiles: "image/*",
                 // 1. Enable the "Remove file" link in the UI

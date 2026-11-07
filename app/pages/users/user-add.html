@@ -32,7 +32,7 @@
                             <label for="avatarUploadInput" class="btn btn-primary btn-sm rounded-circle position-absolute bottom-0 end-0 p-0 d-flex align-items-center justify-content-center shadow" style="width: 36px; height: 36px; cursor: pointer;" title="Upload photo">
                                 <i class="bi bi-camera-fill small"></i>
                             </label>
-                            <input type="file" id="avatarUploadInput" class="d-none" accept="image/*" onchange="const f = this.files[0]; if(f){ const r = new FileReader(); r.onload = e => document.getElementById('avatarPreviewBox').innerHTML = `<img src='${e.target.result}' class='w-100 h-100 object-fit-cover rounded-circle'>`; r.readAsDataURL(f); }">
+                            <input type="file" id="avatarUploadInput" class="d-none" accept="image/*" onchange="const f = this.files[0]; if(f){ const r = new FileReader(); r.onload = e => document.getElementById('avatarPreviewBox').innerHTML = `<img src='${e.target.result}' class='w-100 h-100 object-fit-cover rounded-circle' alt='Uploaded avatar preview'>`; r.readAsDataURL(f); }">
                         </div>
                         <p class="text-muted extra-small mb-2">Supported formats: JPG, PNG, WEBP. Max 2MB.</p>
                         <div class="d-flex justify-content-center gap-2">

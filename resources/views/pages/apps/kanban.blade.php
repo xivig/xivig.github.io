@@ -48,7 +48,7 @@
                                                             class="d-flex align-items-center justify-content-between mt-auto">
                                                             <img src="{{ asset('assets/admin/images/photo1.jpg') }}"
                                                                 class="rounded-circle border border-2 border-white"
-                                                                width="28" height="28">
+                                                                width="28" height="28" alt="User avatar">
                                                             <small class="text-muted"><i
                                                                     class="bi bi-calendar-event me-1"></i> Apr
                                                                 15</small>

@@ -118,19 +118,19 @@
                             <tr>
                                 <td class="px-4"><img
                                         src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
-                                        height="24" class="me-2"> <strong>Bootstrap 5.3</strong></td>
+                                        height="24" class="me-2" alt="Platform logo"> <strong>Bootstrap 5.3</strong></td>
                                 <td>Core UI Framework</td>
                                 <td class="small text-muted">Responsive grid and robust component base.</td>
                             </tr>
                             <tr>
-                                <td class="px-4"><img src="https://vitejs.dev/logo.svg" height="24" class="me-2">
+                                <td class="px-4"><img src="https://vitejs.dev/logo.svg" height="24" class="me-2" alt="Platform logo">
                                     <strong>Vite 5.x</strong>
                                 </td>
                                 <td>Development Server</td>
                                 <td class="small text-muted">Instant HMR and modern JS bundling.</td>
                             </tr>
                             <tr>
-                                <td class="px-4"><img src="{{ asset('assets/admin/images/gulp.png') }}" height="24" class="me-2">
+                                <td class="px-4"><img src="{{ asset('assets/admin/images/gulp.png') }}" height="24" class="me-2" alt="Platform logo">
                                     <strong>Gulp
                                         5.x</strong>
                                 </td>

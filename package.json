@@ -15,7 +15,8 @@
     "preview": "vite preview",
     "preview:docs": "vite preview --outDir docs",
     "production": "node tasks/build.js && vite preview",
-    "docs": "gulp serveDocs"
+    "docs": "gulp docs",
+    "images": "gulp optimizeImages"
   },
   "devDependencies": {
     "browser-sync": "^3.0.4",

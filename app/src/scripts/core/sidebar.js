@@ -1,3 +1,13 @@
+const escapeHtml = (str) => {
+    if (str === null || str === undefined) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+};
+
 /**
  * Xivig Architect Sidebar Module
  * Handles responsive toggling, desktop shrinking, and accordion logic.
@@ -49,7 +59,7 @@ export function initSidebar() {
             li.innerHTML = `
                 <a href="${hasSubmenu ? 'javascript:;' : item.path}" class="${linkClass}">
                     ${iconHtml}
-                    <span class="sidebar__text">${item.label}</span>
+                    <span class="sidebar__text">${escapeHtml(item.label)}</span>
                 </a>
                 ${submenuHtml}
             `;

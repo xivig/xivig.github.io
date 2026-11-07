@@ -14,6 +14,7 @@
     
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101B33" />
     
     <!-- Instant Atelier Theme & Accent Initialization -->
     <script>
@@ -84,44 +85,50 @@
             <span>OR REGISTER WITH EMAIL</span>
         </div>
         
-        <form action="login.html">
+        <div class="alert alert-info py-2 px-3 small border-0 rounded-3 mb-4 d-flex align-items-center">
+            <i class="bi bi-info-circle me-2 flex-shrink-0"></i>
+            <span><strong>Demo Mode:</strong> Pre-wired frontend form. Connect action to your registration backend.</span>
+        </div>
+        
+        <form action="login.html" method="POST" id="registerForm">
             <div class="mb-4">
                 <div class="input-group auth-input-group">
                     <span class="input-group-text"><i class="bi bi-person"></i></span>
-                    <input type="text" class="form-control" placeholder="Full Name" required>
+                    <input type="text" name="name" id="regName" class="form-control" placeholder="Full Name" autocomplete="name" required>
                 </div>
             </div>
         
             <div class="mb-4">
                 <div class="input-group auth-input-group">
                     <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                    <input type="email" class="form-control" placeholder="architect@xivig.com" required>
+                    <input type="email" name="email" id="regEmail" class="form-control" placeholder="architect@xivig.com" autocomplete="email" required>
                 </div>
             </div>
         
             <div class="mb-4">
                 <div class="input-group auth-input-group">
                     <span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
-                    <input type="password" class="form-control" placeholder="Create Password" required>
+                    <input type="password" name="password" id="regPassword" class="form-control" placeholder="Create Password" autocomplete="new-password" required>
                 </div>
             </div>
         
             <div class="mb-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="terms" required>
-                    <label class="form-check-label small text-muted" for="terms">
-                        I agree to the <a href="#" class="auth-link">Terms & Conditions</a>
-                    </label>
+                <div class="input-group auth-input-group">
+                    <span class="input-group-text"><i class="bi bi-shield-check"></i></span>
+                    <input type="password" name="password_confirmation" id="regPasswordConfirm" class="form-control" placeholder="Confirm Password" autocomplete="new-password" required>
                 </div>
             </div>
         
-            <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm mb-4">
-                Register Now
-            </button>
+            <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" name="terms" id="agreeTerms" required>
+                <label class="form-check-label text-muted small" for="agreeTerms">
+                    I agree to the <a href="#" class="auth-link">Terms of Service</a> & <a href="#" class="auth-link">Privacy Policy</a>
+                </label>
+            </div>
         
-            <p class="text-center small text-muted mb-0">
-                Already have an account? <a href="login.html" class="auth-link">Sign In</a>
-            </p>
+            <button type="submit" class="btn btn-primary w-100 auth-btn mb-4">
+                Create Architect Account <i class="bi bi-arrow-right ms-2"></i>
+            </button>
         </form>
         
     </div>

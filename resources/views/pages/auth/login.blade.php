@@ -18,24 +18,30 @@
     <span>OR CONTINUE WITH EMAIL</span>
 </div>
 
-<form action="index.html">
+<div class="alert alert-info py-2 px-3 small border-0 rounded-3 mb-4 d-flex align-items-center">
+    <i class="bi bi-info-circle me-2 flex-shrink-0"></i>
+    <span><strong>Demo Mode:</strong> Pre-wired frontend form. Connect action to your authentication backend.</span>
+</div>
+
+<form action="index.html" method="POST" id="loginForm">
+    @csrf
     <div class="mb-4">
         <div class="input-group auth-input-group">
             <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-            <input type="email" class="form-control" placeholder="architect@xivig.com" required>
+            <input type="email" class="form-control" name="email" id="loginEmail" placeholder="architect@xivig.com" autocomplete="email" required>
         </div>
     </div>
 
     <div class="mb-3">
         <div class="input-group auth-input-group">
             <span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
-            <input type="password" class="form-control" placeholder="••••••••" required>
+            <input type="password" class="form-control" name="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" required>
         </div>
     </div>
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="rememberMe">
+            <input class="form-check-input" type="checkbox" name="remember" id="rememberMe">
             <label class="form-check-label small text-muted" for="rememberMe">Remember me</label>
         </div>
         <a href="forgot-password.html" class="auth-link small">Forgot Password?</a>

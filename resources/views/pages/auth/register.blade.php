@@ -18,25 +18,31 @@
     <span>OR REGISTER WITH EMAIL</span>
 </div>
 
-<form action="login.html">
+<div class="alert alert-info py-2 px-3 small border-0 rounded-3 mb-4 d-flex align-items-center">
+    <i class="bi bi-info-circle me-2 flex-shrink-0"></i>
+    <span><strong>Demo Mode:</strong> Pre-wired frontend form. Connect action to your registration backend.</span>
+</div>
+
+<form action="login.html" method="POST" id="registerForm">
+    @csrf
     <div class="mb-4">
         <div class="input-group auth-input-group">
             <span class="input-group-text"><i class="bi bi-person"></i></span>
-            <input type="text" class="form-control" placeholder="Full Name" required>
+            <input type="text" class="form-control" name="name" id="regName" placeholder="Full Name" autocomplete="name" required>
         </div>
     </div>
 
     <div class="mb-4">
         <div class="input-group auth-input-group">
             <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-            <input type="email" class="form-control" placeholder="architect@xivig.com" required>
+            <input type="email" class="form-control" name="email" id="regEmail" placeholder="architect@xivig.com" autocomplete="email" required>
         </div>
     </div>
 
     <div class="mb-4">
         <div class="input-group auth-input-group">
             <span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
-            <input type="password" class="form-control" placeholder="Create Password" required>
+            <input type="password" class="form-control" name="password" id="regPassword" placeholder="Create Password" autocomplete="new-password" required>
         </div>
     </div>
 

@@ -37,7 +37,7 @@
                                         <div class="d-flex align-items-center">
                                             <img src="{{ asset('assets/admin/images/photo1.jpg') }}"
                                                 class="rounded-circle me-3 shadow-sm border border-2 border-white"
-                                                width="50" height="50">
+                                                width="50" height="50" alt="User avatar">
                                             <div>
                                                 <h6 class="fw-bold mb-0">Alexander Pierce</h6>
                                                 <span class="text-muted small">From: <span

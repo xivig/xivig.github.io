@@ -1,3 +1,13 @@
+const escapeHtml = (str) => {
+    if (str === null || str === undefined) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+};
+
 import Sortable from 'sortablejs';
 
 /**
@@ -119,11 +129,11 @@ export const initKanban = () => {
                 newCard.className = `card kanban-card border border-secondary border-opacity-15 shadow-2xs rounded-3 p-3.5 bg-body border-start border-4 transition-all cursor-grab ${col === 'todo' ? 'border-primary' : col === 'inprogress' ? 'border-info' : col === 'review' ? 'border-warning' : 'border-success'}`;
                 newCard.innerHTML = `
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="badge bg-primary-subtle text-primary extra-small fw-bold px-2 py-0.5 rounded-pill">${tag}</span>
+                        <span class="badge bg-primary-subtle text-primary extra-small fw-bold px-2 py-0.5 rounded-pill">${escapeHtml(tag)}</span>
                         ${priorityBadge}
                     </div>
-                    <h6 class="fw-bold mb-1.5 fs-14 text-main text-truncate-2">${title}</h6>
-                    <p class="text-muted extra-small mb-3 text-truncate-2">${desc || 'Standard architectural workflow sprint task.'}</p>
+                    <h6 class="fw-bold mb-1.5 fs-14 text-main text-truncate-2">${escapeHtml(title)}</h6>
+                    <p class="text-muted extra-small mb-3 text-truncate-2">${escapeHtml(desc || 'Standard architectural workflow sprint task.')}</p>
                     <div class="d-flex align-items-center justify-content-between pt-2 border-top border-secondary border-opacity-10">
                         <div class="d-flex align-items-center gap-2">
                             <img src="/app/src/images/photo1.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="24" height="24" alt="Assignee">

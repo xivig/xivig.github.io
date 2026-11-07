@@ -8,7 +8,7 @@
                 <span class="footer__attribution">
                     Designed with <i class="bi bi-heart-fill footer__icon"></i> by
                 </span>
-                <a href="https://www.xivig.com" target="_blank" class="footer__link">Xivig</a>
+                <a href="https://www.xivig.com" target="_blank" class="footer__link" rel="noopener noreferrer">Xivig</a>
             </p>
         </div>
     </div>

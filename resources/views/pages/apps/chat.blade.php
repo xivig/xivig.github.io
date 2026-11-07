@@ -37,7 +37,7 @@
                                     <div class="chat__avatar-wrapper position-relative">
                                         <img src="{{ asset('assets/admin/images/photo1.jpg') }}"
                                             class="rounded-circle border border-2 border-white shadow-sm" width="48"
-                                            height="48">
+                                            height="48" alt="User avatar">
                                         <span class="status-indicator is-online"></span>
                                     </div>
                                     <div class="ms-3 overflow-hidden">
@@ -52,7 +52,7 @@
                                     <div class="chat__avatar-wrapper position-relative">
                                         <img src="{{ asset('assets/admin/images/photo1.jpg') }}"
                                             class="rounded-circle border border-2 border-white shadow-sm" width="48"
-                                            height="48">
+                                            height="48" alt="User avatar">
                                         <span class="status-indicator is-online"></span>
                                     </div>
                                     <div class="ms-3 overflow-hidden">
@@ -67,7 +67,7 @@
                                     <div class="chat__avatar-wrapper position-relative">
                                         <img src="{{ asset('assets/admin/images/photo1.jpg') }}"
                                             class="rounded-circle border border-2 border-white shadow-sm" width="48"
-                                            height="48">
+                                            height="48" alt="User avatar">
                                         <span class="status-indicator is-online"></span>
                                     </div>
                                     <div class="ms-3 overflow-hidden">
@@ -84,7 +84,7 @@
                         <header
                             class="chat__header p-3 border-bottom d-flex align-items-center justify-content-between shadow-sm">
                             <div class="d-flex align-items-center">
-                                <img src="{{ asset('assets/admin/images/profile-photo.jpg') }}" class="rounded-circle" width="45">
+                                <img src="{{ asset('assets/admin/images/profile-photo.jpg') }}" class="rounded-circle" width="45" alt="User avatar">
                                 <div class="ms-3">
                                     <h6 class="mb-0 fw-bold">Rachel Curtis</h6>
                                     <small class="text-muted"><i
@@ -104,7 +104,7 @@
 
                             <div class="message message--incoming d-flex mb-4">
                                 <img src="{{ asset('assets/admin/images/chat-img2.jpg') }}" class="rounded-circle me-3" width="35"
-                                    height="35">
+                                    height="35" alt="User avatar">
                                 <div class="message__content-wrap">
                                     <div class="message__bubble shadow-sm">
                                         Maybe you already have additional info?
@@ -121,7 +121,7 @@
                                     </div>
                                     <small class="text-muted mt-1 d-block">09:42 PM</small>
                                 </div>
-                                <img src="{{ asset('assets/admin/images/chat-img1.jpg') }}" class="rounded-circle" width="35" height="35">
+                                <img src="{{ asset('assets/admin/images/chat-img1.jpg') }}" class="rounded-circle" width="35" height="35" alt="User avatar">
                             </div>
 
                         </div>

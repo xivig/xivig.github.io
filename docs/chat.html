@@ -14,6 +14,7 @@
     
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101B33" />
     
     <!-- Instant Atelier Theme & Accent Initialization (Prevents FOUC) -->
     <script>
@@ -663,7 +664,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="https://docs.xivig.com" target="_blank" class="sidebar__link">
+                    <a href="https://docs.xivig.com" target="_blank" class="sidebar__link" rel="noopener noreferrer">
                         <span class="sidebar__icon bi bi-book"></span>
                         <span class="sidebar__text">Online Docs</span>
                     </a>
@@ -709,7 +710,7 @@
         <!-- Header -->
         <div class="atelier-header offcanvas-header">
             <div class="d-flex align-items-center gap-3">
-                <a href="https://github.com/xivig/xivig.github.io" target="_blank" class="atelier-emblem text-decoration-none" title="Visit xivig.github.io on GitHub" aria-label="XIVIG GitHub Repository">
+                <a href="https://github.com/xivig/xivig.github.io" target="_blank" class="atelier-emblem text-decoration-none" title="Visit xivig.github.io on GitHub" aria-label="XIVIG GitHub Repository" rel="noopener noreferrer">
                     <img src="./assets/logo.png" alt="XIVIG" width="26" height="26">
                 </a>
                 <div>
@@ -878,7 +879,7 @@
                         <i class="bi bi-git me-1 text-warning-gold"></i> SOURCE CODE REPOSITORY
                     </div>
                 </div>
-                <a href="https://github.com/xivig/xivig.github.io" target="_blank" class="atelier-repo-banner d-flex align-items-center justify-content-between p-3 rounded-4 text-decoration-none">
+                <a href="https://github.com/xivig/xivig.github.io" target="_blank" class="atelier-repo-banner d-flex align-items-center justify-content-between p-3 rounded-4 text-decoration-none" rel="noopener noreferrer">
                     <div class="d-flex align-items-center gap-3">
                         <div class="atelier-repo-icon-box">
                             <i class="bi bi-github"></i>
@@ -973,7 +974,7 @@
                                                 <div class="chat__avatar-wrapper position-relative">
                                                     <img src="./assets/photo1.jpg"
                                                         class="rounded-circle border border-2 border-white shadow-sm" width="48"
-                                                        height="48">
+                                                        height="48" alt="User avatar">
                                                     <span class="status-indicator is-online"></span>
                                                 </div>
                                                 <div class="ms-3 overflow-hidden">
@@ -988,7 +989,7 @@
                                                 <div class="chat__avatar-wrapper position-relative">
                                                     <img src="./assets/photo1.jpg"
                                                         class="rounded-circle border border-2 border-white shadow-sm" width="48"
-                                                        height="48">
+                                                        height="48" alt="User avatar">
                                                     <span class="status-indicator is-online"></span>
                                                 </div>
                                                 <div class="ms-3 overflow-hidden">
@@ -1003,7 +1004,7 @@
                                                 <div class="chat__avatar-wrapper position-relative">
                                                     <img src="./assets/photo1.jpg"
                                                         class="rounded-circle border border-2 border-white shadow-sm" width="48"
-                                                        height="48">
+                                                        height="48" alt="User avatar">
                                                     <span class="status-indicator is-online"></span>
                                                 </div>
                                                 <div class="ms-3 overflow-hidden">
@@ -1020,7 +1021,7 @@
                                     <header
                                         class="chat__header p-3 border-bottom d-flex align-items-center justify-content-between shadow-sm">
                                         <div class="d-flex align-items-center">
-                                            <img src="data:image/jpeg;base64,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" class="rounded-circle" width="45">
+                                            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/CABEIAFAAUAMBIgACEQEDEQH/xAAaAAADAQEBAQAAAAAAAAAAAAAFBgcEAwEI/9oACAEBAAAAANLPr5RpScqNlVlTS2oyz06NnZJoHPEAMMqIWJpFpE5cT0eRgfFE+2fUOTMTEASq2bcxiNMsTdr0+VjvE+Mkdlm5hDrcGhFXlIFtZNynT8XzteymQf6aS9O6DfQeA/37I8fs3//EABkBAAMBAQEAAAAAAAAAAAAAAAECBAMABf/aAAgBAhAAAAAMvHhC9WuMCeqwh7faqND/AP/EABgBAAMBAQAAAAAAAAAAAAAAAAIDBAUB/9oACAEDEAAAAOAwlCemuJVGqGSLbQSmWw6P/8QAJhAAAgICAgEEAwADAAAAAAAAAwQCBQEGAAcREhMUFRchMQgiJP/aAAgBAQABCADFoGU8edctwf7Dw9tYUSZgQu6oAryutbP2hdXp5DU+wZkbJs63v7CMMpWobqAEgxUvd/fplcMQz3YznPnL11ZFazNesfvzFzISO/NjLEL273LlveTkXGeR8/rmM81najV60kC2F4a1pWIT9HCNKY8EwazXyGUhonWmOcc3cf8AphKNNoTz5oRsWOm2oBzNa1pnqVvK72sVgnInmS6VglSzjD+8/G1qwvkRGeoLzx6RfiLZh/oQNLLW7CgrZl01atlN+dlTHsqJYS91TufYCqbvV64fzHKc+3Jt1ynx2cyxz2+ZxiMcyzbbTM7zCw7+wbUbStmrU7RnEGBMWjRkBiCd0t1uJWJ9h1paXe5vC1I1buFKKdjPrnWpf3Pq8cvGsqo+iA66AnGW5bffIXFkGkU0vYvoimqb3ZOxKxGuyjTavVTBXTBK0UW2esW+XqVWOgsJgXUL760Z5ccgkkdo3Xr1jc5s7637LdsBUKzleziKrQzhhkGwV2LVRKsxi6RARdmECZjCJvp7RnI5TGxmQBUrsB5yuXt13KXWtr4pd1kC7p0F7lEVxRt1ZrrQr+uR9PKK5NTPTxOgQxdX3vcxfpO3eEgv5w3UMkx2Jalr76HwuqtpzsSrIXO/2YB0tFXlUTAbxCc4WEQtTRMMmYRGVexr6i4jn7RLTteBAwl1uuqNVsLKlPQLVschnuu0VmuNSTpuiJHPsVwcn+QxsYUoQcln2zDny9qMWoBMAW2Fiv8AAruB12PGY4XjL+ezKOPOdv7HVpwnr6bEymNMpeg8k+3ucQ//xAA1EAACAQMCBAMECAcAAAAAAAABAgMABBESMQUhQVETInEQYWKSFDIzQlKBkaEjNIKxwdHS/9oACAEBAAk/AIyMUAKtpWHRlXIpTBbxjJdxuewqU2FkCdKRcnI+I1dS+L+PWc1m5sXGNf346iEkZwVIPIjvXD1dB8dcJT56QqnQAVIYivWrZZABguBTMtqgHgRbLR9uWjXLRHt7qjwgzg+yMACvJkYODiuZPc0xYacDrzyauouFaxlEuVIdx7q41Az9po9ANQhTkhXRg6N6EVpBXAXNAc8+xYUPcGpYStPB65qeKR5JCNMZzpwNW/oK4zdaGyVilmLKW7YNTxQ3ZQENLGr9OxqS2nEylYnhgERACk5IHUGv5yKdk15wDjlS6ST5SDkGiPZgADJNOEjhjDlFOw7saBVEvNTIBgxqykYPxAcz7zVyk1lJAPDdpCnhN64Iwe9Q/SLiJfEEsc6sItPMEkDHuwOZzWnRw63OdOwcjFZRbnTcRuO/WoobphgMzKN64XbfJQoHXNlKUPLKqgxggAac7mjGyCT+LOh8gY1bTSWsD6VkUZMJ7elRvJcyr5mYYWIf5NZ8Z4BLNIfvOxFQxzKejcsNsRnoc1NKgfmYJ0wfyYcjW45GmCxQRtI5PQAZNX08r3j5USOSsSAnAUVK0VlHNpngA+0U7FqyI5EDxk76TyIPvByKUi/MP0a9iG7MB5ZKIfxJlDdQF1Chp8a38vquDihrs7llndH+qutsN+5qRi8UmGXPnh5A/mvMUxzhckDI1HYU+lp9EHzOKQxcNicROOshIKhj+tOYknXAfTnQ1Qi9hjJeKe1yfUMm4rUsbqUlTYgUyrawr4ruDzKg+VR6kEn0q6UyRv4kRVuWrqma5iNifUHkyj+rT+tXBiuxO0oePcYVY/7o9HRxKFFE66dOvs1P57i9Bx7lU19VbmMn01CvNPEudBP2qA7r8Q6iptSFMg4rhdrdHbW6AP8ANvS3ttFOMPGlxkVeXaeFIHwdJ1VPJcIJnuG1gADOCB8wFWNu3F2QeJcugYwD/qnMjm2Bd2OSTrrcyTSfstbgg/oakaK7iAeKVO9W72+nANwi5ib1/CakRuuFIrG5Io7CpFuOIEYeYc0h/wBmpDJI7FnZzksTuSaXyfRkr//EAB4RAAICAwEAAwAAAAAAAAAAAAABAgMRITESBDJB/9oACAECAQE/AI1pPQ8obExWM8Mkmlkstn1Mqv8AXSKaFs+RdtQgWp6jEoeJlU9Eel1SjwVbjJkKlErWGfpNpomzOSP2P//EAB8RAAMAAgEFAQAAAAAAAAAAAAABAgMREgQhIjEyI//aAAgBAwEBPwC8zpaaFpkleioXsdIhKq0Y8GPWmjNg4/JTQ0kjpsXbnRiyRx5UdR5SjPGq2ivk6fLuWmXaqUVk2ZJbnY14kJy+5IpNflTP/9k=" class="rounded-circle" width="45" alt="User avatar">
                                             <div class="ms-3">
                                                 <h6 class="mb-0 fw-bold">Rachel Curtis</h6>
                                                 <small class="text-muted"><i
@@ -1040,7 +1041,7 @@
             
                                         <div class="message message--incoming d-flex mb-4">
                                             <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/CABEIACgAKAMBIgACEQEDEQH/xAAbAAACAgMBAAAAAAAAAAAAAAADBgIEAAEFB//aAAgBAQAAAACsFJaB9le6Aw+eV3VFBKzLAhub1H//xAAXAQEBAQEAAAAAAAAAAAAAAAABAgQA/9oACAECEAAAAMtGjlY//8QAFwEBAQEBAAAAAAAAAAAAAAAAAgADAf/aAAgBAxAAAADdnFC7f//EACkQAAIBAwIEBgMBAAAAAAAAAAECAwAEEQUSEyFBcRQiMVFhkQYjMoH/2gAIAQEAAT8AjtQRyFalJFpenz3k6kpEuSB6noB9mm1/VHHinjeO3Y+U8D9fbdirOZL+wiuVXbvHMexBwamg+KF/Cg/ods4r8p1Fb3RlS3kXh8dOIVcc1qx02xkgubZJGjtWUBxuzkgHPLGCK0lrGG2eysX3iFjnPzV1dxSs6pcQ5VthBbHP4ptfu5rY2+1MFcZBNC5ecJbyPwoN+SRkge5qG5j0LS4EvdQ8SJBuiitsFnXoS3QUQwcsjsh707SI+SxyeufWoR9mggNYxRGanXdEfcc63ede9KRRNZyKiCyuiMTtbCn/AGv/xAAaEQADAQADAAAAAAAAAAAAAAAAAQIDEBEh/9oACAECAQE/AJ1bZWvgtRSiYSOuaP/EAB0RAQACAAcAAAAAAAAAAAAAAAEAAgMEERITICH/2gAIAQMBAT8AcHQ9lsuk4Wbll7tuhP/Z" class="rounded-circle me-3" width="35"
-                                                height="35">
+                                                height="35" alt="User avatar">
                                             <div class="message__content-wrap">
                                                 <div class="message__bubble shadow-sm">
                                                     Maybe you already have additional info?
@@ -1057,7 +1058,7 @@
                                                 </div>
                                                 <small class="text-muted mt-1 d-block">09:42 PM</small>
                                             </div>
-                                            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/CABEIACgAKAMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAHBQYE/9oACAEBAAAAAAfp0vBO5dK1j8mTulsmgzbC2W2VM1Qjfc//xAAWAQEBAQAAAAAAAAAAAAAAAAACAwH/2gAIAQIQAAAAmVgVIV//xAAWAQEBAQAAAAAAAAAAAAAAAAADAgT/2gAIAQMQAAAAtSphnSH/xAAsEAACAgEEAQIFAwUAAAAAAAABAgMEEQAFBhIhEyIUMTJBcQeBkZKhsdHh/9oACAEBAAE/APWY/LVatYvzJWrRGSVj8hqPgfI1jNg0iUTz1DKW1WkdoGFg94w/pkFfp/1q9T+EskeCpzjVeHvJ98a4barbfuM1yzHI8Y9i9Fy2dVuQUBsh3ELP8MvtYeke4P41vb1LfIr8lNM1LADMDgFSSARrkEIjaCbJ98eMH7Y8arWOsh8a/TaWB9ztVrNdJIm6yAMM4bzqgUxZhem/otLnPUdOuBrlD1YuUbh8KipgKeg+/jzrfEdtnrvM6hkbCg/NlI/5/fVbZ7skDWY6c7wL9UixkqP31xOxYp8prmDoyWWELA6XZdrro9mCsqyh2WJZHx6z+ckeca3GIyXBuE4cT2Xb2HR4g3JQ3oTEmvI8Ts/ge3C6WjCkIjWJQijAUDwB+NXuPx1+W3NxiUV0pOlhIkH1Jgdj/n+nVWeKeq8uXjaFCSY1DHqM+Fzq9NBue7zPTil+HXtOqSJjqWGSuPydcQqSVmtrIAPGVwfsTj+T1ydf/8QAGxEAAgMAAwAAAAAAAAAAAAAAAAECAyExMlH/2gAIAQIBAT8Ab8OSOoY2QeFhY8Kuh//EABsRAAICAwEAAAAAAAAAAAAAAAABAxECISIx/9oACAEDAQE/AMFb2VXhlpkfuykyVdGBEtkz7P/Z" class="rounded-circle" width="35" height="35">
+                                            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/CABEIACgAKAMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAHBQYE/9oACAEBAAAAAAfp0vBO5dK1j8mTulsmgzbC2W2VM1Qjfc//xAAWAQEBAQAAAAAAAAAAAAAAAAACAwH/2gAIAQIQAAAAmVgVIV//xAAWAQEBAQAAAAAAAAAAAAAAAAADAgT/2gAIAQMQAAAAtSphnSH/xAAsEAACAgEEAQIFAwUAAAAAAAABAgMEEQAFBhIhEyIUMTJBcQeBkZKhsdHh/9oACAEBAAE/APWY/LVatYvzJWrRGSVj8hqPgfI1jNg0iUTz1DKW1WkdoGFg94w/pkFfp/1q9T+EskeCpzjVeHvJ98a4barbfuM1yzHI8Y9i9Fy2dVuQUBsh3ELP8MvtYeke4P41vb1LfIr8lNM1LADMDgFSSARrkEIjaCbJ98eMH7Y8arWOsh8a/TaWB9ztVrNdJIm6yAMM4bzqgUxZhem/otLnPUdOuBrlD1YuUbh8KipgKeg+/jzrfEdtnrvM6hkbCg/NlI/5/fVbZ7skDWY6c7wL9UixkqP31xOxYp8prmDoyWWELA6XZdrro9mCsqyh2WJZHx6z+ckeca3GIyXBuE4cT2Xb2HR4g3JQ3oTEmvI8Ts/ge3C6WjCkIjWJQijAUDwB+NXuPx1+W3NxiUV0pOlhIkH1Jgdj/n+nVWeKeq8uXjaFCSY1DHqM+Fzq9NBue7zPTil+HXtOqSJjqWGSuPydcQqSVmtrIAPGVwfsTj+T1ydf/8QAGxEAAgMAAwAAAAAAAAAAAAAAAAECAyExMlH/2gAIAQIBAT8Ab8OSOoY2QeFhY8Kuh//EABsRAAICAwEAAAAAAAAAAAAAAAABAxECISIx/9oACAEDAQE/AMFb2VXhlpkfuykyVdGBEtkz7P/Z" class="rounded-circle" width="35" height="35" alt="User avatar">
                                         </div>
             
                                     </div>
@@ -1094,9 +1095,9 @@
                     <span class="footer__attribution">
                         Designed with <i class="bi bi-heart-fill footer__icon"></i> by
                     </span>
-                    <a href="https://www.xivig.com" target="_blank" class="footer__link">Xivig</a>
+                    <a href="https://www.xivig.com" target="_blank" class="footer__link" rel="noopener noreferrer">Xivig</a>
                     &bull;
-                    <a href="https://github.com/xivig/xivig.github.io" target="_blank" class="footer__link ms-1"><i class="bi bi-github"></i> GitHub</a>
+                    <a href="https://github.com/xivig/xivig.github.io" target="_blank" class="footer__link ms-1" rel="noopener noreferrer"><i class="bi bi-github"></i> GitHub</a>
                 </p>
             </div>
         </div>

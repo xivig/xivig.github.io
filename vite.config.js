@@ -108,7 +108,7 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     emptyOutDir: true,
-    chunkSizeWarningLimit: 2000,
+    chunkSizeWarningLimit: 1100,
     rollupOptions: {
       input: getHtmlEntries(__dirname),
       output: {

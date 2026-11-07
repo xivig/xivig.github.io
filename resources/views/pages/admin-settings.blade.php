@@ -129,7 +129,7 @@
                             <span class="input-group-text bg-light border-end-0 rounded-start-3"><i id="icon-preview" class="bi bi-star"></i></span>
                             <input type="text" class="form-control rounded-end-3 border-start-0" id="item-icon" value="bi bi-star" required placeholder="bi bi-grid">
                         </div>
-                        <small class="text-muted">Use <a href="https://icons.getbootstrap.com/" target="_blank">Bootstrap Icons</a> classes.</small>
+                        <small class="text-muted">Use <a href="https://icons.getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap Icons</a> classes.</small>
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Path / URL</label>

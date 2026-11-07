@@ -24,7 +24,7 @@
                         <!-- Profile Image -->
                         <div class="col-12 text-center mb-4">
                             <div class="position-relative d-inline-block">
-                                <img src="{{ asset('assets/admin/images/chat-img1.jpg') }}" class="rounded-circle border border-primary border-4 p-1" style="width: 120px; height: 120px; object-fit: cover;">
+                                <img src="{{ asset('assets/admin/images/chat-img1.jpg') }}" class="rounded-circle border border-primary border-4 p-1" style="width: 120px; height: 120px; object-fit: cover;" alt="User avatar">
                                 <button type="button" class="btn btn-primary btn-sm rounded-circle position-absolute bottom-0 end-0 border-white border-3" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;">
                                     <i class="bi bi-pencil-fill extra-small"></i>
                                 </button>

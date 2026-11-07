@@ -34,6 +34,8 @@ export async function validateDirectory(dirPath, options = {}) {
     const htmlFiles = await walk(rootDir);
     const brokenLinks = [];
     const brokenAssets = [];
+    const missingAlt = [];
+    const unsecuredLinks = [];
 
     for (const file of htmlFiles) {
         const content = await fsp.readFile(file, 'utf8');
@@ -60,6 +62,21 @@ export async function validateDirectory(dirPath, options = {}) {
                     target: raw,
                     resolved: path.relative(rootDir, targetPath).replace(/\\/g, '/')
                 });
+            }
+        }
+
+        // 3. Accessibility & Security Checks
+        const imgTags = content.matchAll(/<img([^>]+)>/gi);
+        for (const m of imgTags) {
+            if (!m[1].includes('alt=')) {
+                missingAlt.push({ file: relHtmlPath, tag: m[0] });
+            }
+        }
+
+        const blankLinks = content.matchAll(/<a([^>]*target=["']_blank["'][^>]*)>/gi);
+        for (const m of blankLinks) {
+            if (!m[1].includes('rel=') || !m[1].includes('noopener')) {
+                unsecuredLinks.push({ file: relHtmlPath, tag: m[0] });
             }
         }
 
@@ -92,7 +109,9 @@ export async function validateDirectory(dirPath, options = {}) {
     return {
         totalHtml: htmlFiles.length,
         brokenLinks,
-        brokenAssets
+        brokenAssets,
+        missingAlt: missingAlt || [],
+        unsecuredLinks: unsecuredLinks || []
     };
 }
 
@@ -109,6 +128,8 @@ if (isMain) {
             console.log(`   - Total HTML files: ${result.totalHtml}`);
             console.log(`   - Broken internal links: ${result.brokenLinks.length}`);
             console.log(`   - Broken assets: ${result.brokenAssets.length}`);
+            console.log(`   - Missing img alt attributes: ${result.missingAlt.length}`);
+            console.log(`   - Unsecured target=_blank links: ${result.unsecuredLinks.length}`);
 
             if (result.brokenLinks.length > 0) {
                 hasErrors = true;

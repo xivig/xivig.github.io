@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('templates.admin.layout')
 
 @section('title', 'Dashboard')
 @section('parentTitle', 'Home')

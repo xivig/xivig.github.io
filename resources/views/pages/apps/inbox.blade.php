@@ -70,7 +70,7 @@
                                                 <td style="width: 200px;">
                                                     <div class="d-flex align-items-center">
                                                         <img src="{{ asset('assets/admin/images/photo1.jpg') }}"
-                                                            class="rounded-circle me-3" width="32" height="32">
+                                                            class="rounded-circle me-3" width="32" height="32" alt="User avatar">
                                                         <span class="fw-bold">Alexander Pierce</span>
                                                     </div>
                                                 </td>

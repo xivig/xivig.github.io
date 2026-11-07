@@ -252,7 +252,7 @@ export function initSettings() {
         setVisualAtmosphere('light', false);
         setSidebarStyle('dark', false);
         updateMenuIcons('menu-icon-1', false);
-        setAccentHue('#4F6BFF', 'Luminous Indigo', false);
+        setAccentHue('#4059E8', 'Luminous Indigo', false);
         setTypographyScale('100', false);
     });
 
@@ -266,7 +266,7 @@ export function initSettings() {
     const savedMenuIcon = localStorage.getItem('xivig-menu-icon') || 'menu-icon-1';
     updateMenuIcons(savedMenuIcon, false);
 
-    const savedAccentColor = localStorage.getItem('xivig-accent-color') || '#4F6BFF';
+    const savedAccentColor = localStorage.getItem('xivig-accent-color') || '#4059E8';
     const savedAccentName = localStorage.getItem('xivig-accent-name') || 'Luminous Indigo';
     setAccentHue(savedAccentColor, savedAccentName, false);
 
