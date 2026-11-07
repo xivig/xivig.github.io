@@ -40,9 +40,9 @@
 
     // Standardized Page Header (Top Spacing Fix)
     .page-header {
-        margin: 0 -10px 15px -10px !important; // Flush to top and edges
-        padding: 12px 10px !important;
-        border-radius: 0 !important; // Square top for flush look
+        margin: 0 0 15px 0 !important;
+        padding: 16px !important;
+        border-radius: 1rem !important; // Square top for flush look
         
         &__title {
             font-size: 1.15rem !important;

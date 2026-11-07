@@ -19,7 +19,7 @@
         <div class="main__container container-fluid">
             
             <!-- Standardized Page Header -->
-            <div class="page-header shadow-sm">
+            <div class="page-header shadow-sm rounded-4">
                 <h2 class="page-header__title">{{ $title ?? "" }}</h2>
                 <nav class="page-header__nav" aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
