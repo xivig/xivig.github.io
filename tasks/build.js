@@ -102,6 +102,10 @@ async function flattenHtmlPages() {
 }
 
 async function copyVendorPackages() {
+    if (!process.env.XIVIG_INCLUDE_LEGACY_PLUGINS) {
+        console.log('📦 [5/8] Modern Vite bundling active. Skipping unreferenced legacy vendor package duplication.');
+        return;
+    }
     console.log('📦 [5/8] Distributing client-side vendor packages...');
     const outDir = path.join(rootDir, 'dist');
     const packages = [
