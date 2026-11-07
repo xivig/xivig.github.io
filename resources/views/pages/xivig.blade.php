@@ -170,26 +170,29 @@
         </div>
     </section>
 
-    <!-- STATS SECTION -->
-    <section id="stats" class="py-0">
-        <div class="bg-elite-dark py-100 text-white shadow-2xl">
-            <div class="container">
-                <div class="row g-4 text-center">
-                    <div class="col-md-3">
-                        <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="99.9">0</h2>
-                        <p class="text-white opacity-50 small text-uppercase fw-black tracking-widest">Uptime Reliability</p>
+    <!-- LIVE TELEMETRY STATS (BOXED LAYOUT) -->
+    <section id="stats" class="py-5 my-2">
+        <div class="container">
+            <div class="telemetry-boxed-card text-white py-5 px-4 px-md-5 shadow-2xl position-relative overflow-hidden">
+                <!-- Ambient Gradient Glow -->
+                <div class="position-absolute top-0 start-50 translate-middle w-50 h-50 rounded-circle" style="background: radial-gradient(circle, rgba(79, 107, 255, 0.18) 0%, transparent 70%); filter: blur(50px); pointer-events: none;"></div>
+
+                <div class="row g-0 text-center position-relative" style="z-index: 1;">
+                    <div class="col-lg-3 col-6 telemetry-item">
+                        <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="99.9">99.9%</h2>
+                        <p class="text-white opacity-60 extra-small text-uppercase fw-black tracking-widest mb-0">Uptime Reliability</p>
                     </div>
-                    <div class="col-md-3">
-                        <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="150">0</h2>
-                        <p class="text-white opacity-50 small text-uppercase fw-black tracking-widest">Projects Delivered</p>
+                    <div class="col-lg-3 col-6 telemetry-item">
+                        <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="85">85</h2>
+                        <p class="text-white opacity-60 extra-small text-uppercase fw-black tracking-widest mb-0">Modular Pages</p>
                     </div>
-                    <div class="col-md-3">
-                        <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="24">0</h2>
-                        <p class="text-white opacity-50 small text-uppercase fw-black tracking-widest">Global Nodes</p>
+                    <div class="col-lg-3 col-6 telemetry-item">
+                        <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="150">150+</h2>
+                        <p class="text-white opacity-60 extra-small text-uppercase fw-black tracking-widest mb-0">UI Components</p>
                     </div>
-                    <div class="col-md-3">
-                        <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="10">0</h2>
-                        <p class="text-white opacity-50 small text-uppercase fw-black tracking-widest">Latency (ms)</p>
+                    <div class="col-lg-3 col-6 telemetry-item">
+                        <h2 class="display-4 fw-black text-gradient counter mb-2" data-target="10">&lt;10ms</h2>
+                        <p class="text-white opacity-60 extra-small text-uppercase fw-black tracking-widest mb-0">Core Latency</p>
                     </div>
                 </div>
             </div>

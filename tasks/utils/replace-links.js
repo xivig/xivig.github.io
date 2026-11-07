@@ -34,7 +34,7 @@ async function getHtmlFiles(dir) {
     for (const item of items) {
         const filepath = path.join(dir, item.name);
         if (item.isDirectory()) {
-            if (item.name === 'plugins' || item.name === 'node_modules' || item.name === '.git' || item.name === 'assets') {
+            if (item.name === 'plugins' || item.name === 'node_modules' || item.name === '.git' || item.name === 'assets' || item.name === 'pages' || item.name === 'app') {
                 continue;
             }
             results = results.concat(await getHtmlFiles(filepath));

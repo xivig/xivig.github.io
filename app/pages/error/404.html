@@ -1,5 +1,27 @@
 {{#> home-layout title="404 Page Not Found | XivigApp" bodyClass="error-page-404" hideHeader=true hideFooter=true }}
 
+<script>
+    // GitHub Pages Smart Auto-Redirect for nested legacy URLs (e.g. /pages/users/user-list.html or /app/pages/...)
+    (function() {
+        try {
+            var path = window.location.pathname;
+            var filename = path.split('/').pop();
+            if (filename && filename.endsWith('.html') && filename !== '404.html') {
+                var isNested = path.includes('/pages/') || path.includes('/app/');
+                if (isNested) {
+                    var segments = path.split('/').filter(Boolean);
+                    var repoBase = '/';
+                    if (segments.length > 0 && segments[0] !== 'pages' && segments[0] !== 'app' && !segments[0].endsWith('.html')) {
+                        repoBase = '/' + segments[0] + '/';
+                    }
+                    var target = repoBase + filename + window.location.search + window.location.hash;
+                    window.location.replace(target);
+                }
+            }
+        } catch (e) {}
+    })();
+</script>
+
 <style>
     .error-page-404 {
         background-color: #f8fafc;

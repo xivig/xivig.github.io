@@ -22,7 +22,7 @@ export async function validateDirectory(dirPath, options = {}) {
         for (const entry of entries) {
             const full = path.join(dir, entry.name);
             if (entry.isDirectory()) {
-                if (entry.name === 'node_modules' || entry.name === '.git' || entry.name === 'plugins') continue;
+                if (entry.name === 'node_modules' || entry.name === '.git' || entry.name === 'plugins' || entry.name === 'pages' || entry.name === 'app') continue;
                 results.push(...await walk(full));
             } else if (entry.name.endsWith('.html')) {
                 results.push(full);

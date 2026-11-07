@@ -129,22 +129,57 @@ async function copyVendorPackages() {
     }
 }
 
+async function generateBackwardCompatibilityShims(targetDir) {
+    const srcPagesDir = path.join(rootDir, "app/pages");
+    if (!fs.existsSync(srcPagesDir)) return;
+
+    async function walk(dir) {
+        const entries = await fsp.readdir(dir, { withFileTypes: true });
+        for (const entry of entries) {
+            const fullPath = path.join(dir, entry.name);
+            if (entry.isDirectory()) {
+                await walk(fullPath);
+            } else if (entry.name.endsWith(".html")) {
+                const relFromPages = path.relative(srcPagesDir, fullPath).replace(/\\/g, "/");
+                const segments = relFromPages.split("/");
+                const depthPages = segments.length;
+                const prefixPages = "../".repeat(depthPages);
+                const prefixApp = "../".repeat(depthPages + 1);
+
+                // 1. Shims in targetDir/pages/...
+                const shimPagesPath = path.join(targetDir, "pages", relFromPages);
+                await fsp.mkdir(path.dirname(shimPagesPath), { recursive: true });
+                const shimPagesHtml = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Redirecting...</title><meta http-equiv="refresh" content="0; url=${prefixPages}${entry.name}"><link rel="canonical" href="${prefixPages}${entry.name}"><script>window.location.replace("${prefixPages}${entry.name}" + window.location.search + window.location.hash);</script></head><body style="font-family:sans-serif;text-align:center;padding:50px;">Redirecting to <a href="${prefixPages}${entry.name}">${entry.name}</a>...</body></html>`;
+                await fsp.writeFile(shimPagesPath, shimPagesHtml, "utf-8");
+
+                // 2. Shims in targetDir/app/pages/...
+                const shimAppPath = path.join(targetDir, "app/pages", relFromPages);
+                await fsp.mkdir(path.dirname(shimAppPath), { recursive: true });
+                const shimAppHtml = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Redirecting...</title><meta http-equiv="refresh" content="0; url=${prefixApp}${entry.name}"><link rel="canonical" href="${prefixApp}${entry.name}"><script>window.location.replace("${prefixApp}${entry.name}" + window.location.search + window.location.hash);</script></head><body style="font-family:sans-serif;text-align:center;padding:50px;">Redirecting to <a href="${prefixApp}${entry.name}">${entry.name}</a>...</body></html>`;
+                await fsp.writeFile(shimAppPath, shimAppHtml, "utf-8");
+            }
+        }
+    }
+
+    await walk(srcPagesDir);
+}
+
 async function refineAndExport() {
-    console.log('🔗 [6/8] Normalizing relative links & export to GitHub Pages (docs)...');
-    const distPath = path.join(rootDir, 'dist');
-    const docsPath = path.join(rootDir, 'docs');
+    console.log("🔗 [6/8] Normalizing relative links & export to GitHub Pages (docs)...");
+    const distPath = path.join(rootDir, "dist");
+    const docsPath = path.join(rootDir, "docs");
 
     // 1. Refine dist
     await fixLinks(distPath);
 
-    // 2. Export to docs
-    await fsp.writeFile(path.join(distPath, '.nojekyll'), '');
+    // 2. Generate backward-compatibility redirect shims
+    await generateBackwardCompatibilityShims(distPath);
+
+    // 3. Export to docs
+    await fsp.writeFile(path.join(distPath, ".nojekyll"), "");
     await fsp.rm(docsPath, { recursive: true, force: true });
     await fsp.cp(distPath, docsPath, { recursive: true, force: true });
-    await fsp.writeFile(path.join(docsPath, '.nojekyll'), '');
-
-    // 3. Refine docs
-    await fixLinks(docsPath);
+    await fsp.writeFile(path.join(docsPath, ".nojekyll"), "");
 }
 
 async function runQualityGate() {
