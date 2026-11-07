@@ -117,7 +117,7 @@ const App = {
         }
 
         // 11. Icon Suites
-        if (document.getElementById('faSearchInput')) {
+        if (document.getElementById('iconFilterInput') || document.getElementById('faSearchInput') || document.getElementById('iconContainer')) {
             const { initIconApp } = await import('./scripts/apps/fontawesome-logic.js');
             initIconApp();
         }
