@@ -108,7 +108,7 @@
                         <a href="/app/pages/forms/advanced-components.html" class="list-group-item list-group-item-action sitemap-link">Advanced UI <i class="bi bi-arrow-right"></i></a>
                         <a href="/app/pages/forms/form-pickers.html" class="list-group-item list-group-item-action sitemap-link">Date & Color Pickers <i class="bi bi-arrow-right"></i></a>
                         <a href="/app/pages/forms/form-wizard.html" class="list-group-item list-group-item-action sitemap-link">Step Wizard <i class="bi bi-arrow-right"></i></a>
-                        <a href="/app/pages/forms/summernote-editor.html" class="list-group-item list-group-item-action sitemap-link">Rich Text Editor <i class="bi bi-arrow-right"></i></a>
+                        <a href="/app/pages/forms/quill-editor.html" class="list-group-item list-group-item-action sitemap-link">Quill Rich Text Editor <i class="bi bi-arrow-right"></i></a>
                         <a href="/app/pages/forms/image-cropper.html" class="list-group-item list-group-item-action sitemap-link">Image Cropper <i class="bi bi-arrow-right"></i></a>
                         <a href="/app/pages/forms/image-dropzone.html" class="list-group-item list-group-item-action sitemap-link">File Dropzone <i class="bi bi-arrow-right"></i></a>
                     </div>

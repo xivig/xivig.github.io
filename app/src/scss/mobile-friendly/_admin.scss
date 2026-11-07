@@ -42,7 +42,8 @@
     .page-header {
         margin: 0 0 15px 0 !important;
         padding: 16px !important;
-        border-radius: 1rem !important; // Square top for flush look
+        border-radius: 1rem !important;
+        overflow: hidden !important; // Square top for flush look
         
         &__title {
             font-size: 1.15rem !important;

@@ -62,7 +62,7 @@
   <script type="module" crossorigin src="./assets/xivig-core.js"></script>
   <script type="module" crossorigin src="./assets/main.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/vendor-core.css">
-  <link rel="stylesheet" crossorigin href="./assets/main.css">
+  <link rel="stylesheet" crossorigin href="./assets/main.css?v=2.2.0">
 </head>
 
 <body class="d-flex flex-column min-vh-100" data-bs-spy="scroll" data-bs-target="#blog-toc" data-bs-offset="100">
@@ -425,8 +425,8 @@
                             <li class="sidebar__sub-item"><a href="form-basic.html"
                                     class="sidebar__sub-link">Form Basic</a>
                             </li>
-                            <li class="sidebar__sub-item"><a href="summernote-editor.html"
-                                    class="sidebar__sub-link">Html Editor</a>
+                            <li class="sidebar__sub-item"><a href="quill-editor.html"
+                                    class="sidebar__sub-link">Quill Editor</a>
                             </li>
                             <li class="sidebar__sub-item"><a href="advanced-components.html"
                                     class="sidebar__sub-link">Advanced Components</a></li>
@@ -917,7 +917,7 @@
         <div class="main__container container-fluid">
             
             <!-- Standardized Elite Page Header (Per Blueprint Page 7 & Wireframes) -->
-            <div class="page-header rounded-4">
+            <div class="page-header rounded-4 overflow-hidden position-relative">
                 <div class="page-header__inner d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
                     <div class="page-header__left">
                         <nav class="page-header__nav mb-1" aria-label="breadcrumb">
@@ -934,7 +934,7 @@
                         <h1 class="page-header__title mb-0" id="pageHeaderTitle">Course Dashboard</h1>
                     </div>
                     <div class="page-header__right d-flex align-items-center gap-2.5 flex-wrap">
-                            <button type="button" class="btn btn-primary shadow-sm" id="pagePrimaryActionBtn">
+                            <button type="button" class="btn btn-primary shadow-sm rounded-pill px-4 py-2 fw-bold" id="pagePrimaryActionBtn">
                                     Browse catalog
                             </button>
                     </div>

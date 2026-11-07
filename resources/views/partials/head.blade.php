@@ -86,9 +86,9 @@
     window.jQuery = window.$ = jQuery;
 </script>
 
-<!-- Summernote Lite (Modern WYSIWYG) -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.9.1/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.9.1/dist/summernote-lite.min.js"></script>
+<!-- Quill Rich Text Editor -->
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
 <!-- DataTables (Bootstrap 5) - Loaded AFTER jQuery -->
 <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.min.css">

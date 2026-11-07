@@ -85,6 +85,7 @@ export async function fixLinks(folder) {
 
         // 2. Fix known legacy file typos across all pages
         content = content.replace(/ecommerce-order-edit\.html/g, 'edit-order.html');
+        content = content.replace(/summernote-editor\.html/g, 'quill-editor.html');
         content = content.replace(/ecommerce-ecommerce-product-detail\.html/g, 'ecommerce-product-detail.html');
         content = content.replace(/(?<!ecommerce-)product-detail\.html/g, 'ecommerce-product-detail.html');
         content = content.replace(/pipeline\.html/g, 'build-history.html');
@@ -113,6 +114,8 @@ export async function fixLinks(folder) {
         // 5. Cleanup any double ././ or /./
         content = content.replace(/\/\.\//g, '/');
         content = content.replace(/\.\/\.\//g, './');
+        // 6. Cache-bust compiled main.css so user browsers reload freshly without stale cache
+        content = content.replace(/(href)=(['"])(?:\.\/)?assets\/main\.css(?:\?[^'"]*)?(['"])/g, '$1=$2./assets/main.css?v=2.2.0$3');
 
         if (content !== origContent) {
             await safeWriteFile(file, content);

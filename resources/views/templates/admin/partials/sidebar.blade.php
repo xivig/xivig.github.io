@@ -216,8 +216,8 @@
                         <li class="sidebar__sub-item"><a href="{{ url('forms/form-basic.html') }}"
                                 class="sidebar__sub-link">Form Basic</a>
                         </li>
-                        <li class="sidebar__sub-item"><a href="{{ url('forms/summernote-editor.html') }}"
-                                class="sidebar__sub-link">Html Editor</a>
+                        <li class="sidebar__sub-item"><a href="{{ url('forms/quill-editor.html') }}"
+                                class="sidebar__sub-link">Quill Editor</a>
                         </li>
                         <li class="sidebar__sub-item"><a href="{{ url('forms/advanced-components.html') }}"
                                 class="sidebar__sub-link">Advanced Components</a></li>

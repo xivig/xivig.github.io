@@ -1,0 +1,54 @@
+@use "../base/tokens";
+
+/* ==========================================================================
+   Elite Quill WYSIWYG Editor Styles
+   ========================================================================== */
+
+.ql-toolbar.ql-snow {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--xv-border, #E5EAF2) !important;
+    background: var(--bg-subtle, #F8FAFC);
+    border-top-left-radius: var(--elite-radius, 14px);
+    border-top-right-radius: var(--elite-radius, 14px);
+    padding: 10px 14px !important;
+}
+
+.ql-container.ql-snow {
+    border: none !important;
+    font-family: inherit !important;
+    font-size: 0.9375rem !important;
+    border-bottom-left-radius: var(--elite-radius, 14px);
+    border-bottom-right-radius: var(--elite-radius, 14px);
+}
+
+.ql-editor {
+    padding: 20px 24px !important;
+    min-height: 280px;
+    color: var(--xv-text, #111827);
+}
+
+[data-bs-theme="dark"] {
+    .ql-toolbar.ql-snow {
+        background: rgba(255, 255, 255, 0.03) !important;
+        border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .ql-stroke {
+        stroke: #CBD5E1 !important;
+    }
+
+    .ql-fill {
+        fill: #CBD5E1 !important;
+    }
+
+    .ql-picker {
+        color: #CBD5E1 !important;
+    }
+
+    .ql-picker-options {
+        background-color: #111C2E !important;
+        border-color: rgba(255, 255, 255, 0.12) !important;
+    }
+}

@@ -17,7 +17,7 @@
         <div class="main__container container-fluid">
             
             <!-- Standardized Elite Page Header (Per Blueprint Page 7 & Wireframes) -->
-            <div class="page-header rounded-4">
+            <div class="page-header rounded-4 overflow-hidden position-relative">
                 <div class="page-header__inner d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
                     <div class="page-header__left">
                         <nav class="page-header__nav mb-1" aria-label="breadcrumb">
@@ -39,13 +39,23 @@
                         {{#if customAction}}
                             {{{customAction}}}
                         {{else}}
-                            <button type="button" class="btn btn-primary shadow-sm" id="pagePrimaryActionBtn">
+                            {{#if actionUrl}}
+                            <a href="{{actionUrl}}" class="btn btn-primary shadow-sm rounded-pill px-4 py-2 fw-bold text-decoration-none" id="pagePrimaryActionBtn">
+                                {{#if actionText}}
+                                    {{actionText}}
+                                {{else}}
+                                    Primary Action
+                                {{/if}}
+                            </a>
+                            {{else}}
+                            <button type="button" class="btn btn-primary shadow-sm rounded-pill px-4 py-2 fw-bold" id="pagePrimaryActionBtn">
                                 {{#if actionText}}
                                     {{actionText}}
                                 {{else}}
                                     Primary Action
                                 {{/if}}
                             </button>
+                            {{/if}}
                         {{/if}}
                     </div>
                 </div>

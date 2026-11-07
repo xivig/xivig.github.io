@@ -177,7 +177,7 @@ const App = {
             const { initImageDropzone } = await import('./scripts/forms/form-plugins.js');
             initImageDropzone();
         }
-        if (document.getElementById('summernote') || document.getElementById('editor')) {
+        if (document.getElementById('quill-editor') || document.getElementById('summernote-editor') || document.getElementById('editor')) {
             const { initSummernote } = await import('./scripts/forms/form-plugins.js');
             initSummernote();
         }

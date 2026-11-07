@@ -226,8 +226,8 @@
                 "path": "form-basic.html"
             },
             {
-                "label": "Html Editor",
-                "path": "summernote-editor.html"
+                "label": "Quill Editor",
+                "path": "quill-editor.html"
             },
             {
                 "label": "Advanced Components",

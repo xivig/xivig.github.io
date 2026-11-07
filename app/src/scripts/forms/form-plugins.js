@@ -4,14 +4,16 @@
 import EditorModule from '../components/editor-module.js';
 
 // 1. Summernote Initialization
-export const initSummernote = () => {
-    if (document.querySelector('#summernote-editor')) {
-        const editor = new EditorModule('#summernote-editor', {
+export const initQuillEditor = () => {
+    const el = document.querySelector('#quill-editor, #summernote-editor');
+    if (el) {
+        const editor = new EditorModule(el, {
             placeholder: 'Start writing your elite architecture notes...'
         });
         editor.init();
     }
 };
+export const initSummernote = initQuillEditor;
 
 /**
  * 2. Image Cropper Module

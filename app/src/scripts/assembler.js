@@ -1,3 +1,4 @@
+import { initHeaderActions } from './components/header-actions.js';
 import '../scss/main.scss';
 import * as bootstrap from 'bootstrap';
 
@@ -79,7 +80,12 @@ import {
     initIconCopy
 } from './apps/bs-icon.js';
 
+document.addEventListener("DOMContentLoaded", () => {
+    initHeaderActions();
+});
+
 window.addEventListener("load", () => {
+    initHeaderActions();
     initPreloader();
     initSidebar();
     initSettings();

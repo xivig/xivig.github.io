@@ -179,6 +179,12 @@ async function refineAndExport() {
     // 2. Generate backward-compatibility redirect shims
     await generateBackwardCompatibilityShims(distPath);
 
+    // Legacy alias redirect: summernote-editor.html -> quill-editor.html
+    const legacyShimHtml = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Redirecting...</title><meta http-equiv="refresh" content="0; url=quill-editor.html"><link rel="canonical" href="quill-editor.html"><script>window.location.replace("quill-editor.html" + window.location.search + window.location.hash);</script></head><body style="font-family:sans-serif;text-align:center;padding:50px;">Redirecting to <a href="quill-editor.html">quill-editor.html</a>...</body></html>';
+    await fsp.writeFile(path.join(distPath, "summernote-editor.html"), legacyShimHtml, "utf-8");
+    await fsp.writeFile(path.join(distPath, "pages/forms/summernote-editor.html"), legacyShimHtml, "utf-8");
+    await fsp.writeFile(path.join(distPath, "app/pages/forms/summernote-editor.html"), legacyShimHtml, "utf-8");
+
     // 3. Export to docs
     await fsp.writeFile(path.join(distPath, ".nojekyll"), "");
     await fsp.rm(docsPath, { recursive: true, force: true });

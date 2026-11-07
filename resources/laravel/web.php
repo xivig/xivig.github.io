@@ -69,7 +69,8 @@ Route::prefix('analytics')->group(function () {
 // --- 7. FORMS & TABLES ---
 Route::prefix('forms')->group(function () {
     Route::get('/form-basic.html', function () { return view('pages.forms.form-basic'); });
-    Route::get('/summernote-editor.html', function () { return view('pages.forms.summernote-editor'); });
+    Route::get('/quill-editor.html', function () { return view('pages.forms.quill-editor'); });
+    Route::get('/summernote-editor.html', function () { return redirect('/forms/quill-editor.html'); });
     Route::get('/advanced-components.html', function () { return view('pages.forms.advanced-components'); });
     Route::get('/form-pickers.html', function () { return view('pages.forms.form-pickers'); });
     Route::get('/form-extras.html', function () { return view('pages.forms.form-extras'); });

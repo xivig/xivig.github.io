@@ -19,21 +19,36 @@
         <div class="main__container container-fluid">
             
             <!-- Standardized Page Header -->
-            <div class="page-header shadow-sm rounded-4">
-                <h2 class="page-header__title">{{ $title ?? "" }}</h2>
-                <nav class="page-header__nav" aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item">
-                            <a href="{{ url('/') }}">Home</a>
-                        </li>
-                        @if($parentTitle)
-                        <li class="breadcrumb-item">
-                            <a href="#">{{ $parentTitle ?? "" }}</a>
-                        </li>
+            <div class="page-header shadow-sm rounded-4 overflow-hidden position-relative">
+                <div class="page-header__inner d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                    <div class="page-header__left">
+                        <nav class="page-header__nav mb-1" aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ url('/') }}">Home</a>
+                                </li>
+                                @if(!empty($parentTitle))
+                                <li class="breadcrumb-item">
+                                    <span>{{ $parentTitle }}</span>
+                                </li>
+                                @endif
+                                <li class="breadcrumb-item active" aria-current="page">{{ $title ?? "" }}</li>
+                            </ol>
+                        </nav>
+                        <h1 class="page-header__title mb-0" id="pageHeaderTitle">{{ $title ?? "" }}</h1>
+                    </div>
+                    <div class="page-header__right d-flex align-items-center gap-2.5 flex-wrap">
+                        @if(!empty($actionUrl))
+                            <a href="{{ url($actionUrl) }}" class="btn btn-primary shadow-sm rounded-pill px-4 py-2 fw-bold text-decoration-none" id="pagePrimaryActionBtn">
+                                {{ $actionText ?? 'Primary Action' }}
+                            </a>
+                        @else
+                            <button type="button" class="btn btn-primary shadow-sm rounded-pill px-4 py-2 fw-bold" id="pagePrimaryActionBtn">
+                                {{ $actionText ?? 'Primary Action' }}
+                            </button>
                         @endif
-                        <li class="breadcrumb-item active" aria-current="page">{{ $title ?? "" }}</li>
-                    </ol>
-                </nav>
+                    </div>
+                </div>
             </div>
 
             <!-- Main Content Area -->

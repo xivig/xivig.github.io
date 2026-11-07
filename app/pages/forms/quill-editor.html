@@ -1,4 +1,4 @@
-{{#> admin-layout title="HTML Editor" parentTitle="Forms" }}
+{{#> admin-layout title="Quill Editor" parentTitle="Forms" }}
 
 <div class="row g-4">
     <!-- Top Action Bar -->
@@ -7,7 +7,7 @@
             <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
                 <div>
                     <div class="d-flex align-items-center gap-2 mb-1">
-                        <h4 class="fw-bold mb-0 text-main fs-18">Elite HTML & WYSIWYG Editor</h4>
+                        <h4 class="fw-bold mb-0 text-main fs-18">Elite Quill WYSIWYG Editor</h4>
                         <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill extra-small fw-bold px-2.5 py-0.5">Vanilla JS &bull; Quill v2</span>
                     </div>
                     <p class="text-muted small mb-0">High-performance rich text content creation, live code inspection, and instant markdown styling</p>
@@ -60,9 +60,9 @@
             <div class="card-body p-4">
                 <!-- Visual Quill Surface -->
                 <div id="visualEditorPane">
-                    <div id="summernote-editor" style="min-height: 320px;">
+                    <div id="quill-editor" style="min-height: 320px;">
                         <h2>Atelier Design System Architecture</h2>
-                        <p>Welcome to the <strong>Xivig Elite HTML Editor</strong>. Engineered entirely in pure modern <strong>Vanilla JS</strong> without legacy jQuery overhead, this suite delivers immediate response times, real-time code synchronization, and seamless light/dark mode adaptability.</p>
+                        <p>Welcome to the <strong>Xivig Quill Editor</strong>. Engineered entirely in pure modern <strong>Vanilla JS</strong> without legacy jQuery overhead, this suite delivers immediate response times, real-time code synchronization, and seamless light/dark mode adaptability.</p>
                         
                         <h3>Core Platform Principles</h3>
                         <ul>
@@ -120,7 +120,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         let quillInstance = null;
-        const editorEl = document.getElementById('summernote-editor');
+        const editorEl = document.getElementById('quill-editor') || document.getElementById('summernote-editor');
         const visualPane = document.getElementById('visualEditorPane');
         const sourcePane = document.getElementById('sourceCodePane');
         const rawTextarea = document.getElementById('rawHtmlTextarea');

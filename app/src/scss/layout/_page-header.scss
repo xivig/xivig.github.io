@@ -6,8 +6,9 @@
    ========================================================================== */
 
 .page-header {
+    position: relative !important;
     border-radius: 1rem !important;
-    position: relative;
+    overflow: hidden !important;
 
     &::before {
         display: none !important;
