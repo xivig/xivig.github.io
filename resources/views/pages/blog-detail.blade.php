@@ -23,7 +23,7 @@
                 <!-- Author & Share Bar -->
                 <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-4 border-top border-light pt-5 mt-2">
                     <div class="d-flex align-items-center gap-3">
-                        <img src="{{ asset('assets/admin/images/photo1.jpg') }}" class="rounded-circle border border-primary border-2 p-1 shadow-sm" width="52" height="52" alt="Author">
+                        <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}" class="rounded-circle border border-primary border-2 p-1 shadow-sm" width="52" height="52" alt="Author">
                         <div>
                             <h6 class="fw-bold text-dark mb-0">Marcus Architect</h6>
                             <span class="text-muted extra-small fw-black text-uppercase">Chief Officer • Oct 24, 2026</span>
@@ -41,7 +41,7 @@
             <!-- Featured Image Area -->
             <div class="px-4 px-md-5 pb-5">
                 <div class="rounded-5 overflow-hidden shadow-lg border border-white border-opacity-50 position-relative">
-                    <img src="{{ asset('assets/admin/images/hero-bg.jpg') }}" class="w-100 object-fit-cover" alt="Hero" style="height: 380px;">
+                    <img src="{{ asset('assets/admin/images/hero-background.jpg') }}" class="w-100 object-fit-cover" alt="Hero" style="height: 380px;">
                     <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-30 backdrop-blur-sm text-white extra-small fw-bold">
                         <i class="bi bi-camera-fill me-2"></i> Inside the Xivig Architect Studio, 2026
                     </div>
@@ -95,7 +95,7 @@
             </div>
             <div class="card-body p-4 p-md-5">
                 <div class="d-flex gap-4 mb-5 pb-4 border-bottom border-light">
-                    <img src="{{ asset('assets/admin/images/photo3.jpg') }}" class="rounded-circle border shadow-sm flex-shrink-0" width="48" height="48" alt="User">
+                    <img src="{{ asset('assets/admin/images/avatar-03.jpg') }}" class="rounded-circle border shadow-sm flex-shrink-0" width="48" height="48" alt="User">
                     <div class="flex-grow-1">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <h6 class="fw-black text-dark mb-0">Sarah Jenkins <span class="badge bg-primary-subtle text-primary extra-small ms-2">Verified Pro</span></h6>
@@ -153,7 +153,7 @@
             <div class="d-flex flex-column gap-4">
                 <a href="#" class="d-flex gap-3 text-decoration-none group">
                     <div class="rounded-3 overflow-hidden flex-shrink-0" style="width: 70px; height: 70px;">
-                        <img src="{{ asset('assets/admin/images/product-1.jpg') }}" class="w-100 h-100 object-fit-cover" alt="Recent">
+                        <img src="{{ asset('assets/admin/images/product-01.jpg') }}" class="w-100 h-100 object-fit-cover" alt="Recent">
                     </div>
                     <div>
                         <h6 class="fw-bold text-dark group-hover-text-primary transition-all mb-1 lh-base small">Advanced Vite plugin orchestration</h6>
@@ -162,7 +162,7 @@
                 </a>
                 <a href="#" class="d-flex gap-3 text-decoration-none group">
                     <div class="rounded-3 overflow-hidden flex-shrink-0" style="width: 70px; height: 70px;">
-                        <img src="{{ asset('assets/admin/images/product-2.jpg') }}" class="w-100 h-100 object-fit-cover" alt="Recent">
+                        <img src="{{ asset('assets/admin/images/product-02.jpg') }}" class="w-100 h-100 object-fit-cover" alt="Recent">
                     </div>
                     <div>
                         <h6 class="fw-bold text-dark group-hover-text-primary transition-all mb-1 lh-base small">Mastering responsive grid layouts</h6>

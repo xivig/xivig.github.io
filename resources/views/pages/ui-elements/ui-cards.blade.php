@@ -53,7 +53,7 @@
 
                                 <div class="col-lg-4">
                                     <div class="card xivig-card text-center p-4">
-                                        <img src="{{ asset('assets/admin/images/photo1.jpg') }}"
+                                        <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}"
                                             class="rounded-circle shadow-sm mb-3 mx-auto border border-3 border-transparent" width="80" height="80" style="object-fit: cover;" alt="User avatar">
                                         <h5 class="fw-bold mb-1">Alex Stratos</h5>
                                         <p class="text-muted small mb-4">Senior Web Architect</p>
@@ -267,7 +267,7 @@
                                 <div class="col-md-4">
                                     <div class="card card-editorial shadow-sm p-3 h-100">
                                         <div class="img-container rounded-3 overflow-hidden">
-                                            <img src="{{ asset('assets/admin/images/photo10.jpg') }}" class="w-100" style="height: 200px; object-fit: cover;" alt="User avatar">
+                                            <img src="{{ asset('assets/admin/images/avatar-10.jpg') }}" class="w-100" style="height: 200px; object-fit: cover;" alt="User avatar">
                                         </div>
                                         <div class="card-body px-1 pt-4">
                                             <h5 class="fw-extrabold">The Future of Design</h5>
@@ -276,7 +276,7 @@
                                                 interfaces and user
                                                 experiences.</p>
                                             <div class="d-flex align-items-center mt-3 pt-3 border-top">
-                                                <img src="{{ asset('assets/admin/images/photo1.jpg') }}" class="rounded-circle me-2" width="32" height="32" style="object-fit: cover;" alt="User avatar">
+                                                <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}" class="rounded-circle me-2" width="32" height="32" style="object-fit: cover;" alt="User avatar">
                                                 <small class="fw-bold">Vishvjeet Patel</small>
                                             </div>
                                         </div>
@@ -285,13 +285,13 @@
                                 <div class="col-md-4">
                                     <div class="card card-editorial shadow-sm p-3 h-100">
                                         <div class="img-container rounded-3 overflow-hidden">
-                                            <img src="{{ asset('assets/admin/images/photo9.jpg') }}" class="w-100" style="height: 200px; object-fit: cover;" alt="Showcase illustration">
+                                            <img src="{{ asset('assets/admin/images/avatar-09.jpg') }}" class="w-100" style="height: 200px; object-fit: cover;" alt="Showcase illustration">
                                         </div>
                                         <div class="card-body px-1 pt-4">
                                             <h5 class="fw-extrabold">ESM Adoption</h5>
                                             <p class="text-secondary small">Why modern developers are switching to pure EcmaScript Modules for their entire asset pipeline.</p>
                                             <div class="d-flex align-items-center mt-3 pt-3 border-top">
-                                                <img src="{{ asset('assets/admin/images/photo2.jpg') }}" class="rounded-circle me-2" width="32" height="32" style="object-fit: cover;" alt="Showcase illustration">
+                                                <img src="{{ asset('assets/admin/images/avatar-02.jpg') }}" class="rounded-circle me-2" width="32" height="32" style="object-fit: cover;" alt="Showcase illustration">
                                                 <small class="fw-bold">Sarah Jenkins</small>
                                             </div>
                                         </div>
@@ -300,13 +300,13 @@
                                 <div class="col-md-4">
                                     <div class="card card-editorial shadow-sm p-3 h-100">
                                         <div class="img-container rounded-3 overflow-hidden">
-                                            <img src="{{ asset('assets/admin/images/photo8.jpg') }}" class="w-100" style="height: 200px; object-fit: cover;" alt="Showcase illustration">
+                                            <img src="{{ asset('assets/admin/images/avatar-08.jpg') }}" class="w-100" style="height: 200px; object-fit: cover;" alt="Showcase illustration">
                                         </div>
                                         <div class="card-body px-1 pt-4">
                                             <h5 class="fw-extrabold">Vite vs Webpack</h5>
                                             <p class="text-secondary small">A deep dive into why Vite 5 is becoming the standard for modern frontend applications.</p>
                                             <div class="d-flex align-items-center mt-3 pt-3 border-top">
-                                                <img src="{{ asset('assets/admin/images/photo3.jpg') }}" class="rounded-circle me-2" width="32" height="32" style="object-fit: cover;" alt="Showcase illustration">
+                                                <img src="{{ asset('assets/admin/images/avatar-03.jpg') }}" class="rounded-circle me-2" width="32" height="32" style="object-fit: cover;" alt="Showcase illustration">
                                                 <small class="fw-bold">John Doe</small>
                                             </div>
                                         </div>
@@ -319,7 +319,7 @@
                                 <div class="col-md-4">
                                     <div class="card elite-card h-100">
                                         <div class="elite-img-box">
-                                            <img src="{{ asset('assets/admin/images/photo7.jpg') }}" alt="Tech">
+                                            <img src="{{ asset('assets/admin/images/avatar-07.jpg') }}" alt="Tech">
                                         </div>
                                         <div class="elite-content shadow-lg">
                                             <span class="category-pill">Technology</span>
@@ -333,7 +333,7 @@
                                 <div class="col-md-4">
                                     <div class="card elite-card h-100">
                                         <div class="elite-img-box">
-                                            <img src="{{ asset('assets/admin/images/photo6.jpg') }}" alt="Architecture">
+                                            <img src="{{ asset('assets/admin/images/avatar-06.jpg') }}" alt="Architecture">
                                         </div>
                                         <div class="elite-content shadow-lg">
                                             <span class="category-pill">Infrastructure</span>
@@ -345,7 +345,7 @@
                                 <div class="col-md-4">
                                     <div class="card elite-card h-100">
                                         <div class="elite-img-box">
-                                            <img src="{{ asset('assets/admin/images/photo5.jpg') }}" alt="Dev">
+                                            <img src="{{ asset('assets/admin/images/avatar-05.jpg') }}" alt="Dev">
                                         </div>
                                         <div class="elite-content shadow-lg">
                                             <span class="category-pill">Security</span>
@@ -437,7 +437,7 @@
 
                                 <div class="col-md-6">
                                     <div class="card bg-dark text-white border-0 rounded-4 overflow-hidden position-relative">
-                                        <img src="{{ asset('assets/admin/images/photo4.jpg') }}" class="card-img opacity-50" style="height: 250px; object-fit: cover;" alt="Showcase illustration">
+                                        <img src="{{ asset('assets/admin/images/avatar-04.jpg') }}" class="card-img opacity-50" style="height: 250px; object-fit: cover;" alt="Showcase illustration">
                                         <div class="card-img-overlay d-flex flex-column justify-content-end p-4 bg-gradient-dark">
                                             <h5 class="card-title fw-bold text-white">Nature Overlay</h5>
                                             <p class="card-text small">This content sits over the image with a protective gradient.</p>
@@ -450,7 +450,7 @@
                                     <div class="card shadow-sm border-0 rounded-4 overflow-hidden h-100">
                                         <div class="row g-0 h-100">
                                             <div class="col-4">
-                                                <img src="{{ asset('assets/admin/images/photo3.jpg') }}" class="img-fluid h-100" style="object-fit: cover;" alt="Showcase illustration">
+                                                <img src="{{ asset('assets/admin/images/avatar-03.jpg') }}" class="img-fluid h-100" style="object-fit: cover;" alt="Showcase illustration">
                                             </div>
                                             <div class="col-8">
                                                 <div class="card-body d-flex flex-column justify-content-center h-100 p-4">

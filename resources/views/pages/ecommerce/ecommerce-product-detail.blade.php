@@ -8,17 +8,17 @@
     <div class="col-lg-5">
         <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4 sticky-top" style="top: 100px;">
             <div class="card-body p-4 text-center bg-light">
-                <img src="{{ asset('assets/admin/images/product-1.jpg') }}" class="img-fluid rounded-4 shadow-sm mb-4" alt="Main Product Image">
+                <img src="{{ asset('assets/admin/images/product-01.jpg') }}" class="img-fluid rounded-4 shadow-sm mb-4" alt="Main Product Image">
 
                 <div class="row g-2">
                     <div class="col-3">
-                        <img src="{{ asset('assets/admin/images/product-1.jpg') }}" class="img-fluid rounded-3 border border-primary border-2 p-1" alt="Thumb 1" style="cursor: pointer;">
+                        <img src="{{ asset('assets/admin/images/product-01.jpg') }}" class="img-fluid rounded-3 border border-primary border-2 p-1" alt="Thumb 1" style="cursor: pointer;">
                     </div>
                     <div class="col-3">
-                        <img src="{{ asset('assets/admin/images/product-2.jpg') }}" class="img-fluid rounded-3 border p-1 opacity-75 hover-opacity-100" alt="Thumb 2" style="cursor: pointer; transition: opacity 0.2s;">
+                        <img src="{{ asset('assets/admin/images/product-02.jpg') }}" class="img-fluid rounded-3 border p-1 opacity-75 hover-opacity-100" alt="Thumb 2" style="cursor: pointer; transition: opacity 0.2s;">
                     </div>
                     <div class="col-3">
-                        <img src="{{ asset('assets/admin/images/product-3.jpg') }}" class="img-fluid rounded-3 border p-1 opacity-75 hover-opacity-100" alt="Thumb 3" style="cursor: pointer; transition: opacity 0.2s;">
+                        <img src="{{ asset('assets/admin/images/product-03.jpg') }}" class="img-fluid rounded-3 border p-1 opacity-75 hover-opacity-100" alt="Thumb 3" style="cursor: pointer; transition: opacity 0.2s;">
                     </div>
                     <div class="col-3">
                         <div class="rounded-3 border bg-white h-100 d-flex align-items-center justify-content-center text-primary fw-bold" style="cursor: pointer;">

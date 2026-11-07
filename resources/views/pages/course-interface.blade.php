@@ -70,7 +70,7 @@
 
             <div class="instructor-profile shadow-sm">
                 <div class="avatar-glow">
-                    <img src="{{ asset('assets/admin/images/testimonials-jane.jpg') }}" alt="Instructor">
+                    <img src="{{ asset('assets/admin/images/avatar-jane.jpg') }}" alt="Instructor">
                 </div>
                 <div>
                     <h5 class="fw-bold mb-1">Devonne Wallbridge</h5>

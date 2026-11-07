@@ -102,7 +102,7 @@
                     <td class="ps-4"><input type="checkbox" class="form-check-input user-row-checkbox"></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src="/app/src/images/chat-img1.jpg" class="rounded-circle me-3" width="40" height="40" alt="Sarah Connor">
+                            <img src="/app/src/images/chat-attachment-01.jpg" class="rounded-circle me-3" width="40" height="40" alt="Sarah Connor">
                             <div>
                                 <h6 class="mb-0 fw-bold">Sarah Connor</h6>
                                 <p class="text-muted extra-small mb-0">@sarah.c</p>

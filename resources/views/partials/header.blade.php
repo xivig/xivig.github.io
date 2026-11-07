@@ -28,35 +28,35 @@
                     <div class="dropdown-menu dropdown-menu-end header__dropdown-menu shadow">
                         <h6 class="dropdown-header">Notifications</h6>
                         <a class="dropdown-item header__dropdown-item" href="#">
-                            <img src="{{ asset('assets/photo1.jpg') }}" alt="User" class="header__dropdown-img">
+                            <img src="{{ asset('assets/avatar-01.jpg') }}" alt="User" class="header__dropdown-img">
                             <div class="header__dropdown-info">
                                 <span class="header__dropdown-title">Jennifer O. Oster</span>
                                 <small class="header__dropdown-text">New patient registered</small>
                             </div>
                         </a>
                         <a class="dropdown-item header__dropdown-item" href="#">
-                            <img src="{{ asset('assets/photo2.jpg') }}" alt="User" class="header__dropdown-img">
+                            <img src="{{ asset('assets/avatar-02.jpg') }}" alt="User" class="header__dropdown-img">
                             <div class="header__dropdown-info">
                                 <span class="header__dropdown-title">Jennifer O. Oster</span>
                                 <small class="header__dropdown-text">New patient registered</small>
                             </div>
                         </a>
                         <a class="dropdown-item header__dropdown-item" href="#">
-                            <img src="{{ asset('assets/photo3.jpg') }}" alt="User" class="header__dropdown-img">
+                            <img src="{{ asset('assets/avatar-03.jpg') }}" alt="User" class="header__dropdown-img">
                             <div class="header__dropdown-info">
                                 <span class="header__dropdown-title">Jennifer O. Oster</span>
                                 <small class="header__dropdown-text">New patient registered</small>
                             </div>
                         </a>
                         <a class="dropdown-item header__dropdown-item" href="#">
-                            <img src="{{ asset('assets/photo4.jpg') }}" alt="User" class="header__dropdown-img">
+                            <img src="{{ asset('assets/avatar-04.jpg') }}" alt="User" class="header__dropdown-img">
                             <div class="header__dropdown-info">
                                 <span class="header__dropdown-title">Jennifer O. Oster</span>
                                 <small class="header__dropdown-text">New patient registered</small>
                             </div>
                         </a>
                         <a class="dropdown-item header__dropdown-item" href="#">
-                            <img src="{{ asset('assets/photo5.jpg') }}" alt="User" class="header__dropdown-img">
+                            <img src="{{ asset('assets/avatar-05.jpg') }}" alt="User" class="header__dropdown-img">
                             <div class="header__dropdown-info">
                                 <span class="header__dropdown-title">Jennifer O. Oster</span>
                                 <small class="header__dropdown-text">New patient registered</small>
@@ -68,7 +68,7 @@
 
             <div class="dropdown header__user">
                 <button class="header__user-btn" data-bs-toggle="dropdown">
-                    <img src="{{ asset('assets/photo5.jpg') }}" alt="Ross C. Lopez" class="header__user-img">
+                    <img src="{{ asset('assets/avatar-05.jpg') }}" alt="Ross C. Lopez" class="header__user-img">
                     <span class="header__user-name d-none d-sm-inline">John Doe</span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu shadow">

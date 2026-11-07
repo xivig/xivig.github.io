@@ -4,7 +4,7 @@
 
 
 <div class="lockscreen-card__avatar mx-auto mb-4">
-    <img src="{{ asset('assets/auth/images/photo1.jpg') }}" alt="User Avatar" class="rounded-circle border border-3 border-white shadow-sm" style="width: 100px; height: 100px; object-fit: cover;">
+    <img src="{{ asset('assets/auth/images/avatar-01.jpg') }}" alt="User Avatar" class="rounded-circle border border-3 border-white shadow-sm" style="width: 100px; height: 100px; object-fit: cover;">
 </div>
 
 <h3 class="auth-card__title text-center">Welcome Back</h3>

@@ -53,7 +53,7 @@
                                     <tr>
                                         <td class="py-3">
                                             <div class="d-flex align-items-center">
-                                                <img src="{{ asset('assets/admin/images/product-1.jpg') }}" class="rounded-3 me-3 border" width="60" height="60" alt="Product">
+                                                <img src="{{ asset('assets/admin/images/product-01.jpg') }}" class="rounded-3 me-3 border" width="60" height="60" alt="Product">
                                                 <div>
                                                     <h6 class="fw-bold text-dark mb-0">MacBook Pro M3 Max</h6>
                                                     <p class="text-muted extra-small mb-0">Color: Space Black</p>

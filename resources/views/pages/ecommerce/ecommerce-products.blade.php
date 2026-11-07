@@ -73,7 +73,7 @@
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="p-1 border rounded-3 bg-light me-3">
-                                <img src="{{ asset('assets/admin/images/product-2.jpg') }}" class="rounded-2" width="40" height="40" style="object-fit: cover;" alt="Informational visual">
+                                <img src="{{ asset('assets/admin/images/product-02.jpg') }}" class="rounded-2" width="40" height="40" style="object-fit: cover;" alt="Informational visual">
                             </div>
                             <div>
                                 <h6 class="mb-0 fw-bold">Air Jordan Elite</h6>
@@ -111,7 +111,7 @@
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="p-1 border rounded-3 bg-light me-3">
-                                <img src="{{ asset('assets/admin/images/product-1.jpg') }}" class="rounded-2" width="40" height="40" style="object-fit: cover;" alt="Informational visual">
+                                <img src="{{ asset('assets/admin/images/product-01.jpg') }}" class="rounded-2" width="40" height="40" style="object-fit: cover;" alt="Informational visual">
                             </div>
                             <div>
                                 <h6 class="mb-0 fw-bold">Air Jordan Elite</h6>

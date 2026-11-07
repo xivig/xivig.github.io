@@ -9,7 +9,7 @@
     <div class="col-xl-9 col-lg-8">
         <div class="card border-0 shadow-lg rounded-5 overflow-hidden h-100 bg-dark text-white position-relative">
             <div class="position-absolute top-0 start-0 w-100 h-100 opacity-25" 
-                 style="background-image: radial-gradient(circle at 20% 20%, var(--bs-primary) 0%, transparent 50%), url('/app/src/images/banner-img.png'); background-size: cover; background-position: center;"></div>
+                 style="background-image: radial-gradient(circle at 20% 20%, var(--bs-primary) 0%, transparent 50%), url('/app/src/images/dashboard-banner.png'); background-size: cover; background-position: center;"></div>
             
             <div class="card-body p-4 p-md-5 d-flex flex-column justify-content-end position-relative z-1" style="min-height: 450px;">
                 <div class="mb-4">
@@ -100,7 +100,7 @@
     <div class="col-md-6 col-lg-4">
         <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden file-item">
             <div class="position-relative overflow-hidden" style="height: 220px;">
-                <img src="{{ asset('assets/admin/images/product-2.jpg') }}" class="w-100 h-100 object-fit-cover" alt="Thumb">
+                <img src="{{ asset('assets/admin/images/product-02.jpg') }}" class="w-100 h-100 object-fit-cover" alt="Thumb">
                 <span class="badge bg-white text-primary rounded-pill px-3 py-2 fw-bold position-absolute top-0 start-0 m-3 shadow-sm extra-small">UI DESIGN</span>
             </div>
             <div class="card-body p-4 d-flex flex-column">
@@ -123,7 +123,7 @@
     <div class="col-md-6 col-lg-4">
         <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden file-item">
             <div class="position-relative overflow-hidden" style="height: 220px;">
-                <img src="{{ asset('assets/admin/images/product-1.jpg') }}" class="w-100 h-100 object-fit-cover" alt="Thumb">
+                <img src="{{ asset('assets/admin/images/product-01.jpg') }}" class="w-100 h-100 object-fit-cover" alt="Thumb">
                 <span class="badge bg-white text-success rounded-pill px-3 py-2 fw-bold position-absolute top-0 start-0 m-3 shadow-sm extra-small">DEVELOPMENT</span>
             </div>
             <div class="card-body p-4 d-flex flex-column">
@@ -146,7 +146,7 @@
     <div class="col-md-6 col-lg-4">
         <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden file-item">
             <div class="position-relative overflow-hidden" style="height: 220px;">
-                <img src="{{ asset('assets/admin/images/banner-img.png') }}" class="w-100 h-100 object-fit-cover" alt="Thumb">
+                <img src="{{ asset('assets/admin/images/dashboard-banner.png') }}" class="w-100 h-100 object-fit-cover" alt="Thumb">
                 <span class="badge bg-white text-warning rounded-pill px-3 py-2 fw-bold position-absolute top-0 start-0 m-3 shadow-sm extra-small">TECH TRENDS</span>
             </div>
             <div class="card-body p-4 d-flex flex-column">

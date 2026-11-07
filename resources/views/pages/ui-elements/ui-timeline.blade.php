@@ -46,7 +46,7 @@
                                     <div class="timeline-item left">
                                         <div class="timeline-dot shadow-sm"></div>
                                         <div class="timeline-content card overflow-hidden">
-                                            <img src="{{ asset('assets/admin/images/photo10.jpg') }}" class="card-img-top" alt="Visual">
+                                            <img src="{{ asset('assets/admin/images/avatar-10.jpg') }}" class="card-img-top" alt="Visual">
                                             <div class="card-body p-4">
                                                 <span class="timeline-date">13 Jan 2026</span>
                                                 <h5 class="fw-bold">Visual Identity</h5>

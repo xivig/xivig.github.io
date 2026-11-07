@@ -109,7 +109,7 @@
             <h5 class="fw-black mb-4">Project Team</h5>
             <div class="d-flex flex-column gap-3">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('assets/admin/images/chat-img1.jpg') }}" class="rounded-circle me-3" width="45" height="45" alt="User avatar">
+                    <img src="{{ asset('assets/admin/images/chat-attachment-01.jpg') }}" class="rounded-circle me-3" width="45" height="45" alt="User avatar">
                     <div>
                         <h6 class="mb-0 fw-bold">Sarah Connor</h6>
                         <p class="text-muted extra-small mb-0">Project Manager</p>
@@ -117,7 +117,7 @@
                     <button class="btn btn-light btn-sm rounded-circle ms-auto"><i class="bi bi-envelope"></i></button>
                 </div>
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('assets/admin/images/chat-img2.jpg') }}" class="rounded-circle me-3" width="45" height="45" alt="User avatar">
+                    <img src="{{ asset('assets/admin/images/chat-attachment-02.jpg') }}" class="rounded-circle me-3" width="45" height="45" alt="User avatar">
                     <div>
                         <h6 class="mb-0 fw-bold">John Doe</h6>
                         <p class="text-muted extra-small mb-0">UI Architect</p>

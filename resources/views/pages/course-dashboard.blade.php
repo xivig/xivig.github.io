@@ -29,7 +29,7 @@
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="course-card">
                     <div class="course-img-wrapper">
-                        <img src="{{ asset('assets/admin/images/product-4.jpg') }}" alt="Music">
+                        <img src="{{ asset('assets/admin/images/product-04.jpg') }}" alt="Music">
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span class="badge-category">Music Production</span>
@@ -54,7 +54,7 @@
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="course-card">
                     <div class="course-img-wrapper">
-                        <img src="{{ asset('assets/admin/images/product-2.jpg') }}" alt="Art">
+                        <img src="{{ asset('assets/admin/images/product-02.jpg') }}" alt="Art">
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span class="badge-category" style="color: #ea580c; background: rgba(234, 88, 12, 0.1);">Fine
@@ -76,7 +76,7 @@
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="course-card">
                     <div class="course-img-wrapper">
-                        <img src="{{ asset('assets/admin/images/product-3.jpg') }}" alt="UIUX">
+                        <img src="{{ asset('assets/admin/images/product-03.jpg') }}" alt="UIUX">
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span class="badge-category" style="color: #db2777; background: rgba(219, 39, 119, 0.1);">UI/UX

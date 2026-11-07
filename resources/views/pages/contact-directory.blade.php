@@ -20,7 +20,7 @@
                 <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
                     <div class="card-body p-4 text-center">
                         <div class="mb-3">
-                            <img src="{{ asset('assets/admin/images/photo1.jpg') }}" class="rounded-circle avatar-xl shadow-sm"
+                            <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}" class="rounded-circle avatar-xl shadow-sm"
                                 alt="Wade Wilson">
                         </div>
                         <h5 class="fw-bold mb-1">Wade Wilson</h5>
@@ -50,7 +50,7 @@
                 <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
                     <div class="card-body p-4 text-center">
                         <div class="mb-3">
-                            <img src="{{ asset('assets/admin/images/photo2.jpg') }}" class="rounded-circle avatar-xl shadow-sm"
+                            <img src="{{ asset('assets/admin/images/avatar-02.jpg') }}" class="rounded-circle avatar-xl shadow-sm"
                                 alt="Wade Wilson">
                         </div>
                         <h5 class="fw-bold mb-1">Wade Wilson</h5>
@@ -80,7 +80,7 @@
                 <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
                     <div class="card-body p-4 text-center">
                         <div class="mb-3">
-                            <img src="{{ asset('assets/admin/images/photo6.jpg') }}" class="rounded-circle avatar-xl shadow-sm"
+                            <img src="{{ asset('assets/admin/images/avatar-06.jpg') }}" class="rounded-circle avatar-xl shadow-sm"
                                 alt="Wade Wilson">
                         </div>
                         <h5 class="fw-bold mb-1">Wade Wilson</h5>
@@ -110,7 +110,7 @@
                 <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
                     <div class="card-body p-4 text-center">
                         <div class="mb-3">
-                            <img src="{{ asset('assets/admin/images/photo3.jpg') }}" class="rounded-circle avatar-xl shadow-sm"
+                            <img src="{{ asset('assets/admin/images/avatar-03.jpg') }}" class="rounded-circle avatar-xl shadow-sm"
                                 alt="Wade Wilson">
                         </div>
                         <h5 class="fw-bold mb-1">Wade Wilson</h5>
@@ -140,7 +140,7 @@
                 <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
                     <div class="card-body p-4 text-center">
                         <div class="mb-3">
-                            <img src="{{ asset('assets/admin/images/photo4.jpg') }}" class="rounded-circle avatar-xl shadow-sm"
+                            <img src="{{ asset('assets/admin/images/avatar-04.jpg') }}" class="rounded-circle avatar-xl shadow-sm"
                                 alt="Wade Wilson">
                         </div>
                         <h5 class="fw-bold mb-1">Wade Wilson</h5>
@@ -170,7 +170,7 @@
                 <div class="card h-100 shadow-sm contact-card rounded-4 overflow-hidden">
                     <div class="card-body p-4 text-center">
                         <div class="mb-3">
-                            <img src="{{ asset('assets/admin/images/photo5.jpg') }}" class="rounded-circle avatar-xl shadow-sm"
+                            <img src="{{ asset('assets/admin/images/avatar-05.jpg') }}" class="rounded-circle avatar-xl shadow-sm"
                                 alt="Wade Wilson">
                         </div>
                         <h5 class="fw-bold mb-1">Wade Wilson</h5>

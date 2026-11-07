@@ -37,13 +37,13 @@
                                     <div class="col-xl-3 col-lg-4 col-md-6 gallery-item ui">
                                         <div class="card border-0 shadow-sm rounded-4 overflow-hidden gallery-card">
                                             <div class="gallery-img-container">
-                                                <img src="{{ asset('assets/admin/images/product-img1.jpg') }}" class="img-fluid"
+                                                <img src="{{ asset('assets/admin/images/gallery-item-01.jpg') }}" class="img-fluid"
                                                     alt="Analytics">
                                                 <div class="gallery-overlay">
                                                     <div class="overlay-content text-center p-3">
                                                         <h6 class="text-white fw-bold mb-3">Analytics Dashboard</h6>
                                                         <div class="d-flex justify-content-center gap-2">
-                                                            <a href="{{ asset('assets/admin/images/product-img1.jpg') }}"
+                                                            <a href="{{ asset('assets/admin/images/gallery-item-01.jpg') }}"
                                                                 data-fancybox="xivig-gallery"
                                                                 data-caption="Analytics Dashboard UI"
                                                                 class="btn btn-light rounded-circle p-2 shadow-lg">
@@ -64,13 +64,13 @@
                                     <div class="col-xl-3 col-lg-4 col-md-6 gallery-item web">
                                         <div class="card border-0 shadow-sm rounded-4 overflow-hidden gallery-card">
                                             <div class="gallery-img-container">
-                                                <img src="{{ asset('assets/admin/images/product-img2.jpg') }}" class="img-fluid"
+                                                <img src="{{ asset('assets/admin/images/gallery-item-02.jpg') }}" class="img-fluid"
                                                     alt="E-commerce">
                                                 <div class="gallery-overlay">
                                                     <div class="overlay-content text-center p-3">
                                                         <h6 class="text-white fw-bold mb-3">E-commerce Platform</h6>
                                                         <div class="d-flex justify-content-center gap-2">
-                                                            <a href="{{ asset('assets/admin/images/product-img2.jpg') }}"
+                                                            <a href="{{ asset('assets/admin/images/gallery-item-02.jpg') }}"
                                                                 data-fancybox="xivig-gallery"
                                                                 data-caption="E-commerce Platform"
                                                                 class="btn btn-light rounded-circle p-2 shadow-lg">
@@ -90,13 +90,13 @@
                                     <div class="col-xl-3 col-lg-4 col-md-6 gallery-item ui">
                                         <div class="card border-0 shadow-sm rounded-4 overflow-hidden gallery-card">
                                             <div class="gallery-img-container">
-                                                <img src="{{ asset('assets/admin/images/product-img1.jpg') }}" class="img-fluid"
+                                                <img src="{{ asset('assets/admin/images/gallery-item-01.jpg') }}" class="img-fluid"
                                                     alt="Analytics">
                                                 <div class="gallery-overlay">
                                                     <div class="overlay-content text-center p-3">
                                                         <h6 class="text-white fw-bold mb-3">Analytics Dashboard</h6>
                                                         <div class="d-flex justify-content-center gap-2">
-                                                            <a href="{{ asset('assets/admin/images/product-img1.jpg') }}"
+                                                            <a href="{{ asset('assets/admin/images/gallery-item-01.jpg') }}"
                                                                 data-fancybox="xivig-gallery"
                                                                 data-caption="Analytics Dashboard UI"
                                                                 class="btn btn-light rounded-circle p-2 shadow-lg">
@@ -117,13 +117,13 @@
                                     <div class="col-xl-3 col-lg-4 col-md-6 gallery-item web">
                                         <div class="card border-0 shadow-sm rounded-4 overflow-hidden gallery-card">
                                             <div class="gallery-img-container">
-                                                <img src="{{ asset('assets/admin/images/product-img2.jpg') }}" class="img-fluid"
+                                                <img src="{{ asset('assets/admin/images/gallery-item-02.jpg') }}" class="img-fluid"
                                                     alt="E-commerce">
                                                 <div class="gallery-overlay">
                                                     <div class="overlay-content text-center p-3">
                                                         <h6 class="text-white fw-bold mb-3">E-commerce Platform</h6>
                                                         <div class="d-flex justify-content-center gap-2">
-                                                            <a href="{{ asset('assets/admin/images/product-img2.jpg') }}"
+                                                            <a href="{{ asset('assets/admin/images/gallery-item-02.jpg') }}"
                                                                 data-fancybox="xivig-gallery"
                                                                 data-caption="E-commerce Platform"
                                                                 class="btn btn-light rounded-circle p-2 shadow-lg">

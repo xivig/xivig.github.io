@@ -89,7 +89,7 @@ export async function fixLinks(folder) {
         content = content.replace(/(?<!ecommerce-)product-detail\.html/g, 'ecommerce-product-detail.html');
         content = content.replace(/pipeline\.html/g, 'build-history.html');
         content = content.replace(/(?<!releases\.)release\.html/g, 'releases.html');
-        content = content.replace(/(['"])\/?(?:app\/src\/images|assets)\/product\.jpg\1/g, '$1./assets/product-1.jpg$1');
+        content = content.replace(/(['"])\/?(?:app\/src\/images|assets)\/product\.jpg\1/g, '$1./assets/product-01.jpg$1');
 
         // 3. Normalize asset references:
         content = content.replace(/(href|src|data-src|poster)=(['"])(?:\.\.\/)+assets\/([^'"]*)(['"])/g, '$1=$2./assets/$3$4');

@@ -21,7 +21,7 @@
                     <div class="col-xl-9 col-lg-8">
                         <div class="img-container rounded-4 overflow-hidden border bg-light shadow-inner position-relative" 
                              style="min-height: 500px; background-image: radial-gradient(#d1d1d6 1px, transparent 1px); background-size: 20px 20px;">
-                            <img src="{{ asset('assets/admin/images/img1.jpg') }}" id="image" alt="Picture" class="img-fluid">
+                            <img src="{{ asset('assets/admin/images/cropper-sample.jpg') }}" id="image" alt="Picture" class="img-fluid">
                         </div>
                         
                         <!-- Toolbar at Bottom of Image -->

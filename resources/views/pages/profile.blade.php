@@ -11,7 +11,7 @@
                 style="height: 120px; background: var(--primary-gradient); opacity: 0.15;"></div>
             <div class="card-body text-center mt-n5">
                 <div class="position-relative d-inline-block mt-n5">
-                    <img src="{{ asset('assets/admin/images/photo1.jpg') }}" class="rounded-circle border border-4 border-white shadow-sm"
+                    <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}" class="rounded-circle border border-4 border-white shadow-sm"
                         width="120" height="120" style="object-fit: cover; background-color: var(--card-bg);" alt="User avatar">
                     <button class="btn btn-primary btn-sm rounded-circle position-absolute bottom-0 end-0 shadow-sm">
                         <i class="bi bi-camera"></i>

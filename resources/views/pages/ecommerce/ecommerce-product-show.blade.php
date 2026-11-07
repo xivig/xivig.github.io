@@ -28,7 +28,7 @@
                     <div class="gallery position-relative">
                         <!-- Main Image -->
                         <div class="bg-white rounded-4 shadow-sm border p-3 mb-3 d-flex align-items-center justify-content-center position-relative overflow-hidden" style="min-height: 400px;">
-                            <img class="img-fluid rounded-3" src="{{ asset('assets/admin/images/product-1.jpg') }}" alt="Product Main" style="object-fit: cover; max-height: 350px;">
+                            <img class="img-fluid rounded-3" src="{{ asset('assets/admin/images/product-01.jpg') }}" alt="Product Main" style="object-fit: cover; max-height: 350px;">
                             <span class="badge bg-danger position-absolute top-0 start-0 m-4 px-3 py-2 rounded-pill shadow-sm">15% OFF</span>
                         </div>
 
@@ -36,17 +36,17 @@
                         <div class="row g-2">
                             <div class="col-3">
                                 <div class="bg-white rounded-3 border border-primary border-2 p-1 cursor-pointer h-100 d-flex align-items-center justify-content-center transition-all">
-                                    <img class="img-fluid rounded-2" src="{{ asset('assets/admin/images/product-2.jpg') }}" alt="Thumb">
+                                    <img class="img-fluid rounded-2" src="{{ asset('assets/admin/images/product-02.jpg') }}" alt="Thumb">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="bg-white rounded-3 border p-1 cursor-pointer opacity-75 hover-opacity-100 h-100 d-flex align-items-center justify-content-center transition-all">
-                                    <img class="img-fluid rounded-2" src="{{ asset('assets/admin/images/product-3.jpg') }}" alt="Thumb">
+                                    <img class="img-fluid rounded-2" src="{{ asset('assets/admin/images/product-03.jpg') }}" alt="Thumb">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="bg-white rounded-3 border p-1 cursor-pointer opacity-75 hover-opacity-100 h-100 d-flex align-items-center justify-content-center transition-all">
-                                    <img class="img-fluid rounded-2" src="{{ asset('assets/admin/images/product-4.jpg') }}" alt="Thumb">
+                                    <img class="img-fluid rounded-2" src="{{ asset('assets/admin/images/product-04.jpg') }}" alt="Thumb">
                                 </div>
                             </div>
                             <div class="col-3">
@@ -169,7 +169,7 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="bg-white p-2 rounded-4 shadow-sm border">
-                                    <img src="{{ asset('assets/admin/images/product-5.jpg') }}" class="img-fluid rounded-3" alt="Performance">
+                                    <img src="{{ asset('assets/admin/images/product-05.jpg') }}" class="img-fluid rounded-3" alt="Performance">
                                 </div>
                             </div>
                         </div>
@@ -236,7 +236,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex gap-3">
-                                        <img src="{{ asset('assets/admin/images/photo1.jpg') }}" class="rounded-circle border flex-shrink-0" width="48" height="48" alt="User">
+                                        <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}" class="rounded-circle border flex-shrink-0" width="48" height="48" alt="User">
                                         <div>
                                             <div class="d-flex justify-content-between align-items-center mb-1">
                                                 <h6 class="fw-bold mb-0">Emily Chen</h6>

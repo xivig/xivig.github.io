@@ -23,7 +23,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo1.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}" alt="Profile">
                                             <div class="da-overlay">
                                                 <div class="da-social">
                                                     <ul>
@@ -43,7 +43,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo2.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-02.jpg') }}" alt="Profile">
                                             <div class="da-overlay">
                                                 <div class="da-social">
                                                     <ul>
@@ -63,7 +63,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo3.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-03.jpg') }}" alt="Profile">
                                             <div class="da-overlay">
                                                 <div class="da-social">
                                                     <ul>
@@ -83,7 +83,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo4.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-04.jpg') }}" alt="Profile">
                                             <div class="da-overlay">
                                                 <div class="da-social">
                                                     <ul>
@@ -109,7 +109,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo1.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-left">
                                                 <div class="da-social">
                                                     <ul>
@@ -130,7 +130,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo2.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-02.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-left">
                                                 <div class="da-social">
                                                     <ul>
@@ -151,7 +151,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo3.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-03.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-left">
                                                 <div class="da-social">
                                                     <ul>
@@ -172,7 +172,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo4.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-04.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-left">
                                                 <div class="da-social">
                                                     <ul>
@@ -199,7 +199,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo1.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-right">
                                                 <div class="da-social">
                                                     <ul>
@@ -220,7 +220,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo2.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-02.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-right">
                                                 <div class="da-social">
                                                     <ul>
@@ -241,7 +241,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo3.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-03.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-right">
                                                 <div class="da-social">
                                                     <ul>
@@ -262,7 +262,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo4.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-04.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-right">
                                                 <div class="da-social">
                                                     <ul>
@@ -289,7 +289,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo1.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-top">
                                                 <div class="da-social">
                                                     <ul>
@@ -310,7 +310,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo2.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-02.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-top">
                                                 <div class="da-social">
                                                     <ul>
@@ -331,7 +331,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo3.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-03.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-top">
                                                 <div class="da-social">
                                                     <ul>
@@ -352,7 +352,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo4.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-04.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-top">
                                                 <div class="da-social">
                                                     <ul>
@@ -380,7 +380,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo1.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-bottom">
                                                 <div class="da-social">
                                                     <ul>
@@ -401,7 +401,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo2.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-02.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-bottom">
                                                 <div class="da-social">
                                                     <ul>
@@ -422,7 +422,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo3.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-03.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-bottom">
                                                 <div class="da-social">
                                                     <ul>
@@ -443,7 +443,7 @@
                                 <div class="col-lg-3 col-md-6 mb-4">
                                     <div class="da-card">
                                         <div class="da-card-photo">
-                                            <img src="{{ asset('assets/admin/images/photo4.jpg') }}" alt="Profile">
+                                            <img src="{{ asset('assets/admin/images/avatar-04.jpg') }}" alt="Profile">
                                             <div class="da-overlay da-slide-bottom">
                                                 <div class="da-social">
                                                     <ul>

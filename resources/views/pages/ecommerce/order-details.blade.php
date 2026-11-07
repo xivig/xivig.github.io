@@ -33,7 +33,7 @@
                         <tr>
                             <td>
                                 <div class="d-flex">
-                                    <img src="{{ asset('assets/admin/images/product-1.jpg') }}" class="rounded-3" width="60" alt="Product">
+                                    <img src="{{ asset('assets/admin/images/product-01.jpg') }}" class="rounded-3" width="60" alt="Product">
                                     <div class="ms-3">
                                         <h6 class="fw-bold text-dark mb-1">Laptop Pro X</h6>
                                         <p class="text-muted small mb-0">SKU: LPX-1001</p>

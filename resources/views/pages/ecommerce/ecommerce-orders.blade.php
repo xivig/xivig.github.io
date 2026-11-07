@@ -146,7 +146,7 @@
                     <td><a href="#" class="fw-bold text-primary text-decoration-none">#ORD-7892</a></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('assets/admin/images/photo1.jpg') }}" class="rounded-circle me-3 border" width="40" height="40" alt="Avatar">
+                            <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}" class="rounded-circle me-3 border" width="40" height="40" alt="Avatar">
                             <div>
                                 <h6 class="fw-bold text-dark mb-0">James Peterson</h6>
                                 <p class="text-muted extra-small mb-0">j.peterson@company.com</p>

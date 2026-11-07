@@ -7,7 +7,7 @@ import{p as e}from"./vendor-core.js";var t=e=>e==null?``:String(e).replace(/&/g,
                     <p class="text-muted extra-small mb-3 text-truncate-2">${t(i||`Standard architectural workflow sprint task.`)}</p>
                     <div class="d-flex align-items-center justify-content-between pt-2 border-top border-secondary border-opacity-10">
                         <div class="d-flex align-items-center gap-2">
-                            <img src="/app/src/images/photo1.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="24" height="24" alt="Assignee">
+                            <img src="/app/src/images/avatar-01.jpg" class="rounded-circle border border-2 border-white shadow-2xs" width="24" height="24" alt="Assignee">
                             <span class="text-muted extra-small"><i class="bi bi-clock me-1"></i> Today</span>
                         </div>
                         <div class="d-flex align-items-center gap-2 text-muted extra-small">

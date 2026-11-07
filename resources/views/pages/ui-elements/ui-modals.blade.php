@@ -20,7 +20,7 @@
                     data-bs-target="#modal-large">
                     <h5 class="h4 mb-3">Large Modal</h5>
                     <div class="rounded-3 overflow-hidden shadow-sm">
-                        <img src="{{ asset('assets/admin/images/modal-img1.jpg') }}" class="img-fluid" alt="modal">
+                        <img src="{{ asset('assets/admin/images/modal-preview-01.jpg') }}" class="img-fluid" alt="modal">
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     data-bs-target="#modal-login">
                     <h5 class="h4 mb-3">Login Modal</h5>
                     <div class="rounded-3 overflow-hidden shadow-sm">
-                        <img src="{{ asset('assets/admin/images/modal-img2.jpg') }}" class="img-fluid" alt="modal">
+                        <img src="{{ asset('assets/admin/images/modal-preview-02.jpg') }}" class="img-fluid" alt="modal">
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     data-bs-target="#modal-alert">
                     <h5 class="h4 mb-3">Alert Modal</h5>
                     <div class="rounded-3 overflow-hidden shadow-sm">
-                        <img src="{{ asset('assets/admin/images/modal-img3.jpg') }}" class="img-fluid" alt="modal">
+                        <img src="{{ asset('assets/admin/images/modal-preview-03.jpg') }}" class="img-fluid" alt="modal">
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <button type="button" class="btn btn-elite-preview w-100 p-0 overflow-hidden rounded-3"
                             data-bs-toggle="modal" data-bs-target="#modalLarge">
                             <div class="overlay-text">Launch Experience</div>
-                            <img src="{{ asset('assets/admin/images/modal-img1.jpg') }}" class="img-fluid transition-base" alt="modal">
+                            <img src="{{ asset('assets/admin/images/modal-preview-01.jpg') }}" class="img-fluid transition-base" alt="modal">
                         </button>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                         <button type="button" class="btn btn-elite-preview w-100 p-0 overflow-hidden rounded-3"
                             data-bs-toggle="modal" data-bs-target="#modalSuccess">
                             <div class="overlay-text">View Result</div>
-                            <img src="{{ asset('assets/admin/images/modal-img3.jpg') }}" class="img-fluid transition-base" alt="modal">
+                            <img src="{{ asset('assets/admin/images/modal-preview-03.jpg') }}" class="img-fluid transition-base" alt="modal">
                         </button>
                     </div>
                 </div>

@@ -20,7 +20,7 @@
             <div class="card mb-4 text-center">
               <div class="card-header">Profile Picture</div>
               <div class="card-body">
-                <img class="img-account-profile mb-2" src="{{ asset('assets/admin/images/testimonials-john.jpg') }}" alt="">
+                <img class="img-account-profile mb-2" src="{{ asset('assets/admin/images/avatar-john.jpg') }}" alt="">
                 <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                 <button class="btn btn-primary rounded-pill" type="button">Upload new image</button>
               </div>

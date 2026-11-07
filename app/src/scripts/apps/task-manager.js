@@ -28,7 +28,7 @@ export const initTaskManager = () => {
             status: 'inprogress',
             priority: 'High',
             dueDate: 'Today, 5:00 PM',
-            assignee: { name: 'Alex Morgan', avatar: '/app/src/images/photo1.jpg', initials: 'AM' },
+            assignee: { name: 'Alex Morgan', avatar: '/app/src/images/avatar-01.jpg', initials: 'AM' },
             checklist: [
                 { text: 'Audit SCSS color tokens', done: true },
                 { text: 'Map dark mode surface overrides', done: true },
@@ -43,7 +43,7 @@ export const initTaskManager = () => {
             status: 'inprogress',
             priority: 'Urgent',
             dueDate: 'Tomorrow',
-            assignee: { name: 'David Kim', avatar: '/app/src/images/photo3.jpg', initials: 'DK' },
+            assignee: { name: 'David Kim', avatar: '/app/src/images/avatar-03.jpg', initials: 'DK' },
             checklist: [
                 { text: 'Generate CSR on staging cluster', done: true },
                 { text: 'Deploy wildcard cert to Cloudflare', done: false }
@@ -57,7 +57,7 @@ export const initTaskManager = () => {
             status: 'upcoming',
             priority: 'Normal',
             dueDate: 'Apr 20',
-            assignee: { name: 'Sarah Chen', avatar: '/app/src/images/photo2.jpg', initials: 'SC' },
+            assignee: { name: 'Sarah Chen', avatar: '/app/src/images/avatar-02.jpg', initials: 'SC' },
             checklist: [
                 { text: 'Verify draggable chips from side rail', done: false },
                 { text: 'Test modal create event binding', done: false }
@@ -71,7 +71,7 @@ export const initTaskManager = () => {
             status: 'completed',
             priority: 'Normal',
             dueDate: 'Yesterday',
-            assignee: { name: 'Alex Morgan', avatar: '/app/src/images/photo1.jpg', initials: 'AM' },
+            assignee: { name: 'Alex Morgan', avatar: '/app/src/images/avatar-01.jpg', initials: 'AM' },
             checklist: [
                 { text: 'Delete 38 dead image files', done: true },
                 { text: 'Verify gulp asset pipeline', done: true }
@@ -85,7 +85,7 @@ export const initTaskManager = () => {
             status: 'completed',
             priority: 'High',
             dueDate: 'Apr 12',
-            assignee: { name: 'David Kim', avatar: '/app/src/images/photo3.jpg', initials: 'DK' },
+            assignee: { name: 'David Kim', avatar: '/app/src/images/avatar-03.jpg', initials: 'DK' },
             checklist: [
                 { text: 'Replace Summernote with Quill v2', done: true },
                 { text: 'Native DataTables v2 refactor', done: true },
@@ -311,7 +311,7 @@ export const initTaskManager = () => {
                 status: 'inprogress',
                 priority: priority,
                 dueDate: dueDate,
-                assignee: { name: 'Alex Morgan', avatar: '/app/src/images/photo1.jpg', initials: 'AM' },
+                assignee: { name: 'Alex Morgan', avatar: '/app/src/images/avatar-01.jpg', initials: 'AM' },
                 checklist: [],
                 comments: 0
             };

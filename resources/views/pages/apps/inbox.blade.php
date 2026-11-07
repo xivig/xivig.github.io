@@ -69,7 +69,7 @@
                                                         class="bi bi-star mail-item__star"></i></td>
                                                 <td style="width: 200px;">
                                                     <div class="d-flex align-items-center">
-                                                        <img src="{{ asset('assets/admin/images/photo1.jpg') }}"
+                                                        <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}"
                                                             class="rounded-circle me-3" width="32" height="32" alt="User avatar">
                                                         <span class="fw-bold">Alexander Pierce</span>
                                                     </div>

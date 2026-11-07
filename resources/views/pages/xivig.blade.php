@@ -31,7 +31,7 @@
             <div class="row g-5 align-items-center">
                 <div class="col-md-5">
                     <div class="position-relative animate__animated animate__fadeInUp">
-                        <img src="{{ asset('assets/home/images/photo7.jpg') }}" class="img-fluid rounded-5 shadow-lg border border-white border-opacity-10" alt="Legacy">
+                        <img src="{{ asset('assets/home/images/avatar-07.jpg') }}" class="img-fluid rounded-5 shadow-lg border border-white border-opacity-10" alt="Legacy">
                         <div class="glass-card p-4 position-absolute bottom-0 end-0 m-3 shadow-lg d-none d-lg-block border-primary border-opacity-20" style="width: 220px;">
                             <h4 class="fw-black mb-1 text-primary">Since 2018</h4>
                             <p class="text-muted extra-small fw-bold text-uppercase tracking-widest mb-0">Innovation Leaders</p>
@@ -210,7 +210,7 @@
                 <div class="col-lg-4">
                     <div class="glass-card p-5 border-0 shadow-sm h-100 hover-up transition-all">
                         <div class="d-flex align-items-center mb-4">
-                            <img src="{{ asset('assets/home/images/photo1.jpg') }}" class="rounded-circle me-3 border border-3 border-primary border-opacity-20 shadow-sm" width="56" height="56" alt="Robert">
+                            <img src="{{ asset('assets/home/images/avatar-01.jpg') }}" class="rounded-circle me-3 border border-3 border-primary border-opacity-20 shadow-sm" width="56" height="56" alt="Robert">
                             <div>
                                 <h6 class="mb-0 fw-black text-dark">Robert Wilson</h6>
                                 <small class="text-primary fw-bold">Lead Developer</small>
@@ -222,7 +222,7 @@
                 <div class="col-lg-4">
                     <div class="glass-card p-5 border-0 shadow-sm h-100 hover-up transition-all">
                         <div class="d-flex align-items-center mb-4">
-                            <img src="{{ asset('assets/home/images/photo2.jpg') }}" class="rounded-circle me-3 border border-3 border-primary border-opacity-20 shadow-sm" width="56" height="56" alt="Sarah">
+                            <img src="{{ asset('assets/home/images/avatar-02.jpg') }}" class="rounded-circle me-3 border border-3 border-primary border-opacity-20 shadow-sm" width="56" height="56" alt="Sarah">
                             <div>
                                 <h6 class="mb-0 fw-black text-dark">Sarah Chen</h6>
                                 <small class="text-primary fw-bold">UI/UX Architect</small>
@@ -234,7 +234,7 @@
                 <div class="col-lg-4">
                     <div class="glass-card p-5 border-0 shadow-sm h-100 hover-up transition-all">
                         <div class="d-flex align-items-center mb-4">
-                            <img src="{{ asset('assets/home/images/photo3.jpg') }}" class="rounded-circle me-3 border border-3 border-primary border-opacity-20 shadow-sm" width="56" height="56" alt="James">
+                            <img src="{{ asset('assets/home/images/avatar-03.jpg') }}" class="rounded-circle me-3 border border-3 border-primary border-opacity-20 shadow-sm" width="56" height="56" alt="James">
                             <div>
                                 <h6 class="mb-0 fw-black text-dark">James Peterson</h6>
                                 <small class="text-primary fw-bold">System Engineer</small>

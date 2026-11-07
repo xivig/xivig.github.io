@@ -35,7 +35,7 @@
                                     <div
                                         class="d-flex justify-content-between align-items-center mb-5 pb-4 border-bottom border-light">
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ asset('assets/admin/images/photo1.jpg') }}"
+                                            <img src="{{ asset('assets/admin/images/avatar-01.jpg') }}"
                                                 class="rounded-circle me-3 shadow-sm border border-2 border-white"
                                                 width="50" height="50" alt="User avatar">
                                             <div>
