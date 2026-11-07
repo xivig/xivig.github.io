@@ -52,3 +52,29 @@
         border-color: rgba(255, 255, 255, 0.12) !important;
     }
 }
+
+/* Inline Action Button Group */
+#inlineActionGroup,
+.inline-editor-btn-group {
+    border-radius: 50rem !important;
+    overflow: hidden !important;
+
+    > .btn {
+        border-radius: 0;
+        transition: all 0.2s ease;
+    }
+
+    > #btnInlineEdit {
+        border-radius: 50rem !important;
+    }
+
+    > #btnInlineCancel {
+        border-top-left-radius: 50rem !important;
+        border-bottom-left-radius: 50rem !important;
+    }
+
+    > #btnInlineSave {
+        border-top-right-radius: 50rem !important;
+        border-bottom-right-radius: 50rem !important;
+    }
+}

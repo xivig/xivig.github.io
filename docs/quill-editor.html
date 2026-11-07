@@ -1038,11 +1038,14 @@
                                 <h5 class="fw-bold mb-0 text-main fs-16">Interactive Inline Editor</h5>
                                 <p class="text-muted extra-small mb-0">Click the edit button to transform the content container directly into an active editor</p>
                             </div>
-                            <div class="btn-group shadow-2xs rounded-pill overflow-hidden">
+                            <div class="btn-group shadow-2xs rounded-pill overflow-hidden inline-editor-btn-group" id="inlineActionGroup">
                                 <button id="btnInlineEdit" class="btn btn-outline-primary btn-sm px-4" type="button">
                                     <i class="bi bi-pencil-square me-1.5"></i> Edit Content
                                 </button>
-                                <button id="btnInlineSave" class="btn btn-success btn-sm px-4" type="button" style="display:none;">
+                                <button id="btnInlineCancel" class="btn btn-outline-secondary btn-sm px-3.5 d-none" type="button">
+                                    <i class="bi bi-x-circle me-1.5"></i> Cancel
+                                </button>
+                                <button id="btnInlineSave" class="btn btn-success btn-sm px-4 d-none" type="button">
                                     <i class="bi bi-check2-circle me-1.5"></i> Save Changes
                                 </button>
                             </div>
@@ -1158,11 +1161,29 @@
                     // 6. Inline Click-to-Edit Controller
                     const btnInlineEdit = document.getElementById('btnInlineEdit');
                     const btnInlineSave = document.getElementById('btnInlineSave');
+                    const btnInlineCancel = document.getElementById('btnInlineCancel');
                     const inlineBox = document.getElementById('inlineEditableContent');
                     let inlineQuill = null;
+                    let originalContent = '';
+            
+                    function teardownInlineQuill() {
+                        if (inlineQuill) {
+                            const prev = inlineBox.previousElementSibling;
+                            if (prev && prev.classList.contains('ql-toolbar')) {
+                                prev.remove();
+                            }
+                            inlineBox.querySelectorAll('.ql-clipboard, .ql-tooltip').forEach(el => el.remove());
+                            inlineBox.classList.remove('ql-container', 'ql-snow');
+                            inlineQuill = null;
+                        }
+                        btnInlineSave?.classList.add('d-none');
+                        btnInlineCancel?.classList.add('d-none');
+                        btnInlineEdit?.classList.remove('d-none');
+                    }
             
                     btnInlineEdit?.addEventListener('click', () => {
                         if (!inlineQuill && window.Quill && inlineBox) {
+                            originalContent = inlineBox.innerHTML;
                             inlineQuill = new Quill(inlineBox, {
                                 theme: 'snow',
                                 modules: {
@@ -1173,28 +1194,39 @@
                                     ]
                                 }
                             });
-                            btnInlineEdit.style.display = 'none';
-                            btnInlineSave.style.display = 'inline-block';
+                            btnInlineEdit?.classList.add('d-none');
+                            btnInlineSave?.classList.remove('d-none');
+                            btnInlineCancel?.classList.remove('d-none');
                         }
                     });
             
                     btnInlineSave?.addEventListener('click', () => {
                         if (inlineQuill) {
-                            const savedHtml = inlineQuill.root.innerHTML;
-                            const toolbar = inlineBox.previousElementSibling;
-                            if (toolbar && toolbar.classList.contains('ql-toolbar')) {
-                                toolbar.remove();
-                            }
-                            inlineBox.innerHTML = savedHtml;
-                            inlineBox.classList.remove('ql-container', 'ql-snow');
-                            inlineQuill = null;
-                            btnInlineSave.style.display = 'none';
-                            btnInlineEdit.style.display = 'inline-block';
+                            const updatedHtml = inlineQuill.root.innerHTML;
+                            teardownInlineQuill();
+                            inlineBox.innerHTML = updatedHtml;
             
-                            window.NotificationService ? window.NotificationService.success('Saved', 'Inline edits updated successfully.') : alert('Inline content saved!');
+                            if (window.Swal) {
+                                window.Swal.fire({
+                                    icon: 'success',
+                                    title: 'Saved!',
+                                    text: 'Inline edits have been successfully updated.',
+                                    confirmButtonColor: '#4059E8',
+                                    timer: 2000,
+                                    showConfirmButton: false
+                                });
+                            } else {
+                                alert('Inline edits updated successfully.');
+                            }
                         }
                     });
-                });
+            
+                    btnInlineCancel?.addEventListener('click', () => {
+                        if (inlineQuill) {
+                            teardownInlineQuill();
+                            inlineBox.innerHTML = originalContent;
+                        }
+                    });
             </script>
             
             <style>
@@ -1234,6 +1266,25 @@
                 [data-bs-theme="dark"] .ql-picker-options {
                     background-color: #111C2E !important;
                     border-color: rgba(255, 255, 255, 0.12) !important;
+                }
+            
+                #inlineActionGroup.rounded-pill {
+                    border-radius: 50rem !important;
+                    overflow: hidden !important;
+                }
+                #inlineActionGroup > .btn {
+                    border-radius: 0;
+                }
+                #inlineActionGroup > #btnInlineEdit {
+                    border-radius: 50rem !important;
+                }
+                #inlineActionGroup > #btnInlineCancel {
+                    border-top-left-radius: 50rem !important;
+                    border-bottom-left-radius: 50rem !important;
+                }
+                #inlineActionGroup > #btnInlineSave {
+                    border-top-right-radius: 50rem !important;
+                    border-bottom-right-radius: 50rem !important;
                 }
             </style>
             
