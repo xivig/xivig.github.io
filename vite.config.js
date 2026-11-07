@@ -32,8 +32,6 @@ const buildPageMap = (baseDir) => {
 
 // Dev server plugin: seamlessly routes any *.html request (flat or nested relative path) to the proper source file
 const devPageRouterPlugin = () => {
-  const pageMap = buildPageMap(__dirname);
-
   return {
     name: 'dev-page-router',
     configureServer(server) {
@@ -41,6 +39,15 @@ const devPageRouterPlugin = () => {
         const urlObj = new URL(req.url, 'http://localhost');
         const pathname = urlObj.pathname.replace(/^\//, '');
         const filename = path.basename(pathname);
+
+        // Instant redirect for legacy summernote-editor in dev server
+        if (filename === 'summernote-editor.html' || pathname.includes('summernote-editor.html')) {
+          res.writeHead(302, { Location: '/app/pages/forms/quill-editor.html' + urlObj.search });
+          res.end();
+          return;
+        }
+
+        const pageMap = buildPageMap(__dirname);
 
         // 1. Exact match on pathname
         if (pageMap.has(pathname)) {

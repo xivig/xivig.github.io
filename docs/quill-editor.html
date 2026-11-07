@@ -1064,8 +1064,8 @@
             <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
             
             <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    let quillInstance = null;
+            (function() {
+                function initQuillPage() {
                     const editorEl = document.getElementById('quill-editor') || document.getElementById('summernote-editor');
                     const visualPane = document.getElementById('visualEditorPane');
                     const sourcePane = document.getElementById('sourceCodePane');
@@ -1074,81 +1074,123 @@
                     const tabSource = document.getElementById('tabSource');
                     const wordCountBadge = document.getElementById('wordCountBadge');
                     const charCountBadge = document.getElementById('charCountBadge');
+                    const btnCopyHtml = document.getElementById('btnCopyHtml');
+                    const btnClearEditor = document.getElementById('btnClearEditor');
+                    const btnExportDoc = document.getElementById('btnExportDoc');
             
-                    // 1. Initialize Quill
-                    if (window.Quill && editorEl) {
-                        quillInstance = new Quill(editorEl, {
-                            theme: 'snow',
-                            placeholder: 'Start writing your document...',
-                            modules: {
-                                toolbar: [
-                                    [{ 'header': [1, 2, 3, false] }],
-                                    ['bold', 'italic', 'underline', 'strike'],
-                                    [{ 'color': [] }, { 'background': [] }],
-                                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                                    ['blockquote', 'code-block'],
-                                    ['link', 'image'],
-                                    ['clean']
-                                ]
-                            }
-                        });
+                    if (!editorEl) return;
             
-                        // Telemetry count update
-                        const updateCounters = () => {
-                            const text = quillInstance.getText().trim();
-                            const words = text ? text.split(/\s+/).length : 0;
-                            const chars = text.length;
-                            wordCountBadge.textContent = words;
-                            charCountBadge.textContent = chars;
-                        };
+                    let quillInstance = null;
             
-                        quillInstance.on('text-change', updateCounters);
-                        updateCounters();
+                    function updateTelemetry() {
+                        if (!quillInstance) return;
+                        const text = quillInstance.getText().trim();
+                        const words = text ? text.split(/\s+/).filter(Boolean).length : 0;
+                        const chars = text.length;
+                        if (wordCountBadge) wordCountBadge.textContent = words;
+                        if (charCountBadge) charCountBadge.textContent = chars;
                     }
             
+                    function setupMainQuill() {
+                        if (!window.Quill) return;
+            
+                        // Check if Quill was already mounted on this element
+                        if (editorEl.__quill) {
+                            quillInstance = editorEl.__quill;
+                        } else if (editorEl.classList.contains('ql-container')) {
+                            quillInstance = window.Quill.find(editorEl);
+                        }
+            
+                        if (!quillInstance) {
+                            quillInstance = new Quill(editorEl, {
+                                theme: 'snow',
+                                placeholder: 'Start writing your document...',
+                                modules: {
+                                    toolbar: [
+                                        [{ 'header': [1, 2, 3, false] }],
+                                        ['bold', 'italic', 'underline', 'strike'],
+                                        [{ 'color': [] }, { 'background': [] }],
+                                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                        ['blockquote', 'code-block'],
+                                        ['link', 'image'],
+                                        ['clean']
+                                    ]
+                                }
+                            });
+                            editorEl.__quill = quillInstance;
+                            editorEl.setAttribute('data-quill-initialized', 'true');
+                        }
+            
+                        quillInstance.on('text-change', updateTelemetry);
+                        updateTelemetry();
+                    }
+            
+                    // Wait for window.Quill if loading asynchronously
+                    function ensureQuillAndRun(callback, retries = 50) {
+                        if (window.Quill) {
+                            callback();
+                        } else if (retries > 0) {
+                            setTimeout(() => ensureQuillAndRun(callback, retries - 1), 100);
+                        }
+                    }
+            
+                    ensureQuillAndRun(setupMainQuill);
+            
                     // 2. View Switching: Visual vs Raw HTML Source
-                    tabVisual?.addEventListener('click', () => {
+                    tabVisual?.addEventListener('click', (e) => {
+                        e.preventDefault();
                         if (rawTextarea && quillInstance) {
                             quillInstance.root.innerHTML = rawTextarea.value;
+                            updateTelemetry();
                         }
-                        visualPane.classList.remove('d-none');
-                        sourcePane.classList.add('d-none');
+                        if (visualPane) visualPane.classList.remove('d-none');
+                        if (sourcePane) sourcePane.classList.add('d-none');
                         tabVisual.classList.add('active');
                         tabVisual.classList.remove('text-muted');
-                        tabSource.classList.remove('active');
-                        tabSource.classList.add('text-muted');
+                        tabSource?.classList.remove('active');
+                        tabSource?.classList.add('text-muted');
                     });
             
-                    tabSource?.addEventListener('click', () => {
+                    tabSource?.addEventListener('click', (e) => {
+                        e.preventDefault();
                         if (rawTextarea && quillInstance) {
                             rawTextarea.value = quillInstance.root.innerHTML;
                         }
-                        visualPane.classList.add('d-none');
-                        sourcePane.classList.remove('d-none');
+                        if (visualPane) visualPane.classList.add('d-none');
+                        if (sourcePane) sourcePane.classList.remove('d-none');
                         tabSource.classList.add('active');
                         tabSource.classList.remove('text-muted');
-                        tabVisual.classList.remove('active');
-                        tabVisual.classList.add('text-muted');
+                        tabVisual?.classList.remove('active');
+                        tabVisual?.classList.add('text-muted');
                     });
             
                     // 3. Copy HTML Action
-                    document.getElementById('btnCopyHtml')?.addEventListener('click', () => {
+                    btnCopyHtml?.addEventListener('click', () => {
                         const html = quillInstance ? quillInstance.root.innerHTML : (rawTextarea ? rawTextarea.value : '');
-                        navigator.clipboard.writeText(html).then(() => {
-                            window.NotificationService ? window.NotificationService.success('Copied!', 'Raw HTML has been copied to your clipboard.') : alert('HTML copied to clipboard!');
-                        });
+                        if (navigator.clipboard) {
+                            navigator.clipboard.writeText(html).then(() => {
+                                if (window.NotificationService) {
+                                    window.NotificationService.success('Copied!', 'Raw HTML has been copied to your clipboard.');
+                                } else if (window.Swal) {
+                                    window.Swal.fire({ icon: 'success', title: 'Copied!', text: 'Raw HTML has been copied to your clipboard.', timer: 1500, showConfirmButton: false });
+                                } else {
+                                    alert('HTML copied to clipboard!');
+                                }
+                            });
+                        }
                     });
             
                     // 4. Clear Content Action
-                    document.getElementById('btnClearEditor')?.addEventListener('click', () => {
+                    btnClearEditor?.addEventListener('click', () => {
                         if (confirm('Clear all editor content?')) {
                             if (quillInstance) quillInstance.setText('');
                             if (rawTextarea) rawTextarea.value = '';
+                            updateTelemetry();
                         }
                     });
             
                     // 5. Export HTML File Action
-                    document.getElementById('btnExportDoc')?.addEventListener('click', () => {
+                    btnExportDoc?.addEventListener('click', () => {
                         const html = quillInstance ? quillInstance.root.innerHTML : '';
                         const blob = new Blob([html], { type: 'text/html' });
                         const a = document.createElement('a');
@@ -1182,22 +1224,24 @@
                     }
             
                     btnInlineEdit?.addEventListener('click', () => {
-                        if (!inlineQuill && window.Quill && inlineBox) {
-                            originalContent = inlineBox.innerHTML;
-                            inlineQuill = new Quill(inlineBox, {
-                                theme: 'snow',
-                                modules: {
-                                    toolbar: [
-                                        ['bold', 'italic', 'underline'],
-                                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                                        ['clean']
-                                    ]
-                                }
-                            });
-                            btnInlineEdit?.classList.add('d-none');
-                            btnInlineSave?.classList.remove('d-none');
-                            btnInlineCancel?.classList.remove('d-none');
-                        }
+                        ensureQuillAndRun(() => {
+                            if (!inlineQuill && inlineBox) {
+                                originalContent = inlineBox.innerHTML;
+                                inlineQuill = new Quill(inlineBox, {
+                                    theme: 'snow',
+                                    modules: {
+                                        toolbar: [
+                                            ['bold', 'italic', 'underline'],
+                                            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                            ['clean']
+                                        ]
+                                    }
+                                });
+                                btnInlineEdit?.classList.add('d-none');
+                                btnInlineSave?.classList.remove('d-none');
+                                btnInlineCancel?.classList.remove('d-none');
+                            }
+                        });
                     });
             
                     btnInlineSave?.addEventListener('click', () => {
@@ -1215,6 +1259,8 @@
                                     timer: 2000,
                                     showConfirmButton: false
                                 });
+                            } else if (window.NotificationService) {
+                                window.NotificationService.success('Saved', 'Inline edits updated successfully.');
                             } else {
                                 alert('Inline edits updated successfully.');
                             }
@@ -1227,6 +1273,14 @@
                             inlineBox.innerHTML = originalContent;
                         }
                     });
+                }
+            
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', initQuillPage);
+                } else {
+                    initQuillPage();
+                }
+            })();
             </script>
             
             <style>

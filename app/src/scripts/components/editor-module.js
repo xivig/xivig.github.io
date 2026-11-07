@@ -85,6 +85,7 @@ export default class EditorModule {
         });
 
         this.element.setAttribute('data-quill-initialized', 'true');
+        this.element.__quill = this.instance;
 
         // Optional change listener callback
         if (typeof this.options.onChange === 'function') {
