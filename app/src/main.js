@@ -27,6 +27,8 @@ import { initSidebar } from './scripts/core/sidebar.js';
 import { initSettings } from './scripts/core/settings.js';
 import { initMobileController } from './scripts/core/mobile-controller.js';
 import { NotificationBadge } from './scripts/components/notification-badge.js';
+import { apiClient } from './scripts/core/api-client.js';
+window.xivigApi = apiClient;
 
 // Global reference for legacy notifications
 window.NotificationService = NotificationService;

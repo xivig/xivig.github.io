@@ -23,7 +23,7 @@ export const initDashboard = () => {
                     enabled: false
                 }
             },
-            colors: ['#4F6BFF', '#20C5D7'],
+            colors: ['#4059E8', '#20C5D7'],
             fill: {
                 type: 'gradient',
                 gradient: {
@@ -135,7 +135,7 @@ export const initDashboard = () => {
                     borderRadius: 3
                 }
             },
-            colors: ['#4F6BFF'],
+            colors: ['#4059E8'],
             tooltip: {
                 enabled: false
             }
@@ -240,7 +240,7 @@ function renderHealthChart() {
                 }
             }
         },
-        colors: ['#4F6BFF', '#20C5D7', '#EF4444', '#10B981'],
+        colors: ['#4059E8', '#20C5D7', '#EF4444', '#10B981'],
         labels: ['CPU Load', 'Memory', 'Error Rate', 'Cluster SLA'],
         stroke: {
             lineCap: 'round'

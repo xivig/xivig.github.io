@@ -76,7 +76,7 @@ const ChartManager = (() => {
                     datasets: [{
                         label: 'Gross Sales ($k)',
                         data: [28, 45, 36, 62, 54, 78],
-                        backgroundColor: '#4F6BFF',
+                        backgroundColor: '#4059E8',
                         borderRadius: 6
                     }]
                 }
@@ -103,8 +103,8 @@ const ChartManager = (() => {
                 data: {
                     labels: ['Q1', 'Q2', 'Q3', 'Q4'],
                     datasets: [
-                        { label: 'FY2025 Targets', data: [45, 60, 55, 80], backgroundColor: 'rgba(79, 107, 255, 0.4)', borderRadius: 6 },
-                        { label: 'FY2026 Actuals', data: [58, 82, 74, 98], backgroundColor: '#4F6BFF', borderRadius: 6 }
+                        { label: 'FY2025 Targets', data: [45, 60, 55, 80], backgroundColor: 'rgba(64, 89, 232, 0.4)', borderRadius: 6 },
+                        { label: 'FY2026 Actuals', data: [58, 82, 74, 98], backgroundColor: '#4059E8', borderRadius: 6 }
                     ]
                 }
             });
@@ -121,7 +121,7 @@ const ChartManager = (() => {
                 data: {
                     labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
                     datasets: [
-                        { label: 'Direct Edge', data: [18, 24, 15, 29, 35, 20], backgroundColor: '#4F6BFF', borderRadius: 4 },
+                        { label: 'Direct Edge', data: [18, 24, 15, 29, 35, 20], backgroundColor: '#4059E8', borderRadius: 4 },
                         { label: 'CDN Cache', data: [28, 35, 30, 42, 48, 32], backgroundColor: '#06B6D4', borderRadius: 4 },
                         { label: 'Gateway API', data: [12, 18, 14, 20, 22, 15], backgroundColor: '#F59E0B', borderRadius: 4 }
                     ]
@@ -153,8 +153,8 @@ const ChartManager = (() => {
                     datasets: [{
                         label: 'ARR Acceleration ($k)',
                         data: [25, 42, 38, 65, 78, 105],
-                        borderColor: '#4F6BFF',
-                        backgroundColor: 'rgba(79, 107, 255, 0.15)',
+                        borderColor: '#4059E8',
+                        backgroundColor: 'rgba(64, 89, 232, 0.15)',
                         fill: true,
                         tension: 0.4,
                         borderWidth: 3,

@@ -59,7 +59,7 @@ export const initAdminSettings = async () => {
         const currentBranding = JSON.parse(localStorage.getItem('xivig_branding')) || {};
         const logoSrc = localStorage.getItem('xivig_logo') || '/app/src/images/logo.png';
         const brandTitle = currentBranding.title || 'XIVIG ELITE OS';
-        const brandAccent = currentBranding.accent || '#4F6BFF';
+        const brandAccent = currentBranding.accent || '#4059E8';
 
         let html = `
             <div class="sidebar-mini shadow-lg" style="width: 100%; height: 100%; background: #0c1322; color: #fff; border-radius: 14px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.08);">

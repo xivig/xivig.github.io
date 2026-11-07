@@ -116,7 +116,7 @@
 
         &:focus-within {
             border-color: var(--elite-primary);
-            box-shadow: 0 0 0 4px rgba(79, 107, 255, 0.15);
+            box-shadow: 0 0 0 4px rgba(64, 89, 232, 0.15);
         }
 
         input {
@@ -141,7 +141,7 @@
             font-size: 0.92rem;
             transition: all 0.3s ease;
             white-space: nowrap;
-            box-shadow: 0 4px 14px rgba(79, 107, 255, 0.35);
+            box-shadow: 0 4px 14px rgba(64, 89, 232, 0.35);
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -149,7 +149,7 @@
             &:hover { 
                 background: var(--elite-dark);
                 transform: translateY(-1px);
-                box-shadow: 0 8px 22px rgba(79, 107, 255, 0.45);
+                box-shadow: 0 8px 22px rgba(64, 89, 232, 0.45);
             }
         }
     }

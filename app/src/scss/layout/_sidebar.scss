@@ -58,8 +58,8 @@
         letter-spacing: 0.06em;
         padding: 2px 7px;
         border-radius: var(--xv-radius-pill, 999px);
-        background: rgba(79, 107, 255, 0.2);
-        border: 1px solid rgba(79, 107, 255, 0.35);
+        background: rgba(64, 89, 232, 0.2);
+        border: 1px solid rgba(64, 89, 232, 0.35);
         color: #C7D2FE !important;
         line-height: 1.2;
     }
@@ -106,7 +106,7 @@
 
         // Active State (3px left marker + indigo-tinted fill)
         &.active > .sidebar__link {
-            background-color: var(--xv-sidebar-active, rgba(79, 107, 255, 0.14));
+            background-color: var(--xv-sidebar-active, rgba(64, 89, 232, 0.14));
             color: #FFFFFF !important;
             font-weight: 600;
 
@@ -115,7 +115,7 @@
             }
 
             .sidebar__icon {
-                color: var(--xv-brand, #4F6BFF);
+                color: var(--xv-brand, #4059E8);
             }
         }
 
@@ -162,7 +162,7 @@
             transform: translateY(-50%) scaleY(0);
             width: 3px;
             height: 20px;
-            background: var(--xv-brand, #4F6BFF);
+            background: var(--xv-brand, #4059E8);
             border-radius: 0 3px 3px 0;
             transition: var(--transition-elite);
             z-index: 2;
@@ -190,7 +190,7 @@
             color: #FFFFFF;
 
             .sidebar__icon {
-                color: var(--xv-brand, #4F6BFF);
+                color: var(--xv-brand, #4059E8);
             }
         }
     }
@@ -235,12 +235,12 @@
         margin: 1px 0;
 
         &.active > .sidebar__sub-link {
-            color: var(--xv-brand, #4F6BFF) !important;
+            color: var(--xv-brand, #4059E8) !important;
             font-weight: 600;
-            background-color: rgba(79, 107, 255, 0.08);
+            background-color: rgba(64, 89, 232, 0.08);
 
             &::before {
-                background-color: var(--xv-brand, #4F6BFF);
+                background-color: var(--xv-brand, #4059E8);
                 opacity: 1;
                 transform: scale(1.2);
             }
@@ -312,7 +312,7 @@
             background-color: rgba(255, 255, 255, 0.04);
 
             &::before {
-                background-color: var(--xv-brand, #4F6BFF);
+                background-color: var(--xv-brand, #4059E8);
                 opacity: 1;
             }
         }
@@ -322,8 +322,8 @@
         transition: var(--transition-elite);
 
         .btn:hover {
-            background: rgba(79, 107, 255, 0.35) !important;
-            border-color: rgba(79, 107, 255, 0.65) !important;
+            background: rgba(64, 89, 232, 0.35) !important;
+            border-color: rgba(64, 89, 232, 0.65) !important;
             transform: translateY(-1px);
         }
     }
@@ -397,27 +397,27 @@ body[data-sidebar="light"] .sidebar {
             color: #101B33 !important;
 
             .sidebar__icon {
-                color: var(--xv-brand, #4F6BFF) !important;
+                color: var(--xv-brand, #4059E8) !important;
             }
         }
 
         &--active,
         &.active {
-            background: rgba(79, 107, 255, 0.09) !important;
-            color: var(--xv-brand, #4F6BFF) !important;
+            background: rgba(64, 89, 232, 0.09) !important;
+            color: var(--xv-brand, #4059E8) !important;
 
             .sidebar__icon {
-                color: var(--xv-brand, #4F6BFF) !important;
+                color: var(--xv-brand, #4059E8) !important;
             }
         }
     }
 
     .sidebar__item.active > .sidebar__link {
-        background: rgba(79, 107, 255, 0.09) !important;
-        color: var(--xv-brand, #4F6BFF) !important;
+        background: rgba(64, 89, 232, 0.09) !important;
+        color: var(--xv-brand, #4059E8) !important;
 
         .sidebar__icon {
-            color: var(--xv-brand, #4F6BFF) !important;
+            color: var(--xv-brand, #4059E8) !important;
         }
     }
 
@@ -425,12 +425,12 @@ body[data-sidebar="light"] .sidebar {
         color: #64748B !important;
 
         &:hover {
-            color: var(--xv-brand, #4F6BFF) !important;
+            color: var(--xv-brand, #4059E8) !important;
         }
 
         &--active,
         &.active {
-            color: var(--xv-brand, #4F6BFF) !important;
+            color: var(--xv-brand, #4059E8) !important;
             font-weight: 700;
         }
     }
@@ -455,7 +455,7 @@ body:not([data-menu-icon]) {
     .sidebar__item.open > .sidebar__link::after,
     .sidebar__sub-item.open > .sidebar__sub-link::after {
         transform: translateY(-50%) rotate(45deg) !important;
-        color: var(--xv-brand, #4F6BFF) !important;
+        color: var(--xv-brand, #4059E8) !important;
     }
 }
 
@@ -469,6 +469,6 @@ body:not([data-menu-icon]) {
     .sidebar__item.open > .sidebar__link::after,
     .sidebar__sub-item.open > .sidebar__sub-link::after {
         transform: translateY(-50%) rotate(90deg) !important;
-        color: var(--xv-brand, #4F6BFF) !important;
+        color: var(--xv-brand, #4059E8) !important;
     }
 }

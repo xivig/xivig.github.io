@@ -16,7 +16,10 @@
     "preview:docs": "vite preview --outDir docs",
     "production": "node tasks/build.js && vite preview",
     "docs": "gulp docs",
-    "images": "gulp optimizeImages"
+    "docs:preview": "vite preview --outDir docs",
+    "test": "node --test tasks/tests/*.test.js",
+    "images": "gulp optimizeImages",
+    "build:laravel": "node tasks/export-laravel.js"
   },
   "devDependencies": {
     "browser-sync": "^3.0.4",

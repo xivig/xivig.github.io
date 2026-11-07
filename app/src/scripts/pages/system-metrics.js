@@ -46,7 +46,7 @@ export const initSystemMetrics = () => {
         return chart;
     };
 
-    createRadial(cpuEl, 24.5, '#4F6BFF');
+    createRadial(cpuEl, 24.5, '#4059E8');
     createRadial(ramEl, 38, '#F59E0B');
     createRadial(netEl, 12, '#10B981');
     createRadial(diskEl, 46, '#8B5CF6');
@@ -80,7 +80,7 @@ export const initSystemMetrics = () => {
                 background: 'transparent',
                 fontFamily: 'inherit'
             },
-            colors: ['#4F6BFF'],
+            colors: ['#4059E8'],
             fill: {
                 type: 'gradient',
                 gradient: {

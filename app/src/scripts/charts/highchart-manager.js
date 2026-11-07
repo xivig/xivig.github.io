@@ -53,7 +53,7 @@ const HighchartManager = {
                 legend: {
                     itemStyle: { color: textColor }
                 },
-                colors: ['#4F6BFF', '#10B981', '#F59E0B'],
+                colors: ['#4059E8', '#10B981', '#F59E0B'],
                 series: [
                     { name: 'us-east-1 (N. Virginia)', data: [18.2, 22.4, 25.1, 28.6, 32.4, 38.5, 42.1] },
                     { name: 'eu-west-1 (Ireland)', data: [14.5, 17.2, 19.8, 22.1, 25.4, 29.8, 33.2] },
@@ -93,7 +93,7 @@ const HighchartManager = {
                 legend: {
                     itemStyle: { color: textColor }
                 },
-                colors: ['#4F6BFF', '#8B5CF6'],
+                colors: ['#4059E8', '#8B5CF6'],
                 plotOptions: {
                     areaspline: {
                         fillOpacity: 0.25

@@ -27,7 +27,7 @@ export const initHelpSupport = () => {
                 },
                 {
                     q: 'Where are the Atelier design tokens defined and customized?',
-                    a: 'Design tokens are located in <code>app/src/scss/base/_variables.scss</code> and exposed via CSS variables (e.g. <code>--xv-brand: #4F6BFF</code>). All components utilize these tokens for automatic dark and light theme adaptability.',
+                    a: 'Design tokens are located in <code>app/src/scss/base/_variables.scss</code> and exposed via CSS variables (e.g. <code>--xv-brand: #4059E8</code>). All components utilize these tokens for automatic dark and light theme adaptability.',
                     badge: 'Theming'
                 },
                 {

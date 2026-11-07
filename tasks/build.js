@@ -182,6 +182,19 @@ async function refineAndExport() {
     await fsp.writeFile(path.join(docsPath, ".nojekyll"), "");
 }
 
+async function copyDocumentationSite() {
+    console.log('📚 [6.5/8] Publishing project documentation...');
+    const source = path.join(rootDir, 'documentation');
+    const destination = path.join(rootDir, 'docs', 'documentation');
+    if (!fs.existsSync(source)) {
+        console.warn('   (Documentation source folder not found; skipping)');
+        return;
+    }
+    await fsp.rm(destination, { recursive: true, force: true });
+    await fsp.mkdir(destination, { recursive: true });
+    await fsp.cp(source, destination, { recursive: true, force: true });
+}
+
 async function runQualityGate() {
     console.log('🛡️  [7/8] Running automated Quality Gate (Link & Asset Verification)...');
     const distResult = await validateDirectory(path.join(rootDir, 'dist'), { checkAssets: true });
@@ -229,9 +242,9 @@ export async function runFullBuild() {
         await compileVite();
         await optimizeImages();
         await flattenHtmlPages();
-        // Vendor assets are compiled & bundled directly into assets/ by Vite.
-        // await copyVendorPackages(); // Pruned 11,000+ unused redundant package files
+        await copyVendorPackages();
         await refineAndExport();
+        await copyDocumentationSite();
         const { htmlCount } = await runQualityGate();
 
         const duration = ((Date.now() - startTime) / 1000).toFixed(2);

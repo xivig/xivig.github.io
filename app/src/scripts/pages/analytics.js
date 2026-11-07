@@ -50,7 +50,7 @@ export const initAnalyticsOverview = () => {
                 fontFamily: 'inherit',
                 animations: { enabled: true, easing: 'easeinout', speed: 600 }
             },
-            colors: ['#4F6BFF', '#10B981'],
+            colors: ['#4059E8', '#10B981'],
             fill: {
                 type: 'gradient',
                 gradient: {
@@ -125,7 +125,7 @@ export const initAnalyticsOverview = () => {
                 fontFamily: 'inherit'
             },
             labels: ['Enterprise Architects', 'Full-Stack Developers', 'Systems Admins'],
-            colors: ['#4F6BFF', '#20C5D7', '#8B5CF6'],
+            colors: ['#4059E8', '#20C5D7', '#8B5CF6'],
             legend: {
                 position: 'bottom',
                 fontSize: '12px',
@@ -188,7 +188,7 @@ export const initAnalyticsOverview = () => {
                     barHeight: '55%'
                 }
             },
-            colors: ['#4F6BFF'],
+            colors: ['#4059E8'],
             dataLabels: { enabled: false },
             xaxis: {
                 categories: ['Cloud Run', 'Edge CDN', 'Kubernetes', 'Storage S3', 'Postgres'],

@@ -13,7 +13,7 @@ import path from 'path';
 export async function validateDirectory(dirPath, options = {}) {
     const rootDir = path.resolve(dirPath);
     if (!fs.existsSync(rootDir)) {
-        return { totalHtml: 0, brokenLinks: [], brokenAssets: [] };
+        return { totalHtml: 0, brokenLinks: [], brokenAssets: [], missingAlt: [], unsecuredLinks: [] };
     }
 
     async function walk(dir) {

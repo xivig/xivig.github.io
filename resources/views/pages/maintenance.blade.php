@@ -163,7 +163,7 @@
 
     .subscribe-group:focus-within {
         border-color: var(--elite-primary);
-        box-shadow: 0 0 0 4px var(--xivig-primary-glow, rgba(79, 107, 255, 0.15));
+        box-shadow: 0 0 0 4px var(--xivig-primary-glow, rgba(64, 89, 232, 0.15));
     }
 
     .subscribe-group input {
@@ -193,7 +193,7 @@
         font-size: 0.92rem;
         cursor: pointer;
         transition: var(--transition-elite);
-        box-shadow: 0 4px 14px rgba(79, 107, 255, 0.35);
+        box-shadow: 0 4px 14px rgba(64, 89, 232, 0.35);
         white-space: nowrap;
         display: inline-flex;
         align-items: center;
@@ -202,7 +202,7 @@
 
     .subscribe-group button:hover {
         transform: translateY(-1px);
-        box-shadow: 0 8px 22px rgba(79, 107, 255, 0.45);
+        box-shadow: 0 8px 22px rgba(64, 89, 232, 0.45);
         filter: brightness(1.08);
     }
 

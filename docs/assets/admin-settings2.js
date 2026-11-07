@@ -12,7 +12,7 @@ import{p as e}from"./vendor-core.js";import{t}from"./sweet-alert.js";var n=async
                 <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3 mt-2 add-nested-submenu-item ${i?``:`d-none`}">
                     <i class="bi bi-plus-lg me-1"></i> Add Level 2 Item
                 </button>
-            `,e.appendChild(r),i&&a(r.querySelector(`.nested-submenu-container`),t.submenu)})},o=()=>{let e=document.getElementById(`submenu-list`);e&&a(e,i)},s=()=>{let e=document.getElementById(`sidebar-live-preview`);if(!e)return;let t=JSON.parse(localStorage.getItem(`xivig_branding`))||{},n=localStorage.getItem(`xivig_logo`)||`/app/src/images/logo.png`,i=t.title||`XIVIG ELITE OS`,a=t.accent||`#4F6BFF`;e.innerHTML=`
+            `,e.appendChild(r),i&&a(r.querySelector(`.nested-submenu-container`),t.submenu)})},o=()=>{let e=document.getElementById(`submenu-list`);e&&a(e,i)},s=()=>{let e=document.getElementById(`sidebar-live-preview`);if(!e)return;let t=JSON.parse(localStorage.getItem(`xivig_branding`))||{},n=localStorage.getItem(`xivig_logo`)||`/app/src/images/logo.png`,i=t.title||`XIVIG ELITE OS`,a=t.accent||`#4059E8`;e.innerHTML=`
             <div class="sidebar-mini shadow-lg" style="width: 100%; height: 100%; background: #0c1322; color: #fff; border-radius: 14px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.08);">
                 <div class="p-3 border-bottom border-white border-opacity-10 d-flex align-items-center gap-2">
                     <img src="${n}" style="width: 24px; height: 24px; object-fit: contain;">

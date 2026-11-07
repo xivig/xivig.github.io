@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-11-07T18:45:01.975Z",
+  "version": "1.0.0",
+  "structure": {
+    "admin": {
+      "css": "/assets/admin/css/",
+      "js": "/assets/admin/js/"
+    },
+    "home": {
+      "css": "/assets/home/css/",
+      "js": "/assets/home/js/"
+    },
+    "auth": {
+      "css": "/assets/auth/css/",
+      "js": "/assets/auth/js/"
+    },
+    "images": "/images/"
+  }
+}

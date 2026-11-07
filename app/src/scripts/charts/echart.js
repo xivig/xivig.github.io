@@ -56,7 +56,7 @@ export const EChartModule = (() => {
                     splitLine: { lineStyle: { color: theme.splitLine } }
                 },
                 series: [
-                    { name: 'Gross Sales', type: 'bar', data: [15, 28, 42, 22, 25, 34, 45, 38, 28, 52, 38, 44], itemStyle: { color: '#4F6BFF', borderRadius: [4, 4, 0, 0] } },
+                    { name: 'Gross Sales', type: 'bar', data: [15, 28, 42, 22, 25, 34, 45, 38, 28, 52, 38, 44], itemStyle: { color: '#4059E8', borderRadius: [4, 4, 0, 0] } },
                     { name: 'Net Revenue', type: 'bar', data: [22, 36, 52, 30, 32, 44, 56, 48, 38, 62, 46, 54], itemStyle: { color: '#10B981', borderRadius: [4, 4, 0, 0] } },
                     { name: 'Net Margin', type: 'bar', data: [12, 18, 26, 16, 18, 24, 30, 25, 20, 34, 25, 30], itemStyle: { color: '#F59E0B', borderRadius: [4, 4, 0, 0] } }
                 ]
@@ -77,7 +77,7 @@ export const EChartModule = (() => {
                     radius: radius,
                     center: ['50%', '45%'],
                     data: [
-                        { value: 1240, name: 'Direct Ingress', itemStyle: { color: '#4F6BFF' } },
+                        { value: 1240, name: 'Direct Ingress', itemStyle: { color: '#4059E8' } },
                         { value: 890, name: 'Cloud CDN', itemStyle: { color: '#10B981' } },
                         { value: 650, name: 'API Gateway', itemStyle: { color: '#06B6D4' } },
                         { value: 520, name: 'Search Web', itemStyle: { color: '#8B5CF6' } },
@@ -111,7 +111,7 @@ export const EChartModule = (() => {
                     roseType: 'area',
                     itemStyle: { borderRadius: 6 },
                     data: [
-                        { value: 1420, name: 'Desktop Clients', itemStyle: { color: '#4F6BFF' } },
+                        { value: 1420, name: 'Desktop Clients', itemStyle: { color: '#4059E8' } },
                         { value: 980, name: 'Mobile Workstations', itemStyle: { color: '#10B981' } },
                         { value: 640, name: 'Tablets / Touch', itemStyle: { color: '#F59E0B' } },
                         { value: 410, name: 'Embedded Edge', itemStyle: { color: '#8B5CF6' } }

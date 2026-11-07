@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Official XIVIG Elite documentation: setup, architecture, development, customization, build, and GitHub Pages deployment.">
+  <meta name="theme-color" content="#0b1020">
+  <title>Documentation · XIVIG Elite</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="XIVIG documentation home"><span class="brand-mark">X</span><span>XIVIG <small>DOCUMENTATION</small></span></a>
+    <div class="top-actions"><span class="version">ELITE · DEVELOPER GUIDE</span><a class="github-link" href="https://github.com/xivig/xivig.github.io" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </header>
+  <div class="shell" id="top">
+    <aside class="sidebar" aria-label="Documentation navigation">
+      <label class="search-label" for="doc-search">SEARCH DOCUMENTATION</label>
+      <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="doc-search" type="search" placeholder="Search guides…" autocomplete="off"><kbd>/</kbd></div>
+      <nav id="side-nav">
+        <p class="nav-heading">GET STARTED</p>
+        <a class="nav-link active" href="#overview">Overview</a>
+        <a class="nav-link" href="#quick-start">Quick start</a>
+        <a class="nav-link" href="#requirements">Requirements</a>
+        <p class="nav-heading">DEVELOPMENT</p>
+        <a class="nav-link" href="#project-structure">Project structure</a>
+        <a class="nav-link" href="#development">Development workflow</a>
+        <a class="nav-link" href="#pages">Pages & templates</a>
+        <a class="nav-link" href="#styles">Styles & design tokens</a>
+        <a class="nav-link" href="#javascript">JavaScript</a>
+        <a class="nav-link" href="#assets">Assets & plugins</a>
+        <p class="nav-heading">BUILD & DEPLOY</p>
+        <a class="nav-link" href="#build">Production build</a>
+        <a class="nav-link" href="#github-pages">GitHub Pages deployment</a>
+        <a class="nav-link" href="#quality">Quality checks</a>
+        <p class="nav-heading">INTEGRATION</p>
+        <a class="nav-link" href="#laravel">Laravel integration</a>
+        <a class="nav-link" href="#security">Security notes</a>
+        <p class="nav-heading">REFERENCE</p>
+        <a class="nav-link" href="#troubleshooting">Troubleshooting</a>
+        <a class="nav-link" href="#contributing">Contributing</a>
+      </nav>
+      <div class="sidebar-foot">Built for the XIVIG Elite project<br><span>Documentation source: <code>/documentation</code></span></div>
+    </aside>
+    <main id="content" class="content">
+      <div class="breadcrumbs">Documentation <span>/</span> Get started</div>
+      <section class="hero" id="overview" data-title="Overview">
+        <div class="eyebrow"><span class="pulse"></span> OFFICIAL PROJECT GUIDE</div>
+        <h1>Build with <span>XIVIG Elite.</span></h1>
+        <p class="hero-copy">Everything you need to install, understand, customize, build, and deploy the XIVIG admin interface.</p>
+        <div class="hero-actions"><a class="button primary" href="#quick-start">Get started <span>→</span></a><a class="button secondary" href="https://github.com/xivig/xivig.github.io" target="_blank" rel="noopener noreferrer">View source ↗</a></div>
+        <div class="hero-meta"><span>Vite 8</span><i></i><span>Bootstrap 5.3</span><i></i><span>Sass</span><i></i><span>Handlebars</span></div>
+      </section>
+      <div class="notice"><span class="notice-icon">✦</span><div><strong>Frontend template, not a complete backend.</strong><p>This repository provides the UI, demo interactions, and build pipeline. Authentication, authorization, persistent business data, and secure uploads must be connected to a real backend before production use.</p></div></div>
+
+      <section class="doc-section" id="quick-start" data-title="Quick start">
+        <div class="section-kicker">01 — GET STARTED</div><h2>Quick start</h2><p>Run these commands from the repository root to start working locally.</p>
+        <div class="code-head"><span>TERMINAL</span><button class="copy" data-copy="git clone https://github.com/xivig/xivig.github.io.git\ncd xivig.github.io\nnpm install\nnpm run dev">Copy</button></div>
+        <pre><code>git clone https://github.com/xivig/xivig.github.io.git
+cd xivig.github.io
+npm install
+npm run dev</code></pre>
+        <p>Open the local URL printed by Vite in your terminal. Do not assume a fixed port: Vite may select the next available port if its default is occupied.</p>
+        <div class="steps"><div><b>1</b><span><strong>Clone</strong><small>Get the source repository.</small></span></div><div><b>2</b><span><strong>Install</strong><small>Install dependencies with npm.</small></span></div><div><b>3</b><span><strong>Develop</strong><small>Run Vite and edit source files.</small></span></div></div>
+      </section>
+      <section class="doc-section" id="requirements" data-title="Requirements"><div class="section-kicker">02 — PREREQUISITES</div><h2>Requirements</h2><div class="info-grid"><article><span class="tile-icon">⌘</span><h3>Node.js</h3><p>Use Node.js 20 LTS for parity with the GitHub Actions workflow.</p></article><article><span class="tile-icon">▣</span><h3>npm</h3><p>Use the npm version bundled with your Node.js installation. Commit the lockfile when dependency versions change.</p></article><article><span class="tile-icon">⌁</span><h3>Git</h3><p>Required to clone the repository, manage branches, and submit changes.</p></article></div></section>
+      <section class="doc-section" id="project-structure" data-title="Project structure"><div class="section-kicker">03 — ARCHITECTURE</div><h2>Project structure</h2><p>The repository separates page entry points, shared frontend source, static files, and build automation.</p><pre><code> xivig.github.io/
+ ├── app/
+ │   ├── pages/              # HTML page entry points
+ │   └── src/
+ │       ├── partials/       # Shared Handlebars partials
+ │       ├── scss/           # Sass styles and design tokens
+ │       ├── scripts/        # ES module application logic
+ │       ├── images/         # Source image assets
+ │       └── plugins/        # Local plugin source/vendor files
+ ├── public/                 # Static files copied by Vite
+ ├── resources/views/        # Laravel Blade examples/templates
+ ├── resources/laravel/      # Sample Laravel routes
+ ├── tasks/                  # Build and validation scripts
+ ├── documentation/         # This documentation site source
+ ├── dist/                   # Local generated build output
+ ├── docs/                   # GitHub Pages deployment output
+ ├── index.html              # Main dashboard entry point
+ ├── vite.config.js
+ └── package.json</code></pre>
+        <p><code>dist/</code> and <code>docs/</code> are generated output directories. Make changes in source folders and regenerate the build instead of editing generated files.</p></section>
+      <section class="doc-section" id="development" data-title="Development workflow"><div class="section-kicker">04 — DEVELOPMENT</div><h2>Development workflow</h2><p>The project uses Vite for the development server, module processing, and hot reload. Gulp tasks are available for selected asset workflows; the production pipeline is orchestrated by <code>tasks/build.js</code>.</p><div class="command-list"><div><span>Start the dev server</span><code>npm run dev</code></div><div><span>Build with the full pipeline</span><code>npm run build</code></div><div><span>Build with Vite only</span><code>npm run build:vite</code></div><div><span>Validate generated links/assets</span><code>npm run lint:links</code></div><div><span>Preview Vite output</span><code>npm run preview</code></div></div><p>Use <code>npm run build</code> before opening a pull request that changes pages, scripts, styles, or assets. It also exports the result for GitHub Pages.</p></section>
+      <section class="doc-section" id="pages" data-title="Pages and templates"><div class="section-kicker">05 — PAGE AUTHORING</div><h2>Pages & templates</h2><p>Top-level <code>index.html</code> and HTML files under <code>app/pages/</code> are Vite entry points. Shared layout fragments live in <code>app/src/partials/</code>.</p><h3>Adding a page</h3><ol><li>Create the page in the appropriate category under <code>app/pages/</code>.</li><li>Reuse the shared head, navigation, and layout partials used by neighboring pages.</li><li>Keep page-specific scripts and styles scoped to the page where practical.</li><li>Run <code>npm run build</code> and inspect the generated page in <code>dist/</code>.</li><li>Check navigation, assets, responsive behavior, keyboard use, and console errors.</li></ol><div class="tip"><strong>Routing note</strong><p>The build flattens page HTML files into the output root for static-host compatibility. Avoid duplicate HTML basenames in different source folders; the current Vite entry discovery is based on file names.</p></div></section>
+      <section class="doc-section" id="styles" data-title="Styles and design tokens"><div class="section-kicker">06 — STYLING</div><h2>Styles & design tokens</h2><p>Styles are authored in Sass under <code>app/src/scss/</code>. Shared variables and design tokens should be preferred over page-specific hard-coded values.</p><pre><code>app/src/scss/
+ ├── base/          # Reset, typography, variables, tokens
+ ├── components/    # Reusable UI components
+ ├── layout/        # Header, sidebar, page shell
+ ├── pages/         # Page-specific styles
+ └── utilities/     # Helpers and utility classes</code></pre><p>When changing brand colors, review both light and dark themes, hover/focus states, chart colors, and text contrast. Keep token definitions centralized and test normal text against WCAG AA contrast targets.</p></section>
+      <section class="doc-section" id="javascript" data-title="JavaScript"><div class="section-kicker">07 — INTERACTIONS</div><h2>JavaScript</h2><p>Application scripts are organized as ES modules under <code>app/src/scripts/</code>. Core initialization and shared behavior should remain separate from individual app modules.</p><ul><li>Use <code>textContent</code> or DOM node APIs for untrusted text; avoid interpolating user-controlled values into <code>innerHTML</code>.</li><li>Register event listeners in JavaScript rather than adding inline event-handler attributes.</li><li>Handle loading, empty, success, and error states for asynchronous operations.</li><li>Do not store authentication tokens, secrets, or sensitive personal information in <code>localStorage</code>.</li></ul></section>
+      <section class="doc-section" id="assets" data-title="Assets and plugins"><div class="section-kicker">08 — ASSETS</div><h2>Assets & plugins</h2><p>Put authored images in <code>app/src/images/</code> and public files in <code>public/</code>. Vite copies public assets into the build output. The build script also synchronizes source images and attempts WebP generation.</p><p>Vendor dependencies are declared in <code>package.json</code>. The build script copies a selected set of packages into <code>dist/plugins/</code> to support the static output. If adding a plugin, verify its license, import only the files required, and update the build copy list if runtime URLs expect a copied vendor asset.</p></section>
+      <section class="doc-section" id="build" data-title="Production build"><div class="section-kicker">09 — BUILD PIPELINE</div><h2>Production build</h2><p>The full build is orchestrated by <code>tasks/build.js</code>. Its high-level sequence is:</p><div class="pipeline"><div><b>01</b><span>Clean stale output</span></div><div><b>02</b><span>Compile with Vite</span></div><div><b>03</b><span>Copy and optimize images</span></div><div><b>04</b><span>Flatten HTML pages</span></div><div><b>05</b><span>Copy required vendor packages</span></div><div><b>06</b><span>Normalize links and export to docs/</span></div><div><b>07</b><span>Validate local links and assets</span></div></div><p>Run <code>npm run build</code>. A successful run should finish with zero broken local links and assets. The generated site is in <code>dist/</code>; the GitHub Pages artifact is in <code>docs/</code>.</p></section>
+      <section class="doc-section" id="github-pages" data-title="GitHub Pages deployment"><div class="section-kicker">10 — DEPLOYMENT</div><h2>GitHub Pages deployment</h2><p>The repository includes <code>.github/workflows/deploy.yml</code>. On pushes to <code>main</code> or <code>master</code>, GitHub Actions installs dependencies, runs the production build, and deploys the <code>docs/</code> output using GitHub Pages Actions.</p><ol><li>In the GitHub repository, open <strong>Settings → Pages</strong>.</li><li>Set the publishing source to <strong>GitHub Actions</strong>.</li><li>Push a tested change to <code>main</code> or <code>master</code>, or run the workflow manually from the Actions tab.</li><li>Wait for the <strong>Deploy to GitHub Pages</strong> workflow to complete.</li></ol><div class="tip"><strong>Documentation URL</strong><p>After deployment, open <code>https://xivig.github.io/documentation/</code>. If the repository is deployed under a project subpath or a custom domain, use that site's base URL followed by <code>/documentation/</code>.</p></div><p>Do not edit generated <code>docs/</code> files directly. Edit <code>documentation/</code> and let the workflow copy the source into the deployment artifact.</p></section>
+      <section class="doc-section" id="quality" data-title="Quality checks"><div class="section-kicker">11 — QUALITY</div><h2>Quality checks</h2><p>The current built-in checker validates local anchors and common local asset references in generated HTML. It is useful, but it is not a replacement for browser, accessibility, or security testing.</p><div class="info-grid"><article><h3>Before merging</h3><p>Run the production build and inspect the changed pages at desktop and mobile widths.</p></article><article><h3>Accessibility</h3><p>Check keyboard navigation, visible focus, form labels, image alternatives, zoom, and color contrast.</p></article><article><h3>Runtime</h3><p>Check browser console/network errors, interactive flows, and external service dependencies.</p></article></div></section>
+      <section class="doc-section" id="laravel" data-title="Laravel integration"><div class="section-kicker">12 — BACKEND INTEGRATION</div><h2>Laravel integration</h2><p>The repository contains Blade templates and a sample routes file under <code>resources/</code>. These are frontend integration references, not a complete Laravel application.</p><ul><li>Move reusable Blade layouts and partials into a single canonical view structure.</li><li>Move compiled assets into Laravel's public asset pipeline (Vite or the deployment approach used by your app).</li><li>Replace demo forms and localStorage behavior with authenticated Laravel routes and validated requests.</li><li>Implement authorization policies, CSRF protection, server-side validation, database persistence, and audit logging.</li><li>Use Laravel's password hashing and authentication stack; never implement authentication only in browser JavaScript.</li></ul><p>For a production application, integrate the UI into a fresh Laravel project and treat the sample routes/views as starting points only.</p></section>
+      <section class="doc-section" id="security" data-title="Security notes"><div class="section-kicker">13 — SECURITY</div><h2>Security notes</h2><div class="warning"><strong>Demo interactions are not security controls.</strong><p>Client-side visibility, localStorage, and static forms do not enforce identity or permissions. Every protected operation must be authorized by the server.</p></div><ul><li>Do not send real or private files to demo upload endpoints. Connect uploads to your own authenticated backend, validate content and size server-side, and scan files where appropriate.</li><li>Escape untrusted output and avoid unsafe HTML injection.</li><li>Use HTTPS, CSRF protection, secure session cookies, rate limits, and server-side authorization.</li><li>Review dependencies regularly and pin external resources; use Subresource Integrity where suitable.</li></ul></section>
+      <section class="doc-section" id="troubleshooting" data-title="Troubleshooting"><div class="section-kicker">14 — SUPPORT</div><h2>Troubleshooting</h2><details><summary>Vite says the default port is busy</summary><p>Vite can automatically select another available port. Use the exact local URL printed in the terminal.</p></details><details><summary>A page works locally but not on GitHub Pages</summary><p>Check path casing, relative asset paths, generated output, and whether the latest Actions deployment succeeded. GitHub Pages hosting is case-sensitive.</p></details><details><summary>A plugin's CSS or JavaScript is missing after build</summary><p>Confirm the dependency is installed, the page references the expected output path, and the package is included in <code>copyVendorPackages()</code> if it is loaded as a copied static file.</p></details><details><summary>Build validation reports a missing asset</summary><p>Check the referenced path and filename case. Make sure the source asset is included by Vite or copied into the output before link validation runs.</p></details><details><summary>Can I use the static GitHub Pages site as an admin backend?</summary><p>No. GitHub Pages serves static files. Use a backend service or integrate the frontend into an application such as Laravel for authentication, data storage, and protected operations.</p></details></section>
+      <section class="doc-section" id="contributing" data-title="Contributing"><div class="section-kicker">15 — COMMUNITY</div><h2>Contributing</h2><ol><li>Create a feature branch from the latest <code>main</code>.</li><li>Keep changes focused and follow the existing folder conventions.</li><li>Test changed pages and run <code>npm run build</code>.</li><li>Update this documentation when commands, architecture, or deployment behavior changes.</li><li>Open a pull request with a clear summary and screenshots for visual changes.</li></ol><div class="end-card"><div><span class="eyebrow">KEEP BUILDING</span><h3>Have a question or improvement?</h3><p>Open an issue or contribute directly to the project.</p></div><a class="button primary" href="https://github.com/xivig/xivig.github.io/issues" target="_blank" rel="noopener noreferrer">GitHub Issues ↗</a></div></section>
+      <footer class="footer"><span>© XIVIG · Elite Admin Interface</span><a href="#top">Back to top ↑</a></footer>
+    </main>
+    <aside class="toc" aria-label="On this page"><span>ON THIS PAGE</span><a href="#quick-start">Quick start</a><a href="#project-structure">Project structure</a><a href="#development">Development</a><a href="#build">Build pipeline</a><a href="#github-pages">GitHub Pages</a><a href="#security">Security</a></aside>
+  </div>
+  <div class="search-results" id="search-results" hidden></div>
+</body>
+</html>

@@ -222,8 +222,8 @@ body.home-layout {
 
     &:hover {
         transform: translateY(-8px);
-        border-color: rgba(79, 107, 255, 0.4) !important;
-        box-shadow: 0 20px 40px -15px rgba(79, 107, 255, 0.25) !important;
+        border-color: rgba(64, 89, 232, 0.4) !important;
+        box-shadow: 0 20px 40px -15px rgba(64, 89, 232, 0.25) !important;
     }
 
     .badge {
@@ -269,7 +269,7 @@ body.home-layout {
 .text-gradient { color: var(--elite-primary) !important; }
 
 .shadow-primary {
-    box-shadow: 0 10px 25px -5px rgba(79, 107, 255, 0.45) !important;
+    box-shadow: 0 10px 25px -5px rgba(64, 89, 232, 0.45) !important;
 }
 
 .hover-up {
@@ -359,7 +359,7 @@ body.home-layout {
         transform: translateX(-50%);
         width: 70%;
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(79, 107, 255, 0.5), transparent);
+        background: linear-gradient(90deg, transparent, rgba(64, 89, 232, 0.5), transparent);
     }
 
     &__newsletter-box {
@@ -398,25 +398,25 @@ body.home-layout {
 
         &:focus {
             border-color: var(--bs-primary) !important;
-            box-shadow: 0 0 0 3px rgba(79, 107, 255, 0.2) !important;
+            box-shadow: 0 0 0 3px rgba(64, 89, 232, 0.2) !important;
         }
     }
 
     &__submit-btn {
-        background: linear-gradient(135deg, var(--xv-brand, #4F6BFF) 0%, #354fd4 100%) !important;
+        background: linear-gradient(135deg, var(--xv-brand, #4059E8) 0%, #354fd4 100%) !important;
         border: none !important;
         color: #FFFFFF !important;
         font-weight: 700;
         font-size: 0.92rem;
         padding: 13px 28px;
         border-radius: 999px !important;
-        box-shadow: 0 4px 14px rgba(79, 107, 255, 0.3) !important;
+        box-shadow: 0 4px 14px rgba(64, 89, 232, 0.3) !important;
         transition: all 0.2s ease !important;
         white-space: nowrap;
 
         &:hover {
             background: linear-gradient(135deg, #3f5efb 0%, #2942be 100%) !important;
-            box-shadow: 0 6px 20px rgba(79, 107, 255, 0.45) !important;
+            box-shadow: 0 6px 20px rgba(64, 89, 232, 0.45) !important;
             transform: translateY(-1px);
             color: #FFFFFF !important;
         }
@@ -478,9 +478,9 @@ body.home-layout {
         vertical-align: middle;
 
         &--primary {
-            background: rgba(79, 107, 255, 0.15) !important;
-            color: #4F6BFF !important;
-            border: 1px solid rgba(79, 107, 255, 0.25);
+            background: rgba(64, 89, 232, 0.15) !important;
+            color: #4059E8 !important;
+            border: 1px solid rgba(64, 89, 232, 0.25);
         }
 
         &--warning {
@@ -539,7 +539,7 @@ body.home-layout {
         background: var(--bs-primary);
         border-color: var(--bs-primary);
         transform: translateY(-3px);
-        box-shadow: 0 4px 12px rgba(79, 107, 255, 0.35);
+        box-shadow: 0 4px 12px rgba(64, 89, 232, 0.35);
     }
 }
 

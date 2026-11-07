@@ -35,28 +35,28 @@
         &:hover {
             background-color: #F4F6FB !important;
             border-color: #D0D7E2 !important;
-            color: var(--xv-brand, #4F6BFF) !important;
+            color: var(--xv-brand, #4059E8) !important;
         }
 
         &:focus {
-            box-shadow: 0 0 0 3px rgba(79, 107, 255, 0.2) !important;
+            box-shadow: 0 0 0 3px rgba(64, 89, 232, 0.2) !important;
         }
 
         &.fc-button-active,
         &:active {
-            background-color: var(--xv-brand, #4F6BFF) !important;
-            border-color: var(--xv-brand, #4F6BFF) !important;
+            background-color: var(--xv-brand, #4059E8) !important;
+            border-color: var(--xv-brand, #4059E8) !important;
             color: #FFFFFF !important;
         }
 
         &.fc-today-button {
-            background-color: rgba(79, 107, 255, 0.08) !important;
-            border-color: rgba(79, 107, 255, 0.2) !important;
-            color: var(--xv-brand, #4F6BFF) !important;
+            background-color: rgba(64, 89, 232, 0.08) !important;
+            border-color: rgba(64, 89, 232, 0.2) !important;
+            color: var(--xv-brand, #4059E8) !important;
             font-weight: 700 !important;
 
             &:hover {
-                background-color: var(--xv-brand, #4F6BFF) !important;
+                background-color: var(--xv-brand, #4059E8) !important;
                 color: #FFFFFF !important;
             }
         }
@@ -98,10 +98,10 @@
     }
 
     .fc-day-today {
-        background: rgba(79, 107, 255, 0.03) !important;
+        background: rgba(64, 89, 232, 0.03) !important;
 
         .fc-daygrid-day-number {
-            background: var(--xv-brand, #4F6BFF);
+            background: var(--xv-brand, #4059E8);
             color: #FFFFFF !important;
             border-radius: 50%;
             width: 26px;
@@ -140,7 +140,7 @@
 .fc-event.bg-primary {
     background: #EEF4FF !important;
     color: #3159B8 !important;
-    border-left: 3px solid #4F6BFF !important;
+    border-left: 3px solid #4059E8 !important;
 }
 
 .fc-event-cyan,
@@ -198,7 +198,7 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 
     &.active {
-        box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px var(--xv-brand, #4F6BFF);
+        box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px var(--xv-brand, #4059E8);
         transform: scale(1.1);
     }
 }

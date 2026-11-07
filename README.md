@@ -10,6 +10,21 @@
 
 ---
 
+## 📚 Documentation
+
+The project documentation is published with the GitHub Pages site:
+
+**[Open XIVIG Documentation](https://xivig.github.io/documentation/)**
+
+Documentation source files are maintained in `documentation/`. The production build copies them into `docs/documentation/`, so they are deployed automatically by the existing GitHub Actions workflow. To preview the deployed output locally, run:
+
+```bash
+npm run build
+npm run docs:preview
+```
+
+---
+
 ## ✨ Key Features
 
 -   **Elite Aesthetics**: Modern UI featuring Glassmorphism, advanced mesh gradients, and the "Elite Blue" color system.
@@ -17,34 +32,10 @@
 -   **Hybrid Build Pipeline**: The speed of Vite paired with the versatility of Gulp.
 -   **Modular SCSS (7-1 Pattern)**: A professional stylesheet architecture designed for scalability and ease of maintenance.
 -   **Handlebars Templating**: Clean separation of UI components using Handlebars layouts and partials.
--   **Flattened GitHub Pages Architecture**: All 107 production views (106 modular pages under `app/pages/` + root dashboard `index.html`) deployed flat directly under `docs/` (`docs/*.html`) with zero broken links, dynamic 404 router, and backward-compatibility redirect shims.
+-   **Flattened GitHub Pages Architecture**: All 85 pages deployed flat directly under `docs/` (`docs/*.html`) with zero broken links.
 -   **Performance Optimized**: Automated WebP conversion, intelligent vendor chunking, and aggressive tree-shaking.
 -   **Mobile Elite**: Responsive media queries, categorized CSS bundles, and a dedicated mobile bottom navigation for a native app-like experience.
 -   **Theme Aware**: Comprehensive dark mode support using CSS Design Tokens (Variables).
-
----
-
-## 📑 Views Catalog (107 Production Views)
-
-XIVIG Elite ships with **107 production-ready views** (106 modular pages under `app/pages/` + root dashboard `index.html`):
-
-| Category | Views | Key Examples |
-| :--- | :---: | :--- |
-| **Dashboards & Landing** | 3 | Flagship Landing (`xivig.html`), Dashboard v1 (`index.html`), Dashboard v2 (`dashboard-v2.html`) |
-| **Analytics & Telemetry** | 2 | Overview (`overview.html`), System Metrics (`system-metrics.html`) |
-| **Applications** | 8 | Calendar, Chat, Compose, File Manager, Inbox, Kanban, Task Manager, Video Player |
-| **Authentication & Access** | 8 | Login, Register, Forgot Password, Reset Password, Lockscreen, 2FA, Account Onboarding, Multi-Step Onboarding |
-| **Data Visualization & Charts** | 5 | ApexCharts, Chart.js, E-Charts, Highcharts, JTVector Map |
-| **Deployments & DevOps** | 5 | Build History, Deployment Add, Deployment Details, Deployment List, Releases |
-| **E-Commerce Suite** | 13 | Products, Product Detail, Product Show, Add/Edit Product, Orders, Order Details, Create/Edit Order, Cart, Checkout, Payment Success |
-| **UI Elements & Icons** | 18 | Buttons, Cards, Cards Hover, Carousel, List Group, Modals, Notifications, Offcanvas, Progressbar, Range Slider, Sweet Alert, Tabs, Timeline, Toggle, Tooltip & Popover, Typography, Bootstrap Icons, Font Awesome 6 |
-| **Forms & Input Components** | 9 | Basic, Extras, Grid, Pickers, Wizard, Image Cropper, Dropzone, Summernote Editor, Advanced Components |
-| **Users & Directory** | 4 | User Add, User Details, User Edit, User List (with live search filter) |
-| **Projects Management** | 4 | Project Add, Project Details, Project Edit, Project List |
-| **Data Tables** | 2 | Basic Table, Interactive DataTable |
-| **General & Utility Views** | 21 | Documentation, FAQ, Pricing Table, Profile, Invoice, Help & Support, Gallery, Blog List/Detail, Course Dashboard/Interface, Contact Directory, Sitemap, Search, Read, Store Settings, Admin Settings, Account Settings |
-| **System & Error Views** | 5 | 400, 403, 404 (with Smart Redirect Router), 500, 503, Maintenance |
-| **Total Production Views** | **107** | **100% Quality Gate Validated (0 broken links / 0 broken assets)** |
 
 ---
 

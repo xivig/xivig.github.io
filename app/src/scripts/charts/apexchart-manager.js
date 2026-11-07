@@ -30,7 +30,7 @@ const ApexchartManager = {
                     background: 'transparent'
                 },
                 theme: { mode: isDark ? 'dark' : 'light' },
-                colors: ['#4F6BFF', '#10B981'],
+                colors: ['#4059E8', '#10B981'],
                 dataLabels: { enabled: false },
                 stroke: { curve: 'smooth', width: 2.5 },
                 fill: {
@@ -77,7 +77,7 @@ const ApexchartManager = {
                     background: 'transparent'
                 },
                 theme: { mode: isDark ? 'dark' : 'light' },
-                colors: ['#4F6BFF', '#F59E0B'],
+                colors: ['#4059E8', '#F59E0B'],
                 plotOptions: {
                     bar: {
                         horizontal: false,
@@ -121,7 +121,7 @@ const ApexchartManager = {
                     background: 'transparent'
                 },
                 theme: { mode: isDark ? 'dark' : 'light' },
-                colors: ['#4F6BFF', '#10B981', '#F59E0B', '#8B5CF6'],
+                colors: ['#4059E8', '#10B981', '#F59E0B', '#8B5CF6'],
                 series: [44, 32, 14, 10],
                 labels: ['Desktop (macOS/Win)', 'Mobile (iOS/Android)', 'Tablet', 'Embedded'],
                 plotOptions: {
@@ -158,7 +158,7 @@ const ApexchartManager = {
                     background: 'transparent'
                 },
                 theme: { mode: isDark ? 'dark' : 'light' },
-                colors: ['#4F6BFF'],
+                colors: ['#4059E8'],
                 series: [{
                     name: 'Performance Score',
                     data: [85, 98, 92, 88, 94, 96]
@@ -172,7 +172,7 @@ const ApexchartManager = {
                         }
                     }
                 },
-                markers: { size: 4, colors: ['#4F6BFF'], strokeWidth: 2 },
+                markers: { size: 4, colors: ['#4059E8'], strokeWidth: 2 },
                 yaxis: { show: false }
             });
         }
