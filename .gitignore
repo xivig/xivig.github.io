@@ -1,3 +1,11 @@
+# Dependencies
 node_modules/
+
+# Local Production Build Output (ephemeral build artifact, docs/ serves as GitHub Pages release)
+dist/
+
+# Workspace & Editor artifacts
 xivig-gulp-vite-bs5-admin-panel.code-workspace
 .geminiignore
+.DS_Store
+Thumbs.db

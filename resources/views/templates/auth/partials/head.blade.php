@@ -1,5 +1,6 @@
 <meta charset="UTF-8">
 <title>{{ $title ?? "" }}</title>
+    <meta name="description" content="@yield('meta_description', 'Xivig Authentication — Enterprise identity management, user onboarding, and secure access portal.')" />
 
 <!-- Site favicon -->
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/auth/images/apple-touch-icon.png') }}" />
@@ -7,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/auth/images/favicon-16x16.png') }}" />
 
 <!-- Mobile Specific Metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- Theme Detection & Critical Style Initialization -->
 <script>

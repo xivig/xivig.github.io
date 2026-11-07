@@ -1,5 +1,10 @@
 <meta charset="UTF-8">
 <title>{{title}}</title>
+{{#if description}}
+<meta name="description" content="{{description}}">
+{{else}}
+<meta name="description" content="Xivig — High-performance, production-ready Bootstrap 5 admin dashboard template, UI design system, and analytics application.">
+{{/if}}
 
 <!-- Site favicon -->
 <link rel="apple-touch-icon" sizes="180x180" href="/app/src/images/apple-touch-icon.png" />
@@ -7,7 +12,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/app/src/images/favicon-16x16.png" />
 
 <!-- Mobile Specific Metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- Instant Atelier Theme & Accent Initialization (Prevents FOUC) -->
 <script>

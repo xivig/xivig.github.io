@@ -27,7 +27,7 @@ Generates a fully optimized, production-ready bundle flattened into `dist/` and 
   1. **Clean:** Deletes prior `dist/`, `docs/`, and `exports/` artifacts.
   2. **Vite Build:** Compiles Handlebars templates, bundles ES modules, compiles SCSS (7-1 pattern), and generates version-hashed assets.
   3. **Image & WebP Optimization:** Copies assets and generates WebP versions using Sharp for optimal web performance.
-  4. **Flat HTML Migration:** Flattens all 85 HTML pages from `dist/app/pages/**` to root `dist/*.html` using native asynchronous I/O (`fs/promises`).
+  4. **Flat HTML Migration:** Flattens all 107 HTML views (106 modular pages from `dist/app/pages/**` + root `dist/index.html`) to root `dist/*.html` using native asynchronous I/O (`fs/promises`).
   5. **Link Normalization (`replace-links.js`):**
      - Rewrites nested page links to flat relative targets (`./calendar.html`).
      - Normalizes asset URLs to `./assets/...` and vendor plugins to `./plugins/...`.
@@ -72,7 +72,7 @@ Starts a documentation server.
 The `docs/` folder is configured for user/organization and project GitHub Pages deployments (e.g. `https://xivig.github.io/`).
 
 ### How it works:
-1. **Flattened Structure:** All 85 HTML pages are placed directly at `docs/*.html`. This prevents broken relative link issues across different GitHub Pages subpaths.
+1. **Flattened Structure:** All 107 HTML views are placed directly at `docs/*.html`. This prevents broken relative link issues across different GitHub Pages subpaths. Additionally, backward-compatibility redirect shims are generated in `docs/pages/**` and `docs/app/pages/**` alongside an intelligent 404 client router to gracefully redirect legacy nested URLs.
 2. **Automatic Sync:** Every run of `npm run build` refreshes `docs/` with the latest flattened HTML, optimized assets, and vendor plugins.
 3. **`.nojekyll` Included:** A `.nojekyll` file is automatically placed in `docs/` to prevent GitHub Pages Jekyll engine from ignoring files or assets with special characters.
 

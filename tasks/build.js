@@ -229,7 +229,8 @@ export async function runFullBuild() {
         await compileVite();
         await optimizeImages();
         await flattenHtmlPages();
-        await copyVendorPackages();
+        // Vendor assets are compiled & bundled directly into assets/ by Vite.
+        // await copyVendorPackages(); // Pruned 11,000+ unused redundant package files
         await refineAndExport();
         const { htmlCount } = await runQualityGate();
 

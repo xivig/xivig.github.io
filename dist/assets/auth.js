@@ -1,1 +1,0 @@
-import{n as e,t}from"./mobile-controller.js";import{_ as n,g as r}from"./vendor-core.js";window.Popper=n,window.bootstrap=r;function i(){e(),t()}document.readyState===`loading`?document.addEventListener(`DOMContentLoaded`,i):i();
