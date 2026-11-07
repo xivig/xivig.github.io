@@ -169,7 +169,7 @@ const App = {
         }
 
         // 18. Image Plugins
-        if (document.getElementById('cropper-image')) {
+        if (document.getElementById('cropper-image') || (document.getElementById('image') && (document.getElementById('croppedResult') || document.querySelector('.img-preview')))) {
             const { initImageCropper } = await import('./scripts/forms/form-plugins.js');
             initImageCropper();
         }

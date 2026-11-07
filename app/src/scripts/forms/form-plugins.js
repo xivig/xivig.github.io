@@ -1,9 +1,9 @@
 /**
- * Form Plugins Module - Image Cropper & Summernote
+ * Form Plugins Module - Image Cropper, Summernote/Quill & Dropzone
  */
 import EditorModule from '../components/editor-module.js';
 
-// 1. Summernote Initialization
+// 1. Summernote / Quill Initialization
 export const initQuillEditor = () => {
     const el = document.querySelector('#quill-editor, #summernote-editor');
     if (el && !el.getAttribute('data-quill-initialized') && !el.__quill) {
@@ -17,31 +17,52 @@ export const initSummernote = initQuillEditor;
 
 /**
  * 2. Image Cropper Module
- * Modular implementation as per elite architecture standards
+ * Self-healing dependency resolution, global action dispatch, telemetry tracking
  */
 export const initImageCropper = function () {
-    // Small delay to ensure global Cropper (from CDN) is populated if this runs very early
-    setTimeout(() => {
-        const image = document.getElementById('image');
-        if (!image) return;
+    const image = document.getElementById('image') || document.getElementById('cropper-image');
+    if (!image) return;
 
-        console.log("Initializing Image Cropper Logic...");
-        
-        const dataX = document.getElementById('dataX');
-        const dataY = document.getElementById('dataY');
-        const dataWidth = document.getElementById('dataWidth');
-        const dataHeight = document.getElementById('dataHeight');
-        const dataRotate = document.getElementById('dataRotate');
-        const resultContainer = document.getElementById('croppedResult');
-        const downloadBtn = document.getElementById('download');
+    if (image.getAttribute('data-cropper-initialized')) {
+        return;
+    }
 
-        const CropperClass = window.Cropper;
+    const dataX = document.getElementById('dataX');
+    const dataY = document.getElementById('dataY');
+    const dataWidth = document.getElementById('dataWidth');
+    const dataHeight = document.getElementById('dataHeight');
+    const dataRotate = document.getElementById('dataRotate');
+    const resultContainer = document.getElementById('croppedResult');
+    const downloadBtn = document.getElementById('download');
 
-        if (!CropperClass) {
-            console.error("Cropper.js library not found. Ensure CDN is loaded.");
+    function ensureCropper(callback, retries = 50) {
+        if (window.Cropper) {
+            callback(window.Cropper);
             return;
         }
 
+        // Dynamically inject if missing from document
+        if (!document.querySelector('script[src*="cropper"]')) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css';
+            document.head.appendChild(link);
+
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js';
+            script.onload = () => callback(window.Cropper);
+            document.head.appendChild(script);
+            return;
+        }
+
+        if (retries > 0) {
+            setTimeout(() => ensureCropper(callback, retries - 1), 100);
+        } else {
+            console.error("Cropper.js library could not be loaded.");
+        }
+    }
+
+    ensureCropper((CropperClass) => {
         let cropper;
         const options = {
             aspectRatio: 16 / 9,
@@ -68,71 +89,84 @@ export const initImageCropper = function () {
         const startCropper = () => {
             if (cropper) cropper.destroy();
             cropper = new CropperClass(image, options);
-            console.log("Cropper instance created.");
+            image.__cropper = cropper;
+            image.setAttribute('data-cropper-initialized', 'true');
+            console.log("Cropper instance initialized successfully.");
         };
 
-        // Initialize when image is ready
-        if (image.complete) {
+        if (image.complete && image.naturalWidth > 0) {
             startCropper();
         } else {
-            image.addEventListener('load', startCropper);
+            image.addEventListener('load', startCropper, { once: true });
         }
 
-        // Actions Toolbar Logic
-        const actions = document.getElementById('actions');
-        if (actions) {
-            actions.addEventListener('click', (e) => {
-                const btn = e.target.closest('[data-method]');
-                if (!btn || !cropper) return;
+        // Global Action Dispatcher for all [data-method] buttons (toolbar + header button)
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('[data-method]');
+            if (!btn || !cropper) return;
 
-                const method = btn.getAttribute('data-method');
-                let option = btn.getAttribute('data-option');
-                let secondOption = btn.getAttribute('data-second-option');
+            const method = btn.getAttribute('data-method');
+            let option = btn.getAttribute('data-option');
+            let secondOption = btn.getAttribute('data-second-option');
 
-                // Parse options
-                if (option && !isNaN(option)) {
-                    option = parseFloat(option);
-                } else if (option === 'NaN') {
-                    option = NaN;
-                }
+            if (option && !isNaN(option)) {
+                option = parseFloat(option);
+            } else if (option === 'NaN') {
+                option = NaN;
+            }
 
-                if (secondOption && !isNaN(secondOption)) {
-                    secondOption = parseFloat(secondOption);
-                }
+            if (secondOption && !isNaN(secondOption)) {
+                secondOption = parseFloat(secondOption);
+            }
 
-                // Execute Methods
-                switch (method) {
-                    case 'getCroppedCanvas':
-                        const canvas = cropper.getCroppedCanvas({
-                            imageSmoothingEnabled: true,
-                            imageSmoothingQuality: 'high',
-                        });
-                        if (canvas && resultContainer) {
-                            resultContainer.innerHTML = '';
-                            resultContainer.appendChild(canvas);
-                            if (downloadBtn) {
-                                downloadBtn.href = canvas.toDataURL('image/jpeg', 0.9);
-                            }
+            switch (method) {
+                case 'getCroppedCanvas':
+                    const canvas = cropper.getCroppedCanvas({
+                        imageSmoothingEnabled: true,
+                        imageSmoothingQuality: 'high',
+                    });
+                    if (canvas && resultContainer) {
+                        canvas.style.maxWidth = '100%';
+                        canvas.style.height = 'auto';
+                        canvas.style.borderRadius = '8px';
+                        canvas.style.boxShadow = '0 4px 14px rgba(0,0,0,0.08)';
+
+                        resultContainer.innerHTML = '';
+                        resultContainer.appendChild(canvas);
+
+                        if (downloadBtn) {
+                            downloadBtn.href = canvas.toDataURL('image/jpeg', 0.9);
                         }
-                        break;
-                    case 'scaleX':
-                        cropper.scaleX(option);
-                        btn.setAttribute('data-option', -option);
-                        break;
-                    case 'scaleY':
-                        cropper.scaleY(option);
-                        btn.setAttribute('data-option', -option);
-                        break;
-                    case 'move':
-                        cropper.move(option, secondOption || 0);
-                        break;
-                    default:
-                        if (typeof cropper[method] === 'function') {
-                            cropper[method](option);
+
+                        // Trigger Modal if available (for Blade / modal preview layouts)
+                        const modalEl = document.getElementById('getCroppedCanvasModal');
+                        if (modalEl && window.bootstrap && window.bootstrap.Modal) {
+                            const modal = window.bootstrap.Modal.getOrCreateInstance(modalEl);
+                            modal.show();
                         }
-                }
-            });
-        }
+
+                        if (window.NotificationService) {
+                            window.NotificationService.success('Rendered!', 'Cropped canvas has been generated and is ready to download.');
+                        }
+                    }
+                    break;
+                case 'scaleX':
+                    cropper.scaleX(option || -1);
+                    btn.setAttribute('data-option', -(option || 1));
+                    break;
+                case 'scaleY':
+                    cropper.scaleY(option || -1);
+                    btn.setAttribute('data-option', -(option || 1));
+                    break;
+                case 'move':
+                    cropper.move(option || 0, secondOption || 0);
+                    break;
+                default:
+                    if (typeof cropper[method] === 'function') {
+                        cropper[method](option);
+                    }
+            }
+        });
 
         // Handle File Upload
         const inputImage = document.getElementById('inputImage');
@@ -152,7 +186,24 @@ export const initImageCropper = function () {
                 }
             });
         }
-    }, 200);
+
+        // Handle Direct Download if not yet rendered
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', (e) => {
+                if ((!downloadBtn.href || downloadBtn.href.startsWith('javascript:')) && cropper) {
+                    e.preventDefault();
+                    const canvas = cropper.getCroppedCanvas({
+                        imageSmoothingEnabled: true,
+                        imageSmoothingQuality: 'high',
+                    });
+                    if (canvas) {
+                        downloadBtn.href = canvas.toDataURL('image/jpeg', 0.9);
+                        downloadBtn.click();
+                    }
+                }
+            });
+        }
+    });
 };
 
 export const initImageDropzone = () => {
