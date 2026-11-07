@@ -12,7 +12,7 @@ export function initSidebar() {
         
         if (!config) {
             try {
-                const root = window.XIVIG_ROOT || '/';
+                const root = window.XIVIG_ROOT || './';
                 const response = await fetch(`${root}data/sidebar-config.json`);
                 config = await response.json();
                 localStorage.setItem('xivig_sidebar_config', JSON.stringify(config));
@@ -188,9 +188,10 @@ export function initSidebar() {
         const href = link.getAttribute('href');
         if (!href || href === 'javascript:;' || href === '#') return;
 
-        // Check if the current path matches the href (handling potential root/index differences)
-        const isHomePage = (currentPath === '/' || currentPath === '/index.html') && (href === '/' || href === '/index.html');
-        const isMatch = currentPath.includes(href) || isHomePage;
+        const currentPage = currentPath.split('/').pop().split('?')[0] || 'index.html';
+        const linkPage = href.split('/').pop().split('?')[0] || 'index.html';
+        const isHomePage = (currentPage === '' || currentPage === 'index.html') && (linkPage === '' || linkPage === 'index.html');
+        const isMatch = (currentPage === linkPage) || isHomePage;
 
         if (isMatch) {
             // If it's a sub-link, highlight it and open parent

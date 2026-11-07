@@ -3,16 +3,16 @@
         "id": 1,
         "label": "Home",
         "icon": "bi bi-house",
-        "path": "../index.html",
+        "path": "index.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Dashboard v1",
-                "path": "../index.html"
+                "path": "index.html"
             },
             {
                 "label": "Dashboard v2",
-                "path": "../pages/dashboard-v2.html"
+                "path": "dashboard-v2.html"
             }
         ]
     },
@@ -20,7 +20,7 @@
         "id": 2,
         "label": "Ecommerce",
         "icon": "bi bi-shop",
-        "path": "../pages/ecommerce/ecommerce-products.html",
+        "path": "ecommerce-products.html",
         "hasSubmenu": true,
         "submenu": [
             {
@@ -30,21 +30,21 @@
                 "submenu": [
                     {
                         "label": "Product List",
-                        "path": "../pages/ecommerce/ecommerce-products.html"
+                        "path": "ecommerce-products.html"
                     },
                     {
                         "label": "Add Product",
-                        "path": "../pages/ecommerce/ecommerce-add-product.html"
+                        "path": "ecommerce-add-product.html"
                     },
                     {
                         "label": "Product Show",
-                        "path": "../pages/ecommerce/ecommerce-product-show.html"
+                        "path": "ecommerce-product-show.html"
                     }
                 ]
             },
             {
                 "label": "Product Analytics",
-                "path": "../pages/ecommerce/ecommerce-product-detail.html"
+                "path": "ecommerce-product-detail.html"
             },
             {
                 "label": "Order Management",
@@ -53,21 +53,21 @@
                 "submenu": [
                     {
                         "label": "Order List",
-                        "path": "../pages/ecommerce/ecommerce-orders.html"
+                        "path": "ecommerce-orders.html"
                     },
                     {
                         "label": "Create Order",
-                        "path": "../pages/ecommerce/create-order.html"
+                        "path": "create-order.html"
                     }
                 ]
             },
             {
                 "label": "Shopping Cart",
-                "path": "../pages/ecommerce/ecommerce-cart.html"
+                "path": "ecommerce-cart.html"
             },
             {
                 "label": "Store Settings",
-                "path": "../pages/store-settings.html"
+                "path": "store-settings.html"
             }
         ]
     },
@@ -75,16 +75,16 @@
         "id": 3,
         "label": "Blog",
         "icon": "bi bi-journal-text",
-        "path": "../pages/blog-list.html",
+        "path": "blog-list.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Blog List",
-                "path": "../pages/blog-list.html"
+                "path": "blog-list.html"
             },
             {
                 "label": "Blog Details",
-                "path": "../pages/blog-detail.html"
+                "path": "blog-detail.html"
             }
         ]
     },
@@ -92,16 +92,16 @@
         "id": 4,
         "label": "Course",
         "icon": "bi bi-book-half",
-        "path": "../pages/course-dashboard.html",
+        "path": "course-dashboard.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Course Dashboard",
-                "path": "../pages/course-dashboard.html"
+                "path": "course-dashboard.html"
             },
             {
                 "label": "Course Interface",
-                "path": "../pages/course-interface.html"
+                "path": "course-interface.html"
             }
         ]
     },
@@ -109,36 +109,36 @@
         "id": 5,
         "label": "Apps",
         "icon": "bi bi-grid",
-        "path": "../pages/apps/calendar.html",
+        "path": "calendar.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Calendar",
-                "path": "../pages/apps/calendar.html"
+                "path": "calendar.html"
             },
             {
                 "label": "Chat",
-                "path": "../pages/apps/chat.html"
+                "path": "chat.html"
             },
             {
                 "label": "Video Player",
-                "path": "../pages/apps/video-player.html"
+                "path": "video-player.html"
             },
             {
                 "label": "Kanban",
-                "path": "../pages/apps/kanban.html"
+                "path": "kanban.html"
             },
             {
                 "label": "Task",
-                "path": "../pages/apps/task-manager.html"
+                "path": "task-manager.html"
             },
             {
                 "label": "File Manager",
-                "path": "../pages/apps/file-manager.html"
+                "path": "file-manager.html"
             },
             {
                 "label": "Mailbox",
-                "path": "../pages/apps/inbox.html"
+                "path": "inbox.html"
             }
         ]
     },
@@ -146,16 +146,16 @@
         "id": 6,
         "label": "Projects",
         "icon": "bi bi-briefcase",
-        "path": "../pages/projects/project-list.html",
+        "path": "project-list.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Project List",
-                "path": "../pages/projects/project-list.html"
+                "path": "project-list.html"
             },
             {
                 "label": "Add Project",
-                "path": "../pages/projects/project-add.html"
+                "path": "project-add.html"
             }
         ]
     },
@@ -163,16 +163,16 @@
         "id": 7,
         "label": "Users",
         "icon": "bi bi-people",
-        "path": "../pages/users/user-list.html",
+        "path": "user-list.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "User List",
-                "path": "../pages/users/user-list.html"
+                "path": "user-list.html"
             },
             {
                 "label": "Add User",
-                "path": "../pages/users/user-add.html"
+                "path": "user-add.html"
             }
         ]
     },
@@ -180,20 +180,20 @@
         "id": 8,
         "label": "Pipeline",
         "icon": "bi bi-rocket-takeoff",
-        "path": "../pages/deployments/deployment-list.html",
+        "path": "deployment-list.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Deployments",
-                "path": "../pages/deployments/deployment-list.html"
+                "path": "deployment-list.html"
             },
             {
                 "label": "Build History",
-                "path": "../pages/deployments/build-history.html"
+                "path": "build-history.html"
             },
             {
                 "label": "Releases",
-                "path": "../pages/deployments/releases.html"
+                "path": "releases.html"
             }
         ]
     },
@@ -201,16 +201,16 @@
         "id": 9,
         "label": "Analytics",
         "icon": "bi bi-bar-chart",
-        "path": "../pages/analytics/overview.html",
+        "path": "overview.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Overview",
-                "path": "../pages/analytics/overview.html"
+                "path": "overview.html"
             },
             {
                 "label": "System Metrics",
-                "path": "../pages/analytics/system-metrics.html"
+                "path": "system-metrics.html"
             }
         ]
     },
@@ -218,44 +218,44 @@
         "id": 10,
         "label": "Form",
         "icon": "bi bi-textarea-resize",
-        "path": "../pages/forms/form-basic.html",
+        "path": "form-basic.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Form Basic",
-                "path": "../pages/forms/form-basic.html"
+                "path": "form-basic.html"
             },
             {
                 "label": "Html Editor",
-                "path": "../pages/forms/summernote-editor.html"
+                "path": "summernote-editor.html"
             },
             {
                 "label": "Advanced Components",
-                "path": "../pages/forms/advanced-components.html"
+                "path": "advanced-components.html"
             },
             {
                 "label": "Form Pickers",
-                "path": "../pages/forms/form-pickers.html"
+                "path": "form-pickers.html"
             },
             {
                 "label": "Form Extras",
-                "path": "../pages/forms/form-extras.html"
+                "path": "form-extras.html"
             },
             {
                 "label": "Form Grid",
-                "path": "../pages/forms/form-grid.html"
+                "path": "form-grid.html"
             },
             {
                 "label": "Form Wizard",
-                "path": "../pages/forms/form-wizard.html"
+                "path": "form-wizard.html"
             },
             {
                 "label": "Image Cropper",
-                "path": "../pages/forms/image-cropper.html"
+                "path": "image-cropper.html"
             },
             {
                 "label": "Image Dropzone",
-                "path": "../pages/forms/image-dropzone.html"
+                "path": "image-dropzone.html"
             }
         ]
     },
@@ -263,16 +263,16 @@
         "id": 11,
         "label": "Table",
         "icon": "bi bi-table",
-        "path": "../pages/tables/basic-table.html",
+        "path": "basic-table.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Basic Table",
-                "path": "../pages/tables/basic-table.html"
+                "path": "basic-table.html"
             },
             {
                 "label": "Datatables",
-                "path": "../pages/tables/datatable.html"
+                "path": "datatable.html"
             }
         ]
     },
@@ -280,68 +280,68 @@
         "id": 12,
         "label": "UI Elements",
         "icon": "bi bi-archive",
-        "path": "../pages/ui-elements/ui-buttons.html",
+        "path": "ui-buttons.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Buttons",
-                "path": "../pages/ui-elements/ui-buttons.html"
+                "path": "ui-buttons.html"
             },
             {
                 "label": "Cards",
-                "path": "../pages/ui-elements/ui-cards.html"
+                "path": "ui-cards.html"
             },
             {
                 "label": "Cards Hover",
-                "path": "../pages/ui-elements/ui-cards-hover.html"
+                "path": "ui-cards-hover.html"
             },
             {
                 "label": "Modals",
-                "path": "../pages/ui-elements/ui-modals.html"
+                "path": "ui-modals.html"
             },
             {
                 "label": "Tabs",
-                "path": "../pages/ui-elements/ui-tabs.html"
+                "path": "ui-tabs.html"
             },
             {
                 "label": "Sweet Alert",
-                "path": "../pages/ui-elements/ui-sweet-alert.html"
+                "path": "ui-sweet-alert.html"
             },
             {
                 "label": "Notification",
-                "path": "../pages/ui-elements/ui-notification.html"
+                "path": "ui-notification.html"
             },
             {
                 "label": "Timeline",
-                "path": "../pages/ui-elements/ui-timeline.html"
+                "path": "ui-timeline.html"
             },
             {
                 "label": "Progressbar",
-                "path": "../pages/ui-elements/ui-progressbar.html"
+                "path": "ui-progressbar.html"
             },
             {
                 "label": "Typography",
-                "path": "../pages/ui-elements/ui-typography.html"
+                "path": "ui-typography.html"
             },
             {
                 "label": "List group",
-                "path": "../pages/ui-elements/ui-list-group.html"
+                "path": "ui-list-group.html"
             },
             {
                 "label": "Range slider",
-                "path": "../pages/ui-elements/ui-range-slider.html"
+                "path": "ui-range-slider.html"
             },
             {
                 "label": "Carousel",
-                "path": "../pages/ui-elements/ui-carousel.html"
+                "path": "ui-carousel.html"
             },
             {
                 "label": "Collapsible Toggle",
-                "path": "../pages/ui-elements/ui-toggle.html"
+                "path": "ui-toggle.html"
             },
             {
                 "label": "Offcanvas",
-                "path": "../pages/ui-elements/ui-offcanvas.html"
+                "path": "ui-offcanvas.html"
             }
         ]
     },
@@ -349,16 +349,16 @@
         "id": 13,
         "label": "Icons",
         "icon": "bi bi-command",
-        "path": "../pages/ui-elements/bootstrap-icon.html",
+        "path": "bootstrap-icon.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Bootstrap Icons",
-                "path": "../pages/ui-elements/bootstrap-icon.html"
+                "path": "bootstrap-icon.html"
             },
             {
                 "label": "FontAwesome Icons",
-                "path": "../pages/ui-elements/font-awesome.html"
+                "path": "font-awesome.html"
             }
         ]
     },
@@ -366,28 +366,28 @@
         "id": 14,
         "label": "Charts",
         "icon": "bi bi-pie-chart",
-        "path": "../pages/charts/apexcharts.html",
+        "path": "apexcharts.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Apexcharts",
-                "path": "../pages/charts/apexcharts.html"
+                "path": "apexcharts.html"
             },
             {
                 "label": "Chart.js",
-                "path": "../pages/charts/chartjs.html"
+                "path": "chartjs.html"
             },
             {
                 "label": "E-Charts",
-                "path": "../pages/charts/e-chart.html"
+                "path": "e-chart.html"
             },
             {
                 "label": "Highcharts",
-                "path": "../pages/charts/highchart.html"
+                "path": "highchart.html"
             },
             {
                 "label": "Vector Map",
-                "path": "../pages/charts/jtvector-map.html"
+                "path": "jtvector-map.html"
             }
         ]
     },
@@ -395,36 +395,36 @@
         "id": 15,
         "label": "Extras",
         "icon": "bi bi-file-earmark-text",
-        "path": "../pages/invoice.html",
+        "path": "invoice.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Invoice",
-                "path": "../pages/invoice.html"
+                "path": "invoice.html"
             },
             {
                 "label": "FAQ",
-                "path": "../pages/faq.html"
+                "path": "faq.html"
             },
             {
                 "label": "Gallery",
-                "path": "../pages/gallery.html"
+                "path": "gallery.html"
             },
             {
                 "label": "Pricing Table",
-                "path": "../pages/pricing-table.html"
+                "path": "pricing-table.html"
             },
             {
                 "label": "Sitemap",
-                "path": "../pages/sitemap.html"
+                "path": "sitemap.html"
             },
             {
                 "label": "Blank Page",
-                "path": "../pages/blank.html"
+                "path": "blank.html"
             },
             {
                 "label": "Search Result",
-                "path": "../pages/search.html"
+                "path": "search.html"
             }
         ]
     },
@@ -432,28 +432,28 @@
         "id": 16,
         "label": "Errors",
         "icon": "bi bi-bug",
-        "path": "../pages/error/404.html",
+        "path": "404.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "400 Bad Request",
-                "path": "../pages/error/400.html"
+                "path": "400.html"
             },
             {
                 "label": "403 Forbidden",
-                "path": "../pages/error/403.html"
+                "path": "403.html"
             },
             {
                 "label": "404 Not Found",
-                "path": "../pages/error/404.html"
+                "path": "404.html"
             },
             {
                 "label": "500 Internal Error",
-                "path": "../pages/error/500.html"
+                "path": "500.html"
             },
             {
                 "label": "503 Service Unavailable",
-                "path": "../pages/error/503.html"
+                "path": "503.html"
             }
         ]
     },
@@ -461,52 +461,52 @@
         "id": 17,
         "label": "Additional Pages",
         "icon": "bi bi-file-earmark-plus",
-        "path": "../pages/maintenance.html",
+        "path": "maintenance.html",
         "hasSubmenu": true,
         "submenu": [
             {
                 "label": "Maintenance",
-                "path": "../pages/maintenance.html"
+                "path": "maintenance.html"
             },
             {
                 "label": "Account Onboarding",
-                "path": "../pages/auth/account-onboarding.html"
+                "path": "account-onboarding.html"
             },
             {
                 "label": "Help & Support",
-                "path": "../pages/help-support.html"
+                "path": "help-support.html"
             },
             {
                 "label": "Profile",
-                "path": "../pages/profile.html"
+                "path": "profile.html"
             },
             {
                 "label": "Account Settings",
-                "path": "../pages/account-settings.html"
+                "path": "account-settings.html"
             },
             {
                 "label": "Login",
-                "path": "../pages/auth/login.html"
+                "path": "login.html"
             },
             {
                 "label": "Register",
-                "path": "../pages/auth/register.html"
+                "path": "register.html"
             },
             {
                 "label": "Forgot Password",
-                "path": "../pages/auth/forgot-password.html"
+                "path": "forgot-password.html"
             },
             {
                 "label": "Reset Password",
-                "path": "../pages/auth/reset-password.html"
+                "path": "reset-password.html"
             },
             {
                 "label": "2FA Authentication",
-                "path": "../pages/auth/two-factor-authentication.html"
+                "path": "two-factor-authentication.html"
             },
             {
                 "label": "Lock Screen",
-                "path": "../pages/auth/lockscreen.html"
+                "path": "lockscreen.html"
             }
         ]
     },
@@ -514,21 +514,21 @@
         "id": 18,
         "label": "Settings",
         "icon": "bi bi-gear",
-        "path": "../pages/admin-settings.html",
+        "path": "admin-settings.html",
         "hasSubmenu": false
     },
     {
         "id": 19,
         "label": "Documentation",
         "icon": "bi bi-file-earmark-medical",
-        "path": "../pages/documentation.html",
+        "path": "documentation.html",
         "hasSubmenu": false
     },
     {
         "id": 20,
         "label": "Landing Page",
         "icon": "bi bi-app",
-        "path": "../pages/xivig.html",
+        "path": "xivig.html",
         "hasSubmenu": false
     }
 ]

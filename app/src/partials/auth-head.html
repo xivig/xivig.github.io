@@ -14,7 +14,7 @@
     (function() {
         const savedTheme = localStorage.getItem('xivig-global-theme') || 'dark';
         document.documentElement.setAttribute('data-bs-theme', savedTheme);
-        const bgColor = savedTheme === 'dark' ? '#0b0f12' : '#f8fafc';
+        const bgColor = savedTheme === 'dark' ? '#080b0e' : '#f8fafc';
         document.write(`<style>body{background-color: ${bgColor} !important; visibility: hidden;} body.is-loaded, body.preloader-active{visibility: visible;}</style>`);
     })();
 </script>
@@ -29,12 +29,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: opacity 0.6s ease, visibility 0.6s;
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
     }
     .preloader--hidden {
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
+        transform: scale(1.04);
+        filter: blur(8px);
     }
     body:not(.is-loaded) {
         overflow: hidden;

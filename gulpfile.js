@@ -1,23 +1,13 @@
 import gulp from 'gulp';
-import {
-    exec
-} from 'child_process';
+import { exec } from 'child_process';
 import sharpOptimizeImages from 'gulp-sharp-optimize-images';
-import {
-    deleteAsync
-} from 'del';
-import terser from 'gulp-terser';
-import cleanCSS from 'gulp-clean-css';
-import rename from 'gulp-rename';
-import {
-    exportAssets
-} from './tasks/gulp/export.js';
-import {
-    serveDocs
-} from './tasks/gulp/serve-docs.js';
-import {
-    fixLinks
-} from './tasks/utils/replace-links.js';
+import { deleteAsync } from 'del';
+import fs from 'fs';
+import fsp from 'fs/promises';
+import path from 'path';
+import { exportAssets } from './tasks/gulp/export.js';
+import { serveDocs } from './tasks/gulp/serve-docs.js';
+import { fixLinks } from './tasks/utils/replace-links.js';
 
 // 1. Clean
 export const clean = () => deleteAsync(['dist', 'exports']);
@@ -31,69 +21,54 @@ export const viteBuild = (cb) => {
     });
 };
 
-// 3. Image Optimization
-// Note: We use base: 'app/src' to keep the folder structure consistent
-export const optimizeImages = () => {
-    return gulp.src(['app/src/images/**/*.{jpg,png,jpeg,webp}'], {
-            base: 'app/src/images',
-            allowEmpty: true
-        })
+// 3. Image Sync & WebP Optimization
+export const copyImages = () => {
+    return gulp.src('app/src/images/**/*', { encoding: false, allowEmpty: true })
+        .pipe(gulp.dest('dist/assets'));
+};
+
+export const optimizeWebp = () => {
+    return gulp.src('app/src/images/**/*.{jpg,png,jpeg}', { allowEmpty: true })
         .pipe(sharpOptimizeImages({
             webp: {
                 quality: 80
-            },
-            jpg_to_jpg: {
-                quality: 80
             }
         }))
-        .pipe(gulp.dest('dist/assets'))
+        .pipe(gulp.dest('dist/assets'));
 };
 
-// 4. Move HTML pages from app/pages to root pages in dist
-export const moveHtmlPages = () => {
-    return gulp.src('dist/app/pages/**/*', {
-            base: 'dist/app'
-        })
-        .pipe(gulp.dest('dist'))
-        .on('end', () => deleteAsync(['dist/app']));
+export const optimizeImages = gulp.series(copyImages, optimizeWebp);
+
+// 4. Flatten HTML pages from app/pages directly to root of dist (clean async)
+export const flattenHtmlPages = async () => {
+    const srcDir = path.resolve('dist/app/pages');
+    const targetDir = path.resolve('dist');
+    if (!fs.existsSync(srcDir)) return;
+
+    const moveHtml = async (dir) => {
+        const entries = await fsp.readdir(dir, { withFileTypes: true });
+        for (const entry of entries) {
+            const fullPath = path.join(dir, entry.name);
+            if (entry.isDirectory()) {
+                await moveHtml(fullPath);
+            } else if (entry.name.endsWith('.html')) {
+                const destPath = path.join(targetDir, entry.name);
+                await fsp.copyFile(fullPath, destPath);
+            }
+        }
+    };
+
+    await moveHtml(srcDir);
+    await fsp.rm(path.resolve('dist/app'), { recursive: true, force: true });
 };
 
-// 5. Minification Tasks
-export const minifyJs = () => {
-    return gulp.src(['dist/assets/*.js', '!dist/assets/vendor-*.js'], { base: 'dist' })
-        .pipe(terser())
-        .on('error', function (err) { console.error('Terser Error:', err.toString()); this.emit('end'); })
-        .pipe(gulp.dest('dist'));
+// 5. Standardize Links across all pages in dist
+export const fixDistLinks = async () => {
+    await fixLinks("./dist");
 };
 
-export const minifyCss = () => {
-    return gulp.src(['dist/assets/*.css', '!dist/assets/vendor-*.css'], { base: 'dist' })
-        .pipe(cleanCSS({ compatibility: 'ie8' }))
-        .on('error', function (err) { console.error('CleanCSS Error:', err.toString()); this.emit('end'); })
-        .pipe(gulp.dest('dist'));
-};
-
-// 6. Servers
-export const serve = (cb) => {
-    const vite = exec('npx vite --open');
-    vite.stdout.on('data', (d) => console.log(d));
-    cb();
-};
-
-export const preview = (cb) => {
-    const vite = exec('npx vite preview');
-    vite.stdout.on('data', (d) => console.log(d));
-    cb();
-};
-
-export const fixDistLinks = (cb) => {
-    fixLinks("./dist");
-    cb();
-};
-
-// Copy entire vendor folders from node_modules into app/vendors and app/plugins
+// 6. Copy Vendor Packages from node_modules into dist/plugins
 export async function copyVendorPackages() {
-    // 1. Copy all standard node_modules
     await new Promise((resolve, reject) => {
         gulp.src(
             [
@@ -119,43 +94,51 @@ export async function copyVendorPackages() {
             },
         )
         .pipe(gulp.dest("dist/plugins/"))
-        .pipe(gulp.dest("app/src/plugins/"))
         .on('end', resolve)
         .on('error', reject);
     });
 
-    // 2. Overwrite with patched version
+    // Overwrite with patched version
     await new Promise((resolve, reject) => {
         gulp.src("app/src/scripts/plugins/timedropper-patched.js")
             .pipe(gulp.dest("dist/plugins/timedropper/"))
-            .pipe(gulp.dest("app/src/plugins/timedropper/"))
             .on('end', resolve)
             .on('error', reject);
     });
 }
 
+// 7. Servers
+export const serve = (cb) => {
+    const vite = exec('npx vite --open');
+    vite.stdout.on('data', (d) => console.log(d));
+    cb();
+};
+
+export const preview = (cb) => {
+    const vite = exec('npx vite preview');
+    vite.stdout.on('data', (d) => console.log(d));
+    cb();
+};
+
 // --- WORKFLOWS ---
 
-// Local Development: Just clean and run dev server
+// Local Development
 export const dev = gulp.series(clean, serve);
 
-// Standard Build: Build, then optimize, then export
+// Modern Production Build: Clean, Vite compile, Optimize Images, Flatten HTML, Copy Vendors, Normalize Links, Export to Docs
 export const build = gulp.series(
     clean,
     viteBuild,
     optimizeImages,
-    moveHtmlPages,
-    fixDistLinks,
+    flattenHtmlPages,
     copyVendorPackages,
-    minifyJs,
-    minifyCss,
+    fixDistLinks,
     exportAssets
 );
 
-// Production: Build everything then preview the final result
+// Preview production build
 export const production = gulp.series(
     build,
-    //preview dist folder
     preview
 );
 

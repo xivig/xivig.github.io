@@ -144,7 +144,7 @@ export const initAdminSettings = async () => {
     // --- 3. ASYNC INIT ---
     if (!sidebarData) {
         try {
-            const root = window.XIVIG_ROOT || '/';
+            const root = window.XIVIG_ROOT || './';
             const response = await fetch(`${root}data/sidebar-config.json`);
             sidebarData = await response.json();
             localStorage.setItem('xivig_sidebar_config', JSON.stringify(sidebarData));

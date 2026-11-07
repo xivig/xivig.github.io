@@ -44,9 +44,13 @@ export const initMobileController = () => {
     const setupBottomNav = () => {
         const bottomLinks = document.querySelectorAll('.mobile-bottom-nav__item');
         const currentPath = window.location.pathname;
+        const currentPage = currentPath.split('/').pop().split('?')[0] || 'index.html';
 
         bottomLinks.forEach(link => {
-            if (link.getAttribute('href') && currentPath.includes(link.getAttribute('href'))) {
+            const href = link.getAttribute('href');
+            if (!href || href === '#' || href === 'javascript:;') return;
+            const linkPage = href.split('/').pop().split('?')[0] || 'index.html';
+            if (currentPage === linkPage) {
                 link.classList.add('active');
             }
         });

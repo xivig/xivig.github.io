@@ -4,9 +4,7 @@ export function initMaintenance() {
     if (!document.getElementById('maintenance-card')) return;
 
     const urlParams = new URLSearchParams(window.location.search);
-    // Determine a smart redirect URL: prefer root if in a subfolder
-    const isSubfolder = window.location.pathname.includes('/pages/');
-    const defaultRedirect = isSubfolder ? '../index.html' : 'index.html';
+    const defaultRedirect = 'index.html';
     const redirectUrl = urlParams.get("redirect") || defaultRedirect;
 
     // Configuration: 15 minutes total duration

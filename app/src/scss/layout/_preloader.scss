@@ -1,135 +1,417 @@
-@use "../base/variables"as vars;
-@use "../base/mixins"as *;
+@use "../base/variables" as vars;
+@use "../base/mixins" as *;
 
-/* XIVIG PRELOADER - ELITE GLASSMORPHIC CORRECTION */
+/* ==========================================================================
+   XIVIG PRELOADER - ELITE ARCHITECT EDITION
+   Ultra-modern glassmorphic telemetry preloader with orbital core & fluid HUD
+   ========================================================================== */
+
 .preloader {
-    // 1. UNIQUE MESH GRADIENT BACKGROUND for better glass refraction
-    background: radial-gradient(circle at 20% 20%, rgba(vars.$primary-color, 0.05) 0, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(vars.$apple-blue, 0.05) 0, transparent 50%),
-        vars.$white;
     position: fixed;
     inset: 0;
     z-index: 99999;
-    @include center-flex;
-    transition: opacity 0.6s ease, visibility 0.6s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #080b0e; // Theme dark default fallback
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.5s ease;
+    will-change: opacity, transform, filter;
 
-    &--hidden {
-        opacity: 0;
-        visibility: hidden;
+    // Ambient background lighting
+    &__backdrop {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
     }
 
-    &__box {
-        max-width: 450px;
-        text-align: center;
-    }
+    &__aura {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.6;
+        animation: elite-aura-pulse 8s ease-in-out infinite alternate;
 
-    // --- LOGO CORRECTION (TRANSPARENT BACKGROUND READY) ---
-    &__logo {
-        margin-bottom: 2.5rem;
-        display: block;
-        animation: xivig-pulse 2s infinite ease-in-out;
-        will-change: transform, filter; // Optimize for performance
+        &--primary {
+            width: 480px;
+            height: 480px;
+            top: -120px;
+            left: -120px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.28) 0%, transparent 70%);
+        }
 
-        img {
-            width: 160px;
-            height: auto;
-            display: inline-block;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-            &:hover {
-                transform: scale(1.08);
-                filter: brightness(1.1); // Add a shine on hover
-            }
+        &--cyan {
+            width: 420px;
+            height: 420px;
+            bottom: -100px;
+            right: -100px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.22) 0%, transparent 70%);
+            animation-delay: -4s;
         }
     }
 
-    &__progress {
-        height: 6px; // Modern, thin bar
-        border-radius: 15px;
-        width: 280px;
-        background: rgba(0, 0, 0, 0.03);
-        margin: 0 auto;
+    // Glassmorphic Center Card
+    &__box {
+        position: relative;
+        z-index: 2;
+        width: 90%;
+        max-width: 380px;
+        padding: 2.25rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border-radius: 28px;
+        backdrop-filter: blur(24px) saturate(190%);
+        -webkit-backdrop-filter: blur(24px) saturate(190%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+
+        // Dark mode defaults
+        background: rgba(15, 23, 42, 0.58);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.7),
+                    0 0 30px rgba(99, 102, 241, 0.12),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    // Orbital Ring Matrix & Center Brand Emblem
+    &__core-wrap {
+        position: relative;
+        width: 110px;
+        height: 110px;
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__orbit {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+
+        &--outer {
+            inset: 0;
+            border: 1.5px dashed rgba(99, 102, 241, 0.35);
+            border-top-color: #6366f1;
+            border-right-color: #06b6d4;
+            animation: elite-spin-cw 8s linear infinite;
+        }
+
+        &--inner {
+            inset: 12px;
+            border: 1.5px dotted rgba(6, 182, 212, 0.45);
+            border-left-color: #3b82f6;
+            border-bottom-color: #8b5cf6;
+            animation: elite-spin-ccw 5s linear infinite;
+        }
+    }
+
+    &__core-glow {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(6, 182, 212, 0.15) 50%, transparent 75%);
+        filter: blur(6px);
+        animation: elite-core-pulse 2.2s ease-in-out infinite;
+    }
+
+    &__brand {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img,
+        .preloader__logo-img {
+            height: 42px;
+            width: auto;
+            max-width: 72px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 14px rgba(99, 102, 241, 0.35));
+            animation: elite-logo-float 3s ease-in-out infinite;
+        }
+    }
+
+    // Brand Title & Micro-subtitle
+    &__identity {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+    }
+
+    &__brand-title {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-size: 1.35rem;
+        font-weight: 800;
+        letter-spacing: 0.28em;
+        text-indent: 0.28em;
+        line-height: 1.2;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 55%, #6366f1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    &__brand-sub {
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-indent: 0.22em;
+        text-transform: uppercase;
+        color: rgba(148, 163, 184, 0.7);
+    }
+
+    // High-tech Progress Capsule
+    &__track-wrap {
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+
+    &__track {
+        width: 100%;
+        height: 6px;
+        border-radius: 999px;
         overflow: hidden;
+        position: relative;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
     }
 
     &__bar {
         width: 0%;
         height: 100%;
-        background: vars.$primary-color;
-        transition: width 0.3s ease-out;
+        border-radius: 999px;
+        position: relative;
+        background: linear-gradient(90deg, #6366f1 0%, #06b6d4 50%, #3b82f6 100%);
+        background-size: 200% 100%;
+        box-shadow: 0 0 12px rgba(6, 182, 212, 0.65);
+        animation: elite-bar-flow 2s linear infinite;
+        transition: width 0.15s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    // --- LARGE PERCENTAGE TEXT ---
-    &__percent {
-        font-family: 'Inter', sans-serif;
-        font-size: 42px;
-        font-weight: 900;
-        letter-spacing: -2px;
-        margin-top: 20px;
-        line-height: 1;
+    &__bar-laser {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 10px;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 0 8px #ffffff, 0 0 14px #06b6d4;
+        opacity: 0.95;
+    }
 
-        // Animated Gradient Text
-        background: linear-gradient(90deg, vars.$primary-color, vars.$apple-blue, vars.$primary-color);
-        background-size: 200% auto;
+    // HUD Status & Readout
+    &__hud {
+        width: 100%;
+        margin-top: 0.85rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    &__percent {
+        font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+        font-size: 0.82rem;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        color: #06b6d4;
+        letter-spacing: 0.05em;
+        min-width: 40px;
+        text-align: left;
+    }
+
+    &__status {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 4px 10px;
+        border-radius: 100px;
+    }
+
+    &__status-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #06b6d4;
+        box-shadow: 0 0 8px #06b6d4;
+        animation: elite-pulse-dot 1.2s ease-in-out infinite;
+    }
+
+    &__status-text {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 0.63rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(226, 232, 240, 0.78);
+    }
+
+    // Completion / Ready State
+    &--ready {
+        .preloader__status-dot {
+            background: #10b981;
+            box-shadow: 0 0 10px #10b981;
+        }
+
+        .preloader__percent {
+            color: #10b981;
+        }
+
+        .preloader__bar {
+            box-shadow: 0 0 16px rgba(16, 185, 129, 0.8);
+        }
+
+        .preloader__box {
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+    }
+
+    // Exit State (silky smooth disappear)
+    &--hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: scale(1.04);
+        filter: blur(8px);
+    }
+}
+
+// ==========================================================================
+// LIGHT THEME ADAPTATION
+// ==========================================================================
+[data-bs-theme="light"] .preloader {
+    background-color: #f8fafc;
+
+    &__aura {
+        opacity: 0.45;
+
+        &--primary {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
+        }
+
+        &--cyan {
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+        }
+    }
+
+    &__box {
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 25px 50px -10px rgba(99, 102, 241, 0.12),
+                    0 0 25px rgba(99, 102, 241, 0.05),
+                    inset 0 1px 0 #ffffff;
+    }
+
+    &__brand-title {
+        background: linear-gradient(135deg, #0f172a 0%, #334155 60%, #6366f1 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: xivig-shimmer 4s linear infinite;
     }
 
-    // --- GLASSMORPHIC LOADER TEXT ---
-    &__text {
-        margin-top: 25px;
-        padding: 10px 30px; // A proper "glass button" feel
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: 6px;
-        font-family: 'Inter', sans-serif;
-
-        background: rgba(255, 255, 255, 0.2); // Light white
-        backdrop-filter: blur(12px) saturate(180%);
-        -webkit-backdrop-filter: blur(12px) saturate(180%);
-
-        border: 1px solid rgba(255, 255, 255, 0.3); // Frosted border
-        border-radius: 100px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-
-        color: rgba(0, 0, 0, 0.7);
-        display: inline-block;
-        animation: box-float 3s ease-in-out infinite;
-    }
-}
-
-// Subtle pulse and Contoured drop-shadow animation
-@keyframes xivig-pulse {
-
-    0%,
-    100% {
-        transform: scale(1);
-        filter: drop-shadow(0 10px 15px rgba(vars.$primary-color, 0.1));
+    &__brand-sub {
+        color: rgba(100, 116, 139, 0.85);
     }
 
-    50% {
-        transform: scale(1.05);
-        // Shadow "grows" as the logo pulses forward
-        filter: drop-shadow(0 20px 35px rgba(vars.$primary-color, 0.25));
+    &__track {
+        background: rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    &__percent {
+        color: #4f46e5;
+    }
+
+    &__status {
+        background: rgba(0, 0, 0, 0.03);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    &__status-text {
+        color: rgba(51, 65, 85, 0.85);
     }
 }
 
-// Combined animations for the Unique Feel
-@keyframes xivig-shimmer {
+// ==========================================================================
+// KEYFRAME ANIMATIONS
+// ==========================================================================
+@keyframes elite-spin-cw {
+    from {
+        transform: rotate(0deg);
+    }
     to {
-        background-position: 200% center;
+        transform: rotate(360deg);
     }
 }
 
-@keyframes box-float {
+@keyframes elite-spin-ccw {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
 
-    0%,
-    100% {
+@keyframes elite-core-pulse {
+    0%, 100% {
+        transform: scale(0.92);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 0.95;
+    }
+}
+
+@keyframes elite-logo-float {
+    0%, 100% {
         transform: translateY(0);
     }
-
     50% {
-        transform: translateY(-8px);
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes elite-bar-flow {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+@keyframes elite-pulse-dot {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+@keyframes elite-aura-pulse {
+    0% {
+        transform: scale(0.95) translate(0, 0);
+    }
+    100% {
+        transform: scale(1.08) translate(20px, 20px);
     }
 }

@@ -6,7 +6,7 @@
 [![Handlebars](https://img.shields.io/badge/template-Handlebars-f0772b?style=flat&logo=handlebars.js)](https://handlebarsjs.com/)
 [![Sass](https://img.shields.io/badge/styles-Sass%207--1-CC6699?style=flat&logo=sass)](https://sass-lang.com/)
 
-**XIVIG Elite** is a premium, high-performance administrative dashboard designed for modern web applications. It leverages a unique hybrid workflow combining **Vite** for lightning-fast development (HMR) and **Gulp** for robust asset orchestration and legacy vendor management.
+**XIVIG Elite** is a premium, high-performance administrative dashboard designed for modern web applications. It leverages a unique hybrid workflow combining **Vite** for lightning-fast development (HMR with flat URL routing) and **Gulp** for robust asset orchestration, WebP optimization, path normalization, and flattened GitHub Pages deployment.
 
 ---
 
@@ -16,9 +16,10 @@
 -   **Elite Analytics v2**: Advanced, modular dashboard featuring deep data visualization with ApexCharts and Chart.js.
 -   **Hybrid Build Pipeline**: The speed of Vite paired with the versatility of Gulp.
 -   **Modular SCSS (7-1 Pattern)**: A professional stylesheet architecture designed for scalability and ease of maintenance.
--   **Handlebars Templating**: Clean separation of UI components using Handlebars partials.
--   **Performance Optimized**: Automated image compression, intelligent vendor chunking, and aggressive tree-shaking.
--   **Mobile Elite (New)**: Comprehensive media queries, categorized CSS bundles, and a dedicated mobile bottom navigation for a native app-like experience.
+-   **Handlebars Templating**: Clean separation of UI components using Handlebars layouts and partials.
+-   **Flattened GitHub Pages Architecture**: All 85 pages deployed flat directly under `docs/` (`docs/*.html`) with zero broken links.
+-   **Performance Optimized**: Automated WebP conversion, intelligent vendor chunking, and aggressive tree-shaking.
+-   **Mobile Elite**: Responsive media queries, categorized CSS bundles, and a dedicated mobile bottom navigation for a native app-like experience.
 -   **Theme Aware**: Comprehensive dark mode support using CSS Design Tokens (Variables).
 
 ---
@@ -26,11 +27,11 @@
 ## 🛠 Technology Stack
 
 -   **Bundler**: [Vite](https://vitejs.dev/) (Primary engine for JS/SCSS and Dev Server)
--   **Task Runner**: [Gulp](https://gulpjs.com/) (Image optimization and asset exports)
+-   **Task Runner**: [Gulp](https://gulpjs.com/) (Asset orchestration, image optimization, path normalization, and export)
 -   **Framework**: [Bootstrap 5.3](https://getbootstrap.com/)
 -   **Templating**: [Handlebars](https://handlebarsjs.com/) (Integrated via `vite-plugin-handlebars`)
 -   **Styles**: [Sass/Dart Sass](https://sass-lang.com/)
--   **Iconography**: Bootstrap Icons & FontAwesome 7
+-   **Iconography**: Bootstrap Icons & FontAwesome 6/7
 
 ---
 
@@ -39,19 +40,20 @@
 ```text
 xivig.github.io/
 ├── app/
-│   ├── pages/         # HTML views grouped by category
+│   ├── pages/         # Source HTML views grouped by category
 │   └── src/           # Primary source code
-│       ├── partials/  # Handlebars components (header, sidebar, etc.)
-│       ├── scss/      # Modular Sass architecture (base, layout, components, etc.)
+│       ├── partials/  # Handlebars components (header, sidebar, layouts)
+│       ├── scss/      # Modular Sass architecture (7-1 pattern)
 │       ├── scripts/   # Modular JavaScript logic and app controllers
 │       ├── images/    # Source images and UI assets
 │       └── plugins/   # Local vendor plugins
 ├── public/            # Static assets served as-is (data, fonts)
-├── tasks/             # Specialized Gulp modules
-├── docs/              # GitHub Pages deployment folder
+├── tasks/             # Specialized build scripts and utilities
+├── docs/              # GitHub Pages deployment folder (flattened HTML & assets)
+├── dist/              # Local production build output
 ├── index.html         # Main dashboard entry point
 ├── gulpfile.js        # Gulp orchestration script
-├── vite.config.js     # Primary build & server configuration
+├── vite.config.js     # Primary build & dev server configuration
 └── developer-docs/    # In-depth technical guides
 ```
 
@@ -66,24 +68,24 @@ xivig.github.io/
 ### 2. Installation
 ```bash
 # Clone the repository
-git clone https://github.com/xivig/xivig-github-io.git
+git clone https://github.com/xivig/xivig.github.io.git
 
 # Navigate to directory
-cd xivig-github-io
+cd xivig.github.io
 
 # Install dependencies
 npm install
 ```
 
 ### 3. Development
-Start the Vite development server with Hot Module Replacement (HMR):
+Start the Vite development server with Hot Module Replacement (HMR) and dynamic flat routing:
 ```bash
 npm run dev
 ```
-Navigate to `http://localhost:5173` to view your dashboard.
+Navigate to `http://localhost:3000` to view your dashboard. Any flat page (e.g. `http://localhost:3000/calendar.html`) resolves automatically.
 
 ### 4. Production Build
-Generate an optimized, production-ready bundle in the `dist/` folder:
+Generate an optimized, production-ready bundle flattened into `dist/` and `docs/`:
 ```bash
 npm run build
 ```
@@ -105,7 +107,7 @@ This repository includes a comprehensive workflow for migrating the frontend tem
 Explore our in-depth guides to master the Xivig architecture:
 
 ### Build & Automation
-- **[Build System Guide](./developer-docs/BUILD_SYSTEM_GUIDE.md)**: Deep dive into Vite, Gulp, and Deployment.
+- **[Build System Guide](./developer-docs/BUILD_SYSTEM_GUIDE.md)**: Deep dive into Vite, Gulp, and GitHub Pages deployment.
 - **[Utility Scripts](./developer-docs/UTILITY_SCRIPTS.md)**: Documentation for all automation scripts in `tasks/utils/`.
 - **[Gulp Workflow](./developer-docs/GULP_WORKFLOW_GUIDE.md)**: How to write and extend Gulp tasks.
 
@@ -146,10 +148,11 @@ This project uses **Handlebars** for modular HTML construction.
 
 | Command | Action |
 | :--- | :--- |
-| `npm run dev` | Starts the local server with HMR |
-| `npm run build` | Compiles and minifies assets for production |
-| `npm run preview` | Locally previews the production build |
-| `npm run gulp:images` | Runs the Gulp image optimization pipeline |
+| `npm run dev` | Starts the Vite dev server with HMR and dynamic flat routing |
+| `npm run build` | Compiles assets, creates WebP images, flattens HTML, and exports to `dist/` & `docs/` |
+| `npm run production` | Runs full production build and opens local preview |
+| `npm run preview` | Locally previews the production build (`dist/`) |
+| `npm run gulp:images` | Standalone Gulp image & WebP optimization pipeline |
 
 ---
 
